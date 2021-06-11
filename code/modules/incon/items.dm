@@ -17,7 +17,7 @@
 	icon_state = "plain"
 
 /obj/item/diaper/attack(mob/living/carbon/human/M as mob, mob/usr as mob)
-	if(HAS_TRAIT(M,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(M,TRAIT_INCONTINENT) || HAS_TRAIT(M,TRAIT_POTTYREBEL))
+	if(HAS_TRAIT(M,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(M,TRAIT_INCONTINENT) || HAS_TRAIT(M,TRAIT_POTTYREBEL) || HAS_TRAIT(M,BABYBRAINED_TRAIT) || HAS_TRAIT(M,TRAIT_DIAPERUSE))
 		playsound(M.loc,'sound/effects/Diapertape.wav',50,1)
 		if(do_after_mob(usr,M))
 			M.DiaperChange()

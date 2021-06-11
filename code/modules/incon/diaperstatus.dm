@@ -58,7 +58,7 @@
 		to_chat(src,"You can't poop, you're dead!")
 
 /mob/living/carbon/proc/PampUpdate()
-	if(stat != DEAD && (HAS_TRAIT(src,TRAIT_INCONTINENT) || HAS_TRAIT(src,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(src,TRAIT_POTTYREBEL) || HAS_TRAIT(src,BABYBRAINED_TRAIT)) && src.client != null)
+	if(stat != DEAD && (HAS_TRAIT(src,TRAIT_INCONTINENT) || HAS_TRAIT(src,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(src,TRAIT_POTTYREBEL) || HAS_TRAIT(src,BABYBRAINED_TRAIT) || HAS_TRAIT(src,TRAIT_DIAPERUSE)) && src.client != null)
 		if(src.client.prefs.accident_types != "Poop Only")
 			pee = pee + 0.8 + (fluids/200)
 		if(src.client.prefs.accident_types != "Pee Only")
@@ -475,7 +475,7 @@
 			SEND_SIGNAL(owner,COMSIG_DIAPERCHANGE,owner.ckey)
 			owner.overlays -= owner.statusoverlay
 			owner.statusoverlay = null
-	if(HAS_TRAIT(owner,TRAIT_POTTYREBEL || TRAIT_INCONTINENT || BABYBRAINED_TRAIT) && !HAS_TRAIT(owner,TRAIT_FULLYINCONTINENT))
+	if(HAS_TRAIT(owner,TRAIT_POTTYREBEL || TRAIT_INCONTINENT || BABYBRAINED_TRAIT || TRAIT_DIAPERUSE) && !HAS_TRAIT(owner,TRAIT_FULLYINCONTINENT))
 		if (owner.wetness >= 1)
 			if (owner.stinkiness >= 1)
 				icon_state = "hud_plain_used"
