@@ -1,13 +1,14 @@
-## Citadel Station 13
-Based and maintained from /tg/station.
+## PampieStation 13
+Based and maintained from Citadel Station.
 
-[![Build Status](https://api.travis-ci.org/Citadel-Station-13/Citadel-Station-13.png)](https://travis-ci.org/Citadel-Station-13/Citadel-Station-13) 
-[![Percentage of issues still open](http://isitmaintained.com/badge/open/Citadel-Station-13/Citadel-Station-13.svg)](http://isitmaintained.com/project/Citadel-Station-13/Citadel-Station-13 "Percentage of issues still open")  
-[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/Citadel-Station-13/Citadel-Station-13.svg)](http://isitmaintained.com/project/Citadel-Station-13/Citadel-Station-13 "Average time to resolve an issue")
+[![Build Status](https://api.travis-ci.org/TyrianTyrell/PampieStationRecoded.png)](https://travis-ci.org/TyrianTyrell/PampieStationRecoded) 
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/TyrianTyrell/PampieStationRecoded.svg)](http://isitmaintained.com/project/TyrianTyrell/PampieStationRecoded "Percentage of issues still open")  
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/TyrianTyrell/PampieStationRecoded.svg)](http://isitmaintained.com/project/TyrianTyrell/PampieStationRecoded "Average time to resolve an issue")
 
 [![forthebadge](http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](https://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/pretty-risque.svg)](https://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/you-didnt-ask-for-this.svg)](http://forthebadge.com) [![forinfinityandbyond](https://user-images.githubusercontent.com/5211576/29499758-4efff304-85e6-11e7-8267-62919c3688a9.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
 
 **Upstream Information**  
+**TGSTATION**
 * **Website:** <https://www.tgstation13.org>
 * **Code:** <https://github.com/tgstation/tgstation>
 * **Wiki:** <https://tgstation13.org/wiki/Main_Page>
@@ -16,13 +17,17 @@ Based and maintained from /tg/station.
 * **Coderbus Discord:** <https://discord.gg/Vh8TJp9>
 * ~~**IRC:** <irc://irc.rizon.net/coderbus>~~ (dead)  
 
-**Citadel Station Information**  
+**CITADELSTATION**  
 * **Website:** <http://citadel-station.net>
 * **Code:** <https://github.com/Citadel-Station-13/Citadel-Station-13>
 * **Wiki:** <https://citadel-station.net/wiki/index.php?title=Main_Page>
 * **Forums:** <http://citadel-station.net/forum>
 * **Ban Appeals:** <http://citadel-station.net/forum/forumdisplay.php?fid=8>
 * **Discord:**  <https://discord.gg/E6SQuhz>
+
+**Pampie Station Info**
+* **Code:** <https://github.com/TyrianTyrell/PampieStationRecoded/>
+* **Discord:** <https://discord.gg/EBDnCEesna>
   
 ## DOWNLOADING
 
