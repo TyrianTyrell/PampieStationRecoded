@@ -22,7 +22,6 @@ Based and maintained from Citadel Station.
 * **Code:** <https://github.com/Citadel-Station-13/Citadel-Station-13>
 * **Wiki:** <https://citadel-station.net/wiki/index.php?title=Main_Page>
 * **Forums:** <http://citadel-station.net/forum>
-* **Ban Appeals:** <http://citadel-station.net/forum/forumdisplay.php?fid=8>
 * **Discord:**  <https://discord.gg/E6SQuhz>
 
 **Pampie Station Info**
