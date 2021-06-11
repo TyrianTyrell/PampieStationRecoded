@@ -203,14 +203,15 @@
 /obj/machinery/status_display/evac{
 	pixel_x = -32
 	},
-/obj/item/kirbyplants{
-	icon_state = "plant-21"
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
+	},
+/obj/effect/turf_decal/delivery,
+/obj/vehicle/ridden/wheelchair{
+	dir = 4
 	},
 /turf/open/floor/plasteel{
 	heat_capacity = 1e+006
@@ -226,12 +227,13 @@
 /obj/machinery/status_display/ai{
 	pixel_x = 32
 	},
-/obj/item/kirbyplants{
-	icon_state = "plant-21"
-	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
+	},
+/obj/effect/turf_decal/delivery,
+/obj/vehicle/ridden/wheelchair{
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/arrival)
@@ -277,24 +279,25 @@
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/arrival)
 "A" = (
-/obj/item/kirbyplants{
-	icon_state = "plant-21"
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/effect/turf_decal/delivery,
+/obj/vehicle/ridden/wheelchair{
+	dir = 4
+	},
 /turf/open/floor/plasteel{
 	heat_capacity = 1e+006
 	},
 /area/shuttle/arrival)
 "B" = (
-/obj/structure/table/reinforced,
-/obj/item/clipboard,
-/obj/item/toy/figure/assistant,
 /obj/effect/turf_decal/delivery,
+/obj/vehicle/ridden/wheelchair{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/arrival)
 "C" = (
@@ -305,19 +308,20 @@
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/arrival)
 "D" = (
-/obj/structure/table/reinforced,
-/obj/item/folder,
-/obj/item/storage/dice,
 /obj/effect/turf_decal/delivery,
+/obj/vehicle/ridden/wheelchair{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/arrival)
 "E" = (
-/obj/item/kirbyplants{
-	icon_state = "plant-21"
-	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
+	},
+/obj/effect/turf_decal/delivery,
+/obj/vehicle/ridden/wheelchair{
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/arrival)
@@ -482,6 +486,40 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/arrival)
+"W" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/delivery,
+/obj/vehicle/ridden/wheelchair{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/arrival)
+"Y" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/vehicle/ridden/wheelchair{
+	dir = 8
+	},
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plasteel,
+/area/shuttle/arrival)
 
 (1,1,1) = {"
 a
@@ -546,7 +584,7 @@ e
 h
 k
 p
-p
+Y
 v
 v
 v
@@ -584,7 +622,7 @@ e
 h
 m
 p
-p
+W
 u
 u
 u
