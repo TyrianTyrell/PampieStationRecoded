@@ -11379,6 +11379,11 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai_upload)
+"aOc" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/vending/diaper,
+/turf/open/floor/plasteel,
+/area/commons/dorms)
 "aOd" = (
 /obj/machinery/computer/upload/ai,
 /obj/structure/window/reinforced{
@@ -29859,6 +29864,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/machinery/vending/diaper,
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
 "clq" = (
@@ -82447,6 +82453,7 @@
 /turf/open/floor/wood,
 /area/service/lawoffice)
 "xEM" = (
+/obj/machinery/vending/diaper,
 /turf/open/floor/plating,
 /area/commons/toilet/auxiliary)
 "xFb" = (
@@ -119016,7 +119023,7 @@ vSE
 maQ
 mbw
 jRk
-maQ
+aOc
 vnL
 pvo
 rkT

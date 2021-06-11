@@ -25,26 +25,27 @@
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/arrival)
 "g" = (
+/obj/machinery/computer/arcade,
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/arrival)
+"h" = (
+/obj/structure/closet/wardrobe/green,
+/turf/open/floor/mineral/titanium/blue,
+/area/shuttle/arrival)
 "i" = (
-/obj/vehicle/ridden/wheelchair,
-/obj/effect/turf_decal/delivery,
-/turf/open/floor/mineral/titanium,
+/obj/structure/closet/wardrobe/black,
+/turf/open/floor/mineral/titanium/blue,
 /area/shuttle/arrival)
 "j" = (
-/obj/structure/closet/emcloset,
+/obj/structure/closet/wardrobe/mixed,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/arrival)
 "k" = (
-/obj/vehicle/ridden/wheelchair{
-	dir = 8
-	},
-/obj/effect/turf_decal/delivery,
-/turf/open/floor/mineral/titanium,
+/obj/structure/closet/wardrobe/grey,
+/turf/open/floor/mineral/titanium/blue,
 /area/shuttle/arrival)
 "l" = (
 /obj/machinery/requests_console{
@@ -73,15 +74,12 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/arrival)
 "o" = (
-/obj/vehicle/ridden/wheelchair{
-	dir = 1
-	},
-/obj/effect/turf_decal/delivery,
-/turf/open/floor/mineral/titanium,
+/obj/structure/window/shuttle,
+/obj/structure/grille,
+/turf/open/floor/plating,
 /area/shuttle/arrival)
 "p" = (
 /obj/structure/chair/comfy/shuttle,
-/obj/effect/turf_decal/box,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/arrival)
 "q" = (
@@ -89,14 +87,12 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/effect/turf_decal/box,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/arrival)
 "r" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
-/obj/effect/turf_decal/box,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/arrival)
 "s" = (
@@ -122,7 +118,6 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/obj/effect/turf_decal/box,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/arrival)
 "w" = (
@@ -132,7 +127,10 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/effect/turf_decal/box,
+/turf/open/floor/mineral/titanium/blue,
+/area/shuttle/arrival)
+"x" = (
+/obj/structure/closet/emcloset,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/arrival)
 "y" = (
@@ -164,7 +162,7 @@
 (1,1,1) = {"
 a
 B
-d
+o
 d
 d
 B
@@ -203,7 +201,7 @@ e
 S
 S
 S
-e
+x
 b
 "}
 (6,1,1) = {"
@@ -226,11 +224,11 @@ b
 "}
 (8,1,1) = {"
 d
-j
+h
 r
 r
 r
-j
+f
 d
 "}
 (9,1,1) = {"
@@ -239,7 +237,7 @@ i
 f
 f
 f
-o
+f
 d
 "}
 (10,1,1) = {"
@@ -248,17 +246,17 @@ j
 r
 r
 r
-j
+f
 d
 "}
 (11,1,1) = {"
-b
+d
+k
 f
 f
 f
 f
-f
-b
+d
 "}
 (12,1,1) = {"
 b
@@ -272,9 +270,9 @@ b
 (13,1,1) = {"
 c
 f
-k
-k
-k
+S
+S
+S
 f
 c
 "}

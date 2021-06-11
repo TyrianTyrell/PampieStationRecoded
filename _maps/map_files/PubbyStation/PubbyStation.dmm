@@ -13654,12 +13654,14 @@
 /area/commons/toilet/restrooms)
 "aFa" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/light_switch{
+	pixel_x = 32;
+	pixel_y = 25
+	},
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet/restrooms)
 "aFb" = (
-/obj/machinery/light_switch{
-	pixel_y = 25
-	},
+/obj/machinery/vending/diaper,
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet/restrooms)
 "aFc" = (
@@ -36760,7 +36762,7 @@
 /turf/open/floor/plating,
 /area/maintenance/department/science)
 "bFB" = (
-/obj/item/newspaper,
+/obj/machinery/vending/diaper,
 /turf/open/floor/plating,
 /area/maintenance/department/science)
 "bFC" = (
@@ -39657,6 +39659,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
+/obj/machinery/vending/diaper,
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
 "bLL" = (
@@ -56348,6 +56351,7 @@
 /obj/structure/toilet/secret/low_loot{
 	dir = 4
 	},
+/obj/item/newspaper,
 /turf/open/floor/plating,
 /area/maintenance/department/science)
 "khk" = (

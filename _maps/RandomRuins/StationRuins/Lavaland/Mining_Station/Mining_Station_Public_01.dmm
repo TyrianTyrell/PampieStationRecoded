@@ -531,6 +531,13 @@
 "jJ" = (
 /turf/closed/mineral/random/labormineral/volcanic,
 /area/lavaland/surface/outdoors/explored)
+"jK" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/machinery/vending/diaper,
+/turf/open/floor/plasteel,
+/area/mine/living_quarters)
 "kb" = (
 /obj/machinery/mineral/processing_unit_console,
 /turf/closed/wall,
@@ -5564,7 +5571,7 @@ Os
 Pq
 FE
 Os
-cD
+jK
 KV
 VT
 VT
