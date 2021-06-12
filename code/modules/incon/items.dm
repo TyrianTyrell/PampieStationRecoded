@@ -490,7 +490,7 @@
 	metabolization_rate = 1.5 * REAGENTS_METABOLISM
 
 /datum/reagent/medicine/laxative/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
-	if(M.client.prefs.accident_types != "Pee Only")
+	if(M.client.prefs.accident_types != "Pee Only" && src.volume >= 1)
 		M.poop += (10 * REAGENTS_EFFECT_MULTIPLIER * delta_time)
 	metabolization_rate = 1.5 * REAGENTS_METABOLISM
 	..()
@@ -552,11 +552,3 @@
 /datum/food_processor_process/marshmallow
 	input = /obj/item/reagent_containers/food/snacks/grown/marshmallowroot
 	output = /obj/item/reagent_containers/food/snacks/marshmallow
-
-/obj/item/reagent_containers/food/snacks/marshmallow
-	name = "marshmallows"
-	desc = "It's a handful of marshmallows. Don't eat too many!"
-	icon_state = "marshmallows"
-	bonus_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/sugar = 2, /datum/reagent/medicine/laxative = 1)
-	tastes = list("marshmallow" = 1)
-	w_class = WEIGHT_CLASS_TINY

@@ -764,14 +764,14 @@
 			if(HAS_TRAIT(src,TRAIT_POTTYREBEL || TRAIT_INCONTINENT || BABYBRAINED_TRAIT || TRAIT_DIAPERUSE || TRAIT_FULLYINCONTINENT))
 				if(wetness > 0)
 					if(stinkiness > 0)
-						to_send += "<span class='notice'>Your [src.brand2] is absolutely spent.</span>"
+						to_send += "<span class='notice'>Your [src.brand2] is absolutely spent.</span>\n"
 					else
-						to_send += "<span class='notice'>Your [src.brand2] is wet.</span>"
+						to_send += "<span class='notice'>Your [src.brand2] is wet.</span>\n"
 				else
 					if(stinkiness > 0)
-						to_send += "<span class='notice'>Your [src.brand2] is messy.</span>"
+						to_send += "<span class='notice'>Your [src.brand2] is messy.</span>\n"
 					else
-						to_send += "<span class='notice'>Your [src.brand2] is dry.</span>"
+						to_send += "<span class='notice'>Your [src.brand2] is dry.</span>\n"
 				if(HAS_TRAIT(src,TRAIT_EXACTCHECK))
 					var/diappercent1 = ((wetness / 500 + heftersbonus) * 100)
 					var/diappercent2 = ((stinkiness / 500 + heftersbonus) * 100)
