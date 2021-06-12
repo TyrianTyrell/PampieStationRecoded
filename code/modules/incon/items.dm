@@ -514,8 +514,6 @@
 	instability = 5
 	growthstages = 3
 	growing_icon = 'icons/obj/hydroponics/growing_fruits.dmi'
-	icon_grow = "marshmallow-grow"
-	icon_dead = "marshmallow-dead"
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
 	mutatelist = list(/obj/item/seeds/marshmallow/laxative)
 	reagents_add = list(/datum/reagent/medicine/laxative = 0.01, /datum/reagent/consumable/nutriment/vitamin = 0.06, /datum/reagent/consumable/nutriment = 0.03)
@@ -534,9 +532,9 @@
 	icon_state = "seed-marshmallax"
 	species = "marshmallax"
 	plantname = "Marshmallax Root"
+	icon_dead = "marshmallow-dead"
 	product = /obj/item/reagent_containers/food/snacks/grown/marshmallax
 	yield = 2
-	icon_grow = "marshmallax-grow"
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
 	mutatelist = list(/obj/item/seeds/marshmallow)
 	reagents_add = list(/datum/reagent/medicine/laxative = 0.1)

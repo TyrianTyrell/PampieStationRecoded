@@ -329,8 +329,8 @@
 			to_chat(M, "<span class='notice'>They are wearing a [dipetype] diaper!")
 			to_chat(src, "<span class='notice'>[M] pulls your waistband back and pats you down to check your diaper.</span>")
 			if(HAS_TRAIT(M,TRAIT_EXACTCHECK))
-				var/diappercent1 = ((wetness / 500 + heftersbonus) * 100)
-				var/diappercent2 = ((stinkiness / 500 + heftersbonus) * 100)
+				var/diappercent1 = ((wetness / (500 + heftersbonus)) * 100)
+				var/diappercent2 = ((stinkiness / (500 + heftersbonus)) * 100)
 				to_chat(M,"<span class='notice'>It is about [diappercent1]% wet and [diappercent2]% messy.</span>")
 
 		else
