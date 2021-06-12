@@ -761,6 +761,21 @@
 
 			if(roundstart_quirks.len)
 				to_send += "<span class='notice'>You have these quirks: [get_trait_string()].</span>\n"
+			if(HAS_TRAIT(src,TRAIT_POTTYREBEL || TRAIT_INCONTINENT || BABYBRAINED_TRAIT || TRAIT_DIAPERUSE || TRAIT_FULLYINCONTINENT))
+				if(wetness > 0)
+					if(stinkiness > 0)
+						to_send += "<span class='notice'>Your [src.brand2] is absolutely spent.</span>"
+					else
+						to_send += "<span class='notice'>Your [src.brand2] is wet.</span>"
+				else
+					if(stinkiness > 0)
+						to_send += "<span class='notice'>Your [src.brand2] is messy.</span>"
+					else
+						to_send += "<span class='notice'>Your [src.brand2] is dry.</span>"
+				if(HAS_TRAIT(src,TRAIT_EXACTCHECK))
+					var/diappercent1 = ((wetness / 500 + heftersbonus) * 100)
+					var/diappercent2 = ((stinkiness / 500 + heftersbonus) * 100)
+					to_send += "<span class='notice'>It is about [diappercent1]% wet and [diappercent2]% messy.</span>\n"
 
 			to_chat(src, to_send)
 		else
@@ -854,21 +869,6 @@
 			else
 				to_chat(src, "\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] embedded in your [LB.name]!</a>")
 
-	if(HAS_TRAIT(src,TRAIT_POTTYREBEL || TRAIT_INCONTINENT || BABYBRAINED_TRAIT || TRAIT_DIAPERUSE || TRAIT_FULLYINCONTINENT))
-		if(wetness > 0)
-			if(stinkiness > 0)
-				to_chat(src, "<span class='notice'>Your [src.brand2] is absolutely spent.</span>")
-			else
-				to_chat(src, "<span class='notice'>Your [src.brand2] is wet.</span>")
-		else
-			if(stinkiness > 0)
-				to_chat(src, "<span class='notice'>Your [src.brand2] is messy.</span>")
-			else
-				to_chat(src, "<span class='notice'>Your [src.brand2] is dry.</span>")
-		if(HAS_TRAIT(src,TRAIT_EXACTCHECK))
-			var/diappercent1 = ((wetness / 500 + heftersbonus) * 100)
-			var/diappercent2 = ((stinkiness / 500 + heftersbonus) * 100)
-			to_chat(src,"<span class='notice'>It is about [diappercent1]% wet and [diappercent2]% messy.</span>")
 
 /mob/living/carbon/human/damage_clothes(damage_amount, damage_type = BRUTE, damage_flag = 0, def_zone)
 	if(damage_type != BRUTE && damage_type != BURN)
