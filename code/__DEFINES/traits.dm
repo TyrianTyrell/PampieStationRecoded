@@ -227,6 +227,7 @@
 #define TRAIT_FULLYINCONTINENT "unaware"
 #define TRAIT_POTTYREBEL "potty_rebel"
 #define TRAIT_DIAPERUSE "diaper_use"
+#define TRAIT_EXACTCHECK "exact_check"
 
 // mobility flag traits
 // IN THE FUTURE, IT WOULD BE NICE TO DO SOMETHING SIMILAR TO https://github.com/tgstation/tgstation/pull/48923/files (ofcourse not nearly the same because I have my.. thoughts on it)

@@ -328,6 +328,10 @@
 				to_chat(M,"<span class='notice'>...and it turns out [p_they()] are actually dry for now!</span>")
 			to_chat(M, "<span class='notice'>They are wearing a [dipetype] diaper!")
 			to_chat(src, "<span class='notice'>[M] pulls your waistband back and pats you down to check your diaper.</span>")
+			if(HAS_TRAIT(M,TRAIT_EXACTCHECK))
+				var/diappercent1 = ((wetness / 500 + heftersbonus) * 100)
+				var/diappercent2 = ((stinkiness / 500 + heftersbonus) * 100)
+				to_chat(M,"<span class='notice'>It is about [diappercent1]% wet and [diappercent2]% messy.</span>")
 
 		else
 			M.visible_message("<span class='notice'>[M] hugs [src] to make [p_them()] feel better!</span>", \

@@ -235,3 +235,9 @@
 	. = ..()
 	SEND_SIGNAL(quirk_holder, COMSIG_DIAPERCHANGE, ckey(quirk_holder.mind.key))
 
+/datum/quirk/exactcheck
+	name = "Diaper Savant"
+	desc = "You've cared for yourself or others a long time. You know exactly how much someone's diaper can hold."
+	mob_trait = TRAIT_EXACTCHECK
+	value = 1
+
