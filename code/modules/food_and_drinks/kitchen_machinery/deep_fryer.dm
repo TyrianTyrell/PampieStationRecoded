@@ -46,7 +46,10 @@ God bless America.
 		/obj/item/reagent_containers/syringe,
 		/obj/item/reagent_containers/food/condiment,
 		/obj/item/storage/part_replacer,
-		/obj/item/his_grace))
+		/obj/item/his_grace,
+		/obj/item/wetdiap,
+		/obj/item/poopydiap,
+		/obj/item/useddiap))
 	var/datum/looping_sound/deep_fryer/fry_loop
 
 /obj/machinery/deepfryer/Initialize()
@@ -108,6 +111,7 @@ God bless America.
 			to_chat(user, "<span class='notice'>You put [I] into [src].</span>")
 			icon_state = "fryer_on"
 			fry_loop.start()
+
 
 /obj/machinery/deepfryer/process()
 	..()

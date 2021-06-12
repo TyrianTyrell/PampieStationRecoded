@@ -761,20 +761,35 @@
 
 			if(roundstart_quirks.len)
 				to_send += "<span class='notice'>You have these quirks: [get_trait_string()].</span>\n"
-			if(HAS_TRAIT(src,TRAIT_POTTYREBEL || TRAIT_INCONTINENT || BABYBRAINED_TRAIT || TRAIT_DIAPERUSE || TRAIT_FULLYINCONTINENT))
+			if(HAS_TRAIT(src,TRAIT_POTTYREBEL) || HAS_TRAIT(src,TRAIT_INCONTINENT) || HAS_TRAIT(src,BABYBRAINED_TRAIT) || HAS_TRAIT(src,TRAIT_DIAPERUSE) || HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 				if(wetness > 0)
 					if(stinkiness > 0)
 						to_send += "<span class='notice'>Your [src.brand2] is absolutely spent.</span>\n"
+						if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+							if(HAS_TRAIT(src,TRAIT_POTTYREBEL))
+								SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/stinkysad)
+							else
+								SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/stinkyhappy)
 					else
 						to_send += "<span class='notice'>Your [src.brand2] is wet.</span>\n"
+					if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+						if(HAS_TRAIT(src,TRAIT_POTTYREBEL))
+							SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggysad)
+						else
+							SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggyhappy)
 				else
 					if(stinkiness > 0)
 						to_send += "<span class='notice'>Your [src.brand2] is messy.</span>\n"
+						if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+							if(HAS_TRAIT(src,TRAIT_POTTYREBEL))
+								SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/stinkysad)
+							else
+								SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/stinkyhappy)
 					else
 						to_send += "<span class='notice'>Your [src.brand2] is dry.</span>\n"
 				if(HAS_TRAIT(src,TRAIT_EXACTCHECK))
-					var/diappercent1 = ((wetness / (500 + heftersbonus)) * 100)
-					var/diappercent2 = ((stinkiness / (500 + heftersbonus)) * 100)
+					var/diappercent1 = round((wetness / (500 + heftersbonus)) * 100)
+					var/diappercent2 = round((stinkiness / (500 + heftersbonus)) * 100)
 					to_send += "<span class='notice'>It is about [diappercent1]% wet and [diappercent2]% messy.</span>\n"
 
 			to_chat(src, to_send)

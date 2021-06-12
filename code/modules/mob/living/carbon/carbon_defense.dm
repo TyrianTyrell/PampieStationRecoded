@@ -315,22 +315,32 @@
 					"<span class='notice'>You shake [src]'s hand.</span>", target = src,
 					target_message = "<span class='notice'>[M] shakes your hand.</span>")
 
-		else if (check_zone(M.zone_selected) == BODY_ZONE_PRECISE_GROIN && HAS_TRAIT(src, TRAIT_INCONTINENT || TRAIT_FULLYINCONTINENT || BABYBRAINED_TRAIT || TRAIT_DIAPERUSE || TRAIT_POTTYREBEL)) //Diaper checks!
+		else if (check_zone(M.zone_selected) == BODY_ZONE_PRECISE_GROIN && (HAS_TRAIT(src, TRAIT_INCONTINENT) || HAS_TRAIT(src,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(src,BABYBRAINED_TRAIT) || HAS_TRAIT(src,TRAIT_DIAPERUSE) || HAS_TRAIT(src,TRAIT_POTTYREBEL))) //Diaper checks!
 			var/dipetype = src.brand2
 			if(dipetype == "\improper SyndiStinker Chameleons" || "diaper")
 				dipetype = "plain"
 			to_chat(M, "<span class='notice'>You check [src]'s diaper...</span>")
 			if(src.pee > 0)
 				to_chat(M,"<span class='notice'>...and discover that it is wet.</span>")
+				if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+					if(HAS_TRAIT(src,TRAIT_POTTYREBEL))
+						SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggysad)
+					else
+						SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggyhappy)
 			if(src.poop > 0)
 				to_chat(M,"<span class='notice'>...and discover that it is messy.</span>")
+				if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+					if(HAS_TRAIT(src,TRAIT_POTTYREBEL))
+						SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/stinkysad)
+					else
+						SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/stinkyhappy)
 			if(src.pee == 0 && src.poop == 0)
 				to_chat(M,"<span class='notice'>...and it turns out it is dry for now!</span>")
 			to_chat(M, "<span class='notice'>They are wearing a [dipetype] diaper!")
 			to_chat(src, "<span class='notice'>[M] pulls your waistband back and pats you down to check your diaper.</span>")
 			if(HAS_TRAIT(M,TRAIT_EXACTCHECK))
-				var/diappercent1 = ((wetness / (500 + heftersbonus)) * 100)
-				var/diappercent2 = ((stinkiness / (500 + heftersbonus)) * 100)
+				var/diappercent1 = round((wetness / (500 + heftersbonus)) * 100)
+				var/diappercent2 = round((stinkiness / (500 + heftersbonus)) * 100)
 				to_chat(M,"<span class='notice'>It is about [diappercent1]% wet and [diappercent2]% messy.</span>")
 
 		else

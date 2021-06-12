@@ -29,7 +29,7 @@
 		else
 			underwear = butt.baseunderwear
 			undie_color = butt.undie_color
-		if((HAS_TRAIT(butt,TRAIT_INCONTINENT) || HAS_TRAIT(butt,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(butt,TRAIT_POTTYREBEL) || HAS_TRAIT(butt,BABYBRAINED_TRAIT)))
+		if((HAS_TRAIT(butt,TRAIT_INCONTINENT) || HAS_TRAIT(butt,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(butt,TRAIT_POTTYREBEL) || HAS_TRAIT(butt,BABYBRAINED_TRAIT) || HAS_TRAIT(butt,TRAIT_DIAPERUSE)))
 			butt.underwear = "Diaper"
 			switch(butt.brand)
 				if("plain")

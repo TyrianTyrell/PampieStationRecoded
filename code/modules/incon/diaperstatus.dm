@@ -60,23 +60,24 @@
 /mob/living/carbon/proc/PampUpdate()
 	if(stat != DEAD && (HAS_TRAIT(src,TRAIT_INCONTINENT) || HAS_TRAIT(src,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(src,TRAIT_POTTYREBEL) || HAS_TRAIT(src,BABYBRAINED_TRAIT) || HAS_TRAIT(src,TRAIT_DIAPERUSE)) && src.client != null)
 		if(src.client.prefs.accident_types != "Poop Only")
-			pee = pee + 0.8 + (fluids/200)
+			pee = pee + 0.6 + (fluids/200)
 		if(src.client.prefs.accident_types != "Pee Only")
-			poop = poop + 0.45 + (satiety/200)
-	if (wetness >= 1)
-		if (HAS_TRAIT(src,TRAIT_POTTYREBEL))
-			SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggyhappy)
+			poop = poop + 0.2 + (nutrition/800)
+	if(!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+		if (wetness >= 1)
+			if (HAS_TRAIT(src,TRAIT_POTTYREBEL))
+				SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggyhappy)
+			else
+				SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggysad)
 		else
-			SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggysad)
-	else
-		SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"peepee")
-	if (stinkiness >= 1)
-		if (HAS_TRAIT(src,TRAIT_POTTYREBEL))
-			SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"poopy",/datum/mood_event/stinkyhappy)
+			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"peepee")
+		if (stinkiness >= 1)
+			if (HAS_TRAIT(src,TRAIT_POTTYREBEL))
+				SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"poopy",/datum/mood_event/stinkyhappy)
+			else
+				SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"poopy",/datum/mood_event/stinkysad)
 		else
-			SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"poopy",/datum/mood_event/stinkysad)
-	else
-		SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"poopy")
+			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"poopy")
 	if (fluids > 0)
 		fluids = fluids - 10
 	if (fluids < 0)
@@ -425,11 +426,14 @@
 					new /obj/item/diaper/med(cuckold)
 	wetness = 0
 	stinkiness = 0
+	if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+		SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"peepee")
+		SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"poopy")
 
 /mob/living/carbon/verb/Pee()
 	if(usr.client.prefs.accident_types != "Poop Only")
 		set category = "IC"
-	if((HAS_TRAIT(usr,TRAIT_INCONTINENT) || HAS_TRAIT(usr,TRAIT_POTTYREBEL) || HAS_TRAIT(usr,BABYBRAINED_TRAIT)) && !HAS_TRAIT(usr,TRAIT_FULLYINCONTINENT))
+	if((HAS_TRAIT(usr,TRAIT_INCONTINENT) || HAS_TRAIT(usr,TRAIT_POTTYREBEL) || HAS_TRAIT(usr,BABYBRAINED_TRAIT) || HAS_TRAIT(usr,TRAIT_DIAPERUSE)) && !HAS_TRAIT(usr,TRAIT_FULLYINCONTINENT))
 		on_purpose = 1
 		Wetting()
 	else
@@ -438,7 +442,7 @@
 /mob/living/carbon/verb/Poop()
 	if(usr.client.prefs.accident_types != "Pee Only")
 		set category = "IC"
-	if((HAS_TRAIT(usr,TRAIT_INCONTINENT) || HAS_TRAIT(usr,TRAIT_POTTYREBEL) || HAS_TRAIT(usr,BABYBRAINED_TRAIT)) && !HAS_TRAIT(usr,TRAIT_FULLYINCONTINENT))
+	if((HAS_TRAIT(usr,TRAIT_INCONTINENT) || HAS_TRAIT(usr,TRAIT_POTTYREBEL) || HAS_TRAIT(usr,BABYBRAINED_TRAIT) || HAS_TRAIT(usr,TRAIT_DIAPERUSE)) && !HAS_TRAIT(usr,TRAIT_FULLYINCONTINENT))
 		on_purpose = 1
 		Pooping()
 	else
@@ -475,14 +479,14 @@
 			SEND_SIGNAL(owner,COMSIG_DIAPERCHANGE,owner.ckey)
 			owner.overlays -= owner.statusoverlay
 			owner.statusoverlay = null
-	if(HAS_TRAIT(owner,TRAIT_POTTYREBEL || TRAIT_INCONTINENT || BABYBRAINED_TRAIT || TRAIT_DIAPERUSE) && !HAS_TRAIT(owner,TRAIT_FULLYINCONTINENT))
-		if (owner.wetness >= 1)
-			if (owner.stinkiness >= 1)
+	if((HAS_TRAIT(owner,TRAIT_POTTYREBEL) || HAS_TRAIT(owner,TRAIT_INCONTINENT) || HAS_TRAIT(owner,BABYBRAINED_TRAIT) || HAS_TRAIT(owner,TRAIT_DIAPERUSE)) && !HAS_TRAIT(owner,TRAIT_FULLYINCONTINENT))
+		if (owner.wetness > 0)
+			if (owner.stinkiness > 0)
 				icon_state = "hud_plain_used"
 			else
 				icon_state = "hud_plain_wet"
 		else
-			if (owner.stinkiness >= 1)
+			if (owner.stinkiness > 0)
 				icon_state = "hud_plain_poopy"
 			else
 				icon_state = "hud_plain"
@@ -537,23 +541,19 @@
 /datum/mood_event/soggysad
 	description = "<span class='warning'>Aw man, my pants are wet...\n</span>"
 	mood_change = -3
-	timeout = 2 MINUTES
 
 /datum/mood_event/soggyhappy
 	description = "<span class='nicegreen'>A wet diaper is always comfy!\n</span>"
 	mood_change = 3
-	timeout = 2 MINUTES
 
 /datum/mood_event/stinkysad
 	description = "<span class='warning'>Ew... I need a change.\n</span>"
 	mood_change = -5
-	timeout = 5 MINUTES
 
 /datum/mood_event/stinkyhappy
 	description = "<span class='nicegreen'>Heh, take that, potty!\n</span>"
 	mood_change = 5
-	timeout = 5 MINUTES
 
 /datum/mood_event/sanitydiaper
 	description = "<span class='nicegreen'>I can't describe it- this diaper makes me feel safe!\n</span>"
-	mood_change = "INFINITE"
+	mood_change = 20

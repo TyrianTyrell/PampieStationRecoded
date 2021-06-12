@@ -397,6 +397,7 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	new/datum/stack_recipe("bedsheet", /obj/item/bedsheet, 3), \
 	new/datum/stack_recipe("empty sandbag", /obj/item/emptysandbag, 4), \
 	new/datum/stack_recipe("padded floor tile", /obj/item/stack/tile/padded, 1, 4, 20), \
+	new/datum/stack_recipe("bouncer", /obj/structure/chair/bouncer, 2, one_per_turf = TRUE, on_floor = FALSE), \
 	null, \
 	new/datum/stack_recipe("fingerless gloves", /obj/item/clothing/gloves/fingerless, 1),\
 	new/datum/stack_recipe("white gloves", /obj/item/clothing/gloves/color/white, 1),\

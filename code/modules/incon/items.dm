@@ -61,11 +61,25 @@
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "classics_wet"
 
+/obj/item/wetdiap/classic/attack_obj(obj/O, mob/living/user)
+	if(istype(O,/obj/machinery/hydroponics))
+		O.reagents.add_reagent(/datum/reagent/plantnutriment/eznutriment, 10)
+		Del()
+		return
+	. = ..()
+
 /obj/item/poopydiap/classic
 	name = "poopy diaper"
 	desc = "Can be smelled from across the room."
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "classics_messy"
+
+/obj/item/poopydiap/classic/attack_obj(obj/O, mob/living/user)
+	if(istype(O,/obj/machinery/hydroponics))
+		O.reagents.add_reagent(/datum/reagent/plantnutriment/eznutriment, 10)
+		Del()
+		return
+	. = ..()
 
 /obj/item/useddiap/classic
 	name = "used diaper"
@@ -73,8 +87,12 @@
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "classics_full"
 
-/obj/item/wetdiap/classic/attack_self(mob/living/carbon/human/M as mob, mob/usr as mob)
-
+/obj/item/useddiap/classic/attack_obj(obj/O, mob/living/user)
+	if(istype(O,/obj/machinery/hydroponics))
+		O.reagents.add_reagent(/datum/reagent/plantnutriment/eznutriment, 10)
+		Del()
+		return
+	. = ..()
 
 /obj/item/diaper/swaddles
 	name = "\improper Star Spawn Swaddlers"
@@ -489,10 +507,10 @@
 	color = "#543400"
 	metabolization_rate = 1.5 * REAGENTS_METABOLISM
 
-/datum/reagent/medicine/laxative/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
-	if(M.client.prefs.accident_types != "Pee Only" && src.volume >= 1)
-		M.poop += (10 * REAGENTS_EFFECT_MULTIPLIER * delta_time)
+/datum/reagent/medicine/laxative/on_mob_life(mob/living/carbon/M)
 	metabolization_rate = 1.5 * REAGENTS_METABOLISM
+	if(M.client.prefs.accident_types != "Pee Only" && src.volume >= 1)
+		M.poop += 0.5 * src.volume
 	..()
 
 /datum/chemical_reaction/medicine/laxative

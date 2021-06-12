@@ -256,6 +256,9 @@
 	for(var/obj/O in ingredients)
 		if(istype(O, /obj/item/reagent_containers/food) || istype(O, /obj/item/grown))
 			continue
+		if(istype(O,/obj/item/wetdiap || /obj/item/poopydiap || /obj/item/useddiap))
+			start_can_fail()
+			return
 		if(prob(min(dirty * 5, 100)))
 			start_can_fail()
 			return

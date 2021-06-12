@@ -25,13 +25,13 @@
 	. = ..()
 	if(isliving(target) && (!iswizard(target) && !HAS_TRAIT(target, CHANGELING_TRAIT) && !HAS_TRAIT(target, TRAIT_MINDSHIELD)))
 		if(target.regressiontimer <= 0)
+			target.regressiontimer = 5000
 			target.toggle_move_intent()
 			ADD_TRAIT(target, BABYBRAINED_TRAIT, REGRESSION_TRAIT)
 			ADD_TRAIT(target, TRAIT_NORUNNING, REGRESSION_TRAIT)
 			SEND_SIGNAL(target, COMSIG_DIAPERCHANGE, target.ckey)
 			target.statusoverlay = mutable_appearance('icons/incon/regressoray.dmi',"regressoray")
 			target.overlays += target.statusoverlay
-		target.regressiontimer = 5000
 
 /obj/item/gun/energy/regressorayjb
 	name = "regression ray"
