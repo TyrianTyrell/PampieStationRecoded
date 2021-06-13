@@ -666,4 +666,9 @@
 	desc = "An advertisement for NanoTrasen Storm. A premium infantry helmet, It contains a rebreather and full head coverage for use on harsh environments where the air isn't always safe to breathe."
 	icon_state = "poster44_legit"
 
+/obj/structure/sign/poster/official/no_restroom
+	name = "Toilets Banned"
+	desc = "A poster made to look like an official NanoTrasen sign, suggesting that toilets are not allowed... either for all crew, or just the person reading this."
+	icon_state = "no_restroom"
+
 #undef PLACE_SPEED
