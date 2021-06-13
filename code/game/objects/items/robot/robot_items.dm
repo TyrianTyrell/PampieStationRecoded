@@ -44,11 +44,11 @@
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/P = user
 		if(P.emagged&&shockallowed == 1)
-			if(mode < 4)
+			if(mode < 3)
 				mode++
 			else
 				mode = 0
-		else if(mode < 2)
+		else if(mode < 1)
 			mode++
 		else
 			mode = 0
@@ -56,12 +56,10 @@
 		if(0)
 			to_chat(user, "Power reset. Hugs!")
 		if(1)
-			to_chat(user, "Precision increased. Diaper checks possible.")
-		if(2)
 			to_chat(user, "Power increased!")
-		if(3)
+		if(2)
 			to_chat(user, "BZZT. Electrifying arms...")
-		if(4)
+		if(3)
 			to_chat(user, "ERROR: ARM ACTUATORS OVERLOADED.")
 
 /obj/item/borg/cyborghug/attack(mob/living/M, mob/living/silicon/robot/user)
@@ -75,6 +73,39 @@
 									"<span class='notice'>You playfully boop [M] on the head!</span>")
 					user.do_attack_animation(M, ATTACK_EFFECT_BOOP)
 					playsound(loc, 'sound/weapons/tap.ogg', 50, 1, -1)
+				else if(user.zone_selected == BODY_ZONE_PRECISE_GROIN)
+					var/mob/living/carbon/C
+					if(iscarbon(M))
+						C = M
+					else
+						return
+					if(HAS_TRAIT(C, TRAIT_INCONTINENT) || HAS_TRAIT(C,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(C,BABYBRAINED_TRAIT) || HAS_TRAIT(C,TRAIT_DIAPERUSE) || HAS_TRAIT(C,TRAIT_POTTYREBEL)) //Diaper checks!
+						var/dipetype = C.brand2
+						if(dipetype == "\improper SyndiStinker Chameleons" || "diaper")
+							dipetype = "plain"
+						to_chat(user, "<span class='notice'>You check [C]'s diaper...</span>")
+						if(C.wetness > 0)
+							to_chat(user,"<span class='notice'>...and discover that it is wet.</span>")
+							if(HAS_TRAIT(C,TRAIT_FULLYINCONTINENT))
+								if(HAS_TRAIT(C,TRAIT_POTTYREBEL))
+									SEND_SIGNAL(C,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggysad)
+								else
+									SEND_SIGNAL(C,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggyhappy)
+						if(C.stinkiness > 0)
+							to_chat(user,"<span class='notice'>...and discover that it is messy.</span>")
+							if(HAS_TRAIT(C,TRAIT_FULLYINCONTINENT))
+								if(HAS_TRAIT(C,TRAIT_POTTYREBEL))
+									SEND_SIGNAL(C,COMSIG_ADD_MOOD_EVENT,"poopy",/datum/mood_event/stinkysad)
+								else
+									SEND_SIGNAL(C,COMSIG_ADD_MOOD_EVENT,"poopy",/datum/mood_event/stinkyhappy)
+						if(C.wetness == 0 && C.stinkiness == 0)
+							to_chat(user,"<span class='notice'>...and it turns out it is dry for now!</span>")
+						to_chat(user, "<span class='notice'>They are wearing a [dipetype] diaper!")
+						to_chat(C, "<span class='notice'>[user] pulls your waistband back and pats you down to check your diaper.</span>")
+					if(HAS_TRAIT(user,TRAIT_EXACTCHECK))
+						var/diappercent1 = round((C.wetness / (500 + C.heftersbonus)) * 100)
+						var/diappercent2 = round((C.stinkiness / (500 + C.heftersbonus)) * 100)
+						to_chat(user,"<span class='notice'>It is about [diappercent1]% wet and [diappercent2]% messy.</span>")
 				else if(ishuman(M))
 					if(M.lying)
 						user.visible_message("<span class='notice'>[user] shakes [M] trying to get [M.p_them()] up!</span>", \
@@ -89,39 +120,6 @@
 							"<span class='notice'>You pet [M]!</span>")
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 		if(1)
-			var/mob/living/carbon/C
-			if(iscarbon(M))
-				C = M
-			else
-				return
-			if(HAS_TRAIT(C, TRAIT_INCONTINENT) || HAS_TRAIT(C,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(C,BABYBRAINED_TRAIT) || HAS_TRAIT(C,TRAIT_DIAPERUSE) || HAS_TRAIT(C,TRAIT_POTTYREBEL)) //Diaper checks!
-				var/dipetype = C.brand2
-				if(dipetype == "\improper SyndiStinker Chameleons" || "diaper")
-					dipetype = "plain"
-				to_chat(user, "<span class='notice'>You check [C]'s diaper...</span>")
-				if(C.wetness > 0)
-					to_chat(user,"<span class='notice'>...and discover that it is wet.</span>")
-					if(HAS_TRAIT(C,TRAIT_FULLYINCONTINENT))
-						if(HAS_TRAIT(C,TRAIT_POTTYREBEL))
-							SEND_SIGNAL(C,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggysad)
-						else
-							SEND_SIGNAL(C,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggyhappy)
-				if(C.stinkiness > 0)
-					to_chat(user,"<span class='notice'>...and discover that it is messy.</span>")
-					if(HAS_TRAIT(C,TRAIT_FULLYINCONTINENT))
-						if(HAS_TRAIT(C,TRAIT_POTTYREBEL))
-							SEND_SIGNAL(C,COMSIG_ADD_MOOD_EVENT,"poopy",/datum/mood_event/stinkysad)
-						else
-							SEND_SIGNAL(C,COMSIG_ADD_MOOD_EVENT,"poopy",/datum/mood_event/stinkyhappy)
-				if(C.wetness == 0 && C.stinkiness == 0)
-					to_chat(user,"<span class='notice'>...and it turns out it is dry for now!</span>")
-				to_chat(user, "<span class='notice'>They are wearing a [dipetype] diaper!")
-				to_chat(C, "<span class='notice'>[user] pulls your waistband back and pats you down to check your diaper.</span>")
-			if(HAS_TRAIT(user,TRAIT_EXACTCHECK))
-				var/diappercent1 = round((C.wetness / (500 + C.heftersbonus)) * 100)
-				var/diappercent2 = round((C.stinkiness / (500 + C.heftersbonus)) * 100)
-				to_chat(user,"<span class='notice'>It is about [diappercent1]% wet and [diappercent2]% messy.</span>")
-		if(2)
 			if(M.health >= 0)
 				if(ishuman(M))
 					if(M.lying)
@@ -140,7 +138,7 @@
 					user.visible_message("<span class='warning'>[user] bops [M] on the head!</span>", \
 							"<span class='warning'>You bop [M] on the head!</span>")
 				playsound(loc, 'sound/weapons/tap.ogg', 50, 1, -1)
-		if(3)
+		if(2)
 			if(scooldown < world.time)
 				if(M.health >= 0)
 					if(ishuman(M)||ismonkey(M))
@@ -158,7 +156,7 @@
 					playsound(loc, 'sound/effects/sparks2.ogg', 50, 1, -1)
 					user.cell.charge -= 500
 					scooldown = world.time + 20
-		if(4)
+		if(3)
 			if(ccooldown < world.time)
 				if(M.health >= 0)
 					if(ishuman(M))
