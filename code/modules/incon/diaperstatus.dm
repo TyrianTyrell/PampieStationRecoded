@@ -139,6 +139,16 @@
 				if (D)
 					D.princessbonus = FALSE
 			rollbonus = 0
+		if ("hefters_f")
+			set_light(0)
+			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+			if (ishuman(src))
+				var/mob/living/carbon/human/H = src
+				var/datum/bank_account/D = H.get_bank_account()
+				if (D)
+					D.princessbonus = FALSE
+			rollbonus = 0
 		if ("Princess")
 			set_light(0)
 			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
@@ -288,6 +298,8 @@
 					new /obj/item/useddiap/swaddles(cuckold)
 				if("hefters_m")
 					new /obj/item/useddiap/hefters_m(cuckold)
+				if("hefters_f")
+					new /obj/item/useddiap/hefters_f(cuckold)
 				if("Princess")
 					new /obj/item/useddiap/princess(cuckold)
 				if("PwrGame")
@@ -325,6 +337,8 @@
 					new /obj/item/wetdiap/swaddles(cuckold)
 				if("hefters_m")
 					new /obj/item/wetdiap/hefters_m(cuckold)
+				if("hefters_f")
+					new /obj/item/wetdiap/hefters_f(cuckold)
 				if("Princess")
 					new /obj/item/wetdiap/princess(cuckold)
 				if("PwrGame")
@@ -362,6 +376,8 @@
 					new /obj/item/poopydiap/swaddles(cuckold)
 				if("hefters_m")
 					new /obj/item/poopydiap/hefters_m(cuckold)
+				if("hefters_f")
+					new /obj/item/poopydiap/hefters_f(cuckold)
 				if("Princess")
 					new /obj/item/poopydiap/princess(cuckold)
 				if("PwrGame")
@@ -398,6 +414,8 @@
 					new /obj/item/diaper/swaddles(cuckold)
 				if("hefters_m")
 					new /obj/item/diaper/hefters_m(cuckold)
+				if("hefters_f")
+					new /obj/item/diaper/hefters_f(cuckold)
 				if("Princess")
 					new /obj/item/diaper/princess(cuckold)
 				if("PwrGame")

@@ -40,6 +40,8 @@
 					butt.undie_color = "39C"
 				if("hefters_m")
 					butt.undie_color = "EEF"
+				if("hefters_f")
+					butt.undie_color = "FDE"
 				if("Princess")
 					butt.undie_color = "F9F"
 				if("PwrGame")
