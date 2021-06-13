@@ -525,7 +525,12 @@
 		owner.max_continence = 50
 	else
 		owner.max_continence = 100
+	diapstats.hud = src
 	infodisplay += diapstats
+
+/datum/hud/Destroy()
+	. = ..()
+	diapstats = null
 
 /obj/effect/decal/cleanable/waste
 	icon = 'icons/incon/accidents.dmi'

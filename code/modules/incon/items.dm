@@ -595,3 +595,48 @@
 	new /obj/item/diaper/plain(src)
 	new /obj/item/diaper/hefters_m(src)
 	new /obj/item/diaper/hefters_f(src)
+
+/obj/item/implant/psyker_implant
+	name = "Psyker Coil"
+	desc = "Allows for a normal person to use psychic abilities. Which one they can use depends on the implant."
+
+/obj/item/implant/psyker_implant/healing
+	name = "Psyker Coil (Healing)"
+	desc = "Allows for a normal person to use psychic abilities. Which one they can use depends on the implant. This one grants healing abilities."
+
+/obj/item/implant/psyker_implant/healing/trigger(emote, mob/living/carbon/source)
+	if(ShiftClickOn(action_button))
+		to_chat(source, "You heal yourself.")
+		source.adjustBruteLoss(-50)
+		source.adjustBurnLoss(-50)
+	else
+		to_chat(source, "You shoot a healing bolt.")
+		var/obj/item/projectile/magic/psyker_heal/PSI = new /obj/item/projectile/magic/psyker_heal
+		PSI.icon = 'icons/effects/genetics.dmi'
+		PSI.icon_state = "eyelasers"
+		playsound(usr.loc, 'sound/weapons/taser2.ogg', 75, 1)
+		var/turf/target = get_turf(source.loc)
+		var/turf/new_turf = get_step(target, source.dir)
+
+		PSI.firer = src
+		PSI.def_zone = get_organ_target()
+		PSI.preparePixelProjectile(new_turf, source, params)
+		PSI.fire()
+
+/obj/item/projectile/magic/psyker_heal
+	name = "psionic heal-bolt"
+	icon_state = "ion"
+	damage = 0
+	damage_type = OXY
+	nodamage = 1
+
+/obj/item/projectile/magic/psyker_heal/on_hit(atom/target, blocked)
+	. = ..()
+	if(iscarbon(target))
+		var/mob/living/carbon/C = target
+		target.adjustBruteLoss(-50)
+		target.adjustBurnLoss(-50)
+
+
+
+
