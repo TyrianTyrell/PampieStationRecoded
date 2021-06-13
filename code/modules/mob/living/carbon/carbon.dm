@@ -310,6 +310,9 @@
 	. = FALSE
 	if(!buckled)
 		return
+	if(HAS_TRAIT(src, BABYBRAINED_TRAIT))
+		to_chat(src, "<span class='warning'>Your little hands can't figure out how to unbuckle yourself!</span>")
+		return
 	if(restrained())
 		// too soon.
 		var/buckle_cd = 600

@@ -108,6 +108,111 @@ RSF
 		matter--
 		to_chat(user, "The RSF now holds [matter]/30 fabrication-units.")
 
+/obj/item/rnf
+	name = "\improper Rapid-Nursery-Fabricator"
+	desc = "A device used to rapidly deploy nursery items."
+	icon = 'icons/obj/tools.dmi'
+	icon_state = "rsf"
+	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
+	opacity = 0
+	density = FALSE
+	anchored = FALSE
+	item_flags = NOBLUDGEON
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	var/matter = 0
+	var/mode = 1
+	w_class = WEIGHT_CLASS_NORMAL
+
+/obj/item/rnf/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>It currently holds [matter]/50 fabrication-units.</span>"
+
+/obj/item/rnf/cyborg
+	matter = 50
+
+
+/obj/item/rnf/attackby(obj/item/W, mob/user, params)
+	if(istype(W, /obj/item/stack/sheet/plastic))
+		if((matter + 10) > 50)
+			to_chat(user, "The RNF can't hold any more matter.")
+			return
+		qdel(W)
+		matter += 10
+		playsound(src.loc, 'sound/machines/click.ogg', 10, 1)
+		to_chat(user, "The RNF now holds [matter]/50 fabrication-units.")
+	else
+		return ..()
+
+/obj/item/rnf/attack_self(mob/user)
+	playsound(src.loc, 'sound/effects/pop.ogg', 50, 0)
+	switch(mode)
+		if(5)
+			mode = 1
+			to_chat(user, "Changed dispensing mode to 'Plain Diaper'")
+		if(1)
+			mode = 2
+			to_chat(user, "Changed dispensing mode to 'Thick Diaper'")
+		if(2)
+			mode = 3
+			to_chat(user, "Changed dispensing mode to 'Pacifier'")//not implemented yet
+		if(3)
+			mode = 4
+			to_chat(user, "Changed dispensing mode to 'Plushie'")
+		if(4)
+			mode = 5
+			to_chat(user, "Changed dispensing mode to 'Blanket'")
+	// Change mode
+
+/obj/item/rnf/afterattack(atom/A, mob/user, proximity)
+	. = ..()
+	if(!proximity)
+		return
+	if (!(istype(A, /obj/structure/table) || isfloorturf(A)))
+		return
+	if(iscyborg(user))
+		matter = 50 //borgs dont actually use the matter so this is mostly just so it doesnt fail the next check incase of shennanigans
+		var/mob/living/silicon/robot/R = user
+		if(!R.cell || R.cell.charge < 200)
+			to_chat(user, "<span class='warning'>You do not have enough power to use [src].</span>")
+			return
+	if(matter < 1)
+		to_chat(user, "<span class='warning'>\The [src] doesn't have enough matter left.</span>")
+		return
+
+
+	var/turf/T = get_turf(A)
+	playsound(src.loc, 'sound/machines/click.ogg', 10, 1)
+	switch(mode)
+		if(1)
+			to_chat(user, "Dispensing Diaper...")
+			new /obj/item/diaper/plain(T)
+			use_matter(10, user)
+		if(2)
+			to_chat(user, "Dispensing Thick Diaper...")
+			new /obj/item/diaper/hefters_f(T)
+			use_matter(20, user)
+		if(3)
+			to_chat(user, "Dispensing Pacifier...Error, dispensing Thick Diaper instead...")
+			new /obj/item/diaper/hefters_m(T)
+			use_matter(20, user)
+		if(4)
+			to_chat(user, "Dispensing Plushie...")
+			new /obj/item/toy/plush/random(T)
+			use_matter(200, user)
+		if(5)
+			to_chat(user, "Dispensing Blanket...")
+			new /obj/item/bedsheet/random(T)
+			use_matter(10, user)
+
+/obj/item/rnf/proc/use_matter(charge, mob/user)
+	if (iscyborg(user))
+		var/mob/living/silicon/robot/R = user
+		R.cell.charge -= charge
+	else
+		matter--
+		to_chat(user, "The RNF now holds [matter]/50 fabrication-units.")
+
 /obj/item/cookiesynth
 	name = "Cookie Synthesizer"
 	desc = "A self-recharging device used to rapidly deploy cookies."

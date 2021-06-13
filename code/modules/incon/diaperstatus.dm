@@ -476,6 +476,7 @@
 		else
 			REMOVE_TRAIT(owner,BABYBRAINED_TRAIT,REGRESSION_TRAIT)
 			REMOVE_TRAIT(owner,TRAIT_NORUNNING,REGRESSION_TRAIT)
+			REMOVE_TRAIT(owner,TRAIT_NOGUNS,REGRESSION_TRAIT)
 			SEND_SIGNAL(owner,COMSIG_DIAPERCHANGE,owner.ckey)
 			owner.overlays -= owner.statusoverlay
 			owner.statusoverlay = null
