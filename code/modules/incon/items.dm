@@ -608,7 +608,7 @@
 	if(source.ShiftClickOn("action_button"))
 		to_chat(source, "You heal yourself.")
 		source.adjustBruteLoss(-50)
-		source.adjustBurnLoss(-50)
+		source.adjustFireLoss(-50)
 
 /obj/item/projectile/magic/psyker_heal
 	name = "psionic heal-bolt"
@@ -621,8 +621,8 @@
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/C = target
-		target.adjustBruteLoss(-50)
-		target.adjustBurnLoss(-50)
+		C.adjustBruteLoss(-50)
+		C.adjustFireLoss(-50)
 
 
 
