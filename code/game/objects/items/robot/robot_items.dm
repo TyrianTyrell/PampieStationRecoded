@@ -849,7 +849,10 @@
 		/obj/item/storage/pill_bottle,
 		/obj/item/reagent_containers/glass,
 		/obj/item/reagent_containers/pill,
-		/obj/item/reagent_containers/blood
+		/obj/item/reagent_containers/blood,
+		/obj/item/diaper,
+		/obj/item/toy/plush,
+		/obj/item/bedsheet
 		)
 
 /obj/item/gun/energy/plasmacutter/cyborg
