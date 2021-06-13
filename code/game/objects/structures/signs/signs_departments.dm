@@ -60,6 +60,16 @@
 	desc = "A sign labelling a restroom."
 	icon_state = "restroom"
 
+/obj/structure/sign/departments/norestroom
+	name = "\improper RESTROOM BAD"
+	desc = "A sign indicating that restrooms are off-limits."
+	icon_state = "no_restroom"
+
+/obj/structure/sign/departments/changingroom
+	name = "\improper CHANGING ROOM"
+	desc = "A sign labelling a diaper changing station."
+	icon_state = "changeroom"
+
 /obj/structure/sign/departments/showers
 	name ="\improper SHOWER"
 	desc = "A sign labelling showers."
