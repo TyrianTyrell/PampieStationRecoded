@@ -12,21 +12,21 @@
 	slot = SLOT_IN_BACKPACK
 	path = /obj/item/choice_beacon/pet
 	ckeywhitelist = list()
-	donator_group_id = DONATOR_GROUP_TIER_1 // can be accessed by all donators
+	donator_group_id = PATREON_DONATOR // can be accessed by all donators
 
 /datum/gear/donator/carpet
 	name = "Carpet Beacon"
 	slot = SLOT_IN_BACKPACK
 	path = /obj/item/choice_beacon/box/carpet
 	ckeywhitelist = list()
-	donator_group_id = DONATOR_GROUP_TIER_1
+	donator_group_id = PATREON_DONATOR
 
 /datum/gear/donator/chameleon_bedsheet
 	name = "Chameleon Bedsheet"
 	slot = SLOT_NECK
 	path = /obj/item/bedsheet/chameleon
 	ckeywhitelist = list()
-	donator_group_id = DONATOR_GROUP_TIER_1
+	donator_group_id = PATREON_DONATOR
 
 /datum/gear/donator/donortestingbikehorn
 	name = "Donor item testing bikehorn"
