@@ -568,3 +568,29 @@
 /datum/food_processor_process/marshmallow
 	input = /obj/item/reagent_containers/food/snacks/grown/marshmallowroot
 	output = /obj/item/reagent_containers/food/snacks/marshmallow
+
+/obj/item/storage/backpack/diaper_bag
+	name = "diaper bag"
+	desc = "A bag for holding many diapers at once."
+	icon_state = "duffel-med"
+	custom_price = 80
+	slot_flags = ITEM_SLOT_BELT || ITEM_SLOT_POCKET
+	w_class = WEIGHT_CLASS_NORMAL
+	resistance_flags = FIRE_PROOF
+	rad_flags = RAD_PROTECT_CONTENTS | RAD_NO_CONTAMINATE
+
+/obj/item/storage/backpack/diaper_bag/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_w_class = WEIGHT_CLASS_TINY
+	STR.max_combined_w_class = 100
+	STR.max_items = 20
+	STR.can_hold = typecacheof(list(/obj/item/diaper))
+
+/obj/item/storage/backpack/diaper_bag/PopulateContents()
+	. = ..()
+	new /obj/item/diaper/plain(src)
+	new /obj/item/diaper/plain(src)
+	new /obj/item/diaper/plain(src)
+	new /obj/item/diaper/hefters_m(src)
+	new /obj/item/diaper/hefters_f(src)

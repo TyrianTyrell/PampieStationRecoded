@@ -15,7 +15,10 @@
 					/obj/item/stack/medical/bone_gel = 2,
 					/obj/item/stack/medical/nanogel = 2,
 					/obj/item/reagent_containers/syringe/dart = 10,
-					/obj/item/diaper/hefters_m = 45)
+					/obj/item/diaper/plain = 60,
+					/obj/item/diaper/hefters_m = 45,
+					/obj/item/diaper/hefters_f = 45,
+					/obj/item/storage/backpack/diaper_bag = 5)
 	contraband = list(/obj/item/reagent_containers/pill/tox = 2,
 					/obj/item/reagent_containers/pill/morphine = 2)
 	premium = list(/obj/item/reagent_containers/medspray/synthflesh = 2)
