@@ -102,7 +102,6 @@
 							to_chat(user,"<span class='notice'>...and it turns out it is dry for now!</span>")
 						to_chat(user, "<span class='notice'>They are wearing a [dipetype] diaper!")
 						to_chat(C, "<span class='notice'>[user] pulls your waistband back and pats you down to check your diaper.</span>")
-					if(HAS_TRAIT(user,TRAIT_EXACTCHECK))
 						var/diappercent1 = round((C.wetness / (500 + C.heftersbonus)) * 100)
 						var/diappercent2 = round((C.stinkiness / (500 + C.heftersbonus)) * 100)
 						to_chat(user,"<span class='notice'>It is about [diappercent1]% wet and [diappercent2]% messy.</span>")
