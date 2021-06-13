@@ -572,7 +572,8 @@
 /obj/item/storage/backpack/diaper_bag
 	name = "diaper bag"
 	desc = "A bag for holding many diapers at once."
-	icon_state = "duffel-med"
+	icon_state = "duffel-diap"
+	item_state = "duffel"
 	custom_price = 80
 	slot_flags = ITEM_SLOT_BELT || ITEM_SLOT_POCKET
 	w_class = WEIGHT_CLASS_NORMAL
