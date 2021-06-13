@@ -852,7 +852,10 @@
 		/obj/item/reagent_containers/blood,
 		/obj/item/diaper,
 		/obj/item/toy/plush,
-		/obj/item/bedsheet
+		/obj/item/bedsheet,
+		/obj/item/wetdiap,
+		/obj/item/poopydiap,
+		/obj/item/useddiap
 		)
 
 /obj/item/gun/energy/plasmacutter/cyborg
