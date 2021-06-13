@@ -528,10 +528,6 @@
 	diapstats.hud = src
 	infodisplay += diapstats
 
-/datum/hud/Destroy()
-	. = ..()
-	diapstats = null
-
 /obj/effect/decal/cleanable/waste
 	icon = 'icons/incon/accidents.dmi'
 	gender = NEUTER
