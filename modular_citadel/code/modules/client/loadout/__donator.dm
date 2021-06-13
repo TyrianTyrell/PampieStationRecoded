@@ -554,3 +554,9 @@
 	slot = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/smaiden
 	ckeywhitelist = list("ultimarifox")
+
+/datum/gear/donator/diaper_bag
+	name = "diaper bag"
+	slot = SLOT_IN_BACKPACK
+	path = /obj/item/storage/backpack/diaper_bag
+	ckeywhitelist = list("tyriantyrell")

@@ -36,7 +36,10 @@
 					/obj/item/stack/medical/suture = 2,
 					/obj/item/stack/medical/bone_gel = 4,
 					/obj/item/stack/medical/nanogel = 4,
-					/obj/item/diaper/hefters_m = 45)
+					/obj/item/diaper/plain = 60,
+					/obj/item/diaper/hefters_m = 45,
+					/obj/item/diaper/hefters_f = 45,
+					/obj/item/storage/backpack/diaper_bag = 10)
 	contraband = list(/obj/item/reagent_containers/pill/tox = 3,
 					/obj/item/reagent_containers/pill/morphine = 4,
 					/obj/item/reagent_containers/pill/charcoal = 6)

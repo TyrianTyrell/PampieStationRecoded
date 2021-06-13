@@ -1,8 +1,8 @@
 #this is a bad system but I'm lazy so it piggybacks off config loader system.
 #Specify group followed by ckey for each ckey.
 
-#TIER_1_DONATORS test_ckey
+#PATREON_DONATORS GreenTea98
 
-#TIER_2_DONATORS test_ckey
+#PATREON_DONATORS Cammi
 
-#TIER_3_DONATORS test_ckey
+#PATREON_DONATORS 
