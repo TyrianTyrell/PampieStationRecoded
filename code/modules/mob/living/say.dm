@@ -202,6 +202,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		var/datum/language/L = GLOB.language_datum_instances[language]
 		spans |= L.spans
 
+	if(HAS_TRAIT(src,BABYBRAINED_TRAIT))
+		language = /datum/language/babybabble
+
 	var/radio_return = radio(message, message_mode, spans, language)
 	if(radio_return & ITALICS)
 		spans |= SPAN_ITALICS
@@ -249,6 +252,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	else
 		deaf_message = "<span class='notice'>You can't hear yourself!</span>"
 		deaf_type = 2 // Since you should be able to hear yourself without looking
+
+	if(HAS_TRAIT(speaker, BABYBRAINED_TRAIT))
+		message_language = /datum/language/babybabble
 
 	// Create map text prior to modifying message for goonchat
 	if (client?.prefs.chat_on_map && stat != UNCONSCIOUS && (client.prefs.see_chat_non_mob || ismob(speaker)) && can_hear())
