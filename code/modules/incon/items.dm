@@ -606,10 +606,14 @@
 
 /obj/item/implant/psyker_implant/healing/activate()
 	. = ..()
-	if(source.ShiftClickOn("action_button"))
-		to_chat(source, "You heal yourself.")
-		source.adjustBruteLoss(-50)
-		source.adjustFireLoss(-50)
+	if(imp_in.ShiftClickOn("action_button"))
+		to_chat(imp_in, "You heal yourself.")
+		imp_in.adjustBruteLoss(-50)
+		imp_in.adjustFireLoss(-50)
+
+/obj/item/implanter/psyker_healing
+	name = "implanter (Psyker Healing)"
+	imp_type = /obj/item/implant/psyker_implant/healing
 
 /obj/item/projectile/magic/psyker_heal
 	name = "psionic heal-bolt"
