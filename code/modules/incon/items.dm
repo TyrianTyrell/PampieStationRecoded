@@ -604,7 +604,8 @@
 	name = "Psyker Coil (Healing)"
 	desc = "Allows for a normal person to use psychic abilities. Which one they can use depends on the implant. This one grants healing abilities."
 
-/obj/item/implant/psyker_implant/healing/trigger(emote, mob/living/carbon/source)
+/obj/item/implant/psyker_implant/healing/activate()
+	. = ..()
 	if(source.ShiftClickOn("action_button"))
 		to_chat(source, "You heal yourself.")
 		source.adjustBruteLoss(-50)
