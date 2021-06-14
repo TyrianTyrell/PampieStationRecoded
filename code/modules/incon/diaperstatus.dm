@@ -27,11 +27,11 @@
 				src.visible_message("<span class='notice'>[src] scrunches [src.p_their()] legs and lets the floodgates open.</span>","<span class='notice'>You scrunch your legs and let the floodgates open.</span>")
 			else
 				src.visible_message("<span class='notice'>[src]'s legs buckle as [src.p_they()] are unable to stop [src.p_their()] bladder from leaking into [src.p_their()] pants!</span>","<span class='notice'>Your legs buckle as you are unable to stop your bladder from leaking into your pants!</span>")
-		if(wetness + pee < 500 + heftersbonus)
+		if(wetness + pee < 250 + heftersbonus)
 			wetness = wetness + pee
 			pee = 0
 		else
-			wetness = 500 + heftersbonus
+			wetness = 250 + heftersbonus
 			pee = 0
 			new /obj/effect/decal/cleanable/waste/peepee(loc)
 		on_purpose = 0
@@ -47,11 +47,11 @@
 				src.visible_message("<span class='notice'>An odor pervades the room as [src] dumps [src.p_their()] drawers.</span>","<span class='notice'>An odor pervades the room as you dump your drawers.</span>")
 			else
 				src.visible_message("<span class='notice'>[src] takes a squat and winces as [src.p_their()] seat sags just a little more.</span>","<span class='notice'>That tight feeling in your gut is gone. But your diaper seems a bit saggier- and stinkier.</span>")
-		if(stinkiness + poop < 500 + heftersbonus)
+		if(stinkiness + poop < 250 + heftersbonus)
 			stinkiness = stinkiness + poop
 			poop = 0
 		else
-			stinkiness = 500 + heftersbonus
+			stinkiness = 250 + heftersbonus
 			poop = 0
 		on_purpose = 0
 	else if (stat == DEAD)

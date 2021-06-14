@@ -122,6 +122,12 @@
 	suffix = "lavaland_surface_dead_ratvar.dmm"
 	allow_duplicates = FALSE
 
+/datum/map_template/ruin/lavaland/psyker_healing
+	name = "Psyker Implant"
+	id = "psyker_healing"
+	description = "A test ruin for distributing a psyker implant."
+	suffix = "lavaland_surface_psykerimplant.dmm"
+
 /datum/map_template/ruin/lavaland/hierophant
 	name = "Hierophant's Arena"
 	id = "hierophant"

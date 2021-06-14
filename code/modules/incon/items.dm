@@ -606,11 +606,13 @@
 
 /obj/item/implant/psyker_implant/healing/activate()
 	. = ..()
+	if(!CheckActionCooldown(CLICK_CD_RANGE))
+		return
 	var/list/creck = params2list("icon-x=0&icon-y=0&screen-loc=CENTER")
 	if(params2list(imp_in.client.mouseParams)["alt"])
 		to_chat(imp_in, "You heal yourself.")
-		imp_in.adjustBruteLoss(-20)
-		imp_in.adjustFireLoss(-20)
+		imp_in.adjustBruteLoss(-15)
+		imp_in.adjustFireLoss(-15)
 	else
 		var/obj/item/projectile/magic/psyker_heal/PSI = new /obj/item/projectile/magic/psyker_heal(imp_in.loc)
 		var/turf/targ = get_step(imp_in.loc,imp_in.dir)
@@ -622,6 +624,7 @@
 		PSI.def_zone = imp_in.get_organ_target()
 		PSI.preparePixelProjectile(targ, imp_in, creck)
 		PSI.original_angle = dir2angle(imp_in.dir)
+		PSI.Angle = dir2angle(imp_in.dir)
 		PSI.fire()
 
 /obj/item/implanter/psyker_healing
@@ -639,8 +642,8 @@
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/C = target
-		C.adjustBruteLoss(-20)
-		C.adjustFireLoss(-20)
+		C.adjustBruteLoss(-15)
+		C.adjustFireLoss(-15)
 
 
 
