@@ -324,16 +324,16 @@
 				to_chat(M,"<span class='notice'>...and discover that it is wet.</span>")
 				if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 					if(HAS_TRAIT(src,TRAIT_POTTYREBEL))
-						SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggysad)
-					else
 						SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggyhappy)
+					else
+						SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggysad)
 			if(src.stinkiness > 0)
 				to_chat(M,"<span class='notice'>...and discover that it is messy.</span>")
 				if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 					if(HAS_TRAIT(src,TRAIT_POTTYREBEL))
-						SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"poopy",/datum/mood_event/stinkysad)
-					else
 						SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"poopy",/datum/mood_event/stinkyhappy)
+					else
+						SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"poopy",/datum/mood_event/stinkysad)
 			if(src.wetness == 0 && src.stinkiness == 0)
 				to_chat(M,"<span class='notice'>...and it turns out it is dry for now!</span>")
 			to_chat(M, "<span class='notice'>They are wearing a [dipetype] diaper!")
