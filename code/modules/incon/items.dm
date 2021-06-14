@@ -607,20 +607,21 @@
 /obj/item/implant/psyker_implant/healing/activate()
 	. = ..()
 	var/list/creck = params2list("icon-x=0&icon-y=0&screen-loc=CENTER")
-	if(params2list(imp_in.client.mouseParams)["shift"])
+	if(params2list(imp_in.client.mouseParams)["alt"])
 		to_chat(imp_in, "You heal yourself.")
-		imp_in.adjustBruteLoss(-50)
-		imp_in.adjustFireLoss(-50)
+		imp_in.adjustBruteLoss(-20)
+		imp_in.adjustFireLoss(-20)
 	else
 		var/obj/item/projectile/magic/psyker_heal/PSI = new /obj/item/projectile/magic/psyker_heal(imp_in.loc)
 		var/turf/targ = get_step(imp_in.loc,imp_in.dir)
-		PSI.icon = 'icons/effects/genetics.dmi'
-		PSI.icon_state = "eyelasers"
+		PSI.icon = 'icons/obj/projectiles.dmi'
+		PSI.icon_state = "pulse1"
 		playsound(usr.loc, 'sound/weapons/taser2.ogg', 75, 1)
 
 		PSI.firer = imp_in
 		PSI.def_zone = imp_in.get_organ_target()
 		PSI.preparePixelProjectile(targ, imp_in, creck)
+		PSI.original_angle = dir2angle(imp_in.dir)
 		PSI.fire()
 
 /obj/item/implanter/psyker_healing
@@ -638,8 +639,8 @@
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/C = target
-		C.adjustBruteLoss(-50)
-		C.adjustFireLoss(-50)
+		C.adjustBruteLoss(-20)
+		C.adjustFireLoss(-20)
 
 
 
