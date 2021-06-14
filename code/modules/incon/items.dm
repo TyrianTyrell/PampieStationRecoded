@@ -610,6 +610,17 @@
 		to_chat(imp_in, "You heal yourself.")
 		imp_in.adjustBruteLoss(-50)
 		imp_in.adjustFireLoss(-50)
+	else
+		var/obj/item/projectile/magic/psyker_heal/PSI = new /obj/item/projectile/magic/psyker_heal(imp_in.loc)
+		var/turf/targ = get_step(imp_in.loc,imp_in.dir)
+		PSI.icon = 'icons/effects/genetics.dmi'
+		PSI.icon_state = "eyelasers"
+		playsound(usr.loc, 'sound/weapons/taser2.ogg', 75, 1)
+
+		PSI.firer = src
+		PSI.def_zone = get_organ_target()
+		PSI.preparePixelProjectile(, imp_in, params)
+		PSI.fire()
 
 /obj/item/implanter/psyker_healing
 	name = "implanter (Psyker Healing)"
