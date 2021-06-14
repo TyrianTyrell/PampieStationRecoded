@@ -606,7 +606,8 @@
 
 /obj/item/implant/psyker_implant/healing/activate()
 	. = ..()
-	if(imp_in.ShiftClickOn("action_button"))
+	var/list/creck = params2list("icon-x=0&icon-y=0&screen-loc=CENTER")
+	if(params2list(imp_in.client.mouseParams)["shift"])
 		to_chat(imp_in, "You heal yourself.")
 		imp_in.adjustBruteLoss(-50)
 		imp_in.adjustFireLoss(-50)
@@ -619,7 +620,7 @@
 
 		PSI.firer = imp_in
 		PSI.def_zone = imp_in.get_organ_target()
-		PSI.preparePixelProjectile(targ, imp_in, params)
+		PSI.preparePixelProjectile(targ, imp_in, creck)
 		PSI.fire()
 
 /obj/item/implanter/psyker_healing
