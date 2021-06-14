@@ -606,7 +606,7 @@
 
 /obj/item/implant/psyker_implant/healing/activate()
 	. = ..()
-	if(!CheckActionCooldown(CLICK_CD_RANGE))
+	if(!imp_in.CheckActionCooldown(CLICK_CD_RANGE))
 		return
 	var/list/creck = params2list("icon-x=0&icon-y=0&screen-loc=CENTER")
 	if(params2list(imp_in.client.mouseParams)["alt"])
