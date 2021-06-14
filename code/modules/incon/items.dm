@@ -617,9 +617,9 @@
 		PSI.icon_state = "eyelasers"
 		playsound(usr.loc, 'sound/weapons/taser2.ogg', 75, 1)
 
-		PSI.firer = src
-		PSI.def_zone = get_organ_target()
-		PSI.preparePixelProjectile(, imp_in, params)
+		PSI.firer = imp_in
+		PSI.def_zone = imp_in.get_organ_target()
+		PSI.preparePixelProjectile(targ, imp_in, params)
 		PSI.fire()
 
 /obj/item/implanter/psyker_healing
