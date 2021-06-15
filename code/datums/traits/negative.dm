@@ -421,7 +421,7 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 	name = "Incontinent"
 	desc = "For whatever reason, you have a hard time holding it. Opts you into the diaper usage system, and doubles the rate at which you have accidents."
 	mob_trait = TRAIT_INCONTINENT
-	value = -2
+	value = 0
 	medical_record_text = "Patient is incontinent."
 	mood_quirk = TRUE
 
@@ -439,7 +439,7 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 	name = "Unaware"
 	desc = "You suffered damage to your sacral nerve system at some point. Opts you into the diaper usage system, and removes any indication that you need to go."
 	mob_trait = TRAIT_FULLYINCONTINENT
-	value = -4
+	value = 0
 	medical_record_text = "Patient has suffered severe sacral nerve damage."
 	mood_quirk = TRUE
 

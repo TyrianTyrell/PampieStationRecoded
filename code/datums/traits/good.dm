@@ -224,7 +224,7 @@
 	name = "Potty Rebel"
 	desc = "The potty disgusts, scares, or otherwise is something negative to you. You prefer to go in your pants. Opts you into the diaper use system, and turns the negative moodlets associated with accidents into positive ones."
 	mob_trait = TRAIT_POTTYREBEL
-	value = 2
+	value = 1
 	mood_quirk = TRUE
 
 /datum/quirk/pottyrebel/add()

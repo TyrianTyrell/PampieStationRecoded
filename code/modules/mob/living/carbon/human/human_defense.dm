@@ -774,17 +774,17 @@
 						to_send += "<span class='notice'>Your [src.brand2] is wet.</span>\n"
 					if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 						if(HAS_TRAIT(src,TRAIT_POTTYREBEL))
-							SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggysad)
-						else
 							SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggyhappy)
+						else
+							SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggysad)
 				else
 					if(stinkiness > 0)
 						to_send += "<span class='notice'>Your [src.brand2] is messy.</span>\n"
 						if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 							if(HAS_TRAIT(src,TRAIT_POTTYREBEL))
-								SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/stinkysad)
-							else
 								SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/stinkyhappy)
+							else
+								SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/stinkysad)
 					else
 						to_send += "<span class='notice'>Your [src.brand2] is dry.</span>\n"
 				if(HAS_TRAIT(src,TRAIT_EXACTCHECK))
