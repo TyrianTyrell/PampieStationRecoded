@@ -788,8 +788,8 @@
 					else
 						to_send += "<span class='notice'>Your [src.brand2] is dry.</span>\n"
 				if(HAS_TRAIT(src,TRAIT_EXACTCHECK))
-					var/diappercent1 = round((wetness / (500 + heftersbonus)) * 100)
-					var/diappercent2 = round((stinkiness / (500 + heftersbonus)) * 100)
+					var/diappercent1 = round((wetness / (250 + heftersbonus)) * 100)
+					var/diappercent2 = round((stinkiness / (250 + heftersbonus)) * 100)
 					to_send += "<span class='notice'>It is about [diappercent1]% wet and [diappercent2]% messy.</span>\n"
 
 			to_chat(src, to_send)
