@@ -65,7 +65,7 @@
 			var/mob/living/L = M.pulledby
 			L.reset_pull_offsets(M, TRUE)
 
-	if(!check_loc && M.loc != loc)
+	if(M.loc != loc)
 		M.forceMove(loc)
 
 	M.buckling = null
