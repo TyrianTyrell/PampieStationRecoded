@@ -172,9 +172,9 @@
 	for(var/obj/item/reagent_containers/food/snacks/grown/I in contents)
 		S += 5
 		if(I.reagents.get_reagent_amount(/datum/reagent/consumable/nutriment) < 0.1)
-			points += 1 * productivity
+			points += round(1 * productivity * (0.75 + (I.seed.potency/60)))
 		else
-			points += I.reagents.get_reagent_amount(/datum/reagent/consumable/nutriment) * 10 * productivity
+			points += round(I.reagents.get_reagent_amount(/datum/reagent/consumable/nutriment) * 10 * productivity * (0.75 + (I.seed.potency/60)))
 		qdel(I)
 	if(S)
 		processing = TRUE
