@@ -43,6 +43,9 @@
 	var/trashtype = null //for disposable cuffs
 
 /obj/item/restraints/handcuffs/attack(mob/living/carbon/C, mob/living/user)
+	var/mob/living/carbon/CU
+	if(iscarbon(user))
+		CU = user
 	if(!istype(C))
 		return
 
@@ -63,7 +66,7 @@
 								"<span class='userdanger'>[user] is trying to put [src.name] on [C]!</span>")
 
 			playsound(loc, cuffsound, 30, 1, -2)
-			if(user.brand == "Sec")
+			if(CU.brand == "Sec")
 				if(do_mob(user, C, 20) && (C.get_num_arms(FALSE) >= 2 || C.get_arm_ignore()))
 					if(iscyborg(user))
 						apply_cuffs(C, user, TRUE)
