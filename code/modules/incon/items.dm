@@ -500,6 +500,54 @@
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "Replica"
 
+/obj/item/diaper/narsie
+	name = "\improper Narsmellies"
+	desc = "Placeholder text"
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Cult_Nar"
+
+/obj/item/wetdiap/narsie
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Cult_Nar_wet"
+
+/obj/item/poopydiap/narsie
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Cult_Nar_messy"
+
+/obj/item/useddiap/narsie
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Cult_Nar_full"
+
+/obj/item/diaper/ratvar
+	name = "Rat-downs"
+	desc = "Placeholder text"
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Cult_Clock"
+
+/obj/item/wetdiap/narsie
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Cult_Clock_wet"
+
+/obj/item/poopydiap/narsie
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Cult_Clock_messy"
+
+/obj/item/useddiap/narsie
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Cult_Clock_full"
+
 /datum/reagent/medicine/laxative
 	name = "Space Lax"
 	taste_description = "charcoal"

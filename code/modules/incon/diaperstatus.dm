@@ -274,6 +274,36 @@
 				if (D)
 					D.princessbonus = FALSE
 			rollbonus = 0
+		if ("Med")
+			set_light(0)
+			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+			if (ishuman(src))
+				var/mob/living/carbon/human/H = src
+				var/datum/bank_account/D = H.get_bank_account()
+				if (D)
+					D.princessbonus = FALSE
+			rollbonus = 0
+		if ("Cult_Nar")
+			set_light(0)
+			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+			if (ishuman(src))
+				var/mob/living/carbon/human/H = src
+				var/datum/bank_account/D = H.get_bank_account()
+				if (D)
+					D.princessbonus = FALSE
+			rollbonus = 0
+		if ("Cult_Clock")
+			set_light(0)
+			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+			if (ishuman(src))
+				var/mob/living/carbon/human/H = src
+				var/datum/bank_account/D = H.get_bank_account()
+				if (D)
+					D.princessbonus = FALSE
+			rollbonus = 0
 	spawn(60)
 	PampUpdate()
 
@@ -330,7 +360,10 @@
 					new /obj/item/useddiap/sci(cuckold)
 				if("Med")
 					new /obj/item/useddiap/med(cuckold)
-
+				if("Cult_Nar")
+					new /obj/item/useddiap/narsie(cuckold)
+				if("Cult_Clock")
+					new /obj/item/useddiap/ratvar(cuckold)
 		else
 			switch(brand)
 				if("plain")
@@ -369,6 +402,10 @@
 					new /obj/item/wetdiap/sci(cuckold)
 				if("Med")
 					new /obj/item/wetdiap/med(cuckold)
+				if("Cult_Nar")
+					new /obj/item/wetdiap/narsie(cuckold)
+				if("Cult_Clock")
+					new /obj/item/wetdiap/ratvar(cuckold)
 	else
 		if (stinkiness >= 1)
 			switch(brand)
@@ -408,6 +445,10 @@
 					new /obj/item/poopydiap/sci(cuckold)
 				if("Med")
 					new /obj/item/poopydiap/med(cuckold)
+				if("Cult_Nar")
+					new /obj/item/poopydiap/narsie(cuckold)
+				if("Cult_Clock")
+					new /obj/item/poopydiap/ratvar(cuckold)
 		else
 			switch(brand)
 				if("plain")
@@ -446,6 +487,10 @@
 					new /obj/item/diaper/sci(cuckold)
 				if("Med")
 					new /obj/item/diaper/med(cuckold)
+				if("Cult_Nar")
+					new /obj/item/diaper/narsie(cuckold)
+				if("Cult_Clock")
+					new /obj/item/diaper/ratvar(cuckold)
 	wetness = 0
 	stinkiness = 0
 	if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
