@@ -515,6 +515,8 @@
 				icon_state = "hud_plain"
 	else
 		icon_state = null
+	if(owner.brand = "Science")
+		SSresearch.techwebs.science_tech.add_point_type(TECHWEB_POINT_TYPE_GENERIC, 0.25)
 	spawn(1)
 	DiaperUpdate(owner)
 
