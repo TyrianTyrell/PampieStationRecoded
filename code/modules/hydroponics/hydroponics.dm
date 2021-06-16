@@ -462,6 +462,9 @@
 		to_chat(user, "<span class='warning'>The pests seem to behave oddly, but quickly settle down...</span>")
 
 /obj/machinery/hydroponics/attackby(obj/item/O, mob/user, params)
+	var/mob/living/carbon/C = null
+	if(iscarbon(user))
+		C = user
 	//Called when mob user "attacks" it with object O
 	if(istype(O, /obj/item/reagent_containers) )  // Syringe stuff (and other reagent containers now too)
 		var/obj/item/reagent_containers/reagent_source = O
@@ -512,9 +515,14 @@
 			//This was originally in apply_chemicals, but due to apply_chemicals only holding nutrients, we handle it here now.
 			if(reagent_source.reagents.has_reagent(/datum/reagent/water, 1))
 				var/water_amt = reagent_source.reagents.get_reagent_amount(/datum/reagent/water) * transfer_amount / reagent_source.reagents.total_volume
+					if(C.brand = "Hydroponics")
+						water_amt *= 1.5
 				H.adjustWater(round(water_amt))
 				reagent_source.reagents.remove_reagent(/datum/reagent/water, water_amt)
-			reagent_source.reagents.trans_to(H.reagents, transfer_amount)
+			if(C.brand = "Hydroponics")
+				reagent_source.reagents.trans_to(H.reagents, transfer_amount, 1.5)
+			else
+				reagent_source.reagents.trans_to(H.reagents, transfer_amount)
 			if(istype(reagent_source, /obj/item/reagent_containers/food/snacks) || istype(reagent_source, /obj/item/reagent_containers/pill))
 				qdel(reagent_source)
 				lastuser = user

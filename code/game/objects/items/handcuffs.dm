@@ -63,17 +63,30 @@
 								"<span class='userdanger'>[user] is trying to put [src.name] on [C]!</span>")
 
 			playsound(loc, cuffsound, 30, 1, -2)
-			if(do_mob(user, C, 30) && (C.get_num_arms(FALSE) >= 2 || C.get_arm_ignore()))
-				if(iscyborg(user))
-					apply_cuffs(C, user, TRUE)
-				else
-					apply_cuffs(C, user)
-				to_chat(user, "<span class='notice'>You handcuff [C].</span>")
-				SSblackbox.record_feedback("tally", "handcuffs", 1, type)
+			if(user.brand = "Sec")
+				if(do_mob(user, C, 20) && (C.get_num_arms(FALSE) >= 2 || C.get_arm_ignore()))
+					if(iscyborg(user))
+						apply_cuffs(C, user, TRUE)
+					else
+						apply_cuffs(C, user)
+					to_chat(user, "<span class='notice'>You handcuff [C].</span>")
+					SSblackbox.record_feedback("tally", "handcuffs", 1, type)
 
-				log_combat(user, C, "handcuffed")
+					log_combat(user, C, "handcuffed")
+				else
+					to_chat(user, "<span class='warning'>You fail to handcuff [C]!</span>")
 			else
-				to_chat(user, "<span class='warning'>You fail to handcuff [C]!</span>")
+				if(do_mob(user, C, 30) && (C.get_num_arms(FALSE) >= 2 || C.get_arm_ignore()))
+					if(iscyborg(user))
+						apply_cuffs(C, user, TRUE)
+					else
+						apply_cuffs(C, user)
+					to_chat(user, "<span class='notice'>You handcuff [C].</span>")
+					SSblackbox.record_feedback("tally", "handcuffs", 1, type)
+
+					log_combat(user, C, "handcuffed")
+				else
+					to_chat(user, "<span class='warning'>You fail to handcuff [C]!</span>")
 		else
 			to_chat(user, "<span class='warning'>[C] doesn't have two hands...</span>")
 
