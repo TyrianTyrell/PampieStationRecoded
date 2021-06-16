@@ -631,7 +631,7 @@
 
 /obj/item/storage/backpack/diaper_bag/Initialize()
 	. = ..()
-	var/vek = pick(list("duffel-diap";1,"duffel-diap-med";1,"duffel-diap-babypink";1,"duffel-diap-babyblue";1,"duffel-diap-rainbow";1,"duffel-diap-butterflies";1,"duffel-diap-peeyellow";1))
+	var/vek = pick(list(1;"duffel-diap",1;"duffel-diap-med",1;"duffel-diap-babypink",1;"duffel-diap-babyblue",1;"duffel-diap-rainbow",1;"duffel-diap-butterflies",1;"duffel-diap-peeyellow"))
 	icon_state = vek
 
 /obj/item/storage/backpack/diaper_bag/ComponentInitialize()
