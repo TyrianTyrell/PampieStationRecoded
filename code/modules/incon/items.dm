@@ -620,7 +620,7 @@
 /obj/item/storage/backpack/diaper_bag
 	name = "diaper bag"
 	desc = "A bag for holding many diapers at once."
-	icon_state = "duffel-diap"
+	icon_state = "duffel-diap-plain"
 	item_state = "duffel"
 	custom_price = 80
 	color = "#FFFFFF"
@@ -631,7 +631,7 @@
 
 /obj/item/storage/backpack/diaper_bag/Initialize()
 	. = ..()
-	var/vek = pick("duffel-diap","duffel-diap-med","duffel-diap-babypink","duffel-diap-babyblue","duffel-diap-rainbow","duffel-diap-butterflies","duffel-diap-peeyellow")
+	var/vek = pick("duffel-diap-plain","duffel-diap-med","duffel-diap-babypink","duffel-diap-babyblue","duffel-diap-rainbow","duffel-diap-butterflies","duffel-diap-peeyellow")
 	icon_state = vek
 
 /obj/item/storage/backpack/diaper_bag/ComponentInitialize()
