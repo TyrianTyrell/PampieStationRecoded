@@ -530,19 +530,19 @@
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "Cult_Clock"
 
-/obj/item/wetdiap/narsie
+/obj/item/wetdiap/ratvar
 	name = "wet diaper"
 	desc = "Thoroughly soaked."
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "Cult_Clock_wet"
 
-/obj/item/poopydiap/narsie
+/obj/item/poopydiap/ratvar
 	name = "poopy diaper"
 	desc = "Can be smelled from across the room."
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "Cult_Clock_messy"
 
-/obj/item/useddiap/narsie
+/obj/item/useddiap/ratvar
 	name = "used diaper"
 	desc = "Whoever had this on obviously needed it."
 	icon = 'icons/incon/diaper.dmi'
