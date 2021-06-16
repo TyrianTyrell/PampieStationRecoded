@@ -623,10 +623,15 @@
 	icon_state = "duffel-diap"
 	item_state = "duffel"
 	custom_price = 80
+	color = "#FFFFFF"
 	slot_flags = ITEM_SLOT_BELT || ITEM_SLOT_POCKET
 	w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = FIRE_PROOF
 	rad_flags = RAD_PROTECT_CONTENTS | RAD_NO_CONTAMINATE
+
+/obj/item/storage/backpack/diaper_bag/Initialize()
+	. = ..()
+	icon_state = pick("duffel-diap", 1;"duffel-diap-med", 1;"duffel-diap-babypink", 1;"duffel-diap-babyblue", 1;"duffel-diap-rainbow", 1;"duffel-diap-butterflies", 1;"duffel-diap-peeyellow", 1;)
 
 /obj/item/storage/backpack/diaper_bag/ComponentInitialize()
 	. = ..()
