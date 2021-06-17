@@ -40,7 +40,7 @@
 		L["is_default"] = (language == language_holder.selected_language)
 		if(AM)
 			L["can_speak"] = AM.can_speak_language(language)
-			L["can_understand"] = AM.has_language(language)
+			L["can_understand"] = AM.has_language(language) || AM.has_parent_or_child_language(language)
 
 		data["languages"] += list(L)
 

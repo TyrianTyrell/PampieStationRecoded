@@ -116,7 +116,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	return pos? copytext(input, pos + 1) : input
 
 /atom/movable/proc/lang_treat(atom/movable/speaker, datum/language/language, raw_message, list/spans, message_mode, no_quote = FALSE)
-	if(has_language(language))
+	if(has_language(language) || has_parent_or_child_language(language))
 		var/atom/movable/AM = speaker.GetSource()
 		raw_message = say_emphasis(raw_message)
 		if(AM) //Basically means "if the speaker is virtual"

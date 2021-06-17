@@ -635,6 +635,13 @@
 	var/datum/language_holder/LH = get_language_holder()
 	return LH.has_language(language, spoken)
 
+/atom/movable/proc/has_parent_or_child_language(language, spoken = FALSE)
+	var/datum/language_holder/LH = get_language_holder()
+	for(var/datum/language/languages in subtypesof(language))
+		if(LH.has_language(languages, spoken))
+			return LH.has_language(languages, spoken)
+	return LH.has_language(type2parent(language), spoken)
+
 /// Checks if atom can speak the language.
 /atom/movable/proc/can_speak_language(language)
 	var/datum/language_holder/LH = get_language_holder()
