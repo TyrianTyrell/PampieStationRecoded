@@ -40,5 +40,6 @@
 	..()
 	if(druggy)
 		grant_language(/datum/language/beachbum, TRUE, TRUE, LANGUAGE_HIGH)
+		grant_related_dialects(/datum/language/beachbum, TRUE, TRUE, LANGUAGE_HIGH)
 	else
 		remove_language(/datum/language/beachbum, TRUE, TRUE, LANGUAGE_HIGH)

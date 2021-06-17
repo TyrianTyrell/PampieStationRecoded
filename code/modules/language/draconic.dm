@@ -22,7 +22,7 @@
 
 /datum/language/draconic/yipyak
 	name = "Yipyak"
-	desc = "A dialect of Draconic that is spoken by kobolds."
+	desc = "A dialect of Draconic that is spoken by kobolds. Roughly equivalent to having a southern drawl."
 	key = "y"
 	syllables = list(
 		"ya","yaz","ye","yez","yi","yiz","yo","yoz","yu","yuz","ys","yz",

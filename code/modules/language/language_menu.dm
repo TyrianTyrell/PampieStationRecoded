@@ -96,6 +96,7 @@
 						spoken = TRUE
 						understood = TRUE
 				language_holder.grant_language(language_datum, understood, spoken)
+				language_holder.grant_related_dialects(language_datum, understood, spoken)
 				if(is_admin)
 					message_admins("[key_name_admin(user)] granted the [language_name] language to [key_name_admin(AM)].")
 					log_admin("[key_name(user)] granted the language [language_name] to [key_name(AM)].")

@@ -160,6 +160,7 @@
 		else
 			to_chat(user, "<span class='boldannounce'>You start skimming through [src], and suddenly the drone chittering makes sense.</span>")
 			user.grant_language(/datum/language/drone, TRUE, TRUE)//, LANGUAGE_MIND)
+			user.grant_related_dialects(/datum/language/drone, TRUE, TRUE)
 		return
 
 	if(user.has_language(/datum/language/drone))
@@ -181,6 +182,7 @@
 		else
 			M.visible_message("<span class='notice'>[user] teaches [M] by beating [M.p_them()] over the head with [src]!</span>", "<span class='boldnotice'>As [user] hits you with [src], chitters resonate in your mind.</span>", "<span class='hear'>You hear smacking.</span>")
 			M.grant_language(/datum/language/drone, TRUE, TRUE) //, LANGUAGE_MIND)
+			M.grant_related_dialects(/datum/language/drone, TRUE, TRUE)
 		return
 
 /obj/structure/fluff/oldturret
