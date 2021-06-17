@@ -19,3 +19,14 @@
 	icon_state = "lizard"
 	default_priority = 90
 	chooseable_roundstart = TRUE
+
+/datum/language/draconic/yipyak
+	name = "Yipyak"
+	desc = "A dialect of Draconic that is spoken by kobolds."
+	key = "y"
+	syllables = list(
+		"ya","yaz","ye","yez","yi","yiz","yo","yoz","yu","yuz","ys","yz",
+		"yah","yeh","yih","yoh","yuh","ysh","yal","yel","yil","yol","yul",
+		"ysl","yak","yark","yek","yik","yip","yok","yuk","ysk","yas","yes",
+		"yis","yos","yus","yss","yar","yer","yir","yor","yur","yrs","ysr"
+	)

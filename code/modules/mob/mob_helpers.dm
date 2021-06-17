@@ -187,7 +187,6 @@
 		message = stutter(message)
 	return message
 
-
 /proc/Gibberish(text, replace_characters = FALSE, chance = 50)
 	text = html_decode(text)
 	. = ""

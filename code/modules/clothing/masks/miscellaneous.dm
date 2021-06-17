@@ -68,7 +68,6 @@
 			var/value = italian_words[key]
 			if(islist(value))
 				value = pick(value)
-
 			message = replacetextEx(message, " [uppertext(key)]", " [uppertext(value)]")
 			message = replacetextEx(message, " [capitalize(key)]", " [capitalize(value)]")
 			message = replacetextEx(message, " [key]", " [value]")

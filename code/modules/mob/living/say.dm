@@ -256,6 +256,21 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	if(HAS_TRAIT(speaker, BABYBRAINED_TRAIT))
 		message_language = /datum/language/babybabble
 
+	if(message_language == /datum/language/draconic/yipyak)
+		if(raw_message[1] != "*")
+			var/speech = " [raw_message]"
+			var/list/southern_words = strings("southern_replacement.json", "southern")
+
+			for(var/key in southern_words)
+				var/value = southern_words[key]
+				if(islist(value))
+					value = pick(value)
+				if(key != "I")
+					speech = replacetextEx(speech, " [uppertext(key)]", " [uppertext(value)]")
+					speech = replacetextEx(speech, " [capitalize(key)]", " [capitalize(value)]")
+				speech = replacetextEx(speech, " [key]", " [value]")
+			raw_message = trim(speech)
+
 	// Create map text prior to modifying message for goonchat
 	if (client?.prefs.chat_on_map && stat != UNCONSCIOUS && (client.prefs.see_chat_non_mob || ismob(speaker)) && can_hear())
 		create_chat_message(speaker, message_language, raw_message, spans, message_mode)

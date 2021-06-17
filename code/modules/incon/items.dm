@@ -700,14 +700,14 @@
 		C.adjustFireLoss(-15)
 
 /obj/item/clothing/mask/pacifier
-	name = "pacifier"
-	desc = "A pacifier, with a small passage in the bulb through which things like nicotine can be imbibed. This one is meant to be recycled after use."
 	icon = 'icons/incon/regressoray.dmi'
-	icon_state = "Pacifier_"
 	w_class = WEIGHT_CLASS_TINY
 	body_parts_covered = null
 
 /obj/item/clothing/mask/pacifier/d
+	name = "pacifier"
+	desc = "A pacifier, with a small passage in the bulb through which things like nicotine can be imbibed. This one is meant to be recycled after use."
+	icon_state = "Pacifier_disposable"
 	var/chem_volume = 15
 	var/list/list_reagents = list(/datum/reagent/drug/nicotine = 15)
 
