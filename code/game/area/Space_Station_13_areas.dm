@@ -37,7 +37,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/ai_monitored/turret_protected/AIsatextAP
 	name = "AI Sat Ext"
 	icon_state = "storage"
-	
+
 /area/arrival
 	requires_power = FALSE
 
@@ -1676,6 +1676,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/science/nanite
 	name = "Nanite Lab"
 	icon_state = "nanite"
+
+/area/nursery
+	name - "Nursery"
+	icon_state = "nursery"
 
 // Telecommunications Satellite
 
