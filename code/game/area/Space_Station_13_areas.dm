@@ -1678,7 +1678,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "nanite"
 
 /area/nursery
-	name - "Nursery"
+	name = "Nursery"
 	icon_state = "nursery"
 
 // Telecommunications Satellite
