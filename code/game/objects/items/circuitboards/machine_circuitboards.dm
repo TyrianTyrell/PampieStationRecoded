@@ -610,6 +610,8 @@
 		/obj/machinery/vending/games = "\improper Good Clean Fun",
 		/obj/machinery/vending/kink = "KinkMate",
 		/obj/machinery/vending/barkbox = "Bark Box",
+		/obj/machinery/vending/diaper = "\improper Big Dipper diaper dispenser",
+		/obj/machinery/vending/walldiaper = "\improper Little Dipper diaper dispenser",
 		/obj/machinery/vending/autodrobe = "AutoDrobe",
 		/obj/machinery/vending/wardrobe/sec_wardrobe = "SecDrobe",
 		/obj/machinery/vending/wardrobe/det_wardrobe = "DetDrobe",

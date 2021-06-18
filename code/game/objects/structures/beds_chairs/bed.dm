@@ -214,3 +214,11 @@
 	name = "resting contraption"
 	desc = "This looks similar to contraptions from Earth. Could aliens be stealing our technology?"
 	icon_state = "abed"
+
+/obj/structure/bed/changingtable
+	name = "changing table"
+	desc = "A padded table for changing diapers on."
+	icon = 'icons/incon/furniture.dmi'
+	icon_state = "changingtable"
+	buildstacktype = /obj/item/stack/sheet/mineral/wood
+	buildstackamount = 4
