@@ -4828,6 +4828,7 @@
 "amY" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced,
+/obj/item/vending_refill/diaper,
 /obj/item/electronics/firealarm,
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating,
@@ -29864,7 +29865,9 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/machinery/vending/diaper,
+/obj/machinery/vending/walldiaper{
+	pixel_y = -28
+	},
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
 "clq" = (
@@ -50657,10 +50660,7 @@
 /turf/open/floor/plasteel,
 /area/commons/locker)
 "esv" = (
-/obj/machinery/door/airlock{
-	id_tag = "Toilet4";
-	name = "Unit 4"
-	},
+/obj/structure/curtain,
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet/restrooms)
 "esC" = (
@@ -66377,9 +66377,6 @@
 /turf/open/floor/engine,
 /area/engineering/main)
 "nZv" = (
-/obj/structure/toilet/secret/low_loot{
-	dir = 4
-	},
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -66393,7 +66390,7 @@
 	pixel_y = -25;
 	specialfunctions = 4
 	},
-/obj/effect/landmark/start/assistant,
+/obj/structure/bed/changingtable,
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet/restrooms)
 "nZB" = (
@@ -80636,6 +80633,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
+/obj/effect/landmark/start/assistant,
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet/restrooms)
 "wCV" = (

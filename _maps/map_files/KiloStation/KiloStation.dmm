@@ -30044,7 +30044,9 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/yellow,
-/obj/machinery/vending/diaper,
+/obj/machinery/vending/walldiaper{
+	pixel_x = 28
+	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/medical/medbay/central)
 "aWF" = (
@@ -55212,7 +55214,7 @@
 	pixel_x = 24;
 	pixel_y = -8
 	},
-/obj/structure/bed,
+/obj/structure/bed/changingtable,
 /turf/open/floor/plasteel/showroomfloor,
 /area/commons/toilet/restrooms)
 "bKU" = (
