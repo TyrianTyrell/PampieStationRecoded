@@ -13218,19 +13218,21 @@
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet/restrooms)
 "aEh" = (
-/obj/structure/urinal{
-	pixel_y = 32
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
-/obj/machinery/airalarm{
-	dir = 8;
-	pixel_x = 23
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/table,
+/obj/item/folder/yellow,
+/obj/item/reagent_containers/food/snacks/donut,
+/turf/open/floor/plating,
+/area/maintenance/department/security/brig)
+"aEi" = (
+/obj/structure/bed/changingtable,
+/obj/machinery/light/small{
+	dir = 4
 	},
 /turf/open/floor/plasteel/freezer,
-/area/commons/toilet/restrooms)
-"aEi" = (
-/obj/effect/landmark/blobstart,
-/obj/item/toy/beach_ball/holoball,
-/turf/open/floor/plating,
 /area/commons/toilet/restrooms)
 "aEj" = (
 /turf/closed/wall,
@@ -13661,7 +13663,9 @@
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet/restrooms)
 "aFb" = (
-/obj/machinery/vending/diaper,
+/obj/machinery/vending/walldiaper{
+	pixel_x = 28
+	},
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet/restrooms)
 "aFc" = (
@@ -13678,6 +13682,10 @@
 "aFe" = (
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 23
 	},
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet/restrooms)
@@ -36325,6 +36333,8 @@
 /obj/structure/sign/poster/official/no_erp{
 	pixel_x = -32
 	},
+/obj/item/diaper/med,
+/obj/item/reagent_containers/food/snacks/grown/marshmallax,
 /turf/open/floor/plasteel/dark,
 /area/medical/exam_room)
 "bEJ" = (
@@ -39659,7 +39669,9 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
-/obj/machinery/vending/diaper,
+/obj/machinery/vending/walldiaper{
+	pixel_x = 28
+	},
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
 "bLL" = (
@@ -56265,6 +56277,13 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
+"jVQ" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/closed/wall,
+/area/maintenance/department/security/brig)
 "jXh" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 8
@@ -57067,6 +57086,10 @@
 /obj/structure/grille,
 /turf/open/floor/plating,
 /area/maintenance/department/science)
+"lOY" = (
+/obj/item/toy/beach_ball/holoball,
+/turf/open/floor/plating,
+/area/maintenance/department/security/brig)
 "lQn" = (
 /obj/machinery/light/small{
 	dir = 1;
@@ -57359,13 +57382,10 @@
 /turf/open/floor/plating,
 /area/security/execution/transfer)
 "mtu" = (
-/obj/structure/table,
-/obj/item/folder/yellow,
-/obj/item/reagent_containers/food/snacks/donut,
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/closed/wall,
+/turf/open/floor/plating,
 /area/maintenance/department/security/brig)
 "mtI" = (
 /obj/structure/cable{
@@ -57984,6 +58004,10 @@
 	},
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
+"nOv" = (
+/obj/structure/curtain,
+/turf/open/floor/plasteel/freezer,
+/area/commons/toilet/restrooms)
 "nOY" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -79860,9 +79884,9 @@ aiu
 xuv
 aoe
 ajD
-ajD
+aCc
 aiu
-apB
+lOY
 aiu
 aBa
 oTC
@@ -80117,10 +80141,10 @@ aDm
 kJo
 fAx
 aDm
-aDm
-aDm
-aDm
-aDm
+aEh
+jVQ
+jVQ
+jVQ
 mLB
 wUz
 ait
@@ -80376,8 +80400,8 @@ tyL
 ajD
 nPA
 mtu
-aCc
-aiu
+ajD
+ajD
 wxb
 wig
 ait
@@ -103763,7 +103787,7 @@ azD
 aAS
 aat
 atn
-aEh
+aEg
 aFe
 aFI
 aGF
@@ -104020,7 +104044,7 @@ axw
 axw
 aBW
 atn
-aEd
+nOv
 aEd
 aFK
 aEd
