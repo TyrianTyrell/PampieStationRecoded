@@ -999,7 +999,7 @@
 "atD" = (/obj/machinery/recharge_station,/turf/open/floor/plasteel,/area/maintenance/department/electrical)
 "atE" = (/obj/machinery/power/port_gen/pacman,/turf/open/floor/plating,/area/maintenance/department/electrical)
 "atF" = (/turf/open/floor/mech_bay_recharge_floor,/area/maintenance/department/electrical)
-"atG" = (/obj/machinery/mech_bay_recharge_port,/obj/structure/cable{icon_state = "0-2"},/obj/machinery/deepfryer,/turf/open/floor/plating,/area/maintenance/department/electrical)
+"atG" = (/obj/machinery/mech_bay_recharge_port,/obj/structure/cable{icon_state = "0-2"},/turf/open/floor/plating,/area/maintenance/department/electrical)
 "atH" = (/obj/machinery/computer/mech_bay_power_console,/obj/structure/cable{icon_state = "0-2"},/turf/open/floor/circuit,/area/maintenance/department/electrical)
 "atI" = (/obj/effect/turf_decal/tile/yellow{dir = 1},/obj/effect/turf_decal/tile/yellow{dir = 8},/turf/open/floor/plasteel,/area/construction/mining/aux_base)
 "atJ" = (/obj/machinery/space_heater,/turf/open/floor/plating,/area/maintenance/port/fore)
