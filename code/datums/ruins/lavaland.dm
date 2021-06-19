@@ -127,7 +127,6 @@
 	id = "psyker_healing"
 	description = "A test ruin for distributing a psyker implant."
 	suffix = "lavaland_surface_psykerimplant.dmm"
-	always_place = TRUE
 
 /datum/map_template/ruin/lavaland/hierophant
 	name = "Hierophant's Arena"
