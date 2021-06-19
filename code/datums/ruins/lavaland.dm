@@ -49,14 +49,14 @@
 	cost = 5
 	allow_duplicates = FALSE
 
-/datum/map_template/ruin/lavaland/seed_vault
+/*/datum/map_template/ruin/lavaland/seed_vault
 	name = "Seed Vault"
 	id = "seed-vault"
 	description = "The creators of these vaults were a highly advanced and benevolent race, and launched many into the stars, hoping to aid fledgling civilizations. \
 	However, all the inhabitants seem to do is grow drugs and guns."
 	suffix = "lavaland_surface_seed_vault.dmm"
 	cost = 5
-	allow_duplicates = FALSE
+	allow_duplicates = FALSE*/
 
 /*/datum/map_template/ruin/lavaland/ash_walker
 	name = "Ash Walker Nest"
@@ -88,15 +88,15 @@
 	cost = 10
 	allow_duplicates = FALSE
 
-/datum/map_template/ruin/lavaland/syndicate_base
+/*/datum/map_template/ruin/lavaland/syndicate_base
 	name = "Syndicate Lava Base"
 	id = "lava-base"
 	description = "A secret base researching illegal bioweapons, it is closely guarded by an elite team of syndicate agents."
 	suffix = "lavaland_surface_syndicate_base1.dmm"
 	cost = 15
-	allow_duplicates = FALSE
+	allow_duplicates = FALSE*/
 
-/datum/map_template/ruin/lavaland/free_golem
+/*/datum/map_template/ruin/lavaland/free_golem
 	name = "Free Golem Ship"
 	id = "golem-ship"
 	description = "Lumbering humanoids, made out of precious metals, move inside this ship. They frequently leave to mine more minerals, which they somehow turn into more of them. \
@@ -104,7 +104,7 @@
 	cost = 20
 	prefix = "_maps/RandomRuins/AnywhereRuins/"
 	suffix = "golem_ship.dmm"
-	allow_duplicates = FALSE
+	allow_duplicates = FALSE*/
 
 /datum/map_template/ruin/lavaland/animal_hospital
 	name = "Animal Hospital"
