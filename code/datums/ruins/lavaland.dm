@@ -27,12 +27,26 @@
 	description = "WELCOME TO CLOWN PLANET! HONK HONK HONK etc.!"
 	suffix = "lavaland_biodome_clown_planet.dmm"
 
+/datum/map_template/ruin/lavaland/biodome/abandonedvillage
+	name = "Abandoned Village"
+	id = "labandonedvillage"
+	description = "Who knows what lies within?"
+	suffix = "lavaland_surface_abandoned_village.dmm"
+
 /datum/map_template/ruin/lavaland/cube
 	name = "The Wishgranter Cube"
 	id = "wishgranter-cube"
 	description = "Nothing good can come from this. Learn from their mistakes and turn around."
 	suffix = "lavaland_surface_cube.dmm"
-	cost = 10
+	cost = 5
+	allow_duplicates = FALSE
+
+/datum/map_template/ruin/lavaland/library
+	name = "Buried Library"
+	id = "lburiedlibrary"
+	description = "A once grand library, now lost to the confines of lavaland."
+	suffix = "lavaland_surface_library.dmm"
+	cost = 5
 	allow_duplicates = FALSE
 
 /datum/map_template/ruin/lavaland/seed_vault
@@ -41,16 +55,37 @@
 	description = "The creators of these vaults were a highly advanced and benevolent race, and launched many into the stars, hoping to aid fledgling civilizations. \
 	However, all the inhabitants seem to do is grow drugs and guns."
 	suffix = "lavaland_surface_seed_vault.dmm"
-	cost = 10
+	cost = 5
 	allow_duplicates = FALSE
 
-/datum/map_template/ruin/lavaland/ash_walker
+/*/datum/map_template/ruin/lavaland/ash_walker
 	name = "Ash Walker Nest"
 	id = "ash-walker"
 	description = "A race of unbreathing lizards live here, that run faster than a human can, worship a broken dead city, and are capable of reproducing by something involving tentacles? \
 	Probably best to stay clear."
 	suffix = "lavaland_surface_ash_walker1.dmm"
-	cost = 20
+	cost = 10
+	allow_duplicates = FALSE*/
+
+/datum/map_template/ruin/lavaland/asteroid
+	name = "Asteroid Site"
+	id = "lasteroidsite"
+	description = "Surprised to see us here?"
+	suffix = "lavaland_surface_asteroid.dmm"
+	allow_duplicates = FALSE
+
+/datum/map_template/ruin/lavaland/hotsprings
+	name = "Hot Springs"
+	id = "lhotsprings"
+	description = "Just relax and take a dip, nothing will go wrong, I swear!"
+	suffix = "lavaland_surface_hotsprings.dmm"
+
+/datum/map_template/ruin/lavaland/engioutpost
+	name = "Engineer Outpost"
+	id = "lengioutpost"
+	description = "Blown up by an unfortunate accident."
+	suffix = "lavaland_surface_engioutpost.dmm"
+	cost = 10
 	allow_duplicates = FALSE
 
 /datum/map_template/ruin/lavaland/syndicate_base
@@ -58,7 +93,7 @@
 	id = "lava-base"
 	description = "A secret base researching illegal bioweapons, it is closely guarded by an elite team of syndicate agents."
 	suffix = "lavaland_surface_syndicate_base1.dmm"
-	cost = 20
+	cost = 15
 	allow_duplicates = FALSE
 
 /datum/map_template/ruin/lavaland/free_golem
@@ -80,7 +115,7 @@
 	allow_duplicates = FALSE
 
 /datum/map_template/ruin/lavaland/sin
-	cost = 10
+	cost = 5
 	allow_duplicates = FALSE
 
 /datum/map_template/ruin/lavaland/sin/envy
@@ -115,6 +150,24 @@
 	suffix = "lavaland_surface_sloth.dmm"
 	// Generates nothing but atmos runtimes and salt
 
+/datum/map_template/ruin/lavaland/sin/lust
+	name = "Ruin of Lust"
+	id = "llust"
+	description = "Not exactly what you expected."
+	suffix = "lavaland_surface_lust.dmm"
+
+/datum/map_template/ruin/lavaland/sin/wrath
+	name = "Ruin of Wrath"
+	id = "lwrath"
+	description = "You'll fight and fight and just keep fighting."
+	suffix = "lavaland_surface_wrath.dmm"
+
+/datum/map_template/ruin/lavaland/icemoon
+	name = "Icemoon Site"
+	id = "icemoonsite"
+	description = "How even does it not MELT?"
+	suffix = "lavaland_surface_icemoon.dmm"
+
 /datum/map_template/ruin/lavaland/ratvar
 	name = "Dead God"
 	id = "ratvar"
@@ -127,6 +180,18 @@
 	id = "psyker_healing"
 	description = "A test ruin for distributing a psyker implant."
 	suffix = "lavaland_surface_psykerimplant.dmm"
+
+/datum/map_template/ruin/lavaland/bathhouse
+	name = "Bath House"
+	id = "lbathhouse"
+	description = "A taste of paradise, locked in the hell of the Ice Moon."
+	suffix = "lavaland_surface_bathhouse.dmm"
+
+/datum/map_template/ruin/lavaland/wendigo_cave
+	name = "Wendigo Cave"
+	id = "lwendigocave"
+	description = "Into the belly of the beast."
+	suffix = "lavaland_surface_wendigo_cave.dmm"
 
 /datum/map_template/ruin/lavaland/hierophant
 	name = "Hierophant's Arena"
@@ -151,6 +216,22 @@
 /datum/map_template/ruin/lavaland/blood_drunk_miner/hunter
 	name = "Blood-Drunk Miner (Hunter)"
 	suffix = "lavaland_surface_blooddrunk3.dmm"
+
+/datum/map_template/ruin/lavaland/blood_drunk_miner/mining_site
+	name = "Mining Site"
+	id = "lminingsite"
+	description = "Ruins of a site where people once mined with primitive tools for ore."
+	suffix = "lavaland_surface_mining_site.dmm"
+	always_place = FALSE
+	always_spawn_with = list(/datum/map_template/ruin/lavaland/underground/mining_site_below = PLACE_BELOW)
+
+/datum/map_template/ruin/lavaland/underground/mining_site_below
+	name = "Mining Site Underground"
+	id = "lminingsite-underground"
+	description = "Who knew ladders could be so useful?"
+	suffix = "lavaland_underground_mining_site.dmm"
+	unpickable = TRUE
+
 
 /datum/map_template/ruin/lavaland/ufo_crash
 	name = "UFO Crash"
@@ -214,15 +295,15 @@
 	description = "A place of shelter for a lone hermit, scraping by to live another day."
 	suffix = "lavaland_surface_hermit.dmm"
 	allow_duplicates = FALSE
-	cost = 10
+	cost = 15
 
-/datum/map_template/ruin/lavaland/swarmer_boss
+/*/datum/map_template/ruin/lavaland/swarmer_boss
 	name = "Crashed Shuttle"
 	id = "swarmerboss"
 	description = "A Syndicate shuttle had an unfortunate stowaway..."
 	suffix = "lavaland_surface_swarmer_crash.dmm"
 	allow_duplicates = FALSE
-	cost = 20
+	cost = 20*/
 
 /datum/map_template/ruin/lavaland/miningripley
 	name = "Ripley"
