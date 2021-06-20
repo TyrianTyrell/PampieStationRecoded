@@ -74,8 +74,9 @@ Key procs
 		. = TRUE
 
 /datum/language_holder/proc/grant_related_dialects(language, understood = TRUE, spoken = TRUE, source = LANGUAGE_MIND)
+	var/list/lings = subtypesof(language.type)
 	if(understood)
-		for(var/datum/language/languages in subtypesof(language))
+		for(var/datum/language/languages in lings)
 			if(!understood_languages[languages])
 				understood_languages[languages] = list()
 			understood_languages[languages] |= source
