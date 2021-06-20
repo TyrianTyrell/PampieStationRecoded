@@ -96,7 +96,7 @@
 /area/ruin/unpowered)
 "u" = (
 /obj/effect/decal/cleanable/trail_holder,
-/mob/living/simple_animal/hostile/asteroid/goliath/beast,
+/obj/structure/ladder,
 /turf/open/floor/wood,
 /area/ruin/unpowered)
 

@@ -709,13 +709,12 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	icon_state = "scrubpuppy"
 	item_state = "scrubpuppy"
 
-/obj/item/toy/plush/aiplush
-	name = "AI plushie"
-	desc = "A little stuffed toy AI core... it appears to be malfunctioning."
-	icon_state = "exo"
-	item_state = "exo"
-	attack_verb = list("hacked", "detonated", "overloaded")
-	squeak_override = list('sound/machines/beep.ogg' = 9, 'sound/machines/buzz-two.ogg' = 1)
+/obj/item/toy/plush/goatplush
+	name = "Familiar goat plushie"
+	desc = "It makes you feel kinda calm honestly. Almost pacified."
+	icon_state = "goat"
+	item_state = "goat"
+	attack_verb = list("pacified", "bleated", "squeaked")
 
 /obj/item/toy/plush/mammal/fox
 	icon_state = "fox"
