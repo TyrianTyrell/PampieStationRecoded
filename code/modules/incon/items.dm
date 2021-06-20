@@ -3,14 +3,17 @@
 
 /obj/item/wetdiap
 	w_class = 1
+	hitsound = 'sound/effects/splap.ogg'
 	throwhitsound = 'sound/effects/splap.ogg'
 
 /obj/item/poopydiap
 	w_class = 1
+	hitsound = 'sound/effects/splap.ogg'
 	throwhitsound = 'sound/effects/splap.ogg'
 
 /obj/item/useddiap
 	w_class = 1
+	hitsound = 'sound/effects/splap.ogg'
 	throwhitsound = 'sound/effects/splap.ogg'
 
 
