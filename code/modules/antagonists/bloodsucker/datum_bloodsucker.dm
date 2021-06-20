@@ -211,7 +211,7 @@
 	CheckVampOrgans() // Heart, Eyes
 	// Language
 	owner.current.grant_language(/datum/language/vampiric, TRUE, TRUE, LANGUAGE_BLOODSUCKER)
-	owner.current.grant_related_dialects(/datum/language/vampiric, TRUE, TRUE, LANGUAGE_BLOODSUCKER)
+	owner.current.grant_related_dialects(/datum/language/vampiric, LANGUAGE_BLOODSUCKER)
 	owner.hasSoul = FALSE 		// If false, renders the character unable to sell their soul.
 	owner.isholy = FALSE 		// is this person a chaplain or admin role allowed to use bibles
 	// Disabilities

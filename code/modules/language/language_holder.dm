@@ -73,13 +73,13 @@ Key procs
 		spoken_languages[language] |= source
 		. = TRUE
 
-/datum/language_holder/proc/grant_related_dialects(language, understood = TRUE, spoken = TRUE, source = LANGUAGE_MIND)
+/datum/language_holder/proc/grant_related_dialects(language, source = LANGUAGE_MIND)
 	var/list/lings = subtypesof(language)
 	if(understood)
 		for(var/datum/language/languages in lings)
-			grant_language(languages, TRUE, FALSE)
+			grant_language(languages, TRUE, FALSE, source)
 		if(!understood_languages[type2parent(language)] && !istype(type2parent(language), /datum/language))
-			grant_language(type2parent(language), TRUE, FALSE)
+			grant_language(type2parent(language), TRUE, FALSE, source)
 
 /// Grants every language to understood and spoken, and gives omnitongue.
 /datum/language_holder/proc/grant_all_languages(understood = TRUE, spoken = TRUE, grant_omnitongue = TRUE, source = LANGUAGE_MIND)

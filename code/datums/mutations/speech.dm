@@ -278,7 +278,7 @@
 /datum/mutation/human/stoner/on_acquiring(mob/living/carbon/human/owner)
 	..()
 	owner.grant_language(/datum/language/beachbum, TRUE, TRUE, LANGUAGE_STONER)
-	owner.grant_related_dialects(/datum/language/beachbum, TRUE, TRUE, LANGUAGE_STONER)
+	owner.grant_related_dialects(/datum/language/beachbum, LANGUAGE_STONER)
 	owner.add_blocked_language(subtypesof(/datum/language) - /datum/language/beachbum, LANGUAGE_STONER)
 
 /datum/mutation/human/stoner/on_losing(mob/living/carbon/human/owner)
