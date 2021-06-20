@@ -295,6 +295,7 @@
 /datum/mutation/human/badblink/on_life()
 	if (!owner)
 		return
+	var/basetile = get_turf(owner)
 	if(prob(warpchance))
 		var/warpmessage = pick(
 		"<span class='warning'>With a sickening 720-degree twist of [owner.p_their()] back, [owner] vanishes into thin air.</span>",
@@ -304,7 +305,7 @@
 		"<span class='warning'>One moment, you see [owner]. The next, [owner] is gone.</span>")
 		owner.visible_message(warpmessage, "<span class='userdanger'>You feel a wave of nausea as you fall through reality!</span>")
 		var/warpdistance = rand(10,15) * GET_MUTATION_POWER(src)
-		do_teleport(owner, get_turf(owner), warpdistance, channel = TELEPORT_CHANNEL_FREE)
+		do_teleport(owner, basetile, warpdistance, channel = TELEPORT_CHANNEL_FREE)
 		owner.adjust_disgust(GET_MUTATION_SYNCHRONIZER(src) * (warpchance * warpdistance))
 		warpchance = 0
 		owner.visible_message("<span class='danger'>[owner] appears out of nowhere!</span>")

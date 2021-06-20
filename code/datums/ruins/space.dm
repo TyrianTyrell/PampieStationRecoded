@@ -143,11 +143,11 @@
 	description = "Based on the trace elements we've detected on the gutted asteroids, we suspect that a mining ship using a restricted engine is somewhere in the area. \
 	We'd like to request a patrol vessel to investigate."
 
-/datum/map_template/ruin/space/spacehotel
+/*/datum/map_template/ruin/space/spacehotel
 	id = "spacehotel"
 	suffix = "spacehotel.dmm"
 	name = "The Twin-Nexus Hotel"
-	description = "An interstellar hotel, where the weary spaceman can rest their head and relax, assured that the residental staff will not murder them in their sleep. Probably."
+	description = "An interstellar hotel, where the weary spaceman can rest their head and relax, assured that the residental staff will not murder them in their sleep. Probably."*/
 
 /datum/map_template/ruin/space/turreted_outpost
 	id = "turreted-outpost"
@@ -202,12 +202,12 @@
 	description = "Among civilian vessels the most common cause of tragedy is lack of food. \
 	This ship was outfited with a multitude of food generating features, then summarily ran into an asteroid shortly after takeoff."
 
-/datum/map_template/ruin/space/listeningstation
+/*/datum/map_template/ruin/space/listeningstation
 	id = "listeningstation"
 	suffix = "listeningstation.dmm"
 	name = "Syndicate Listening Station"
 	description = "Listening stations form the backbone of the syndicate's information gathering operations. \
-	Assignment to these stations is dreaded by most agents, as it entails long and lonely shifts listening to nearby stations chatter incessently about the most meaningless things."
+	Assignment to these stations is dreaded by most agents, as it entails long and lonely shifts listening to nearby stations chatter incessently about the most meaningless things."*/
 
 /datum/map_template/ruin/space/oldAIsat
 	id = "oldAIsat"
@@ -237,12 +237,12 @@
 	description = "There seems to be a pair of buses that pulled over for repairs. What were they doing..? Their shipment sure  seems to be filled with a strange mix. \
 	Anyway, it looks like some people tried to fix it up for a long time but didn't really get anywhere..."
 
-/datum/map_template/ruin/space/oldstation
+/*/datum/map_template/ruin/space/oldstation
 	id = "oldstation"
 	suffix = "oldstation.dmm"
 	name = "Ancient Space Station"
 	description = "The crew of a space station awaken one hundred years after a crisis. Awaking to a derelict space station on the verge of collapse, and a hostile force of invading \
-	hivebots. Can the surviving crew overcome the odds and survive and rebuild, or will the cold embrace of the stars become their new home?"
+	hivebots. Can the surviving crew overcome the odds and survive and rebuild, or will the cold embrace of the stars become their new home?"*/
 
 /datum/map_template/ruin/space/miracle
 	id = "miracle"
