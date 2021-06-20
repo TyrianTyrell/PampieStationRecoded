@@ -80,7 +80,7 @@ Key procs
 				understood_languages[languages] = list()
 			understood_languages[languages] |= source
 			. = TRUE
-		if(!understood_languages[type2parent(language)])
+		if(!understood_languages[type2parent(language)] && !istype(type2parent(language), /datum/language))
 			understood_languages[type2parent(language)] = list()
 		understood_languages[type2parent(language)] |= source
 		. = TRUE
