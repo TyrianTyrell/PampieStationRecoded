@@ -3,12 +3,16 @@
 
 /obj/item/wetdiap
 	w_class = 1
+	throwhitsound = 'sound/effects/splap.ogg'
 
 /obj/item/poopydiap
 	w_class = 1
+	throwhitsound = 'sound/effects/splap.ogg'
 
 /obj/item/useddiap
 	w_class = 1
+	throwhitsound = 'sound/effects/splap.ogg'
+
 
 /obj/item/diaper/plain
 	name = "diaper"
@@ -763,6 +767,7 @@
 	if(reagents && reagents.total_volume)
 		handle_reagents()
 
+/obj/item/storage/package
 
 
 
