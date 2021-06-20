@@ -75,7 +75,6 @@ Key procs
 
 /datum/language_holder/proc/grant_related_dialects(language, source = LANGUAGE_MIND)
 	var/list/lings = subtypesof(language)
-	if(understood)
 		for(var/datum/language/languages in lings)
 			grant_language(languages, TRUE, FALSE, source)
 		if(!understood_languages[type2parent(language)] && !istype(type2parent(language), /datum/language))
