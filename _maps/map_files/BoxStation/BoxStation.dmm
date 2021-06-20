@@ -1346,7 +1346,7 @@
 "aBO" = (/obj/machinery/requests_console{department = "EVA"; pixel_x = -32},/obj/effect/turf_decal/stripes/line{dir = 8},/turf/open/floor/plasteel,/area/ai_monitored/command/storage/eva)
 "aBP" = (/obj/structure/cable{icon_state = "1-4"},/obj/structure/cable{icon_state = "1-2"},/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{dir = 4},/turf/open/floor/plasteel,/area/ai_monitored/command/storage/eva)
 "aBQ" = (/turf/closed/wall,/area/commons/storage/primary)
-"aBR" = (/obj/machinery/recharge_station,/turf/open/floor/plasteel/showroomfloor,/area/nursery)
+"aBR" = (/obj/machinery/hypnochair{name = "Re-education Chamber"},/turf/open/floor/plasteel/showroomfloor,/area/nursery)
 "aBU" = (/turf/open/floor/plasteel/white/side{dir = 4},/area/service/theater)
 "aBW" = (/obj/structure/chair,/turf/open/floor/plasteel/white,/area/maintenance/port/fore)
 "aBX" = (/obj/effect/turf_decal/bot_white/left,/obj/effect/turf_decal/tile/neutral{dir = 1},/obj/effect/turf_decal/tile/neutral,/obj/effect/turf_decal/tile/neutral{dir = 4},/obj/effect/turf_decal/tile/neutral{dir = 8},/turf/open/floor/plasteel/dark,/area/command/gateway)
