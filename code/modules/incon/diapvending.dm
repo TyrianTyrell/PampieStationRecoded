@@ -32,6 +32,7 @@
 	product_ads = "Does someone need a change? Big Dipper is here for the soggers and the stinkers~"
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "dwall"
+	density = FALSE
 	products = list(/obj/item/diaper/plain = 60,
 					/obj/item/diaper/classic = 45,
 					/obj/item/diaper/swaddles = 45,
@@ -46,6 +47,7 @@
 	default_price = 10
 	extra_price = 100
 	payment_department = ACCOUNT_MED
+	tiltable = FALSE
 
 /obj/item/vending_refill/walldiaper
     machine_name = "\improper Little Dipper diaper dispenser"
