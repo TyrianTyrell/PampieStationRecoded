@@ -607,7 +607,7 @@
 
 /atom/movable/proc/grant_related_dialects(language, understood = TRUE, spoken = TRUE, source = LANGUAGE_ATOM)
 	var/datum/language_holder/LH = get_language_holder()
-	return LH.grant_related_dialects(language, understood, spoken, source)
+	return LH.grant_related_dialects(language, source)
 
 /// Grants every language.
 /atom/movable/proc/grant_all_languages(understood = TRUE, spoken = TRUE, grant_omnitongue = TRUE, source = LANGUAGE_MIND)

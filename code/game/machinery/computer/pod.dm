@@ -11,7 +11,7 @@
 	/// Time before auto launch
 	var/time = 30
 	/// Range in which we search for a mass drivers and poddoors nearby
-	var/range = 4
+	var/range = 7
 	/// Countdown timer for the mass driver's delayed launch functionality.
 	COOLDOWN_DECLARE(massdriver_countdown)
 

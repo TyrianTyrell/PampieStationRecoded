@@ -119,7 +119,7 @@
 		current = mob_override
 	current.faction |= "cult"
 	current.grant_language(/datum/language/narsie, TRUE, TRUE, LANGUAGE_CULTIST)
-	current.grant_related_dialects(/datum/language/narsie, TRUE, TRUE, LANGUAGE_CULTIST)
+	current.grant_related_dialects(/datum/language/narsie, LANGUAGE_CULTIST)
 	if(!cult_team?.cult_master)
 		vote.Grant(current)
 	communion.Grant(current)
