@@ -860,18 +860,23 @@
 
 /obj/item/diaper_package/plain
 	icon_state = "diaperpack-plain"
+	custom_price = 45
 
 /obj/item/diaper_package/classic
 	icon_state = "diaperpack-classics"
+	custom_price = 70
 
 /obj/item/diaper_package/hefters_m
 	icon_state = "diaperpack-heftm"
+	custom_price = 70
 
 /obj/item/diaper_package/hefters_f
 	icon_state = "diaperpack-heftf"
+	custom_price = 70
 
 /obj/item/diaper_package/jeans
 	icon_state = "diaperpack-jeans"
+	custom_price = 45
 
 /obj/item/diaper_package/thick_miner
 	icon_state = "diaperpack-thickminer"
