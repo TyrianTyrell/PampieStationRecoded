@@ -555,6 +555,78 @@
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "Cult_Clock_full"
 
+/obj/item/diaper/jeans
+	name = "\improper jiaper"
+	desc = "Pretend you don't pee yourself while still protecting yourself from accidents."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Jeans"
+
+/obj/item/wetdiap/jeans
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Jeans_wet"
+
+/obj/item/poopydiap/jeans
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Jeans_messy"
+
+/obj/item/useddiap/jeans
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Jeans_full"
+
+/obj/item/diaper/miner
+	name = "\improper Diamondpers"
+	desc = "Placeholder text"
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Miner"
+
+/obj/item/wetdiap/miner
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Miner_wet"
+
+/obj/item/poopydiap/miner
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Miner_messy"
+
+/obj/item/useddiap/miner
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Miner_full"
+
+/obj/item/diaper/miner_thick
+	name = "\improper Diamondpers Ultra"
+	desc = "Placeholder text"
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Miner_thick"
+
+/obj/item/wetdiap/miner_thick
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Miner_wet"
+
+/obj/item/poopydiap/miner_thick
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Miner_messy"
+
+/obj/item/useddiap/miner_thick
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Miner_full"
+
 /datum/reagent/medicine/laxative
 	name = "Space Lax"
 	taste_description = "charcoal"
@@ -789,6 +861,20 @@
 /obj/item/diaper_package/plain
 	icon_state = "diaperpack-plain"
 
+/obj/item/diaper_package/classic
+	icon_state = "diaperpack-classics"
+
+/obj/item/diaper_package/hefters_m
+	icon_state = "diaperpack-heftm"
+
+/obj/item/diaper_package/hefters_f
+	icon_state = "diaperpack-heftf"
+
+/obj/item/diaper_package/jeans
+	icon_state = "diaperpack-jeans"
+
+/obj/item/diaper_package/thick_miner
+	icon_state = "diaperpack-thickminer"
 
 
 

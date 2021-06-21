@@ -12,6 +12,10 @@
 					/obj/item/diaper/pwrgame = 45,
 					/obj/item/diaper/starkist = 45,
 					/obj/item/diaper/space = 45,
+					/obj/item/diaper/jeans = 45,
+					/obj/item/diaper_package/plain = 10,
+					/obj/item/diaper_package/classic = 10,
+					/obj/item/diaper_package/jeans = 10,
 					/obj/item/storage/backpack/diaper_bag = 10)
 	armor = list("melee" = 100, "bullet" = 100, "laser" = 100, "energy" = 100, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50)
 	resistance_flags = FIRE_PROOF
@@ -40,6 +44,10 @@
 					/obj/item/diaper/pwrgame = 45,
 					/obj/item/diaper/starkist = 45,
 					/obj/item/diaper/space = 45,
+					/obj/item/diaper/jeans = 45,
+					/obj/item/diaper_package/plain = 10,
+					/obj/item/diaper_package/classic = 10,
+					/obj/item/diaper_package/jeans = 10,
 					/obj/item/storage/backpack/diaper_bag = 10)
 	armor = list("melee" = 100, "bullet" = 100, "laser" = 100, "energy" = 100, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50)
 	resistance_flags = FIRE_PROOF
