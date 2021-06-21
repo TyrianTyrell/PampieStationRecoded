@@ -770,7 +770,25 @@
 	if(reagents && reagents.total_volume)
 		handle_reagents()
 
-/obj/item/storage/package
+/obj/item/diaper_package
+	name = "diaper package"
+	icon = 'icons/obj/storage.dmi'
+	desc = "A package of diapers."
+	var/diapersleft = 5
+
+/obj/item/diaper_package/attack_self(mob/user)
+	. = ..()
+	var/stuffinside = "[type]"
+	remove_text(stuffinside, "/obj/item/diaper_package")
+	if(user.held_items[user.get_inactive_hand_index()] == null && diapersleft > 0)
+		diapersleft--
+		user.held_items[user.get_inactive_hand_index()] = text2path("/obj/item/diaper" + ("[stuffinside]"))
+	else
+		to_chat(user, "<span class='warning'>You need a free hand to take a diaper out.</span>")
+
+/obj/item/diaper_package/plain
+	icon_state = "diaperpack-plain"
+
 
 
 
