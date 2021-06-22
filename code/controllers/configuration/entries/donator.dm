@@ -16,7 +16,7 @@
 
 //This is kinda weird in that the config entries are defined here but all the handling/calculations are in __HELPERS/donator_groupings.dm
 
-/datum/config_entry/multi_keyed_flag/donator_group/tier_1_donators
+/datum/config_entry/multi_keyed_flag/donator_group/patreon_donators
 
 /datum/config_entry/multi_keyed_flag/donator_group/tier_2_donators
 

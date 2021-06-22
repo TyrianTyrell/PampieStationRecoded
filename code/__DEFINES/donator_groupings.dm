@@ -1,8 +1,8 @@
-#define DONATOR_GROUP_TIER_1_CONFIG_PATH /datum/config_entry/multi_keyed_flag/donator_group/tier_1_donators
+#define DONATOR_GROUP_TIER_1_CONFIG_PATH /datum/config_entry/multi_keyed_flag/donator_group/patreon_donators
 #define DONATOR_GROUP_TIER_2_CONFIG_PATH /datum/config_entry/multi_keyed_flag/donator_group/tier_2_donators
 #define DONATOR_GROUP_TIER_3_CONFIG_PATH /datum/config_entry/multi_keyed_flag/donator_group/tier_3_donators
 
-#define DONATOR_GROUP_TIER_1_CONFIG_SUBPATH multi_keyed_flag/donator_group/tier_1_donators
+#define DONATOR_GROUP_TIER_1_CONFIG_SUBPATH multi_keyed_flag/donator_group/patreon_donators
 #define DONATOR_GROUP_TIER_2_CONFIG_SUBPATH multi_keyed_flag/donator_group/tier_2_donators
 #define DONATOR_GROUP_TIER_3_CONFIG_SUBPATH multi_keyed_flag/donator_group/tier_3_donators
 
