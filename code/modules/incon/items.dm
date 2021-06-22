@@ -849,16 +849,28 @@
 	var/diapersleft = 5
 	var/obj/item/diaper/stuffinside = /obj/item/diaper/plain
 
+/obj/item/diaper_package/proc/takeout(stuff, mob/user)
+	var/atom/A
+	if(ispath(stuff))
+		A = new stuff(get_turf(user))
+	else
+		A = stuff
+	if(ishuman(user) && istype(A,/obj/item))
+		var/mob/living/carbon/human/H = user
+		if(H.put_in_hands(A))
+			to_chat(H, "You take a diaper out of the package")
+			return A
+	to_chat(user, "You need a free hand to take a diaper out of the package.")
+	return null
+
 /obj/item/diaper_package/attack_self(mob/user)
 	. = ..()
 	if(user.held_items[user.get_inactive_hand_index()] == null)
 		if(diapersleft > 0)
 			diapersleft--
-			user.put_in_hands(new(stuffinside))
+			takeout(stuffinside, user)
 		else
 			to_chat(user, "<span class='warning'>The package is out of diapers!</span>")
-	else
-		to_chat(user, "<span class='warning'>You need a free hand to take a diaper out.</span>")
 
 /obj/item/diaper_package/plain
 	icon_state = "diaperpack-plain"
