@@ -1,4 +1,4 @@
-/datum/language/drone
+/datum/language/machine/drone
 	name = "Drone"
 	desc = "A heavily encoded damage control coordination stream, with special flags for hats."
 	speech_verb = "chitters"

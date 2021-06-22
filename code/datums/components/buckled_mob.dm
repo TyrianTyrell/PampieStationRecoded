@@ -68,6 +68,12 @@
 					butt.undie_color = "609"
 				if("Med")
 					butt.undie_color = "48A"
+				if("Miner")
+					butt.undie_color = "777"
+				if("Miner_thick")
+					butt.undie_color = "777"
+				if("Jeans")
+					butt.undie_color = "004"
 		else
 			butt.underwear = underwear
 			butt.undie_color = undie_color

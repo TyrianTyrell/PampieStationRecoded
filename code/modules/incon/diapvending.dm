@@ -12,6 +12,10 @@
 					/obj/item/diaper/pwrgame = 45,
 					/obj/item/diaper/starkist = 45,
 					/obj/item/diaper/space = 45,
+					/obj/item/diaper/jeans = 45,
+					/obj/item/diaper_package/plain = 10,
+					/obj/item/diaper_package/classic = 10,
+					/obj/item/diaper_package/jeans = 10,
 					/obj/item/storage/backpack/diaper_bag = 10)
 	armor = list("melee" = 100, "bullet" = 100, "laser" = 100, "energy" = 100, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50)
 	resistance_flags = FIRE_PROOF
@@ -32,6 +36,7 @@
 	product_ads = "Does someone need a change? Big Dipper is here for the soggers and the stinkers~"
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "dwall"
+	density = FALSE
 	products = list(/obj/item/diaper/plain = 60,
 					/obj/item/diaper/classic = 45,
 					/obj/item/diaper/swaddles = 45,
@@ -39,6 +44,10 @@
 					/obj/item/diaper/pwrgame = 45,
 					/obj/item/diaper/starkist = 45,
 					/obj/item/diaper/space = 45,
+					/obj/item/diaper/jeans = 45,
+					/obj/item/diaper_package/plain = 10,
+					/obj/item/diaper_package/classic = 10,
+					/obj/item/diaper_package/jeans = 10,
 					/obj/item/storage/backpack/diaper_bag = 10)
 	armor = list("melee" = 100, "bullet" = 100, "laser" = 100, "energy" = 100, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50)
 	resistance_flags = FIRE_PROOF
@@ -46,6 +55,7 @@
 	default_price = 10
 	extra_price = 100
 	payment_department = ACCOUNT_MED
+	tiltable = FALSE
 
 /obj/item/vending_refill/walldiaper
     machine_name = "\improper Little Dipper diaper dispenser"

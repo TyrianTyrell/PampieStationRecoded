@@ -18,6 +18,8 @@
 					/obj/item/diaper/plain = 60,
 					/obj/item/diaper/hefters_m = 45,
 					/obj/item/diaper/hefters_f = 45,
+					/obj/item/diaper_package/hefters_m = 10,
+					/obj/item/diaper_package/hefters_f = 10,
 					/obj/item/storage/backpack/diaper_bag = 5)
 	contraband = list(/obj/item/reagent_containers/pill/tox = 2,
 					/obj/item/reagent_containers/pill/morphine = 2)

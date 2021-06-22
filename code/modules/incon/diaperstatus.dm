@@ -304,6 +304,36 @@
 				if (D)
 					D.princessbonus = FALSE
 			rollbonus = 0
+		if ("Miner")
+			set_light(0)
+			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+			if (ishuman(src))
+				var/mob/living/carbon/human/H = src
+				var/datum/bank_account/D = H.get_bank_account()
+				if (D)
+					D.princessbonus = FALSE
+			rollbonus = 0
+		if ("Miner_thick")
+			set_light(0)
+			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+			if (ishuman(src))
+				var/mob/living/carbon/human/H = src
+				var/datum/bank_account/D = H.get_bank_account()
+				if (D)
+					D.princessbonus = FALSE
+			rollbonus = 0
+		if ("Jeans")
+			set_light(0)
+			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+			if (ishuman(src))
+				var/mob/living/carbon/human/H = src
+				var/datum/bank_account/D = H.get_bank_account()
+				if (D)
+					D.princessbonus = FALSE
+			rollbonus = 0
 	spawn(60)
 	PampUpdate()
 
@@ -364,6 +394,12 @@
 					new /obj/item/useddiap/narsie(cuckold)
 				if("Cult_Clock")
 					new /obj/item/useddiap/ratvar(cuckold)
+				if("Jeans")
+					new /obj/item/useddiap/jeans(cuckold)
+				if("Miner")
+					new /obj/item/useddiap/miner(cuckold)
+				if("Miner_thick")
+					new /obj/item/useddiap/miner_thick(cuckold)
 		else
 			switch(brand)
 				if("plain")
@@ -406,6 +442,12 @@
 					new /obj/item/wetdiap/narsie(cuckold)
 				if("Cult_Clock")
 					new /obj/item/wetdiap/ratvar(cuckold)
+				if("Jeans")
+					new /obj/item/wetdiap/jeans(cuckold)
+				if("Miner")
+					new /obj/item/wetdiap/miner(cuckold)
+				if("Miner_thick")
+					new /obj/item/wetdiap/miner_thick(cuckold)
 	else
 		if (stinkiness >= 1)
 			switch(brand)
@@ -449,6 +491,12 @@
 					new /obj/item/poopydiap/narsie(cuckold)
 				if("Cult_Clock")
 					new /obj/item/poopydiap/ratvar(cuckold)
+				if("Jeans")
+					new /obj/item/poopydiap/jeans(cuckold)
+				if("Miner")
+					new /obj/item/poopydiap/miner(cuckold)
+				if("Miner_thick")
+					new /obj/item/poopydiap/miner_thick(cuckold)
 		else
 			switch(brand)
 				if("plain")
@@ -491,6 +539,12 @@
 					new /obj/item/diaper/narsie(cuckold)
 				if("Cult_Clock")
 					new /obj/item/diaper/ratvar(cuckold)
+				if("Jeans")
+					new /obj/item/diaper/jeans(cuckold)
+				if("Miner")
+					new /obj/item/diaper/miner(cuckold)
+				if("Miner_thick")
+					new /obj/item/diaper/miner_thick(cuckold)
 	wetness = 0
 	stinkiness = 0
 	if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
