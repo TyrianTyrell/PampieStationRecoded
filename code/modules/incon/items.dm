@@ -697,6 +697,44 @@
 	results = list(/datum/reagent/medicine/laxative = 10)
 	required_reagents = list(/datum/reagent/carbon = 2, /datum/reagent/phenol = 3, /datum/reagent/nitrogen = 1, /datum/reagent/consumable/ethanol = 4)
 
+/datum/reagent/medicine/regression
+	name = "Regression Serum"
+	taste_description = "childhood whimsy"
+	pH = 7.5
+	color = "#F034E2"
+	metabolization_rate = 0.1 * REAGENTS_METABOLISM
+
+/datum/reagent/medicine/regression/on_mob_add(mob/living/L, amount)
+	. = ..()
+	if(iscarbon(L))
+		var/mob/living/carbon/C = L
+		metabolization_rate = 0.1 * REAGENTS_METABOLISM
+		if(C.m_intent == MOVE_INTENT_RUN)
+			C.toggle_move_intent()
+		ADD_TRAIT(C, BABYBRAINED_TRAIT, REGRESSION_TRAIT)
+		ADD_TRAIT(C, TRAIT_NORUNNING, REGRESSION_TRAIT)
+		ADD_TRAIT(C, TRAIT_NOGUNS, REGRESSION_TRAIT)
+		SEND_SIGNAL(C, COMSIG_DIAPERCHANGE, C.ckey)
+		C.statusoverlay = mutable_appearance('icons/incon/regressoray.dmi',"regressoray")
+		C.overlays += C.statusoverlay
+
+/datum/reagent/medicine/regression/on_mob_delete(mob/living/L)
+	. = ..()
+	if(iscarbon(L))
+		var/mob/living/carbon/C = L
+		if(C.m_intent == MOVE_INTENT_RUN)
+			C.toggle_move_intent()
+		REMOVE_TRAIT(C, BABYBRAINED_TRAIT, REGRESSION_TRAIT)
+		REMOVE_TRAIT(C, TRAIT_NORUNNING, REGRESSION_TRAIT)
+		REMOVE_TRAIT(C, TRAIT_NOGUNS, REGRESSION_TRAIT)
+		SEND_SIGNAL(C, COMSIG_DIAPERCHANGE, C.ckey)
+		C.statusoverlay = mutable_appearance('icons/incon/regressoray.dmi',"regressoray")
+		C.overlays -= C.statusoverlay
+
+/datum/chemical_reaction/medicine/regression
+	results = list(/datum/reagent/medicine/regression = 10)
+	required_reagents = list(/datum/reagent/medicine/omnizine = 3, /datum/reagent/toxin/carpotoxin = 2, /datum/reagent/ammonia = 5)
+
 /obj/item/seeds/marshmallow
 	name = "pack of marshmallow seeds"
 	desc = "They're seeds that grow marshmallow root."
