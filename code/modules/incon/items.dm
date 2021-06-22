@@ -847,14 +847,14 @@
 	icon = 'icons/obj/storage.dmi'
 	desc = "A package of diapers."
 	var/diapersleft = 5
-	var/stuffinside = /obj/item/diaper/plain
+	var/obj/item/diaper/stuffinside = /obj/item/diaper/plain
 
 /obj/item/diaper_package/attack_self(mob/user)
 	. = ..()
 	if(user.held_items[user.get_inactive_hand_index()] == null)
 		if(diapersleft > 0)
 			diapersleft--
-			user.put_in_hands(stuffinside)
+			user.put_in_hands(new(stuffinside))
 		else
 			to_chat(user, "<span class='warning'>The package is out of diapers!</span>")
 	else
