@@ -847,14 +847,14 @@
 	icon = 'icons/obj/storage.dmi'
 	desc = "A package of diapers."
 	var/diapersleft = 5
+	var/stuffinside = /obj/item/diaper/plain
 
 /obj/item/diaper_package/attack_self(mob/user)
 	. = ..()
-	var/stuffinside = "[type]"
 	if(user.held_items[user.get_inactive_hand_index()] == null)
 		if(diapersleft > 0)
 			diapersleft--
-			user.put_in_hands(text2path(addtext("/obj/item/diaper", remove_text(stuffinside, "/obj/item/diaper_package"))))
+			user.put_in_hands(stuffinside)
 		else
 			to_chat(user, "<span class='warning'>The package is out of diapers!</span>")
 	else
@@ -866,22 +866,26 @@
 
 /obj/item/diaper_package/classic
 	icon_state = "diaperpack-classics"
+	stuffinside = /obj/item/diaper/classic
 	custom_price = 70
 
 /obj/item/diaper_package/hefters_m
 	icon_state = "diaperpack-heftm"
+	stuffinside = /obj/item/diaper/hefters_m
 	custom_price = 70
 
 /obj/item/diaper_package/hefters_f
 	icon_state = "diaperpack-heftf"
+	stuffinside = /obj/item/diaper/hefters_f
 	custom_price = 70
 
 /obj/item/diaper_package/jeans
 	icon_state = "diaperpack-jeans"
+	stuffinside = /obj/item/diaper/jeans
 	custom_price = 45
 
 /obj/item/diaper_package/thick_miner
 	icon_state = "diaperpack-thickminer"
-
+	stuffinside = /obj/item/diaper/miner_thick
 
 
