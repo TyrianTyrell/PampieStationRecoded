@@ -324,6 +324,26 @@
 				if (D)
 					D.princessbonus = FALSE
 			rollbonus = 0
+		if ("Ashwalker")
+			set_light(0)
+			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+			if (ishuman(src))
+				var/mob/living/carbon/human/H = src
+				var/datum/bank_account/D = H.get_bank_account()
+				if (D)
+					D.princessbonus = FALSE
+			rollbonus = 0
+		if ("alien")
+			set_light(0)
+			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+			if (ishuman(src))
+				var/mob/living/carbon/human/H = src
+				var/datum/bank_account/D = H.get_bank_account()
+				if (D)
+					D.princessbonus = FALSE
+			rollbonus = 0
 		if ("Jeans")
 			set_light(0)
 			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
@@ -396,6 +416,10 @@
 					new /obj/item/useddiap/ratvar(cuckold)
 				if("Jeans")
 					new /obj/item/useddiap/jeans(cuckold)
+				if("Ashwalker")
+					new /obj/item/useddiap/ashwalker(cuckold)
+				if("alien")
+					new /obj/item/useddiap/alien(cuckold)
 				if("Miner")
 					new /obj/item/useddiap/miner(cuckold)
 				if("Miner_thick")
@@ -444,6 +468,10 @@
 					new /obj/item/wetdiap/ratvar(cuckold)
 				if("Jeans")
 					new /obj/item/wetdiap/jeans(cuckold)
+				if("Ashwalker")
+					new /obj/item/wetdiap/ashwalker(cuckold)
+				if("alien")
+					new /obj/item/wetdiap/alien(cuckold)
 				if("Miner")
 					new /obj/item/wetdiap/miner(cuckold)
 				if("Miner_thick")
@@ -493,6 +521,10 @@
 					new /obj/item/poopydiap/ratvar(cuckold)
 				if("Jeans")
 					new /obj/item/poopydiap/jeans(cuckold)
+				if("Ashwalker")
+					new /obj/item/poopydiap/ashwalker(cuckold)
+				if("alien")
+					new /obj/item/poopydiap/alien(cuckold)
 				if("Miner")
 					new /obj/item/poopydiap/miner(cuckold)
 				if("Miner_thick")
@@ -541,6 +573,10 @@
 					new /obj/item/diaper/ratvar(cuckold)
 				if("Jeans")
 					new /obj/item/diaper/jeans(cuckold)
+				if("Ashwalker")
+					new /obj/item/diaper/ashwalker(cuckold)
+				if("alien")
+					new /obj/item/diaper/alien(cuckold)
 				if("Miner")
 					new /obj/item/diaper/miner(cuckold)
 				if("Miner_thick")
@@ -616,6 +652,9 @@
 		icon_state = null
 	if(owner.brand == "Science")
 		SSresearch.science_tech.add_point_type(TECHWEB_POINT_TYPE_GENERIC, 0.25)
+	if(owner.brand == "alien")
+		owner.wetness -= 0.1
+		owner.stinkiness -= 0.1
 	spawn(1)
 	DiaperUpdate(owner)
 

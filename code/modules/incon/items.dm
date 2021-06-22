@@ -579,6 +579,59 @@
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "Jeans_full"
 
+/obj/item/diaper/ashwalker
+	name = "\improper Ashwaddlers"
+	desc = "Primitive looking diapers that are heat resistant."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Ashwalker"
+
+/obj/item/wetdiap/ashwalker
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Ashwalker_wet"
+
+/obj/item/poopydiap/ashwalker
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Ashwalker_messy"
+
+/obj/item/useddiap/ashwalker
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Ashwalker_full"
+
+/obj/item/diaper/alien
+	name = "\improper Butthuggers"
+	desc = "The tagline is written in Xenocommon."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "alien"
+
+/obj/item/diaper/alien/examine(mob/user)
+	if(user.language_holder.has_language(/datum/language/xenocommon))
+		desc = "A special facehugger breed that is sterile and consumes waste."
+	. = ..()
+
+/obj/item/wetdiap/alien
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "alien_wet"
+
+/obj/item/poopydiap/alien
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "alien_messy"
+
+/obj/item/useddiap/alien
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "alien_full"
+
 /obj/item/diaper/miner
 	name = "\improper Diamondpers"
 	desc = "Placeholder text"
@@ -859,6 +912,8 @@
 		var/mob/living/carbon/human/H = user
 		if(H.put_in_hands(A))
 			to_chat(H, "You take a diaper out of the package")
+			if(diapersleft == 0)
+				icon_state = addtext(icon_state,"-empty")
 			return A
 	to_chat(user, "You need a free hand to take a diaper out of the package.")
 	return null
@@ -871,6 +926,8 @@
 			takeout(stuffinside, user)
 		else
 			to_chat(user, "<span class='warning'>The package is out of diapers!</span>")
+	else
+		to_chat(user, "You need a free hand to take a diaper out of the package.")
 
 /obj/item/diaper_package/plain
 	icon_state = "diaperpack-plain"
@@ -890,6 +947,26 @@
 	icon_state = "diaperpack-heftf"
 	stuffinside = /obj/item/diaper/hefters_f
 	custom_price = 70
+
+/obj/item/diaper_package/syndi
+	icon_state = "diaperpack-syndichameleon"
+	stuffinside = /obj/item/diaper/syndi
+
+/obj/item/diaper_package/ratvar
+	icon_state = "diaperpack-ratvar"
+	stuffinside = /obj/item/diaper/ratvar
+
+/obj/item/diaper_package/narsie
+	icon_state = "diaperpack-narsie"
+	stuffinside = /obj/item/diaper/narsie
+
+/obj/item/diaper_package/ashwalker
+	icon_state = "diaperpack-ashwalker"
+	stuffinside = /obj/item/diaper/ashwalker
+
+/obj/item/diaper_package/alien
+	icon_state = "diaperpack-alien"
+	stuffinside = /obj/item/diaper/alien
 
 /obj/item/diaper_package/jeans
 	icon_state = "diaperpack-jeans"
