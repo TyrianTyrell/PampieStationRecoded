@@ -786,6 +786,29 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	attack_verb = list("sploshed", "splorted", "slushed")
 	can_random_spawn = FALSE
 
+/obj/item/toy/plush/dan
+	name = "lizard plushie"
+	desc = "A scaley chaplain... it smells like brass?"
+	icon_state = "dan"
+	item_state = "dan"
+	attack_verb = list("kindled", "clanked", "clunked")
+	squeak_override = list('sound/magic/clockwork/fellowship_armory.ogg')
+
+/obj/item/toy/plush/redtail
+	name = "Plushtail"
+	desc = "A red panda Head of Security. Always seems aloof, somehow."
+	icon_state = "redtail"
+	item_state = "redtail"
+	attack_verb = list("harmbatoned", "arrested", "stunbatoned")
+
+/obj/item/toy/plush/catboy
+	name = "catboy plush"
+	desc = "An adorable stuffed toy that resembles a degenerate."
+	icon_state = "catboy"
+	item_state = "catboy"
+	attack_verb = list("powergamed", "merged", "tabled")
+	squeak_override = list('sound/effects/meow1.ogg')
+
 /obj/item/toy/plush/plushling
 	name = "peculiar plushie"
 	desc = "An adorable stuffed toy- wait, did it just move?"
