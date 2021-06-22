@@ -571,13 +571,13 @@
 	path = /obj/item/diaper_package/classic
 	cost = 2
 
-/datum/gear/donator/classic_diapers
+/datum/gear/donator/hefters_m
 	name = "Hefters pack (male)"
 	slot = SLOT_IN_BACKPACK
 	path = /obj/item/diaper_package/hefters_m
 	cost = 2
 
-/datum/gear/donator/classic_diapers
+/datum/gear/donator/hefters_f
 	name = "Hefters pack (female)"
 	slot = SLOT_IN_BACKPACK
 	path = /obj/item/diaper_package/hefters_f
