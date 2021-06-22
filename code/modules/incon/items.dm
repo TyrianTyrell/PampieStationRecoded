@@ -851,9 +851,12 @@
 /obj/item/diaper_package/attack_self(mob/user)
 	. = ..()
 	var/stuffinside = "[type]"
-	if(user.held_items[user.get_inactive_hand_index()] == null && diapersleft > 0)
-		diapersleft--
-		user.held_items[user.get_inactive_hand_index()] = text2path(addtext("/obj/item/diaper",	remove_text(stuffinside, "/obj/item/diaper_package")))
+	if(user.held_items[user.get_inactive_hand_index()] == null)
+		if(diapersleft > 0)
+			diapersleft--
+			user.put_in_hands(text2path(addtext("/obj/item/diaper", remove_text(stuffinside, "/obj/item/diaper_package"))))
+		else
+			to_chat(user, "<span class='warning'>The package is out of diapers!</span>")
 	else
 		to_chat(user, "<span class='warning'>You need a free hand to take a diaper out.</span>")
 
