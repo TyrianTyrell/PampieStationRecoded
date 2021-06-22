@@ -192,6 +192,7 @@
 	id = "lwendigocave"
 	description = "Into the belly of the beast."
 	suffix = "lavaland_surface_wendigo_cave.dmm"
+	allow_duplicates = FALSE
 
 /datum/map_template/ruin/lavaland/hierophant
 	name = "Hierophant's Arena"
@@ -203,26 +204,30 @@
 
 /datum/map_template/ruin/lavaland/blood_drunk_miner
 	name = "Blood-Drunk Miner"
-	id = "blooddrunk"
 	description = "A strange arrangement of stone tiles and an insane, beastly miner contemplating them."
-	suffix = "lavaland_surface_blooddrunk1.dmm"
 	always_place = TRUE
 	allow_duplicates = FALSE //will only spawn one variant of the ruin
 
+/datum/map_template/ruin/lavaland/blood_drunk_miner/doom
+	name = "Blood-Drunk Miner"
+	id = "blooddrunk1"
+	suffix = "lavaland_surface_blooddrunk1.dmm"
+
 /datum/map_template/ruin/lavaland/blood_drunk_miner/guidance
 	name = "Blood-Drunk Miner (Guidance)"
+	id = "blooddrunk2"
 	suffix = "lavaland_surface_blooddrunk2.dmm"
 
 /datum/map_template/ruin/lavaland/blood_drunk_miner/hunter
 	name = "Blood-Drunk Miner (Hunter)"
+	id = "blooddrunk3"
 	suffix = "lavaland_surface_blooddrunk3.dmm"
 
 /datum/map_template/ruin/lavaland/blood_drunk_miner/mining_site
 	name = "Mining Site"
-	id = "lminingsite"
+	id = "blooddrunkmine"
 	description = "Ruins of a site where people once mined with primitive tools for ore."
 	suffix = "lavaland_surface_mining_site.dmm"
-	always_place = FALSE
 	always_spawn_with = list(/datum/map_template/ruin/lavaland/underground/mining_site_below = PLACE_BELOW)
 
 /datum/map_template/ruin/lavaland/underground/mining_site_below
@@ -231,7 +236,6 @@
 	description = "Who knew ladders could be so useful?"
 	suffix = "lavaland_underground_mining_site.dmm"
 	unpickable = TRUE
-
 
 /datum/map_template/ruin/lavaland/ufo_crash
 	name = "UFO Crash"
