@@ -41,6 +41,20 @@
 	slowdown = 10
 	},
 /area/ruin/unpowered)
+"h" = (
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/sepia{
+	blocks_air = 0;
+	slowdown = 10
+	},
+/area/ruin/unpowered)
+"P" = (
+/obj/item/diaper_package/thick_miner,
+/turf/open/floor/sepia{
+	blocks_air = 0;
+	slowdown = 10
+	},
+/area/ruin/unpowered)
 
 (1,1,1) = {"
 a
@@ -83,8 +97,8 @@ a
 b
 a
 c
-d
-d
+h
+P
 f
 a
 b
