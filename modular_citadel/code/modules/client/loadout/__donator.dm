@@ -559,4 +559,26 @@
 	name = "diaper bag"
 	slot = SLOT_IN_BACKPACK
 	path = /obj/item/storage/backpack/diaper_bag
-	ckeywhitelist = list("tyriantyrell")
+
+/datum/gear/donator/plain_diapers
+	name = "Plain diaper pack"
+	slot = SLOT_IN_BACKPACK
+	path = /obj/item/diaper_package/plain
+
+/datum/gear/donator/classic_diapers
+	name = "CuddleCom Classic pack"
+	slot = SLOT_IN_BACKPACK
+	path = /obj/item/diaper_package/classic
+	cost = 2
+
+/datum/gear/donator/classic_diapers
+	name = "Hefters pack (male)"
+	slot = SLOT_IN_BACKPACK
+	path = /obj/item/diaper_package/hefters_m
+	cost = 2
+
+/datum/gear/donator/classic_diapers
+	name = "Hefters pack (female)"
+	slot = SLOT_IN_BACKPACK
+	path = /obj/item/diaper_package/hefters_f
+	cost = 2
