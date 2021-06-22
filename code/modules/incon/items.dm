@@ -704,7 +704,7 @@
 	color = "#F034E2"
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
 
-/datum/reagent/medicine/regression/on_mob_metabolize(mob/living/L)
+/datum/reagent/medicine/regression/on_mob_add(mob/living/L)
 	if(iscarbon(L))
 		var/mob/living/carbon/C = L
 		metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -716,19 +716,6 @@
 		SEND_SIGNAL(C, COMSIG_DIAPERCHANGE, C.ckey)
 		C.statusoverlay = mutable_appearance('icons/incon/regressoray.dmi',"regressoray")
 		C.overlays += C.statusoverlay
-	return
-
-/datum/reagent/medicine/regression/on_mob_end_metabolize(mob/living/L)
-	if(iscarbon(L))
-		var/mob/living/carbon/C = L
-		if(C.m_intent == MOVE_INTENT_RUN)
-			C.toggle_move_intent()
-		REMOVE_TRAIT(C, BABYBRAINED_TRAIT, REGRESSION_TRAIT)
-		REMOVE_TRAIT(C, TRAIT_NORUNNING, REGRESSION_TRAIT)
-		REMOVE_TRAIT(C, TRAIT_NOGUNS, REGRESSION_TRAIT)
-		SEND_SIGNAL(C, COMSIG_DIAPERCHANGE, C.ckey)
-		C.statusoverlay = mutable_appearance('icons/incon/regressoray.dmi',"regressoray")
-		C.overlays -= C.statusoverlay
 	return
 
 /datum/chemical_reaction/medicine/regression

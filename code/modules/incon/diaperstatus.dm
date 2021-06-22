@@ -630,6 +630,8 @@
 	if(HAS_TRAIT(owner,BABYBRAINED_TRAIT))
 		if(owner.regressiontimer > 0)
 			owner.regressiontimer--
+		else if(owner.reagents.has_reagent(/datum/reagent/medicine/regression))
+			owner.regressiontimer = 0
 		else
 			REMOVE_TRAIT(owner,BABYBRAINED_TRAIT,REGRESSION_TRAIT)
 			REMOVE_TRAIT(owner,TRAIT_NORUNNING,REGRESSION_TRAIT)
