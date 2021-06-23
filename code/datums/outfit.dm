@@ -175,9 +175,15 @@
 	if(glasses)
 		H.equip_to_slot_or_del(new glasses(H), SLOT_GLASSES, TRUE)
 	if(id)
-		H.equip_to_slot_or_del(new id(H), SLOT_WEAR_ID, TRUE)
+		if(uniform)
+			H.equip_to_slot_or_del(new id(H), SLOT_WEAR_ID, TRUE)
+		else
+			H.put_in_hands(new id(H))
 	if(suit_store)
-		H.equip_to_slot_or_del(new suit_store(H), SLOT_S_STORE, TRUE)
+		if(uniform)
+			H.equip_to_slot_or_del(new suit_store(H), SLOT_S_STORE, TRUE)
+		else
+			H.put_in_hands(new id(H))
 	if(undershirt)
 		H.undershirt = initial(undershirt.name)
 
