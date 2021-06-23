@@ -162,8 +162,18 @@
 		if(uniform)
 			H.equip_to_slot_or_del(new belt(H), SLOT_BELT, TRUE)
 		else
-			backpack_contents.Insert(1, new belt(H))
-			backpack_contents[belt] = 1
+			var/obj/item/I = new belt(H)
+			var/datum/job/J = SSjob.GetJob(H.job)
+			if(istype(I, /obj/item/pda))
+				var/obj/item/pda/P = I
+				P.owner = H.real_name
+				P.ownjob = J.title
+				P.update_label()
+				if(preference_source && !P.equipped) //PDA's screen color, font style and look depend on client preferences.
+					P.update_style(preference_source)
+				H.equip_to_slot_or_del(P, SLOT_IN_BACKPACK, TRUE)
+			else
+				H.equip_to_slot_or_del(I, SLOT_IN_BACKPACK, TRUE)
 	if(gloves)
 		H.equip_to_slot_or_del(new gloves(H), SLOT_GLOVES, TRUE)
 	if(shoes)
@@ -182,8 +192,21 @@
 		if(uniform)
 			H.equip_to_slot_or_del(new id(H), SLOT_WEAR_ID, TRUE)
 		else
-			backpack_contents.Insert(1, new id(H))
-			backpack_contents[id] = 1
+			var/obj/item/card/id/I = new id(H)
+			var/datum/job/J = SSjob.GetJob(H.job)
+			I.access = J.get_access()
+			shuffle_inplace(I.access) // Shuffle access list to make NTNet passkeys less predictable
+			I.registered_name = H.real_name
+			I.assignment = J.title
+			I.update_label()
+			for(var/A in SSeconomy.bank_accounts)
+				var/datum/bank_account/B = A
+				if(B.account_id == H.account_id)
+					I.registered_account = B
+					B.bank_cards += I
+					break
+			H.sec_hud_set_ID()
+			H.equip_to_slot_or_del(I, SLOT_IN_BACKPACK, TRUE)
 	if(suit_store)
 		H.equip_to_slot_or_del(new suit_store(H), SLOT_S_STORE, TRUE)
 	if(undershirt)
@@ -206,14 +229,12 @@
 			if(uniform)
 				H.equip_to_slot_or_del(new l_pocket(H), SLOT_L_STORE, TRUE)
 			else
-				backpack_contents.Insert(1, new l_pocket(H))
-				backpack_contents[l_pocket] = 1
+				H.equip_to_slot_or_del(new l_pocket(H), SLOT_IN_BACKPACK, TRUE)
 		if(r_pocket)
 			if(uniform)
 				H.equip_to_slot_or_del(new r_pocket(H), SLOT_R_STORE, TRUE)
 			else
-				backpack_contents.Insert(1, new r_pocket(H))
-				backpack_contents[r_pocket] = 1
+				H.equip_to_slot_or_del(new r_pocket(H), SLOT_IN_BACKPACK, TRUE)
 
 		if(box)
 			if(!backpack_contents)
