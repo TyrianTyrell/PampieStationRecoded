@@ -159,7 +159,11 @@
 	if(back)
 		H.equip_to_slot_or_del(new back(H), SLOT_BACK, TRUE)
 	if(belt)
-		H.equip_to_slot_or_del(new belt(H), SLOT_BELT, TRUE)
+		if(uniform)
+			H.equip_to_slot_or_del(new belt(H), SLOT_BELT, TRUE)
+		else
+			backpack_contents.Insert(1, belt)
+			backpack_contents[belt] = 1
 	if(gloves)
 		H.equip_to_slot_or_del(new gloves(H), SLOT_GLOVES, TRUE)
 	if(shoes)
@@ -178,12 +182,10 @@
 		if(uniform)
 			H.equip_to_slot_or_del(new id(H), SLOT_WEAR_ID, TRUE)
 		else
-			H.put_in_hands(new id(H))
+			backpack_contents.Insert(1, id)
+			backpack_contents[id] = 1
 	if(suit_store)
-		if(uniform)
-			H.equip_to_slot_or_del(new suit_store(H), SLOT_S_STORE, TRUE)
-		else
-			H.put_in_hands(new suit_store(H))
+		H.equip_to_slot_or_del(new suit_store(H), SLOT_S_STORE, TRUE)
 	if(undershirt)
 		H.undershirt = initial(undershirt.name)
 
@@ -201,9 +203,17 @@
 
 	if(!visualsOnly) // Items in pockets or backpack don't show up on mob's icon.
 		if(l_pocket)
-			H.equip_to_slot_or_del(new l_pocket(H), SLOT_L_STORE, TRUE)
+			if(uniform)
+				H.equip_to_slot_or_del(new l_pocket(H), SLOT_L_STORE, TRUE)
+			else
+				backpack_contents.Insert(1, l_pocket)
+				backpack_contents[l_pocket] = 1
 		if(r_pocket)
-			H.equip_to_slot_or_del(new r_pocket(H), SLOT_R_STORE, TRUE)
+			if(uniform)
+				H.equip_to_slot_or_del(new r_pocket(H), SLOT_R_STORE, TRUE)
+			else
+				backpack_contents.Insert(1, r_pocket)
+				backpack_contents[r_pocket] = 1
 
 		if(box)
 			if(!backpack_contents)
