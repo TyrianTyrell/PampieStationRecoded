@@ -183,7 +183,7 @@
 		if(uniform)
 			H.equip_to_slot_or_del(new suit_store(H), SLOT_S_STORE, TRUE)
 		else
-			H.put_in_hands(new id(H))
+			H.put_in_hands(new suit_store(H))
 	if(undershirt)
 		H.undershirt = initial(undershirt.name)
 
