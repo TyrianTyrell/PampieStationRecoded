@@ -683,6 +683,10 @@
 	desc = "A puddle of urine. Looks like we have a leaker."
 	icon_state = "peepee"
 
+/obj/effect/decal/cleanable/waste/peepee/Initialize(mapload, list/datum/disease/diseases)
+	. = ..()
+	AddComponent(/datum/component/slippery, 80, (NO_SLIP_WHEN_WALKING | SLIDE))
+
 /datum/mood_event/soggysad
 	description = "<span class='warning'>Aw man, my pants are wet...\n</span>"
 	mood_change = -3
