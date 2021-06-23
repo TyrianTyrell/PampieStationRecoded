@@ -682,6 +682,7 @@
 	name = "urine"
 	desc = "A puddle of urine. Looks like we have a leaker."
 	icon_state = "peepee"
+	persistent = FALSE
 
 /obj/effect/decal/cleanable/waste/peepee/Initialize(mapload, list/datum/disease/diseases)
 	. = ..()
