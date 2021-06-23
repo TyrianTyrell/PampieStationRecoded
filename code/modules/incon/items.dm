@@ -31,7 +31,7 @@
 			M.brand = icon_state
 			M.brand2 = name
 			M.DiaperAppearance()
-			if (M.brand == "hefters_m" || M.brand == "hefters_f")
+			if (M.brand == "hefters_m" || M.brand == "hefters_f" || M.brand == "Miner_thick")
 				M.heftersbonus = 200
 			else
 				M.heftersbonus = 0
@@ -873,14 +873,14 @@
 	desc = "A pacifier, with a small passage in the bulb through which things like nicotine can be imbibed. This one is blue."
 	icon_state = "Pacifier_blue"
 	var/chem_volume = 30
-	var/list/list_reagents = list(/datum/reagent/drug/nicotine = 15)
+	var/list/list_reagents = list()
 
 /obj/item/clothing/mask/pacifier/p
 	name = "pink pacifier"
 	desc = "A pacifier, with a small passage in the bulb through which things like nicotine can be imbibed. This one is pink."
 	icon_state = "Pacifier_pink"
 	var/chem_volume = 30
-	var/list/list_reagents = list(/datum/reagent/drug/nicotine = 15)
+	var/list/list_reagents = list()
 
 /obj/item/clothing/mask/pacifier/d/Initialize()
 	. = ..()
