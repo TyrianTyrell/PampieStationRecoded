@@ -242,7 +242,8 @@
 
 /datum/outfit/job/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE, client/preference_source)
 	var/preference_backpack = preference_source?.prefs.backbag
-
+	if(preference_source.prefs.jumpsuit_style == PREF_NONE)
+		pda_slot = SLOT_IN_BACKPACK
 	if(preference_backpack)
 		switch(preference_backpack)
 			if(DBACKPACK)
@@ -266,6 +267,8 @@
 		holder = "[uniform]/skirt"
 		if(!text2path(holder))
 			holder = "[uniform]"
+	else if(preference_source && preference_source.prefs.jumpsuit_style == PREF_NONE)
+		holder = null
 	else
 		holder = "[uniform]"
 	uniform = text2path(holder)

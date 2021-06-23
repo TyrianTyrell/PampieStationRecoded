@@ -159,7 +159,21 @@
 	if(back)
 		H.equip_to_slot_or_del(new back(H), SLOT_BACK, TRUE)
 	if(belt)
-		H.equip_to_slot_or_del(new belt(H), SLOT_BELT, TRUE)
+		if(uniform)
+			H.equip_to_slot_or_del(new belt(H), SLOT_BELT, TRUE)
+		else
+			var/obj/item/I = new belt(H)
+			var/datum/job/J = SSjob.GetJob(H.job)
+			if(istype(I, /obj/item/pda))
+				var/obj/item/pda/P = I
+				P.owner = H.real_name
+				P.ownjob = J.title
+				P.update_label()
+				if(preference_source && !P.equipped) //PDA's screen color, font style and look depend on client preferences.
+					P.update_style(preference_source)
+				H.equip_to_slot_or_del(P, SLOT_IN_BACKPACK, TRUE)
+			else
+				H.equip_to_slot_or_del(I, SLOT_IN_BACKPACK, TRUE)
 	if(gloves)
 		H.equip_to_slot_or_del(new gloves(H), SLOT_GLOVES, TRUE)
 	if(shoes)
@@ -175,7 +189,24 @@
 	if(glasses)
 		H.equip_to_slot_or_del(new glasses(H), SLOT_GLASSES, TRUE)
 	if(id)
-		H.equip_to_slot_or_del(new id(H), SLOT_WEAR_ID, TRUE)
+		if(uniform)
+			H.equip_to_slot_or_del(new id(H), SLOT_WEAR_ID, TRUE)
+		else
+			var/obj/item/card/id/I = new id(H)
+			var/datum/job/J = SSjob.GetJob(H.job)
+			I.access = J.get_access()
+			shuffle_inplace(I.access) // Shuffle access list to make NTNet passkeys less predictable
+			I.registered_name = H.real_name
+			I.assignment = J.title
+			I.update_label()
+			for(var/A in SSeconomy.bank_accounts)
+				var/datum/bank_account/B = A
+				if(B.account_id == H.account_id)
+					I.registered_account = B
+					B.bank_cards += I
+					break
+			H.sec_hud_set_ID()
+			H.equip_to_slot_or_del(I, SLOT_IN_BACKPACK, TRUE)
 	if(suit_store)
 		H.equip_to_slot_or_del(new suit_store(H), SLOT_S_STORE, TRUE)
 	if(undershirt)
@@ -195,9 +226,15 @@
 
 	if(!visualsOnly) // Items in pockets or backpack don't show up on mob's icon.
 		if(l_pocket)
-			H.equip_to_slot_or_del(new l_pocket(H), SLOT_L_STORE, TRUE)
+			if(uniform)
+				H.equip_to_slot_or_del(new l_pocket(H), SLOT_L_STORE, TRUE)
+			else
+				H.equip_to_slot_or_del(new l_pocket(H), SLOT_IN_BACKPACK, TRUE)
 		if(r_pocket)
-			H.equip_to_slot_or_del(new r_pocket(H), SLOT_R_STORE, TRUE)
+			if(uniform)
+				H.equip_to_slot_or_del(new r_pocket(H), SLOT_R_STORE, TRUE)
+			else
+				H.equip_to_slot_or_del(new r_pocket(H), SLOT_IN_BACKPACK, TRUE)
 
 		if(box)
 			if(!backpack_contents)

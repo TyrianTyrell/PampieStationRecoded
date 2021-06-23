@@ -579,6 +579,59 @@
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "Jeans_full"
 
+/obj/item/diaper/ashwalker
+	name = "\improper Ashwaddlers"
+	desc = "Primitive looking diapers that are heat resistant."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Ashwalker"
+
+/obj/item/wetdiap/ashwalker
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Ashwalker_wet"
+
+/obj/item/poopydiap/ashwalker
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Ashwalker_messy"
+
+/obj/item/useddiap/ashwalker
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Ashwalker_full"
+
+/obj/item/diaper/alien
+	name = "\improper Butthuggers"
+	desc = "The tagline is written in Xenocommon."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "alien"
+
+/obj/item/diaper/alien/examine(mob/user)
+	if(user.language_holder.has_language(/datum/language/xenocommon))
+		desc = "A special facehugger breed that is sterile and consumes waste."
+	. = ..()
+
+/obj/item/wetdiap/alien
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "alien_wet"
+
+/obj/item/poopydiap/alien
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "alien_messy"
+
+/obj/item/useddiap/alien
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "alien_full"
+
 /obj/item/diaper/miner
 	name = "\improper Diamondpers"
 	desc = "Placeholder text"
@@ -643,6 +696,31 @@
 /datum/chemical_reaction/medicine/laxative
 	results = list(/datum/reagent/medicine/laxative = 10)
 	required_reagents = list(/datum/reagent/carbon = 2, /datum/reagent/phenol = 3, /datum/reagent/nitrogen = 1, /datum/reagent/consumable/ethanol = 4)
+
+/datum/reagent/medicine/regression
+	name = "Regression Serum"
+	taste_description = "childhood whimsy"
+	pH = 7.5
+	color = "#F034E2"
+	metabolization_rate = 0.1 * REAGENTS_METABOLISM
+
+/datum/reagent/medicine/regression/on_mob_add(mob/living/L)
+	if(iscarbon(L))
+		var/mob/living/carbon/C = L
+		metabolization_rate = 0.1 * REAGENTS_METABOLISM
+		if(C.m_intent == MOVE_INTENT_RUN)
+			C.toggle_move_intent()
+		ADD_TRAIT(C, BABYBRAINED_TRAIT, REGRESSION_TRAIT)
+		ADD_TRAIT(C, TRAIT_NORUNNING, REGRESSION_TRAIT)
+		ADD_TRAIT(C, TRAIT_NOGUNS, REGRESSION_TRAIT)
+		SEND_SIGNAL(C, COMSIG_DIAPERCHANGE, C.ckey)
+		C.statusoverlay = mutable_appearance('icons/incon/regressoray.dmi',"regressoray")
+		C.overlays += C.statusoverlay
+	return
+
+/datum/chemical_reaction/medicine/regression
+	results = list(/datum/reagent/medicine/regression = 10)
+	required_reagents = list(/datum/reagent/medicine/omnizine = 3, /datum/reagent/toxin/carpotoxin = 2, /datum/reagent/ammonia = 5)
 
 /obj/item/seeds/marshmallow
 	name = "pack of marshmallow seeds"
@@ -847,15 +925,34 @@
 	icon = 'icons/obj/storage.dmi'
 	desc = "A package of diapers."
 	var/diapersleft = 5
+	var/obj/item/diaper/stuffinside = /obj/item/diaper/plain
+
+/obj/item/diaper_package/proc/takeout(stuff, mob/user)
+	var/atom/A
+	if(ispath(stuff))
+		A = new stuff(get_turf(user))
+	else
+		A = stuff
+	if(ishuman(user) && istype(A,/obj/item))
+		var/mob/living/carbon/human/H = user
+		if(H.put_in_hands(A))
+			to_chat(H, "You take a diaper out of the package")
+			if(diapersleft == 0)
+				icon_state = addtext(icon_state,"-empty")
+			return A
+	to_chat(user, "You need a free hand to take a diaper out of the package.")
+	return null
 
 /obj/item/diaper_package/attack_self(mob/user)
 	. = ..()
-	var/stuffinside = "[type]"
-	if(user.held_items[user.get_inactive_hand_index()] == null && diapersleft > 0)
-		diapersleft--
-		user.held_items[user.get_inactive_hand_index()] = text2path(addtext("/obj/item/diaper",	remove_text(stuffinside, "/obj/item/diaper_package")))
+	if(user.held_items[user.get_inactive_hand_index()] == null)
+		if(diapersleft > 0)
+			diapersleft--
+			takeout(stuffinside, user)
+		else
+			to_chat(user, "<span class='warning'>The package is out of diapers!</span>")
 	else
-		to_chat(user, "<span class='warning'>You need a free hand to take a diaper out.</span>")
+		to_chat(user, "You need a free hand to take a diaper out of the package.")
 
 /obj/item/diaper_package/plain
 	icon_state = "diaperpack-plain"
@@ -863,22 +960,46 @@
 
 /obj/item/diaper_package/classic
 	icon_state = "diaperpack-classics"
+	stuffinside = /obj/item/diaper/classic
 	custom_price = 70
 
 /obj/item/diaper_package/hefters_m
 	icon_state = "diaperpack-heftm"
+	stuffinside = /obj/item/diaper/hefters_m
 	custom_price = 70
 
 /obj/item/diaper_package/hefters_f
 	icon_state = "diaperpack-heftf"
+	stuffinside = /obj/item/diaper/hefters_f
 	custom_price = 70
+
+/obj/item/diaper_package/syndi
+	icon_state = "diaperpack-syndichameleon"
+	stuffinside = /obj/item/diaper/syndi
+
+/obj/item/diaper_package/ratvar
+	icon_state = "diaperpack-ratvar"
+	stuffinside = /obj/item/diaper/ratvar
+
+/obj/item/diaper_package/narsie
+	icon_state = "diaperpack-narsie"
+	stuffinside = /obj/item/diaper/narsie
+
+/obj/item/diaper_package/ashwalker
+	icon_state = "diaperpack-ashwalker"
+	stuffinside = /obj/item/diaper/ashwalker
+
+/obj/item/diaper_package/alien
+	icon_state = "diaperpack-alien"
+	stuffinside = /obj/item/diaper/alien
 
 /obj/item/diaper_package/jeans
 	icon_state = "diaperpack-jeans"
+	stuffinside = /obj/item/diaper/jeans
 	custom_price = 45
 
 /obj/item/diaper_package/thick_miner
 	icon_state = "diaperpack-thickminer"
-
+	stuffinside = /obj/item/diaper/miner_thick
 
 

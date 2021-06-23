@@ -12,21 +12,18 @@
 	slot = SLOT_IN_BACKPACK
 	path = /obj/item/choice_beacon/pet
 	ckeywhitelist = list()
-	donator_group_id = PATREON_DONATOR // can be accessed by all donators
 
 /datum/gear/donator/carpet
 	name = "Carpet Beacon"
 	slot = SLOT_IN_BACKPACK
 	path = /obj/item/choice_beacon/box/carpet
 	ckeywhitelist = list()
-	donator_group_id = PATREON_DONATOR
 
 /datum/gear/donator/chameleon_bedsheet
 	name = "Chameleon Bedsheet"
 	slot = SLOT_NECK
 	path = /obj/item/bedsheet/chameleon
 	ckeywhitelist = list()
-	donator_group_id = PATREON_DONATOR
 
 /datum/gear/donator/donortestingbikehorn
 	name = "Donor item testing bikehorn"
@@ -559,4 +556,31 @@
 	name = "diaper bag"
 	slot = SLOT_IN_BACKPACK
 	path = /obj/item/storage/backpack/diaper_bag
-	ckeywhitelist = list("tyriantyrell")
+	donator_group_id = PATREON_DONATOR
+
+/datum/gear/donator/plain_diapers
+	name = "Plain diaper pack"
+	slot = SLOT_IN_BACKPACK
+	path = /obj/item/diaper_package/plain
+	donator_group_id = PATREON_DONATOR
+
+/datum/gear/donator/classic_diapers
+	name = "CuddleCom Classic pack"
+	slot = SLOT_IN_BACKPACK
+	path = /obj/item/diaper_package/classic
+	cost = 2
+	donator_group_id = PATREON_DONATOR
+
+/datum/gear/donator/hefters_m
+	name = "Hefters pack (male)"
+	slot = SLOT_IN_BACKPACK
+	path = /obj/item/diaper_package/hefters_m
+	cost = 2
+	donator_group_id = PATREON_DONATOR
+
+/datum/gear/donator/hefters_f
+	name = "Hefters pack (female)"
+	slot = SLOT_IN_BACKPACK
+	path = /obj/item/diaper_package/hefters_f
+	cost = 2
+	donator_group_id = PATREON_DONATOR
