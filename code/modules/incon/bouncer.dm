@@ -37,7 +37,11 @@
 	. = ..()
 	basey = M.pixel_y
 	bounceoverlay = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun_SOUTH")
-	M.overlays+= bounceoverlay
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		H.overlays_standing[BODYPARTS_LAYER] += bounceoverlay
+	else
+		M.overlays += bounceoverlay
 	bounceranimation(M)
 	bouncerrotation(M)
 
@@ -48,8 +52,12 @@
 			bounceoverlay = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun_SOUTH")
 		else
 			bounceoverlay = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun_SOUTH2")
-		M.overlays+= bounceoverlay
-		M.update_overlays()
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			H.overlays_standing[BODYPARTS_LAYER] += bounceoverlay
+		else
+			M.overlays += bounceoverlay
+			M.update_overlays()
 		spawn(1)
 		bouncerrotation(M)
 

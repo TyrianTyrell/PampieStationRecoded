@@ -266,6 +266,8 @@
 		holder = "[uniform]/skirt"
 		if(!text2path(holder))
 			holder = "[uniform]"
+	else if(preference_source && preference_source.prefs.jumpsuit_style == PREF_NONE)
+		holder = null
 	else
 		holder = "[uniform]"
 	uniform = text2path(holder)
