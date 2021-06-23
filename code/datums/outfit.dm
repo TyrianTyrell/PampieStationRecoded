@@ -162,7 +162,7 @@
 		if(uniform)
 			H.equip_to_slot_or_del(new belt(H), SLOT_BELT, TRUE)
 		else
-			backpack_contents.Insert(1, belt)
+			backpack_contents.Insert(1, new belt(H))
 			backpack_contents[belt] = 1
 	if(gloves)
 		H.equip_to_slot_or_del(new gloves(H), SLOT_GLOVES, TRUE)
@@ -182,7 +182,7 @@
 		if(uniform)
 			H.equip_to_slot_or_del(new id(H), SLOT_WEAR_ID, TRUE)
 		else
-			backpack_contents.Insert(1, id)
+			backpack_contents.Insert(1, new id(H))
 			backpack_contents[id] = 1
 	if(suit_store)
 		H.equip_to_slot_or_del(new suit_store(H), SLOT_S_STORE, TRUE)
@@ -206,13 +206,13 @@
 			if(uniform)
 				H.equip_to_slot_or_del(new l_pocket(H), SLOT_L_STORE, TRUE)
 			else
-				backpack_contents.Insert(1, l_pocket)
+				backpack_contents.Insert(1, new l_pocket(H))
 				backpack_contents[l_pocket] = 1
 		if(r_pocket)
 			if(uniform)
 				H.equip_to_slot_or_del(new r_pocket(H), SLOT_R_STORE, TRUE)
 			else
-				backpack_contents.Insert(1, r_pocket)
+				backpack_contents.Insert(1, new r_pocket(H))
 				backpack_contents[r_pocket] = 1
 
 		if(box)
