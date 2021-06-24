@@ -39,7 +39,7 @@
 	bounceoverlay = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun_SOUTH")
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		H.overlays_standing[BODYPARTS_LAYER] += bounceoverlay
+		H.overlays_standing[BODY_LAYER] += bounceoverlay
 	else
 		M.overlays += bounceoverlay
 	bounceranimation(M)
@@ -54,7 +54,7 @@
 				bounceoverlay = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun_SOUTH")
 			else
 				bounceoverlay = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun_SOUTH2")
-			H.overlays_standing[BODYPARTS_LAYER] += bounceoverlay
+			H.overlays_standing[BODY_LAYER] += bounceoverlay
 			H.update_overlays()
 	else
 		if(has_buckled_mobs())
@@ -76,7 +76,7 @@
 	bouncey = 0
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		H.overlays_standing[BODYPARTS_LAYER] -= bounceoverlay
+		H.overlays_standing[BODY_LAYER] -= bounceoverlay
 	else
 		M.overlays -= bounceoverlay
 	bounceoverlay = null
