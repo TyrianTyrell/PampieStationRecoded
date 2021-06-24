@@ -458,7 +458,6 @@
 
 /datum/plant_gene/trait/eyes
 	name = "Oculary Mimicry"
-	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_EXTRACTABLE
 	var/mutable_appearance/googly
 
 /datum/plant_gene/trait/eyes/on_new(obj/item/reagent_containers/food/snacks/grown/G, newloc)

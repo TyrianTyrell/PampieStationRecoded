@@ -46,20 +46,27 @@
 	bouncerrotation(M)
 
 /obj/structure/chair/bouncer/proc/bouncerrotation(mob/living/M)
-	if(has_buckled_mobs())
-		M.overlays-= bounceoverlay
-		if(bouncey == 0)
-			bounceoverlay = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun_SOUTH")
-		else
-			bounceoverlay = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun_SOUTH2")
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(has_buckled_mobs())
+			H.overlays-= bounceoverlay
+			if(bouncey == 0)
+				bounceoverlay = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun_SOUTH")
+			else
+				bounceoverlay = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun_SOUTH2")
 			H.overlays_standing[BODYPARTS_LAYER] += bounceoverlay
-		else
+			H.update_overlays()
+	else
+		if(has_buckled_mobs())
+			M.overlays-= bounceoverlay
+			if(bouncey == 0)
+				bounceoverlay = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun_SOUTH")
+			else
+				bounceoverlay = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun_SOUTH2")
 			M.overlays += bounceoverlay
 			M.update_overlays()
-		spawn(1)
-		bouncerrotation(M)
+	spawn(1)
+	bouncerrotation(M)
 
 /obj/structure/chair/bouncer/post_unbuckle_mob(mob/living/M)
 	. = ..()
