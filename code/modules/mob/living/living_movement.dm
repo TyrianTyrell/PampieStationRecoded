@@ -7,7 +7,7 @@
 	. = ..()
 	if(ismousemovement)
 		update_pixel_shifting()
-	if(src.buckled)
+	if(src.buckled && newdir != dir)
 		SEND_SIGNAL(src.buckled, COMSIG_BUCKLED_MOB_DIRECTION, src)
 
 /mob/living/proc/update_pixel_shifting(moved = FALSE)

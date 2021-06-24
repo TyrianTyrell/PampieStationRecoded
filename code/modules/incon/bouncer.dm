@@ -67,7 +67,11 @@
 	M.pixel_y = 0
 	basey = 0
 	bouncey = 0
-	M.overlays-= bounceoverlay
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		H.overlays_standing[BODYPARTS_LAYER] -= bounceoverlay
+	else
+		M.overlays -= bounceoverlay
 	bounceoverlay = null
 	M.update_overlays()
 	icon_state = "boun_SOUTH"
