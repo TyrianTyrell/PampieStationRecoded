@@ -4,7 +4,7 @@
 	icon = 'icons/incon/bouncy.dmi'
 	icon_state = "boun_SOUTH"
 	buildstacktype = /obj/item/stack/sheet/cloth
-	buildstackamount = 3
+	buildstackamount = 2
 	item_chair = null
 	var/bouncey = 0
 	var/basey = 0
