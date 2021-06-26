@@ -239,6 +239,7 @@
 	if(buckled && istype(buckled, /obj/structure/chair/bouncer))
 		var/obj/structure/chair/bouncer/B = buckled
 		overlays_standing[BOUNCER_FRONT_LAYER] = B.bounceoverlaySOUTH
+		overlays_standing[BACK_LAYER] = B.bounceoverlayBAG
 	apply_overlay(BOUNCER_FRONT_LAYER)
 	apply_overlay(BACK_LAYER)
 

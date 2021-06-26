@@ -81,7 +81,7 @@
 						return
 					if(HAS_TRAIT(C, TRAIT_INCONTINENT) || HAS_TRAIT(C,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(C,BABYBRAINED_TRAIT) || HAS_TRAIT(C,TRAIT_DIAPERUSE) || HAS_TRAIT(C,TRAIT_POTTYREBEL)) //Diaper checks!
 						var/dipetype = C.brand2
-						if(dipetype == "\improper SyndiStinker Chameleons" || "diaper")
+						if(dipetype == "\improper SyndiStinker Chameleons" || dipetype == "diaper")
 							dipetype = "plain"
 						to_chat(user, "<span class='notice'>You check [C]'s diaper...</span>")
 						if(C.wetness > 0)

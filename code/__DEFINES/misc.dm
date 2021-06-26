@@ -35,7 +35,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define GENITALS_BEHIND_LAYER	34		//Some genitalia needs to be behind everything, such as with taurs (Taurs use body_behind_layer
 #define BODY_BEHIND_LAYER		33		//certain mutantrace features (tail when looking south) that must appear behind the body parts
 #define BODYPARTS_LAYER			32		//Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
-#define BOUNCER_BEHIND_LAYER	31	
+#define BOUNCER_BEHIND_LAYER	31
 #define MARKING_LAYER			30		//Matrixed body markings because clashing with snouts?
 #define BODY_ADJ_LAYER			29		//certain mutantrace features (snout, body markings) that must appear above the body parts
 #define GENITALS_FRONT_LAYER	28		//Draws some genitalia above clothes and the TAUR body if need be.
@@ -55,7 +55,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define BELT_LAYER				14		//Possible make this an overlay of somethign required to wear a belt?
 #define SUIT_STORE_LAYER		13
 #define NECK_LAYER				12
-#define BACK_LAYER				11
+#define 	BACK_LAYER				11
 #define HAIR_LAYER				10		//TODO: make part of head layer?
 #define HORNS_LAYER				9
 #define FACEMASK_LAYER			8
