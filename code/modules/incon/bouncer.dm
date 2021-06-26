@@ -9,6 +9,7 @@
 	var/bouncey = 0
 	var/basey = 0
 	var/bounceoverlay = null
+	var/bounceoverlaySOUTH = null
 	var/list/MA = list()
 
 /obj/structure/chair/bouncer/proc/bounceranimation(mob/living/M)
@@ -40,21 +41,37 @@
 /obj/structure/chair/bouncer/post_buckle_mob(mob/living/M)
 	. = ..()
 	basey = M.pixel_y
-	bounceoverlay = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun_SOUTH")
-	M.overlays += bounceoverlay
-	M.update_overlays()
+	bounceoverlay = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun")
+	bounceoverlaySOUTH = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun", -BOUNCER_FRONT_LAYER)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		H.update_chair_overlay()
+	else
+		M.overlays += bounceoverlay
+		M.update_overlays()
 	bounceranimation(M)
 	bouncerrotation(M)
 
 /obj/structure/chair/bouncer/proc/bouncerrotation(mob/living/M)
 	if(has_buckled_mobs())
-		M.overlays -= bounceoverlay
-		if(bouncey == 0)
-			bounceoverlay = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun_SOUTH")
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			H.update_chair_overlay()
 		else
-			bounceoverlay = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun_SOUTH2")
-		M.overlays += bounceoverlay
-		M.update_overlays()
+			M.overlays -= bounceoverlay
+			M.update_overlays()
+		if(bouncey == 0)
+			bounceoverlay = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun")
+			bounceoverlaySOUTH = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun", -BOUNCER_FRONT_LAYER)
+		else
+			bounceoverlay = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun2")
+			bounceoverlaySOUTH = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun2", -BOUNCER_FRONT_LAYER)
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			H.update_chair_overlay()
+		else
+			M.overlays += bounceoverlay
+			M.update_overlays()
 		spawn(1)
 		bouncerrotation(M)
 
@@ -67,5 +84,9 @@
 	M.overlays -= bounceoverlay
 	M.update_overlays()
 	bounceoverlay = null
-	icon_state = "boun_SOUTH"
+	bounceoverlaySOUTH = null
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		H.update_chair_overlay()
+	icon_state = "boun"
 
