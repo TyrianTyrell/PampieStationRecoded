@@ -2,7 +2,7 @@
 	name = "bouncer"
 	desc = "For big babies to bounce in!"
 	icon = 'icons/incon/bouncy.dmi'
-	icon_state = "boun_SOUTH"
+	icon_state = "boun"
 	buildstacktype = /obj/item/stack/sheet/cloth
 	buildstackamount = 3
 	item_chair = null
@@ -10,6 +10,7 @@
 	var/basey = 0
 	var/bounceoverlay = null
 	var/bounceoverlaySOUTH = null
+	var/bounceoverlayBAG = null
 	var/list/MA = list()
 
 /obj/structure/chair/bouncer/proc/bounceranimation(mob/living/M)
@@ -20,13 +21,13 @@
 			bouncey = 0
 		var/currenty = basey + bouncey
 		if(bouncey == 0)
-			icon_state = "boun_SOUTH"
+			icon_state = "boun"
 			if(iscarbon(M))
 				var/mob/living/carbon/N = M
 				if(N.stinkiness > 0)
 					to_chat(M,"<span class='warning'>Squish!</span>")
 		else
-			icon_state = "boun_SOUTH2"
+			icon_state = "boun"
 		M.pixel_y = currenty
 		src.pixel_y = currenty
 		bounceranimation(M)
@@ -45,6 +46,8 @@
 	bounceoverlaySOUTH = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun", -BOUNCER_FRONT_LAYER)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
+		bounceoverlayBAG = H.overlays_standing[BACK_LAYER]
+		H.overlays_standing[BACK_LAYER] = null
 		H.update_chair_overlay()
 	else
 		M.overlays += bounceoverlay
@@ -87,6 +90,8 @@
 	bounceoverlaySOUTH = null
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
+		H.overlays_standing[BACK_LAYER] = bounceoverlayBAG
 		H.update_chair_overlay()
+	bounceoverlayBAG = null
 	icon_state = "boun"
 

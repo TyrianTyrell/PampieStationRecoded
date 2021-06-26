@@ -235,10 +235,12 @@
 
 /mob/living/carbon/proc/update_chair_overlay()
 	remove_overlay(BOUNCER_FRONT_LAYER)
+	remove_overlay(BACK_LAYER)
 	if(buckled && istype(buckled, /obj/structure/chair/bouncer))
 		var/obj/structure/chair/bouncer/B = buckled
 		overlays_standing[BOUNCER_FRONT_LAYER] = B.bounceoverlaySOUTH
 	apply_overlay(BOUNCER_FRONT_LAYER)
+	apply_overlay(BACK_LAYER)
 
 /////////////////////
 // Limb Icon Cache //
