@@ -26,7 +26,7 @@
 			if (on_purpose == 1)
 				src.visible_message("<span class='notice'>[src] scrunches [src.p_their()] legs and lets the floodgates open.</span>","<span class='notice'>You scrunch your legs and let the floodgates open.</span>")
 			else
-				src.visible_message("<span class='notice'>[src]'s legs buckle as [src.p_they()] are unable to stop [src.p_their()] bladder from leaking into [src.p_their()] pants!</span>","<span class='notice'>Your legs buckle as you are unable to stop your bladder from leaking into your pants!</span>")
+				src.visible_message("<span class='notice'>[src]'s legs buckle as [src.p_they()] [src.p_are()] unable to stop [src.p_their()] bladder from leaking into [src.p_their()] pants!</span>","<span class='notice'>Your legs buckle as you are unable to stop your bladder from leaking into your pants!</span>")
 		if(pee > max_continence)
 			pee = max_continence
 		if(wetness + pee < 250 + heftersbonus)
