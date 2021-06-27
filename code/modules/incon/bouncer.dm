@@ -45,6 +45,7 @@
 	basey = M.pixel_y
 	bounceoverlay = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun")
 	bounceoverlaySOUTH = mutable_appearance('icons/incon/bounceroverlay.dmi',"boun", -BOUNCER_FRONT_LAYER)
+	bounceoverlayBAG = null
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		bounceoverlayBAG2 = H.overlays_standing[BACK_LAYER]
@@ -92,6 +93,5 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		H.update_chair_overlay()
-	bounceoverlayBAG = null
 	icon_state = "boun"
 

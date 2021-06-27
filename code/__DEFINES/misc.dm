@@ -55,7 +55,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define BELT_LAYER				14		//Possible make this an overlay of somethign required to wear a belt?
 #define SUIT_STORE_LAYER		13
 #define NECK_LAYER				12
-#define 	BACK_LAYER				11
+#define BACK_LAYER				11
 #define HAIR_LAYER				10		//TODO: make part of head layer?
 #define HORNS_LAYER				9
 #define FACEMASK_LAYER			8

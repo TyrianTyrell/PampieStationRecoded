@@ -518,4 +518,4 @@
 	materials = list(/datum/material/iron = 5000, /datum/material/glass = 2500, /datum/material/uranium = 500, /datum/material/gold = 200)
 	build_path = /obj/item/gun/energy/regressoray
 	category = list("Weapons")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
