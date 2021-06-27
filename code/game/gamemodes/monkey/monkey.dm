@@ -13,7 +13,7 @@
 	recommended_enemies = 1
 	chaos = 9
 
-	restricted_jobs = list("Cyborg", "AI")
+	restricted_jobs = list("Cyborg", "AI", "Security Officer", "Head of Security", "Captain", "Head of Personnel", "Prisoner")
 
 	var/carriers_to_make = 1
 	var/list/carriers = list()

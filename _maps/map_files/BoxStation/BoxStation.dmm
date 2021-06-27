@@ -54,7 +54,7 @@
 "abc" = (/turf/closed/wall,/area/security/execution/transfer)
 "abd" = (/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{dir = 1},/turf/closed/wall,/area/security/execution/transfer)
 "abe" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 4},/turf/closed/wall,/area/security/execution/transfer)
-"abf" = (/obj/structure/bed,/turf/open/floor/plasteel/dark,/area/security/prison)
+"abf" = (/obj/structure/bed,/obj/effect/landmark/start/prisoner,/turf/open/floor/plasteel/dark,/area/security/prison)
 "abg" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 10},/turf/closed/wall,/area/security/execution/transfer)
 "abh" = (/obj/machinery/door/airlock/security/glass{name = "Long-Term Cell 1"; req_access_txt = "2"},/turf/open/floor/plasteel/dark,/area/security/prison)
 "abi" = (/obj/machinery/light{dir = 1},/turf/open/floor/plasteel,/area/security/prison)

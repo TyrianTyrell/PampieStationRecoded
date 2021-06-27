@@ -2664,6 +2664,7 @@
 	dir = 1
 	},
 /obj/item/toy/plush/slimeplushie,
+/obj/effect/landmark/start/prisoner,
 /turf/open/floor/plasteel,
 /area/security/prison)
 "agK" = (
@@ -2699,6 +2700,7 @@
 	dir = 1
 	},
 /obj/item/toy/plush/lizardplushie,
+/obj/effect/landmark/start/prisoner,
 /turf/open/floor/plasteel,
 /area/security/prison)
 "agM" = (

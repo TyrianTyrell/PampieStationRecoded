@@ -140,7 +140,7 @@ Credit where due:
 	recommended_enemies = 5
 	enemy_minimum_age = 7
 	protected_jobs = list("AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster") //Silicons can eventually be converted
-	restricted_jobs = list("Chaplain", "Captain")
+	restricted_jobs = list("Chaplain", "Captain", "Prisoner")
 	announce_span = "brass"
 	announce_text = "Servants of Ratvar are trying to summon the Justiciar!\n\
 	<span class='brass'>Servants</span>: Construct defenses to protect the Ark. Sabotage the station!\n\

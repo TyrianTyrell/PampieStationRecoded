@@ -13,8 +13,8 @@
 	antag_flag = ROLE_REV
 	false_report_weight = 10
 	chaos = 8
-	restricted_jobs = list("AI", "Cyborg")
-	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	restricted_jobs = list("Prisoner", "AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	protected_jobs = list("Shaft Miner") // Just because head rev miners can instantly end the round.
 	required_players = 20
 	required_enemies = 1
 	recommended_enemies = 3
