@@ -23,6 +23,8 @@
 			zone = BODY_ZONE_L_LEG
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			zone = BODY_ZONE_R_LEG
+		if(BODY_ZONE_PRECISE_GROIN)
+			zone = BODY_ZONE_CHEST
 	return zone
 
 

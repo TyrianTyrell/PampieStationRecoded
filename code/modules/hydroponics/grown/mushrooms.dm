@@ -150,6 +150,7 @@
 	maturation = 5
 	yield = 1
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
+	genes = list(/datum/plant_gene/trait/eyes)
 	mutatelist = list()
 	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.05, /datum/reagent/consumable/nutriment = 0.15)
 	rarity = 30

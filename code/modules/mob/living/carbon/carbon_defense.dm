@@ -315,9 +315,9 @@
 					"<span class='notice'>You shake [src]'s hand.</span>", target = src,
 					target_message = "<span class='notice'>[M] shakes your hand.</span>")
 
-		else if (check_zone(M.zone_selected) == BODY_ZONE_PRECISE_GROIN && (HAS_TRAIT(src, TRAIT_INCONTINENT) || HAS_TRAIT(src,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(src,BABYBRAINED_TRAIT) || HAS_TRAIT(src,TRAIT_DIAPERUSE) || HAS_TRAIT(src,TRAIT_POTTYREBEL)) && M.get_active_held_item() == null) //Diaper checks!
+		else if (M.zone_selected == BODY_ZONE_PRECISE_GROIN && (HAS_TRAIT(src, TRAIT_INCONTINENT) || HAS_TRAIT(src,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(src,BABYBRAINED_TRAIT) || HAS_TRAIT(src,TRAIT_DIAPERUSE) || HAS_TRAIT(src,TRAIT_POTTYREBEL)) && M.get_active_held_item() == null) //Diaper checks!
 			var/dipetype = src.brand2
-			if(dipetype == "\improper SyndiStinker Chameleons" || "diaper")
+			if(dipetype == "\improper SyndiStinker Chameleons" || dipetype == "diaper")
 				dipetype = "plain"
 			to_chat(M, "<span class='notice'>You check [src]'s diaper...</span>")
 			if(src.wetness > 0)

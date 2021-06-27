@@ -7,8 +7,9 @@
 	. = ..()
 	if(ismousemovement)
 		update_pixel_shifting()
-	if(src.buckled)
+	if(src.buckled && istype(src.buckled, /obj/structure/chair/bouncer))
 		SEND_SIGNAL(src.buckled, COMSIG_BUCKLED_MOB_DIRECTION, src)
+		update_icon()
 
 /mob/living/proc/update_pixel_shifting(moved = FALSE)
 	if(combat_flags & COMBAT_FLAG_ACTIVE_BLOCKING)
