@@ -4,7 +4,7 @@
 	speech_verb = "babbles"
 	ask_verb = "coos"
 	exclaim_verb = "tantrums"
-	key = "6"
+	key = "5"
 	space_chance = 85
 	default_priority = 90
 	flags = LANGUAGE_HIDE_ICON_IF_NOT_UNDERSTOOD
