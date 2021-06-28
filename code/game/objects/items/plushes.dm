@@ -775,6 +775,12 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	squeak_override = list('modular_citadel/sound/voice/nya.ogg' = 1)
 	can_random_spawn = FALSE
 
+/obj/item/toy/plush/succubun
+	name = "Plushccubun"
+	desc = "A pocket version of an already pocket sized critter."
+	icon_state = "succubun"
+	item_state = "succubun"
+	attack_verb = list("newspapered", "bapped", "booped")
 
 /obj/item/toy/plush/hairball
 	name = "Hairball"
