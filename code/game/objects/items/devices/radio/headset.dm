@@ -130,6 +130,12 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	icon_state = "med_headset"
 	keyslot = new /obj/item/encryptionkey/headset_med
 
+/obj/item/radio/headset/headset_srvmed
+	name = "psychology headset"
+	desc = "A headset allowing the wearer to communicate with medbay and service."
+	icon_state = "med_headset"
+	keyslot = new /obj/item/encryptionkey/headset_srvmed
+
 /obj/item/radio/headset/headset_sci
 	name = "science radio headset"
 	desc = "A sciency headset. Like usual."

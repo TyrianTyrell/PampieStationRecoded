@@ -49,6 +49,11 @@
 	icon_state = "med_cypherkey"
 	channels = list(RADIO_CHANNEL_MEDICAL = 1)
 
+/obj/item/encryptionkey/headset_srvmed
+	name = "psychology radio encryption key"
+	icon_state = "srvmed_cypherkey"
+	channels = list(RADIO_CHANNEL_MEDICAL = 1, RADIO_CHANNEL_SERVICE = 1)
+
 /obj/item/encryptionkey/headset_sci
 	name = "science radio encryption key"
 	icon_state = "sci_cypherkey"
