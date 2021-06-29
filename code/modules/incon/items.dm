@@ -1204,6 +1204,6 @@
 	else
 		to_chat(user, "You need a free hand to take a pacifier out of the package.")
 
-/obj/item/diaper_package/nuk
+/obj/item/paci_package/nuk
 	icon_state = "nukpack"
 	custom_price = 50

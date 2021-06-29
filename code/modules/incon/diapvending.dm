@@ -21,7 +21,7 @@
 					/obj/item/diaper/punk = 20,
 					/obj/item/diaper/punk_thick = 10,
 					/obj/item/diaper/camo = 10,
-					/obj/item/diaper/jeans_thick = 20
+					/obj/item/diaper/jeans_thick = 20,
 					/obj/item/diaper/bee = 15)
 	armor = list("melee" = 100, "bullet" = 100, "laser" = 100, "energy" = 100, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50)
 	resistance_flags = FIRE_PROOF
