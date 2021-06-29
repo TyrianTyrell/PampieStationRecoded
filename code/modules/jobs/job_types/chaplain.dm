@@ -95,12 +95,15 @@
 			B.name = "The Tenets of Servicia"
 			B.deity_name = pick("Servicia", "Space Bacchus", "Space Dionysus")
 			B.desc = "Happy, Full, Clean. Live it and give it."
+			access += ACCESS_BAR
 		if("subgenius")
 			B.name = "Book of the SubGenius"
 		if("toolboxia","greytide")
 			B.name = pick("Toolbox Manifesto","iGlove Assistants")
 		if("weeaboo","kawaii")
 			B.name = pick("Fanfiction Compendium","Japanese for Dummies","The Manganomicon","Establishing Your O.T.P")
+		if("nature","gaia")
+			access += ACCESS_HYDROPONICS
 		else
 			B.name = "The Holy Book of [new_religion]"
 
