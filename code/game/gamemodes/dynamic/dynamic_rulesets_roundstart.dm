@@ -11,8 +11,8 @@
 	antag_flag = ROLE_TRAITOR
 	antag_datum = /datum/antagonist/traitor/
 	minimum_required_age = 0
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster", "Cyborg")
-	restricted_roles = list("Cyborg", "AI")
+	protected_roles = list("Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	restricted_roles = list("Prisoner", "Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel")
 	required_candidates = 1
 	flags = TRAITOR_RULESET | MINOR_RULESET | ALWAYS_MAX_WEIGHT_RULESET
 	weight = 5
@@ -44,8 +44,8 @@
 	config_tag = "traitorbro"
 	antag_flag = ROLE_BROTHER
 	antag_datum = /datum/antagonist/brother
-	restricted_roles = list("AI", "Cyborg")
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	restricted_roles = list("AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Prisoner")
+	protected_roles = list("Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 2
 	flags = MINOR_RULESET
 	weight = 4
@@ -94,8 +94,8 @@
 	config_tag = "changeling"
 	antag_flag = ROLE_CHANGELING
 	antag_datum = /datum/antagonist/changeling
-	restricted_roles = list("AI", "Cyborg")
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	restricted_roles = list("AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel")
+	protected_roles = list("Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 1
 	flags = MINOR_RULESET
 	weight = 3
@@ -145,8 +145,7 @@
 	name = "Heretics"
 	antag_flag = "heretic"
 	antag_datum = /datum/antagonist/heretic
-	protected_roles = list("Prisoner","Security Officer", "Warden", "Detective", "Head of Security", "Captain")
-	restricted_roles = list("AI", "Cyborg")
+	restricted_roles = list("AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Prisoner")
 	required_candidates = 1
 	flags = MINOR_RULESET
 	weight = 3
@@ -255,8 +254,8 @@
 	antag_flag = ROLE_CULTIST
 	antag_datum = /datum/antagonist/cult
 	minimum_required_age = 14
-	restricted_roles = list("AI", "Cyborg")
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	restricted_roles = list("AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Prisoner")
+	protected_roles = list("Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 2
 	weight = 3
 	cost = 30
@@ -403,7 +402,7 @@
 	antag_flag_override = ROLE_REV
 	antag_datum = /datum/antagonist/rev/head
 	minimum_required_age = 14
-	restricted_roles = list("AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	restricted_roles = list("Prisoner", "AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 3
 	weight = 2
 	delay = 7 MINUTES
@@ -552,7 +551,7 @@
 	config_tag = "clockwork_cult"
 	antag_flag = ROLE_SERVANT_OF_RATVAR
 	antag_datum = /datum/antagonist/clockcult
-	restricted_roles = list("AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	restricted_roles = list("AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Prisoner")
 	required_candidates = 4
 	weight = 3
 	cost = 35
@@ -841,8 +840,8 @@
 	antag_flag = ROLE_BLOODSUCKER
 	antag_datum = ANTAG_DATUM_BLOODSUCKER
 	minimum_required_age = 0
-	protected_roles = list("Chaplain", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
-	restricted_roles = list("Cyborg", "AI")
+	protected_roles = list("Prisoner", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	restricted_roles = list("Cyborg", "AI", "Chaplain", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel")
 	required_candidates = 1
 	flags = MINOR_RULESET
 	weight = 2

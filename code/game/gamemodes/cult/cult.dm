@@ -39,8 +39,8 @@
 	antag_flag = ROLE_CULTIST
 	false_report_weight = 10
 	chaos = 8
-	restricted_jobs = list("AI", "Cyborg")
-	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	restricted_jobs = list("AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Prisoner")
+	protected_jobs = list("Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_players = 30
 	required_enemies = 3
 	recommended_enemies = 5

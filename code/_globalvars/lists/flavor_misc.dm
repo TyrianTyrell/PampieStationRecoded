@@ -341,7 +341,9 @@ GLOBAL_LIST_INIT(job_heirlooms, list(
 	"Scientist" = list(/obj/item/toy/plush/slimeplushie),
 	"Assistant" = list(/obj/item/clothing/gloves/cut/family),
 	"Chaplain" = list(/obj/item/camera/spooky/family),
-	"Head of Personnel" = list(/obj/item/pinpointer/ian)
+	"Head of Personnel" = list(/obj/item/pinpointer/ian),
+	"Prisoner" = list(/obj/item/soap, /obj/item/instrument/harmonica),
+	"Psychologist" = list(/obj/item/storage/pill_bottle)
 	))
 
 //body ids that have non-gendered bodyparts

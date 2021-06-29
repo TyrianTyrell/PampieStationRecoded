@@ -58004,6 +58004,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/effect/landmark/start/prisoner,
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/prison)
 "bPn" = (
@@ -60902,6 +60903,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/effect/landmark/start/prisoner,
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/prison)
 "bTJ" = (

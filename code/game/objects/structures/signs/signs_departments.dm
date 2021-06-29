@@ -82,3 +82,8 @@
 
 /obj/structure/sign/departments/medbay/alt
 	icon_state = "bluecross2"
+
+/obj/structure/sign/departments/psychology
+	name = "\improper PSYCHOLOGY"
+	desc = "A sign labelling where the Psychologist works, they can probably help you get your head straight."
+	icon_state = "psychology"
