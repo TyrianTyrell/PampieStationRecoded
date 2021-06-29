@@ -13,7 +13,6 @@
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 1
-	STR.can_hold_extra = HOLY_WEAPONS
 
 /obj/item/storage/book/attack_self(mob/user)
 	to_chat(user, "<span class='notice'>The pages of [title] have been cut out!</span>")
@@ -43,6 +42,12 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "bible",  
 /obj/item/storage/book/bible/Initialize()
 	. = ..()
 	AddComponent(/datum/component/anti_magic, FALSE, TRUE)
+
+/obj/item/storage/book/bible/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	for(var/fuck in (subtypesof(/obj/item/nullrod) + list(HOLY_WEAPONS)))
+		STR.can_hold_extra += fuck
 
 /obj/item/storage/book/bible/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is offering [user.p_them()]self to [deity_name]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
