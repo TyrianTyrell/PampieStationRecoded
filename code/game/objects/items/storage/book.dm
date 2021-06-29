@@ -46,6 +46,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "bible",  
 /obj/item/storage/book/bible/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_w_class = WEIGHT_CLASS_HUGE
 	for(var/fuck in (subtypesof(/obj/item/nullrod) + list(HOLY_WEAPONS)))
 		STR.can_hold_extra += fuck
 
