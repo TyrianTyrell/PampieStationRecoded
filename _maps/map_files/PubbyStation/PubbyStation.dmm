@@ -25947,12 +25947,10 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 5
 	},
-/obj/structure/chair{
-	dir = 4
-	},
 /obj/structure/sign/poster/official/random{
 	pixel_x = -32
 	},
+/obj/structure/closet/firecloset,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "big" = (
@@ -26210,13 +26208,6 @@
 /turf/open/floor/plasteel/grimy,
 /area/commons/lounge)
 "biO" = (
-/obj/structure/table/glass,
-/obj/item/healthanalyzer{
-	layer = 3.1
-	},
-/obj/item/pen{
-	layer = 3.2
-	},
 /obj/structure/sign/poster/official/random{
 	pixel_y = -32
 	},
@@ -26224,6 +26215,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/structure/closet/emcloset,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "biP" = (
@@ -26239,44 +26231,18 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/obj/structure/sign/departments/examroom{
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/structure/sign/departments/psychology{
 	pixel_y = -32
-	},
-/obj/effect/turf_decal/tile/blue,
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/turf/open/floor/plasteel,
-/area/hallway/primary/central)
-"biR" = (
-/obj/machinery/light,
-/obj/machinery/camera{
-	c_tag = "Central Primary Hallway Genetics";
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/blue,
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/turf/open/floor/plasteel,
-/area/hallway/primary/central)
-"biS" = (
-/obj/structure/closet/emcloset,
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "biT" = (
-/obj/structure/closet/firecloset,
-/obj/structure/sign/poster/official/random{
-	pixel_y = -32
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/turf/open/floor/plasteel,
-/area/hallway/primary/central)
+/turf/closed/wall,
+/area/medical/psychology)
 "biW" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/door/airlock/maintenance{
@@ -26493,9 +26459,12 @@
 /turf/closed/wall,
 /area/commons/storage/emergency/port)
 "bjN" = (
-/obj/effect/spawner/structure/window,
-/turf/open/floor/plating,
-/area/commons/storage/emergency/port)
+/obj/structure/chair/sofa/right{
+	dir = 1
+	},
+/obj/item/toy/plush/mothplushie,
+/turf/open/floor/carpet,
+/area/medical/psychology)
 "bjP" = (
 /obj/machinery/space_heater,
 /turf/open/floor/plating,
@@ -26901,16 +26870,32 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -28
 	},
-/turf/open/floor/plasteel/freezer,
-/area/commons/storage/emergency/port)
+/obj/structure/filingcabinet/medical,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/psychology)
 "bkY" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel/freezer,
-/area/commons/storage/emergency/port)
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/psychology)
 "bkZ" = (
 /obj/machinery/light{
 	dir = 1
@@ -26921,22 +26906,29 @@
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /obj/machinery/power/apc{
+	areastring = "/area/medical/psychology";
 	dir = 1;
-	name = "Port Emergency Storage APC";
+	name = "Psychologist's Office APC";
 	pixel_y = 23
 	},
 /obj/structure/cable{
 	icon_state = "0-2";
 	pixel_y = 1
 	},
-/turf/open/floor/plasteel/freezer,
-/area/commons/storage/emergency/port)
-"bla" = (
-/obj/machinery/airalarm{
-	pixel_y = 22
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
 	},
-/turf/open/floor/plasteel/freezer,
-/area/commons/storage/emergency/port)
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/psychology)
+"bla" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/psychology)
 "blb" = (
 /turf/open/floor/plating,
 /area/commons/storage/emergency/port)
@@ -27506,8 +27498,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance{
-	name = "Genetics Maintenance";
-	req_one_access_txt = "12;45;5;9"
+	name = "Psychologist's Office";
+	req_one_access_txt = "5;71"
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
@@ -27515,8 +27507,8 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/open/floor/plasteel/freezer,
-/area/commons/storage/emergency/port)
+/turf/open/floor/carpet,
+/area/medical/psychology)
 "bmi" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
@@ -27530,8 +27522,8 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/open/floor/plasteel/freezer,
-/area/commons/storage/emergency/port)
+/turf/open/floor/carpet,
+/area/medical/psychology)
 "bmj" = (
 /obj/structure/disposalpipe/segment{
 	dir = 10
@@ -27543,18 +27535,31 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/open/floor/plasteel/freezer,
-/area/commons/storage/emergency/port)
+/obj/effect/landmark/start/psychologist,
+/obj/structure/chair/comfy/brown{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/medical/psychology)
 "bmk" = (
-/obj/structure/table,
-/obj/item/crowbar,
-/obj/item/storage/toolbox/emergency,
-/turf/open/floor/plasteel/freezer,
-/area/commons/storage/emergency/port)
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/plasteel/white,
+/area/medical/psychology)
 "bml" = (
-/obj/structure/girder,
-/turf/open/floor/plating,
-/area/commons/storage/emergency/port)
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/light,
+/obj/machinery/camera{
+	c_tag = "Central Primary Hallway Genetics";
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "bmn" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Medbay Maintenance";
@@ -27989,19 +27994,15 @@
 /turf/closed/wall,
 /area/medical/genetics)
 "bnw" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/medical/glass{
-	name = "Cloning";
-	req_one_access_txt = "5;9"
-	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/effect/mapping_helpers/airlock/unres,
-/turf/open/floor/plasteel/freezer,
-/area/commons/storage/emergency/port)
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/green,
+/turf/open/floor/carpet,
+/area/medical/psychology)
 "bnx" = (
 /obj/structure/sign/poster/official/random{
 	pixel_x = -32
@@ -28397,53 +28398,60 @@
 /turf/open/floor/plating,
 /area/medical/genetics)
 "bov" = (
-/obj/structure/closet/secure_closet/personal/patient,
-/obj/effect/turf_decal/tile/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/blue{
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/turf/open/floor/plasteel/white,
-/area/medical/genetics)
+/obj/structure/sign/poster/official/random{
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "bow" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
+/obj/machinery/airalarm{
+	pixel_y = 22
+	},
+/obj/structure/table/wood,
+/obj/machinery/computer/med_data/laptop,
+/obj/effect/turf_decal/tile/blue{
 	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
 /turf/open/floor/plasteel/white,
-/area/medical/genetics)
+/area/medical/psychology)
 "box" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/turf/open/floor/plasteel/white,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/closed/wall,
 /area/medical/genetics)
 "boy" = (
-/obj/structure/closet/wardrobe/mixed,
-/obj/effect/turf_decal/tile/blue{
-	dir = 1
+/obj/structure/table/wood,
+/obj/item/paper_bin/carbon,
+/obj/item/pen/fountain,
+/obj/item/folder/white{
+	pixel_x = -15;
+	pixel_y = 3
+	},
+/obj/structure/noticeboard{
+	dir = 8;
+	pixel_x = 27
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
 /turf/open/floor/plasteel/white,
-/area/medical/genetics)
+/area/medical/psychology)
 "boz" = (
 /obj/machinery/vending/clothing,
 /obj/machinery/firealarm{
@@ -28960,9 +28968,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 8
-	},
+/obj/machinery/atmospherics/pipe/manifold4w/supply/hidden,
 /turf/open/floor/plasteel/white,
 /area/medical/genetics)
 "bpB" = (
@@ -31031,13 +31037,11 @@
 /turf/open/floor/grass,
 /area/medical/genetics)
 "btU" = (
-/obj/item/kirbyplants{
-	icon_state = "plant-21"
-	},
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/structure/closet/secure_closet/personal/patient,
 /turf/open/floor/plasteel/white,
 /area/medical/genetics)
 "btV" = (
@@ -53960,6 +53964,13 @@
 	icon_state = "platingdmg3"
 	},
 /area/maintenance/department/security/brig)
+"eRj" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Genetics Maintenance";
+	req_one_access_txt = "45;5;9"
+	},
+/turf/open/floor/plating,
+/area/medical/genetics)
 "eRp" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/door/firedoor,
@@ -56757,11 +56768,12 @@
 /turf/open/floor/plasteel,
 /area/engineering/main)
 "kSO" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Port Emergency Storage"
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
 	},
-/turf/open/floor/plating,
-/area/commons/storage/emergency/port)
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/plasteel/white,
+/area/medical/psychology)
 "kTj" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/turf_decal/stripes/line{
@@ -57604,6 +57616,12 @@
 "mVM" = (
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
+"mWD" = (
+/obj/structure/chair/sofa/left{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/medical/psychology)
 "mXq" = (
 /obj/item/taperecorder,
 /obj/item/cartridge/lawyer,
@@ -58210,6 +58228,17 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/tcommsat/computer)
+"oql" = (
+/obj/structure/closet/secure_closet/psychology,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/plasteel/white,
+/area/medical/psychology)
 "ore" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/plating,
@@ -60013,6 +60042,15 @@
 /obj/item/reagent_containers/food/snacks/meat/slab/monkey,
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
+"siy" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/genetics)
 "sjC" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/tile/yellow,
@@ -60039,6 +60077,13 @@
 	},
 /turf/open/floor/engine,
 /area/engineering/main)
+"slQ" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Psychologist's Office";
+	req_one_access_txt = "5;71"
+	},
+/turf/open/floor/plating,
+/area/commons/storage/emergency/port)
 "smv" = (
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 8;
@@ -62465,12 +62510,12 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/machinery/door/airlock{
-	name = "Port Emergency Storage"
+/obj/machinery/door/airlock/medical{
+	name = "Psychologist's Office";
+	req_access_txt = "71"
 	},
-/obj/effect/mapping_helpers/airlock/unres,
 /turf/open/floor/plasteel/freezer,
-/area/commons/storage/emergency/port)
+/area/medical/psychology)
 "xQk" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 6
@@ -85331,7 +85376,7 @@ bnv
 bnv
 bnv
 bnv
-bnv
+eRj
 bnv
 bDi
 bmf
@@ -86346,8 +86391,8 @@ aAL
 bhJ
 bif
 biO
-bjL
-bjL
+biT
+biT
 bmg
 bnv
 bou
@@ -86603,11 +86648,11 @@ bgZ
 bhK
 aIe
 biP
-bjL
+biT
 bkX
 bmh
-bjL
-bov
+mWD
+bnv
 bpy
 bqW
 bsr
@@ -86864,8 +86909,8 @@ xQc
 bkY
 bmi
 bjN
-bow
-bpz
+bnv
+siy
 bpz
 bss
 btV
@@ -87115,9 +87160,9 @@ aVS
 bgf
 bhb
 aDZ
-aHN
-biR
-bjL
+bml
+biT
+biT
 bkZ
 bmj
 bnw
@@ -87373,12 +87418,12 @@ bgg
 bhc
 aAL
 big
-biS
-bjL
+biT
+bow
 bla
 bmk
-bjN
-boy
+biT
+bnv
 bpB
 bqY
 bsu
@@ -87629,12 +87674,12 @@ aVS
 bgh
 aJI
 aDZ
-aHN
+bov
 biT
-bjL
+boy
 kSO
-bjL
-bjL
+oql
+biT
 boz
 bpB
 bqZ
@@ -87889,8 +87934,8 @@ aDZ
 aHN
 bjL
 bjL
-blb
-bml
+slQ
+bjL
 bjL
 bnv
 bpC

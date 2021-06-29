@@ -43,7 +43,7 @@
 		return
 	else if(istype(I, /obj/item/pen) && buildable_sign)
 		var/list/sign_types = list("Secure Area", "Biohazard", "High Voltage", "Radiation", "Hard Vacuum Ahead", "Disposal: Leads To Space", "Danger: Fire", "No Smoking", "Medbay", "Science", "Chemistry", \
-		"Hydroponics", "Xenobiology")
+		"Hydroponics", "Xenobiology", "Diaper", "Antirestroom")
 		var/obj/structure/sign/sign_type
 		switch(input(user, "Select a sign type.", "Sign Customization") as null|anything in sign_types)
 			if("Blank")
@@ -74,6 +74,10 @@
 				sign_type = /obj/structure/sign/departments/botany
 			if("Xenobiology")
 				sign_type = /obj/structure/sign/departments/xenobio
+			if("Diaper")
+				sign_type = /obj/structure/sign/departments/changingroom
+			if("Antirestroom")
+				sign_type = /obj/structure/sign/departments/norestroom
 
 		//Make sure user is adjacent still
 		if(!Adjacent(user))

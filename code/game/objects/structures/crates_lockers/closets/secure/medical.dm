@@ -51,10 +51,6 @@
 	name = "psychology locker"
 	req_access = list(ACCESS_PSYCHOLOGY)
 	icon_state = "cabinet"
-	open_sound = 'sound/machines/wooden_closet_open.ogg'
-	close_sound = 'sound/machines/wooden_closet_close.ogg'
-	open_sound_volume = 25
-	close_sound_volume = 50
 
 /obj/structure/closet/secure_closet/psychology/PopulateContents()
 	..()
@@ -67,7 +63,7 @@
 	new /obj/item/clothing/suit/straight_jacket(src)
 	new /obj/item/clothing/ears/earmuffs(src)
 	new /obj/item/clothing/mask/muzzle(src)
-	new /obj/item/clothing/glasses/blindfold(src)
+	new /obj/item/clothing/glasses/sunglasses/blindfold(src)
 
 /obj/structure/closet/secure_closet/paramedic
     name = "paramedic's locker"
