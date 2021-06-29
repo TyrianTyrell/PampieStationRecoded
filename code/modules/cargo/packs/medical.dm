@@ -245,3 +245,32 @@
 					/obj/item/reagent_containers/hypospray/medipen/blood_loss)
 
 	crate_name = "medipen crate"
+
+/datum/supply_pack/medical/diaper_bundle
+	name = "Diaper Maxi-Pak"
+	desc = "Contains two diaper bags, four diaper packs and two restocking units."
+	cost = 800
+	contains = list(/obj/item/diaper_package/jeans,
+					/obj/item/diaper_package/hefters_f,
+					/obj/item/diaper_package/hefters_m,
+					/obj/item/diaper_package/plain,
+					/obj/item/storage/backpack/diaper_bag,
+					/obj/item/storage/backpack/diaper_bag,
+					/obj/item/vending_refill/diaper,
+					/obj/item/vending_refill/diaper)
+
+	crate_name = "diaper crate"
+
+/datum/supply_pack/medical/diaperbag_bundle
+	name = "Diaper Bag of Holding"
+	desc = "Contains two diaper bags of holding, some Nuks(TM) and some plushies."
+	cost = 2500
+	contains = list(/obj/item/storage/backpack/diaper_bag/bluespace,
+					/obj/item/storage/backpack/diaper_bag/bluespace,
+					/obj/item/toy/plush/random,
+					/obj/item/toy/plush/random,
+					/obj/item/toy/plush/random,
+					/obj/item/paci_package/nuk,
+					/obj/item/paci_package/nuk)
+
+	crate_name = "diaper crate"
