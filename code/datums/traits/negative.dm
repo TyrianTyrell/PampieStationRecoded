@@ -464,3 +464,21 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 /datum/quirk/diaperuse/remove()
 	. = ..()
 	SEND_SIGNAL(quirk_holder, COMSIG_DIAPERCHANGE, ckey(quirk_holder.mind.key))
+
+/* NEED TO IMPLEMENT THESE
+/datum/quirk/fecalincontinence
+	name = "Fecal Incontinence"
+	desc = "You're unable to control your bowels."
+	value = 0
+	gain_text = "<span class='notice'>Your anal sphincter relaxes... a lot. That can't be good.</span>"
+	lose_text = "<span class='notice'>Your backdoor tenses back up!</span>"
+	medical_record_text = "Patient suffers from fecal incontinence."
+
+/datum/quirk/urinaryincontinence
+	name = "Urinary Incontinence"
+	desc = "You're unable to control your bladder."
+	value = 0
+	gain_text = "<span class='notice'>You start dribbling like a leaky faucet.</span>"
+	lose_text = "<span class='notice'>Your bladder walls suddenly tense back up!</span>"
+	medical_record_text = "Patient suffers from urinary incontinence."
+*/
