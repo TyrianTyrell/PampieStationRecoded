@@ -112,9 +112,3 @@
 	cost = 6
 	item = /obj/item/clothing/gloves/fingerless/ablative
 	exclude_modes = list(/datum/game_mode/nuclear)
-
-/datum/uplink_item/device_tools/diaper
-	name = "SyndiStinker Chameleons"
-	desc = "A diaper that disguises itself as a plain diaper, and can heal your wounds."
-	cost = 1
-	item = /obj/item/diaper/syndi

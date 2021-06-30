@@ -91,3 +91,15 @@
 	desc = "A cardpack filled with top-tier TCG cards."
 	item = /obj/item/cardpack/syndicate
 	cost = 4
+
+/datum/uplink_item/badass/diaper
+	name = "SyndieStinker Chameleons"
+	desc = "A diaper that disguises itself as a plain diaper, and can heal your wounds."
+	cost = 1
+	item = /obj/item/diaper/syndi
+
+/datum/uplink_item/badass/diaperbox
+	name = "SyndieStinker Chameleons Package"
+	desc = "Contains like five of the special op diapers."
+	cost = 4
+	item = /obj/item/diaper_package/syndi

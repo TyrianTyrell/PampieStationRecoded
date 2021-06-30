@@ -579,6 +579,30 @@
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "Jeans_full"
 
+/obj/item/diaper/jeans_thick
+	name = "\improper Hyper Jiaper"
+	desc = "Pretend you don't pee yourself while still protecting yourself from accidents."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Jeans_thicc"
+
+/obj/item/wetdiap/jeans_thick
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Jeans_wet"
+
+/obj/item/poopydiap/jeans_thick
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Jeans_messy"
+
+/obj/item/useddiap/jeans_thick
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Jeans_full"
+
 /obj/item/diaper/ashwalker
 	name = "\improper Ashwaddlers"
 	desc = "Primitive looking diapers that are heat resistant."
@@ -604,15 +628,10 @@
 	icon_state = "Ashwalker_full"
 
 /obj/item/diaper/alien
-	name = "\improper Butthuggers"
-	desc = "The tagline is written in Xenocommon."
+	name = "\improper High Tech MAG"
+	desc = "Even in absorbancy garments the aliens use the highest tech."
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "alien"
-
-/obj/item/diaper/alien/examine(mob/user)
-	if(user.language_holder.has_language(/datum/language/xenocommon))
-		desc = "A special facehugger breed that is sterile and consumes waste."
-	. = ..()
 
 /obj/item/wetdiap/alien
 	name = "wet diaper"
@@ -634,7 +653,7 @@
 
 /obj/item/diaper/miner
 	name = "\improper Diamondpers"
-	desc = "Placeholder text"
+	desc = "Placeholder Text"
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "Miner"
 
@@ -679,6 +698,126 @@
 	desc = "Whoever had this on obviously needed it."
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "Miner_full"
+
+/obj/item/diaper/punk
+	name = "\improper Lacquer Pacquer"
+	desc = "Punk's not dead! Though it may smell like it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Punk"
+
+/obj/item/wetdiap/punk
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Punk_wet"
+
+/obj/item/poopydiap/punk
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Punk_messy"
+
+/obj/item/useddiap/punk
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Punk_full"
+
+/obj/item/diaper/punk_thick
+	name = "\improper Lacquer Pacquer EXTRA"
+	desc = "Punk's not dead! Though it may smell like it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Punk_thick"
+
+/obj/item/wetdiap/punk_thick
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Punk_wet"
+
+/obj/item/poopydiap/punk_thick
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Punk_messy"
+
+/obj/item/useddiap/punk_thick
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Punk_full"
+
+/obj/item/diaper/thirteen
+	name = "\improper Limited Edition Thirteen"
+	desc = "It's a plain diaper but this one has a number on it. Riveting!"
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "13"
+
+/obj/item/wetdiap/thirteen
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "plain_wet"
+
+/obj/item/poopydiap/thirteen
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "plain_messy"
+
+/obj/item/useddiap/thirteen
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "plain_full"
+
+/obj/item/diaper/bee
+	name = "\improper Beepers"
+	desc = "Bees communicate by dancing. YOU communicate with a potty dance!"
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "bee"
+
+/obj/item/wetdiap/bee
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "bee_wet"
+
+/obj/item/poopydiap/bee
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "bee_messy"
+
+/obj/item/useddiap/bee
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "bee_full"
+
+/obj/item/diaper/camo
+	name = "\improper Peekers"
+	desc = "Diaper? Which diaper?"
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Camo"
+
+/obj/item/wetdiap/camo
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Camo_wet"
+
+/obj/item/poopydiap/camo
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Camo_messy"
+
+/obj/item/useddiap/camo
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Camo_messy"
 
 /datum/reagent/medicine/laxative
 	name = "Space Lax"
@@ -788,7 +927,7 @@
 
 /obj/item/storage/backpack/diaper_bag/Initialize()
 	. = ..()
-	var/vek = pick("duffel-diap-plain","duffel-diap-med","duffel-diap-babypink","duffel-diap-babyblue","duffel-diap-rainbow","duffel-diap-butterflies","duffel-diap-peeyellow")
+	var/vek = pick("duffel-diap-plain","duffel-diap-med","duffel-diap-babypink","duffel-diap-babyblue","duffel-diap-rainbow","duffel-diap-butterflies","duffel-diap-peeyellow","duffel-diap-hypno","duffel-diap-seizure")
 	icon_state = vek
 
 /obj/item/storage/backpack/diaper_bag/ComponentInitialize()
@@ -803,8 +942,37 @@
 	. = ..()
 	new /obj/item/diaper/plain(src)
 	new /obj/item/diaper/plain(src)
-	new /obj/item/diaper/plain(src)
+	new /obj/item/diaper/thirteen(src)
 	new /obj/item/diaper/hefters_m(src)
+	new /obj/item/diaper/hefters_f(src)
+
+/obj/item/storage/backpack/diaper_bag/bluespace
+	name = "bluespace diaper bag"
+	desc = "A bag for holding LIKE SO MANY diapers at once."
+	icon_state = "duffel-diap-bluespace"
+	item_state = "duffel"
+	custom_price = 500
+	color = "#FFFFFF"
+	slot_flags = ITEM_SLOT_BELT || ITEM_SLOT_POCKET
+	w_class = WEIGHT_CLASS_NORMAL
+	resistance_flags = FIRE_PROOF
+	rad_flags = RAD_PROTECT_CONTENTS | RAD_NO_CONTAMINATE
+
+/obj/item/storage/backpack/diaper_bag/bluespace/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_w_class = WEIGHT_CLASS_TINY
+	STR.max_combined_w_class = 200
+	STR.max_items = 40
+	STR.can_hold = typecacheof(list(/obj/item/diaper))
+
+/obj/item/storage/backpack/diaper_bag/bluespace/PopulateContents()
+	. = ..()
+	new /obj/item/diaper/hefters_m(src)
+	new /obj/item/diaper/hefters_m(src)
+	new /obj/item/diaper/hefters_m(src)
+	new /obj/item/diaper/hefters_f(src)
+	new /obj/item/diaper/hefters_f(src)
 	new /obj/item/diaper/hefters_f(src)
 
 /obj/item/implant/psyker_implant
@@ -1002,4 +1170,40 @@
 	icon_state = "diaperpack-thickminer"
 	stuffinside = /obj/item/diaper/miner_thick
 
+/obj/item/paci_package
+	name = "Nukpack"
+	icon = 'icons/incon/regressoray.dmi'
+	desc = "A package of Nuks, disposable pacifiers."
+	var/nuksleft = 6
+	var/obj/item/paci_package/nukinside = /obj/item/clothing/mask/pacifier/d
 
+/obj/item/paci_package/proc/takeout(stuff, mob/user)
+	var/atom/A
+	if(ispath(stuff))
+		A = new stuff(get_turf(user))
+	else
+		A = stuff
+	if(ishuman(user) && istype(A,/obj/item))
+		var/mob/living/carbon/human/H = user
+		if(H.put_in_hands(A))
+			to_chat(H, "You take a pacifier out of the package")
+			if(nuksleft == 0)
+				icon_state = addtext(icon_state,"-empty")
+			return A
+	to_chat(user, "You need a free hand to take a pacifier out of the package.")
+	return null
+
+/obj/item/paci_package/attack_self(mob/user)
+	. = ..()
+	if(user.held_items[user.get_inactive_hand_index()] == null)
+		if(nuksleft > 0)
+			nuksleft--
+			takeout(nukinside, user)
+		else
+			to_chat(user, "<span class='warning'>The pack is out of pacifiers!</span>")
+	else
+		to_chat(user, "You need a free hand to take a pacifier out of the package.")
+
+/obj/item/paci_package/nuk
+	icon_state = "nukpack"
+	custom_price = 50

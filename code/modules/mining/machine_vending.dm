@@ -18,6 +18,7 @@
 		new /datum/data/mining_equipment("Absinthe",					/obj/item/reagent_containers/food/drinks/bottle/absinthe/premium,	100),
 		new /datum/data/mining_equipment("Cigar",						/obj/item/clothing/mask/cigarette/cigar/havana,						150),
 		new /datum/data/mining_equipment("Soap",						/obj/item/soap/nanotrasen,											200),
+		new /datum/data/mining_equipment("Diamondper",					/obj/item/diaper/miner,												250),
 		new /datum/data/mining_equipment("Laser Pointer",				/obj/item/laser_pointer,											300),
 		new /datum/data/mining_equipment("Alien Toy",					/obj/item/clothing/mask/facehugger/toy,								300),
 		new /datum/data/mining_equipment("Stabilizing Serum",			/obj/item/hivelordstabilizer,										400),
@@ -75,6 +76,7 @@
 		new /datum/data/mining_equipment("Premium Accelerator",			/obj/item/gun/energy/kinetic_accelerator/premiumka,					8000),
 		new /datum/data/mining_equipment("Kinetic Glaive Kit",			/obj/item/storage/backpack/duffelbag/mining/glaivekit,				2250),
 		new /datum/data/mining_equipment("Survival Dagger",				/obj/item/kitchen/knife/combat/survival/knuckledagger,				550),
+		new /datum/data/mining_equipment("Thick Diamondper",			/obj/item/diaper/miner_thick,										500),
 		)
 
 /datum/data/mining_equipment
