@@ -19,7 +19,7 @@
 	AddComponent(/datum/component/diaperswitch)
 
 /mob/living/carbon/proc/Wetting()
-	if (pee > 0 && stat != DEAD)
+	if (pee > 0 && stat != DEAD && src.client.prefs != "Poop Only")
 		needpee = 0
 		playsound(loc, 'sound/effects/pee-diaper.wav', 50, 1)
 		if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
@@ -41,7 +41,7 @@
 		to_chat(src,"You can't pee, you're dead!")
 
 /mob/living/carbon/proc/Pooping()
-	if (poop > 0 && stat != DEAD)
+	if (poop > 0 && stat != DEAD && src.client.prefs != "Pee Only")
 		needpoo = 0
 		playsound(loc, 'sound/effects/uhoh.ogg', 50, 1)
 		if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
@@ -65,8 +65,12 @@
 	if(stat != DEAD && (HAS_TRAIT(src,TRAIT_INCONTINENT) || HAS_TRAIT(src,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(src,TRAIT_POTTYREBEL) || HAS_TRAIT(src,BABYBRAINED_TRAIT) || HAS_TRAIT(src,TRAIT_DIAPERUSE)) && src.client != null)
 		if(src.client.prefs.accident_types != "Poop Only")
 			pee = pee + 0.6 + (fluids/200)
+		else
+			pee = 0
 		if(src.client.prefs.accident_types != "Pee Only")
 			poop = poop + 0.2 + (nutrition/800)
+		else
+			poop = 0
 	if(!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 		if (wetness >= 1)
 			if (HAS_TRAIT(src,TRAIT_POTTYREBEL))
@@ -98,10 +102,14 @@
 	if (poop >= max_continence * 0.8 && needpoo <= 1 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 		to_chat(src,"You really need to poop!")
 		needpoo += 1
-	if (pee >= max_continence)
+	if (pee >= max_continence && src.client.prefs != "Poop Only")
 		Wetting()
-	if (poop >= max_continence)
+	else if(pee >= max_continence)
+		pee = 0
+	if (poop >= max_continence && src.client.prefs != "Pee Only")
 		Pooping()
+	else if(poop >= max_continence)
+		poop = 0
 	switch(brand)
 		if ("plain")
 			set_light(0)
@@ -611,11 +619,13 @@
 
 /obj/item/reagent_containers/food/snacks/attack(mob/living/carbon/human/M, mob/living/user, def_zone)
 	..()
-	M.poop = M.poop + 1
+	if(M.client.prefs.accident_types != "Pee Only")
+		M.poop = M.poop + 1
 
 /obj/item/reagent_containers/food/drinks/attack(mob/living/carbon/human/M, mob/living/user, def_zone)
 	..()
-	M.pee = M.pee + 2
+	if(M.client.prefs.accident_types != "Poop Only")
+		M.pee = M.pee + 2
 	M.fluids = M.fluids + 25
 	if (M.fluids > 300)
 		M.fluids = 300
