@@ -224,6 +224,8 @@
 ///diaper traits
 #define BABYBRAINED_TRAIT "baby_brained"
 #define TRAIT_INCONTINENT "incontinent"
+#define TRAIT_WETINCONTINENT "urinary incontinent"
+#define TRAIT_MESSINCONTINENT "fecal incontinent"
 #define TRAIT_FULLYINCONTINENT "unaware"
 #define TRAIT_POTTYREBEL "potty_rebel"
 #define TRAIT_DIAPERUSE "diaper_use"

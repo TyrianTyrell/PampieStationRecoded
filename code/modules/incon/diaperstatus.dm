@@ -3,7 +3,8 @@
 /mob/living/carbon/var/wetness = 0
 /mob/living/carbon/var/stinkiness = 0
 /mob/living/carbon/var/fluids = 0
-/mob/living/var/max_continence = 100
+/mob/living/var/max_wetcontinence = 100
+/mob/living/var/max_messcontinence = 100
 /mob/living/carbon/var/on_purpose = 0
 /mob/living/carbon/var/brand = "plain"
 /mob/living/carbon/var/brand2 = "diaper"
@@ -28,8 +29,8 @@
 				src.visible_message("<span class='notice'>[src] scrunches [src.p_their()] legs and lets the floodgates open.</span>","<span class='notice'>You scrunch your legs and let the floodgates open.</span>")
 			else
 				src.visible_message("<span class='notice'>[src]'s legs buckle as [src.p_they()] [src.p_are()] unable to stop [src.p_their()] bladder from leaking into [src.p_their()] pants!</span>","<span class='notice'>Your legs buckle as you are unable to stop your bladder from leaking into your pants!</span>")
-		if(pee > max_continence)
-			pee = max_continence
+		if(pee > max_wetcontinence)
+			pee = max_wetcontinence
 		if(wetness + pee < 250 + heftersbonus)
 			wetness = wetness + pee
 			pee = 0
@@ -50,8 +51,8 @@
 				src.visible_message("<span class='notice'>An odor pervades the room as [src] dumps [src.p_their()] drawers.</span>","<span class='notice'>An odor pervades the room as you dump your drawers.</span>")
 			else
 				src.visible_message("<span class='notice'>[src] takes a squat and winces as [src.p_their()] seat sags just a little more.</span>","<span class='notice'>That tight feeling in your gut is gone. But your diaper seems a bit saggier- and stinkier.</span>")
-		if(poop > max_continence)
-			poop = max_continence
+		if(poop > max_messcontinence)
+			poop = max_messcontinence
 		if(stinkiness + poop < 250 + heftersbonus)
 			stinkiness = stinkiness + poop
 			poop = 0
@@ -91,25 +92,25 @@
 		fluids = fluids - 10
 	if (fluids < 0)
 		fluids = 0
-	if (pee >= max_continence * 0.5 && needpee <= 0 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+	if (pee >= max_wetcontinence * 0.5 && needpee <= 0 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 		to_chat(src,"You start feeling the need to pee.")
 		needpee += 1
-	if (pee >= max_continence * 0.8 && needpee <= 1 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+	if (pee >= max_wetcontinence * 0.8 && needpee <= 1 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 		to_chat(src,"You really need to pee!")
 		needpee += 1
-	if (poop >= max_continence * 0.5 && needpoo <= 0 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+	if (poop >= max_messcontinence * 0.5 && needpoo <= 0 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 		to_chat(src,"You start feeling the need to poop.")
 		needpoo += 1
-	if (poop >= max_continence * 0.8 && needpoo <= 1 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+	if (poop >= max_messcontinence * 0.8 && needpoo <= 1 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 		to_chat(src,"You really need to poop!")
 		needpoo += 1
-	if (pee >= max_continence && src.client.prefs != "Poop Only")
+	if (pee >= max_wetcontinence && src.client.prefs != "Poop Only")
 		Wetting()
-	else if(pee >= max_continence)
+	else if(pee >= max_wetcontinence)
 		pee = 0
-	if (poop >= max_continence && src.client.prefs != "Pee Only")
+	if (poop >= max_messcontinence && src.client.prefs != "Pee Only")
 		Pooping()
-	else if(poop >= max_continence)
+	else if(poop >= max_messcontinence)
 		poop = 0
 	switch(brand)
 		if ("plain")
@@ -482,9 +483,11 @@
 	..()
 	var/obj/screen/diapstats = new /obj/screen/diaperstatus(owner)
 	if (HAS_TRAIT(owner,TRAIT_INCONTINENT))
-		owner.max_continence = 50
+		owner.max_wetcontinence = 50
+		owner.max_messcontinence = 50
 	else
-		owner.max_continence = 100
+		owner.max_wetcontinence = 100
+		owner.max_messcontinence = 50
 	diapstats.hud = src
 	infodisplay += diapstats
 

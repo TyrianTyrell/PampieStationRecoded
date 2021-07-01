@@ -83,7 +83,7 @@
 	var/obj/machinery/atmospherics/components/unary/vent = pick(vents)
 	vents -= vent
 
-	if(!vent || vent.welded)
+	if(!vent || vent.welded || !vent.on)
 		return
 
 	var/turf/T = get_turf(vent)
