@@ -384,7 +384,7 @@
 			cuckold = locate(src.loc.x,src.loc.y + 1,src.loc.z)
 	if (wetness >= 1)
 		if (stinkiness >= 1)
-			newpamp = text2path(addtext("obj/item/useddiap/", brand3))
+			newpamp = text2path(addtext("/obj/item/useddiap/", brand3))
 		else
 			newpamp = text2path(addtext("/obj/item/wetdiap/", brand3))
 	else
