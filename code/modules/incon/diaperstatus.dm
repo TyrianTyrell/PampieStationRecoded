@@ -396,6 +396,8 @@
 	wetness = 0
 	stinkiness = 0
 	brand3 = replacetext("[diap]", "/obj/item/diaper/", "")
+	if(brand3 == "syndi")
+		brand3 = "plain"
 	if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 		SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"peepee")
 		SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"poopy")
