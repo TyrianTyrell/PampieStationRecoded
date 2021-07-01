@@ -1,4 +1,35 @@
 // DIURETICS
+/datum/chemical_reaction/medicine/diuretic
+	results = list(/datum/reagent/medicine/diuretic = 10)
+	required_reagents = list(/datum/reagent/sulfur = 2, /datum/reagent/water = 1, /datum/reagent/consumable/sugar = 1)
+
+/datum/reagent/medicine/diuretic
+	name = "Space Diuretics"
+	taste_description = "water"
+	pH = 7.5
+	color = "#ccb464"
+	metabolization_rate = 1.5 * REAGENTS_METABOLISM
+	overdose_threshold = 50
+
+/datum/reagent/medicine/diuretic/on_mob_life(mob/living/carbon/M)
+	metabolization_rate = 1.5 * REAGENTS_METABOLISM
+	if(M.client.prefs.accident_types != "Poop Only" && src.volume >= 1)
+		M.pee += 0.5 * src.volume
+	..()
+
+/datum/reagent/medicine/diuretic/overdose_start(mob/living/carbon/M)
+	// metabolization_rate = 15 * REAGENTS_METABOLISM
+	if(M.client.prefs.accident_types != "Poop Only")
+		// ADD_TRAIT(M, TRAIT_WETINCONTINENT, type)
+		M.add_quirk(/datum/quirk/urinaryincontinence, TRUE)
+	..()
+	. = 1
+
+/datum/reagent/medicine/diuretic/overdose_process(mob/living/carbon/M)
+	if(prob(50))
+		M.Wetting()
+	..()
+	. = 1
 
 // LAXATIVES
 /datum/chemical_reaction/medicine/laxative
@@ -21,12 +52,15 @@
 
 /datum/reagent/medicine/laxative/overdose_start(mob/living/carbon/M)
 	// metabolization_rate = 15 * REAGENTS_METABOLISM
+	if(M.client.prefs.accident_types != "Pee Only")
+		// ADD_TRAIT(M, TRAIT_MESSINCONTINENT, type)
+		M.add_quirk(/datum/quirk/fecalincontinence, TRUE)
 	..()
 	. = 1
 
 /datum/reagent/medicine/laxative/overdose_process(mob/living/carbon/M)
 	var/obj/item/organ/liver/L = M.getorganslot(ORGAN_SLOT_LIVER)
-	if(L)
+	if(L && prob(33))
 		L.applyOrganDamage(1)
 	if(prob(33))
 		M.Pooping()

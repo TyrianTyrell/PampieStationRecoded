@@ -428,12 +428,14 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 /datum/quirk/incontinent/add()
 	. = ..()
 	SEND_SIGNAL(quirk_holder, COMSIG_DIAPERCHANGE, ckey(quirk_holder.mind.key))
-	quirk_holder.max_continence = 50
+	quirk_holder.max_wetcontinence = 50
+	quirk_holder.max_messcontinence = 50
 
 /datum/quirk/incontinent/remove()
 	. = ..()
 	SEND_SIGNAL(quirk_holder, COMSIG_DIAPERCHANGE, ckey(quirk_holder.mind.key))
-	quirk_holder.max_continence = 100
+	quirk_holder.max_wetcontinence = 100
+	quirk_holder.max_messcontinence = 100
 
 /datum/quirk/fullyincontinent
 	name = "Unaware"
@@ -465,20 +467,40 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 	. = ..()
 	SEND_SIGNAL(quirk_holder, COMSIG_DIAPERCHANGE, ckey(quirk_holder.mind.key))
 
-/* NEED TO IMPLEMENT THESE
 /datum/quirk/fecalincontinence
 	name = "Fecal Incontinence"
 	desc = "You're unable to control your bowels."
+	mob_trait = TRAIT_MESSINCONTINENT
 	value = 0
 	gain_text = "<span class='notice'>Your anal sphincter relaxes... a lot. That can't be good.</span>"
 	lose_text = "<span class='notice'>Your backdoor tenses back up!</span>"
 	medical_record_text = "Patient suffers from fecal incontinence."
 
+/datum/quirk/fecalincontinence/add()
+	. = ..()
+	SEND_SIGNAL(quirk_holder, COMSIG_DIAPERCHANGE, ckey(quirk_holder.mind.key))
+	quirk_holder.max_messcontinence = 50
+
+/datum/quirk/fecalincontinence/remove()
+	. = ..()
+	SEND_SIGNAL(quirk_holder, COMSIG_DIAPERCHANGE, ckey(quirk_holder.mind.key))
+	quirk_holder.max_messcontinence = 100
+
 /datum/quirk/urinaryincontinence
 	name = "Urinary Incontinence"
 	desc = "You're unable to control your bladder."
+	mob_trait = TRAIT_WETINCONTINENT
 	value = 0
 	gain_text = "<span class='notice'>You start dribbling like a leaky faucet.</span>"
 	lose_text = "<span class='notice'>Your bladder walls suddenly tense back up!</span>"
 	medical_record_text = "Patient suffers from urinary incontinence."
-*/
+
+/datum/quirk/urinaryincontinence/add()
+	. = ..()
+	SEND_SIGNAL(quirk_holder, COMSIG_DIAPERCHANGE, ckey(quirk_holder.mind.key))
+	quirk_holder.max_wetcontinence = 50
+
+/datum/quirk/urinaryincontinence/remove()
+	. = ..()
+	SEND_SIGNAL(quirk_holder, COMSIG_DIAPERCHANGE, ckey(quirk_holder.mind.key))
+	quirk_holder.max_wetcontinence = 100

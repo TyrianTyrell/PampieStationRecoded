@@ -828,10 +828,3 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 	if(prob(15))
 		corrupted_text += pick(corruption_options)
 	return corrupted_text
-
-/proc/remove_text(text, toremove)
-	var/removetext = findtext(text, toremove)
-	if(removetext)
-		var/maintext = copytext(text,1,removetext)
-		text = copytext(maintext,removetext+length(toremove))
-	return text
