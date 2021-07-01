@@ -383,12 +383,16 @@
 		if(8)
 			cuckold = locate(src.loc.x,src.loc.y + 1,src.loc.z)
 	if (wetness >= 1)
+		if(brand3 == "syndi")
+			brand3 = "plain"
 		if (stinkiness >= 1)
 			newpamp = text2path(addtext("/obj/item/useddiap/", brand3))
 		else
 			newpamp = text2path(addtext("/obj/item/wetdiap/", brand3))
 	else
 		if (stinkiness >= 1)
+			if(brand3 == "syndi")
+				brand3 = "plain"
 			newpamp = text2path(addtext("/obj/item/poopydiap/", brand3))
 		else
 			newpamp = text2path(addtext("/obj/item/diaper/", brand3))
@@ -396,8 +400,6 @@
 	wetness = 0
 	stinkiness = 0
 	brand3 = replacetext("[diap]", "/obj/item/diaper/", "")
-	if(brand3 == "syndi")
-		brand3 = "plain"
 	if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 		SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"peepee")
 		SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"poopy")
