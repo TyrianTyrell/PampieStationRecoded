@@ -360,6 +360,25 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 	var/mob/living/carbon/human/H = quirk_holder
 	H?.cure_trauma_type(mute, TRAUMA_RESILIENCE_ABSOLUTE)
 
+/datum/quirk/deaf
+	name = "Deaf"
+	desc = "You're incurably deaf and cannot hear anything."
+	value = -3 //HALP MAINTS
+	gain_text = "<span class='danger'>You find yourself unable to hear anything!</span>"
+	lose_text = "<span class='notice'>W-was that a NOISE?</span>"
+	medical_record_text = "The patient's ears don't work."
+	antag_removal_text = "You're just so evil, you can suddenly hear."
+	var/datum/brain_trauma/severe/deaf/deaf
+
+/datum/quirk/deaf/add()
+	var/mob/living/carbon/human/H = quirk_holder
+	deaf = new
+	H.gain_trauma(deaf, TRAUMA_RESILIENCE_ABSOLUTE)
+
+/datum/quirk/deaf/remove()
+	var/mob/living/carbon/human/H = quirk_holder
+	H?.cure_trauma_type(deaf, TRAUMA_RESILIENCE_ABSOLUTE)
+
 /datum/quirk/unstable
 	name = "Unstable"
 	desc = "Due to past troubles, you are unable to recover your sanity if you lose it. Be very careful managing your mood!"
@@ -504,3 +523,35 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 	. = ..()
 	SEND_SIGNAL(quirk_holder, COMSIG_DIAPERCHANGE, ckey(quirk_holder.mind.key))
 	quirk_holder.max_wetcontinence = 100
+
+/datum/quirk/paraplegic
+	name = "Quadruplegic"
+	desc = "You're paralyzed from the shoulders down! ...How'd you even get this job!?"
+	value = -5
+	mob_trait = TRAIT_PARA
+	human_only = TRUE
+	gain_text = null // Handled by trauma.
+	lose_text = null
+	medical_record_text = "Patient has an untreatable impairment in motor function in all extremities."
+	on_spawn_immediate = FALSE
+
+/datum/quirk/quadruplegic/add()
+	var/datum/brain_trauma/severe/paralysis/quadruplegic/T = new()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.gain_trauma(T, TRAUMA_RESILIENCE_ABSOLUTE)
+
+/datum/quirk/quadruplegic/on_spawn()
+	if(quirk_holder.client)
+		var/modified_limbs = quirk_holder.client.prefs.modified_limbs
+		if(!(modified_limbs[BODY_ZONE_L_LEG] == LOADOUT_LIMB_AMPUTATED && modified_limbs[BODY_ZONE_R_LEG] == LOADOUT_LIMB_AMPUTATED && modified_limbs[BODY_ZONE_R_ARM] == LOADOUT_LIMB_AMPUTATED && modified_limbs[BODY_ZONE_L_ARM] == LOADOUT_LIMB_AMPUTATED && !isjellyperson(quirk_holder)))
+			if(quirk_holder.buckled) // Handle late joins being buckled to arrival shuttle chairs.
+				quirk_holder.buckled.unbuckle_mob(quirk_holder)
+
+			var/turf/T = get_turf(quirk_holder)
+			var/obj/structure/chair/spawn_hchair = locate() in T
+
+			var/obj/vehicle/ridden/wheelchair/motorized/wheels = new(T)
+			if(spawn_hchair) // Makes spawning on the arrivals shuttle more consistent looking
+				wheels.setDir(spawn_hchair.dir)
+
+			wheels.buckle_mob(quirk_holder)
