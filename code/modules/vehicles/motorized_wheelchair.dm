@@ -3,6 +3,7 @@
 	desc = "A chair with thrusters. It seems to have a motor in it."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "wheelchair_motorized"
+	arms_required = 0
 	max_integrity = 150
 	var/speed = 2
 	var/power_efficiency = 1
