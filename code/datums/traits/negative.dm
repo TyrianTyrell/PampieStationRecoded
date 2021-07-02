@@ -551,6 +551,9 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 			var/obj/structure/chair/spawn_hchair = locate() in T
 
 			var/obj/vehicle/ridden/wheelchair/motorized/wheels = new(T)
+			var/obj/item/stock_parts/cell/chaircell = new /obj/item/stock_parts/cell
+			wheels.power_cell = chaircell
+			chaircell.charge = 1000
 			if(spawn_hchair) // Makes spawning on the arrivals shuttle more consistent looking
 				wheels.setDir(spawn_hchair.dir)
 
