@@ -1173,6 +1173,11 @@
 	custom_price = 50
 
 /obj/item/poopydiap/proc/smelly()
+	if(istype(loc, /obj/structure/closet/crate/diaperpail))
+		return
+
+	if(istype(src, /obj/item/poopydiap/atmos))
+		return
 	var/stinkyturf = get_turf(src)
 
 	// Closed turfs don't have any air in them, so no gas building up
@@ -1182,7 +1187,7 @@
 
 		var/datum/gas_mixture/noxious = new
 
-		noxious.set_moles(/datum/gas/diapersmell,0.05)
+		noxious.set_moles(/datum/gas/diapersmell,0.075)
 
 		noxious.set_temperature(BODYTEMP_NORMAL)
 
@@ -1194,6 +1199,11 @@
 	smelly()
 
 /obj/item/useddiap/proc/stinky()
+	if(istype(loc, /obj/structure/closet/crate/diaperpail))
+		return
+
+	if(istype(src, /obj/item/useddiap/atmos))
+		return
 	var/stinkturf = get_turf(src)
 
 	// Closed turfs don't have any air in them, so no gas building up
@@ -1203,7 +1213,7 @@
 
 		var/datum/gas_mixture/nox = new
 
-		nox.set_moles(/datum/gas/diapersmell,0.075)
+		nox.set_moles(/datum/gas/diapersmell,0.125)
 
 		nox.set_temperature(BODYTEMP_NORMAL)
 
