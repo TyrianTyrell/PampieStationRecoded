@@ -196,6 +196,7 @@
 #define TRAIT_MASO              "masochism"
 #define	TRAIT_HIGH_BLOOD        "high_blood"
 #define TRAIT_PARA              "paraplegic"
+#define TRAIT_QUAD              "quadriplegic"
 #define TRAIT_EMPATH			"empath"
 #define TRAIT_FRIENDLY			"friendly"
 #define TRAIT_SNOB				"snob"
