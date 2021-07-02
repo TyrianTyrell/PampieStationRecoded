@@ -11,11 +11,18 @@
 	hitsound = 'sound/effects/splap.ogg'
 	throwhitsound = 'sound/effects/splap.ogg'
 
+/obj/item/poopydiap/Initialize()
+	. = ..()
+	smelly()
+
 /obj/item/useddiap
 	w_class = 1
 	hitsound = 'sound/effects/splap.ogg'
 	throwhitsound = 'sound/effects/splap.ogg'
 
+/obj/item/useddiap/Initialize()
+	. = ..()
+	stinky()
 
 /obj/item/diaper/plain
 	name = "diaper"
@@ -1169,36 +1176,40 @@
 	var/stinkyturf = get_turf(src)
 
 	// Closed turfs don't have any air in them, so no gas building up
-	if(!istype(stinkyturf,/turf/open))
-		return
+	if(istype(stinkyturf,/turf/open))
 
-	var/turf/open/stink_turf = stinkyturf
+		var/turf/open/stink_turf = stinkyturf
 
-	var/datum/gas_mixture/noxious = new
+		var/datum/gas_mixture/noxious = new
 
-	noxious.set_moles(/datum/gas/miasma,0.05)
+		noxious.set_moles(/datum/gas/miasma,0.05)
 
-	noxious.set_temperature(BODYTEMP_NORMAL)
+		noxious.set_temperature(BODYTEMP_NORMAL)
 
-	stink_turf.assume_air(noxious)
+		stink_turf.assume_air(noxious)
 
-	stink_turf.air_update_turf()
+		stink_turf.air_update_turf()
+
+	spawn(20)
+	smelly()
 
 /obj/item/useddiap/proc/stinky()
 	var/stinkturf = get_turf(src)
 
 	// Closed turfs don't have any air in them, so no gas building up
-	if(!istype(stinkturf,/turf/open))
-		return
+	if(istype(stinkturf,/turf/open))
 
-	var/turf/open/stinky_turf = stinkturf
+		var/turf/open/stinky_turf = stinkturf
 
-	var/datum/gas_mixture/nox = new
+		var/datum/gas_mixture/nox = new
 
-	nox.set_moles(/datum/gas/miasma,0.075)
+		nox.set_moles(/datum/gas/miasma,0.075)
 
-	nox.set_temperature(BODYTEMP_NORMAL)
+		nox.set_temperature(BODYTEMP_NORMAL)
 
-	stinky_turf.assume_air(nox)
+		stinky_turf.assume_air(nox)
 
-	stinky_turf.air_update_turf()
+		stinky_turf.air_update_turf()
+
+	spawn(20)
+	stinky()
