@@ -27,7 +27,7 @@
 	if(HAS_TRAIT(M,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(M,TRAIT_INCONTINENT) || HAS_TRAIT(M,TRAIT_POTTYREBEL) || HAS_TRAIT(M,BABYBRAINED_TRAIT) || HAS_TRAIT(M,TRAIT_DIAPERUSE))
 		playsound(M.loc,'sound/effects/Diapertape.wav',50,1)
 		if(do_after_mob(usr,M))
-			M.DiaperChange()
+			M.DiaperChange(type)
 			M.brand = icon_state
 			M.brand2 = name
 			M.DiaperAppearance()
@@ -818,48 +818,6 @@
 	desc = "Whoever had this on obviously needed it."
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "Camo_messy"
-
-/datum/reagent/medicine/laxative
-	name = "Space Lax"
-	taste_description = "charcoal"
-	pH = 7.5
-	color = "#543400"
-	metabolization_rate = 1.5 * REAGENTS_METABOLISM
-
-/datum/reagent/medicine/laxative/on_mob_life(mob/living/carbon/M)
-	metabolization_rate = 1.5 * REAGENTS_METABOLISM
-	if(M.client.prefs.accident_types != "Pee Only" && src.volume >= 1)
-		M.poop += 0.5 * src.volume
-	..()
-
-/datum/chemical_reaction/medicine/laxative
-	results = list(/datum/reagent/medicine/laxative = 10)
-	required_reagents = list(/datum/reagent/carbon = 2, /datum/reagent/phenol = 3, /datum/reagent/nitrogen = 1, /datum/reagent/consumable/ethanol = 4)
-
-/datum/reagent/medicine/regression
-	name = "Regression Serum"
-	taste_description = "childhood whimsy"
-	pH = 7.5
-	color = "#F034E2"
-	metabolization_rate = 0.1 * REAGENTS_METABOLISM
-
-/datum/reagent/medicine/regression/on_mob_add(mob/living/L)
-	if(iscarbon(L))
-		var/mob/living/carbon/C = L
-		metabolization_rate = 0.1 * REAGENTS_METABOLISM
-		if(C.m_intent == MOVE_INTENT_RUN)
-			C.toggle_move_intent()
-		ADD_TRAIT(C, BABYBRAINED_TRAIT, REGRESSION_TRAIT)
-		ADD_TRAIT(C, TRAIT_NORUNNING, REGRESSION_TRAIT)
-		ADD_TRAIT(C, TRAIT_NOGUNS, REGRESSION_TRAIT)
-		SEND_SIGNAL(C, COMSIG_DIAPERCHANGE, C.ckey)
-		C.statusoverlay = mutable_appearance('icons/incon/regressoray.dmi',"regressoray")
-		C.overlays += C.statusoverlay
-	return
-
-/datum/chemical_reaction/medicine/regression
-	results = list(/datum/reagent/medicine/regression = 10)
-	required_reagents = list(/datum/reagent/medicine/omnizine = 3, /datum/reagent/toxin/carpotoxin = 2, /datum/reagent/ammonia = 5)
 
 /obj/item/seeds/marshmallow
 	name = "pack of marshmallow seeds"

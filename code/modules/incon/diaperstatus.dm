@@ -3,10 +3,12 @@
 /mob/living/carbon/var/wetness = 0
 /mob/living/carbon/var/stinkiness = 0
 /mob/living/carbon/var/fluids = 0
-/mob/living/var/max_continence = 100
+/mob/living/var/max_wetcontinence = 100
+/mob/living/var/max_messcontinence = 100
 /mob/living/carbon/var/on_purpose = 0
 /mob/living/carbon/var/brand = "plain"
 /mob/living/carbon/var/brand2 = "diaper"
+/mob/living/carbon/var/brand3 = "plain"
 /mob/living/carbon/var/heftersbonus = 0
 /mob/living/carbon/var/needpee = 0
 /mob/living/carbon/var/needpoo = 0
@@ -19,7 +21,7 @@
 	AddComponent(/datum/component/diaperswitch)
 
 /mob/living/carbon/proc/Wetting()
-	if (pee > 0 && stat != DEAD)
+	if (pee > 0 && stat != DEAD && src.client.prefs != "Poop Only")
 		needpee = 0
 		playsound(loc, 'sound/effects/pee-diaper.wav', 50, 1)
 		if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
@@ -27,8 +29,8 @@
 				src.visible_message("<span class='notice'>[src] scrunches [src.p_their()] legs and lets the floodgates open.</span>","<span class='notice'>You scrunch your legs and let the floodgates open.</span>")
 			else
 				src.visible_message("<span class='notice'>[src]'s legs buckle as [src.p_they()] [src.p_are()] unable to stop [src.p_their()] bladder from leaking into [src.p_their()] pants!</span>","<span class='notice'>Your legs buckle as you are unable to stop your bladder from leaking into your pants!</span>")
-		if(pee > max_continence)
-			pee = max_continence
+		if(pee > max_wetcontinence)
+			pee = max_wetcontinence
 		if(wetness + pee < 250 + heftersbonus)
 			wetness = wetness + pee
 			pee = 0
@@ -41,7 +43,7 @@
 		to_chat(src,"You can't pee, you're dead!")
 
 /mob/living/carbon/proc/Pooping()
-	if (poop > 0 && stat != DEAD)
+	if (poop > 0 && stat != DEAD && src.client.prefs != "Pee Only")
 		needpoo = 0
 		playsound(loc, 'sound/effects/uhoh.ogg', 50, 1)
 		if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
@@ -49,8 +51,8 @@
 				src.visible_message("<span class='notice'>An odor pervades the room as [src] dumps [src.p_their()] drawers.</span>","<span class='notice'>An odor pervades the room as you dump your drawers.</span>")
 			else
 				src.visible_message("<span class='notice'>[src] takes a squat and winces as [src.p_their()] seat sags just a little more.</span>","<span class='notice'>That tight feeling in your gut is gone. But your diaper seems a bit saggier- and stinkier.</span>")
-		if(poop > max_continence)
-			poop = max_continence
+		if(poop > max_messcontinence)
+			poop = max_messcontinence
 		if(stinkiness + poop < 250 + heftersbonus)
 			stinkiness = stinkiness + poop
 			poop = 0
@@ -65,8 +67,12 @@
 	if(stat != DEAD && (HAS_TRAIT(src,TRAIT_INCONTINENT) || HAS_TRAIT(src,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(src,TRAIT_POTTYREBEL) || HAS_TRAIT(src,BABYBRAINED_TRAIT) || HAS_TRAIT(src,TRAIT_DIAPERUSE)) && src.client != null)
 		if(src.client.prefs.accident_types != "Poop Only")
 			pee = pee + 0.6 + (fluids/200)
+		else
+			pee = 0
 		if(src.client.prefs.accident_types != "Pee Only")
 			poop = poop + 0.2 + (nutrition/800)
+		else
+			poop = 0
 	if(!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 		if (wetness >= 1)
 			if (HAS_TRAIT(src,TRAIT_POTTYREBEL))
@@ -86,22 +92,26 @@
 		fluids = fluids - 10
 	if (fluids < 0)
 		fluids = 0
-	if (pee >= max_continence * 0.5 && needpee <= 0 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+	if (pee >= max_wetcontinence * 0.5 && needpee <= 0 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 		to_chat(src,"You start feeling the need to pee.")
 		needpee += 1
-	if (pee >= max_continence * 0.8 && needpee <= 1 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+	if (pee >= max_wetcontinence * 0.8 && needpee <= 1 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 		to_chat(src,"You really need to pee!")
 		needpee += 1
-	if (poop >= max_continence * 0.5 && needpoo <= 0 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+	if (poop >= max_messcontinence * 0.5 && needpoo <= 0 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 		to_chat(src,"You start feeling the need to poop.")
 		needpoo += 1
-	if (poop >= max_continence * 0.8 && needpoo <= 1 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+	if (poop >= max_messcontinence * 0.8 && needpoo <= 1 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 		to_chat(src,"You really need to poop!")
 		needpoo += 1
-	if (pee >= max_continence)
+	if (pee >= max_wetcontinence && src.client.prefs != "Poop Only")
 		Wetting()
-	if (poop >= max_continence)
+	else if(pee >= max_wetcontinence)
+		pee = 0
+	if (poop >= max_messcontinence && src.client.prefs != "Pee Only")
 		Pooping()
+	else if(poop >= max_messcontinence)
+		poop = 0
 	switch(brand)
 		if ("plain")
 			set_light(0)
@@ -360,8 +370,9 @@
 /mob/living/carbon/proc/DiaperAppearance()
 	SEND_SIGNAL(src,COMSIG_DIAPERCHANGE, ckey(src.mind.key))
 
-/mob/living/carbon/proc/DiaperChange()
+/mob/living/carbon/proc/DiaperChange(obj/item/diaper/diap)
 	var/turf/cuckold = null
+	var/newpamp
 	switch(src.dir)
 		if(1)
 			cuckold = locate(src.loc.x + 1,src.loc.y,src.loc.z)
@@ -372,217 +383,23 @@
 		if(8)
 			cuckold = locate(src.loc.x,src.loc.y + 1,src.loc.z)
 	if (wetness >= 1)
+		if(brand3 == "syndi")
+			brand3 = "plain"
 		if (stinkiness >= 1)
-			switch(brand)
-				if("plain")
-					new /obj/item/useddiap/plain(cuckold)
-				if("classics")
-					new /obj/item/useddiap/classic(cuckold)
-				if("swaddles")
-					new /obj/item/useddiap/swaddles(cuckold)
-				if("hefters_m")
-					new /obj/item/useddiap/hefters_m(cuckold)
-				if("hefters_f")
-					new /obj/item/useddiap/hefters_f(cuckold)
-				if("Princess")
-					new /obj/item/useddiap/princess(cuckold)
-				if("PwrGame")
-					new /obj/item/useddiap/pwrgame(cuckold)
-				if("StarKist")
-					new /obj/item/useddiap/starkist(cuckold)
-				if("Space")
-					new /obj/item/useddiap/space(cuckold)
-				if("Replica")
-					new /obj/item/useddiap/plain(cuckold)
-				if("Service")
-					new /obj/item/useddiap/service(cuckold)
-				if("Supply")
-					new /obj/item/useddiap/supply(cuckold)
-				if("Hydroponics")
-					new /obj/item/useddiap/hydro(cuckold)
-				if("Sec")
-					new /obj/item/useddiap/sec(cuckold)
-				if("Engineering")
-					new /obj/item/useddiap/engi(cuckold)
-				if("Atmos")
-					new /obj/item/useddiap/atmos(cuckold)
-				if("Science")
-					new /obj/item/useddiap/sci(cuckold)
-				if("Med")
-					new /obj/item/useddiap/med(cuckold)
-				if("Cult_Nar")
-					new /obj/item/useddiap/narsie(cuckold)
-				if("Cult_Clock")
-					new /obj/item/useddiap/ratvar(cuckold)
-				if("Jeans")
-					new /obj/item/useddiap/jeans(cuckold)
-				if("Ashwalker")
-					new /obj/item/useddiap/ashwalker(cuckold)
-				if("alien")
-					new /obj/item/useddiap/alien(cuckold)
-				if("Miner")
-					new /obj/item/useddiap/miner(cuckold)
-				if("Miner_thick")
-					new /obj/item/useddiap/miner_thick(cuckold)
+			newpamp = text2path(addtext("/obj/item/useddiap/", brand3))
 		else
-			switch(brand)
-				if("plain")
-					new /obj/item/wetdiap/plain(cuckold)
-				if("classics")
-					new /obj/item/wetdiap/classic(cuckold)
-				if("swaddles")
-					new /obj/item/wetdiap/swaddles(cuckold)
-				if("hefters_m")
-					new /obj/item/wetdiap/hefters_m(cuckold)
-				if("hefters_f")
-					new /obj/item/wetdiap/hefters_f(cuckold)
-				if("Princess")
-					new /obj/item/wetdiap/princess(cuckold)
-				if("PwrGame")
-					new /obj/item/wetdiap/pwrgame(cuckold)
-				if("StarKist")
-					new /obj/item/wetdiap/starkist(cuckold)
-				if("Space")
-					new /obj/item/wetdiap/space(cuckold)
-				if("Replica")
-					new /obj/item/wetdiap/plain(cuckold)
-				if("Service")
-					new /obj/item/wetdiap/service(cuckold)
-				if("Supply")
-					new /obj/item/wetdiap/supply(cuckold)
-				if("Hydroponics")
-					new /obj/item/wetdiap/hydro(cuckold)
-				if("Sec")
-					new /obj/item/wetdiap/sec(cuckold)
-				if("Engineering")
-					new /obj/item/wetdiap/engi(cuckold)
-				if("Atmos")
-					new /obj/item/wetdiap/atmos(cuckold)
-				if("Science")
-					new /obj/item/wetdiap/sci(cuckold)
-				if("Med")
-					new /obj/item/wetdiap/med(cuckold)
-				if("Cult_Nar")
-					new /obj/item/wetdiap/narsie(cuckold)
-				if("Cult_Clock")
-					new /obj/item/wetdiap/ratvar(cuckold)
-				if("Jeans")
-					new /obj/item/wetdiap/jeans(cuckold)
-				if("Ashwalker")
-					new /obj/item/wetdiap/ashwalker(cuckold)
-				if("alien")
-					new /obj/item/wetdiap/alien(cuckold)
-				if("Miner")
-					new /obj/item/wetdiap/miner(cuckold)
-				if("Miner_thick")
-					new /obj/item/wetdiap/miner_thick(cuckold)
+			newpamp = text2path(addtext("/obj/item/wetdiap/", brand3))
 	else
 		if (stinkiness >= 1)
-			switch(brand)
-				if("plain")
-					new /obj/item/poopydiap/plain(cuckold)
-				if("classics")
-					new /obj/item/poopydiap/classic(cuckold)
-				if("swaddles")
-					new /obj/item/poopydiap/swaddles(cuckold)
-				if("hefters_m")
-					new /obj/item/poopydiap/hefters_m(cuckold)
-				if("hefters_f")
-					new /obj/item/poopydiap/hefters_f(cuckold)
-				if("Princess")
-					new /obj/item/poopydiap/princess(cuckold)
-				if("PwrGame")
-					new /obj/item/poopydiap/pwrgame(cuckold)
-				if("StarKist")
-					new /obj/item/poopydiap/starkist(cuckold)
-				if("Space")
-					new /obj/item/poopydiap/space(cuckold)
-				if("Replica")
-					new /obj/item/poopydiap/plain(cuckold)
-				if("Service")
-					new /obj/item/poopydiap/service(cuckold)
-				if("Supply")
-					new /obj/item/poopydiap/supply(cuckold)
-				if("Hydroponics")
-					new /obj/item/poopydiap/hydro(cuckold)
-				if("Sec")
-					new /obj/item/poopydiap/sec(cuckold)
-				if("Engineering")
-					new /obj/item/poopydiap/engi(cuckold)
-				if("Atmos")
-					new /obj/item/poopydiap/atmos(cuckold)
-				if("Science")
-					new /obj/item/poopydiap/sci(cuckold)
-				if("Med")
-					new /obj/item/poopydiap/med(cuckold)
-				if("Cult_Nar")
-					new /obj/item/poopydiap/narsie(cuckold)
-				if("Cult_Clock")
-					new /obj/item/poopydiap/ratvar(cuckold)
-				if("Jeans")
-					new /obj/item/poopydiap/jeans(cuckold)
-				if("Ashwalker")
-					new /obj/item/poopydiap/ashwalker(cuckold)
-				if("alien")
-					new /obj/item/poopydiap/alien(cuckold)
-				if("Miner")
-					new /obj/item/poopydiap/miner(cuckold)
-				if("Miner_thick")
-					new /obj/item/poopydiap/miner_thick(cuckold)
+			if(brand3 == "syndi")
+				brand3 = "plain"
+			newpamp = text2path(addtext("/obj/item/poopydiap/", brand3))
 		else
-			switch(brand)
-				if("plain")
-					new /obj/item/diaper/plain(cuckold)
-				if("classics")
-					new /obj/item/diaper/classic(cuckold)
-				if("swaddles")
-					new /obj/item/diaper/swaddles(cuckold)
-				if("hefters_m")
-					new /obj/item/diaper/hefters_m(cuckold)
-				if("hefters_f")
-					new /obj/item/diaper/hefters_f(cuckold)
-				if("Princess")
-					new /obj/item/diaper/princess(cuckold)
-				if("PwrGame")
-					new /obj/item/diaper/pwrgame(cuckold)
-				if("StarKist")
-					new /obj/item/diaper/starkist(cuckold)
-				if("Space")
-					new /obj/item/diaper/space(cuckold)
-				if("Replica")
-					new /obj/item/diaper/syndi(cuckold)
-				if("Service")
-					new /obj/item/diaper/service(cuckold)
-				if("Supply")
-					new /obj/item/diaper/supply(cuckold)
-				if("Hydroponics")
-					new /obj/item/diaper/hydro(cuckold)
-				if("Sec")
-					new /obj/item/diaper/sec(cuckold)
-				if("Engineering")
-					new /obj/item/diaper/engi(cuckold)
-				if("Atmos")
-					new /obj/item/diaper/atmos(cuckold)
-				if("Science")
-					new /obj/item/diaper/sci(cuckold)
-				if("Med")
-					new /obj/item/diaper/med(cuckold)
-				if("Cult_Nar")
-					new /obj/item/diaper/narsie(cuckold)
-				if("Cult_Clock")
-					new /obj/item/diaper/ratvar(cuckold)
-				if("Jeans")
-					new /obj/item/diaper/jeans(cuckold)
-				if("Ashwalker")
-					new /obj/item/diaper/ashwalker(cuckold)
-				if("alien")
-					new /obj/item/diaper/alien(cuckold)
-				if("Miner")
-					new /obj/item/diaper/miner(cuckold)
-				if("Miner_thick")
-					new /obj/item/diaper/miner_thick(cuckold)
+			newpamp = text2path(addtext("/obj/item/diaper/", brand3))
+	new newpamp(cuckold)
 	wetness = 0
 	stinkiness = 0
+	brand3 = replacetext("[diap]", "/obj/item/diaper/", "")
 	if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 		SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"peepee")
 		SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"poopy")
@@ -611,11 +428,13 @@
 
 /obj/item/reagent_containers/food/snacks/attack(mob/living/carbon/human/M, mob/living/user, def_zone)
 	..()
-	M.poop = M.poop + 1
+	if(M.client.prefs.accident_types != "Pee Only")
+		M.poop = M.poop + 1
 
 /obj/item/reagent_containers/food/drinks/attack(mob/living/carbon/human/M, mob/living/user, def_zone)
 	..()
-	M.pee = M.pee + 2
+	if(M.client.prefs.accident_types != "Poop Only")
+		M.pee = M.pee + 2
 	M.fluids = M.fluids + 25
 	if (M.fluids > 300)
 		M.fluids = 300
@@ -668,9 +487,11 @@
 	..()
 	var/obj/screen/diapstats = new /obj/screen/diaperstatus(owner)
 	if (HAS_TRAIT(owner,TRAIT_INCONTINENT))
-		owner.max_continence = 50
+		owner.max_wetcontinence = 50
+		owner.max_messcontinence = 50
 	else
-		owner.max_continence = 100
+		owner.max_wetcontinence = 100
+		owner.max_messcontinence = 50
 	diapstats.hud = src
 	infodisplay += diapstats
 
