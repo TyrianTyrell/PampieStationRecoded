@@ -491,7 +491,7 @@
 		owner.max_messcontinence = 50
 	else
 		owner.max_wetcontinence = 100
-		owner.max_messcontinence = 50
+		owner.max_messcontinence = 100
 	diapstats.hud = src
 	infodisplay += diapstats
 
