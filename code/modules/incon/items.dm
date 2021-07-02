@@ -1164,3 +1164,41 @@
 /obj/item/paci_package/nuk
 	icon_state = "nukpack"
 	custom_price = 50
+
+/obj/item/poopydiap/proc/smelly()
+	var/stinkyturf = get_turf(src)
+
+	// Closed turfs don't have any air in them, so no gas building up
+	if(!istype(stinkyturf,/turf/open))
+		return
+
+	var/turf/open/stink_turf = stinkyturf
+
+	var/datum/gas_mixture/noxious = new
+
+	noxious.set_moles(/datum/gas/miasma,0.05)
+
+	noxious.set_temperature(BODYTEMP_NORMAL)
+
+	stink_turf.assume_air(noxious)
+
+	stink_turf.air_update_turf()
+
+/obj/item/useddiap/proc/stinky()
+	var/stinkturf = get_turf(src)
+
+	// Closed turfs don't have any air in them, so no gas building up
+	if(!istype(stinkturf,/turf/open))
+		return
+
+	var/turf/open/stinky_turf = stinkturf
+
+	var/datum/gas_mixture/nox = new
+
+	nox.set_moles(/datum/gas/miasma,0.075)
+
+	nox.set_temperature(BODYTEMP_NORMAL)
+
+	stinky_turf.assume_air(nox)
+
+	stinky_turf.air_update_turf()
