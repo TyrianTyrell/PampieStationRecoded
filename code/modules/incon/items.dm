@@ -31,7 +31,7 @@
 			M.brand = icon_state
 			M.brand2 = name
 			M.DiaperAppearance()
-			if (M.brand == "hefters_m" || M.brand == "hefters_f" || M.brand == "Miner_thick")
+			if (findtext(M.brand, "hefters") != 0 || findtext(M.brand, "_thick") != 0)
 				M.heftersbonus = 200
 			else
 				M.heftersbonus = 0
@@ -925,7 +925,6 @@
 	STR.can_hold = typecacheof(list(/obj/item/diaper))
 
 /obj/item/storage/backpack/diaper_bag/bluespace/PopulateContents()
-	. = ..()
 	new /obj/item/diaper/hefters_m(src)
 	new /obj/item/diaper/hefters_m(src)
 	new /obj/item/diaper/hefters_m(src)
