@@ -528,7 +528,7 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 	name = "Quadriplegic"
 	desc = "You're paralyzed from the shoulders down! ...How'd you even get this job!?"
 	value = -5
-	mob_trait = TRAIT_PARA
+	mob_trait = TRAIT_QUAD
 	human_only = TRUE
 	gain_text = null // Handled by trauma.
 	lose_text = null
