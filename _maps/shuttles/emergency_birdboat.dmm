@@ -300,6 +300,10 @@
 /obj/item/defibrillator/loaded,
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
+"Z" = (
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/escape)
 
 (1,1,1) = {"
 a
@@ -543,7 +547,7 @@ b
 "}
 (16,1,1) = {"
 b
-f
+Z
 o
 f
 b

@@ -257,6 +257,10 @@
 "X" = (
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
+"Y" = (
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/mineral/titanium/blue,
+/area/shuttle/escape)
 
 (1,1,1) = {"
 a
@@ -320,7 +324,7 @@ f
 f
 f
 f
-r
+Y
 b
 K
 K
@@ -412,7 +416,7 @@ f
 f
 f
 f
-r
+Y
 b
 M
 M

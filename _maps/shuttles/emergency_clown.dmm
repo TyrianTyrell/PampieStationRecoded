@@ -347,6 +347,10 @@
 /obj/item/pneumatic_cannon/pie/selfcharge,
 /turf/open/floor/bluespace,
 /area/shuttle/escape)
+"Ir" = (
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/mineral/bananium,
+/area/shuttle/escape)
 "Zf" = (
 /obj/structure/closet/emcloset,
 /obj/item/toy/sword,
@@ -578,7 +582,7 @@ ab
 ay
 aZ
 aV
-aV
+Ir
 aL
 aM
 aM

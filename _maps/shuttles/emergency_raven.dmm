@@ -1329,6 +1329,24 @@
 "eP" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/escape)
+"mP" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/escape)
+"Ch" = (
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/escape)
 "Mb" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Shuttle EVA";
@@ -1667,9 +1685,9 @@ ad
 cr
 bJ
 eP
-br
+mP
 aC
-bz
+Ch
 eP
 bJ
 en

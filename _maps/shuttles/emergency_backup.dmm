@@ -46,6 +46,10 @@
 /obj/item/paper/fluff/stations/centcom/broken_evac,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape/backup)
+"O" = (
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape/backup)
 "P" = (
 /obj/machinery/light{
 	dir = 4
@@ -119,7 +123,7 @@ a
 F
 f
 P
-g
+O
 g
 q
 "}

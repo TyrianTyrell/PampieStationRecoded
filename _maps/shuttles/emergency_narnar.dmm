@@ -264,6 +264,10 @@
 /obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/shuttle/escape)
+"Y" = (
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/plasteel/cult,
+/area/shuttle/escape)
 
 (1,1,1) = {"
 a
@@ -295,7 +299,7 @@ b
 b
 b
 b
-j
+Y
 j
 j
 j

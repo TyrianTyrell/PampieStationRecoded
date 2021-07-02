@@ -144,6 +144,11 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel,
 /area/shuttle/escape)
+"A" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/plasteel,
+/area/shuttle/escape)
 
 (1,1,1) = {"
 a
@@ -202,7 +207,7 @@ o
 o
 o
 p
-p
+A
 r
 w
 m

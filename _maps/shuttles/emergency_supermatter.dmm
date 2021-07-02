@@ -342,6 +342,10 @@
 	},
 /turf/open/floor/mineral/titanium/yellow,
 /area/shuttle/escape)
+"Ym" = (
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/mineral/titanium/yellow,
+/area/shuttle/escape)
 
 (1,1,1) = {"
 aa
@@ -418,7 +422,7 @@ be
 (4,1,1) = {"
 ad
 ah
-ai
+Ym
 al
 ar
 ar
@@ -514,7 +518,7 @@ aZ
 (8,1,1) = {"
 ad
 ah
-ai
+Ym
 ap
 av
 av

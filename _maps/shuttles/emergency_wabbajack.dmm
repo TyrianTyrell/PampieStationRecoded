@@ -478,6 +478,10 @@
 	},
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
+"cl" = (
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
 "cF" = (
 /obj/machinery/sleeper{
 	dir = 8
@@ -589,7 +593,7 @@ aU
 aq
 aq
 aq
-aq
+cl
 be
 bf
 bg
@@ -685,7 +689,7 @@ aU
 aq
 aq
 aq
-aq
+cl
 be
 bf
 bg

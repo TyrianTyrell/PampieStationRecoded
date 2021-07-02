@@ -45,6 +45,10 @@
 /obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/shuttle/escape)
+"i" = (
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
 "l" = (
 /obj/machinery/vending/wallmed,
 /turf/closed/wall/mineral/titanium,
@@ -352,9 +356,9 @@ g
 r
 r
 r
+i
 r
-r
-r
+i
 r
 r
 r

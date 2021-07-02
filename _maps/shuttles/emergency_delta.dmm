@@ -1386,6 +1386,14 @@
 /obj/machinery/light/small,
 /turf/open/floor/plasteel,
 /area/shuttle/escape)
+"eS" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/plasteel,
+/area/shuttle/escape)
 "hB" = (
 /obj/effect/spawner/structure/window/shuttle,
 /turf/open/floor/plating,
@@ -1564,7 +1572,7 @@ av
 av
 av
 ao
-bo
+eS
 af
 by
 bw

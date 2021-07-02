@@ -14,10 +14,6 @@
 							/obj/item/stock_parts/capacitor)
 	var/obj/item/stock_parts/cell/power_cell
 
-/obj/vehicle/ridden/wheelchair/motorized/CheckParts(list/parts_list)
-	..()
-	refresh_parts()
-
 /obj/vehicle/ridden/wheelchair/motorized/proc/refresh_parts()
 	speed = 1 // Should never be under 1
 	for(var/obj/item/stock_parts/manipulator/M in contents)

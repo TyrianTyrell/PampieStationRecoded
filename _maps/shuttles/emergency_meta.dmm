@@ -850,6 +850,10 @@
 	},
 /turf/open/floor/mineral/plastitanium/red/brig,
 /area/shuttle/escape)
+"tn" = (
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
 "LY" = (
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
@@ -1101,9 +1105,9 @@ ac
 ac
 ar
 LY
-LY
-LY
-LY
+tn
+ad
+tn
 LY
 LY
 aZ

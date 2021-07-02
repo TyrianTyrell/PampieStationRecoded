@@ -369,6 +369,10 @@
 /obj/structure/table/optable,
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
+"EP" = (
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/mineral/titanium/blue,
+/area/shuttle/escape)
 "XC" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/mineral/titanium/white,
@@ -604,7 +608,7 @@ ad
 aE
 bl
 an
-an
+EP
 aR
 am
 am
