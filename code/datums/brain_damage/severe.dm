@@ -20,6 +20,21 @@
 	REMOVE_TRAIT(owner, TRAIT_MUTE, TRAUMA_TRAIT)
 	..()
 
+/datum/brain_trauma/severe/deaf
+	name = "Deafness"
+	desc = "Patient is completely unable to hear."
+	scan_desc = "extensive damage to the brain's auditory receptors"
+	gain_text = "<span class='warning'>You can't hear!</span>"
+	lose_text = "<span class='notice'>You can suddenly hear again.</span>"
+
+/datum/brain_trauma/severe/deaf/on_gain()
+	ADD_TRAIT(owner, TRAIT_DEAF, TRAUMA_TRAIT)
+	..()
+
+/datum/brain_trauma/severe/deaf/on_lose()
+	REMOVE_TRAIT(owner, TRAIT_DEAF, TRAUMA_TRAIT)
+	..()
+
 /datum/brain_trauma/severe/aphasia
 	name = "Aphasia"
 	desc = "Patient is unable to speak or understand any language."
@@ -117,9 +132,14 @@
 	paralysis_type = "legs"
 	resilience = TRAUMA_RESILIENCE_ABSOLUTE
 
-/datum/brain_trauma/severe/paralysis/spinesnapped
+/datum/brain_trauma/severe/paralysis/quadriplegic
 	random_gain = FALSE
-	clonable = FALSE
+	paralysis_type = "full"
+	resilience = TRAUMA_RESILIENCE_ABSOLUTE
+
+/datum/brain_trauma/severe/paralysis/spinesnapped
+	random_gain = TRUE
+	clonable = TRUE
 	paralysis_type = "legs"
 	resilience = TRAUMA_RESILIENCE_LOBOTOMY // It shouldn't fix severed spinal cords really, but there is no specific surgery for that yet.
 
