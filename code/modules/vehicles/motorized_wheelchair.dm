@@ -6,7 +6,7 @@
 	arms_required = 0
 	max_integrity = 150
 	var/speed = 2
-	var/power_efficiency = 1
+	var/power_efficiency = 2.5
 	var/power_usage = 1
 	var/panel_open = FALSE
 	var/list/required_parts = list(/obj/item/stock_parts/manipulator,
