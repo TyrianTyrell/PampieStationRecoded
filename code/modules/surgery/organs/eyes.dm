@@ -190,7 +190,7 @@
 
 /obj/item/organ/eyes/robotic/meson
 	name = "meson eyes"
-	desc = "These cybernetic eye implants will give you thermal vision. Vertical slit pupil included."
+	desc = "These cybernetic eye implants will give you meson vision."
 	left_eye_color = "66F"
 	right_eye_color = "66F"
 	see_in_dark = 2
