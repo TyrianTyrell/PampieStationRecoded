@@ -221,7 +221,7 @@ SUBSYSTEM_DEF(ticker)
 				current_state = GAME_STATE_FINISHED
 				toggle_ooc(TRUE) // Turn it on
 				toggle_dooc(TRUE)
-				SSvote.initiate_vote("enjoyment", "server", display = SHOW_RESULTS, votesystem = PLURALITY_VOTING)
+				SSvote.initiate_vote("enjoyment", "server", display = SHOW_RESULTS, votesystem = PLURALITY_VOTING, forced = TRUE)
 				declare_completion(force_ending)
 				Master.SetRunLevel(RUNLEVEL_POSTGAME)
 
