@@ -18,11 +18,7 @@
 		originmastercommit = revinfo.origin_commit
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 		date = revinfo.timestamp || rustg_git_commit_date(commit)
-=======
-		date = rustg_git_commit_date(commit)
->>>>>>> parent of 164fe2e (testing some discord stuff)
 =======
 		date = rustg_git_commit_date(commit)
 >>>>>>> parent of 164fe2e (testing some discord stuff)
@@ -43,13 +39,8 @@
 		var/datum/tgs_revision_information/test_merge/tm = line
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 		msg += "Test merge active of PR #[tm.number] commit [tm.head_commit]"
 		SSblackbox.record_feedback("associative", "testmerged_prs", 1, list("number" = "[tm.number]", "commit" = "[tm.head_commit]", "title" = "[tm.title]", "author" = "[tm.author]"))
-=======
-		msg += "Test merge active of PR #[tm.number] commit [tm.pull_request_commit]"
-		SSblackbox.record_feedback("associative", "testmerged_prs", 1, list("number" = "[tm.number]", "commit" = "[tm.pull_request_commit]", "title" = "[tm.title]", "author" = "[tm.author]"))
->>>>>>> parent of 164fe2e (testing some discord stuff)
 =======
 		msg += "Test merge active of PR #[tm.number] commit [tm.pull_request_commit]"
 		SSblackbox.record_feedback("associative", "testmerged_prs", 1, list("number" = "[tm.number]", "commit" = "[tm.pull_request_commit]", "title" = "[tm.title]", "author" = "[tm.author]"))
@@ -74,12 +65,9 @@
 		var/datum/tgs_revision_information/test_merge/tm = line
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 		var/cm = tm.head_commit
 		var/details = ": '" + html_encode(tm.title) + "' by " + html_encode(tm.author) + " at commit " + html_encode(copytext_char(cm, 1, 11))
 =======
-=======
->>>>>>> parent of 164fe2e (testing some discord stuff)
 =======
 >>>>>>> parent of 164fe2e (testing some discord stuff)
 		var/cm = tm.pull_request_commit
@@ -87,9 +75,6 @@
 		if(details && findtext(details, "\[s\]") && (!usr || !usr.client.holder))
 			continue
 <<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 164fe2e (testing some discord stuff)
-=======
 >>>>>>> parent of 164fe2e (testing some discord stuff)
 =======
 >>>>>>> parent of 164fe2e (testing some discord stuff)
@@ -135,11 +120,8 @@
 	msg += "Allow Latejoin Antagonists: [CONFIG_GET(flag/allow_latejoin_antagonists)]"
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 	to_chat(src, "<span class='infoplain'>[msg.Join("<br>")]</span>")
 =======
-=======
->>>>>>> parent of 164fe2e (testing some discord stuff)
 =======
 >>>>>>> parent of 164fe2e (testing some discord stuff)
 	msg += "Enforce Continuous Rounds: [length(CONFIG_GET(keyed_list/continuous))] of [config.modes.len] roundtypes"
@@ -180,9 +162,6 @@
 				msg += "[ctag] [percentage]%"
 	to_chat(src, msg.Join("<br>"))
 <<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 164fe2e (testing some discord stuff)
-=======
 >>>>>>> parent of 164fe2e (testing some discord stuff)
 =======
 >>>>>>> parent of 164fe2e (testing some discord stuff)
