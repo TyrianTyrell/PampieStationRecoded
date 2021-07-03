@@ -16,11 +16,9 @@
 	if(revinfo)
 		commit = revinfo.commit
 		originmastercommit = revinfo.origin_commit
-<<<<<<< HEAD
 		date = revinfo.timestamp || rustg_git_commit_date(commit)
 =======
 		date = rustg_git_commit_date(commit)
->>>>>>> parent of 164fe2e (testing some discord stuff)
 
 	// goes to DD log and config_error.txt
 	log_world(get_log_message())
@@ -33,13 +31,11 @@
 
 	for(var/line in testmerge)
 		var/datum/tgs_revision_information/test_merge/tm = line
-<<<<<<< HEAD
 		msg += "Test merge active of PR #[tm.number] commit [tm.head_commit]"
 		SSblackbox.record_feedback("associative", "testmerged_prs", 1, list("number" = "[tm.number]", "commit" = "[tm.head_commit]", "title" = "[tm.title]", "author" = "[tm.author]"))
 =======
 		msg += "Test merge active of PR #[tm.number] commit [tm.pull_request_commit]"
 		SSblackbox.record_feedback("associative", "testmerged_prs", 1, list("number" = "[tm.number]", "commit" = "[tm.pull_request_commit]", "title" = "[tm.title]", "author" = "[tm.author]"))
->>>>>>> parent of 164fe2e (testing some discord stuff)
 
 	if(commit && commit != originmastercommit)
 		msg += "HEAD: [commit]"
@@ -54,7 +50,6 @@
 	. = header ? "The following pull requests are currently test merged:<br>" : ""
 	for(var/line in testmerge)
 		var/datum/tgs_revision_information/test_merge/tm = line
-<<<<<<< HEAD
 		var/cm = tm.head_commit
 		var/details = ": '" + html_encode(tm.title) + "' by " + html_encode(tm.author) + " at commit " + html_encode(copytext_char(cm, 1, 11))
 =======
@@ -62,7 +57,6 @@
 		var/details = ": '" + html_encode(tm.title) + "' by " + html_encode(tm.author) + " at commit " + html_encode(copytext_char(cm, 1, 11))
 		if(details && findtext(details, "\[s\]") && (!usr || !usr.client.holder))
 			continue
->>>>>>> parent of 164fe2e (testing some discord stuff)
 		. += "<a href=\"[CONFIG_GET(string/githuburl)]/pull/[tm.number]\">#[tm.number][details]</a><br>"
 
 /client/verb/showrevinfo()
@@ -103,7 +97,6 @@
 	msg += "Protect Assistant Role From Traitor: [CONFIG_GET(flag/protect_assistant_from_antagonist)]"
 	msg += "Enforce Human Authority: [CONFIG_GET(flag/enforce_human_authority)]"
 	msg += "Allow Latejoin Antagonists: [CONFIG_GET(flag/allow_latejoin_antagonists)]"
-<<<<<<< HEAD
 	to_chat(src, "<span class='infoplain'>[msg.Join("<br>")]</span>")
 =======
 	msg += "Enforce Continuous Rounds: [length(CONFIG_GET(keyed_list/continuous))] of [config.modes.len] roundtypes"
@@ -143,4 +136,3 @@
 				var/percentage = round(probabilities[ctag] / sum * 100, 0.1)
 				msg += "[ctag] [percentage]%"
 	to_chat(src, msg.Join("<br>"))
->>>>>>> parent of 164fe2e (testing some discord stuff)
