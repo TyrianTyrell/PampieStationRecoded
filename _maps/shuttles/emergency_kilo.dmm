@@ -1113,6 +1113,10 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
 /area/shuttle/escape)
+"lA" = (
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/mineral/titanium/white,
+/area/shuttle/escape)
 "Xo" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -1325,9 +1329,9 @@ aK
 bc
 bi
 bi
-bi
-bi
-bi
+lA
+as
+lA
 bi
 bi
 bi

@@ -189,6 +189,10 @@
 	},
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
+"E" = (
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
 "H" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
@@ -397,7 +401,7 @@ s
 s
 s
 r
-r
+E
 d
 d
 "}

@@ -189,6 +189,10 @@
 /obj/machinery/status_display/evac,
 /turf/closed/wall/mineral/wood,
 /area/shuttle/escape)
+"Y" = (
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/wood,
+/area/shuttle/escape)
 
 (1,1,1) = {"
 a
@@ -251,7 +255,7 @@ h
 h
 h
 h
-d
+Y
 d
 d
 a

@@ -2001,6 +2001,15 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/escape)
+"Bu" = (
+/obj/item/radio/intercom{
+	dir = 4;
+	name = "Station Intercom (General)";
+	pixel_y = 27
+	},
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/escape)
 
 (1,1,1) = {"
 aa
@@ -2508,7 +2517,7 @@ bm
 bM
 bR
 co
-cb
+Bu
 cF
 cF
 cF

@@ -248,6 +248,11 @@
 /datum/holiday/USA/getStationPrefix()
 	return pick("Independant","American","Burger","Bald Eagle","Star-Spangled")
 
+/datum/holiday/facade
+	name = "Facade Day"
+	begin_day = 5
+	begin_month = JULY
+
 /datum/holiday/writer
 	name = "Writer's Day"
 	begin_day = 8

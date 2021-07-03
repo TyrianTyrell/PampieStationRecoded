@@ -860,6 +860,10 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
 /area/shuttle/escape)
+"DB" = (
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/plasteel,
+/area/shuttle/escape)
 
 (1,1,1) = {"
 aa
@@ -952,11 +956,11 @@ al
 ar
 ab
 aA
-aG
+DB
 aL
 aI
 aM
-aG
+DB
 aQ
 ab
 aY
@@ -994,11 +998,11 @@ an
 as
 ab
 aA
-aI
+DB
 aM
 aG
 aL
-aI
+DB
 aQ
 ab
 ba

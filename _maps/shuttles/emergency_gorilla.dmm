@@ -202,6 +202,7 @@
 /area/shuttle/escape)
 "aO" = (
 /obj/effect/decal/cleanable/glass,
+/obj/structure/closet/crate/diaperpail,
 /turf/open/floor/plasteel/shuttle,
 /area/shuttle/escape)
 "aP" = (

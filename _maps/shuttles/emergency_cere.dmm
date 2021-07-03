@@ -1741,6 +1741,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/escape)
+"lc" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/plasteel,
+/area/shuttle/escape)
 
 (1,1,1) = {"
 aa
@@ -1890,7 +1898,7 @@ bk
 be
 bk
 ab
-ba
+lc
 bc
 bc
 ba

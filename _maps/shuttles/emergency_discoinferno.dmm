@@ -228,6 +228,14 @@
 /obj/structure/fans/tiny,
 /turf/open/floor/plasteel/elevatorshaft,
 /area/shuttle/escape)
+"Q" = (
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/wood,
+/area/shuttle/escape)
+"U" = (
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/mineral/plasma/disco,
+/area/shuttle/escape)
 
 (1,1,1) = {"
 a
@@ -415,7 +423,7 @@ r
 r
 r
 P
-x
+Q
 x
 x
 M
@@ -437,7 +445,7 @@ s
 r
 r
 r
-r
+U
 P
 A
 x

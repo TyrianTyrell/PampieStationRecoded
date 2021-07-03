@@ -3,19 +3,16 @@
 	desc = "A chair with thrusters. It seems to have a motor in it."
 	icon = 'icons/obj/vehicles.dmi'
 	icon_state = "wheelchair_motorized"
+	arms_required = 0
 	max_integrity = 150
 	var/speed = 2
-	var/power_efficiency = 1
-	var/power_usage = 25
+	var/power_efficiency = 2.5
+	var/power_usage = 1
 	var/panel_open = FALSE
 	var/list/required_parts = list(/obj/item/stock_parts/manipulator,
 							/obj/item/stock_parts/manipulator,
 							/obj/item/stock_parts/capacitor)
 	var/obj/item/stock_parts/cell/power_cell
-
-/obj/vehicle/ridden/wheelchair/motorized/CheckParts(list/parts_list)
-	..()
-	refresh_parts()
 
 /obj/vehicle/ridden/wheelchair/motorized/proc/refresh_parts()
 	speed = 1 // Should never be under 1
@@ -54,8 +51,11 @@
 			canmove = FALSE
 			addtimer(VARSET_CALLBACK(src, canmove, TRUE), 20)
 			return FALSE
-		power_cell.use(power_usage / max(power_efficiency, 1))
 	return ..()
+
+/obj/vehicle/ridden/wheelchair/motorized/Moved()
+	. = ..()
+	power_cell.use(power_usage / max(power_efficiency, 1))
 
 /obj/vehicle/ridden/wheelchair/motorized/post_buckle_mob(mob/living/user)
 	. = ..()

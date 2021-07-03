@@ -624,6 +624,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/escape)
+"iz" = (
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/escape)
 
 (1,1,1) = {"
 aa
@@ -832,7 +836,7 @@ bf
 ax
 ax
 ax
-ax
+iz
 ax
 ad
 bA

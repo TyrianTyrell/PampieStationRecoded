@@ -694,6 +694,16 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/escape)
+"eF" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/plasteel/white,
+/area/shuttle/escape)
 "sI" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -813,7 +823,7 @@ ab
 aX
 bb
 be
-bh
+eF
 Jw
 bg
 bl

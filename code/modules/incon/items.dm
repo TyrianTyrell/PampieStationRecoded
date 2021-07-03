@@ -11,11 +11,18 @@
 	hitsound = 'sound/effects/splap.ogg'
 	throwhitsound = 'sound/effects/splap.ogg'
 
+/obj/item/poopydiap/Initialize()
+	. = ..()
+	smelly()
+
 /obj/item/useddiap
 	w_class = 1
 	hitsound = 'sound/effects/splap.ogg'
 	throwhitsound = 'sound/effects/splap.ogg'
 
+/obj/item/useddiap/Initialize()
+	. = ..()
+	stinky()
 
 /obj/item/diaper/plain
 	name = "diaper"
@@ -31,7 +38,7 @@
 			M.brand = icon_state
 			M.brand2 = name
 			M.DiaperAppearance()
-			if (M.brand == "hefters_m" || M.brand == "hefters_f" || M.brand == "Miner_thick")
+			if (findtext(M.brand, "hefters") != 0 || findtext(M.brand, "_thick") != 0)
 				M.heftersbonus = 200
 			else
 				M.heftersbonus = 0
@@ -887,6 +894,9 @@
 	. = ..()
 	var/vek = pick("duffel-diap-plain","duffel-diap-med","duffel-diap-babypink","duffel-diap-babyblue","duffel-diap-rainbow","duffel-diap-butterflies","duffel-diap-peeyellow","duffel-diap-hypno","duffel-diap-seizure")
 	icon_state = vek
+	var/static/mutable_appearance/bluespacey = mutable_appearance('icons/obj/storage.dmi', "duffel-diap-bluespaceoverlay")
+	if (istype(src, /obj/item/storage/backpack/diaper_bag/bluespace))
+		add_overlay(bluespacey)
 
 /obj/item/storage/backpack/diaper_bag/ComponentInitialize()
 	. = ..()
@@ -907,7 +917,6 @@
 /obj/item/storage/backpack/diaper_bag/bluespace
 	name = "bluespace diaper bag"
 	desc = "A bag for holding LIKE SO MANY diapers at once."
-	icon_state = "duffel-diap-bluespace"
 	item_state = "duffel"
 	custom_price = 500
 	color = "#FFFFFF"
@@ -925,7 +934,6 @@
 	STR.can_hold = typecacheof(list(/obj/item/diaper))
 
 /obj/item/storage/backpack/diaper_bag/bluespace/PopulateContents()
-	. = ..()
 	new /obj/item/diaper/hefters_m(src)
 	new /obj/item/diaper/hefters_m(src)
 	new /obj/item/diaper/hefters_m(src)
@@ -1165,3 +1173,55 @@
 /obj/item/paci_package/nuk
 	icon_state = "nukpack"
 	custom_price = 50
+
+/obj/item/poopydiap/proc/smelly()
+	if(istype(loc, /obj/structure/closet/crate/diaperpail))
+		return
+
+	if(istype(src, /obj/item/poopydiap/atmos))
+		return
+	var/stinkyturf = get_turf(src)
+
+	// Closed turfs don't have any air in them, so no gas building up
+	if(istype(stinkyturf,/turf/open))
+
+		var/turf/open/stink_turf = stinkyturf
+
+		var/datum/gas_mixture/noxious = new
+
+		noxious.set_moles(/datum/gas/diapersmell,0.05)
+
+		noxious.set_temperature(BODYTEMP_NORMAL)
+
+		stink_turf.assume_air(noxious)
+
+		stink_turf.air_update_turf()
+
+	spawn(20)
+	smelly()
+
+/obj/item/useddiap/proc/stinky()
+	if(istype(loc, /obj/structure/closet/crate/diaperpail))
+		return
+
+	if(istype(src, /obj/item/useddiap/atmos))
+		return
+	var/stinkturf = get_turf(src)
+
+	// Closed turfs don't have any air in them, so no gas building up
+	if(istype(stinkturf,/turf/open))
+
+		var/turf/open/stinky_turf = stinkturf
+
+		var/datum/gas_mixture/nox = new
+
+		nox.set_moles(/datum/gas/diapersmell,0.075)
+
+		nox.set_temperature(BODYTEMP_NORMAL)
+
+		stinky_turf.assume_air(nox)
+
+		stinky_turf.air_update_turf()
+
+	spawn(20)
+	stinky()

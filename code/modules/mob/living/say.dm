@@ -105,7 +105,14 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		to_chat(src, "<span class='warning'>That message contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[message]\"</span></span>")
 		SSblackbox.record_feedback("tally", "ic_blocked_words", 1, lowertext(config.ic_filter_regex.match))
 		return
-
+	if(time2text(world.timeofday, "Month DD") == "July 05" && findtext(message, "melon"))
+		var/firstnem = copytext(src.name, 1, findtext(src.name," "))
+		var/trip1 = pick("Y'know what","Okay")
+		var/trip2 = pick("I think this evening is over","that's it")
+		var/trip3 = pick("you need to leave","you've gotta leave","I think you should leave")
+		to_chat(src, "<span class='warning'>[trip1], [firstnem], [trip2], [trip3].")
+		var/obj/item/reagent_containers/food/snacks/pie/cream/nostun/creamy = new(get_turf(src))
+		creamy.splat(src)
 	var/datum/saymode/saymode = SSradio.saymodes[talk_key]
 	var/message_mode = get_message_mode(message)
 	var/original_message = message

@@ -450,6 +450,10 @@
 /obj/machinery/light,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
+"rz" = (
+/obj/structure/closet/crate/diaperpail,
+/turf/open/floor/mineral/titanium,
+/area/shuttle/escape)
 "Jx" = (
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
@@ -670,9 +674,9 @@ aa
 ad
 aK
 at
-at
-at
-at
+rz
+ah
+rz
 at
 aZ
 ad

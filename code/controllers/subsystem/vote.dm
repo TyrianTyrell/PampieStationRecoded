@@ -320,6 +320,9 @@ SUBSYSTEM_DEF(vote)
 /datum/controller/subsystem/vote/proc/result()
 	. = announce_result()
 	var/restart = 0
+	var/good = 0
+	var/bad = 0
+	var/neutral = 0
 	if(.)
 		switch(mode)
 			if("roundtype") //CIT CHANGE - adds the roundstart extended/secret vote
@@ -338,6 +341,12 @@ SUBSYSTEM_DEF(vote)
 			if("restart")
 				if(. == "Restart Round")
 					restart = 1
+			if("enjoyment")
+				good = choices["Good"]
+				neutral = choices["Neutral"]
+				bad = choices["Bad"]
+				message_admins("Vote results: Good:[good], Neutral:[neutral], Bad:[bad]")
+				log_admin("Vote results: Good:[good], Neutral:[neutral], Bad:[bad]")
 			if("gamemode")
 				if(GLOB.master_mode != .)
 					SSticker.save_mode(.)
@@ -462,6 +471,8 @@ SUBSYSTEM_DEF(vote)
 		reset()
 		display_votes = display //CIT CHANGE - adds obfuscated votes
 		switch(vote_type)
+			if("enjoyment")
+				choices.Add("Good","Neutral","Bad")
 			if("restart")
 				choices.Add("Restart Round","Continue Playing")
 			if("gamemode")
@@ -668,6 +679,15 @@ SUBSYSTEM_DEF(vote)
 			. += "\t(<a href='?src=[REF(src)];vote=toggle_gamemode'>[avm ? "Allowed" : "Disallowed"]</a>)"
 
 		. += "</li>"
+		//enjoyment
+		if(trialmin)
+			. += "<a href='?src=[REF(src)];vote=gamemode'>Enjoyment</a>"
+		else
+			. += "<font color='grey'>GameMode (Disallowed)</font>"
+		if(trialmin)
+			. += "\t(<a href='?src=[REF(src)];vote=toggle_gamemode'>[avm ? "Allowed" : "Disallowed"]</a>)"
+
+		. += "</li>"
 		//custom
 		if(trialmin)
 			. += "<li><a href='?src=[REF(src)];vote=custom'>Custom</a></li>"
@@ -696,6 +716,8 @@ SUBSYSTEM_DEF(vote)
 		if("restart")
 			if(CONFIG_GET(flag/allow_vote_restart) || usr.client.holder)
 				initiate_vote("restart",usr.key)
+		if("enjoyment")
+			initiate_vote("enjoyment",usr.key)
 		if("gamemode")
 			if(CONFIG_GET(flag/allow_vote_mode) || usr.client.holder)
 				initiate_vote("gamemode",usr.key)
