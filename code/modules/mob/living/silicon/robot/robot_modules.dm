@@ -365,6 +365,7 @@
 		"Droid" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "medical"),
 		"Sleek" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "sleekmed"),
 		"Marina" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "marinamed"),
+		"Motherboard" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "marinamom"),
 		"Eyebot" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "eyebotmed"),
 		"Heavy" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "heavymed")
 		)
@@ -391,6 +392,9 @@
 			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
 		if("Marina")
 			cyborg_base_icon = "marinamed"
+			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
+		if("Motherboard")
+			cyborg_base_icon = "marinamom"
 			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
 		if("Eyebot")
 			cyborg_base_icon = "eyebotmed"

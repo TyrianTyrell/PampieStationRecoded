@@ -894,6 +894,9 @@
 	. = ..()
 	var/vek = pick("duffel-diap-plain","duffel-diap-med","duffel-diap-babypink","duffel-diap-babyblue","duffel-diap-rainbow","duffel-diap-butterflies","duffel-diap-peeyellow","duffel-diap-hypno","duffel-diap-seizure")
 	icon_state = vek
+	var/static/mutable_appearance/bluespacey = mutable_appearance('icons/obj/storage.dmi', "duffel-diap-bluespaceoverlay")
+	if (istype(src, /obj/item/storage/backpack/diaper_bag/bluespace))
+		add_overlay(bluespacey)
 
 /obj/item/storage/backpack/diaper_bag/ComponentInitialize()
 	. = ..()
@@ -914,7 +917,6 @@
 /obj/item/storage/backpack/diaper_bag/bluespace
 	name = "bluespace diaper bag"
 	desc = "A bag for holding LIKE SO MANY diapers at once."
-	icon_state = "duffel-diap-bluespace"
 	item_state = "duffel"
 	custom_price = 500
 	color = "#FFFFFF"
@@ -1187,7 +1189,7 @@
 
 		var/datum/gas_mixture/noxious = new
 
-		noxious.set_moles(/datum/gas/diapersmell,0.075)
+		noxious.set_moles(/datum/gas/diapersmell,0.05)
 
 		noxious.set_temperature(BODYTEMP_NORMAL)
 
@@ -1213,7 +1215,7 @@
 
 		var/datum/gas_mixture/nox = new
 
-		nox.set_moles(/datum/gas/diapersmell,0.125)
+		nox.set_moles(/datum/gas/diapersmell,0.075)
 
 		nox.set_temperature(BODYTEMP_NORMAL)
 
