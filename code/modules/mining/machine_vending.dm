@@ -74,6 +74,7 @@
 		new /datum/data/mining_equipment("KA AoE Damage",				/obj/item/borg/upgrade/modkit/aoe/mobs,								2000),
 		new /datum/data/mining_equipment("Miner Full Replacement",		/obj/item/storage/backpack/duffelbag/mining/cloned,					3000),
 		new /datum/data/mining_equipment("Premium Accelerator",			/obj/item/gun/energy/kinetic_accelerator/premiumka,					8000),
+		new /datum/data/mining_equipment("Meson Eyes (Autosurgeon)"     /obj/item/autosurgeon/meson_eyes,									12000)
 		new /datum/data/mining_equipment("Kinetic Glaive Kit",			/obj/item/storage/backpack/duffelbag/mining/glaivekit,				2250),
 		new /datum/data/mining_equipment("Survival Dagger",				/obj/item/kitchen/knife/combat/survival/knuckledagger,				550),
 		new /datum/data/mining_equipment("Thick Diamondper",			/obj/item/diaper/miner_thick,										500),
