@@ -104,17 +104,22 @@
 	var/hurt = TRUE
 	var/extra_speed = 0
 	if(throwingdatum.thrower != src)
-		extra_speed = min(max(0, throwingdatum.speed - initial(throw_speed)), 3)
+		extra_speed = min(max(0, throwingdatum.speed - initial(throw_speed)), CARBON_MAX_IMPACT_SPEED_BONUS)
 	if(GetComponent(/datum/component/tackler))
 		return
 	if(throwingdatum?.thrower && iscyborg(throwingdatum.thrower))
 		var/mob/living/silicon/robot/R = throwingdatum.thrower
 		if(!R.emagged)
 			hurt = FALSE
-	if(hit_atom.density && isturf(hit_atom))
-		if(hurt)
+	if(hurt && hit_atom.density)
+		if(isturf(hit_atom))
 			DefaultCombatKnockdown(20)
 			take_bodypart_damage(10 + 5 * extra_speed, check_armor = TRUE, wound_bonus = extra_speed * 5)
+		else if(isstructure(hit_atom) && extra_speed)
+			DefaultCombatKnockdown(10)
+			take_bodypart_damage(5 + 5 * extra_speed, check_armor = TRUE, wound_bonus = extra_speed * 5)
+		else if(!iscarbon(hit_atom) && extra_speed)
+			take_bodypart_damage(5 * extra_speed, check_armor = TRUE, wound_bonus = extra_speed * 5)
 	if(iscarbon(hit_atom) && hit_atom != src)
 		var/mob/living/carbon/victim = hit_atom
 		if(victim.movement_type & FLYING)
