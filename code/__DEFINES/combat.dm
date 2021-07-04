@@ -203,6 +203,9 @@
 //Nice shot bonus
 #define NICE_SHOT_RICOCHET_BONUS	10	//if the shooter has the NICE_SHOT trait and they fire a ricocheting projectile, add this to the ricochet chance and auto aim angle
 
+//If a carbon is thrown at a speed faster than normal and impacts something solid, they take extra damage for every extra speed up to this number (see [/mob/living/carbon/proc/throw_impact])
+#define CARBON_MAX_IMPACT_SPEED_BONUS 5
+
 ///Time to spend without clicking on other things required for your shots to become accurate.
 #define GUN_AIMING_TIME (2 SECONDS)
 
