@@ -679,6 +679,7 @@
 	if(HAS_TRAIT(src, TRAIT_MESON_VISION))
 		sight |= (SEE_TURFS)
 		see_in_dark = max(see_in_dark, 2)
+		lighting_alpha = min(lighting_alpha, LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE)
 
 	if(see_override)
 		see_invisible = see_override
@@ -1158,7 +1159,7 @@
 		var/obj/item/clothing/H = head
 		if(H.clothing_flags & SCAN_REAGENTS)
 			return TRUE
-	if(isorgan(/obj/item/organ/cyberimp/eyes/hud/science))
+	if(getorgan(/obj/item/organ/cyberimp/eyes/hud/science))
 		return TRUE
 	if(isclothing(wear_mask) && (wear_mask.clothing_flags & SCAN_REAGENTS))
 		return TRUE
