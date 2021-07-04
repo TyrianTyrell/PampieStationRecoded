@@ -1424,3 +1424,24 @@
 /obj/item/storage/box/strange_seeds_5pack/PopulateContents()
 	for(var/i in 1 to 5)
 		new /obj/item/seeds/random(src)
+
+/obj/item/storage/box/hug/plushies
+	name = "tactical cuddle kit"
+	desc = "A lovely little box filled with soft, cute plushies, perfect for calming down people who have just suffered a traumatic event. Legend has it there's a special part of hell\ for Medical Officers who just take the box for themselves."
+
+	/// The plushies that aren't of things trying to kill you
+	var/list/static/approved_by_corporate = list(/obj/item/toy/plush/carpplushie, // well, maybe they can be something that tries to kill you a little bit
+		/obj/item/toy/plush/slimeplushie,
+		/obj/item/toy/plush/lizardplushie,
+		/obj/item/toy/plush/snakeplushie,
+		/obj/item/toy/plush/redtail,
+		/obj/item/toy/plush/catboy,
+		/obj/item/toy/plush/dan,
+		/obj/item/toy/plush/beeplushie,
+		/obj/item/toy/plush/mothplushie,
+		/obj/item/toy/plush/borgplushie/medihound)
+
+/obj/item/storage/box/hug/plushies/PopulateContents()
+	for(var/i in 1 to 7)
+		var/plush_path = pick(approved_by_corporate)
+		new plush_path(src)
