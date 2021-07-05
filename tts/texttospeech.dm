@@ -17,6 +17,8 @@
 
 		text2file(params,"scripts/voicequeue.txt")
 
+		call("writevoice.dll","writevoicetext")(params)
+
 		shell("Code.exe")
 
 		if(fexists("scripts/voicequeue.txt"))
