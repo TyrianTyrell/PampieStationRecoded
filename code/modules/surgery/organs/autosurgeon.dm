@@ -83,6 +83,21 @@
 	uses = 1
 	starting_organ = /obj/item/organ/cyberimp/eyes/hud/medical
 
+/obj/item/autosurgeon/hos
+	desc = "A single use autosurgeon that contains a security heads-up display augment. A screwdriver can be used to remove it, but implants can't be placed back in."
+	uses = 1
+	starting_organ = /obj/item/organ/cyberimp/eyes/hud/security
+
+/obj/item/autosurgeon/ce
+	desc = "A single use autosurgeon that contains a diagnostic heads-up display augment. A screwdriver can be used to remove it, but implants can't be placed back in."
+	uses = 1
+	starting_organ = /obj/item/organ/cyberimp/eyes/hud/diagnostic
+
+/obj/item/autosurgeon/rd
+	desc = "A single use autosurgeon that contains a science heads-up display augment. A screwdriver can be used to remove it, but implants can't be placed back in."
+	uses = 1
+	starting_organ = /obj/item/organ/cyberimp/eyes/hud/science
+
 /obj/item/autosurgeon/gloweyes
 	desc = "A single use autosurgeon that contains a set of Luminescent Eyes augments. A screwdriver can be used to remove it, but implants can't be placed back in."
 	uses = 1
@@ -92,6 +107,11 @@
 	desc = "A single use autosurgeon that contains a breathing tube. A screwdriver can be used to remove it, but implants can't be placed back in."
 	uses = 1
 	starting_organ = /obj/item/organ/cyberimp/mouth/breathing_tube
+
+/obj/item/autosurgeon/meson_eyes
+	desc = "Get Meson eyes at the push of a button."
+	uses = 1
+	starting_organ = /obj/item/organ/eyes/robotic/meson
 
 /obj/item/autosurgeon/thermal_eyes
 	starting_organ = /obj/item/organ/eyes/robotic/thermals
