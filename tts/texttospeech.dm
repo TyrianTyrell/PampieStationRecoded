@@ -27,7 +27,7 @@
 	spawn(10)
 		for(var/mob/M in range(13))
 			if(M.client?.prefs.cit_toggles && TTS)
-				M.playsound_local(src.loc, "sound/voice.wav",70)
+				M.playsound_local(src.loc, "data/voice.wav",70)
 
 /client/proc/texttospeech(var/text, var/clientkey)
 	spawn(0)
