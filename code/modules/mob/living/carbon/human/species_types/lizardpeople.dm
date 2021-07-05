@@ -58,6 +58,17 @@
 	brutemod = 0.9
 	species_language_holder = /datum/language_holder/lizard/ash
 
+/datum/species/lizard/ashwalker/before_equip_job(datum/job/J, mob/living/carbon/human/H, visualsOnly = FALSE)
+	var/datum/outfit/ashstation/O = new /datum/outfit/ashstation
+	if(J)
+		if(J.outfit)
+			O = new J.outfit
+
+	H.equipOutfit(O, visualsOnly)
+	H.internal = H.get_item_for_held_index(2)
+	H.update_internals_hud_icon(1)
+	return 0
+
 /datum/species/lizard/ashwalker/on_species_gain(mob/living/carbon/human/C, datum/species/old_species)
 	if((C.dna.features["spines"] != "None" ) && (C.dna.features["tail_lizard"] == "None")) //tbh, it's kinda ugly for them not to have a tail yet have floating spines
 		C.dna.features["tail_lizard"] = "Smooth"
