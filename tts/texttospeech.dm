@@ -17,7 +17,7 @@
 
 		text2file(params,"tmp/voicequeue.txt")
 
-		shell("Code.exe")
+		shell(".\\Code.exe")
 
 		if(fexists("tmp/voicequeue.txt"))
 			fdel("tmp/voicequeue.txt")
