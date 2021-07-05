@@ -81,7 +81,6 @@
 	new /obj/item/circuitboard/machine/techfab/department/security(src)
 	new /obj/item/storage/photo_album/HoS(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/hos(src)
-	new /obj/item/door_remote/head_of_security(src)
 	new /obj/item/autosurgeon/hos(src)
 
 /obj/structure/closet/secure_closet/warden
@@ -107,6 +106,7 @@
 	new /obj/item/storage/belt/security/full(src)
 	new /obj/item/flashlight/seclite(src)
 	new /obj/item/clothing/gloves/krav_maga/sec(src)
+	new /obj/item/door_remote/head_of_security(src)
 	new /obj/item/gun/ballistic/shotgun/automatic/combat/compact(src)
 	new /obj/item/clothing/head/beret/sec/corporatewarden(src)
 /obj/structure/closet/secure_closet/security

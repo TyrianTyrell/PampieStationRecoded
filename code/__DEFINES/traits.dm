@@ -346,6 +346,9 @@
 #define CORRUPTED_SYSTEM "corrupted-system"
 #define REGRESSION_TRAIT "regression"
 
+///The holder of this trait has antennae or whatever that hurt a ton when noogied
+#define TRAIT_ANTENNAE "antennae"
+
 ///Turf trait for when a turf is transparent
 #define TURF_Z_TRANSPARENT_TRAIT "turf_z_transparent"
 /// This trait is added by the active directional block system.

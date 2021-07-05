@@ -96,13 +96,13 @@
 		to_chat(src,"You start feeling the need to pee.")
 		needpee += 1
 	if (pee >= max_wetcontinence * 0.8 && needpee <= 1 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-		to_chat(src,"You really need to pee!")
+		to_chat(src,"<span class='warning'>You really need to pee!</span>")
 		needpee += 1
 	if (poop >= max_messcontinence * 0.5 && needpoo <= 0 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 		to_chat(src,"You start feeling the need to poop.")
 		needpoo += 1
 	if (poop >= max_messcontinence * 0.8 && needpoo <= 1 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-		to_chat(src,"You really need to poop!")
+		to_chat(src,"<span class='warning'>You really need to poop!</span>")
 		needpoo += 1
 	if (pee >= max_wetcontinence && src.client.prefs != "Poop Only")
 		Wetting()

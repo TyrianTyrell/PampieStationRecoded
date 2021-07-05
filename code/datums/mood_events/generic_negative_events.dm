@@ -294,3 +294,13 @@
 	description = "<span class='boldwarning'>I hate when my shoes come untied!</span>\n"
 	mood_change = -3
 	timeout = 1 MINUTES
+
+/datum/mood_event/noogie
+	description = "<span class='warning'>Ow! This is like space high school all over again...</span>\n"
+	mood_change = -2
+	timeout = 1 MINUTES
+
+/datum/mood_event/noogie_harsh
+	description = "<span class='warning'>OW!! That was even worse than a regular noogie!</span>\n"
+	mood_change = -4
+	timeout = 1 MINUTES
