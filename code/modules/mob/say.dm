@@ -22,9 +22,7 @@
 		return
 	clear_typing_indicator()		// clear it immediately!
 	say(message)
-	for(var/mob/M in range(13))
-		if(M.client?.prefs.cit_toggles && TTS)
-			M.texttospeech(message)
+	usr.texttospeech(message)
 
 /mob/verb/me_typing_indicator()
 	set name = "me_indicator"
