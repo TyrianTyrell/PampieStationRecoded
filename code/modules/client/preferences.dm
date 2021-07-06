@@ -1083,7 +1083,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Aphrodisiacs:</b> <a href='?_src_=prefs;preference=aphro'>[(cit_toggles & NO_APHRO) ? "Disallowed" : "Allowed"]</a><br>"
 			dat += "<b>Ass Slapping:</b> <a href='?_src_=prefs;preference=ass_slap'>[(cit_toggles & NO_ASS_SLAP) ? "Disallowed" : "Allowed"]</a><br>"
 			dat += "<b>Automatic Wagging:</b> <a href='?_src_=prefs;preference=auto_wag'>[(cit_toggles & NO_AUTO_WAG) ? "Disabled" : "Enabled"]</a><br>"
-			dat += "<b>Text To Speech:</b> <a href='?_src_=prefs;preference=tts'>[(cit_toggles && TTS) ? "Yes" : "No"]</a><br>"
+			dat += "<b>Text To Speech:</b> <a href='?_src_=prefs;preference=tts'>[(cit_toggles & TTS) ? "Yes" : "No"]</a><br>"
 			dat += "</tr></table>"
 			dat += "<br>"
 		if(KEYBINDINGS_TAB) // Custom keybindings
