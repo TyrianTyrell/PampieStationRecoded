@@ -313,40 +313,6 @@
 	else
 		warpchance += 0.25 * GET_MUTATION_ENERGY(src)
 
-/datum/mutation/human/para
-	name = "Paraplegia"
-	desc = "The holder of this genome is paralyzed from the waist down."
-	difficulty = 18
-	quality = NEGATIVE
-	text_gain_indication = "<span class='danger'>You can't feel your legs.</span>"
-
-/datum/mutation/human/para/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
-		return
-	ADD_TRAIT(owner, TRAIT_PARA, GENETIC_MUTATION)
-
-/datum/mutation/human/para/on_losing(mob/living/carbon/human/owner)
-	if(..())
-		return
-	REMOVE_TRAIT(owner, TRAIT_PARA, GENETIC_MUTATION)
-
-/datum/mutation/human/quad
-	name = "Quadriplegia"
-	desc = "The holder of this genome is completely paralyzed."
-	quality = NEGATIVE
-	locked = TRUE
-	text_gain_indication = "<span class='danger'>You can't feel anything</span>"
-
-/datum/mutation/human/quad/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
-		return
-	ADD_TRAIT(owner, TRAIT_QUAD, GENETIC_MUTATION)
-
-/datum/mutation/human/quad/on_losing(mob/living/carbon/human/owner)
-	if(..())
-		return
-	REMOVE_TRAIT(owner, TRAIT_QUAD, GENETIC_MUTATION)
-
 /datum/mutation/human/acidflesh
 	name = "Acidic Flesh"
 	desc = "Subject has acidic chemicals building up underneath the skin. This is often lethal."

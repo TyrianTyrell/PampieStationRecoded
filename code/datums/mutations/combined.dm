@@ -38,7 +38,3 @@
 /datum/generecipe/spatial
 	required = "/datum/mutation/human/void; /datum/mutation/human/tourettes"
 	result = BADBLINK
-
-/datum/generecipe/spatial
-	required = "/datum/mutation/human/para; /datum/mutation/human/spastic"
-	result = QUADMUT
