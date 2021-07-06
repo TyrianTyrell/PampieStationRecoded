@@ -283,6 +283,7 @@
 	name = "Spatial Instability"
 	desc = "The victim of the mutation has a very weak link to spatial reality, and may be displaced. Often causes extreme nausea."
 	quality = NEGATIVE
+	locked = TRUE
 	text_gain_indication = "<span class='warning'>The space around you twists sickeningly.</span>"
 	text_lose_indication = "<span class'notice'>The space around you settles back to normal.</span>"
 	difficulty = 18//high so it's hard to unlock and abuse
@@ -311,6 +312,40 @@
 		owner.visible_message("<span class='danger'>[owner] appears out of nowhere!</span>")
 	else
 		warpchance += 0.25 * GET_MUTATION_ENERGY(src)
+
+/datum/mutation/human/para
+	name = "Paraplegia"
+	desc = "The holder of this genome is paralyzed from the waist down."
+	difficulty = 18
+	quality = NEGATIVE
+	text_gain_indication = "<span class='danger'>You can't feel your legs.</span>"
+
+/datum/mutation/human/para/on_acquiring(mob/living/carbon/human/owner)
+	if(..())
+		return
+	ADD_TRAIT(owner, TRAIT_PARA, GENETIC_MUTATION)
+
+/datum/mutation/human/para/on_losing(mob/living/carbon/human/owner)
+	if(..())
+		return
+	REMOVE_TRAIT(owner, TRAIT_PARA, GENETIC_MUTATION)
+
+/datum/mutation/human/quad
+	name = "Quadriplegia"
+	desc = "The holder of this genome is completely paralyzed."
+	quality = NEGATIVE
+	locked = TRUE
+	text_gain_indication = "<span class='danger'>You can't feel anything</span>"
+
+/datum/mutation/human/quad/on_acquiring(mob/living/carbon/human/owner)
+	if(..())
+		return
+	ADD_TRAIT(owner, TRAIT_QUAD, GENETIC_MUTATION)
+
+/datum/mutation/human/quad/on_losing(mob/living/carbon/human/owner)
+	if(..())
+		return
+	REMOVE_TRAIT(owner, TRAIT_QUAD, GENETIC_MUTATION)
 
 /datum/mutation/human/acidflesh
 	name = "Acidic Flesh"
