@@ -15,7 +15,7 @@
 		voiceslist["ckey"] = name2
 		var/params = list2params(voiceslist)
 
-		call("writevoice.dll","writevoicetext")(params)
+		text2file(params,"tmp/voicequeue.txt")
 
 		shell(".\\Code.exe")
 
@@ -24,6 +24,9 @@
 			if(M.client?.prefs.cit_toggles & TTS)
 				if(M.can_hear())
 					M.playsound_local(src.loc, "tmp/playervoice.wav",70)
+		if(fexists("tmp/voicequeue.txt"))
+			fdel("tmp/voicequeue.txt")
+			text2file("","tmp/voicequeue.txt")
 
 /client/proc/texttospeech(var/text, var/clientkey)
 	spawn(0)

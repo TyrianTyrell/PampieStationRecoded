@@ -22,6 +22,7 @@
 		return
 	clear_typing_indicator()		// clear it immediately!
 	say(message)
+
 	src.texttospeech(message)
 
 /mob/verb/me_typing_indicator()
