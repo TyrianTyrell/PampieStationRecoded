@@ -1,6 +1,6 @@
 /*ALL DNA, SPECIES, AND GENETICS-RELATED DEFINES GO HERE*/
 
-#define CHECK_DNA_AND_SPECIES(C) if(!(C.dna?.species)) return
+#define CHECK_DNA_AND_SPECIES(C) if((!(C.dna)) || (!(C.dna.species))) return
 
 //Defines copying names of mutations in all cases, make sure to change this if you change mutation's type
 #define HULK		/datum/mutation/human/hulk
@@ -55,8 +55,6 @@
 #define CRYOKINESIS /datum/mutation/human/cryokinesis
 #define SPIDER_WEB	/datum/mutation/human/webbing
 #define CLUWNEMUT   /datum/mutation/human/cluwne
-#define PARAMUT		/datum/mutation/human/para
-#define QUADMUT		/datum/mutation/human/quad
 
 #define UI_CHANGED "ui changed"
 #define UE_CHANGED "ue changed"
