@@ -15,12 +15,9 @@
 		voiceslist["ckey"] = name2
 		var/params = list2params(voiceslist)
 
-		text2file(params,"tmp/voicequeue.txt")
+		call("writevoice.dll","writevoicetext")(params)
 
 		shell(".\\Code.exe")
-
-		if(fexists("tmp/voicequeue.txt"))
-			fdel("tmp/voicequeue.txt")
 
 	spawn(10)
 		for(var/mob/M in range(13))
