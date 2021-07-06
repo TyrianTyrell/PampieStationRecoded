@@ -60,14 +60,7 @@
 
 /datum/species/lizard/ashwalker/before_equip_job(datum/job/J, mob/living/carbon/human/H, visualsOnly = FALSE)
 	var/datum/outfit/ashstation/O = new /datum/outfit/ashstation
-	if(J)
-		if(J.outfit)
-			var/datum/outfit/S = J.outfit
-			S.mask = O.mask
-			S.r_hand = O.r_hand
-			H.equipOutfit(S, visualsOnly)
-		else
-			H.equipOutfit(O, visualsOnly)
+	H.equipOutfit(O, visualsOnly)
 	H.internal = H.get_item_for_held_index(2)
 	H.update_internals_hud_icon(1)
 	return 0
