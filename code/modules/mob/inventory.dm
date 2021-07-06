@@ -485,8 +485,10 @@
 		hand_bodyparts.len = amt
 		for(var/i in old_limbs+1 to amt)
 			var/path = /obj/item/bodypart/l_arm
-			if(!(i % 2))
+			if((i % 3) == 1)
 				path = /obj/item/bodypart/r_arm
+			if((i % 3) == 2)
+				path = /obj/item/bodypart/mindarm
 
 			var/obj/item/bodypart/BP = new path ()
 			BP.owner = src

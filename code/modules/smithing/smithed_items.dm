@@ -36,7 +36,7 @@
 				prot = (G.max_heat_protection_temperature > 360)
 		else
 			prot = 0
-	if(prot > 0 || HAS_TRAIT(user, TRAIT_RESISTHEAT) || HAS_TRAIT(user, TRAIT_RESISTHEATHANDS))
+	if(prot > 0 || HAS_TRAIT(user, TRAIT_RESISTHEAT) || HAS_TRAIT(user, TRAIT_RESISTHEATHANDS) || user.get_active_hand().iscorporeal == FALSE)
 		to_chat(user, "<span class='notice'>You pick up the [src].</span>")
 		return ..()
 	else

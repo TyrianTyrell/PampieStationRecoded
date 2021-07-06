@@ -19,7 +19,7 @@
 
 		shell(".\\Code.exe")
 
-	spawn(10)
+	spawn(0)
 		for(var/mob/M in range(13))
 			if(M.client?.prefs.cit_toggles & TTS)
 				if(M.can_hear())

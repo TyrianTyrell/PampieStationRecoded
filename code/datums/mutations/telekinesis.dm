@@ -12,6 +12,9 @@
 	..()
 	if(!(type in visual_indicators))
 		visual_indicators[type] = list(mutable_appearance('icons/effects/genetics.dmi', "telekinesishead", -MUTATIONS_LAYER))
+	if(iscarbon(dna.holder))
+		var/mob/living/carbon/C = dna.holder
+		C.bodyparts.Add(new /obj/item/bodypart/mindarm())
 
 /datum/mutation/human/telekinesis/get_visual_indicator()
 	return visual_indicators[type][1]

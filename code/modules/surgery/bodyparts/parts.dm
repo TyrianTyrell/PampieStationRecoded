@@ -176,6 +176,18 @@
 	max_damage = 5000
 	animal_origin = DEVIL_BODYPART
 
+/obj/item/bodypart/mindarm
+	name = "telekinetic grasp"
+	desc = "You shouldn't be able to see this."
+	attack_verb = list("slapped", "punched")
+	max_damage = 5000
+	body_zone = BODY_ZONE_HEAD
+	held_index = 3
+	dismemberable = 0
+	stam_heal_tick = STAM_RECOVERY_LIMB
+	iscorporeal = FALSE
+	max_stamina_damage = 50
+
 /obj/item/bodypart/l_leg
 	name = "left leg"
 	desc = "Some athletes prefer to tie their left shoelaces first for good \
