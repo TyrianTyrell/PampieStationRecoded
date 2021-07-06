@@ -35,6 +35,10 @@
 	required = "/datum/mutation/human/nearsight; /datum/mutation/human/stimmed"
 	result = MESON
 
-/*/datum/generecipe/thermal
-	required = "/datum/mutation/human/thermal/meson; /datum/mutation/human/fire"
-	result = THERMAL*/
+/datum/generecipe/spatial
+	required = "/datum/mutation/human/void; /datum/mutation/human/tourettes"
+	result = BADBLINK
+
+/datum/generecipe/spatial
+	required = "/datum/mutation/human/para; /datum/mutation/human/spastic"
+	result = QUADMUT
