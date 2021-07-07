@@ -17,9 +17,9 @@
 
 		text2file(params,"tmp/voicequeue.txt")
 
-		shell(".\\Code.exe")
+		shell("Code.exe")
 
-	spawn(0)
+	spawn(1)
 		for(var/mob/M in range(13))
 			if(M.client?.prefs.cit_toggles & TTS)
 				if(M.can_hear())
