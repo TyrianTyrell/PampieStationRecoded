@@ -19,13 +19,13 @@
 
 		shell("Code.exe")
 
-	spawn(1)
+		if(fexists("tmp/voicequeue.txt"))
+			fdel("tmp/voicequeue.txt")
+	spawn(5)
 		for(var/mob/M in range(13))
 			if(M.client?.prefs.cit_toggles & TTS)
 				if(M.can_hear())
 					M.playsound_local(src.loc, "tmp/playervoice.wav",70)
-		if(fexists("tmp/voicequeue.txt"))
-			fdel("tmp/voicequeue.txt")
 
 /client/proc/texttospeech(var/text, var/clientkey)
 	spawn(0)
