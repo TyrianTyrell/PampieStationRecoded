@@ -26,7 +26,6 @@
 					M.playsound_local(src.loc, "tmp/playervoice.wav",70)
 		if(fexists("tmp/voicequeue.txt"))
 			fdel("tmp/voicequeue.txt")
-			text2file("","tmp/voicequeue.txt")
 
 /client/proc/texttospeech(var/text, var/clientkey)
 	spawn(0)
