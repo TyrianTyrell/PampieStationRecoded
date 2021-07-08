@@ -1,31 +1,28 @@
 
 
 /mob/proc/texttospeech(var/text)
-
+	var/name2 = ""
+	if (!name2 || name2 == "")
+		if(!src.ckey || src.ckey == "")
+			name2 = "\ref[src]"
+		else
+			name2 = src.ckey
 	spawn(0)
-		var/name2
-		if (!name2)
-			if(!src.ckey || src.ckey == "")
-				name2 = "\ref[src]"
-			else
-				name2 = src.ckey
 		var/list/voiceslist = list()
 
 		voiceslist["msg"] = text
 		voiceslist["ckey"] = name2
 		var/params = list2params(voiceslist)
 
-		text2file(params,"tmp/voicequeue.txt")
+		text2file(params, "tmp/voicequeue[name2].txt")
 
-		shell("Code.exe")
+		shell("Code.exe [name2]")
 
-		if(fexists("tmp/voicequeue.txt"))
-			fdel("tmp/voicequeue.txt")
 	spawn(5)
-		for(var/mob/M in range(13))
-			if(M.client?.prefs.cit_toggles & TTS)
-				if(M.can_hear())
-					M.playsound_local(src.loc, "tmp/playervoice.wav",70)
+		if(isliving(src))
+			src.playsound_local(src.loc, "tmp/playervoice[name2].wav", 70, max_distance = 7)
+
+		fdel("tmp/voicequeue[name2].txt")
 
 /client/proc/texttospeech(var/text, var/clientkey)
 	spawn(0)
