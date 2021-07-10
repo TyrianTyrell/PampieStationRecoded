@@ -556,8 +556,8 @@
 	name = "Psionic Healing Bolt"
 	desc = "This power fires a healing bolt at a target."
 	antimagic_allowed = TRUE
-	charge_max = 200
-	cooldown_min = 200
+	charge_max = 250
+	cooldown_min = 250
 	clothes_req = FALSE
 	range = 5
 	projectile_type = /obj/item/projectile/magic/psyker_heal
@@ -579,5 +579,8 @@
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/C = target
-		C.adjustBruteLoss(-15)
-		C.adjustFireLoss(-15)
+		C.adjustBruteLoss(-20)
+		C.adjustFireLoss(-20)
+		C.adjustToxLoss(-20, TRUE) //It even heals TOXINLOVERs
+		C.adjustCloneLoss(-5) //slight clone heals, just to make it special.
+		C.adjustOxyLoss(-20) //I feel this is a good idea too.
