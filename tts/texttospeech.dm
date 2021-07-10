@@ -19,8 +19,9 @@
 		shell("Code.exe [name2]")
 
 	spawn(5)
-		if(isliving(src))
-			src.playsound_local(src.loc, "tmp/playervoice[name2].wav", 70, max_distance = 7)
+		if(isliving(src) || name2)
+			if(src.client?.prefs.cit_toggles && TTS)
+				src.playsound_local(src.loc, "tmp/playervoice[name2].wav", 70, max_distance = 7)
 
 		fdel("tmp/voicequeue[name2].txt")
 
