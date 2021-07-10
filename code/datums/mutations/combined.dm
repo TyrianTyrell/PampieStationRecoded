@@ -31,9 +31,9 @@
 	required = "/datum/mutation/human/strong; /datum/mutation/human/radioactive"
 	result = HULK
 
-/datum/generecipe/meson
+/datum/generecipe/nv
 	required = "/datum/mutation/human/nearsight; /datum/mutation/human/stimmed"
-	result = MESON
+	result = NIGHTVISION
 
 /datum/generecipe/spatial
 	required = "/datum/mutation/human/void; /datum/mutation/human/tourettes"
