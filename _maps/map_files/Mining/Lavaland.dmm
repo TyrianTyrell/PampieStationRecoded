@@ -2254,7 +2254,7 @@
 "Ou" = (
 /obj/structure/stone_tile/slab,
 /obj/structure/table/wood,
-/obj/item/storage/toolbox/syndicate,
+/obj/item/storage/toolbox/ashen,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/ash_walkers)
 "Oy" = (
@@ -2452,7 +2452,6 @@
 "Uh" = (
 /obj/structure/stone_tile/slab,
 /obj/structure/table/wood,
-/obj/item/weldingtool/experimental,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/ash_walkers)
 "Ul" = (

@@ -71,6 +71,11 @@
 	new_spawn.mind.teach_crafting_recipe(/datum/crafting_recipe/ashen_arrow)
 	new_spawn.mind.teach_crafting_recipe(/datum/crafting_recipe/quiver)
 	new_spawn.mind.teach_crafting_recipe(/datum/crafting_recipe/bow_tablet)
+	new_spawn.mind.teach_crafting_recipe(/datum/crafting_recipe/bone_screwdriver)
+	new_spawn.mind.teach_crafting_recipe(/datum/crafting_recipe/bone_crowbar)
+	new_spawn.mind.teach_crafting_recipe(/datum/crafting_recipe/bone_cutters)
+	new_spawn.mind.teach_crafting_recipe(/datum/crafting_recipe/bone_wrench)
+	new_spawn.mind.teach_crafting_recipe(/datum/crafting_recipe/goliath_gloves)
 
 	if(ishuman(new_spawn))
 		var/mob/living/carbon/human/H = new_spawn
@@ -634,9 +639,9 @@
 			log_game("[key_name(user)] has successfully pried open [src] and disabled a space pirate spawner.")
 			W.play_tool_sound(src)
 			playsound(src.loc, 'modular_citadel/sound/voice/scream_skeleton.ogg', 50, 1, 4, 1.2)
-			if(rank == "Captain") 
+			if(rank == "Captain")
 				new /obj/effect/mob_spawn/human/pirate/corpse/captain(get_turf(src))
-			else 
+			else
 				new /obj/effect/mob_spawn/human/pirate/corpse(get_turf(src))
 			qdel(src)
 	else

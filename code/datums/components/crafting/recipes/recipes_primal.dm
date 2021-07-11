@@ -109,6 +109,53 @@
 				 /obj/item/stack/sheet/sinew = 4)
 	category = CAT_PRIMAL
 
+/datum/crafting_recipe/bone_screwdriver
+	name = "Bone Screwdriver"
+	result = /obj/item/screwdriver/ashwalker
+	time = 80
+	always_availible = FALSE
+	reqs = list(/obj/item/stack/sheet/bone = 2,
+				 /obj/item/stack/sheet/sinew = 1)
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/bone_crowbar
+	name = "Bone Crowbar"
+	result = /obj/item/crowbar/ashwalker
+	time = 80
+	always_availible = FALSE
+	reqs = list(/obj/item/stack/sheet/bone = 2,
+				 /obj/item/stack/sheet/sinew = 2)
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/bone_cutters
+	name = "Bone Wirecutters"
+	result = /obj/item/wirecutters/ashwalker
+	time = 80
+	always_availible = FALSE
+	reqs = list(/obj/item/stack/sheet/bone = 3,
+				 /obj/item/stack/sheet/sinew = 2)
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/bone_wrench
+	name = "Bone Wrench"
+	result = /obj/item/wrench/ashwalker
+	time = 80
+	always_availible = FALSE
+	reqs = list(/obj/item/stack/sheet/bone = 2,
+				 /obj/item/stack/sheet/sinew = 2)
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/goliath_gloves
+	name = "Goliath Gloves"
+	result = /obj/item/clothing/gloves/tackler/combat/insulated/goliath
+	time = 80
+	always_availible = FALSE
+	reqs = list(/obj/item/stack/sheet/sinew = 4,
+				/obj/item/stack/sheet/animalhide/goliath_hide = 2,
+				/obj/item/stack/sheet/cloth = 2,
+				/obj/item/stack/sheet/leather = 2)
+	category = CAT_PRIMAL
+
 /datum/crafting_recipe/bow_tablet
 	name = "Sandstone Bow Making Manual"
 	result = /obj/item/book/granter/crafting_recipe/bone_bow

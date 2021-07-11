@@ -80,6 +80,14 @@
 	random_color = FALSE
 	toolspeed = 0.95 //Wire cutters have 0 time bars though
 
+/obj/item/wirecutters/ashwalker
+	name = "bone wirecutters"
+	desc = "A rudimentary wirecutters made of bones and sinew."
+	icon = 'icons/obj/advancedtools.dmi'
+	icon_state = "cutters_bone"
+	toolspeed = 1.2
+	random_color = FALSE
+
 /obj/item/wirecutters/abductor
 	name = "alien wirecutters"
 	desc = "Extremely sharp wirecutters, made out of a silvery-green metal."
