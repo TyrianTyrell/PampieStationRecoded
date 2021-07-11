@@ -47,6 +47,13 @@
 	icon_state = "crowbar_brass"
 	toolspeed = 0.95
 
+/obj/item/crowbar/ashwalker
+	name = "bone crowbar"
+	desc = "A rudimentary crowbar made of bones."
+	icon = 'icons/obj/advancedtools.dmi'
+	icon_state = "crowbar_bone"
+	toolspeed = 1.2
+
 /obj/item/crowbar/abductor
 	name = "alien crowbar"
 	desc = "A hard-light crowbar. It appears to pry by itself, without any effort required."
