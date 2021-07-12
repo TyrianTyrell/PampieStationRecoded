@@ -16,6 +16,13 @@
 		return
 	return ..()
 
+/obj/item/retractor/ashwalker
+	name = "Bone Retractor"
+	desc = "Kinda looks like a chicken bone."
+	icon = 'icons/obj/surgery.dmi'
+	icon_state = "retractor_a"
+	toolspeed = 1.1
+
 /obj/item/retractor/advanced
 	name = "mechanical pinches"
 	desc = "An agglomerate of rods and gears."
@@ -67,6 +74,17 @@
 		return
 	return ..()
 
+/obj/item/hemostat/ashwalker
+	name = "Femurstat"
+	desc = "Bones that are strapped together with sinews to stop the bleeding."
+	icon = 'icons/obj/surgery.dmi'
+	icon_state = "hemostat_bone"
+	custom_materials = list(/datum/material/iron=5000, /datum/material/glass=2500)
+	flags_1 = CONDUCT_1
+	w_class = WEIGHT_CLASS_TINY
+	toolspeed = 1.1
+	attack_verb = list("attacked", "pinched")
+
 /obj/item/hemostat/augment
 	name = "hemostat"
 	desc = "Tiny servos power a pair of pincers to stop bleeding."
@@ -96,6 +114,16 @@
 		to_chat(user, "<span class='warning'>You refrain from hitting [L] with [src], as you are in help intent.</span>")
 		return
 	return ..()
+
+/obj/item/cautery/ashwalker
+	name = "Coretery"
+	desc = "A legion core that can close wounds."
+	icon = 'icons/obj/surgery.dmi'
+	icon_state = "cautery_bone"
+	flags_1 = CONDUCT_1
+	w_class = WEIGHT_CLASS_TINY
+	toolspeed = 1.1
+	attack_verb = list("burnt")
 
 /obj/item/cautery/augment
 	name = "cautery"
@@ -202,6 +230,16 @@
 		return
 	return ..()
 
+/obj/item/scalpel/ashwalker
+	name = "diamond scalpel"
+	desc = "Bones and Diamonds tied together to make a scalpel."
+	icon = 'icons/obj/surgery.dmi'
+	icon_state = "scalpel_bone"
+	hitsound = 'sound/weapons/blade1.ogg'
+	force = 12
+	toolspeed = 1.1
+	sharpness = SHARP_POINTY
+
 /obj/item/scalpel/advanced
 	name = "laser scalpel"
 	desc = "An advanced scalpel which uses laser technology to cut."
@@ -291,6 +329,23 @@
 		return
 	return ..()
 
+/obj/item/circular_saw/ashwalker
+	name = "diamond bonesaw"
+	desc = "Bones designed like a skull, with diamond teeth to cut through bones."
+	icon = 'icons/obj/surgery.dmi'
+	icon_state = "saw_bone"
+	hitsound = 'sound/weapons/circsawhit.ogg'
+	throwhitsound =  'sound/weapons/pierce.ogg'
+	flags_1 = CONDUCT_1
+	force = 12
+	w_class = WEIGHT_CLASS_SMALL
+	throwforce = 9
+	throw_speed = 2
+	throw_range = 5
+	toolspeed = 1.1
+	attack_verb = list("attacked", "slashed", "sawed", "cut")
+	sharpness = SHARP_EDGED
+
 /obj/item/circular_saw/augment
 	name = "circular saw"
 	desc = "A small but very fast spinning saw. Edges dulled to prevent accidental cutting inside of the surgeon."
@@ -320,6 +375,14 @@
 /obj/item/surgical_drapes/attack(mob/living/M, mob/user)
 	if(!attempt_initiate_surgery(src, M, user))
 		..()
+
+/obj/item/surgical_drapes/goliath
+	name = "goliath drapes"
+	desc = "Probably not the most hygienic but what the heck else are you gonna use?"
+	icon = 'icons/obj/surgery.dmi'
+	icon_state = "surgical_drapes_goli"
+	w_class = WEIGHT_CLASS_TINY
+	attack_verb = list("slapped")
 
 /obj/item/surgical_drapes/advanced
 	name = "smart surgical drapes"
@@ -433,3 +496,17 @@
 		to_chat(user, "<span class='warning'>You refrain from hitting [L] with [src], as you are in help intent.</span>")
 		return
 	return ..()
+
+/obj/item/bonesetter/bone
+	name = "bone bonesetter"
+	desc = "Setting bones with... bones? You're a genius!."
+	icon = 'icons/obj/surgery.dmi'
+	icon_state = "bone setter_bone"
+	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
+	flags_1 = CONDUCT_1
+	item_flags = SURGICAL_TOOL
+	w_class = WEIGHT_CLASS_SMALL
+	attack_verb = list("corrected", "properly set")
+	tool_behaviour = TOOL_BONESET
+	toolspeed = 1.1
