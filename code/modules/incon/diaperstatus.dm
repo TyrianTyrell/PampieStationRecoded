@@ -24,20 +24,27 @@
 	if (pee > 0 && stat != DEAD && src.client.prefs != "Poop Only")
 		needpee = 0
 		playsound(loc, 'sound/effects/pee-diaper.wav', 50, 1)
-		if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+		if (istype(src.buckled,/obj/structure/toilet))
+			if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+				src.visible_message("<span class='notice'>[src] pulls [src.p_their()] pants down, and pees in the toilet.</span>","<span class='notice'>You pull your pants down, and pee in the toilet.</span>")
+			if (max_wetcontinence < 100)
+				max_wetcontinence++
+		else
 			if (on_purpose == 1)
 				src.visible_message("<span class='notice'>[src] scrunches [src.p_their()] legs and lets the floodgates open.</span>","<span class='notice'>You scrunch your legs and let the floodgates open.</span>")
 			else
 				src.visible_message("<span class='notice'>[src]'s legs buckle as [src.p_they()] [src.p_are()] unable to stop [src.p_their()] bladder from leaking into [src.p_their()] pants!</span>","<span class='notice'>Your legs buckle as you are unable to stop your bladder from leaking into your pants!</span>")
-		if(pee > max_wetcontinence)
-			pee = max_wetcontinence
-		if(wetness + pee < 250 + heftersbonus)
-			wetness = wetness + pee
-			pee = 0
-		else
-			wetness = 250 + heftersbonus
-			pee = 0
-			new /obj/effect/decal/cleanable/waste/peepee(loc)
+			if(pee > max_wetcontinence)
+				pee = max_wetcontinence
+			if(wetness + pee < 250 + heftersbonus)
+				wetness = wetness + pee
+				pee = 0
+			else
+				wetness = 250 + heftersbonus
+				new /obj/effect/decal/cleanable/waste/peepee(loc)
+			if(max_wetcontinence > 10)
+				max_wetcontinence--
+		pee = 0
 		on_purpose = 0
 	else if (stat == DEAD)
 		to_chat(src,"You can't pee, you're dead!")
@@ -46,20 +53,27 @@
 	if (poop > 0 && stat != DEAD && src.client.prefs != "Pee Only")
 		needpoo = 0
 		playsound(loc, 'sound/effects/uhoh.ogg', 50, 1)
-		if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-			if (on_purpose == 1)
-				src.visible_message("<span class='notice'>An odor pervades the room as [src] dumps [src.p_their()] drawers.</span>","<span class='notice'>An odor pervades the room as you dump your drawers.</span>")
-			else
-				src.visible_message("<span class='notice'>[src] takes a squat and winces as [src.p_their()] seat sags just a little more.</span>","<span class='notice'>That tight feeling in your gut is gone. But your diaper seems a bit saggier- and stinkier.</span>")
-		if(poop > max_messcontinence)
-			poop = max_messcontinence
-		if(stinkiness + poop < 250 + heftersbonus)
-			stinkiness = stinkiness + poop
-			poop = 0
+		if (istype(src.buckled,/obj/structure/toilet))
+			if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+				src.visible_message("<span class='notice'>[src] pulls [src.p_their()] pants down, and poops in the toilet.</span>","<span class='notice'>You pull your pants down, and poop in the toilet.</span>")
+			if (max_messcontinence < 100)
+				max_messcontinence++
 		else
-			stinkiness = 250 + heftersbonus
-			poop = 0
+			if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+				if (on_purpose == 1)
+					src.visible_message("<span class='notice'>An odor pervades the room as [src] dumps [src.p_their()] drawers.</span>","<span class='notice'>An odor pervades the room as you dump your drawers.</span>")
+				else
+					src.visible_message("<span class='notice'>[src] takes a squat and winces as [src.p_their()] seat sags just a little more.</span>","<span class='notice'>That tight feeling in your gut is gone. But your diaper seems a bit saggier- and stinkier.</span>")
+			if(poop > max_messcontinence)
+				poop = max_messcontinence
+			if(stinkiness + poop < 250 + heftersbonus)
+				stinkiness = stinkiness + poop
+			else
+				stinkiness = 250 + heftersbonus
+			if(max_messcontinence > 10)
+				max_messcontinence--
 		on_purpose = 0
+		poop = 0
 	else if (stat == DEAD)
 		to_chat(src,"You can't poop, you're dead!")
 
@@ -407,7 +421,7 @@
 /mob/living/carbon/verb/Pee()
 	if(usr.client.prefs.accident_types != "Poop Only")
 		set category = "IC"
-	if((HAS_TRAIT(usr,TRAIT_INCONTINENT) || HAS_TRAIT(usr,TRAIT_POTTYREBEL) || HAS_TRAIT(usr,BABYBRAINED_TRAIT) || HAS_TRAIT(usr,TRAIT_DIAPERUSE)) && !HAS_TRAIT(usr,TRAIT_FULLYINCONTINENT))
+	if((HAS_TRAIT(usr,TRAIT_INCONTINENT) || HAS_TRAIT(usr,TRAIT_POTTYREBEL) || HAS_TRAIT(usr,BABYBRAINED_TRAIT) || HAS_TRAIT(usr,TRAIT_DIAPERUSE)) && !HAS_TRAIT(usr,TRAIT_FULLYINCONTINENT) && pee >= max_wetcontinence/2)
 		on_purpose = 1
 		Wetting()
 	else
@@ -416,7 +430,7 @@
 /mob/living/carbon/verb/Poop()
 	if(usr.client.prefs.accident_types != "Pee Only")
 		set category = "IC"
-	if((HAS_TRAIT(usr,TRAIT_INCONTINENT) || HAS_TRAIT(usr,TRAIT_POTTYREBEL) || HAS_TRAIT(usr,BABYBRAINED_TRAIT) || HAS_TRAIT(usr,TRAIT_DIAPERUSE)) && !HAS_TRAIT(usr,TRAIT_FULLYINCONTINENT))
+	if((HAS_TRAIT(usr,TRAIT_INCONTINENT) || HAS_TRAIT(usr,TRAIT_POTTYREBEL) || HAS_TRAIT(usr,BABYBRAINED_TRAIT) || HAS_TRAIT(usr,TRAIT_DIAPERUSE)) && !HAS_TRAIT(usr,TRAIT_FULLYINCONTINENT) && poop >= max_messcontinence/2)
 		on_purpose = 1
 		Pooping()
 	else
