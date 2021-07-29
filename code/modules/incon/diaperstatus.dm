@@ -61,7 +61,16 @@
 		else
 			if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 				if (on_purpose == 1)
-					src.visible_message("<span class='notice'>An odor pervades the room as [src] dumps [src.p_their()] drawers.</span>","<span class='notice'>An odor pervades the room as you dump your drawers.</span>")
+					switch(rand(2))
+						if(0)
+							src.visible_message("<span class='notice'>An odor pervades the room as [src] dumps [src.p_their()] drawers.</span>","<span class='notice'>An odor pervades the room as you dump your drawers.</span>")
+						if(1)
+							src.visible_message("<span class='notice'>An odor pervades the room as [src] poops [src.p_their()] pants.</span>","<span class='notice'>An odor pervades the room as you poop your pants.</span>")
+						if(2)
+							src.visible_message("<span class='notice'>An odor pervades the room as [src] soils [src.p_their()] undergarmets.</span>","<span class='notice'>An odor pervades the room as you soil your undergarmets.</span>")
+						else
+							src.visible_message("<span class='notice'>Echo set up the switch statement wrong.</span>","<span class='notice'>Echo set up the switch statement wrong.")
+					//src.visible_message("<span class='notice'>An odor pervades the room as [src] dumps [src.p_their()] drawers.</span>","<span class='notice'>An odor pervades the room as you dump your drawers.</span>")
 				else
 					src.visible_message("<span class='notice'>[src] takes a squat and winces as [src.p_their()] seat sags just a little more.</span>","<span class='notice'>That tight feeling in your gut is gone. But your diaper seems a bit saggier- and stinkier.</span>")
 			if(poop > max_messcontinence)
