@@ -30,10 +30,24 @@
 			if (max_wetcontinence < 100)
 				max_wetcontinence++
 		else
-			if (on_purpose == 1)
-				src.visible_message("<span class='notice'>[src] scrunches [src.p_their()] legs and lets the floodgates open.</span>","<span class='notice'>You scrunch your legs and let the floodgates open.</span>")
+			if (on_purpose == 1) //pee on purpose
+				switch(rand(2))
+					if(0)
+						src.visible_message("<span class='notice'>[src] scrunches [src.p_their()] legs and lets the floodgates open.</span>","<span class='notice'>You scrunch your legs and let the floodgates open.</span>")
+					if(1)
+						src.visible_message("<span class='notice'>[src] shifts [src.p_their()] stance and sighs, a soft hiss following.</span>","<span class='notice'>You spread your legs and sigh, releasing the pressure from your bladder into your awaiting diaper. </span>")
+					else
+						src.visible_message("<span class='notice'>[src] legs shift as [src.p_their()] crotch hisses.</span>","<span class='notice'>Spreading your legs softly, the contents of your bladder trickle out into your awaiting diaper.</span>")
+
 			else
-				src.visible_message("<span class='notice'>[src]'s legs buckle as [src.p_they()] [src.p_are()] unable to stop [src.p_their()] bladder from leaking into [src.p_their()] pants!</span>","<span class='notice'>Your legs buckle as you are unable to stop your bladder from leaking into your pants!</span>")
+				switch(rand(2))	//pee accident
+					if(0)
+						src.visible_message("<span class='notice'>[src]'s legs buckle as [src.p_they()] [src.p_are()] unable to stop [src.p_their()] bladder from leaking into [src.p_their()] pants!</span>","<span class='notice'>Your legs buckle as you are unable to stop your bladder from leaking into your pants!</span>")
+					if(1)
+						src.visible_message("<span class='notice'>[src] freezes up as [src.p_their()] crotch hisses.</span>","<span class='notice'>You freeze up as the strain overwhelms your bladder, flooding your pants </span>")
+					else
+						src.visible_message("<span class='notice'>[src]'s legs buckle as [src.p_they()] [src.p_are()] unable to keep from wetting [src.p_their()] pants!</span>","<span class='notice'>Your legs buckle as you are unable to keep from wetting your pants!</span>")
+
 			if(pee > max_wetcontinence)
 				pee = max_wetcontinence
 			if(wetness + pee < 250 + heftersbonus)
@@ -61,9 +75,29 @@
 		else
 			if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 				if (on_purpose == 1)
-					src.visible_message("<span class='notice'>An odor pervades the room as [src] dumps [src.p_their()] drawers.</span>","<span class='notice'>An odor pervades the room as you dump your drawers.</span>")
+					switch(rand(5)) //poop on purpose
+						if(0)
+							src.visible_message("<span class='notice'>An odor pervades the room as [src] dumps [src.p_their()] drawers.</span>","<span class='notice'>An odor pervades the room as you dump your drawers.</span>")
+						if(1)
+							src.visible_message("<span class='notice'>An odor pervades the room as [src] poops [src.p_their()] pants.</span>","<span class='notice'>An odor pervades the room as you poop your pants.</span>")
+						if(2)
+							src.visible_message("<span class='notice'>An odor pervades the room as [src] soils [src.p_their()] undergarmets.</span>","<span class='notice'>An odor pervades the room as you soil your undergarmets.</span>")
+						if(3)
+							src.visible_message("<span class='notice'>[usr] grabs [src.p_their()] midsection and squats, a foul scent quickly surrounding [src.p_them()].</span>","<span class='notice'>You wrap your arms around your tummy and bend your knees, pushing gently as the internal pressure subsides and your bottom grows warm.</span>")
+						if(4)
+							src.visible_message("<span class='notice'>[usr] seems to focus on something, and a foul odor is spreading.</span>","<span class='notice'>Hunching forward slightly, your face scrunches from effort as you slowly force the contents of your bowels into your diaper, expanding it backwards.</span>")
+						else
+							src.visible_message("<span class='notice'>[usr]'s cheeks flush as a foul stench surrounds [src.p_them()].</span>","<span class='notice'>Unable to cope with the pressure, you trust your underwear to protect your outfit as you let your bowels empty.</span>")
 				else
-					src.visible_message("<span class='notice'>[src] takes a squat and winces as [src.p_their()] seat sags just a little more.</span>","<span class='notice'>That tight feeling in your gut is gone. But your diaper seems a bit saggier- and stinkier.</span>")
+					switch(rand(3))	//poop accident
+						if(0)
+							src.visible_message("<span class='notice'>[src] takes a squat and winces as [src.p_their()] seat sags just a little more.</span>","<span class='notice'>That tight feeling in your gut is gone. But your diaper seems a bit saggier- and stinkier.</span>")
+						if(1)
+							src.visible_message("<span class='notice'>[usr]'s bottom makes some rude noises, followed by a soft squishing sound.</span>","<span class='notice'>A burst of gas escapes your bottom, followed by another, and then something that definitely isn't gas.</span>")
+						if(2)
+							src.visible_message("<span class='notice'>You see [src] shiver slightly, and their diaper sags a noticable amount.</span>","<span class='notice'>You feel your diaper sag as you release the pressure from your backside</span>")
+						else
+							src.visible_message("<span class='notice'>You smell something unpleasant coming from [usr]'s direction. [src.p_they()] don't seem to notice, though.</span>","<span class='notice'>You feel an odd pressure in your stomach, before it quickly goes away.</span>")
 			if(poop > max_messcontinence)
 				poop = max_messcontinence
 			if(stinkiness + poop < 250 + heftersbonus)
@@ -107,16 +141,45 @@
 	if (fluids < 0)
 		fluids = 0
 	if (pee >= max_wetcontinence * 0.5 && needpee <= 0 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-		to_chat(src,"You start feeling the need to pee.")
+		switch(rand(1))
+			if(1)
+				to_chat(src,"You start feeling the need to pee.")
+			else
+				to_chat(src,"You abdomen starts to feel tight and uncomfortable, you think about urinating.")
 		needpee += 1
 	if (pee >= max_wetcontinence * 0.8 && needpee <= 1 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-		to_chat(src,"<span class='warning'>You really need to pee!</span>")
+		switch(rand(2))
+			if(1)
+				to_chat(src,"<span class='warning'>You really need to pee!</span>")
+			if(2)
+				to_chat(src,"<span class='warning'>Your body desperately fidgets and wriggles in an attempt to restrain your bladder a little bit longer...</span>")
+			else
+				to_chat(src,"<span class='warning'>You feel a squirt of pee escape!</span>")
+
 		needpee += 1
 	if (poop >= max_messcontinence * 0.5 && needpoo <= 0 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-		to_chat(src,"You start feeling the need to poop.")
+		switch(rand(5))
+			if(1)
+				to_chat(src,"You start feeling the need to poop.")
+			if(2)
+				to_chat(src,"Gas squeaks out, releasing a bit of pressure you didn't know you had.")
+			if(3)
+				to_chat(src,"You feel a soft gurgling from your tummy.")
+			if(4)
+				to_chat(src,"You feel your insides shift a bit")
+			else
+				to_chat(src,"You feel a slight pressure in your backside")
 		needpoo += 1
 	if (poop >= max_messcontinence * 0.8 && needpoo <= 1 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-		to_chat(src,"<span class='warning'>You really need to poop!</span>")
+		switch(rand(4))
+			if(1)
+				to_chat(src,"<span class='warning'>You really need to poop!</span>")
+			if(2)
+				to_chat(src,"<span class='warning'>Your stomach gurgles and groans as a heavy weight descends into your bowels...</span>")
+			if(3)
+				to_chat(src,"<span class='warning'>You feel an immense pressure in your bowels!</span>")
+			else
+				to_chat(src,"<span class='warning'>You let out a fart that is dangerously wet!</span>")
 		needpoo += 1
 	if (pee >= max_wetcontinence && src.client.prefs != "Poop Only")
 		Wetting()
