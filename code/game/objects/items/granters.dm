@@ -535,7 +535,7 @@
 	oneuse = FALSE
 	remarks = list("Looks like these would sell much better in a plasma fire...", "Using glass bowls rather then cones?", "Mixing soda and ice-cream?", "Tall glasses with of liquids and solids...", "Just add a bit of icecream and cherry on top?")
 
-/obj/item/book/granter/crafting_recipe/bone_bow //Bow crafting for non-ashwalkers
+/*/obj/item/book/granter/crafting_recipe/bone_bow //Bow crafting for non-ashwalkers
 	name = "bowyery sandstone slab" // this is an actual word
 	desc = "A sandstone slab with inscriptions describing the Ash Walkers of Lavaland's bowyery."
 	crafting_recipe_types = list(/datum/crafting_recipe/bone_arrow, /datum/crafting_recipe/bone_bow, /datum/crafting_recipe/ashen_arrow, /datum/crafting_recipe/quiver, /datum/crafting_recipe/bow_tablet)
@@ -544,7 +544,7 @@
 	remarks = list("Sticking burning arrows into the sand makes them stronger...", "Breaking the bone apart to get shards, not sharpening the bone...", "Sinew is just like rope...")
 
 /obj/item/book/granter/crafting_recipe/ashwalker_tools
-	name = "necropolis crafting 101" 
+	name = "necropolis crafting 101"
 	desc = "A sandstone slab with inscriptions describing the Ash Walkers of Lavaland's tools."
 	crafting_recipe_types = list(/datum/crafting_recipe/bone_screwdriver, /datum/crafting_recipe/bone_crowbar, /datum/crafting_recipe/bone_cutters, /datum/crafting_recipe/bone_wrench, /datum/crafting_recipe/goliath_gloves, /datum/crafting_recipe/goliath_drapes, /datum/crafting_recipe/diamond_scalpel, /datum/crafting_recipe/bone_retractor, /datum/crafting_recipe/diamond_bonesaw, /datum/crafting_recipe/femurstat, /datum/crafting_recipe/bone_bonesetter, /datum/crafting_recipe/coretery, /datum/crafting_recipe/bone_spade, /datum/crafting_recipe/bone_hatchet, /datum/crafting_recipe/bone_cultivator, /datum/crafting_recipe/ashwalker_tools_tablet)
 	icon_state = "stone_tablet"
@@ -557,7 +557,7 @@
 	crafting_recipe_types = list(/datum/crafting_recipe/bone_glaive, /datum/crafting_recipe/ashwalker_glaive_tablet)
 	icon_state = "stone_tablet"
 	oneuse = FALSE
-	remarks = list("So regenerative cores can be harnessed in different ways...", "Durathread? Didn't think they had that here...", "This looks like a familiar design...")
+	remarks = list("So regenerative cores can be harnessed in different ways...", "Durathread? Didn't think they had that here...", "This looks like a familiar design...")*/
 
 /obj/item/book/granter/crafting_recipe/under_the_oven //Illegal cook book
 	name = "Under The Oven"

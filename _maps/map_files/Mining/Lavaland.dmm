@@ -2134,7 +2134,6 @@
 "Jp" = (
 /obj/structure/stone_tile/slab,
 /obj/structure/table/wood,
-/obj/item/book/granter/crafting_recipe/bone_glaive,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/ash_walkers)
 "Jq" = (
@@ -2237,7 +2236,6 @@
 "NK" = (
 /obj/structure/stone_tile/slab,
 /obj/structure/table/wood,
-/obj/item/book/granter/crafting_recipe/ashwalker_tools,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/ash_walkers)
 "NU" = (
@@ -2443,7 +2441,6 @@
 "Uh" = (
 /obj/structure/stone_tile/slab,
 /obj/structure/table/wood,
-/obj/item/book/granter/crafting_recipe/bone_bow,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/ash_walkers)
 "Ul" = (
