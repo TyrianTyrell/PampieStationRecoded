@@ -521,4 +521,4 @@
 	desc = "Tribals trying to immitate technology have spent a long time to somehow assemble bits and pieces to work together just like the real thing. \
 	Although it does take a lot of effort and luck to create, it was a success."
 	icon_state = "crusher-bone"
-	item_state = "crusher0-glaive"
+	item_state = "crusher0-bone"
