@@ -25,7 +25,7 @@ Ask ninjanomnom if they're around
 
 #define RAD_MOB_MUTATE 1250							// How much stored radiation to check for mutation
 
-#define RAD_MONKEY_GORILLIZE 2300					// How much stored radiation to check for Harambe time.
+#define RAD_MONKEY_GORILLIZE 3000					// How much stored radiation to check for Harambe time.
 
 #define RAD_MOB_VOMIT 2000							// The amount of radiation to check for vomitting
 #define RAD_MOB_VOMIT_PROB 1						// Chance per tick of vomitting
