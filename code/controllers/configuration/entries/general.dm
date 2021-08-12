@@ -172,6 +172,9 @@
 /datum/config_entry/string/githuburl
 	config_entry_value = "https://www.github.com/tgstation/-tg-station"
 
+/datum/config_entry/string/discordbotcommandprefix
+	default = "?"
+
 /datum/config_entry/string/roundstatsurl
 
 /datum/config_entry/string/gamelogurl
@@ -391,6 +394,9 @@
 
 /datum/config_entry/string/chat_announce_new_game
 	config_entry_value = null
+
+/datum/config_entry/string/chat_new_game_notifications
+	default = null
 
 /datum/config_entry/flag/debug_admin_hrefs
 

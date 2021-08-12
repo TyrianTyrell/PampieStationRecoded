@@ -264,6 +264,9 @@ CHECK_RANDOMIZER
 ## Github address
 # GITHUBURL https://github.com/Citadel-Station-13/Citadel-Station-13
 
+## Discord bot command prefix, if the discord bot is used
+# DISCORDBOTCOMMANDPREFIX ?
+
 ## Round specific stats address
 ## Link to round specific parsed logs; IE statbus. It is appended with the RoundID automatically by ticker/Reboot()
 ## This will take priority over the game logs address during reboot.
@@ -542,3 +545,15 @@ FAIL2TOPIC_RULE_NAME _dd_fail2topic
 ## Uncomment to enable global ban DB using the provided URL. The API should expect to receive a ckey at the end of the URL.
 ## More API details can be found here: https://centcom.melonmesa.com
 CENTCOM_BAN_DB https://centcom.melonmesa.com/ban/search
+
+## Uncomment to enable discord auto-roling when users link their BYOND and Discord accounts
+ENABLE_DISCORD_AUTOROLE
+
+## Add your discord bot token here. Make sure it has the ability to manage roles
+DISCORD_TOKEN 860910299585708032
+
+## Add the ID of your guild (server) here
+DISCORD_GUILDID 851563785977593897
+
+## Add the ID of the role you want assigning here
+DISCORD_ROLEID 860922009079775243
