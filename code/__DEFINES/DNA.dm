@@ -1,6 +1,6 @@
 /*ALL DNA, SPECIES, AND GENETICS-RELATED DEFINES GO HERE*/
 
-#define CHECK_DNA_AND_SPECIES(C) if((!(C.dna)) || (!(C.dna.species))) return
+#define CHECK_DNA_AND_SPECIES(C) if(!(C.dna?.species)) return
 
 //Defines copying names of mutations in all cases, make sure to change this if you change mutation's type
 #define HULK		/datum/mutation/human/hulk
@@ -41,6 +41,9 @@
 #define STIMMED		/datum/mutation/human/stimmed
 #define FIRESWEAT	/datum/mutation/human/fire
 #define THERMAL		/datum/mutation/human/thermal
+#define MESON       /datum/mutation/human/thermal/meson
+#define NIGHTVISION /datum/mutation/human/nv
+#define PSIHEAL     /datum/mutation/human/psiheal
 #define ANTENNA		/datum/mutation/human/antenna
 #define PARANOIA	/datum/mutation/human/paranoia
 #define MINDREAD	/datum/mutation/human/mindreader

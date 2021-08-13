@@ -119,7 +119,8 @@
 		/obj/item/clothing/mask/gas/sechailer=1,\
 		/obj/item/gun/energy/e_gun=1,\
 		/obj/item/reagent_containers/hypospray/combat=1,\
-		/obj/item/gun/medbeam=1)
+		/obj/item/gun/medbeam=1,\
+		/obj/item/storage/box/hug/plushies=1)
 
 /datum/outfit/ert/medic/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, client/preference_source)
 	..()
@@ -140,7 +141,8 @@
 		/obj/item/clothing/mask/gas/sechailer/swat=1,\
 		/obj/item/gun/energy/e_gun=1,\
 		/obj/item/reagent_containers/hypospray/combat/nanites=1,\
-		/obj/item/gun/medbeam=1)
+		/obj/item/gun/medbeam=1,\
+		/obj/item/storage/box/hug/plushies=1)
 
 /datum/outfit/ert/medic/alert/red
 	name = "ERT Medic - Red Alert"
@@ -149,7 +151,8 @@
 		/obj/item/clothing/mask/gas/sechailer/swat=1,\
 		/obj/item/gun/energy/pulse/pistol/loyalpin=1,\
 		/obj/item/reagent_containers/hypospray/combat/nanites=1,\
-		/obj/item/gun/medbeam=1)
+		/obj/item/gun/medbeam=1,\
+		/obj/item/storage/box/hug/plushies=1)
 
 /datum/outfit/ert/engineer
 	name = "ERT Engineer"

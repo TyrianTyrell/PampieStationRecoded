@@ -101,6 +101,7 @@
 #define NO_AUTO_WAG			(1<<12)
 #define GENITAL_EXAMINE		(1<<13)
 #define VORE_EXAMINE		(1<<14)
+#define TTS					(1<<15)
 #define TOGGLES_CITADEL 0
 
 //belly sound pref things

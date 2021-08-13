@@ -123,6 +123,21 @@
 		size = breast_values[size]
 	prev_size = cached_size
 	toggle_visibility(D.features["breasts_visibility"], FALSE)
+	switch(D.features["breasts_fluid"])
+		if("Milk")
+			fluid_id = /datum/reagent/consumable/milk
+		if("Strawberry Milk")
+			fluid_id = /datum/reagent/consumable/pinkmilk
+		if("Soy Milk")
+			fluid_id = /datum/reagent/consumable/soymilk
+		if("Chocolate Milk")
+			fluid_id = /datum/reagent/consumable/milk/chocolate_milk
+		if("Coconut Milk")
+			fluid_id = /datum/reagent/consumable/coconutmilk
+		if("Bilk")
+			fluid_id = /datum/reagent/consumable/ethanol/bilk
+		if("Succubus Milk")
+			fluid_id = /datum/reagent/fermi/breast_enlarger
 
 #undef BREASTS_ICON_MIN_SIZE
 #undef BREASTS_ICON_MAX_SIZE

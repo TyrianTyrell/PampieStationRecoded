@@ -13,6 +13,7 @@
 	var/status = BODYPART_ORGANIC
 	var/needs_processing = FALSE
 
+	var/iscorporeal = TRUE
 	var/body_zone //BODY_ZONE_CHEST, BODY_ZONE_L_ARM, etc , used for def_zone
 	var/list/aux_icons // associative list, currently used for hands
 	var/body_part = null //bitflag used to check which clothes cover this bodypart

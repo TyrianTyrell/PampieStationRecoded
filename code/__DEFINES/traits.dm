@@ -207,6 +207,8 @@
 #define TRAIT_FREESPRINT		"free_sprinting"
 #define TRAIT_XRAY_VISION       "xray_vision"
 #define TRAIT_THERMAL_VISION    "thermal_vision"
+#define TRAIT_TRUE_NIGHT_VISION "true_nv"
+#define TRAIT_MESON_VISION      "meson_vision"
 #define TRAIT_NO_TELEPORT		"no-teleport" //you just can't
 #define TRAIT_NO_INTERNALS		"no-internals"
 #define TRAIT_TOXIC_ALCOHOL		"alcohol_intolerance"
@@ -344,6 +346,9 @@
 #define SLIMEPUDDLE_TRAIT "slimepuddle"
 #define CORRUPTED_SYSTEM "corrupted-system"
 #define REGRESSION_TRAIT "regression"
+
+///The holder of this trait has antennae or whatever that hurt a ton when noogied
+#define TRAIT_ANTENNAE "antennae"
 
 ///Turf trait for when a turf is transparent
 #define TURF_Z_TRANSPARENT_TRAIT "turf_z_transparent"

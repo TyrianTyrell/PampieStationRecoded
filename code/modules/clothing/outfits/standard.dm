@@ -364,6 +364,12 @@
 	r_hand= /obj/item/tank/internals/plasmaman/belt/full
 	mask = /obj/item/clothing/mask/breath
 
+/datum/outfit/ashstation
+	name = "Ashlizard (Station)"
+
+	r_hand= /obj/item/tank/internals/emergency_oxygen/double
+	mask = /obj/item/clothing/mask/gas/glass
+
 /datum/outfit/death_commando
 	name = "Death Commando"
 

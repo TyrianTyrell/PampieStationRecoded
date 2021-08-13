@@ -56,6 +56,7 @@
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/vagina, GLOB.vagina_shapes_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/breasts, GLOB.breasts_shapes_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/testicles, GLOB.balls_shapes_list)
+	GLOB.genital_fluids_list = list ("Milk", "Strawberry Milk", "Soy Milk", "Chocolate Milk", "Coconut Milk", "Bilk", "Succubus Milk")
 
 	for(var/gpath in subtypesof(/obj/item/organ/genital))
 		var/obj/item/organ/genital/G = gpath

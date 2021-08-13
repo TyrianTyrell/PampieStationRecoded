@@ -548,3 +548,7 @@
 		return TRUE
 	return FALSE
 
+/obj/item/dnainjector/psiheal
+	name = "\improper Psyker Healing"
+	desc = "This will give you the power to heal with your mind."
+	add_mutations = list(PSIHEAL)

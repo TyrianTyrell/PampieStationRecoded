@@ -4,7 +4,7 @@
 		return
 
 	var/message_mode = get_message_mode(message)
-	if(client && (message_mode == MODE_ADMIN || message_mode == MODE_DEADMIN))
+	if(client && (message_mode == MODE_ADMIN || message_mode == MODE_DEADMIN || (message_mode == MODE_PUPPET && mind?.current)))
 		message = copytext_char(message, 3)
 		message = trim_left(message)
 
@@ -12,6 +12,10 @@
 			client.cmd_admin_say(message)
 		else if(message_mode == MODE_DEADMIN)
 			client.dsay(message)
+		else if(message_mode == MODE_PUPPET)
+			message = html_decode(message)
+			if(!mind.current.say(message))
+				to_chat(src, "<span class='warning'>Your linked body was unable to speak!</span>")
 		return
 
 	src.log_talk(message, LOG_SAY, tag="ghost")

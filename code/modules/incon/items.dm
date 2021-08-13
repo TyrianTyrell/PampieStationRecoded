@@ -927,11 +927,11 @@
 
 /obj/item/storage/backpack/diaper_bag/bluespace/ComponentInitialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_w_class = WEIGHT_CLASS_TINY
-	STR.max_combined_w_class = 200
-	STR.max_items = 40
-	STR.can_hold = typecacheof(list(/obj/item/diaper))
+	var/datum/component/storage/STBS = GetComponent(/datum/component/storage)
+	STBS.max_w_class = WEIGHT_CLASS_TINY
+	STBS.max_combined_w_class = 200
+	STBS.max_items = 40
+	STBS.can_hold = typecacheof(list(/obj/item/diaper))
 
 /obj/item/storage/backpack/diaper_bag/bluespace/PopulateContents()
 	new /obj/item/diaper/hefters_m(src)
@@ -940,55 +940,6 @@
 	new /obj/item/diaper/hefters_f(src)
 	new /obj/item/diaper/hefters_f(src)
 	new /obj/item/diaper/hefters_f(src)
-
-/obj/item/implant/psyker_implant
-	name = "Psyker Coil"
-	desc = "Allows for a normal person to use psychic abilities. Which one they can use depends on the implant."
-
-/obj/item/implant/psyker_implant/healing
-	name = "Psyker Coil (Healing)"
-	desc = "Allows for a normal person to use psychic abilities. Which one they can use depends on the implant. This one grants healing abilities."
-
-/obj/item/implant/psyker_implant/healing/activate()
-	. = ..()
-	if(!imp_in.CheckActionCooldown(CLICK_CD_RANGE))
-		return
-	var/list/creck = params2list("icon-x=0&icon-y=0&screen-loc=CENTER")
-	if(params2list(imp_in.client.mouseParams)["alt"])
-		to_chat(imp_in, "You heal yourself.")
-		imp_in.adjustBruteLoss(-15)
-		imp_in.adjustFireLoss(-15)
-	else
-		var/obj/item/projectile/magic/psyker_heal/PSI = new /obj/item/projectile/magic/psyker_heal(imp_in.loc)
-		var/turf/targ = get_step(imp_in.loc,imp_in.dir)
-		PSI.icon = 'icons/obj/projectiles.dmi'
-		PSI.icon_state = "pulse1"
-		playsound(usr.loc, 'sound/weapons/taser2.ogg', 75, 1)
-
-		PSI.firer = imp_in
-		PSI.def_zone = imp_in.get_organ_target()
-		PSI.preparePixelProjectile(targ, imp_in, creck)
-		PSI.original_angle = dir2angle(imp_in.dir)
-		PSI.Angle = dir2angle(imp_in.dir)
-		PSI.fire()
-
-/obj/item/implanter/psyker_healing
-	name = "implanter (Psyker Healing)"
-	imp_type = /obj/item/implant/psyker_implant/healing
-
-/obj/item/projectile/magic/psyker_heal
-	name = "psionic heal-bolt"
-	icon_state = "ion"
-	damage = 0
-	damage_type = OXY
-	nodamage = 1
-
-/obj/item/projectile/magic/psyker_heal/on_hit(atom/target, blocked)
-	. = ..()
-	if(iscarbon(target))
-		var/mob/living/carbon/C = target
-		C.adjustBruteLoss(-15)
-		C.adjustFireLoss(-15)
 
 /obj/item/clothing/mask/pacifier
 	icon = 'icons/incon/regressoray.dmi'

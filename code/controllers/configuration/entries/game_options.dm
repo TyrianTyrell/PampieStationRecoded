@@ -298,7 +298,7 @@
 	M.sync()
 
 /datum/config_entry/flag/sprint_enabled
-	config_entry_value = TRUE
+	config_entry_value = FALSE
 
 /datum/config_entry/flag/sprint_enabled/ValidateAndSet(str_val)
 	. = ..()
