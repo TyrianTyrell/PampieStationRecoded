@@ -1,7 +1,7 @@
 	////////////
 	//SECURITY//
 	////////////
-#define UPLOAD_LIMIT		10485760	//Restricts client uploads to the server to 1MB //Could probably do with being lower.
+#define UPLOAD_LIMIT		1048576	//Restricts client uploads to the server to 1MB //Could probably do with being lower.
 
 GLOBAL_LIST_INIT(blacklisted_builds, list(
 	"1407" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
@@ -1029,7 +1029,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/pos = 0
 	for(var/D in GLOB.cardinals)
 		pos++
-		var/obj/screen/O = LAZYACCESS(char_render_holders, "[D]")
+		var/atom/movable/screen/O = LAZYACCESS(char_render_holders, "[D]")
 		if(!O)
 			O = new
 			LAZYSET(char_render_holders, "[D]", O)
@@ -1040,7 +1040,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 /client/proc/clear_character_previews()
 	for(var/index in char_render_holders)
-		var/obj/screen/S = char_render_holders[index]
+		var/atom/movable/screen/S = char_render_holders[index]
 		screen -= S
 		qdel(S)
 	char_render_holders = null

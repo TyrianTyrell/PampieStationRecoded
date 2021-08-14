@@ -30,11 +30,7 @@
 /datum/generecipe/hulk
 	required = "/datum/mutation/human/strong; /datum/mutation/human/radioactive"
 	result = HULK
-
-/datum/generecipe/nv
+	
+/datum/generecipe/thermal
 	required = "/datum/mutation/human/nearsight; /datum/mutation/human/stimmed"
-	result = NIGHTVISION
-
-/datum/generecipe/spatial
-	required = "/datum/mutation/human/void; /datum/mutation/human/tourettes"
-	result = BADBLINK
+	result = THERMAL

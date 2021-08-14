@@ -331,7 +331,6 @@
 	deprecated_by = /datum/config_entry/keyed_list/multiplicative_movespeed/normal
 	abstract_type = /datum/config_entry/number/outdated_movedelay
 
-	var/movedelay_type
 
 /datum/config_entry/number/outdated_movedelay/DeprecationUpdate(value)
 	return "[movedelay_type] [value]"

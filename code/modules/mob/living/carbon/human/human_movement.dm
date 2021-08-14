@@ -90,13 +90,10 @@
 				//End bloody footprints
 
 				S.step_action()
+	if(movement_type & GROUND)
+		dirt_buildup()
 
 /mob/living/carbon/human/Process_Spacemove(movement_dir = 0) //Temporary laziness thing. Will change to handles by species reee.
 	if(dna.species.space_move(src))
 		return TRUE
-	return ..()
-
-/mob/living/carbon/human/dirt_buildup(strength)
-	if(!shoes || !(shoes.body_parts_covered & FEET))
-		return	// barefoot advantage
 	return ..()

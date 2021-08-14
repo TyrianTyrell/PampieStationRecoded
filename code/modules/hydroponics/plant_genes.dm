@@ -419,6 +419,15 @@
 		else
 			to_chat(user, "<span class='warning'>You need five lengths of cable to make a [G] battery!</span>")
 
+/datum/plant_gene/trait/eyes
+	name = "Oculary Mimicry"
+	/// Our googly eyes appearance.
+	var/mutable_appearance/googly
+
+/datum/plant_gene/trait/eyes/on_new(obj/item/reagent_containers/food/snacks/grown/G, newloc)
+	googly = mutable_appearance('icons/obj/hydroponics/harvest.dmi', "eyes")
+	googly.appearance_flags = RESET_COLOR
+	G.add_overlay(googly)
 
 /datum/plant_gene/trait/stinging
 	name = "Hypodermic Prickles"
@@ -455,15 +464,6 @@
 /datum/plant_gene/trait/fire_resistance/on_new(obj/item/reagent_containers/food/snacks/grown/G, newloc)
 	if(!(G.resistance_flags & FIRE_PROOF))
 		G.resistance_flags |= FIRE_PROOF
-
-/datum/plant_gene/trait/eyes
-	name = "Oculary Mimicry"
-	var/mutable_appearance/googly
-
-/datum/plant_gene/trait/eyes/on_new(obj/item/reagent_containers/food/snacks/grown/G, newloc)
-	googly = mutable_appearance('icons/obj/hydroponics/harvest.dmi', "eyes")
-	googly.appearance_flags = RESET_COLOR
-	G.add_overlay(googly)
 
 //Invasive spreading lets the plant jump to other trays, the spreadinhg plant won't replace plants of the same type.
 /datum/plant_gene/trait/invasive
@@ -504,5 +504,4 @@
 
 /datum/plant_gene/trait/plant_type/carnivory
 	name = "Obligate Carnivory"
-
 

@@ -527,9 +527,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engineering/main)
-"Xg" = (
-/turf/closed/wall/r_wall,
-/area/space)
 "Yd" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/box/red,
@@ -1370,9 +1367,9 @@ JZ
 kK
 Ch
 Ch
-Xg
-Xg
-Xg
+Ch
+MJ
+MJ
 MJ
 MJ
 MJ

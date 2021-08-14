@@ -11,7 +11,7 @@
 	/// Time before auto launch
 	var/time = 30
 	/// Range in which we search for a mass drivers and poddoors nearby
-	var/range = 7
+	var/range = 4
 	/// Countdown timer for the mass driver's delayed launch functionality.
 	COOLDOWN_DECLARE(massdriver_countdown)
 
@@ -34,6 +34,7 @@
  * Initiates launching sequence by checking if all components are functional, opening poddoors, firing mass drivers and then closing poddoors
  */
 /obj/machinery/computer/pod/proc/alarm()
+	set waitfor = FALSE
 	if(stat & (NOPOWER|BROKEN))
 		return
 

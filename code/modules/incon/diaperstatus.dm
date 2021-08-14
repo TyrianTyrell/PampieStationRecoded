@@ -517,13 +517,13 @@
 	if (M.fluids > 300)
 		M.fluids = 300
 
-/obj/screen/diaperstatus
+/atom/movable/screen/diaperstatus
 	name = "diaper state"
 	icon = 'icons/incon/diapercondition.dmi'
 	icon_state = "hud_plain"
 	screen_loc = ui_diaper
 
-/obj/screen/diaperstatus/proc/DiaperUpdate(mob/living/carbon/owner)
+/atom/movable/screen/diaperstatus/proc/DiaperUpdate(mob/living/carbon/owner)
 	if(HAS_TRAIT(owner,BABYBRAINED_TRAIT))
 		if(owner.regressiontimer > 0)
 			owner.regressiontimer--
@@ -557,13 +557,13 @@
 	spawn(1)
 	DiaperUpdate(owner)
 
-/obj/screen/diaperstatus/New(mob/living/carbon/owner)
+/atom/movable/screen/diaperstatus/New(mob/living/carbon/owner)
 	DiaperUpdate(owner)
 
 
 /datum/hud/human/New(mob/living/carbon/owner)
 	..()
-	var/obj/screen/diapstats = new /obj/screen/diaperstatus(owner)
+	var/atom/movable/screen/diapstats = new /atom/movable/screen/diaperstatus(owner)
 	if (HAS_TRAIT(owner,TRAIT_INCONTINENT))
 		owner.max_wetcontinence = 50
 		owner.max_messcontinence = 50

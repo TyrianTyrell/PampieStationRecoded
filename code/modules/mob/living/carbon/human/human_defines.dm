@@ -15,7 +15,6 @@
 
 	block_parry_data = /datum/block_parry_data/unarmed/human
 	default_block_parry_data = /datum/block_parry_data/unarmed/human
-	causes_dirt_buildup_on_floor = TRUE
 
 	//Hair colour and style
 	var/hair_color = "000"
@@ -52,6 +51,8 @@
 	var/obj/item/r_store = null
 	var/obj/item/l_store = null
 	var/obj/item/s_store = null
+
+	var/list/afk_thefts
 
 	var/special_voice = "" // For changing our voice. Used by a symptom.
 

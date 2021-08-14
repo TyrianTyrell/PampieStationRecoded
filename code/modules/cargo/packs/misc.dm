@@ -265,6 +265,22 @@
 	contains = list(/obj/item/storage/fancy/ringbox/diamond)
 	crate_name = "diamond ring crate"
 
+/datum/supply_pack/misc/exoticfootwear
+	name = "Exotic Footwear Crate"
+	desc = "Popularised by lizards and exotic dancers, the footwear included in this shipment is sure to give your feet the breathing room they deserve. Sweet Kicks Inc. is not responsible for any damage, distress, or @r0u$a1 caused by this shipment."
+	cost = 4337
+	contains = list(/obj/item/clothing/shoes/wraps,
+					/obj/item/clothing/shoes/wraps,
+					/obj/item/clothing/shoes/wraps/silver,
+					/obj/item/clothing/shoes/wraps/silver,
+					/obj/item/clothing/shoes/wraps/red,
+					/obj/item/clothing/shoes/wraps/red,
+					/obj/item/clothing/shoes/wraps/blue,
+					/obj/item/clothing/shoes/wraps/blue,
+					/obj/item/clothing/shoes/clown_shoes,
+					/obj/item/clothing/shoes/kindleKicks)
+	crate_name = "footie crate"
+
 /datum/supply_pack/misc/funeral
 	name = "Funeral Supplies"
 	desc = "Mourn your dead properly buy sending them off with love filled notes, clean clothes, and a proper ceremony. Contains two candle packs, funeral garb, flowers, a paperbin , and crayons to help aid in religious rituals. Coffin included."

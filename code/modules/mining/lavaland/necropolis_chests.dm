@@ -246,6 +246,8 @@
 	desc = "A wooden rod about the size of your forearm with a snake carved around it, winding it's way up the sides of the rod. Something about it seems to inspire in you the responsibilty and duty to help others."
 	icon = 'icons/obj/lavaland/artefacts.dmi'
 	icon_state = "asclepius_dormant"
+	lefthand_file = 'icons/mob/inhands/weapons/staves_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/staves_righthand.dmi'
 	var/activated = FALSE
 	var/usedHand
 
@@ -692,12 +694,12 @@
 
 /datum/reagent/flightpotion/reaction_mob(mob/living/M, method=TOUCH, reac_volume, show_message = 1)
 	if(iscarbon(M) && M.stat != DEAD)
-		if(reac_volume < 5)
+		if(!ishumanbasic(M) || reac_volume < 5) // implying xenohumans are holy
 			if(method == INGEST && show_message)
 				to_chat(M, "<span class='notice'><i>You feel nothing but a terrible aftertaste.</i></span>")
 			return ..()
 
-		to_chat(M, "<span class='userdanger'>A terrible pain travels down your back as wings burst out! You feel yourself change!</span>")
+		to_chat(M, "<span class='userdanger'>A terrible pain travels down your back as wings burst out!</span>")
 		M.set_species(/datum/species/angel)
 		playsound(M.loc, 'sound/items/poster_ripped.ogg', 50, 1, -1)
 		M.adjustBruteLoss(20)

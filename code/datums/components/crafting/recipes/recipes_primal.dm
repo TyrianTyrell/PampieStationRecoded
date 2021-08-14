@@ -93,6 +93,7 @@
 
 /datum/crafting_recipe/quiver
 	name = "Quiver"
+	always_availible = FALSE
 	result = /obj/item/storage/belt/quiver
 	time = 80
 	reqs = list(/obj/item/stack/sheet/leather = 3,
@@ -103,6 +104,7 @@
 	name = "Bone Bow"
 	result = /obj/item/gun/ballistic/bow/ashen
 	time = 120 // 80+120 = 200
+	always_availible = FALSE
 	reqs = list(/obj/item/stack/sheet/bone = 8,
 				 /obj/item/stack/sheet/sinew = 4)
 	category = CAT_PRIMAL
@@ -255,6 +257,7 @@
 	name = "Sandstone Bow Making Manual"
 	result = /obj/item/book/granter/crafting_recipe/bone_bow
 	time = 200 //Scribing // don't care
+	always_availible = FALSE
 	reqs = list(/obj/item/stack/rods = 1,
 				 /obj/item/stack/sheet/mineral/sandstone = 4)
 	category = CAT_PRIMAL
