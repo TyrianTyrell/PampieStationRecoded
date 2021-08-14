@@ -262,7 +262,7 @@
 				 /obj/item/stack/sheet/mineral/sandstone = 4)
 	category = CAT_PRIMAL
 
-/datum/crafting_recipe/ashwalker_tools_tablet
+/*/datum/crafting_recipe/ashwalker_tools_tablet
 	name = "Sandstone Tool Making Manual"
 	result = /obj/item/book/granter/crafting_recipe/ashwalker_tools
 	time = 400 //Scribing // don't care
@@ -276,7 +276,7 @@
 	time = 600 //Scribing // don't care
 	reqs = list(/obj/item/stack/rods = 1,
 				 /obj/item/stack/sheet/mineral/sandstone = 5)
-	category = CAT_PRIMAL
+	category = CAT_PRIMAL*/
 
 /datum/crafting_recipe/rib
 	name = "Collosal Rib"
