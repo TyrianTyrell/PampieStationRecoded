@@ -253,7 +253,7 @@
 				 /obj/item/stack/sheet/durathread = 2)
 	category = CAT_PRIMAL
 
-/*/datum/crafting_recipe/bow_tablet
+/datum/crafting_recipe/bow_tablet
 	name = "Sandstone Bow Making Manual"
 	result = /obj/item/book/granter/crafting_recipe/bone_bow
 	time = 200 //Scribing // don't care
@@ -276,7 +276,7 @@
 	time = 600 //Scribing // don't care
 	reqs = list(/obj/item/stack/rods = 1,
 				 /obj/item/stack/sheet/mineral/sandstone = 5)
-	category = CAT_PRIMAL*/
+	category = CAT_PRIMAL
 
 /datum/crafting_recipe/rib
 	name = "Collosal Rib"
