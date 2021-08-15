@@ -406,11 +406,10 @@
 	inherent_traits = list(TRAIT_TOXINLOVER)
 	mutant_bodyparts = list("mcolor" = "FFFFFF", "mcolor2" = "FFFFFF","mcolor3" = "FFFFFF", "mam_tail" = "None", "mam_ears" = "None", "mam_body_markings" = "Plain", "mam_snouts" = "None", "taur" = "None", "legs" = "Plantigrade")
 	say_mod = "says"
-	hair_color = "mutcolor"
-	hair_alpha = 160 //a notch brighter so it blends better.
-	coldmod = 3
-	heatmod = 1
-	burnmod = 1
+	hair_alpha = 205 //a notch brighter so it blends better.
+	coldmod = 6
+	heatmod = 0.5
+	burnmod = 0.5
 
 	allowed_limb_ids = list(SPECIES_SLIME,SPECIES_STARGAZER,SPECIES_SLIME_LUMI)
 
