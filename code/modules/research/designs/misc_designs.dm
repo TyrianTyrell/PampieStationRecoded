@@ -281,7 +281,7 @@
 	id = "sippycup"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/plastic = 400)
-	build_path = /obj/item/reagent_containers/food/drinks/bottle/sippycup
+	build_path = /obj/item/reagent_containers/glass/sippycup
 	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
 
@@ -291,7 +291,7 @@
 	id = "babybottle"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/plastic = 1000)
-	build_path = /obj/item/reagent_containers/food/drinks/bottle/blank/babybottle
+	build_path = /obj/item/reagent_containers/glass/babybottle
 	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
 

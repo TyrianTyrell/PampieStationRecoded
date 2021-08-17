@@ -220,6 +220,79 @@
 	container_flags = TEMP_WEAK|APTFT_ALTCLICK|APTFT_VERB
 	cached_icon = "beakerlarge"
 
+/obj/item/reagent_containers/glass/babybottle
+	name = "baby bottle"
+	desc = "A small plastic bottle with a nipple. Not quite airtight, it still spills."
+	icon = 'icons/obj/drinks.dmi'
+	icon_state = "babybottle"
+	volume = 60
+	container_flags = TEMP_WEAK|APTFT_ALTCLICK|APTFT_VERB
+	spillable = TRUE
+
+/obj/item/reagent_containers/glass/babybottle/update_icon()
+	..()
+	add_overlay("[initial(icon_state)]shine")
+
+/obj/item/reagent_containers/glass/babybottle/Initialize()
+	. = ..()
+	update_icon()
+
+/obj/item/reagent_containers/glass/babybottle/get_part_rating()
+	return reagents.maximum_volume
+
+/obj/item/reagent_containers/glass/babybottle/on_reagent_change(changetype)
+	update_icon()
+
+/obj/item/reagent_containers/glass/babybottle/update_overlays()
+	. = ..()
+	if(!cached_icon)
+		cached_icon = icon_state
+
+	if(reagents.total_volume)
+		var/mutable_appearance/filling = mutable_appearance('icons/obj/reagentfillings.dmi', "[cached_icon]10", color = mix_color_from_reagents(reagents.reagent_list))
+
+		var/percent = round((reagents.total_volume / volume) * 100)
+		switch(percent)
+			if(0 to 9)
+				filling.icon_state = "[cached_icon]0"
+			if(10 to 19)
+				filling.icon_state = "[cached_icon]10"
+			if(20 to 29)
+				filling.icon_state = "[cached_icon]20"
+			if(30 to 39)
+				filling.icon_state = "[cached_icon]30"
+			if(40 to 49)
+				filling.icon_state = "[cached_icon]40"
+			if(50 to 59)
+				filling.icon_state = "[cached_icon]50"
+			if(60 to 69)
+				filling.icon_state = "[cached_icon]60"
+			if(70 to 79)
+				filling.icon_state = "[cached_icon]70"
+			if(80 to 89)
+				filling.icon_state = "[cached_icon]80"
+			if(90 to INFINITY)
+				filling.icon_state = "[cached_icon]90"
+		. += filling
+
+
+/obj/item/reagent_containers/glass/sippycup
+	name = "sippy cup"
+	desc = "A small plastic container for drinks. Said to be spill proof but you know it's not."
+	icon = 'icons/obj/drinks.dmi'
+	icon_state = "sippycup"
+	volume = 30
+	container_flags = TEMP_WEAK|APTFT_ALTCLICK|APTFT_VERB
+	spillable = TRUE
+	obj_flags = UNIQUE_RENAME
+
+/obj/item/reagent_containers/glass/sippycup/Initialize(mapload, param_color)
+	. = ..()
+	if(!param_color)
+		param_color = pick("blue","green","orange","yellow","purple","rainbow")
+	icon_state = "[param_color]_sippy"
+	item_state = "[param_color]_sippy"
+
 /obj/item/reagent_containers/glass/beaker/meta
 	name = "metamaterial beaker"
 	desc = "A large beaker. Can hold up to 240 units, and is able to withstand all chemical situations."
