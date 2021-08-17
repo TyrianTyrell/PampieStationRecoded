@@ -16,8 +16,8 @@
 					/obj/item/diaper_package/plain = 10,
 					/obj/item/diaper_package/classic = 10,
 					/obj/item/diaper_package/jeans = 10,
-					/obj/item/reagent_containers/food/drinks/bottle/sippycup = 5,
-					/obj/item/reagent_containers/food/drinks/bottle/blank/babybottle = 5,
+					/obj/item/reagent_containers/glass/sippycup = 5,
+					/obj/item/reagent_containers/glass/babybottle = 5,
 					/obj/item/storage/backpack/diaper_bag = 10)
 	contraband = list(/obj/item/diaper/thirteen = 13,
 					/obj/item/diaper/punk = 20,
@@ -56,8 +56,8 @@
 					/obj/item/diaper_package/plain = 10,
 					/obj/item/diaper_package/classic = 10,
 					/obj/item/diaper_package/jeans = 10,
-					/obj/item/reagent_containers/food/drinks/bottle/sippycup = 5,
-					/obj/item/reagent_containers/food/drinks/bottle/blank/babybottle = 5,
+					/obj/item/reagent_containers/glass/sippycup = 5,
+					/obj/item/reagent_containers/glass/babybottle = 5,
 					/obj/item/storage/backpack/diaper_bag = 10)
 	contraband = list(/obj/item/paci_package/nuk = 3,
 					/obj/item/diaper/punk = 20,
