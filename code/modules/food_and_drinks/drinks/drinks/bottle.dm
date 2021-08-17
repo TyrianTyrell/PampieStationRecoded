@@ -562,30 +562,6 @@
 	icon_state = "unipitcher"
 	volume = 200
 
-/obj/item/reagent_containers/food/drinks/bottle/blank/babybottle
-	name = "baby bottle"
-	desc = "A small plastic bottle with a nipple. Doesn't spill."
-	icon_state = "babybottle"
-	volume = 60
-	isGlass = FALSE
-	spillable = FALSE
-
-/obj/item/reagent_containers/food/drinks/bottle/sippycup
-	name = "sippy cup"
-	desc = "A small plastic container for drinks. Said to be spill proof but you know it's not."
-	icon_state = "sippycup"
-	volume = 30
-	isGlass = FALSE
-	spillable = TRUE
-	obj_flags = UNIQUE_RENAME
-
-/obj/item/reagent_containers/food/drinks/bottle/sippycup/Initialize(mapload, param_color)
-	. = ..()
-	if(!param_color)
-		param_color = pick("blue","green","orange","yellow","purple","rainbow")
-	icon_state = "[param_color]_sippy"
-	item_state = "[param_color]_sippy"
-
 ////////////////////////// MOLOTOV ///////////////////////
 /obj/item/reagent_containers/food/drinks/bottle/molotov
 	name = "molotov cocktail"
