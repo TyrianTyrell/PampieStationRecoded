@@ -16,7 +16,6 @@ set REPO_BRANCH=main
 
 
 REM what map file to use. This should be the name of the dm, not dmm (and without the .dm part) (defaults to what ever is ticked in the dme)
-set MAPFILE=BoxStation
 REM set MAPFILE=metastation
 REM set MAPFILE=ministation
 
