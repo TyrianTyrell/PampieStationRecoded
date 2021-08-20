@@ -15,9 +15,6 @@
 
 // BEGIN_INCLUDE
 #include "_maps\_basemap.dm"
-#include "_maps\map_files\BoxStation\BoxStation.dmm"
-#include "_maps\map_files\MetaStation\MetaStation.dmm"
-#include "_maps\map_files\PubbyStation\PubbyStation.dmm"
 #include "code\_compile_options.dm"
 #include "code\world.dm"
 #include "code\__DEFINES\_auxtools.dm"
