@@ -47584,6 +47584,9 @@
 /obj/structure/closet/jcloset,
 /obj/item/mop,
 /obj/item/reagent_containers/glass/bucket,
+/obj/machinery/airalarm{
+	pixel_y = 22
+	},
 /turf/open/floor/plasteel/dark,
 /area/nursery)
 "cgP" = (
@@ -48036,6 +48039,9 @@
 	},
 /obj/machinery/camera{
 	c_tag = "Nursery Main Room"
+	},
+/obj/machinery/airalarm{
+	pixel_y = 22
 	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/nursery)
@@ -55962,6 +55968,10 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 24
+	},
 /turf/open/floor/plasteel/freezer,
 /area/nursery)
 "jcT" = (
@@ -58520,6 +58530,12 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard)
+"oDG" = (
+/obj/machinery/airalarm{
+	pixel_y = 22
+	},
+/turf/open/floor/carpet/arcade,
+/area/nursery)
 "oDP" = (
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/tile/purple{
@@ -59336,6 +59352,10 @@
 /obj/structure/chair/stool,
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 24
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/nursery)
@@ -84138,7 +84158,7 @@ aaa
 aaa
 aaa
 jSa
-vco
+oDG
 vco
 mpB
 tfM
