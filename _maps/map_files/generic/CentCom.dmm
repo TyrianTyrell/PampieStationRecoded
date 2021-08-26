@@ -16328,7 +16328,9 @@
 /turf/open/floor/mineral/titanium/blue,
 /area/centcom/evac)
 "Ly" = (
-/obj/item/diaper_package/ashwalker,
+/obj/item/multitool/advanced,
+/obj/item/screwdriver/advanced,
+/obj/structure/table/wood,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
 "LA" = (
