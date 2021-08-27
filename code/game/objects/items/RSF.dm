@@ -194,7 +194,7 @@ RSF
 			use_matter(100, user)
 		if(3)
 			to_chat(user, "Dispensing Pacifier...")
-			new /obj/item/clothing/mask/pacifier/d(T)
+			new /obj/item/clothing/mask/pacifier(T)
 			use_matter(50, user)
 		if(4)
 			to_chat(user, "Dispensing Plushie...")

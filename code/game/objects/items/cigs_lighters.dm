@@ -1087,3 +1087,125 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_off = "coconut_bong"
 	icon_on = "coconut_bong_lit"
 	desc = "A water bong used for smoking dried plants. This one's made out of a coconut and some bamboo."
+
+/////PACIFIERS////
+
+/obj/item/clothing/mask/pacivape
+	name = "\improper E-Pacifier"
+	desc = "This seems to be some sort of pacifier but you can.. fill it? \"Warning: Do not fill with flammable materials.\""//<<< i'd vape to that.
+	icon = 'icons/obj/clothing/masks.dmi'
+	icon_state = "base_paci"
+	item_state = "base_paci"
+	w_class = WEIGHT_CLASS_TINY
+	var/chem_volume = 100
+	var/vapetime = FALSE //this so it won't puff out clouds every tick
+	var/screw = FALSE // kinky
+	var/super = FALSE //for the fattest vapes dude.
+	modifies_speech = TRUE
+
+/obj/item/clothing/mask/pacivape/suicide_act(mob/user)
+	user.visible_message("<span class='suicide'>[user] is puffin hard on dat vape, [user.p_they()] trying to join the vape life on a whole notha plane!</span>")//it doesn't give you cancer, it is cancer
+	return (TOXLOSS|OXYLOSS)
+
+/obj/item/clothing/mask/pacivape/handle_speech(datum/source, list/speech_args)
+	var/message = speech_args[SPEECH_MESSAGE]
+	if(message[1] != "*")
+		var/list/temp_message = splittext(message, " ")
+		var/list/pick_list = list()
+		for(var/i in 1 to temp_message.len)
+			pick_list += i
+		for(var/i in 1 to abs(temp_message.len/3))
+			var/H = pick(pick_list)
+			if(findtext(temp_message[H], "*") || findtext(temp_message[H], ";") || findtext(temp_message[H], ":"))
+				continue
+			temp_message[H] = ninjaspeak(temp_message[H])
+			pick_list -= H
+		message = temp_message.Join(" ")
+
+		//The Alternate speech mod is now the main one.
+		message = replacetext(message, "ally ", "wy")
+		message = replacetext(message, "bottle ", "baba")
+		message = replacetext(message, " no ", " nuh ")
+		message = replacetext(message, "l", "w")
+		message = replacetext(message, "r", "w")
+		message = replacetext(message, "ou", "oo")
+		message = replacetext(message, "that", "dat")
+		message = replacetext(message, "then", "den")
+		message = replacetext(message, "this", "dis")
+		message = replacetext(message, "th ", "f ")
+		message = replacetext(message, "tt", "dd")
+		message = replacetext(message, " no ", " nuh ")
+		message = replacetext(message, " yes ", " yuh ")
+		message = lowertext(message)
+		speech_args[SPEECH_MESSAGE] = message
+
+/obj/item/clothing/mask/pacivape/Initialize(mapload, param_color)
+	. = ..()
+	create_reagents(chem_volume, NO_REACT, NO_REAGENTS_VALUE) // so it doesn't react until you light it
+	reagents.add_reagent(/datum/chemical_reaction/medicine/regression, 100)
+
+	if(!param_color)
+		param_color = pick("pink","blue","black","white","green","purple","yellow","orange","red","grey","gold")
+	icon_state = "[param_color]_paci"
+	item_state = "[param_color]_paci"
+
+/obj/item/clothing/mask/pacivape/attack_self(mob/user)
+	if(reagents.total_volume > 0)
+		to_chat(user, "<span class='notice'>You empty [src] of all reagents.</span>")
+		reagents.clear_reagents()
+
+/obj/item/clothing/mask/pacivape/equipped(mob/user, slot)
+	. = ..()
+	if(slot == SLOT_WEAR_MASK)
+		if(!screw)
+			to_chat(user, "<span class='notice'>You start sucking the pacifier.</span>")
+			DISABLE_BITFIELD(reagents.reagents_holder_flags, NO_REACT)
+			START_PROCESSING(SSobj, src)
+
+/obj/item/clothing/mask/pacivape/dropped(mob/user)
+	. = ..()
+	var/mob/living/carbon/C = user
+	if(C.get_item_by_slot(SLOT_WEAR_MASK) == src)
+		ENABLE_BITFIELD(reagents.reagents_holder_flags, NO_REACT)
+		STOP_PROCESSING(SSobj, src)
+
+/obj/item/clothing/mask/pacivape/proc/hand_reagents()//had to rename to avoid duplicate error
+	if(reagents.total_volume)
+		if(iscarbon(loc))
+			var/mob/living/carbon/C = loc
+			if (src == C.wear_mask) // if it's in the human/monkey mouth, transfer reagents to the mob
+				var/fraction = min(REAGENTS_METABOLISM/reagents.total_volume, 1) //this will react instantly, making them a little more dangerous than cigarettes
+				reagents.reaction(C, INGEST, fraction)
+				if(!reagents.trans_to(C, REAGENTS_METABOLISM))
+					reagents.remove_any(REAGENTS_METABOLISM)
+				if(reagents.get_reagent_amount(/datum/reagent/fuel))
+					//HOT STUFF
+					C.fire_stacks = 2
+					C.IgniteMob()
+
+				if(reagents.get_reagent_amount(/datum/reagent/toxin/plasma)) // the plasma explodes when exposed to fire
+					var/datum/effect_system/reagents_explosion/e = new()
+					e.set_up(round(reagents.get_reagent_amount(/datum/reagent/toxin/plasma) / 2.5, 1), get_turf(src), 0, 0)
+					e.start()
+					qdel(src)
+				return
+		reagents.remove_any(REAGENTS_METABOLISM)
+
+/obj/item/clothing/mask/vape/process()
+	var/mob/living/M = loc
+
+	if(isliving(loc))
+		M.IgniteMob()
+
+	vapetime++
+
+	if(!reagents.total_volume)
+		if(ismob(loc))
+			to_chat(M, "<span class='notice'>[src] is empty!</span>")
+			STOP_PROCESSING(SSobj, src)
+			//it's reusable so it won't unequip when empty
+		return
+	//open flame removed because vapes are a closed system, they wont light anything on fire
+
+	if(reagents && reagents.total_volume)
+		hand_reagents()

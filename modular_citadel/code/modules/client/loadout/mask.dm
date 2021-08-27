@@ -30,4 +30,8 @@
 	name = "Paper mask"
 	path = /obj/item/clothing/mask/paper
 	cost = 2
-	
+
+/datum/gear/mask/polypaci
+	name = "Polychromic Pacifier"
+	path = /obj/item/clothing/mask/polypacifier
+	cost = 2
