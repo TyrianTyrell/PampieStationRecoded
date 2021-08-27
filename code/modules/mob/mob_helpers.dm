@@ -219,8 +219,8 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	for(var/i = 1, i <= lentext, i += length_char(rawchars))
 		var/end = i + rand(1,4)
 		letter = rawchars = copytext_char(phrase, i, end > lentext ? 0 : end)
-		if (prob(50))
-			if (prob(30))
+		if (prob(1))
+			if (prob(1))
 				letter = "[letter]-[letter]-[letter]"
 			else
 				letter = "[letter]-[letter]"

@@ -941,70 +941,6 @@
 	new /obj/item/diaper/hefters_f(src)
 	new /obj/item/diaper/hefters_f(src)
 
-/obj/item/clothing/mask/pacifier
-	icon = 'icons/incon/regressoray.dmi'
-	w_class = WEIGHT_CLASS_TINY
-	body_parts_covered = null
-
-/obj/item/clothing/mask/pacifier/d
-	name = "pacifier"
-	desc = "A pacifier, with a small passage in the bulb through which things like nicotine can be imbibed. This one is meant to be recycled after use."
-	icon_state = "Pacifier_disposable"
-	var/chem_volume = 15
-	var/list/list_reagents = list(/datum/reagent/drug/nicotine = 15)
-
-/obj/item/clothing/mask/pacifier/b
-	name = "blue pacifier"
-	desc = "A pacifier, with a small passage in the bulb through which things like nicotine can be imbibed. This one is blue."
-	icon_state = "Pacifier_blue"
-	var/chem_volume = 30
-	var/list/list_reagents = list()
-
-/obj/item/clothing/mask/pacifier/p
-	name = "pink pacifier"
-	desc = "A pacifier, with a small passage in the bulb through which things like nicotine can be imbibed. This one is pink."
-	icon_state = "Pacifier_pink"
-	var/chem_volume = 30
-	var/list/list_reagents = list()
-
-/obj/item/clothing/mask/pacifier/d/Initialize()
-	. = ..()
-	create_reagents(chem_volume, NO_REACT, NO_REAGENTS_VALUE)
-	if(list_reagents)
-		reagents.add_reagent_list(list_reagents)
-
-/obj/item/clothing/mask/pacifier/b/Initialize()
-	. = ..()
-	create_reagents(chem_volume, INJECTABLE | NO_REACT, NO_REAGENTS_VALUE)
-	if(list_reagents)
-		reagents.add_reagent_list(list_reagents)
-
-/obj/item/clothing/mask/pacifier/p/Initialize()
-	. = ..()
-	create_reagents(chem_volume, INJECTABLE | NO_REACT, NO_REAGENTS_VALUE)
-	if(list_reagents)
-		reagents.add_reagent_list(list_reagents)
-
-/obj/item/clothing/mask/pacifier/Destroy()
-	STOP_PROCESSING(SSobj, src)
-	. = ..()
-
-/obj/item/clothing/mask/pacifier/proc/handle_reagents()
-	if(reagents.total_volume)
-		if(iscarbon(loc))
-			var/mob/living/carbon/C = loc
-			if (src == C.wear_mask) // if it's in the human/monkey mouth, transfer reagents to the mob
-				var/fraction = min(REAGENTS_METABOLISM/reagents.total_volume, 1)
-				reagents.reaction(C, INGEST, fraction)
-				if(!reagents.trans_to(C, REAGENTS_METABOLISM))
-					reagents.remove_any(REAGENTS_METABOLISM)
-				return
-		reagents.remove_any(REAGENTS_METABOLISM)
-
-/obj/item/clothing/mask/pacifier/process()
-	if(reagents && reagents.total_volume)
-		handle_reagents()
-
 /obj/item/diaper_package
 	name = "diaper package"
 	icon = 'icons/obj/storage.dmi'
@@ -1091,8 +1027,8 @@
 	name = "Nukpack"
 	icon = 'icons/incon/regressoray.dmi'
 	desc = "A package of Nuks, disposable pacifiers."
-	var/nuksleft = 6
-	var/obj/item/paci_package/nukinside = /obj/item/clothing/mask/pacifier/d
+	var/nuksleft = 10
+	var/obj/item/paci_package/nukinside = /obj/item/clothing/mask/pacifier
 
 /obj/item/paci_package/proc/takeout(stuff, mob/user)
 	var/atom/A
