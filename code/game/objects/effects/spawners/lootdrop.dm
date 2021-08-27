@@ -392,8 +392,6 @@
 				/obj/item/coin/plasma = 10,
 				/obj/item/coin/uranium = 10,
 				/obj/item/clothing/mask/pacifier/blessed = 1,
-				/obj/item/clothing/mask/pacifier/cursed = 3,
-				/obj/item/clothing/mask/pacifier/cursed/blursed = 5,
 				)
 
 /obj/effect/spawner/lootdrop/cig_packs
@@ -412,8 +410,6 @@
 				/obj/item/storage/fancy/cigarettes/cigpack_mindbreaker = 10,
 				/obj/item/storage/fancy/rollingpapers = 10,
 				/obj/item/clothing/mask/pacifier/blessed = 1,
-				/obj/item/clothing/mask/pacifier/cursed = 3,
-				/obj/item/clothing/mask/pacifier/cursed/blursed = 5,
 				)
 
 /obj/effect/spawner/lootdrop/cigars_cases

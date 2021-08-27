@@ -1090,9 +1090,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /////PACIFIERS////
 
-/obj/item/clothing/mask/pacivape
+/obj/item/clothing/mask/pacivape/vape
 	name = "\improper E-Pacifier"
-	desc = "This seems to be some sort of pacifier but you can.. fill it? \"Warning: Do not fill with flammable materials.\""//<<< i'd vape to that.
+	desc = "A pacifier that acts as an e-cig, except you suckle it. \"Warning: Do not fill with flammable materials.\""//<<< i'd vape to that.
 	icon = 'icons/obj/clothing/masks.dmi'
 	icon_state = "base_paci"
 	item_state = "base_paci"
@@ -1101,53 +1101,75 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/vapetime = FALSE //this so it won't puff out clouds every tick
 	var/screw = FALSE // kinky
 	var/super = FALSE //for the fattest vapes dude.
-	modifies_speech = TRUE
 
 /obj/item/clothing/mask/pacivape/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is puffin hard on dat vape, [user.p_they()] trying to join the vape life on a whole notha plane!</span>")//it doesn't give you cancer, it is cancer
 	return (TOXLOSS|OXYLOSS)
 
-/obj/item/clothing/mask/pacivape/handle_speech(datum/source, list/speech_args)
-	var/message = speech_args[SPEECH_MESSAGE]
-	if(message[1] != "*")
-		var/list/temp_message = splittext(message, " ")
-		var/list/pick_list = list()
-		for(var/i in 1 to temp_message.len)
-			pick_list += i
-		for(var/i in 1 to abs(temp_message.len/3))
-			var/H = pick(pick_list)
-			if(findtext(temp_message[H], "*") || findtext(temp_message[H], ";") || findtext(temp_message[H], ":"))
-				continue
-			temp_message[H] = ninjaspeak(temp_message[H])
-			pick_list -= H
-		message = temp_message.Join(" ")
-
-		//The Alternate speech mod is now the main one.
-		message = replacetext(message, "ally ", "wy")
-		message = replacetext(message, "bottle ", "baba")
-		message = replacetext(message, " no ", " nuh ")
-		message = replacetext(message, "l", "w")
-		message = replacetext(message, "r", "w")
-		message = replacetext(message, "ou", "oo")
-		message = replacetext(message, "that", "dat")
-		message = replacetext(message, "then", "den")
-		message = replacetext(message, "this", "dis")
-		message = replacetext(message, "th ", "f ")
-		message = replacetext(message, "tt", "dd")
-		message = replacetext(message, " no ", " nuh ")
-		message = replacetext(message, " yes ", " yuh ")
-		message = lowertext(message)
-		speech_args[SPEECH_MESSAGE] = message
 
 /obj/item/clothing/mask/pacivape/Initialize(mapload, param_color)
 	. = ..()
 	create_reagents(chem_volume, NO_REACT, NO_REAGENTS_VALUE) // so it doesn't react until you light it
-	reagents.add_reagent(/datum/chemical_reaction/medicine/regression, 100)
-
+	reagents.add_reagent(/datum/reagent/medicine/regression, 50)
 	if(!param_color)
 		param_color = pick("pink","blue","black","white","green","purple","yellow","orange","red","grey","gold")
 	icon_state = "[param_color]_paci"
 	item_state = "[param_color]_paci"
+
+/obj/item/clothing/mask/pacivape/attackby(obj/item/O, mob/user, params)
+	if(O.tool_behaviour == TOOL_SCREWDRIVER)
+		if(!screw)
+			screw = TRUE
+			to_chat(user, "<span class='notice'>You open the cap on [src].</span>")
+			ENABLE_BITFIELD(reagents.reagents_holder_flags, OPENCONTAINER)
+			if(obj_flags & EMAGGED)
+				add_overlay("paciopen_high")
+			else if(super)
+				add_overlay("paciopen_med")
+			else
+				add_overlay("paciopen_low")
+		else
+			screw = FALSE
+			to_chat(user, "<span class='notice'>You close the cap on [src].</span>")
+			DISABLE_BITFIELD(reagents.reagents_holder_flags, OPENCONTAINER)
+			cut_overlays()
+
+	if(O.tool_behaviour == TOOL_MULTITOOL)
+		if(screw && !(obj_flags & EMAGGED))//also kinky
+			if(!super)
+				cut_overlays()
+				super = TRUE
+				to_chat(user, "<span class='notice'>You increase the voltage of [src].</span>")
+				add_overlay("paciopen_med")
+			else
+				cut_overlays()
+				super = FALSE
+				to_chat(user, "<span class='notice'>You decrease the voltage of [src].</span>")
+				add_overlay("paciopen_low")
+
+		if(screw && (obj_flags & EMAGGED))
+			to_chat(user, "<span class='notice'>[src] can't be modified!</span>")
+
+		else
+			..()
+
+/obj/item/clothing/mask/pacivape/emag_act(mob/user)// I WON'T REGRET WRITTING THIS, SURLY.
+	. = ..()
+	if(!screw)
+		to_chat(user, "<span class='notice'>You need to open the cap to do that.</span>")
+		return
+	if(obj_flags & EMAGGED)
+		to_chat(user, "<span class='warning'>[src] is already emagged!</span>")
+		return
+	cut_overlays()
+	obj_flags |= EMAGGED
+	super = FALSE
+	to_chat(user, "<span class='warning'>You maximize the voltage of [src].</span>")
+	add_overlay("paciopen_high")
+	var/datum/effect_system/spark_spread/sp = new /datum/effect_system/spark_spread //for effect
+	sp.set_up(5, 1, src)
+	sp.start()
+	return TRUE
 
 /obj/item/clothing/mask/pacivape/attack_self(mob/user)
 	if(reagents.total_volume > 0)
@@ -1158,9 +1180,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	. = ..()
 	if(slot == SLOT_WEAR_MASK)
 		if(!screw)
-			to_chat(user, "<span class='notice'>You start sucking the pacifier.</span>")
+			to_chat(user, "<span class='notice'>You start puffing on the vape.</span>")
 			DISABLE_BITFIELD(reagents.reagents_holder_flags, NO_REACT)
 			START_PROCESSING(SSobj, src)
+		else //it will not start if the vape is opened.
+			to_chat(user, "<span class='warning'>You need to close the cap first!</span>")
 
 /obj/item/clothing/mask/pacivape/dropped(mob/user)
 	. = ..()
@@ -1191,7 +1215,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				return
 		reagents.remove_any(REAGENTS_METABOLISM)
 
-/obj/item/clothing/mask/vape/process()
+/obj/item/clothing/mask/pacivape/process()
 	var/mob/living/M = loc
 
 	if(isliving(loc))
@@ -1206,6 +1230,28 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			//it's reusable so it won't unequip when empty
 		return
 	//open flame removed because vapes are a closed system, they wont light anything on fire
+
+	if(super && vapetime > 3)//Time to start puffing those fat vapes, yo.
+		var/datum/effect_system/smoke_spread/chem/smoke_machine/s = new
+		s.set_up(reagents, 1, 24, loc)
+		s.start()
+		vapetime = 0
+
+	if((obj_flags & EMAGGED) && vapetime > 3)
+		var/datum/effect_system/smoke_spread/chem/smoke_machine/s = new
+		s.set_up(reagents, 4, 24, loc)
+		s.start()
+		vapetime = 0
+		if(prob(5))//small chance for the vape to break and deal damage if it's emagged
+			playsound(get_turf(src), 'sound/effects/pop_expl.ogg', 50, 0)
+			M.apply_damage(20, BURN, BODY_ZONE_HEAD)
+			M.DefaultCombatKnockdown(300, 1, 0)
+			var/datum/effect_system/spark_spread/sp = new /datum/effect_system/spark_spread
+			sp.set_up(5, 1, src)
+			sp.start()
+			to_chat(M, "<span class='userdanger'>[src] suddenly explodes in your mouth!</span>")
+			qdel(src)
+			return
 
 	if(reagents && reagents.total_volume)
 		hand_reagents()

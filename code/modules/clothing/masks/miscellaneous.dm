@@ -483,7 +483,7 @@
 	icon_state = "[param_color]_paci"
 	item_state = "[param_color]_paci"
 
-/obj/item/clothing/mask/pacifier/cursed
+/*/obj/item/clothing/mask/pacifier/cursed
 	name = "Cursed Pacifier"
 	item_state = "cursed_paci"
 	icon_state = "cursed_paci"
@@ -497,7 +497,7 @@
 /obj/item/clothing/mask/pacifier/cursed/blursed
 	name = "Blessed Pacifier?"
 	desc = "It looks like a normal pacifier..."
-	clothing_flags = NOSLIP
+	clothing_flags = NOSLIP*/
 
 /obj/item/clothing/mask/pacifier/blessed
 	name = "Blessed Pacifier"
