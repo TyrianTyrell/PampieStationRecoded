@@ -1090,12 +1090,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /////PACIFIERS////
 
-/obj/item/clothing/mask/pacivape/vape
+/obj/item/clothing/mask/pacivape
 	name = "\improper E-Pacifier"
 	desc = "A pacifier that acts as an e-cig, except you suckle it. \"Warning: Do not fill with flammable materials.\""//<<< i'd vape to that.
 	icon = 'icons/obj/clothing/masks.dmi'
 	icon_state = "base_paci"
 	item_state = "base_paci"
+	modifies_speech = TRUE
 	w_class = WEIGHT_CLASS_TINY
 	var/chem_volume = 100
 	var/vapetime = FALSE //this so it won't puff out clouds every tick
@@ -1255,3 +1256,35 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	if(reagents && reagents.total_volume)
 		hand_reagents()
+
+/obj/item/clothing/mask/pacivape/handle_speech(datum/source, list/speech_args)
+	var/message = speech_args[SPEECH_MESSAGE]
+	if(message[1] != "*")
+		var/list/temp_message = splittext(message, " ")
+		var/list/pick_list = list()
+		for(var/i in 1 to temp_message.len)
+			pick_list += i
+		for(var/i in 1 to abs(temp_message.len/3))
+			var/H = pick(pick_list)
+			if(findtext(temp_message[H], "*") || findtext(temp_message[H], ";") || findtext(temp_message[H], ":"))
+				continue
+			temp_message[H] = ninjaspeak(temp_message[H])
+			pick_list -= H
+		message = temp_message.Join(" ")
+
+		//The Alternate speech mod is now the main one.
+		message = replacetext(message, "the ", "da")
+		message = replacetext(message, "ally ", "wy")
+		message = replacetext(message, "bottle ", "baba")
+		message = replacetext(message, " no ", " nuh ")
+		message = replacetext(message, "l", "w")
+		message = replacetext(message, "r", "w")
+		message = replacetext(message, "ou", "oo")
+		message = replacetext(message, "that", "dat")
+		message = replacetext(message, "then", "den")
+		message = replacetext(message, "this", "dis")
+		message = replacetext(message, "th ", "f ")
+		message = replacetext(message, "tt", "dd")
+		message = replacetext(message, " yes ", " yuh ")
+		message = lowertext(message)
+		speech_args[SPEECH_MESSAGE] = message

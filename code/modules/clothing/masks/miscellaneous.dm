@@ -459,6 +459,7 @@
 		message = temp_message.Join(" ")
 
 		//The Alternate speech mod is now the main one.
+		message = replacetext(message, "the ", "da")
 		message = replacetext(message, "ally ", "wy")
 		message = replacetext(message, "bottle ", "baba")
 		message = replacetext(message, " no ", " nuh ")
@@ -533,6 +534,7 @@
 		message = temp_message.Join(" ")
 
 		//The Alternate speech mod is now the main one.
+		message = replacetext(message, "the ", "da")
 		message = replacetext(message, "ally ", "wy")
 		message = replacetext(message, "bottle ", "baba")
 		message = replacetext(message, " no ", " nuh ")
