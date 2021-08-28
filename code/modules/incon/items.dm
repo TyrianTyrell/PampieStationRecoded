@@ -188,7 +188,7 @@
 	desc = "A diaper for the elegant and charismatic. You're sure to get a raise if you wear these!"
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "Princess"
-	custom_price = 40
+	custom_price = 50
 
 /obj/item/wetdiap/princess
 	name = "wet diaper"
@@ -213,7 +213,6 @@
 	desc = "A diaper for both epic streamers and casual players. Wear this, and any dice you roll are rigged in your favor slightly."
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "PwrGame"
-	custom_price = 15
 
 /obj/item/wetdiap/pwrgame
 	name = "wet diaper"
@@ -238,7 +237,6 @@
 	desc = "For little ones afraid of the monsters under their bed. Glows in the dark."
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "StarKist"
-	custom_price = 20
 
 /obj/item/wetdiap/starkist
 	name = "wet diaper"
@@ -513,6 +511,10 @@
 	desc = "For when you need to leave no evidence behind. Heals brute damage, and disguises itself as a plain diaper when changed."
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "Replica"
+
+/obj/item/diaper/syndi/rep
+	name = "\improper SyndiSmeller Chameleons"
+	desc = "A replica of the real deal"
 
 /obj/item/diaper/narsie
 	name = "\improper Narsmellies"

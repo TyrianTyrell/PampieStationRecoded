@@ -115,11 +115,11 @@
 /mob/living/carbon/proc/PampUpdate()
 	if(stat != DEAD && (HAS_TRAIT(src,TRAIT_INCONTINENT) || HAS_TRAIT(src,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(src,TRAIT_POTTYREBEL) || HAS_TRAIT(src,BABYBRAINED_TRAIT) || HAS_TRAIT(src,TRAIT_DIAPERUSE)) && src.client != null)
 		if(src.client.prefs.accident_types != "Poop Only")
-			pee = pee + 0.6 + (fluids/200)
+			pee = pee + 0.2 + (fluids/500)
 		else
 			pee = 0
 		if(src.client.prefs.accident_types != "Pee Only")
-			poop = poop + 0.2 + (nutrition/800)
+			poop = poop + 0.075 + (nutrition/1500)
 		else
 			poop = 0
 	if(!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
@@ -534,8 +534,6 @@
 			REMOVE_TRAIT(owner,TRAIT_NORUNNING,REGRESSION_TRAIT)
 			REMOVE_TRAIT(owner,TRAIT_NOGUNS,REGRESSION_TRAIT)
 			SEND_SIGNAL(owner,COMSIG_DIAPERCHANGE,owner.ckey)
-			owner.overlays -= owner.statusoverlay
-			owner.statusoverlay = null
 	if((HAS_TRAIT(owner,TRAIT_POTTYREBEL) || HAS_TRAIT(owner,TRAIT_INCONTINENT) || HAS_TRAIT(owner,BABYBRAINED_TRAIT) || HAS_TRAIT(owner,TRAIT_DIAPERUSE)) && !HAS_TRAIT(owner,TRAIT_FULLYINCONTINENT))
 		if (owner.wetness > 0)
 			if (owner.stinkiness > 0)

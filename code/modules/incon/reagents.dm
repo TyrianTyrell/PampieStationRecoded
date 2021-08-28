@@ -89,6 +89,4 @@
 		ADD_TRAIT(C, TRAIT_NORUNNING, REGRESSION_TRAIT)
 		ADD_TRAIT(C, TRAIT_NOGUNS, REGRESSION_TRAIT)
 		SEND_SIGNAL(C, COMSIG_DIAPERCHANGE, C.ckey)
-		C.statusoverlay = mutable_appearance('icons/incon/regressoray.dmi',"regressoray")
-		C.overlays += C.statusoverlay
 	return
