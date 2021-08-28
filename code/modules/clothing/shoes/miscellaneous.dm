@@ -541,3 +541,29 @@
 	desc = "They got me for my foams!"
 	icon_state = "SwagShoes"
 	item_state = "SwagShoes"
+
+/obj/item/clothing/shoes/booties
+	name = "booties"
+	desc = "Soft shoes. Very soft."
+	icon_state = "booties_poly"
+	item_state = "booties_poly"
+
+/obj/item/clothing/shoes/booties/pink
+	name = "pink booties"
+	icon_state = "booties_pink"
+	item_state = "booties_pink"
+
+/obj/item/clothing/shoes/booties/blue
+	name = "blue booties"
+	icon_state = "booties_blue"
+	item_state = "booties_blue"
+
+/obj/item/clothing/shoes/booties/poly
+	name = "polychromic booties"
+	icon_state = "booties_poly"
+	item_state = "booties_poly"
+	var/list/poly_colors = list("#3ee72e","#eafae9")
+
+/obj/item/clothing/shoes/booties/poly/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, poly_colors, 2)

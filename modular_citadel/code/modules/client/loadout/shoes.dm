@@ -75,3 +75,7 @@
 /datum/gear/shoes/cowboyboots/black
 	name = "Cowboy Boots, Black"
 	path = /obj/item/clothing/shoes/cowboyboots/black
+
+/datum/gear/shoes/booties/poly
+	name = "Polychromic Booties"
+	path = /obj/item/clothing/shoes/booties/poly

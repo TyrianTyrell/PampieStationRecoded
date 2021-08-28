@@ -19,8 +19,6 @@
 		ADD_TRAIT(user, TRAIT_NORUNNING, ROUNDSTART_TRAIT)
 		ADD_TRAIT(user, TRAIT_NOGUNS, ROUNDSTART_TRAIT)
 		SEND_SIGNAL(user, COMSIG_DIAPERCHANGE, user.ckey)
-		user.statusoverlay = mutable_appearance('icons/incon/regressoray.dmi',"regressoray")
-		user.overlays += user.statusoverlay
 
 /obj/item/ammo_casing/energy/regression
 	fire_sound = 'sound/effects/stealthoff.ogg'
@@ -45,8 +43,6 @@
 			ADD_TRAIT(target, TRAIT_NORUNNING, REGRESSION_TRAIT)
 			ADD_TRAIT(target, TRAIT_NOGUNS, REGRESSION_TRAIT)
 			SEND_SIGNAL(target, COMSIG_DIAPERCHANGE, target.ckey)
-			target.statusoverlay = mutable_appearance('icons/incon/regressoray.dmi',"regressoray")
-			target.overlays += target.statusoverlay
 		target.regressiontimer = 6000
 
 /*/obj/item/gun/energy/regressorayjb

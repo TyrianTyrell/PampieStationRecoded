@@ -81,3 +81,29 @@
 	item_state = "waldo_hat"
 
 //No dog fashion sprites yet :(  poor Ian can't be dope like the rest of us yet
+
+/obj/item/clothing/head/bonnet
+	name = "bonnet"
+	desc = "Kind of Cartoony, if you think about it."
+	icon_state = "bonnet_poly"
+	item_state = "bonnet_poly"
+
+/obj/item/clothing/head/bonnet/pink
+	name = "pink bonnet"
+	icon_state = "bonnet_pink"
+	item_state = "bonnet_pink"
+
+/obj/item/clothing/head/bonnet/blue
+	name = "blue bonnet"
+	icon_state = "bonnet_blue"
+	item_state = "bonnet_blue"
+
+/obj/item/clothing/head/bonnet/poly
+	name = "polychromic bonnet"
+	icon_state = "bonnet_poly"
+	item_state = "bonnet_poly"
+	var/list/poly_colors = list("#3ee72e")
+
+/obj/item/clothing/head/bonnet/poly/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, poly_colors, 1)

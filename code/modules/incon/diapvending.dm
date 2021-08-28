@@ -26,6 +26,15 @@
 					/obj/item/diaper/camo = 10,
 					/obj/item/diaper/jeans_thick = 20,
 					/obj/item/diaper/bee = 15,
+					/obj/item/clothing/shoes/booties/pink = 2,
+					/obj/item/clothing/shoes/booties/blue = 2,
+					/obj/item/clothing/shoes/booties/poly = 1,
+					/obj/item/clothing/head/bonnet/pink = 2,
+					/obj/item/clothing/head/bonnet/blue = 2,
+					/obj/item/clothing/head/bonnet/poly = 1,
+					/obj/item/clothing/gloves/mittens/pink = 2,
+					/obj/item/clothing/gloves/mittens/blue = 2,
+					/obj/item/clothing/gloves/mittens/poly = 1,
 					/obj/item/clothing/mask/pacivape = 5,
 					/obj/item/clothing/mask/polypacifier = 2)
 	armor = list("melee" = 100, "bullet" = 100, "laser" = 100, "energy" = 100, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50)
@@ -70,6 +79,15 @@
 					/obj/item/diaper/jeans_thick = 20,
 					/obj/item/diaper/narsie = 15,
 					/obj/item/diaper/ratvar = 15,
+					/obj/item/clothing/shoes/booties/pink = 2,
+					/obj/item/clothing/shoes/booties/blue = 2,
+					/obj/item/clothing/shoes/booties/poly = 1,
+					/obj/item/clothing/head/bonnet/pink = 2,
+					/obj/item/clothing/head/bonnet/blue = 2,
+					/obj/item/clothing/head/bonnet/poly = 1,
+					/obj/item/clothing/gloves/mittens/pink = 2,
+					/obj/item/clothing/gloves/mittens/blue = 2,
+					/obj/item/clothing/gloves/mittens/poly = 1,
 					/obj/item/clothing/mask/pacivape = 5,
 					/obj/item/clothing/mask/polypacifier = 2)
 	armor = list("melee" = 100, "bullet" = 100, "laser" = 100, "energy" = 100, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50)
