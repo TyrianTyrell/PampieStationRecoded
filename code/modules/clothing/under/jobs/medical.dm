@@ -16,6 +16,15 @@
 	fitted = FEMALE_UNIFORM_TOP
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
+/obj/item/clothing/under/rank/medical/chief_medical_officer/shirt
+	name = "chief medical officer's shirt"
+	desc = "It's a shirt worn by those with the experience to be \"Chief Medical Officer\". It provides minor biological protection... above the waist"
+	icon_state = "cmo_shirt"
+	item_state = "cmo_shirt"
+	body_parts_covered = CHEST|ARMS
+	can_adjust = FALSE
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
 /obj/item/clothing/under/rank/medical/chief_medical_officer/turtleneck
 	desc = "It's a turtleneck worn by those with the experience to be \"Chief Medical Officer\". It provides minor biological protection, for an officer with a superior sense of style and practicality."
 	name = "chief medical officer's turtleneck"
@@ -42,6 +51,15 @@
 	fitted = FEMALE_UNIFORM_TOP
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
+/obj/item/clothing/under/rank/medical/geneticist/shirt
+	name = "geneticist's shirt"
+	desc = "It's made of a special fiber that gives special protection against biohazards. It has a genetics rank stripe on it."
+	icon_state = "genetics_shirt"
+	item_state = "genetics_shirt"
+	body_parts_covered = CHEST|ARMS
+	can_adjust = FALSE
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
 /obj/item/clothing/under/rank/medical/virologist
 	desc = "It's made of a special fiber that gives special protection against biohazards. It has a virologist rank stripe on it."
 	name = "virologist's jumpsuit"
@@ -60,6 +78,15 @@
 	fitted = FEMALE_UNIFORM_TOP
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
+/obj/item/clothing/under/rank/medical/virologist/shirt
+	name = "virologist's shirt"
+	desc = "It's made of a special fiber that gives special protection against biohazards. It has a virologist rank stripe on it."
+	icon_state = "virology_shirt"
+	item_state = "virology_shirt"
+	body_parts_covered = CHEST|ARMS
+	can_adjust = FALSE
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
 /obj/item/clothing/under/rank/medical/chemist
 	desc = "It's made of a special fiber that gives special protection against biohazards. It has a chemist rank stripe on it."
 	name = "chemist's jumpsuit"
@@ -76,6 +103,15 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = FALSE
 	fitted = FEMALE_UNIFORM_TOP
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
+/obj/item/clothing/under/rank/medical/chemist/shirt
+	name = "chemist's shirt"
+	desc = "It's made of a special fiber that gives special protection against biohazards. It has a chemist rank stripe on it."
+	icon_state = "chemistry_shirt"
+	item_state = "chemistry_shirt"
+	body_parts_covered = CHEST|ARMS
+	can_adjust = FALSE
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/rank/medical/paramedic
@@ -104,6 +140,15 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = FALSE
 	fitted = FEMALE_UNIFORM_TOP
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
+/obj/item/clothing/under/rank/medical/paramedic/shirt
+	name = "paramedic shirt"
+	desc = "It's made of a special fiber that provides minor protection against biohazards. It has a white cross on the chest denoting that the wearer is a trained paramedic."
+	icon_state = "paramedic-dark_shirt"
+	item_state = "paramedic-dark_shirt"
+	body_parts_covered = CHEST|ARMS
+	can_adjust = FALSE
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/rank/medical/paramedic/skirt/light
@@ -163,4 +208,13 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = FALSE
 	fitted = FEMALE_UNIFORM_TOP
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
+/obj/item/clothing/under/rank/medical/doctor/shirt
+	name = "medical doctor's shirt"
+	desc = "It's made of a special fiber that provides minor protection against biohazards. It has a cross on the chest denoting that the wearer is trained medical personnel."
+	icon_state = "medical_shirt"
+	item_state = "medical_shirt"
+	body_parts_covered = CHEST|ARMS
+	can_adjust = FALSE
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON

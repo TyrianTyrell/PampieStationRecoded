@@ -2331,13 +2331,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						backbag = new_backbag
 
 				if("suit")
-					var/new_suit = input(user, "Choose your suit preference","Suit Preference") as null|anything in list("Jumpsuit", "Jumpskirt", "None")
+					var/new_suit = input(user, "Choose your suit preference","Suit Preference") as null|anything in list("Jumpsuit", "Jumpskirt", "Shirt", "None")
 					if(new_suit)
 						switch(new_suit)
 							if("Jumpsuit")
 								jumpsuit_style = PREF_SUIT
 							if("Jumpskirt")
 								jumpsuit_style = PREF_SKIRT
+							if("Shirt")
+								jumpsuit_style = PREF_SHIRT
 							if("None")
 								jumpsuit_style = PREF_NONE
 
