@@ -17,6 +17,14 @@
 	fitted = FEMALE_UNIFORM_TOP
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
+/obj/item/clothing/under/rank/engineering/chief_engineer/shirt
+	name = "chief engineer's shirt"
+	desc = "It's a high visibility shirt given to those engineers insane enough to achieve the rank of \"Chief Engineer\". It has minor radiation shielding."
+	item_state = "chiefengineer_shirt"
+	body_parts_covered = CHEST|ARMS
+	can_adjust = FALSE
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
 /obj/item/clothing/under/rank/engineering/atmospheric_technician
 	desc = "It's a jumpsuit worn by atmospheric technicians."
 	name = "atmospheric technician's jumpsuit"
@@ -32,6 +40,14 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = FALSE
 	fitted = FEMALE_UNIFORM_TOP
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
+/obj/item/clothing/under/rank/engineering/atmospheric_technician/shirt
+	name = "atmospheric technician's shirt"
+	desc = "It's a shirt worn by atmospheric technicians."
+	item_state = "atmos_shirt"
+	body_parts_covered = CHEST|ARMS
+	can_adjust = FALSE
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/rank/engineering/engineer
@@ -79,4 +95,12 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = FALSE
 	fitted = FEMALE_UNIFORM_TOP
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
+/obj/item/clothing/under/rank/engineering/engineer/shirt
+	name = "engineer's shirt"
+	desc = "It's an orange high visibility shirt worn by engineers."
+	item_state = "engine_shirt"
+	body_parts_covered = CHEST|ARMS
+	can_adjust = FALSE
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
