@@ -17,6 +17,7 @@
 /obj/item/clothing/under/rank/civilian/mime/shirt
 	name = "mime's shirt"
 	desc = "It's not very colourful."
+	icon_state = "mime_shirt"
 	item_state = "mime_shirt"
 	body_parts_covered = CHEST|ARMS
 	can_adjust = FALSE
@@ -41,8 +42,9 @@
 	mutantrace_variation = STYLE_DIGITIGRADE //The clown suit must look funny, no taur alpha masks where possible.
 
 /obj/item/clothing/under/rank/civilian/clown/shirt
-	name = "clown suit"
+	name = "clown sshirt"
 	desc = "<i>'HONK!'</i>"
+	icon_state = "clown_shirt"
 	item_state = "clown_shirt"
 	body_parts_covered = CHEST|ARMS
 	can_adjust = FALSE

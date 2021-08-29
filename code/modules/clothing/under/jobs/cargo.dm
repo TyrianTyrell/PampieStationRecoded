@@ -18,6 +18,7 @@
 /obj/item/clothing/under/rank/cargo/qm/shirt
 	name = "quartermaster's shirt"
 	desc = "It's a shirt worn by the quartermaster. It's specially designed to prevent back injuries caused by pushing paper."
+	icon_state = "qm_shirt"
 	item_state = "qm_shirt"
 	body_parts_covered = CHEST|ARMS
 	can_adjust = FALSE
@@ -52,6 +53,7 @@
 /obj/item/clothing/under/rank/cargo/tech/shirt
 	name = "cargo technician's shirt"
 	desc = "Shiiiiirts! They're comfy and easy to wear"
+	icon_state = "cargo_shirt"
 	item_state = "cargo_shirt"
 	body_parts_covered = CHEST|ARMS
 	can_adjust = FALSE
@@ -81,6 +83,7 @@
 /obj/item/clothing/under/rank/cargo/miner/lavaland/shirt
 	desc = "A green uniform for operating in hazardous environments."
 	name = "shaft miner's shirt"
+	icon_state = "explorer_shirt"
 	item_state = "explorer_shirt"
 	body_parts_covered = CHEST|ARMS
 	can_adjust = FALSE

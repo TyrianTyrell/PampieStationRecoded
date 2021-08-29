@@ -47,6 +47,7 @@
 /obj/item/clothing/under/rank/security/officer/shirt
 	name = "security shirt"
 	desc = "A \"tactical\" security shirt without pants."
+	icon_state = "rsecurity_shirt"
 	item_state = "rsecurity_shirt"
 	body_parts_covered = CHEST|ARMS
 	can_adjust = FALSE
@@ -125,6 +126,7 @@
 /obj/item/clothing/under/rank/security/warden/shirt
 	name = "warden's shirt"
 	desc = "A formal security shirt for officers that don't like pants."
+	icon_state = "rwarden_shirt"
 	item_state = "rwarden_shirt"
 	body_parts_covered = CHEST|ARMS
 	can_adjust = FALSE
@@ -171,6 +173,7 @@
 /obj/item/clothing/under/rank/security/detective/shirt
 	name = "detective's shirt"
 	desc = "Someone who wears this means business. Without pants."
+	icon_state = "detective_shirt"
 	item_state = "detective_shirt"
 	body_parts_covered = CHEST|ARMS
 	can_adjust = FALSE
@@ -217,6 +220,7 @@
 /obj/item/clothing/under/rank/security/head_of_security/shirt
 	name = "head of security's shirt"
 	desc = "A security shirt decorated for those few with the dedication to achieve the position of Head of Security and to go up against pants."
+	icon_state = "rhos_shirt"
 	item_state = "rhos_shirt"
 	body_parts_covered = CHEST|ARMS
 	can_adjust = FALSE

@@ -27,6 +27,7 @@
 /obj/item/clothing/under/rank/captain/shirt
 	name = "captain's shirt"
 	desc = "It's a blue shirt with some gold markings denoting the rank of \"Captain\"."
+	icon_state = "captain_shirt"
 	item_state = "captain_shirt"
 	body_parts_covered = CHEST|ARMS
 	can_adjust = FALSE
