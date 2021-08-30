@@ -548,6 +548,15 @@
 	icon_state = "booties_poly"
 	item_state = "booties_poly"
 
+/obj/item/clothing/shoes/booties/equipped(mob/user, slot)
+	. = ..()
+	if(slot == SLOT_SHOES)
+		ADD_TRAIT(user, TRAIT_SILENT_STEP, SHOES_TRAIT)
+
+/obj/item/clothing/shoes/booties/dropped(mob/user)
+	. = ..()
+	REMOVE_TRAIT(user, TRAIT_SILENT_STEP, SHOES_TRAIT)
+
 /obj/item/clothing/shoes/booties/pink
 	name = "pink booties"
 	icon_state = "booties_pink"
