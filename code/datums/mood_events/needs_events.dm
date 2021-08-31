@@ -1,7 +1,11 @@
 //nutrition
-/datum/mood_event/fat
+/datum/mood_event/fatbad
 	description = "<span class='warning'><B>I'm so fat...</B></span>\n" //muh fatshaming
 	mood_change = -4
+
+/datum/mood_event/fatgood
+	description = "<span class='nicegreen'><B>Ahh, food is life!</B></span>\n"
+	mood_change = 9
 
 /datum/mood_event/wellfed
 	description = "<span class='nicegreen'>I'm stuffed!</span>\n"
@@ -18,6 +22,10 @@
 /datum/mood_event/starving
 	description = "<span class='boldwarning'>I'm starving!</span>\n"
 	mood_change = -15
+
+datum/mood_event/starvingvor
+	description = "<span class='boldwarning'>THERE'S A BLACK HOLE IN MY TUMMY!</span>\n"
+	mood_change = -20
 
 //charge
 /datum/mood_event/supercharged
