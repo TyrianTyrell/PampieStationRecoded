@@ -103,6 +103,7 @@
 #define VORE_EXAMINE		(1<<14)
 #define TTS					(1<<15)
 #define TRASH_FORCEFEED		(1<<16)
+#define NEVER_REGRESS		(1<<17)
 #define TOGGLES_CITADEL 0
 
 //belly sound pref things
