@@ -35,7 +35,7 @@
 
 /obj/item/projectile/energy/regression/on_hit(mob/living/carbon/target, blocked = FALSE)
 	. = ..()
-	if(isliving(target) && (!target.mind.antag_datums) && !HAS_TRAIT(target, TRAIT_MINDSHIELD))
+	if(isliving(target) && (!target.mind.antag_datums) && !HAS_TRAIT(target, TRAIT_MINDSHIELD) && !(target.client?.prefs.cit_toggles & NEVER_REGRESS))
 		if(target.regressiontimer <= 0)
 			if(target.m_intent == MOVE_INTENT_RUN)
 				target.toggle_move_intent()

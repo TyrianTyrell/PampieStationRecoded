@@ -228,12 +228,13 @@
 ///diaper traits
 #define BABYBRAINED_TRAIT "baby_brained"
 #define TRAIT_INCONTINENT "incontinent"
-#define TRAIT_WETINCONTINENT "urinary incontinent"
-#define TRAIT_MESSINCONTINENT "fecal incontinent"
+#define TRAIT_WETINCONTINENT "urinary_incontinent"
+#define TRAIT_MESSINCONTINENT "fecal_incontinent"
 #define TRAIT_FULLYINCONTINENT "unaware"
 #define TRAIT_POTTYREBEL "potty_rebel"
 #define TRAIT_DIAPERUSE "diaper_use"
 #define TRAIT_EXACTCHECK "exact_check"
+#define TRAIT_NOCHANGESELF "no_change_self"
 
 // mobility flag traits
 // IN THE FUTURE, IT WOULD BE NICE TO DO SOMETHING SIMILAR TO https://github.com/tgstation/tgstation/pull/48923/files (ofcourse not nearly the same because I have my.. thoughts on it)
