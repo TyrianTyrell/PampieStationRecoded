@@ -64,10 +64,6 @@
 /obj/item/paper/fluff/ruins/oldstation/protosing,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/buried_library)
-"av" = (
-/obj/structure/bookcase/random,
-/turf/closed/mineral/random/snow,
-/area/ruin/unpowered/buried_library)
 "aw" = (
 /turf/open/floor/plating,
 /area/ruin/unpowered/buried_library)
@@ -225,7 +221,6 @@
 /area/ruin/unpowered/buried_library)
 "bq" = (
 /obj/structure/mineral_door/wood,
-/obj/structure/barricade/wooden/crude/snow,
 /turf/open/floor/wood,
 /area/ruin/unpowered/buried_library)
 "br" = (
@@ -353,9 +348,9 @@ ae
 bj
 aq
 bi
-ah
+aq
 aL
-ah
+aq
 ao
 ac
 ad
@@ -378,9 +373,9 @@ aq
 bi
 aq
 bg
-ah
+aq
 ao
-ah
+aq
 bi
 ac
 ad
@@ -403,9 +398,9 @@ aq
 bm
 aq
 aA
-ah
+aq
 ao
-ah
+aq
 ae
 ac
 ad
@@ -428,9 +423,9 @@ ao
 aA
 ao
 ae
-ah
+aq
 aR
-ah
+aq
 bh
 ac
 ad
@@ -445,7 +440,7 @@ aa
 ad
 bi
 bi
-av
+aq
 aA
 bi
 aG
@@ -455,7 +450,7 @@ bi
 ao
 ae
 ao
-ah
+aq
 ae
 ac
 br
@@ -470,7 +465,7 @@ aa
 ad
 ac
 as
-av
+aq
 aF
 aD
 aD
@@ -520,7 +515,7 @@ al
 al
 al
 ae
-ah
+aq
 aR
 aD
 bi
@@ -555,7 +550,7 @@ aD
 bi
 ae
 bm
-ah
+aq
 ag
 br
 ac
@@ -570,7 +565,7 @@ aJ
 aW
 ay
 ae
-ah
+aq
 ao
 ae
 ao
@@ -578,9 +573,9 @@ ae
 af
 bp
 bi
-ah
+aq
 bi
-ah
+aq
 bp
 ac
 ad
@@ -595,15 +590,15 @@ aW
 aK
 al
 ae
-ah
+aq
 bi
 ah
 bh
 ah
 az
-ah
+aq
 bi
-ah
+aq
 bi
 bn
 ao
@@ -620,13 +615,13 @@ ai
 ar
 al
 ag
-ah
+aq
 aL
 ah
 aA
 ah
 ao
-ah
+aq
 bi
 bi
 bl
@@ -645,13 +640,13 @@ al
 al
 al
 ao
-ah
+aq
 ao
 ah
 ao
 aV
 bi
-ah
+aq
 bp
 bi
 bm
