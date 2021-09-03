@@ -164,6 +164,7 @@
 					/obj/item/clothing/ears/headphones = 10,
 					/obj/item/clothing/suit/apron/purple_bartender = 4,
 					/obj/item/clothing/under/rank/civilian/bartender/purple = 4,
+					/obj/item/clothing/under/suit/polyshirt	= 4,
 
 					/* Commenting out until next Christmas or made automatic
 					/obj/item/clothing/accessory/sweater/uglyxmas = 3,

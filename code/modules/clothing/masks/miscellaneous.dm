@@ -459,6 +459,16 @@
 		message = temp_message.Join(" ")
 
 		//The Alternate speech mod is now the main one.
+		message = replacetext(message, "what", "wuh")
+		message = replacetext(message, "when", "wen")
+		message = replacetext(message, "water", "wawa")
+		message = replacetext(message, "my", "muh")
+		message = replacetext(message, "okay", "okee")
+		message = replacetext(message, "with", "wiff")
+		message = replacetext(message, "want to", "wanna")
+		message = replacetext(message, "yeah", "yuh")
+		message = replacetext(message, "nah", "nuh")
+		message = replacetext(message, "but", "buh")
 		message = replacetext(message, "the ", "da")
 		message = replacetext(message, "ally ", "wy")
 		message = replacetext(message, "bottle ", "baba")
@@ -534,6 +544,16 @@
 		message = temp_message.Join(" ")
 
 		//The Alternate speech mod is now the main one.
+		message = replacetext(message, "what", "wuh")
+		message = replacetext(message, "when", "wen")
+		message = replacetext(message, "water", "wawa")
+		message = replacetext(message, "my", "muh")
+		message = replacetext(message, "okay", "okee")
+		message = replacetext(message, "with", "wiff")
+		message = replacetext(message, "want to", "wanna")
+		message = replacetext(message, "yeah", "yuh")
+		message = replacetext(message, "nah", "nuh")
+		message = replacetext(message, "but", "buh")
 		message = replacetext(message, "the ", "da")
 		message = replacetext(message, "ally ", "wy")
 		message = replacetext(message, "bottle ", "baba")

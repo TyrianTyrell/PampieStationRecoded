@@ -476,6 +476,12 @@
 	icon_state = "widehat_red"
 	item_state = "widehat_red"
 
+/obj/item/clothing/head/wideblack
+	name = "Wide black hat"
+	desc = "It is both wide, and black. Stylish!"
+	icon_state = "widehat_black"
+	item_state = "widehat_black"
+
 /obj/item/clothing/head/kabuto
 	name = "Kabuto helmet"
 	desc = "A traditional kabuto helmet."

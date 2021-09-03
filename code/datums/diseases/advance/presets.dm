@@ -16,6 +16,20 @@
 	symptoms = list(new/datum/symptom/cough)
 	..()
 
+// Lupus
+/datum/disease/advance/lupus
+	copy_type = /datum/disease/advance
+
+/datum/disease/advance/lupus/New(make_typecache = TRUE)
+	name = "Lupus erythematodes"
+	symptoms = list(new/datum/symptom/fever)
+	symptoms = list(new/datum/symptom/confusion)
+	symptoms = list(new/datum/symptom/viraladaptation)
+	symptoms = list(new/datum/symptom/weight_loss)
+	symptoms = list(new/datum/symptom/shedding)
+	symptoms = list(new/datum/symptom/itching)
+	..()
+
 //Randomly generated Disease, for virus crates and events
 /datum/disease/advance/random
 	name = "Experimental Disease"
