@@ -24,6 +24,11 @@
 	if (pee > 0 && stat != DEAD && src.client.prefs != "Poop Only")
 		needpee = 0
 		playsound(loc, 'sound/effects/pee-diaper.wav', 50, 1)
+		if (istype(src.buckled,/obj/structure/potty))
+			if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+				src.visible_message("<spawn class='notice'>[src] pulls [src.p_their()] pants down and pees in the potty like a big kid.</span>","<span class='notice'>You tug your pants down and pee in the potty like a big kid.</span>")
+			if (max_wetcontinence < 100)
+				max_wetcontinence++
 		if (istype(src.buckled,/obj/structure/toilet))
 			if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 				src.visible_message("<span class='notice'>[src] pulls [src.p_their()] pants down, and pees in the toilet.</span>","<span class='notice'>You pull your pants down, and pee in the toilet.</span>")
@@ -68,6 +73,11 @@
 	if (poop > 0 && stat != DEAD && src.client.prefs != "Pee Only")
 		needpoo = 0
 		playsound(loc, 'sound/effects/uhoh.ogg', 50, 1)
+		if (istype(src.buckled,/obj/structure/potty))
+			if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+				src.visible_message("<spawn class='notice'>[src] pulls [src.p_their()] pants down and goes poopy in the potty like a big kid.</span>","<span class='notice'>You tug your pants down and go poopy in the potty like a big kid.</span>")
+			if (max_messcontinence < 100)
+				max_messcontinence++
 		if (istype(src.buckled,/obj/structure/toilet))
 			if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 				src.visible_message("<span class='notice'>[src] pulls [src.p_their()] pants down, and poops in the toilet.</span>","<span class='notice'>You pull your pants down, and poop in the toilet.</span>")
