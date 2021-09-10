@@ -11325,11 +11325,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai_upload)
-"aOc" = (
-/obj/structure/disposalpipe/segment,
-/obj/machinery/vending/diaper,
-/turf/open/floor/plasteel,
-/area/commons/dorms)
 "aOd" = (
 /obj/machinery/computer/upload/ai,
 /obj/structure/window/reinforced{
@@ -19927,7 +19922,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/machinery/vending/diaper,
+/obj/structure/closet/crate/diaperpail,
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet/restrooms)
 "bzi" = (
@@ -48380,6 +48375,7 @@
 /obj/machinery/airalarm{
 	pixel_y = 24
 	},
+/obj/item/stack/sheet/plastic/twenty,
 /turf/open/floor/carpet/arcade,
 /area/nursery)
 "dvg" = (
@@ -60280,7 +60276,9 @@
 /obj/structure/sign/barsign{
 	pixel_y = 32
 	},
-/obj/machinery/vending/diaper,
+/obj/machinery/computer/slot_machine{
+	pixel_y = 2
+	},
 /turf/open/floor/carpet,
 /area/service/bar)
 "kiW" = (
@@ -64688,10 +64686,10 @@
 /turf/open/space,
 /area/solars/port/fore)
 "mLL" = (
-/obj/structure/chair/sofa/right{
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/structure/chair/comfy/green{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/grass/fairy,
 /area/nursery)
 "mMn" = (
@@ -66434,7 +66432,7 @@
 	pixel_x = 32
 	},
 /obj/machinery/button/door{
-	id = "Toilet4";
+	id = "Toilet1";
 	name = "Lock Control";
 	normaldoorcontrol = 1;
 	pixel_y = -25;
@@ -119143,7 +119141,7 @@ vSE
 maQ
 mbw
 jRk
-aOc
+maQ
 vnL
 pvo
 rkT
