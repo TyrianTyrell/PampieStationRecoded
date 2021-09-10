@@ -798,7 +798,8 @@ GLOBAL_LIST_INIT(plastic_recipes, list(
 	new /datum/stack_recipe("duct", /obj/item/stack/ducts,1), \
 	new /datum/stack_recipe("laser pointer case", /obj/item/glasswork/glass_base/laserpointer_shell, 30), \
 	new /datum/stack_recipe("wet floor sign", /obj/item/clothing/suit/caution, 2), \
-	new/datum/stack_recipe("diaper pail", /obj/structure/closet/crate/diaperpail, 10, one_per_turf = TRUE, on_floor = TRUE, time = 15)))
+	new /datum/stack_recipe("diaper pail", /obj/structure/closet/crate/diaperpail, 10, one_per_turf = TRUE, on_floor = TRUE, time = 15), \
+	new /datum/stack_recipe("potty", /obj/structure/potty, 10, one_per_turf = TRUE, on_floor = TRUE, time = 20)))
 
 /obj/item/stack/sheet/plastic
 	name = "plastic"
