@@ -5004,15 +5004,6 @@
 /obj/effect/baseturf_helper/space,
 /turf/closed/wall,
 /area/ruin/space/has_grav/hotel/pool)
-"rv" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/turf/closed/wall,
-/area/ruin/space/has_grav/hotel)
 "sN" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/structure/cable/yellow{
@@ -5023,20 +5014,6 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel/power)
-"Co" = (
-/obj/machinery/vending/diaper,
-/turf/open/floor/carpet,
-/area/ruin/space/has_grav/hotel)
-"Qk" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/machinery/door/airlock/maintenance{
-	name = "Hotel Maintenance";
-	req_access_txt = "201"
-	},
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/hotel)
 
 (1,1,1) = {"
 aa
@@ -5827,8 +5804,8 @@ an
 an
 an
 an
-cv
-rv
+cw
+cK
 am
 cZ
 cZ
@@ -5897,9 +5874,9 @@ az
 az
 az
 an
-Qk
-rv
-Co
+cx
+cL
+cF
 cZ
 dk
 dH

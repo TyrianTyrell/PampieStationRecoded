@@ -1,15 +1,3 @@
-GLOBAL_LIST_INIT(hardcoded_gases, list(/datum/gas/oxygen, /datum/gas/nitrogen, /datum/gas/carbon_dioxide, /datum/gas/plasma)) //the main four gases, which were at one time hardcoded
-GLOBAL_LIST_INIT(nonreactive_gases, typecacheof(list(/datum/gas/oxygen, /datum/gas/nitrogen, /datum/gas/carbon_dioxide, /datum/gas/pluoxium, /datum/gas/stimulum, /datum/gas/nitryl))) //unable to react amongst themselves
-
-/proc/gas_id2path(id)
-	var/list/meta_gas = GLOB.meta_gas_ids
-	if(id in meta_gas)
-		return id
-	for(var/path in meta_gas)
-		if(meta_gas[path] == id)
-			return path
-	return ""
-
 //Unomos - oh god oh fuck oh shit oh lord have mercy this is messy as fuck oh god
 //my addiction to seeing better performance numbers isn't healthy, kids
 //you see this shit, children?
@@ -71,13 +59,13 @@ GLOBAL_LIST_INIT(nonreactive_gases, typecacheof(list(/datum/gas/oxygen, /datum/g
 \*||||||||||||||||||||||||||||||||||||||||*/
 
 /datum/gas
-	var/id = ""
-	var/specific_heat = 0
-	var/name = ""
-	var/gas_overlay = "" //icon_state in icons/effects/atmospherics.dmi
-	var/moles_visible = null
+	id = ""
+	specific_heat = 0
+	name = ""
+	gas_overlay = "" //icon_state in icons/effects/atmospherics.dmi
+	moles_visible = null
 	var/dangerous = FALSE //currently used by canisters
-	var/fusion_power = 0 //How much the gas accelerates a fusion reaction
+	fusion_power = 0 //How much the gas accelerates a fusion reaction
 	var/rarity = 0 // relative rarity compared to other gases, used when setting up the reactions list.
 
 /datum/gas/oxygen

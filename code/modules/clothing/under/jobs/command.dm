@@ -24,6 +24,15 @@
 	fitted = FEMALE_UNIFORM_TOP
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
+/obj/item/clothing/under/rank/captain/shirt
+	name = "captain's shirt"
+	desc = "It's a blue shirt with some gold markings denoting the rank of \"Captain\"."
+	icon_state = "captain_shirt"
+	item_state = "captain_shirt"
+	body_parts_covered = CHEST|ARMS
+	can_adjust = FALSE
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
 /obj/item/clothing/under/rank/captain/suit
 	name = "captain's suit"
 	desc = "A green suit and yellow necktie. Exemplifies authority."

@@ -268,6 +268,11 @@
 	desc = "A small bottle. Contains H0NI<42 virion culture in synthblood medium."
 	spawned_disease = /datum/disease/pierrot_throat
 
+/obj/item/reagent_containers/glass/bottle/lupus
+	name = "Lupus erythematodes culture bottle"
+	desc = "A small bottle. Contains Lupus. Yes, it is in fact Lupus."
+	spawned_disease = /datum/disease/advance/lupus
+
 /obj/item/reagent_containers/glass/bottle/cold
 	name = "Rhinovirus culture bottle"
 	desc = "A small bottle. Contains XY-rhinovirus culture in synthblood medium."

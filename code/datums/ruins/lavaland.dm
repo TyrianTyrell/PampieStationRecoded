@@ -4,15 +4,15 @@
 	prefix = "_maps/RandomRuins/LavaRuins/"
 
 /datum/map_template/ruin/lavaland/biodome
-	cost = 5
+	cost = 10
 	allow_duplicates = FALSE
 
-/datum/map_template/ruin/lavaland/biodome/beach
+/*/datum/map_template/ruin/lavaland/biodome/beach
 	name = "Biodome Beach"
 	id = "biodome-beach"
 	description = "Seemingly plucked from a tropical destination, this beach is calm and cool, with the salty waves roaring softly in the background. \
 	Comes with a rustic wooden bar and suicidal bartender."
-	suffix = "lavaland_biodome_beach.dmm"
+	suffix = "lavaland_biodome_beach.dmm"*/
 
 /datum/map_template/ruin/lavaland/biodome/winter
 	name = "Biodome Winter"
@@ -21,7 +21,7 @@
 	Includes a unique(*) laser pistol display case, and the recently introduced I.C.E(tm)."
 	suffix = "lavaland_surface_biodome_winter.dmm"
 
-/datum/map_template/ruin/lavaland/biodome/clown
+/*/datum/map_template/ruin/lavaland/biodome/clown
 	name = "Biodome Clown Planet"
 	id = "biodome-clown"
 	description = "WELCOME TO CLOWN PLANET! HONK HONK HONK etc.!"
@@ -31,21 +31,21 @@
 	name = "Abandoned Village"
 	id = "labandonedvillage"
 	description = "Who knows what lies within?"
-	suffix = "lavaland_surface_abandoned_village.dmm"
+	suffix = "lavaland_surface_abandoned_village.dmm"*/
 
 /datum/map_template/ruin/lavaland/cube
 	name = "The Wishgranter Cube"
 	id = "wishgranter-cube"
 	description = "Nothing good can come from this. Learn from their mistakes and turn around."
 	suffix = "lavaland_surface_cube.dmm"
-	cost = 5
+	cost = 10
 
 /datum/map_template/ruin/lavaland/library
 	name = "Buried Library"
 	id = "lburiedlibrary"
 	description = "A once grand library, now lost to the confines of lavaland."
 	suffix = "lavaland_surface_library.dmm"
-	cost = 5
+	cost = 10
 	allow_duplicates = FALSE
 
 /*/datum/map_template/ruin/lavaland/seed_vault
@@ -104,7 +104,7 @@
 	cost = 20
 	prefix = "_maps/RandomRuins/AnywhereRuins/"
 	suffix = "golem_ship.dmm"
-	allow_duplicates = FALSE*/
+	allow_duplicates = FALSE
 
 /datum/map_template/ruin/lavaland/animal_hospital
 	name = "Animal Hospital"
@@ -112,7 +112,7 @@
 	description = "Rats with cancer do not live very long. And the ones that wake up from cryostasis seem to commit suicide out of boredom."
 	cost = 5
 	suffix = "lavaland_surface_animal_hospital.dmm"
-	allow_duplicates = FALSE
+	allow_duplicates = FALSE*/
 
 /datum/map_template/ruin/lavaland/sin
 	cost = 5
@@ -187,12 +187,12 @@
 	description = "A taste of paradise, locked in the hell of the Ice Moon."
 	suffix = "lavaland_surface_bathhouse.dmm"
 
-/datum/map_template/ruin/lavaland/wendigo_cave
+/*/datum/map_template/ruin/lavaland/wendigo_cave
 	name = "Wendigo Cave"
 	id = "lwendigocave"
 	description = "Into the belly of the beast."
 	suffix = "lavaland_surface_wendigo_cave.dmm"
-	allow_duplicates = FALSE
+	allow_duplicates = FALSE*/
 
 /datum/map_template/ruin/lavaland/hierophant
 	name = "Hierophant's Arena"
@@ -207,33 +207,26 @@
 	description = "A strange arrangement of stone tiles and an insane, beastly miner contemplating them."
 	always_place = TRUE
 	allow_duplicates = FALSE //will only spawn one variant of the ruin
+	id = "blooddrunk"
 
-/datum/map_template/ruin/lavaland/blood_drunk_miner/doom
-	name = "Blood-Drunk Miner"
-	id = "blooddrunk1"
-	suffix = "lavaland_surface_blooddrunk1.dmm"
-
-/datum/map_template/ruin/lavaland/blood_drunk_miner/guidance
-	name = "Blood-Drunk Miner (Guidance)"
-	id = "blooddrunk2"
-	suffix = "lavaland_surface_blooddrunk2.dmm"
-
-/datum/map_template/ruin/lavaland/blood_drunk_miner/hunter
-	name = "Blood-Drunk Miner (Hunter)"
-	id = "blooddrunk3"
-	suffix = "lavaland_surface_blooddrunk3.dmm"
-
-/datum/map_template/ruin/lavaland/blood_drunk_miner/miner
-	name = "Mining Site"
-	id = "blooddrunk4"
-	suffix = "lavaland_surface_mining_site.dmm"
+/datum/map_template/ruin/lavaland/blood_drunk_miner/New()
+	if(prob(25))
+		suffix = "lavaland_surface_blooddrunk1.dmm"
+	else if(prob(34))
+		suffix = "lavaland_surface_blooddrunk2.dmm"
+	else if(prob(50))
+		suffix = "lavaland_surface_blooddrunk3.dmm"
+	else
+		suffix = "lavaland_surface_mining_site.dmm"
+	. = ..()
 
 /datum/map_template/ruin/lavaland/ufo_crash
 	name = "UFO Crash"
 	id = "ufo-crash"
 	description = "Turns out that keeping your abductees unconscious is really important. Who knew?"
 	suffix = "lavaland_surface_ufo_crash.dmm"
-	cost = 5
+	cost = 15
+	allow_duplicates = FALSE
 
 /* Replaced with Alien Nest Ruins
 /datum/map_template/ruin/lavaland/xeno_nest
@@ -259,7 +252,7 @@
 	prefix = "_maps/RandomRuins/AnywhereRuins/"
 	suffix = "fountain_hall.dmm"
 	cost = 5
-	allow_duplicates = FALSE
+	allow_duplicates = TRUE
 
 /datum/map_template/ruin/lavaland/survivalcapsule
 	name = "Survival Capsule Ruins"

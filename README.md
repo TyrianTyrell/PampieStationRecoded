@@ -26,7 +26,7 @@ Based and maintained from Citadel Station.
 
 **Pampie Station Info**
 * **Code:** <https://github.com/TyrianTyrell/PampieStationRecoded/>
-* **Discord:** <https://discord.gg/EBDnCEesna>
+* **Discord:** <https://discord.gg/ePx9wk3pMr>
   
 ## DOWNLOADING
 

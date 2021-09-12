@@ -127,6 +127,7 @@ GLOBAL_LIST_INIT(cargo_shuttle_leave_behind_typecache, typecacheof(list(
 	var/purchases = 0
 	var/list/goodies_by_buyer = list() // if someone orders more than GOODY_FREE_SHIPPING_MAX goodies, we upcharge to a normal crate so they can't carry around 20 combat shotties
 	var/list/lockers_by_buyer = list() // used to combine orders that come in lockers into a single locker to not crowd the shuttle
+
 	for(var/datum/supply_order/SO in SSshuttle.shoppinglist)
 		if(!empty_turfs.len)
 			break
@@ -155,6 +156,7 @@ GLOBAL_LIST_INIT(cargo_shuttle_leave_behind_typecache, typecacheof(list(
 				continue
 			else if(ispath(SO.pack.crate_type, /obj/structure/closet/secure_closet/cargo))
 				LAZYADD(lockers_by_buyer[D], SO)
+
 
 		if(SO.paying_account)
 			if(SO.pack.goody)
@@ -201,6 +203,7 @@ GLOBAL_LIST_INIT(cargo_shuttle_leave_behind_typecache, typecacheof(list(
 				misc_contents[buyer] += item
 			misc_order_num[buyer] = "[misc_order_num[buyer]]#[our_order.id]  "
 
+
 	// handling locker bundles
 	for(var/D in lockers_by_buyer)
 		var/list/buying_account_orders = lockers_by_buyer[D]
@@ -225,6 +228,7 @@ GLOBAL_LIST_INIT(cargo_shuttle_leave_behind_typecache, typecacheof(list(
 			for(var/item in our_order.pack.contains)
 				misc_contents[buyer] += item
 			misc_order_num[buyer] = "[misc_order_num[buyer]]#[our_order.id]  "
+
 
 	for(var/I in miscboxes)
 		var/datum/supply_order/SO = new/datum/supply_order()

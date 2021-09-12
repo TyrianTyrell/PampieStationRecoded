@@ -134,6 +134,20 @@
 	color_src = MATRIXED
 	matrixed_sections = MATRIX_RED_GREEN
 
+/datum/sprite_accessory/tails/human/carp
+	name = "Carp"
+	icon_state = "carp"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+	matrixed_sections = MATRIX_RED
+
+/datum/sprite_accessory/tails_animated/human/carp
+	name = "Carp"
+	icon_state = "carp"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+	matrixed_sections = MATRIX_RED
+
 /datum/sprite_accessory/tails/human/cat
 	name = "Cat"
 	icon_state = "cat"
@@ -639,6 +653,16 @@
 	icon_state = "bee"
 	matrixed_sections = MATRIX_RED_GREEN
 
+/datum/sprite_accessory/tails/mam_tails/carp
+	name = "Carp"
+	icon_state = "carp"
+	matrixed_sections = MATRIX_RED
+
+/datum/sprite_accessory/tails_animated/mam_tails_animated/carp
+	name = "Carp"
+	icon_state = "carp"
+	matrixed_sections = MATRIX_RED
+
 /datum/sprite_accessory/tails/mam_tails/cat
 	name = "Cat"
 	icon_state = "cat"
@@ -679,7 +703,7 @@
 	icon_state = "crow"
 	matrixed_sections = MATRIX_RED
 
-/datum/sprite_accessory/tails/mam_tail/cow
+/datum/sprite_accessory/tails/mam_tails/cow
 	name = "Cow"
 	icon_state = "cow"
 	matrixed_sections = MATRIX_RED

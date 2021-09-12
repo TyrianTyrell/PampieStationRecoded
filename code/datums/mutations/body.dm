@@ -283,6 +283,7 @@
 	name = "Spatial Instability"
 	desc = "The victim of the mutation has a very weak link to spatial reality, and may be displaced. Often causes extreme nausea."
 	quality = NEGATIVE
+	locked = TRUE
 	text_gain_indication = "<span class='warning'>The space around you twists sickeningly.</span>"
 	text_lose_indication = "<span class'notice'>The space around you settles back to normal.</span>"
 	difficulty = 18//high so it's hard to unlock and abuse

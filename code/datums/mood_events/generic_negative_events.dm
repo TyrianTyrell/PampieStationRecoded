@@ -45,7 +45,7 @@
 	timeout = 3 MINUTES
 
 /datum/mood_event/delam //SM delamination
-	description = "<span class='boldwarning'>Those goddamn engineers can't do anything right...</span>\n"
+	description = "<span class='boldwarning'>Those God damn engineers can't do anything right...</span>\n"
 	mood_change = -2
 	timeout = 2400
 
@@ -153,7 +153,7 @@
 	timeout = 1200
 
 /datum/mood_event/spooked
-	description = "<span class='warning'>The rattling of those bones... It still haunts me.</span>\n"
+	description = "<span class='warning'>The rattling of those bones...It still haunts me.</span>\n"
 	mood_change = -4
 	timeout = 2400
 
@@ -174,7 +174,7 @@
 	mood_change = -6
 
 /datum/mood_event/surgery
-	description = "<span class='boldwarning'>THEY'RE CUTTING ME OPEN!!</span>\n"
+	description = "<span class='boldwarning'>HE'S CUTTING ME OPEN!!</span>\n"
 	mood_change = -8
 
 //End unused
@@ -293,4 +293,14 @@
 /datum/mood_event/untied
 	description = "<span class='boldwarning'>I hate when my shoes come untied!</span>\n"
 	mood_change = -3
+	timeout = 1 MINUTES
+
+/datum/mood_event/noogie
+	description = "<span class='warning'>Ow! This is like space high school all over again...</span>\n"
+	mood_change = -2
+	timeout = 1 MINUTES
+
+/datum/mood_event/noogie_harsh
+	description = "<span class='warning'>OW!! That was even worse than a regular noogie!</span>\n"
+	mood_change = -4
 	timeout = 1 MINUTES

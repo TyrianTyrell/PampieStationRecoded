@@ -23,6 +23,15 @@
 	fitted = FEMALE_UNIFORM_TOP
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
+/obj/item/clothing/under/rank/civilian/bartender/shirt
+	name = "bartender's shirt"
+	desc = "It looks like it could use some more flair."
+	icon_state = "barman_shirt"
+	item_state = "barman_shirt"
+	body_parts_covered = CHEST|ARMS
+	can_adjust = FALSE
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
 /obj/item/clothing/under/rank/civilian/util
 	name = "utility uniform"
 	desc = "A utility uniform worn by various crew."
@@ -102,6 +111,15 @@
 	fitted = FEMALE_UNIFORM_TOP
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
+/obj/item/clothing/under/rank/civilian/chaplain/shirt
+	name = "chaplain's shirt"
+	desc = "It's a black shirt, often worn by religious folk."
+	icon_state = "chaplain_shirt"
+	item_state = "chaplain_shirt"
+	body_parts_covered = CHEST|ARMS
+	can_adjust = FALSE
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
 /obj/item/clothing/under/rank/civilian/chef
 	name = "cook's suit"
 	desc = "A suit which is given only to the most <b>hardcore</b> cooks in space."
@@ -115,6 +133,15 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = FALSE
 	fitted = FEMALE_UNIFORM_TOP
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
+/obj/item/clothing/under/rank/civilian/chef/shirt
+	name = "cook's shirt"
+	desc = "A shirt which is given only to the most <b>hardcore</b> cooks in space."
+	icon_state = "chef_shirt"
+	item_state = "chef_shirt"
+	body_parts_covered = CHEST|ARMS
+	can_adjust = FALSE
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/rank/civilian/head_of_personnel
@@ -138,6 +165,15 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = FALSE
 	fitted = FEMALE_UNIFORM_TOP
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
+/obj/item/clothing/under/rank/civilian/head_of_personnel/shirt
+	name = "head of personnel's jumpskirt"
+	desc = "It's a shirt worn by someone who works in the position of \"Head of Personnel\"."
+	icon_state = "hop_shirt"
+	item_state = "hop_shirt"
+	body_parts_covered = CHEST|ARMS
+	can_adjust = FALSE
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/rank/civilian/head_of_personnel/suit
@@ -174,6 +210,15 @@
 	fitted = FEMALE_UNIFORM_TOP
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
+/obj/item/clothing/under/rank/civilian/hydroponics/shirt
+	name = "botanist's shirt"
+	desc = "It's a shirt designed to protect against minor plant-related hazards."
+	icon_state = "hydroponics_shirt"
+	item_state = "hydroponics_shirt"
+	body_parts_covered = CHEST|ARMS
+	can_adjust = FALSE
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
 /obj/item/clothing/under/rank/civilian/janitor
 	desc = "It's the official uniform of the station's janitor. It has minor protection from biohazards."
 	name = "janitor's jumpsuit"
@@ -187,6 +232,15 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = FALSE
 	fitted = FEMALE_UNIFORM_TOP
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
+/obj/item/clothing/under/rank/civilian/janitor/shirt
+	name = "janitor's shirt"
+	desc = "It's the official shirt of the station's janitor. It has minor protection from biohazards."
+	icon_state = "janitor_shirt"
+	item_state = "janitor_shirt"
+	body_parts_covered = CHEST|ARMS
+	can_adjust = FALSE
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/rank/civilian/janitor/maid

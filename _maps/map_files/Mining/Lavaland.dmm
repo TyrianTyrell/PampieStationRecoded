@@ -413,7 +413,7 @@
 	dir = 8
 	},
 /obj/structure/stone_tile/center,
-/obj/item/hatchet,
+/obj/machinery/hydroponics/soil,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
 "hs" = (
@@ -563,7 +563,6 @@
 	dir = 4
 	},
 /obj/structure/table/wood,
-/obj/item/clothing/head/helmet/roman/legionnaire,
 /obj/item/spear/bonespear,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/ash_walkers)
@@ -1486,10 +1485,10 @@
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/ash_walkers)
 "nB" = (
-/obj/item/shovel,
 /obj/structure/stone_tile/cracked{
-	dir = 8
+	dir = 4
 	},
+/obj/item/stack/sheet/cloth/ten,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
 "nJ" = (
@@ -1700,11 +1699,8 @@
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/ash_walkers)
 "tz" = (
-/obj/structure/stone_tile/slab,
-/obj/structure/table/wood,
-/obj/item/toy/cards/deck/syndicate,
-/obj/item/construction/rcd/loaded/upgraded,
-/turf/open/indestructible/boss,
+/obj/item/kitchen/knife/combat/bone,
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
 "tA" = (
 /obj/structure/stone_tile/slab,
@@ -1834,6 +1830,7 @@
 /obj/item/storage/bag/ore/large,
 /obj/item/storage/bag/ore/large,
 /obj/item/storage/bag/ore/large,
+/obj/item/shovel,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
 "xs" = (
@@ -1887,12 +1884,6 @@
 	dir = 8
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/ruin/unpowered/ash_walkers)
-"An" = (
-/obj/structure/stone_tile/slab,
-/obj/structure/table/wood,
-/obj/item/storage/backpack/duffelbag/med/surgery,
-/turf/open/indestructible/boss,
 /area/ruin/unpowered/ash_walkers)
 "AF" = (
 /obj/structure/stone_tile/block,
@@ -2047,13 +2038,6 @@
 /obj/structure/stone_tile,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/ash_walkers)
-"DQ" = (
-/obj/structure/stone_tile{
-	dir = 4
-	},
-/obj/item/book/granter/crafting_recipe/bone_bow,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/ruin/unpowered/ash_walkers)
 "Ef" = (
 /obj/structure/stone_tile/block/cracked,
 /turf/open/lava/smooth{
@@ -2146,6 +2130,11 @@
 	dir = 1
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/unpowered/ash_walkers)
+"Jp" = (
+/obj/structure/stone_tile/slab,
+/obj/structure/table/wood,
+/turf/open/indestructible/boss,
 /area/ruin/unpowered/ash_walkers)
 "Jq" = (
 /obj/structure/stone_tile/slab/cracked,
@@ -2244,6 +2233,11 @@
 /obj/structure/stone_tile/slab/cracked,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/ash_walkers)
+"NK" = (
+/obj/structure/stone_tile/slab,
+/obj/structure/table/wood,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/ash_walkers)
 "NU" = (
 /obj/structure/stone_tile/block/cracked{
 	dir = 1
@@ -2254,7 +2248,7 @@
 "Ou" = (
 /obj/structure/stone_tile/slab,
 /obj/structure/table/wood,
-/obj/item/storage/toolbox/syndicate,
+/obj/item/storage/toolbox/ashen,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/ash_walkers)
 "Oy" = (
@@ -2300,7 +2294,6 @@
 	dir = 1
 	},
 /obj/structure/table/wood,
-/obj/item/storage/belt,
 /obj/item/spear/bonespear,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/ash_walkers)
@@ -2356,7 +2349,6 @@
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
 "Rb" = (
-/obj/structure/closet/crate,
 /obj/structure/stone_tile/block/cracked{
 	dir = 1
 	},
@@ -2364,9 +2356,7 @@
 	dir = 8
 	},
 /obj/structure/stone_tile/cracked,
-/obj/item/flashlight/lantern,
-/obj/item/flashlight/lantern,
-/obj/item/flashlight/lantern,
+/obj/item/kitchen/knife/combat/bone,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/ash_walkers)
 "Rk" = (
@@ -2431,7 +2421,6 @@
 	},
 /obj/structure/table/wood,
 /obj/item/kitchen/knife/combat/bone,
-/obj/item/book/granter/crafting_recipe/bone_bow,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/ash_walkers)
 "TN" = (
@@ -2452,7 +2441,6 @@
 "Uh" = (
 /obj/structure/stone_tile/slab,
 /obj/structure/table/wood,
-/obj/item/weldingtool/experimental,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/ash_walkers)
 "Ul" = (
@@ -2551,11 +2539,6 @@
 /obj/structure/stone_tile/surrounding_tile/cracked,
 /turf/closed/mineral/volcanic/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
-"WA" = (
-/obj/structure/stone_tile/block/cracked,
-/obj/item/book/granter/crafting_recipe/bone_bow,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/ruin/unpowered/ash_walkers)
 "WL" = (
 /obj/structure/stone_tile{
 	dir = 4
@@ -2563,10 +2546,6 @@
 /obj/structure/closet/crate/medical,
 /obj/item/storage/firstaid/regular,
 /obj/item/storage/firstaid/ancient,
-/obj/item/reagent_containers/blood/random,
-/obj/item/reagent_containers/blood/lizard,
-/obj/item/reagent_containers/blood/lizard,
-/obj/item/stack/sheet/cloth/ten,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
 "WN" = (
@@ -2591,11 +2570,6 @@
 	dir = 4
 	},
 /turf/open/indestructible/boss,
-/area/ruin/unpowered/ash_walkers)
-"WW" = (
-/obj/structure/stone_tile/block,
-/obj/item/cultivator,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
 "Xe" = (
 /obj/structure/stone_tile/surrounding_tile,
@@ -2635,6 +2609,7 @@
 /obj/structure/stone_tile/cracked{
 	dir = 4
 	},
+/obj/item/stack/marker_beacon/ten,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/ash_walkers)
 "Xx" = (
@@ -2684,6 +2659,11 @@
 /obj/structure/stone_tile/cracked{
 	dir = 8
 	},
+/obj/structure/closet/crate,
+/obj/item/flashlight/lantern,
+/obj/item/flashlight/lantern,
+/obj/item/flashlight/lantern,
+/obj/item/flashlight/lantern,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/ash_walkers)
 "Zn" = (
@@ -16592,12 +16572,12 @@ aa
 aa
 aa
 aa
-ab
-ab
-jx
-ad
-ad
-ab
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
 ab
 aj
 aj
@@ -16849,12 +16829,12 @@ aa
 aa
 aa
 aa
-ab
-ab
-ai
-ai
-ai
-ai
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
 ab
 aj
 aj
@@ -17106,12 +17086,12 @@ aa
 aa
 aa
 aa
-ab
-ad
-ai
-ai
-ai
-ai
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
 ab
 aj
 aj
@@ -17363,12 +17343,12 @@ aa
 aa
 aa
 aa
-ab
-ad
-ai
-ai
-ai
-ai
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
 ab
 aj
 aj
@@ -17620,12 +17600,12 @@ aa
 aa
 aa
 aa
-ab
-ad
-ad
-ad
-jq
-ab
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
 ab
 aj
 aj
@@ -17877,12 +17857,12 @@ aa
 aa
 aa
 aa
-ab
-ab
-ab
-ab
-ab
-ab
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
 ab
 ab
 aj
@@ -45119,16 +45099,16 @@ aa
 aa
 aa
 aa
-ab
-ab
-ab
-ab
-ab
-jS
-ad
-ad
-ab
-ab
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
 aj
 aj
 aj
@@ -45376,16 +45356,16 @@ aa
 aa
 aa
 aa
-ab
-ab
-ab
-ab
-ab
-ai
-ai
-ai
-ai
-ab
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
 aj
 aj
 aj
@@ -45633,16 +45613,16 @@ aa
 aa
 aa
 aa
-ab
-ab
-ab
-ab
-kM
-ai
-ai
-ai
-ai
-ab
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
 aj
 aj
 aj
@@ -45890,16 +45870,16 @@ aa
 aa
 aa
 aa
-ab
-ab
-ab
-ab
-ad
-ai
-ai
-ai
-ai
-ab
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
 ab
 ab
 ab
@@ -46147,16 +46127,16 @@ aa
 aa
 aa
 aa
-ab
-ab
-ab
-ad
-ad
-ai
-ai
-ai
-ai
-ad
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
 ab
 ab
 ab
@@ -46404,17 +46384,17 @@ aa
 aa
 aa
 aa
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
 ab
-ab
-ab
-ab
-ad
-ai
-ai
-ai
-ai
-ad
-ad
 ab
 ab
 aj
@@ -46661,17 +46641,17 @@ aa
 aa
 aa
 aa
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
 ab
-ab
-ab
-ab
-ad
-ai
-ai
-ai
-ai
-ad
-ad
 ab
 ab
 aj
@@ -46918,16 +46898,16 @@ aa
 aa
 aa
 aa
-it
-ab
-ab
-ab
-ad
-ai
-ai
-ai
-ai
-ad
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
 ab
 ab
 ab
@@ -47175,16 +47155,16 @@ aa
 aa
 aa
 aa
-ad
-ab
-ab
-ab
-ad
-ai
-ai
-ai
-ai
-ad
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
 ab
 ab
 ab
@@ -47432,16 +47412,16 @@ aa
 aa
 aa
 aa
-ad
-ad
-ab
-ab
-kN
-ai
-ai
-ai
-ai
-jq
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
+fQ
 ab
 ab
 ab
@@ -47694,10 +47674,10 @@ aa
 aa
 it
 ab
-ai
-ai
-ai
-ai
+ab
+ab
+ab
+ab
 ab
 ab
 ab
@@ -47952,8 +47932,8 @@ aa
 ab
 ab
 ab
-ad
-ad
+ab
+ab
 ab
 ab
 ab
@@ -56950,7 +56930,7 @@ Ez
 Ez
 Ez
 Ez
-Ez
+tz
 Ez
 mc
 mc
@@ -57452,7 +57432,7 @@ aa
 aa
 Si
 oS
-CG
+nB
 wm
 Vb
 Bs
@@ -57465,7 +57445,7 @@ Zn
 Zn
 KV
 Ez
-DQ
+Jz
 Si
 Si
 ab
@@ -57965,7 +57945,7 @@ aa
 aa
 Rk
 Si
-WA
+gx
 Wh
 qh
 pq
@@ -58492,7 +58472,7 @@ hf
 vh
 oB
 gc
-nB
+Zn
 Ez
 Si
 Si
@@ -59004,7 +58984,7 @@ CG
 Wh
 pc
 ie
-WW
+AF
 qA
 vR
 Xx
@@ -59761,7 +59741,7 @@ aa
 aa
 aa
 lb
-tz
+Uh
 KA
 AY
 BP
@@ -60275,7 +60255,7 @@ aa
 aa
 aa
 cp
-An
+Jp
 KA
 nt
 Ef
@@ -60532,7 +60512,7 @@ aa
 aa
 aa
 cp
-Uh
+NK
 KA
 jj
 vu

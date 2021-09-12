@@ -309,4 +309,5 @@ Frying something makes it edible, while still maintaining its original functiona
 Slimepeople are damaged by most things that heal toxin damage, and healed by most things that deal it. You can recognise people with this functionality through them having a cyan coloured species name when examined!
 EMPs can be created by mixing uranium and iron. The power of the pulse is determined by the distance from its epicentre, and the maximum distance is determined by the volume of the reaction!
 Lizards start with a disabled mutation that allows them to breath fire. This can be unlocked through the usage of genetics!
-Some loadout items can be unlocked through progress in parts of the game. The progress for these can be tracked in the loadout menu.
+Several loadout items can be unlocked through progress in parts of the game. The progress for these can be tracked in the loadout menu.
+

@@ -21,7 +21,9 @@
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 	clear_typing_indicator()		// clear it immediately!
+	texttospeech(message)
 	say(message)
+
 
 /mob/verb/me_typing_indicator()
 	set name = "me_indicator"

@@ -324,6 +324,7 @@
 	suffix = "advancedlab.dmm"
 	name = "Abductor Replication Lab"
 	description = "Some scientists tried and almost succeeded to recreate abductor tools. Somewhat slower and a bit less modern than their originals, these tools are the best you can get if you aren't an alien."
+	always_place = TRUE
 
 /datum/map_template/ruin/space/spacediner
 	id = "spacediner"

@@ -50,6 +50,13 @@
 	icon_state = "wrench_brass"
 	toolspeed = 0.95
 
+/obj/item/wrench/ashwalker
+	name = "bone wrench"
+	desc = "A rudimentary wirecutters made of bones and sinew."
+	icon = 'icons/obj/advancedtools.dmi'
+	icon_state = "wrench_bone"
+	toolspeed = 1.2
+
 /obj/item/wrench/abductor
 	name = "alien wrench"
 	desc = "A polarized wrench. It causes anything placed between the jaws to turn."

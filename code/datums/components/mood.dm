@@ -13,7 +13,7 @@
 	var/mood_modifier = 1 //Modifier to allow certain mobs to be less affected by moodlets
 	var/list/datum/mood_event/mood_events = list()
 	var/insanity_effect = 0 //is the owner being punished for low mood? If so, how much?
-	var/obj/screen/mood/screen_obj
+	var/atom/movable/screen/mood/screen_obj
 	var/datum/skill_modifier/bad_mood/malus
 	var/datum/skill_modifier/great_mood/bonus
 	var/static/malus_id = 0
@@ -319,19 +319,34 @@
 		HandleCharge(L)
 	if(HAS_TRAIT(L, TRAIT_NOHUNGER))
 		return FALSE //no mood events for nutrition
-	switch(L.nutrition)
-		if(NUTRITION_LEVEL_FULL to INFINITY)
-			add_event(null, "nutrition", /datum/mood_event/fat)
-		if(NUTRITION_LEVEL_WELL_FED to NUTRITION_LEVEL_FULL)
-			add_event(null, "nutrition", /datum/mood_event/wellfed)
-		if( NUTRITION_LEVEL_FED to NUTRITION_LEVEL_WELL_FED)
-			add_event(null, "nutrition", /datum/mood_event/fed)
-		if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FED)
-			clear_event(null, "nutrition")
-		if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
-			add_event(null, "nutrition", /datum/mood_event/hungry)
-		if(0 to NUTRITION_LEVEL_STARVING)
-			add_event(null, "nutrition", /datum/mood_event/starving)
+	if(HAS_TRAIT(L, TRAIT_VORACIOUS))
+		switch(L.nutrition)
+			if(NUTRITION_LEVEL_FULL to INFINITY)
+				add_event(null, "nutrition", /datum/mood_event/fatgood)
+			if(NUTRITION_LEVEL_WELL_FED to NUTRITION_LEVEL_FULL)
+				add_event(null, "nutrition", /datum/mood_event/wellfed)
+			if( NUTRITION_LEVEL_FED to NUTRITION_LEVEL_WELL_FED)
+				add_event(null, "nutrition", /datum/mood_event/fed)
+			if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FED)
+				clear_event(null, "nutrition")
+			if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
+				add_event(null, "nutrition", /datum/mood_event/hungry)
+			if(0 to NUTRITION_LEVEL_STARVING)
+				add_event(null, "nutrition", /datum/mood_event/starvingvor)
+	else
+		switch(L.nutrition)
+			if(NUTRITION_LEVEL_FULL to INFINITY)
+				add_event(null, "nutrition", /datum/mood_event/fatbad)
+			if(NUTRITION_LEVEL_WELL_FED to NUTRITION_LEVEL_FULL)
+				add_event(null, "nutrition", /datum/mood_event/wellfed)
+			if( NUTRITION_LEVEL_FED to NUTRITION_LEVEL_WELL_FED)
+				add_event(null, "nutrition", /datum/mood_event/fed)
+			if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FED)
+				clear_event(null, "nutrition")
+			if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
+				add_event(null, "nutrition", /datum/mood_event/hungry)
+			if(0 to NUTRITION_LEVEL_STARVING)
+				add_event(null, "nutrition", /datum/mood_event/starving)
 
 /datum/component/mood/proc/HandleCharge(mob/living/carbon/human/H)
 	var/datum/species/ethereal/E = H.dna.species

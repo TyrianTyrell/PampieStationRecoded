@@ -74,6 +74,15 @@
 	permeability_coefficient = 0.05
 	strip_mod = 1.5 // and combat gloves had this??
 
+/obj/item/clothing/gloves/tackler/combat/insulated/goliath
+	name = "goliath gloves"
+	desc = "Rudimentary combat gloves. They are mostly resistent to electricity and extreme temperatures and made for grappling."
+	icon_state = "goligloves"
+	item_state = "goligloves"
+	siemens_coefficient = 0
+	permeability_coefficient = 0.05
+	strip_mod = 1.2
+
 /obj/item/clothing/gloves/tackler/combat/insulated/infiltrator
 	name = "insidious guerrilla gloves"
 	desc = "Specialized combat gloves for carrying people around. Transfers tactical kidnapping and tackling knowledge to the user via the use of nanochips."

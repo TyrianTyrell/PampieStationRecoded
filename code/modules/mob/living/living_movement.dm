@@ -105,7 +105,7 @@
 	if(lying && !buckled && prob(getBruteLoss()*200/maxHealth))
 		makeTrail(newloc, T, old_direction)
 
-	if(causes_dirt_buildup_on_floor && (movement_type & GROUND))
+	if(movement_type & GROUND)
 		dirt_buildup()
 
 /**

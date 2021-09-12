@@ -76,6 +76,18 @@
 		if(!silent)
 			to_chat(user, "<span class='warning'>With [src] off of your arms, you feel less ready to punch things.</span>")
 
+/obj/item/clothing/gloves/fingerless/pugilist/crafted
+	unique_reskin = list("Short" = "armwraps",
+						"Extended" = "armwraps_extended"
+						)
+
+/obj/item/clothing/gloves/fingerless/pugilist/crafted/reskin_obj(mob/M)
+	. = ..()
+	if(icon_state == "armwraps_extended")
+		item_state = "armwraps_extended"
+	else
+		return
+
 /obj/item/clothing/gloves/fingerless/pugilist/chaplain
 	name = "armwraps of unyielding resolve"
 	desc = "A series of armwraps, soaked in holy water. Makes you pretty keen to smite evil magic users."
@@ -224,10 +236,9 @@
 	parry_efficiency_considered_successful = 0.01
 	parry_efficiency_to_counterattack = INFINITY	// no auto counter
 	parry_max_attacks = INFINITY
-	parry_failed_cooldown_duration = 2.25 SECONDS
-	parry_failed_stagger_duration = 2.25 SECONDS
+	parry_failed_cooldown_duration = 1.5 SECONDS
+	parry_failed_stagger_duration = 1.5 SECONDS
 	parry_cooldown = 0
-	parry_failed_clickcd_duration = 0
 
 /obj/item/clothing/gloves/fingerless/pugilist/mauler
 	name = "mauler gauntlets"
@@ -345,3 +356,52 @@
 	desc = "Thin, pretty gloves intended for use in sexy feminine attire. A tag on the hem claims they pair great with black stockings."
 	icon_state = "eveningblack"
 	item_state = "eveningblack"
+
+/obj/item/clothing/gloves/mittens/
+	name = "mittens"
+	desc = "These are for babies and make handling just about anything impossible."
+	icon_state = "mittens_poly"
+	item_state = "mittens_poly"
+	var/wornonce = FALSE
+
+/obj/item/clothing/gloves/mittens/equipped(mob/user, slot)
+	. = ..()
+	if(slot == SLOT_GLOVES)
+		wornonce = TRUE
+		use_buffs(user, TRUE)
+
+/obj/item/clothing/gloves/mittens/dropped(mob/user)
+	. = ..()
+	if(wornonce)
+		wornonce = FALSE
+		use_buffs(user, FALSE)
+
+/obj/item/clothing/gloves/mittens/proc/use_buffs(mob/user, buff)
+	if(buff)
+		if(ishuman(user))
+			var/mob/living/carbon/human/H = user
+			ADD_TRAIT(H, TRAIT_MONKEYLIKE, GLOVE_TRAIT)
+			ADD_TRAIT(H, TRAIT_NOGUNS, GLOVE_TRAIT)
+	else
+		REMOVE_TRAIT(user, TRAIT_MONKEYLIKE, GLOVE_TRAIT)
+		REMOVE_TRAIT(user, TRAIT_NOGUNS, GLOVE_TRAIT)
+
+/obj/item/clothing/gloves/mittens/pink
+	name = "pink mittens"
+	icon_state = "mittens_pink"
+	item_state = "mittens_pink"
+
+/obj/item/clothing/gloves/mittens/blue
+	name = "blue mittens"
+	icon_state = "mittens_blue"
+	item_state = "mittens_blue"
+
+/obj/item/clothing/gloves/mittens/poly
+	name = "polychromic mittens"
+	icon_state = "mittens_poly"
+	item_state = "mittens_poly"
+	var/list/poly_colors = list("#3ee72e")
+
+/obj/item/clothing/gloves/mittens/poly/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, poly_colors, 1)

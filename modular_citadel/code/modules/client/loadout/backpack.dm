@@ -175,3 +175,27 @@
 /datum/gear/backpack/necklace//this is here because loadout doesn't support proper accessories
 	name = "A renameable necklace"
 	path = /obj/item/clothing/accessory/necklace
+
+/datum/gear/backpack/princessdiaper
+	name = "SnuggleSpace Princess"
+	path = /obj/item/diaper/princess
+
+/datum/gear/backpack/pwrgamedpr
+	name = "PwrGame Gamerpants"
+	path = /obj/item/diaper/pwrgame
+
+/datum/gear/backpack/starkistdpr
+	name = "StarKist Nightlights"
+	path = /obj/item/diaper/starkist
+
+/datum/gear/backpack/syndiaper
+	name = "SyndiSmeller Chameleons"
+	path = /obj/item/diaper/syndi/rep
+
+/datum/gear/backpack/punkdpr
+	name = "Lacquer Pacquer"
+	path = /obj/item/diaper/punk
+
+/datum/gear/backpack/jeansdpr
+	name = "Jiaper"
+	path = /obj/item/diaper/jeans

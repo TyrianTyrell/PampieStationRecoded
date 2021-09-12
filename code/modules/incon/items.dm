@@ -31,7 +31,9 @@
 	icon_state = "plain"
 
 /obj/item/diaper/attack(mob/living/carbon/human/M as mob, mob/usr as mob)
-	if(HAS_TRAIT(M,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(M,TRAIT_INCONTINENT) || HAS_TRAIT(M,TRAIT_POTTYREBEL) || HAS_TRAIT(M,BABYBRAINED_TRAIT) || HAS_TRAIT(M,TRAIT_DIAPERUSE))
+	if(M == usr && HAS_TRAIT(M,TRAIT_NOCHANGESELF))
+		to_chat(usr, "<span class='warning'>You don't know how to change yourself!</span>")
+	else if(HAS_TRAIT(M,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(M,TRAIT_INCONTINENT) || HAS_TRAIT(M,TRAIT_POTTYREBEL) || HAS_TRAIT(M,BABYBRAINED_TRAIT) || HAS_TRAIT(M,TRAIT_DIAPERUSE))
 		playsound(M.loc,'sound/effects/Diapertape.wav',50,1)
 		if(do_after_mob(usr,M))
 			M.DiaperChange(type)
@@ -188,7 +190,7 @@
 	desc = "A diaper for the elegant and charismatic. You're sure to get a raise if you wear these!"
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "Princess"
-	custom_price = 40
+	custom_price = 50
 
 /obj/item/wetdiap/princess
 	name = "wet diaper"
@@ -213,7 +215,6 @@
 	desc = "A diaper for both epic streamers and casual players. Wear this, and any dice you roll are rigged in your favor slightly."
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "PwrGame"
-	custom_price = 15
 
 /obj/item/wetdiap/pwrgame
 	name = "wet diaper"
@@ -238,7 +239,6 @@
 	desc = "For little ones afraid of the monsters under their bed. Glows in the dark."
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "StarKist"
-	custom_price = 20
 
 /obj/item/wetdiap/starkist
 	name = "wet diaper"
@@ -513,6 +513,10 @@
 	desc = "For when you need to leave no evidence behind. Heals brute damage, and disguises itself as a plain diaper when changed."
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "Replica"
+
+/obj/item/diaper/syndi/rep
+	name = "\improper SyndiSmeller Chameleons"
+	desc = "A replica of the real deal"
 
 /obj/item/diaper/narsie
 	name = "\improper Narsmellies"
@@ -927,11 +931,11 @@
 
 /obj/item/storage/backpack/diaper_bag/bluespace/ComponentInitialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_w_class = WEIGHT_CLASS_TINY
-	STR.max_combined_w_class = 200
-	STR.max_items = 40
-	STR.can_hold = typecacheof(list(/obj/item/diaper))
+	var/datum/component/storage/STBS = GetComponent(/datum/component/storage)
+	STBS.max_w_class = WEIGHT_CLASS_TINY
+	STBS.max_combined_w_class = 200
+	STBS.max_items = 40
+	STBS.can_hold = typecacheof(list(/obj/item/diaper))
 
 /obj/item/storage/backpack/diaper_bag/bluespace/PopulateContents()
 	new /obj/item/diaper/hefters_m(src)
@@ -940,119 +944,6 @@
 	new /obj/item/diaper/hefters_f(src)
 	new /obj/item/diaper/hefters_f(src)
 	new /obj/item/diaper/hefters_f(src)
-
-/obj/item/implant/psyker_implant
-	name = "Psyker Coil"
-	desc = "Allows for a normal person to use psychic abilities. Which one they can use depends on the implant."
-
-/obj/item/implant/psyker_implant/healing
-	name = "Psyker Coil (Healing)"
-	desc = "Allows for a normal person to use psychic abilities. Which one they can use depends on the implant. This one grants healing abilities."
-
-/obj/item/implant/psyker_implant/healing/activate()
-	. = ..()
-	if(!imp_in.CheckActionCooldown(CLICK_CD_RANGE))
-		return
-	var/list/creck = params2list("icon-x=0&icon-y=0&screen-loc=CENTER")
-	if(params2list(imp_in.client.mouseParams)["alt"])
-		to_chat(imp_in, "You heal yourself.")
-		imp_in.adjustBruteLoss(-15)
-		imp_in.adjustFireLoss(-15)
-	else
-		var/obj/item/projectile/magic/psyker_heal/PSI = new /obj/item/projectile/magic/psyker_heal(imp_in.loc)
-		var/turf/targ = get_step(imp_in.loc,imp_in.dir)
-		PSI.icon = 'icons/obj/projectiles.dmi'
-		PSI.icon_state = "pulse1"
-		playsound(usr.loc, 'sound/weapons/taser2.ogg', 75, 1)
-
-		PSI.firer = imp_in
-		PSI.def_zone = imp_in.get_organ_target()
-		PSI.preparePixelProjectile(targ, imp_in, creck)
-		PSI.original_angle = dir2angle(imp_in.dir)
-		PSI.Angle = dir2angle(imp_in.dir)
-		PSI.fire()
-
-/obj/item/implanter/psyker_healing
-	name = "implanter (Psyker Healing)"
-	imp_type = /obj/item/implant/psyker_implant/healing
-
-/obj/item/projectile/magic/psyker_heal
-	name = "psionic heal-bolt"
-	icon_state = "ion"
-	damage = 0
-	damage_type = OXY
-	nodamage = 1
-
-/obj/item/projectile/magic/psyker_heal/on_hit(atom/target, blocked)
-	. = ..()
-	if(iscarbon(target))
-		var/mob/living/carbon/C = target
-		C.adjustBruteLoss(-15)
-		C.adjustFireLoss(-15)
-
-/obj/item/clothing/mask/pacifier
-	icon = 'icons/incon/regressoray.dmi'
-	w_class = WEIGHT_CLASS_TINY
-	body_parts_covered = null
-
-/obj/item/clothing/mask/pacifier/d
-	name = "pacifier"
-	desc = "A pacifier, with a small passage in the bulb through which things like nicotine can be imbibed. This one is meant to be recycled after use."
-	icon_state = "Pacifier_disposable"
-	var/chem_volume = 15
-	var/list/list_reagents = list(/datum/reagent/drug/nicotine = 15)
-
-/obj/item/clothing/mask/pacifier/b
-	name = "blue pacifier"
-	desc = "A pacifier, with a small passage in the bulb through which things like nicotine can be imbibed. This one is blue."
-	icon_state = "Pacifier_blue"
-	var/chem_volume = 30
-	var/list/list_reagents = list()
-
-/obj/item/clothing/mask/pacifier/p
-	name = "pink pacifier"
-	desc = "A pacifier, with a small passage in the bulb through which things like nicotine can be imbibed. This one is pink."
-	icon_state = "Pacifier_pink"
-	var/chem_volume = 30
-	var/list/list_reagents = list()
-
-/obj/item/clothing/mask/pacifier/d/Initialize()
-	. = ..()
-	create_reagents(chem_volume, NO_REACT, NO_REAGENTS_VALUE)
-	if(list_reagents)
-		reagents.add_reagent_list(list_reagents)
-
-/obj/item/clothing/mask/pacifier/b/Initialize()
-	. = ..()
-	create_reagents(chem_volume, INJECTABLE | NO_REACT, NO_REAGENTS_VALUE)
-	if(list_reagents)
-		reagents.add_reagent_list(list_reagents)
-
-/obj/item/clothing/mask/pacifier/p/Initialize()
-	. = ..()
-	create_reagents(chem_volume, INJECTABLE | NO_REACT, NO_REAGENTS_VALUE)
-	if(list_reagents)
-		reagents.add_reagent_list(list_reagents)
-
-/obj/item/clothing/mask/pacifier/Destroy()
-	STOP_PROCESSING(SSobj, src)
-	. = ..()
-
-/obj/item/clothing/mask/pacifier/proc/handle_reagents()
-	if(reagents.total_volume)
-		if(iscarbon(loc))
-			var/mob/living/carbon/C = loc
-			if (src == C.wear_mask) // if it's in the human/monkey mouth, transfer reagents to the mob
-				var/fraction = min(REAGENTS_METABOLISM/reagents.total_volume, 1)
-				reagents.reaction(C, INGEST, fraction)
-				if(!reagents.trans_to(C, REAGENTS_METABOLISM))
-					reagents.remove_any(REAGENTS_METABOLISM)
-				return
-		reagents.remove_any(REAGENTS_METABOLISM)
-
-/obj/item/clothing/mask/pacifier/process()
-	if(reagents && reagents.total_volume)
-		handle_reagents()
 
 /obj/item/diaper_package
 	name = "diaper package"
@@ -1140,8 +1031,8 @@
 	name = "Nukpack"
 	icon = 'icons/incon/regressoray.dmi'
 	desc = "A package of Nuks, disposable pacifiers."
-	var/nuksleft = 6
-	var/obj/item/paci_package/nukinside = /obj/item/clothing/mask/pacifier/d
+	var/nuksleft = 10
+	var/obj/item/paci_package/nukinside = /obj/item/clothing/mask/pacifier
 
 /obj/item/paci_package/proc/takeout(stuff, mob/user)
 	var/atom/A

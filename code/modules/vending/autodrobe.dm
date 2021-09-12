@@ -38,6 +38,8 @@
 						/obj/item/clothing/suit/vickyred = 1,
 						/obj/item/clothing/under/rank/civilian/victorianblackdress = 1,
 						/obj/item/clothing/suit/vickyblack =1,
+						/obj/item/clothing/head/widered =1,
+						/obj/item/clothing/head/wideblack =1,
 						/obj/item/clothing/under/rank/civilian/dutch = 2,
 						/obj/item/clothing/under/suit/sl = 1,
 						/obj/item/clothing/mask/fakemoustache = 1,

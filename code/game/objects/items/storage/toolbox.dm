@@ -126,7 +126,7 @@ GLOBAL_LIST_EMPTY(rubber_toolbox_icons)
 /obj/item/storage/toolbox/mechanical/old/clean/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	calc_damage()
 	..()
-	
+
 /obj/item/storage/toolbox/mechanical/old/clean/PopulateContents()
 	new /obj/item/screwdriver(src)
 	new /obj/item/wrench(src)
@@ -405,3 +405,24 @@ GLOBAL_LIST_EMPTY(rubber_toolbox_icons)
 	icon = GLOB.rubber_toolbox_icons[icon_state]
 	. = ..()
 	AddComponent(/datum/component/bouncy)
+
+/obj/item/storage/toolbox/ashen
+	name = "ashen toolbox"
+	icon_state = "ashen"
+	item_state = "toolbox_basalt"
+	desc = "A toolbox made of basalt."
+	force = 15
+	throwforce = 18
+
+/obj/item/storage/toolbox/ashen/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.silent = TRUE
+
+/obj/item/storage/toolbox/ashen/PopulateContents()
+	new /obj/item/screwdriver/ashwalker(src)
+	new /obj/item/wrench/ashwalker(src)
+	new /obj/item/weldingtool/experimental/ashwalker(src)
+	new /obj/item/crowbar/ashwalker(src)
+	new /obj/item/wirecutters/ashwalker(src)
+	new /obj/item/clothing/gloves/tackler/combat/insulated/goliath(src)

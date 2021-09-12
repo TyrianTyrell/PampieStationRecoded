@@ -541,3 +541,39 @@
 	desc = "They got me for my foams!"
 	icon_state = "SwagShoes"
 	item_state = "SwagShoes"
+
+/obj/item/clothing/shoes/booties
+	name = "booties"
+	desc = "Soft shoes. Very soft."
+	icon_state = "booties_poly"
+	item_state = "booties_poly"
+	w_class = WEIGHT_CLASS_TINY
+
+/obj/item/clothing/shoes/booties/equipped(mob/user, slot)
+	. = ..()
+	if(slot == SLOT_SHOES)
+		ADD_TRAIT(user, TRAIT_SILENT_STEP, SHOES_TRAIT)
+
+/obj/item/clothing/shoes/booties/dropped(mob/user)
+	. = ..()
+	REMOVE_TRAIT(user, TRAIT_SILENT_STEP, SHOES_TRAIT)
+
+/obj/item/clothing/shoes/booties/pink
+	name = "pink booties"
+	icon_state = "booties_pink"
+	item_state = "booties_pink"
+
+/obj/item/clothing/shoes/booties/blue
+	name = "blue booties"
+	icon_state = "booties_blue"
+	item_state = "booties_blue"
+
+/obj/item/clothing/shoes/booties/poly
+	name = "polychromic booties"
+	icon_state = "booties_poly"
+	item_state = "booties_poly"
+	var/list/poly_colors = list("#3ee72e","#eafae9")
+
+/obj/item/clothing/shoes/booties/poly/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, poly_colors, 2)

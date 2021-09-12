@@ -11,7 +11,7 @@
 //item you want to equip to the hand, and set its slots_flags = null. Only items equiped to hands need do this.
 
 /datum/round_event/wizard/cursed_items/start()
-	var/item_set = pick("wizardmimic", "swords", "bigfatdoobie", "boxing", "voicemodulators", "catgirls2015")
+	var/item_set = pick("wizardmimic", "swords", "bigfatdoobie", "boxing", "voicemodulators", "catgirls2015", "baby")
 	var/list/loadout[SLOTS_AMT]
 	var/ruins_spaceworthiness
 	var/ruins_wizard_loadout
@@ -33,6 +33,12 @@
 			ruins_spaceworthiness = 1
 		if("voicemodulators")
 			loadout[SLOT_WEAR_MASK] = /obj/item/clothing/mask/chameleon
+		if("baby")
+			loadout[SLOT_WEAR_MASK] = /obj/item/clothing/mask/polypacifier
+			loadout[SLOT_GLOVES] = /obj/item/clothing/gloves/mittens/poly
+			loadout[SLOT_HEAD] = /obj/item/clothing/head/bonnet/poly
+			loadout[SLOT_SHOES] = /obj/item/clothing/shoes/booties/poly
+			ruins_spaceworthiness = 1
 		if("catgirls2015")
 			loadout[SLOT_HEAD] = /obj/item/clothing/head/kitty
 			ruins_spaceworthiness = 1

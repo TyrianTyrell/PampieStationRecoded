@@ -85,14 +85,26 @@
 							dipetype = "plain"
 						to_chat(user, "<span class='notice'>You check [C]'s diaper...</span>")
 						if(C.wetness > 0)
-							to_chat(user,"<span class='notice'>...and discover that it is wet.</span>")
+							if(C.wetness >= 200)
+								to_chat(M,"<span class='notice'>...and your hand gets a little damp. [src.p_they()] need a change, fast.</span>")
+							else
+								if(C.wetness >= 100)
+									to_chat(M,"<span class='notice'>...and a squishy noise comes from their pants.</span>")
+								else
+									to_chat(M,"<span class='notice'>...and discover that it is damp.</span>")
 							if(HAS_TRAIT(C,TRAIT_FULLYINCONTINENT))
 								if(HAS_TRAIT(C,TRAIT_POTTYREBEL))
 									SEND_SIGNAL(C,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggyhappy)
 								else
 									SEND_SIGNAL(C,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggysad)
 						if(C.stinkiness > 0)
-							to_chat(user,"<span class='notice'>...and discover that it is messy.</span>")
+							if(C.stinkiness >= 200)
+								to_chat(M,"<span class='notice'>...and a cloud of foul stench hits you in the face. [src.p_theyre()] incredibly stinky!</span>")
+							else
+								if(C.stinkiness >= 100)
+									to_chat(M,"<span class='notice'>...and are met with quite the mess.</span>")
+								else
+									to_chat(M,"<span class='notice'>...and discover that it is dirty.</span>")
 							if(HAS_TRAIT(C,TRAIT_FULLYINCONTINENT))
 								if(HAS_TRAIT(C,TRAIT_POTTYREBEL))
 									SEND_SIGNAL(C,COMSIG_ADD_MOOD_EVENT,"poopy",/datum/mood_event/stinkyhappy)

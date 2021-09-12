@@ -179,6 +179,19 @@
 	custom_materials = list(/datum/material/iron=50)
 	w_class = WEIGHT_CLASS_SMALL
 
+/obj/item/shovel/spade/bone
+	name = "spade"
+	desc = "A small tool for digging and moving dirt."
+	icon_state = "spade_bone"
+	item_state = "spade"
+	lefthand_file = 'icons/mob/inhands/equipment/hydroponics_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/hydroponics_righthand.dmi'
+	toolspeed = 0.6
+	force = 5
+	throwforce = 7
+	custom_materials = list(/datum/material/iron=50)
+	w_class = WEIGHT_CLASS_SMALL
+
 /obj/item/shovel/serrated
 	name = "serrated bone shovel"
 	desc = "A wicked tool that cleaves through dirt just as easily as it does flesh. The design was styled after ancient lavaland tribal designs."

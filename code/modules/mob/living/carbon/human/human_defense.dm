@@ -764,14 +764,11 @@
 			if(HAS_TRAIT(src,TRAIT_POTTYREBEL) || HAS_TRAIT(src,TRAIT_INCONTINENT) || HAS_TRAIT(src,BABYBRAINED_TRAIT) || HAS_TRAIT(src,TRAIT_DIAPERUSE) || HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 				if(wetness > 0)
 					if(stinkiness > 0)
-						to_send += "<span class='notice'>Your [src.brand2] is absolutely spent.</span>\n"
 						if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 							if(HAS_TRAIT(src,TRAIT_POTTYREBEL))
 								SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/stinkysad)
 							else
 								SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/stinkyhappy)
-					else
-						to_send += "<span class='notice'>Your [src.brand2] is wet.</span>\n"
 					if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 						if(HAS_TRAIT(src,TRAIT_POTTYREBEL))
 							SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggyhappy)
@@ -779,19 +776,37 @@
 							SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggysad)
 				else
 					if(stinkiness > 0)
-						to_send += "<span class='notice'>Your [src.brand2] is messy.</span>\n"
 						if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 							if(HAS_TRAIT(src,TRAIT_POTTYREBEL))
 								SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/stinkyhappy)
 							else
 								SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/stinkysad)
 					else
-						to_send += "<span class='notice'>Your [src.brand2] is dry.</span>\n"
 				if(HAS_TRAIT(src,TRAIT_EXACTCHECK))
 					var/diappercent1 = round((wetness / (250 + heftersbonus)) * 100)
 					var/diappercent2 = round((stinkiness / (250 + heftersbonus)) * 100)
 					to_send += "<span class='notice'>It is about [diappercent1]% wet and [diappercent2]% messy.</span>\n"
-
+				else
+					if(wetness >= 200)
+						to_send += "<span class='notice'>Your [src.brand2] is drenched with pee.</span>\n"
+					else
+						if(wetness >= 100)
+							to_send += "<span class='notice'>Your [src.brand2] is soggy.</span>\n"
+						else
+							if(wetness > 0)
+								to_send += "<span class='notice'>Your [src.brand2] is damp.</span>\n"
+							else
+								to_send += "<span class='notice'>Your [src.brand2] is dry.</span>\n"
+					if(stinkiness >= 200)
+						to_send += "<span class='notice'>Your [src.brand2] is heavy and messy.</span>\n"
+					else
+						if(stinkiness >= 100)
+							to_send += "<span class='notice'>Your [src.brand2] is stinky.</span>\n"
+						else
+							if(stinkiness > 0)
+								to_send += "<span class='notice'>Your [src.brand2] is dirty.</span>\n"
+							else
+								to_send += "<span class='notice'>Your [src.brand2] is clean.</span>\n"
 			to_chat(src, to_send)
 		else
 			if(wear_suit)

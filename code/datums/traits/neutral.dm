@@ -154,3 +154,17 @@
 /datum/quirk/longtimer/on_spawn()
 	var/mob/living/carbon/C = quirk_holder
 	C.generate_fake_scars(rand(min_scars, max_scars))
+
+/datum/quirk/trashcan
+	name = "Trashcan"
+	desc = "You are able to consume and digest trash."
+	value = 0
+	gain_text = "<span class='notice'>You feel like munching on a can of soda.</span>"
+	lose_text = "<span class='notice'>You no longer feel like you should be eating trash.</span>"
+	mob_trait = TRAIT_TRASHCAN
+
+/datum/quirk/nochange
+	name = "Cannot Change Themselves"
+	desc = "You can't seem to make heads or tails of diapers when you try to put them on yourself."
+	mob_trait = TRAIT_NOCHANGESELF
+	value = 0

@@ -453,6 +453,7 @@ ROUNDSTART_RACES human
 ## Races that are strictly worse than humans that could probably be turned on without balance concerns
 ROUNDSTART_RACES lizard
 ROUNDSTART_RACES synthliz
+ROUNDSTART_RACES ashlizard
 #ROUNDSTART_RACES fly
 #ROUNDSTART_RACES insect
 ROUNDSTART_RACES plasmaman
@@ -488,6 +489,7 @@ ROUNDSTART_RACES aquatic
 ROUNDSTART_RACES insect
 ROUNDSTART_RACES xeno
 ROUNDSTART_RACES slimeperson
+ROUNDSTART_RACES mammal_synthetic
 ROUNDSTART_RACES guilmon
 ROUNDSTART_RACES ipc
 ROUNDSTART_RACES arachnid

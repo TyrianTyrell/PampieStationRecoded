@@ -207,6 +207,7 @@
 #define TRAIT_FREESPRINT		"free_sprinting"
 #define TRAIT_XRAY_VISION       "xray_vision"
 #define TRAIT_THERMAL_VISION    "thermal_vision"
+#define TRAIT_TRUE_NIGHT_VISION "true_nv"
 #define TRAIT_MESON_VISION      "meson_vision"
 #define TRAIT_NO_TELEPORT		"no-teleport" //you just can't
 #define TRAIT_NO_INTERNALS		"no-internals"
@@ -223,15 +224,17 @@
 #define TRAIT_LIVING_NO_DENSITY			"living_no_density"
 /// forces us to not render our overlays
 #define TRAIT_HUMAN_NO_RENDER			"human_no_render"
+#define TRAIT_TRASHCAN					"trashcan"
 ///diaper traits
 #define BABYBRAINED_TRAIT "baby_brained"
 #define TRAIT_INCONTINENT "incontinent"
-#define TRAIT_WETINCONTINENT "urinary incontinent"
-#define TRAIT_MESSINCONTINENT "fecal incontinent"
+#define TRAIT_WETINCONTINENT "urinary_incontinent"
+#define TRAIT_MESSINCONTINENT "fecal_incontinent"
 #define TRAIT_FULLYINCONTINENT "unaware"
 #define TRAIT_POTTYREBEL "potty_rebel"
 #define TRAIT_DIAPERUSE "diaper_use"
 #define TRAIT_EXACTCHECK "exact_check"
+#define TRAIT_NOCHANGESELF "no_change_self"
 
 // mobility flag traits
 // IN THE FUTURE, IT WOULD BE NICE TO DO SOMETHING SIMILAR TO https://github.com/tgstation/tgstation/pull/48923/files (ofcourse not nearly the same because I have my.. thoughts on it)
@@ -346,6 +349,9 @@
 #define CORRUPTED_SYSTEM "corrupted-system"
 #define REGRESSION_TRAIT "regression"
 
+///The holder of this trait has antennae or whatever that hurt a ton when noogied
+#define TRAIT_ANTENNAE "antennae"
+
 ///Turf trait for when a turf is transparent
 #define TURF_Z_TRANSPARENT_TRAIT "turf_z_transparent"
 /// This trait is added by the active directional block system.
@@ -354,3 +360,4 @@
 #define ACTIVE_PARRY_TRAIT				"active_parry"
 #define STICKY_NODROP "sticky-nodrop" //sticky nodrop sounds like a bad soundcloud rapper's name
 #define TRAIT_SACRIFICED "sacrificed" //Makes sure that people cant be cult sacrificed twice.
+#define TRAIT_SPACEWALK "spacewalk"

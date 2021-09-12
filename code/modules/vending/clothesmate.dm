@@ -21,7 +21,7 @@
 					/obj/item/clothing/suit/jacket/puffer/vest = 4,
 					/obj/item/clothing/suit/jacket/puffer = 4,
 					/obj/item/clothing/suit/hooded/cloak/david = 4,
-					/obj/item/clothing/neck/cancloak/polychromic = 4,
+					/obj/item/clothing/neck/cloak/cancloak/polychromic = 4,
 					/obj/item/clothing/suit/bomber = 5,
 					/obj/item/clothing/under/suit/turtle/teal = 3,
 					/obj/item/clothing/under/suit/turtle/grey = 3,
@@ -164,6 +164,7 @@
 					/obj/item/clothing/ears/headphones = 10,
 					/obj/item/clothing/suit/apron/purple_bartender = 4,
 					/obj/item/clothing/under/rank/civilian/bartender/purple = 4,
+					/obj/item/clothing/under/suit/polyshirt	= 4,
 
 					/* Commenting out until next Christmas or made automatic
 					/obj/item/clothing/accessory/sweater/uglyxmas = 3,

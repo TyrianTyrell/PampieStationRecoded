@@ -68,6 +68,7 @@
 			var/value = italian_words[key]
 			if(islist(value))
 				value = pick(value)
+
 			message = replacetextEx(message, " [uppertext(key)]", " [uppertext(value)]")
 			message = replacetextEx(message, " [capitalize(key)]", " [capitalize(value)]")
 			message = replacetextEx(message, " [key]", " [value]")
@@ -433,3 +434,138 @@
 			A.UpdateButtonIcon()
 		to_chat(user, "<span class='notice'>Your paper mask now has a [choice] symbol!</span>")
 		return 1
+
+/obj/item/clothing/mask/pacifier
+	name = "Pacifier"
+	desc = "A pacifier with a nipple to suckle on. Makes you sound like a toddler."
+	icon_state = "base_paci"
+	item_state = "base_paci"
+	w_class = WEIGHT_CLASS_TINY
+	modifies_speech = TRUE
+
+/obj/item/clothing/mask/pacifier/handle_speech(datum/source, list/speech_args)
+	var/message = speech_args[SPEECH_MESSAGE]
+	if(message[1] != "*")
+		var/list/temp_message = splittext(message, " ")
+		var/list/pick_list = list()
+		for(var/i in 1 to temp_message.len)
+			pick_list += i
+		for(var/i in 1 to abs(temp_message.len/3))
+			var/H = pick(pick_list)
+			if(findtext(temp_message[H], "*") || findtext(temp_message[H], ";") || findtext(temp_message[H], ":"))
+				continue
+			temp_message[H] = ninjaspeak(temp_message[H])
+			pick_list -= H
+		message = temp_message.Join(" ")
+
+		//The Alternate speech mod is now the main one.
+		message = replacetext(message, "what", "wuh")
+		message = replacetext(message, "when", "wen")
+		message = replacetext(message, "water", "wawa")
+		message = replacetext(message, "my", "muh")
+		message = replacetext(message, "okay", "okee")
+		message = replacetext(message, "with", "wiff")
+		message = replacetext(message, "want to", "wanna")
+		message = replacetext(message, "yeah", "yuh")
+		message = replacetext(message, "nah", "nuh")
+		message = replacetext(message, "but", "buh")
+		message = replacetext(message, "the ", "da")
+		message = replacetext(message, "ally ", "wy")
+		message = replacetext(message, "bottle ", "baba")
+		message = replacetext(message, " no ", " nuh ")
+		message = replacetext(message, "l", "w")
+		message = replacetext(message, "r", "w")
+		message = replacetext(message, "ou", "oo")
+		message = replacetext(message, "that", "dat")
+		message = replacetext(message, "then", "den")
+		message = replacetext(message, "this", "dis")
+		message = replacetext(message, "th ", "f ")
+		message = replacetext(message, "tt", "dd")
+		message = replacetext(message, " no ", " nuh ")
+		message = replacetext(message, " yes ", " yuh ")
+		message = lowertext(message)
+		speech_args[SPEECH_MESSAGE] = message
+
+/obj/item/clothing/mask/pacifier/Initialize(mapload, param_color)
+	. = ..()
+
+	if(!param_color)
+		param_color = pick("pink","blue","black","white","green","purple","yellow","orange","red","grey","gold")
+	icon_state = "[param_color]_paci"
+	item_state = "[param_color]_paci"
+
+/*/obj/item/clothing/mask/pacifier/cursed
+	name = "Cursed Pacifier"
+	item_state = "cursed_paci"
+	icon_state = "cursed_paci"
+	desc = "It looks like a normal pacifier but it's... Yeah, that's not coming off."
+	clothing_flags = NONE
+
+/obj/item/clothing/mask/pacifier/cursed/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, CURSED_MASK_TRAIT)
+
+/obj/item/clothing/mask/pacifier/cursed/blursed
+	name = "Blessed Pacifier?"
+	desc = "It looks like a normal pacifier..."
+	clothing_flags = NOSLIP*/
+
+/obj/item/clothing/mask/pacifier/blessed
+	name = "Blessed Pacifier"
+	desc = "It looks like a normal pacifier but you feel stronger while it's in."
+	clothing_flags = NOSLIP
+
+/obj/item/clothing/mask/polypacifier
+	name = "Polychromic Pacifier"
+	desc = "It looks like a normal pacifier but you can change its colour."
+	icon_state = "poly_paci"
+	item_state = "poly_paci"
+	var/list/poly_colors = list("#7129e4", "#ddc22a")
+	w_class = WEIGHT_CLASS_TINY
+	modifies_speech = TRUE
+
+/obj/item/clothing/mask/polypacifier/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, poly_colors, 2)
+
+/obj/item/clothing/mask/polypacifier/handle_speech(datum/source, list/speech_args)
+	var/message = speech_args[SPEECH_MESSAGE]
+	if(message[1] != "*")
+		var/list/temp_message = splittext(message, " ")
+		var/list/pick_list = list()
+		for(var/i in 1 to temp_message.len)
+			pick_list += i
+		for(var/i in 1 to abs(temp_message.len/3))
+			var/H = pick(pick_list)
+			if(findtext(temp_message[H], "*") || findtext(temp_message[H], ";") || findtext(temp_message[H], ":"))
+				continue
+			temp_message[H] = ninjaspeak(temp_message[H])
+			pick_list -= H
+		message = temp_message.Join(" ")
+
+		//The Alternate speech mod is now the main one.
+		message = replacetext(message, "what", "wuh")
+		message = replacetext(message, "when", "wen")
+		message = replacetext(message, "water", "wawa")
+		message = replacetext(message, "my", "muh")
+		message = replacetext(message, "okay", "okee")
+		message = replacetext(message, "with", "wiff")
+		message = replacetext(message, "want to", "wanna")
+		message = replacetext(message, "yeah", "yuh")
+		message = replacetext(message, "nah", "nuh")
+		message = replacetext(message, "but", "buh")
+		message = replacetext(message, "the ", "da")
+		message = replacetext(message, "ally ", "wy")
+		message = replacetext(message, "bottle ", "baba")
+		message = replacetext(message, " no ", " nuh ")
+		message = replacetext(message, "l", "w")
+		message = replacetext(message, "r", "w")
+		message = replacetext(message, "ou", "oo")
+		message = replacetext(message, "that", "dat")
+		message = replacetext(message, "then", "den")
+		message = replacetext(message, "this", "dis")
+		message = replacetext(message, "th ", "f ")
+		message = replacetext(message, "tt", "dd")
+		message = replacetext(message, " yes ", " yuh ")
+		message = lowertext(message)
+		speech_args[SPEECH_MESSAGE] = message

@@ -64,9 +64,8 @@
 	quality = POSITIVE
 	difficulty = 18
 	text_gain_indication = "<span class='notice'>You can see the layout of your surroundings...</span>"
-	time_coeff = 2
-	instability = 40
-	locked = TRUE
+	instability = 25
+	locked = FALSE
 	visionflag = TRAIT_MESON_VISION
 
 

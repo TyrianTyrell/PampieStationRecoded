@@ -101,6 +101,15 @@
 	toolspeed = 0.95
 	random_color = FALSE
 
+/obj/item/screwdriver/ashwalker
+	name = "bone screwdriver"
+	desc = "A rudimentary screwdriver made of bones."
+	icon = 'icons/obj/advancedtools.dmi'
+	icon_state = "screwdriver_bone"
+	toolspeed = 1.2
+	random_color = FALSE
+
+
 /obj/item/screwdriver/abductor
 	name = "alien screwdriver"
 	desc = "An ultrasonic screwdriver."

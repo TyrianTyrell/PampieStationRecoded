@@ -189,6 +189,7 @@
 		message = stutter(message)
 	return message
 
+
 /proc/Gibberish(text, replace_characters = FALSE, chance = 50)
 	text = html_decode(text)
 	. = ""
@@ -218,8 +219,8 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	for(var/i = 1, i <= lentext, i += length_char(rawchars))
 		var/end = i + rand(1,4)
 		letter = rawchars = copytext_char(phrase, i, end > lentext ? 0 : end)
-		if (prob(50))
-			if (prob(30))
+		if (prob(1))
+			if (prob(1))
 				letter = "[letter]-[letter]-[letter]"
 			else
 				letter = "[letter]-[letter]"
@@ -361,7 +362,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 			if(flashwindow)
 				window_flash(O.client)
 			if(source)
-				var/obj/screen/alert/notify_action/A = O.throw_alert("[REF(source)]_notify_action", /obj/screen/alert/notify_action)
+				var/atom/movable/screen/alert/notify_action/A = O.throw_alert("[REF(source)]_notify_action", /atom/movable/screen/alert/notify_action)
 				if(A)
 					if(O.client.prefs && O.client.prefs.UI_style)
 						A.icon = ui_style2icon(O.client.prefs.UI_style)

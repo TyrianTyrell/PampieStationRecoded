@@ -354,10 +354,10 @@
 	. = SEND_SIGNAL(O, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 	. = O.clean_blood()
 	O.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
-	if(isitem(O))
-		var/obj/item/I = O
-		I.acid_level = 0
-		I.extinguish()
+	var/datum/component/acid/acid = O.GetComponent(/datum/component/acid)
+	if(acid)
+		acid.level = 0
+	O.extinguish()
 
 /obj/machinery/shower/proc/wash_turf()
 	if(isturf(loc))
@@ -601,7 +601,9 @@
 		busy = FALSE
 		SEND_SIGNAL(O, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 		O.clean_blood()
-		O.acid_level = 0
+		var/datum/component/acid/acid = O.GetComponent(/datum/component/acid)
+		if(acid)
+			acid.level = 0
 		create_reagents(5)
 		reagents.add_reagent(dispensedreagent, 5)
 		reagents.reaction(O, TOUCH)
@@ -802,3 +804,29 @@
 				playsound(loc, 'sound/weapons/tap.ogg', 50, 1)
 		if(BURN)
 			playsound(loc, 'sound/items/welder.ogg', 80, 1)
+
+/obj/structure/potty
+	name = "training potty"
+	desc = "A plastic training potty in a surprisingly large size... Aren't you a little old for one of these?"
+	icon = 'icons/obj/watercloset.dmi'
+	icon_state = "potty"
+	density = FALSE
+	anchored = TRUE
+	can_buckle = TRUE
+	buckle_lying = 0
+	attack_hand_speed = CLICK_CD_MELEE
+	attack_hand_is_action = TRUE
+
+/obj/structure/potty/deconstruct(disassembled = TRUE)
+	new /obj/item/stack/sheet/plastic (loc, 20)
+	qdel(src)
+
+/obj/structure/potty/attackby(obj/item/I, mob/living/user, params)
+	add_fingerprint(user)
+	if(I.tool_behaviour == TOOL_WELDER && !(flags_1&NODECONSTRUCT_1))
+		I.play_tool_sound(src)
+		deconstruct()
+
+/obj/structure/potty/wrench_act(mob/living/user, obj/item/I)
+	default_unfasten_wrench(user, I, 50)
+	return TRUE

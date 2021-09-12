@@ -586,7 +586,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	if(AmBloodsucker(C))
 		disgust_bloodsucker(FALSE, 1) //Bloodsuckers get SOME blood from it, for style reasons.
 	if(C.blood_volume < (BLOOD_VOLUME_NORMAL*C.blood_ratio))
-		C.blood_volume = min((BLOOD_VOLUME_NORMAL*C.blood_ratio), C.blood_volume + 3) //Bloody Mary quickly restores blood loss.
+		C.adjust_integration_blood(3) //Bloody Mary quickly restores blood loss.
 	..()
 
 /datum/reagent/consumable/ethanol/brave_bull
@@ -2195,8 +2195,9 @@ All effects don't start immediately, but rather get worse over time; the rate is
 			stored_teleports--
 		if(prob(10))
 			stored_teleports += rand(2,6)
-			if(prob(70))
-				M.vomit()
+			if(prob(70) && ishuman(M))
+				var/mob/living/carbon/human/H = M
+				H.vomit(vomit_type = VOMIT_PURPLE)
 	return ..()
 
 /datum/reagent/consumable/ethanol/planet_cracker

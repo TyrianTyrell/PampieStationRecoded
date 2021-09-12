@@ -78,9 +78,10 @@
 	pH = 7.5
 	color = "#F034E2"
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
+	overdose_threshold = 51
 
 /datum/reagent/medicine/regression/on_mob_add(mob/living/L)
-	if(iscarbon(L))
+	if(iscarbon(L) && !(L.client?.prefs.cit_toggles & NEVER_REGRESS))
 		var/mob/living/carbon/C = L
 		metabolization_rate = 0.1 * REAGENTS_METABOLISM
 		if(C.m_intent == MOVE_INTENT_RUN)
@@ -89,6 +90,16 @@
 		ADD_TRAIT(C, TRAIT_NORUNNING, REGRESSION_TRAIT)
 		ADD_TRAIT(C, TRAIT_NOGUNS, REGRESSION_TRAIT)
 		SEND_SIGNAL(C, COMSIG_DIAPERCHANGE, C.ckey)
-		C.statusoverlay = mutable_appearance('icons/incon/regressoray.dmi',"regressoray")
-		C.overlays += C.statusoverlay
+	return
+
+/datum/reagent/medicine/regression/overdose_process(mob/living/L)
+	if(iscarbon(L) && !(L.client?.prefs.cit_toggles & NEVER_REGRESS))
+		var/mob/living/carbon/C = L
+		metabolization_rate = 0.1 * REAGENTS_METABOLISM
+		if(C.m_intent == MOVE_INTENT_RUN)
+			C.toggle_move_intent()
+		ADD_TRAIT(C, BABYBRAINED_TRAIT, ROUNDSTART_TRAIT)
+		ADD_TRAIT(C, TRAIT_NORUNNING, ROUNDSTART_TRAIT)
+		ADD_TRAIT(C, TRAIT_NOGUNS, ROUNDSTART_TRAIT)
+		SEND_SIGNAL(C, COMSIG_DIAPERCHANGE, C.ckey)
 	return

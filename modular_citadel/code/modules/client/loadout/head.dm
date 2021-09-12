@@ -200,3 +200,8 @@
 /datum/gear/head/kabuto
 	name = "Kabuto helmet"
 	path = /obj/item/clothing/head/kabuto
+
+/datum/gear/head/bonnet
+	name = "Polychromic Bonnet"
+	path = /obj/item/clothing/head/bonnet/poly
+	cost = 2

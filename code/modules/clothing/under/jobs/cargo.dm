@@ -15,6 +15,15 @@
 	fitted = FEMALE_UNIFORM_TOP
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
+/obj/item/clothing/under/rank/cargo/qm/shirt
+	name = "quartermaster's shirt"
+	desc = "It's a shirt worn by the quartermaster. It's specially designed to prevent back injuries caused by pushing paper."
+	icon_state = "qm_shirt"
+	item_state = "qm_shirt"
+	body_parts_covered = CHEST|ARMS
+	can_adjust = FALSE
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
 /obj/item/clothing/under/rank/cargo/tech
 	name = "cargo technician's jumpsuit"
 	desc = "Shooooorts! They're comfy and easy to wear!"
@@ -41,6 +50,15 @@
 	fitted = FEMALE_UNIFORM_TOP
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
+/obj/item/clothing/under/rank/cargo/tech/shirt
+	name = "cargo technician's shirt"
+	desc = "Shiiiiirts! They're comfy and easy to wear"
+	icon_state = "cargo_shirt"
+	item_state = "cargo_shirt"
+	body_parts_covered = CHEST|ARMS
+	can_adjust = FALSE
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
 /obj/item/clothing/under/rank/cargo/tech/long
 	name = "cargo technician's jumpsuit (trousers)"
 	desc = "A variant of the cargo technician's uniform with proper trousers, suited for colder climates and modest workers."
@@ -61,3 +79,12 @@
 	icon_state = "explorer"
 	item_state = "explorer"
 	can_adjust = FALSE
+
+/obj/item/clothing/under/rank/cargo/miner/lavaland/shirt
+	desc = "A green uniform for operating in hazardous environments."
+	name = "shaft miner's shirt"
+	icon_state = "explorer_shirt"
+	item_state = "explorer_shirt"
+	body_parts_covered = CHEST|ARMS
+	can_adjust = FALSE
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
