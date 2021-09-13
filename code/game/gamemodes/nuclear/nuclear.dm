@@ -152,6 +152,9 @@
 	if(command_radio)
 		R.command = TRUE
 
+	if(H.mind.has_antag_datum(/datum/antagonist/nukeop/lone))
+		tc = 3 + (2 * living_player_count())
+
 	if(tc)
 		var/obj/item/U = new uplink_type(H, H.key, tc)
 		H.equip_to_slot_or_del(U, SLOT_IN_BACKPACK)
@@ -193,4 +196,3 @@
 	/obj/item/gun/ballistic/automatic/pistol=1,\
 	/obj/item/kitchen/knife/combat/survival)
 
-	tc = 40

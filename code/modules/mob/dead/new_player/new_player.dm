@@ -756,6 +756,19 @@
 		client.prefs.scars_list["[cur_scar_index]"] = valid_scars
 		client.prefs.save_character()
 	client.prefs.copy_to(H, initial_spawn = TRUE)
+	if(src.client.prefs.event_tfs == TRUE)
+		if(time2text(world.timeofday, "Month") == "September" && text2num(time2text(world.timeofday,"DD")) > 13 && text2num(time2text(world.timeofday,"DD")) < 21)
+			if(issilicon(H))
+				H.set_species(/datum/species/mammal/synthetic)
+				H.custom_species = "Proto-Skunk"
+			else
+				H.set_species(/datum/species/mammal)
+				H.custom_species = "Skunk"
+			H.dna.features["mam_body_markings"] = list(/datum/sprite_accessory/mam_body_markings/skunk)
+			H.dna.features["mam_ears"] = "skunk"
+			H.dna.features["mam_snouts"] = "Mammal, Short"
+			H.dna.features["tail_lizard"] = "None"
+			H.dna.features["mam_tail"] = "Skunk"
 	H.dna.update_dna_identity()
 	if(mind)
 		if(transfer_after)
