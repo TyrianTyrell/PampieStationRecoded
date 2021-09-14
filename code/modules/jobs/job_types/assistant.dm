@@ -36,9 +36,18 @@ Assistant
 	..()
 	var/suited = !preference_source || preference_source.prefs.jumpsuit_style == PREF_SUIT
 	if (CONFIG_GET(flag/grey_assistants))
+		if(preference_source.prefs.jumpsuit_style == PREF_SHIRT)
+			uniform = /obj/item/clothing/under/color/grey/shirt
+			return
 		uniform = suited ? /obj/item/clothing/under/color/grey : /obj/item/clothing/under/color/jumpskirt/grey
 	else
 		if(SSevents.holidays && SSevents.holidays[PRIDE_MONTH])
+			if(preference_source.prefs.jumpsuit_style == PREF_SHIRT)
+				uniform = /obj/item/clothing/under/color/rainbow/shirt
+				return
 			uniform = suited ? /obj/item/clothing/under/color/rainbow : /obj/item/clothing/under/color/jumpskirt/rainbow
 		else
+			if(preference_source.prefs.jumpsuit_style == PREF_SHIRT)
+				uniform = /obj/item/clothing/under/color/random/shirt
+				return
 			uniform = suited ? /obj/item/clothing/under/color/random : /obj/item/clothing/under/color/jumpskirt/random

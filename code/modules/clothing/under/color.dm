@@ -34,6 +34,20 @@
 	else
 		new C(loc)
 	return INITIALIZE_HINT_QDEL
+/obj/item/clothing/under/color/random/shirt
+	icon_state = "random_shirt"
+
+/obj/item/clothing/under/color/random/shirt/Initialize()
+	..()
+	var/C = pick(list("white","grey","black","darkblue","blue","teal","green","darkgreen","yellow","orange","red","maroon","pink","lightpurple","brown","lightbrown"))
+	var/CO = text2path("/obj/item/clothing/under/color/[C]/shirt")
+
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		H.equip_to_slot_or_del(new CO(H), SLOT_W_UNIFORM) //or else you end up with naked assistants running around everywhere...
+	else
+		new CO(loc)
+	return INITIALIZE_HINT_QDEL
 
 
 /obj/item/clothing/under/color/black
@@ -67,6 +81,12 @@
 	icon_state = "grey"
 	item_state = "gy_suit"
 
+/obj/item/clothing/under/color/grey/shirt
+	name = "grey shirt"
+	desc = "A tasteful grey shirt that reminds you of the good old days."
+	icon_state = "grey_shirt"
+	item_state = "grey_shirt"
+
 /obj/item/clothing/under/color/jumpskirt/grey
 	name = "grey jumpskirt"
 	desc = "A tasteful grey jumpskirt that reminds you of the good old days."
@@ -93,6 +113,11 @@
 	icon_state = "blue_skirt"
 	item_state = "b_suit"
 
+/obj/item/clothing/under/color/blue/shirt
+	name = "blue shirt"
+	icon_state = "blue_shirt"
+	item_state = "blue_shirt"
+
 /obj/item/clothing/under/color/green
 	name = "green jumpsuit"
 	icon_state = "green"
@@ -102,6 +127,11 @@
 	name = "green jumpskirt"
 	icon_state = "green_skirt"
 	item_state = "g_suit"
+
+/obj/item/clothing/under/color/green/shirt
+	name = "green shirt"
+	icon_state = "green_shirt"
+	item_state = "green_shirt"
 
 /obj/item/clothing/under/color/orange
 	name = "orange jumpsuit"
@@ -114,6 +144,11 @@
 	icon_state = "orange_skirt"
 	item_state = "o_suit"
 
+/obj/item/clothing/under/color/orange/shirt
+	name = "orange shirt"
+	icon_state = "orange_shirt"
+	item_state = "orange_shirt"
+
 /obj/item/clothing/under/color/pink
 	name = "pink jumpsuit"
 	icon_state = "pink"
@@ -125,10 +160,20 @@
 	icon_state = "pink_skirt"
 	item_state = "p_suit"
 
+/obj/item/clothing/under/color/pink/shirt
+	name = "pink shirt"
+	icon_state = "pink_shirt"
+	item_state = "pink_shirt"
+
 /obj/item/clothing/under/color/red
 	name = "red jumpsuit"
 	icon_state = "red"
 	item_state = "r_suit"
+
+/obj/item/clothing/under/color/red/shirt
+	name = "red shirt"
+	icon_state = "red_shirt"
+	item_state = "red_shirt"
 
 /obj/item/clothing/under/color/jumpskirt/red
 	name = "red jumpskirt"
@@ -145,6 +190,11 @@
 	icon_state = "white_skirt"
 	item_state = "w_suit"
 
+/obj/item/clothing/under/color/white/shirt
+	name = "white shirt"
+	icon_state = "white_shirt"
+	item_state = "white_shirt"
+
 /obj/item/clothing/under/color/yellow
 	name = "yellow jumpsuit"
 	icon_state = "yellow"
@@ -154,6 +204,11 @@
 	name = "yellow jumpskirt"
 	icon_state = "yellow_skirt"
 	item_state = "y_suit"
+
+/obj/item/clothing/under/color/yellow/shirt
+	name = "yellow shirt"
+	icon_state = "yellow_shirt"
+	item_state = "yellow_shirt"
 
 /obj/item/clothing/under/color/darkblue
 	name = "darkblue jumpsuit"
@@ -165,6 +220,11 @@
 	icon_state = "darkblue_skirt"
 	item_state = "b_suit"
 
+/obj/item/clothing/under/color/darkblue/shirt
+	name = "dark blue shirt"
+	icon_state = "darkblue_shirt"
+	item_state = "darkblue_shirt"
+
 /obj/item/clothing/under/color/teal
 	name = "teal jumpsuit"
 	icon_state = "teal"
@@ -175,10 +235,20 @@
 	icon_state = "teal_skirt"
 	item_state = "b_suit"
 
+/obj/item/clothing/under/color/teal/shirt
+	name = "teal shirt"
+	icon_state = "teal_shirt"
+	item_state = "teal_shirt"
+
 /obj/item/clothing/under/color/lightpurple
 	name = "purple jumpsuit"
 	icon_state = "lightpurple"
 	item_state = "p_suit"
+
+/obj/item/clothing/under/color/lightpurple/shirt
+	name = "lightpurple shirt"
+	icon_state = "lightpurple_shirt"
+	item_state = "lightpurple_shirt"
 
 /obj/item/clothing/under/color/lightpurple/trackless
 	desc = "A magically colored jumpsuit. No sensors are attached!"
@@ -199,6 +269,11 @@
 	icon_state = "darkgreen_skirt"
 	item_state = "g_suit"
 
+/obj/item/clothing/under/color/darkgreen/shirt
+	name = "darkgreen shirt"
+	icon_state = "darkgreen_shirt"
+	item_state = "darkgreen_shirt"
+
 /obj/item/clothing/under/color/lightbrown
 	name = "lightbrown jumpsuit"
 	icon_state = "lightbrown"
@@ -208,6 +283,11 @@
 	name = "lightbrown jumpskirt"
 	icon_state = "lightbrown_skirt"
 	item_state = "lb_suit"
+
+/obj/item/clothing/under/color/lightbrown/shirt
+	name = "lightbrown shirt"
+	icon_state = "lightbrown_shirt"
+	item_state = "lightbrown_shirt"
 
 /obj/item/clothing/under/color/brown
 	name = "brown jumpsuit"
@@ -219,6 +299,11 @@
 	icon_state = "brown_skirt"
 	item_state = "lb_suit"
 
+/obj/item/clothing/under/color/brown/shirt
+	name = "brown shirt"
+	icon_state = "brown_shirt"
+	item_state = "brown_shirt"
+
 /obj/item/clothing/under/color/maroon
 	name = "maroon jumpsuit"
 	icon_state = "maroon"
@@ -228,6 +313,11 @@
 	name = "maroon jumpskirt"
 	icon_state = "maroon_skirt"
 	item_state = "r_suit"
+
+/obj/item/clothing/under/color/maroon/shirt
+	name = "maroon shirt"
+	icon_state = "maroon_shirt"
+	item_state = "maroon_shirt"
 
 /obj/item/clothing/under/color/rainbow
 	name = "rainbow jumpsuit"
@@ -241,4 +331,11 @@
 	desc = "A multi-colored jumpskirt!"
 	icon_state = "rainbow_skirt"
 	item_state = "rainbow"
+	can_adjust = FALSE
+
+/obj/item/clothing/under/color/rainbow/shirt
+	name = "rainbow shirt"
+	desc = "A multi-colored shirt!"
+	icon_state = "rainbow_shirt"
+	item_state = "rainbow_shirt"
 	can_adjust = FALSE
