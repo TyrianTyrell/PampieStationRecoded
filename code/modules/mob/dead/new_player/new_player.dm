@@ -758,7 +758,7 @@
 	client.prefs.copy_to(H, initial_spawn = TRUE)
 	if(src.client.prefs.event_tfs == TRUE)
 		if(time2text(world.timeofday, "Month") == "September" && text2num(time2text(world.timeofday,"DD")) > 13 && text2num(time2text(world.timeofday,"DD")) < 21)
-			if(issilicon(H))
+			if(HAS_TRAIT(H,TRAIT_ROBOTIC_ORGANISM))
 				H.set_species(/datum/species/mammal/synthetic)
 				H.custom_species = "Proto-Skunk"
 			else
