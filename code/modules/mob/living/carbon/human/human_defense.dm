@@ -958,3 +958,50 @@
 
 	for(var/obj/item/I in torn_items)
 		I.take_damage(damage_amount, damage_type, damage_flag, 0)
+
+/mob/living/carbon/human/proc/diapermush(mob/living/carbon/human/M)
+	var/chan = rand(1,100)
+	if(src.stinkiness > 0 || src.wetness > 0)
+		if(chan > 66)
+			to_chat(M,"<span class='warning'>Squish!</span>")
+			if(M != src)
+				to_chat(src,"<span class='warning'>Squish!</span>")
+		if(chan <= 66 && chan > 33)
+			to_chat(M,"<span class='warning'>Smursh!</span>")
+			if(M != src)
+				to_chat(src,"<span class='warning'>Smursh!</span>")
+		if(chan <= 33)
+			to_chat(M,"<span class='warning'>Splrsh!</span>")
+			if(M != src)
+				to_chat(src,"<span class='warning'>Splrsh!</span>")
+	else
+		to_chat(M,"<span class='warning'>Crinkle!</span>")
+		if(M != src)
+			to_chat(src,"<span class='warning'>Crinkle!</span>")
+
+/mob/living/carbon/human/proc/pantsing(mob/living/carbon/human/M)
+	var/olduniform = M.w_uniform
+	if(findtext("[M.w_uniform.type]","/shirt"))
+		var/newuniform3 = type2parent(M.w_uniform.type)
+		var/newuniform1 = new newuniform3
+		if(src != M)
+			to_chat(src, "You pull [M]'s pants back up.")
+		to_chat(M, "Your pants have been pulled back up.")
+		M.temporarilyRemoveItemFromInventory(M.w_uniform, TRUE, FALSE)
+		M.equip_to_slot_or_del(newuniform1, SLOT_W_UNIFORM)
+		qdel(olduniform)
+		return
+	for(var/TTT in subtypesof(M.w_uniform))
+		if(findtext("[TTT]","/shirt"))
+			var/obj/item/clothing/under/newuniform2 = new TTT
+			if(src != M)
+				to_chat(src, "You pants [M].")
+			to_chat(M, "You've been pantsed!")
+			M.temporarilyRemoveItemFromInventory(M.w_uniform, TRUE, FALSE)
+			M.equip_to_slot_or_del(newuniform2, SLOT_W_UNIFORM)
+			qdel(olduniform)
+			return
+	if(src != M)
+		to_chat(src, "[M]'s pants are attached to [M.p_their()] shirt!")
+	else
+		to_chat(src, "Your pants are attached to your shirt!")

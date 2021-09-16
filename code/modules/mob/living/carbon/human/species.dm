@@ -1537,10 +1537,16 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 			to_chat(user, "<span class='notice'>You do not breathe, so you cannot perform CPR.</span>")
 
 /datum/species/proc/grab(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
+	if(user.voremode == TRUE && user.zone_selected == BODY_ZONE_PRECISE_GROIN)
+		if((HAS_TRAIT(target,TRAIT_POTTYREBEL) || HAS_TRAIT(target,TRAIT_INCONTINENT) || HAS_TRAIT(target,BABYBRAINED_TRAIT) || HAS_TRAIT(target,TRAIT_DIAPERUSE) || HAS_TRAIT(target,TRAIT_FULLYINCONTINENT)))
+			target.diapermush(user)
+			return 1
+
 	if(target.check_martial_melee_block())
 		target.visible_message("<span class='warning'>[target] blocks [user]'s grab attempt!</span>", target = user, \
 			target_message = "<span class='warning'>[target] blocks your grab attempt!</span>")
 		return 0
+
 	if(attacker_style && attacker_style.grab_act(user,target))
 		return 1
 	else
@@ -1670,6 +1676,10 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 	var/same_dir = (target.dir & user.dir)
 	var/aim_for_groin  = user.zone_selected == "groin"
 	var/target_aiming_for_groin = target.zone_selected == "groin"
+
+	if(user.voremode == TRUE && user.zone_selected == BODY_ZONE_PRECISE_GROIN)
+		target.pantsing(user)
+		return 1
 
 	if(target.check_martial_melee_block()) //END EDIT
 		target.visible_message("<span class='warning'>[target] blocks [user]'s disarm attempt!</span>", target = user, \
