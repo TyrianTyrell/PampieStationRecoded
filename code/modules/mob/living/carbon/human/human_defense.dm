@@ -980,28 +980,28 @@
 			to_chat(src,"<span class='warning'>Crinkle!</span>")
 
 /mob/living/carbon/human/proc/pantsing(mob/living/carbon/human/M)
-	var/olduniform = M.w_uniform
-	if(findtext("[M.w_uniform.type]","/shirt"))
-		var/newuniform3 = type2parent(M.w_uniform.type)
+	var/olduniform = src.w_uniform
+	if(findtext("[src.w_uniform.type]","/shirt"))
+		var/newuniform3 = type2parent(src.w_uniform.type)
 		var/newuniform1 = new newuniform3
 		if(src != M)
-			to_chat(src, "You pull [M]'s pants back up.")
-		to_chat(M, "Your pants have been pulled back up.")
-		M.temporarilyRemoveItemFromInventory(M.w_uniform, TRUE, FALSE)
-		M.equip_to_slot_or_del(newuniform1, SLOT_W_UNIFORM)
+			to_chat(M, "You pull [src]'s pants back up.")
+		to_chat(src, "Your pants have been pulled back up.")
+		src.temporarilyRemoveItemFromInventory(src.w_uniform, TRUE, FALSE)
+		src.equip_to_slot_or_del(newuniform1, SLOT_W_UNIFORM)
 		qdel(olduniform)
 		return
-	for(var/TTT in subtypesof(M.w_uniform))
+	for(var/TTT in subtypesof(src.w_uniform))
 		if(findtext("[TTT]","/shirt"))
 			var/obj/item/clothing/under/newuniform2 = new TTT
 			if(src != M)
-				to_chat(src, "You pants [M].")
-			to_chat(M, "You've been pantsed!")
-			M.temporarilyRemoveItemFromInventory(M.w_uniform, TRUE, FALSE)
-			M.equip_to_slot_or_del(newuniform2, SLOT_W_UNIFORM)
+				to_chat(M, "You pants [src].")
+			to_chat(src, "You've been pantsed!")
+			src.temporarilyRemoveItemFromInventory(src.w_uniform, TRUE, FALSE)
+			src.equip_to_slot_or_del(newuniform2, SLOT_W_UNIFORM)
 			qdel(olduniform)
 			return
 	if(src != M)
-		to_chat(src, "[M]'s pants are attached to [M.p_their()] shirt!")
+		to_chat(M, "[src]'s pants are attached to [src.p_their()] shirt!")
 	else
-		to_chat(src, "Your pants are attached to your shirt!")
+		to_chat(M, "Your pants are attached to your shirt!")
