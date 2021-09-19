@@ -29,7 +29,7 @@
 	paycheck_department = ACCOUNT_CAR
 
 	display_order = JOB_DISPLAY_ORDER_QUARTERMASTER
-	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/brainproblems, /datum/quirk/insanity)
+	blacklisted_quirks = list(/datum/quirk/brainproblems, /datum/quirk/quadriplegic, /datum/quirk/blindness, /datum/quirk/deaf, /datum/quirk/mute, /datum/quirk/insanity, /datum/quirk/paraplegic, /datum/quirk/blooddeficiency)
 	threat = 0.5
 
 /datum/outfit/job/quartermaster
