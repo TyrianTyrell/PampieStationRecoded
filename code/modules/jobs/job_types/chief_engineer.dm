@@ -34,7 +34,7 @@
 	starting_modifiers = list(/datum/skill_modifier/job/level/wiring, /datum/skill_modifier/job/affinity/wiring)
 
 	display_order = JOB_DISPLAY_ORDER_CHIEF_ENGINEER
-	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/brainproblems, /datum/quirk/paraplegic, /datum/quirk/insanity)
+	blacklisted_quirks = list(/datum/quirk/brainproblems, /datum/quirk/quadriplegic, /datum/quirk/blindness, /datum/quirk/deaf, /datum/quirk/mute, /datum/quirk/insanity, /datum/quirk/paraplegic, /datum/quirk/blooddeficiency)
 	threat = 2
 
 /datum/outfit/job/ce
