@@ -218,6 +218,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/autostand = TRUE
 	var/auto_ooc = FALSE
 	var/event_tfs = FALSE
+	var/dresscodes = TRUE
 
 	///This var stores the amount of points the owner will get for making it out alive.
 	var/hardcore_survival_score = 0
@@ -826,6 +827,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Auto stand:</b> <a href='?_src_=prefs;preference=autostand'>[autostand ? "Enabled" : "Disabled"]</a><br>"
 			dat += "<b>Auto OOC:</b> <a href='?_src_=prefs;preference=auto_ooc'>[auto_ooc ? "Enabled" : "Disabled"]</a><br>"
 			dat += "<b>Event TFS:</b> <a href='?_src_=prefs;preference=event_tfs'>[event_tfs ? "Enabled" : "Disabled"]</a><br>"
+			dat += "<b>Dress Codes:</b> <a href='?_src_=prefs;preference=dresscodes'>[dresscodes ? "Enabled" : "Disabled"]</a><br>"
 			dat += "<b>Force Slot Storage HUD:</b> <a href='?_src_=prefs;preference=no_tetris_storage'>[no_tetris_storage ? "Enabled" : "Disabled"]</a><br>"
 			dat += "<b>Screen Shake:</b> <a href='?_src_=prefs;preference=screenshake'>[(screenshake==100) ? "Full" : ((screenshake==0) ? "None" : "[screenshake]")]</a><br>"
 			if (user && user.client && !user.client.prefs.screenshake==0)
@@ -2617,6 +2619,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					auto_ooc = !auto_ooc
 				if("event_tfs")
 					event_tfs = !event_tfs
+				if("dresscodes")
+					dresscodes = !dresscodes
 				if("no_tetris_storage")
 					no_tetris_storage = !no_tetris_storage
 				if ("screenshake")
@@ -3035,7 +3039,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.hair_style = hair_style
 	character.facial_hair_style = facial_hair_style
 	character.underwear = underwear
-
 	character.saved_underwear = underwear
 	character.undershirt = undershirt
 	character.saved_undershirt = undershirt

@@ -119,6 +119,20 @@
 	to_chat(src,"<span class='userlove'>You used your [G.name] to fill [container].</span>")
 	do_climax(fluid_source, container, G, FALSE)
 
+/mob/living/carbon/human/proc/mob_milk(obj/item/organ/genital/G, mob/living/carbon/human/milker, obj/item/reagent_containers/container, mb_time = 30) //For beaker-filling, beware the bartender
+	var/datum/reagents/fluid_source = G.climaxable(src)
+	if(!fluid_source)
+		return
+	if(mb_time)
+		if(src == milker)
+			to_chat(src,"<span class='userlove'>You start to [G.masturbation_verb] your [G.name] over [container].</span>")
+		else
+			to_chat(src,"<span class='userlove'>[milker] starts to [G.masturbation_verb] your [G.name] into [container].</span>")
+		if(!do_after(src, mb_time, target = src) || !in_range(src, container) || !G.climaxable(src, TRUE))
+			return
+	to_chat(src,"<span class='userlove'>Your [G.name] empties themselves into [container].</span>")
+	do_climax(fluid_source, container, G, FALSE)
+
 /mob/living/carbon/human/proc/pick_climax_genitals(silent = FALSE)
 	var/list/genitals_list
 	var/list/worn_stuff = get_equipped_items()

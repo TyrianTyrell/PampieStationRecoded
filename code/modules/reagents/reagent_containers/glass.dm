@@ -20,6 +20,14 @@
 	if(!spillable)
 		return
 
+	if(ishuman(user) && ishuman(M))
+		var/mob/living/carbon/human/HU = user
+		var/mob/living/carbon/human/HM = M
+		if(HU.voremode == TRUE && HU.zone_selected == BODY_ZONE_CHEST && HM.dna.features["has_breasts"] == TRUE)
+			var/obj/item/organ/genital/breasts/B = HM.getorganslot(ORGAN_SLOT_BREASTS)
+			HM.mob_milk(B, HU, src)
+			return
+
 	if(!reagents || !reagents.total_volume)
 		to_chat(user, "<span class='warning'>[src] is empty!</span>")
 		return

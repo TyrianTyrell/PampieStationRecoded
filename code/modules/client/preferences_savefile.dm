@@ -429,6 +429,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["preferred_chaos"]	>> preferred_chaos
 	S["auto_ooc"]			>> auto_ooc
 	S["event_tfs"]			>> event_tfs
+	S["dresscodes"]			>> dresscodes
 	S["no_tetris_storage"]		>> no_tetris_storage
 
 	//favorite outfits
@@ -487,6 +488,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	cit_toggles			= sanitize_integer(cit_toggles, 0, 16777215, initial(cit_toggles))
 	auto_ooc			= sanitize_integer(auto_ooc, 0, 1, initial(auto_ooc))
 	event_tfs			= sanitize_integer(event_tfs, 0, 1, initial(event_tfs))
+	dresscodes			= sanitize_integer(dresscodes, 0, 1, initial(dresscodes))
 	no_tetris_storage		= sanitize_integer(no_tetris_storage, 0, 1, initial(no_tetris_storage))
 	key_bindings 			= sanitize_islist(key_bindings, list())
 	modless_key_bindings 	= sanitize_islist(modless_key_bindings, list())
@@ -604,6 +606,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["preferred_chaos"], preferred_chaos)
 	WRITE_FILE(S["auto_ooc"], auto_ooc)
 	WRITE_FILE(S["event_tfs"], event_tfs)
+	WRITE_FILE(S["dresscodes"], dresscodes)
 	WRITE_FILE(S["no_tetris_storage"], no_tetris_storage)
 
 	if(length(unlockable_loadout_data))
