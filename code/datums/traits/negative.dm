@@ -6,7 +6,7 @@
 	value = -2
 	gain_text = "<span class='danger'>You feel your vigor slowly fading away.</span>"
 	lose_text = "<span class='notice'>You feel vigorous again.</span>"
-	antag_removal_text = "Your antagonistic nature has removed your blood deficiency."
+	antag_removal_text = "Your contractors have injected you with experimental medicine to improve your blood regeneration."
 	medical_record_text = "Patient requires regular treatment for blood loss due to low production of blood."
 
 /datum/quirk/blooddeficiency/on_process()
@@ -183,7 +183,8 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 	human_only = TRUE
 	gain_text = null // Handled by trauma.
 	lose_text = null
-	medical_record_text = "Patient has an untreatable impairment in motor function in the lower extremities."
+	medical_record_text = "Patient has an untreatable loss of motor and sensory functions in the lower extremities."
+	antag_removal_text = "You've been provided with a top of the line cybernetic spine replacement."
 	on_spawn_immediate = FALSE
 
 /datum/quirk/paraplegic/add()
@@ -367,7 +368,7 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 	gain_text = "<span class='danger'>You find yourself unable to hear anything!</span>"
 	lose_text = "<span class='notice'>W-was that a NOISE?</span>"
 	medical_record_text = "The patient's ears don't work."
-	antag_removal_text = "You're just so evil, you can suddenly hear."
+	antag_removal_text = "You've been provided with a cochlear implant."
 	var/datum/brain_trauma/severe/deaf/deaf
 
 /datum/quirk/deaf/add()
@@ -394,6 +395,7 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 	value = -4
 	gain_text = "<span class='danger'>You can't see anything.</span>"
 	lose_text = "<span class='notice'>You miraculously gain back your vision.</span>"
+	antag_removal_text = "Your contractors fixed your vision for you. DON'T mess this up."
 	medical_record_text = "Patient has permanent blindness."
 
 /datum/quirk/blindness/add()
@@ -425,6 +427,7 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 	gain_text = "<span class='danger'>You feel really lonely...</span>"
 	lose_text = "<span class='notice'>You feel like you could be safe on your own.</span>"
 	medical_record_text = "Patient feels sick and distressed when not around other people, leading to potentially lethal levels of stress."
+	antag_removal_text = "You've learned that you're never alone when you're with the syndicate."
 
 /datum/quirk/monophobia/post_add()
 	. = ..()
@@ -532,7 +535,8 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 	human_only = TRUE
 	gain_text = null // Handled by trauma.
 	lose_text = null
-	medical_record_text = "Patient has an untreatable impairment in motor function in all extremities."
+	medical_record_text = "Patient has an untreatable loss of motor and sensory functions in all extremities."
+	antag_removal_text = "You've been provided with a high tech cybernetic spine for your job."
 	on_spawn_immediate = FALSE
 
 /datum/quirk/quadriplegic/add()
