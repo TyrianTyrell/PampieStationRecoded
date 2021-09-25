@@ -137,21 +137,15 @@
 /mob/living/carbon/proc/PampUpdate()
 	if(stat != DEAD && (HAS_TRAIT(src,TRAIT_INCONTINENT) || HAS_TRAIT(src,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(src,TRAIT_POTTYREBEL) || HAS_TRAIT(src,BABYBRAINED_TRAIT) || HAS_TRAIT(src,TRAIT_DIAPERUSE)) && src.client != null)
 		if(src.client.prefs.accident_types != "Poop Only")
-			if (prob(25))
-				pee = pee + 0.2
-			else if (prob(25))
-				pee = pee + 0.3
-			else
-				pee = pee + 0.25
+			pee = pee + ((20 + rand(0, 10))/100)
+			if(HAS_TRAIT(src, TRAIT_STINKER))
+				pee = pee + 0.05
 		else
 			pee = 0
 		if(src.client.prefs.accident_types != "Pee Only")
-			if (prob(25))
-				poop = poop + 0.1
-			else if (prob(25))
-				poop = poop + 0.05
-			else
-				poop = poop + 0.075
+			poop = poop + ((50 + rand(0,50))/1000)
+			if(HAS_TRAIT(src, TRAIT_STINKER))
+				poop = poop + 0.025
 		else
 			poop = 0
 	if(!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))

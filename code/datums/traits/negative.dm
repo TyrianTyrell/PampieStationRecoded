@@ -562,3 +562,11 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 				wheels.setDir(spawn_hchair.dir)
 
 			wheels.buckle_mob(quirk_holder)
+
+/datum/quirk/stinker
+	name = "Accident Prone"
+	desc = "Your bowels and bladder tend to fill up quicker than usual."
+	value = 0
+	mob_trait = TRAIT_STINKER
+	gain_text = null
+	lose_text = null

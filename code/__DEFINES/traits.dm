@@ -231,6 +231,7 @@
 #define TRAIT_WETINCONTINENT "urinary_incontinent"
 #define TRAIT_MESSINCONTINENT "fecal_incontinent"
 #define TRAIT_FULLYINCONTINENT "unaware"
+#define TRAIT_STINKER "accident_prone"
 #define TRAIT_POTTYREBEL "potty_rebel"
 #define TRAIT_DIAPERUSE "diaper_use"
 #define TRAIT_EXACTCHECK "exact_check"
