@@ -74,6 +74,8 @@
 					butt.undie_color = "777"
 				if("Jeans")
 					butt.undie_color = "004"
+				if("circuit")
+					butt.undie_color = "030"
 		else
 			butt.underwear = underwear
 			butt.undie_color = undie_color
