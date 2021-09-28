@@ -622,5 +622,23 @@
 
 	activate_pin(3)
 
+/obj/item/integrated_circuit/manipulation/change
+	name = "diaper changer"
+	desc = "A circuit that can automatically synthesize and provide diapers from inside."
+	icon_state = "autodiaper"
+	extended_desc = "Pick a person and pulse to change."
+	cooldown_per_use = 10
+	complexity = 10
+	inputs = list("target object" = IC_PINTYPE_REF)
+	activators = list("change" = IC_PINTYPE_PULSE_IN,"on change" = IC_PINTYPE_PULSE_OUT)
+	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
+
+/obj/item/integrated_circuit/manipulation/change/do_work()
+
+CODE FOR CHANGING GOES HERE
+	activate_pin(2)
+
+
+
 
 

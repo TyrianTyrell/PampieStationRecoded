@@ -758,6 +758,54 @@
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "Punk_full"
 
+/obj/item/diaper/pink
+	name = "\improper Pink Dreams"
+	desc = "Pink's not dead! See what I did there?"
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Pink"
+
+/obj/item/wetdiap/pink
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Pink_wet"
+
+/obj/item/poopydiap/pink
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Pink_messy"
+
+/obj/item/useddiap/pink
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Pink_messy"
+
+/obj/item/diaper/pink_thick
+	name = "\improper Pink Fantasies"
+	desc = "Pink's not dead! See what I did there?"
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Pink_thick"
+
+/obj/item/wetdiap/pink_thick
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Pink_wet"
+
+/obj/item/poopydiap/pink_thick
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Pink_messy"
+
+/obj/item/useddiap/pink_thick
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "Pink_messy"
+
 /obj/item/diaper/thirteen
 	name = "\improper Limited Edition Thirteen"
 	desc = "It's a plain diaper but this one has a number on it. Riveting!"
@@ -829,6 +877,150 @@
 	desc = "Whoever had this on obviously needed it."
 	icon = 'icons/incon/diaper.dmi'
 	icon_state = "Camo_messy"
+
+/obj/item/diaper/circuit
+	name = "\improper CoderPants"
+	desc = "Looks very advanced with all the circuits."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "circuit"
+
+/obj/item/wetdiap/circuit
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "circuit_wet"
+
+/obj/item/poopydiap/circuit
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "circuit_messy"
+
+/obj/item/useddiap/circuit
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "circuit_messy"
+
+/obj/item/diaper/matri
+	name = "\improper The Source"
+	desc = "01010011 01110100 01101001 01101110 01101011 01111001 00001010."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "matrix"
+
+/obj/item/wetdiap/matri
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "matrix_wet"
+
+/obj/item/poopydiap/matri
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "matrix_messy"
+
+/obj/item/useddiap/matri
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "matrix_messy"
+
+/obj/item/diaper/rainbow
+	name = "\improper DiaPride"
+	desc = "RAINBOOOOOOW!"
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "rainbow"
+
+/obj/item/wetdiap/rainbow
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "rainbow_wet"
+
+/obj/item/poopydiap/rainbow
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "rainbow_messy"
+
+/obj/item/useddiap/rainbow
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "rainbow_messy"
+
+/obj/item/diaper/rainbow_thick
+	name = "\improper DiaPride Special Edition"
+	desc = "The special edition. Said to hold more without being thicker."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "rainbowse"
+
+/obj/item/wetdiap/rainbow_thick
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "rainbow_wet"
+
+/obj/item/poopydiap/rainbow_thick
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "rainbow_messy"
+
+/obj/item/useddiap/rainbow_thick
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "rainbow_messy"
+
+/obj/item/diaper/fish
+	name = "\improper Sharkies"
+	desc = "Gums Unleashed. Smells kinda fishy."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "fish"
+
+/obj/item/wetdiap/fish
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "fish_wet"
+
+/obj/item/poopydiap/fish
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "fish_messy"
+
+/obj/item/useddiap/fish
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "fish_full"
+
+/obj/item/diaper/skunk
+	name = "\improper Skunkies"
+	desc = "They can contain skunk spray. Mostly."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "skunk"
+
+/obj/item/wetdiap/skunk
+	name = "wet diaper"
+	desc = "Thoroughly soaked."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "skunk_wet"
+
+/obj/item/poopydiap/skunk
+	name = "poopy diaper"
+	desc = "Can be smelled from across the room."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "skunk_messy"
+
+/obj/item/useddiap/skunk
+	name = "used diaper"
+	desc = "Whoever had this on obviously needed it."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "skunk_full"
 
 /obj/item/seeds/marshmallow
 	name = "pack of marshmallow seeds"
