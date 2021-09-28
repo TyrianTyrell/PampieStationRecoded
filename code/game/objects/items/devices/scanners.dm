@@ -453,15 +453,15 @@ GENETICS SCANNER
 			msg += "<span class='notice'>Detected cybernetic modifications:</span>\n"
 			msg += "<span class='notice'>[cyberimp_detect]</span>\n"
 	msg += "<span class='notice'>*---------*</span>"
+	//diaper state
+	if(HAS_TRAIT(H,TRAIT_INCONTINENT) || HAS_TRAIT(H,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(H,TRAIT_POTTYREBEL) || HAS_TRAIT(H,BABYBRAINED_TRAIT) || HAS_TRAIT(H,TRAIT_DIAPERUSE))
+		var/wet_percent = ((H.wetness / (250 + H.heftersbonus)) / 100)
+		var/mess_percent = ((H.stinkiness / (250 + H.heftersbonus)) / 100)
+		msg += "<span class='info'>Wetness: [wet_percent]%, Messy: [mess_percent]%</span>"
+
 	to_chat(user, msg)
 	SEND_SIGNAL(M, COMSIG_NANITE_SCAN, user, FALSE)
 
-	//diaper state
-	if(HAS_TRAIT(src,TRAIT_INCONTINENT) || HAS_TRAIT(src,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(src,TRAIT_POTTYREBEL) || HAS_TRAIT(src,BABYBRAINED_TRAIT) || HAS_TRAIT(src,TRAIT_DIAPERUSE))
-		var/mob/living/carbon/C = M
-			var/wet_percent = M.diappercent1
-			var/mess_percent = M.diappercent2
-				msg += "<span class='info'>Wetness: <C.wet_percent>%, Messy: <C.mess_percent>"
 
 /proc/chemscan(mob/living/user, mob/living/M)
 	if(istype(M))

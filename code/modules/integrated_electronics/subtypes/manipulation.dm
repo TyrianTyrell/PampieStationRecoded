@@ -634,8 +634,18 @@
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
 /obj/item/integrated_circuit/manipulation/change/do_work()
-
-CODE FOR CHANGING GOES HERE
+	var/mob/living/carbon/human/H = get_pin_data_as_type(IC_INPUT, 1, /mob/living/carbon/human)
+	if(!ishuman(H))
+		return
+	if(HAS_TRAIT(H,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(H,TRAIT_INCONTINENT) || HAS_TRAIT(H,TRAIT_POTTYREBEL) || HAS_TRAIT(H,BABYBRAINED_TRAIT) || HAS_TRAIT(H,TRAIT_DIAPERUSE))
+		playsound(H.loc,'sound/effects/Diapertape.wav',50,1)
+		if(do_after_mob(usr,H))
+			var/obj/item/diaper/circuit/diap = new /obj/item/diaper/circuit
+			H.DiaperChange(diap)
+			H.brand = diap.icon_state
+			H.brand2 = diap.name
+			H.DiaperAppearance()
+			H.heftersbonus = 0
 	activate_pin(2)
 
 

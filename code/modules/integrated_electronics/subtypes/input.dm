@@ -169,7 +169,7 @@
 	complexity = 2
 	inputs = list("target" = IC_PINTYPE_REF)
 	outputs = list(
-		"Needs a change" = IC_PINTYPE_BOOLEAN,
+		"Needs a change" = IC_PINTYPE_STRING,
 		)
 	activators = list("scan" = IC_PINTYPE_PULSE_IN, "on scanned" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
@@ -179,10 +179,11 @@
 	var/mob/living/H = get_pin_data_as_type(IC_INPUT, 1, /mob/living)
 	if(!istype(H)) //Invalid input
 		return
-	if(H.Adjacent(get_turf(src))) // Like normal analysers, it can't be used at range.
-		var/change=FALSE
-		if (H.diappercent1>=0)||(H.diappercent2>=0)
-			change=TRUE
+	if(H.Adjacent(get_turf(src)) && ishuman(H)) // Like normal analysers, it can't be used at range.
+		var/mob/living/carbon/human/HU = H
+		var/change="[HU] is clean."
+		if(HU.wetness > 0 || HU.stinkiness > 0)
+			change="[HU] needs a change."
 
 		set_pin_data(IC_OUTPUT, 1, change)
 
@@ -197,7 +198,8 @@
 	inputs = list("target" = IC_PINTYPE_REF)
 	outputs = list(
 		"Wet %"		= IC_PINTYPE_NUMBER,
-		"Messy %"	= IC_PINTYPE_NUMBER
+		"Messy %"	= IC_PINTYPE_NUMBER,
+		"Usage"		= IC_PINTYPE_STRING
 	)
 	activators = list("scan" = IC_PINTYPE_PULSE_IN, "on scanned" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_RESEARCH
@@ -207,12 +209,14 @@
 	var/mob/living/H = get_pin_data_as_type(IC_INPUT, 1, /mob/living)
 	if(!istype(H)) //Invalid input
 		return
-	if(H in view(get_turf(src))) // Like medbot's analyzer it can be used in range..
-		var/wetpercent = H.diappercent1
-		var/messpercent = H.diappercent2
+	if(ishuman(H)) // Like medbot's analyzer it can be used in range..
+		var/mob/living/carbon/human/HU = H
+		var/wetpercent = round((HU.wetness / (250 + HU.heftersbonus)) * 100)
+		var/messpercent = round((HU.stinkiness / (250 + HU.heftersbonus)) * 100)
 
 		set_pin_data(IC_OUTPUT, 1, wetpercent)
 		set_pin_data(IC_OUTPUT, 2, messpercent)
+		set_pin_data(IC_OUTPUT, 3, "[HU] is [wetpercent]% wet, and [messpercent]% messy.")
 
 	push_data()
 	activate_pin(2)
