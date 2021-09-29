@@ -1744,7 +1744,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 									modified_limbs[limb_type] = list(modification_type)
 
 				if("underwear")
-					var/new_underwear = input(user, "Choose your character's underwear:", "Character Preference")  as null|anything in GLOB.underwear_list
+					var/new_underwear = input(user, "Choose your character's underwear:", "Character Preference") as null|anything in GLOB.underwear_list
 					if(new_underwear)
 						underwear = new_underwear
 

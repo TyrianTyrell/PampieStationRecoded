@@ -95,13 +95,13 @@
 				if("alien")
 					butt.undie_color = "563C5C"
 				if("skunk")
-					butt.underwear = "Skunkies"
+					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/skunk()
 				if("bee")
-					butt.underwear = "Beepers"
+					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/bee()
 				if("rainbow")
-					butt.underwear = "DiaPride"
+					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/rainbow()
 				if("rainbowse")
-					butt.underwear = "DiaPride Special Edition"
+					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/rainbow_thick()
 		else
 			butt.underwear = underwear
 			butt.undie_color = undie_color

@@ -793,7 +793,11 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 			if(H.saved_underwear)
 				H.underwear = H.saved_underwear
 				H.saved_underwear = ""
-			var/datum/sprite_accessory/underwear/bottom/B = GLOB.underwear_list[H.underwear]
+			var/datum/sprite_accessory/underwear/bottom/B
+			if(GLOB.underwear_list.Find(H.underwear))
+				B = GLOB.underwear_list[H.underwear]
+			else
+				B = H.underwear
 			if(B)
 				var/digilegs = ((DIGITIGRADE in species_traits) && B.has_digitigrade) ? "_d" : ""
 				var/mutable_appearance/MA = mutable_appearance(B.icon, "[B.icon_state][digilegs]", -BODY_LAYER)

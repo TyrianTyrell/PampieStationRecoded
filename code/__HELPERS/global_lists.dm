@@ -8,10 +8,7 @@
 	//facial hair
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/facial_hair, GLOB.facial_hair_styles_list, GLOB.facial_hair_styles_male_list, GLOB.facial_hair_styles_female_list)
 	//underwear
-	init_sprite_accessory_subtypes(/datum/sprite_accessory/underwear/bottom, GLOB.underwear_list, GLOB.underwear_m, GLOB.underwear_f)
-	GLOB.underwear_list = GLOB.underwear_list - subtypesof(/datum/sprite_accessory/underwear/bottom/diaper)
-	GLOB.underwear_m = GLOB.underwear_m - subtypesof(/datum/sprite_accessory/underwear/bottom/diaper)
-	GLOB.underwear_f = GLOB.underwear_f - subtypesof(/datum/sprite_accessory/underwear/bottom/diaper)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/underwear/bottom, GLOB.underwear_list, GLOB.underwear_m, GLOB.underwear_f, TRUE)
 	//undershirt
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/underwear/top, GLOB.undershirt_list, GLOB.undershirt_m, GLOB.undershirt_f)
 	//socks
