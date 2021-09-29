@@ -452,12 +452,12 @@ GENETICS SCANNER
 		if(cyberimp_detect)
 			msg += "<span class='notice'>Detected cybernetic modifications:</span>\n"
 			msg += "<span class='notice'>[cyberimp_detect]</span>\n"
+	if(HAS_TRAIT(H,TRAIT_INCONTINENT) || HAS_TRAIT(H,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(H,TRAIT_POTTYREBEL) || HAS_TRAIT(H,BABYBRAINED_TRAIT) || HAS_TRAIT(H,TRAIT_DIAPERUSE))
+		var/wet_percent = round((H.wetness / (250 + H.heftersbonus)) * 100)
+		var/mess_percent = round((H.stinkiness / (250 + H.heftersbonus)) * 100)
+		msg += "<span class='info'>Wetness: [wet_percent]%, Messy: [mess_percent]%</span>\n"
 	msg += "<span class='notice'>*---------*</span>"
 	//diaper state
-	if(HAS_TRAIT(H,TRAIT_INCONTINENT) || HAS_TRAIT(H,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(H,TRAIT_POTTYREBEL) || HAS_TRAIT(H,BABYBRAINED_TRAIT) || HAS_TRAIT(H,TRAIT_DIAPERUSE))
-		var/wet_percent = ((H.wetness / (250 + H.heftersbonus)) / 100)
-		var/mess_percent = ((H.stinkiness / (250 + H.heftersbonus)) / 100)
-		msg += "<span class='info'>Wetness: [wet_percent]%, Messy: [mess_percent]%</span>"
 
 	to_chat(user, msg)
 	SEND_SIGNAL(M, COMSIG_NANITE_SCAN, user, FALSE)
