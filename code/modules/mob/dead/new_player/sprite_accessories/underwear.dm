@@ -192,3 +192,27 @@
 	icon_state = "male_diaper"
 	has_color = TRUE
 	gender = NEUTER
+
+/datum/sprite_accessory/underwear/bottom/diaper/rainbow
+	name = "DiaPride"
+	icon_state = "rainbowdiaper"
+	has_color = FALSE
+	locked = TRUE
+
+/datum/sprite_accessory/underwear/bottom/diaper/skunk
+	name = "Skunkies"
+	icon_state = "skunkdiaper"
+	has_color = FALSE
+	locked = TRUE
+
+/datum/sprite_accessory/underwear/bottom/diaper/bee
+	name = "Beepers"
+	icon_state = "beediaper"
+	has_color = FALSE
+	locked = TRUE
+
+/datum/sprite_accessory/underwear/bottom/diaper/rainbow_thick
+	name = "DiaPride Special Edition"
+	icon_state = "rainbowdiaperse"
+	has_color = FALSE
+	locked = TRUE

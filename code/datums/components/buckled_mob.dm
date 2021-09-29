@@ -76,6 +76,32 @@
 					butt.undie_color = "004"
 				if("circuit")
 					butt.undie_color = "030"
+				if("Pink")
+					butt.undie_color = "FFC0CB"
+				if("Punk")
+					butt.undie_color = "000"
+				if("fish")
+					butt.undie_color = "ABCDEF"
+				if("SMWind")
+					butt.undie_color = "0BDA51"
+				if("Cult_Clock")
+					butt.undie_color = "B8860B"
+				if("Cult_Nar")
+					butt.undie_color = "3D0000"
+				if("Ashwalker")
+					butt.undie_color = "DAA520"
+				if("Camo")
+					butt.undie_color = "568203"
+				if("alien")
+					butt.undie_color = "563C5C"
+				if("skunk")
+					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/skunk()
+				if("bee")
+					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/bee()
+				if("rainbow")
+					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/rainbow()
+				if("rainbowse")
+					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/rainbow_thick()
 		else
 			butt.underwear = underwear
 			butt.undie_color = undie_color

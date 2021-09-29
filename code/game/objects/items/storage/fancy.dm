@@ -564,3 +564,48 @@
 	icon_type = "silver ring"
 	spawn_type = /obj/item/clothing/gloves/ring/silver
 
+///PACIFIER PACK
+
+/obj/item/paci_package
+	name = "Nukpack"
+	icon = 'icons/incon/regressoray.dmi'
+	desc = "A package of Nuks, disposable pacifiers."
+	var/nuksleft = 10
+	var/obj/item/paci_package/nukinside = /obj/item/clothing/mask/pacifier
+
+/obj/item/paci_package/proc/takeout(stuff, mob/user)
+	var/atom/A
+	if(ispath(stuff))
+		A = new stuff(get_turf(user))
+	else
+		A = stuff
+	if(ishuman(user) && istype(A,/obj/item))
+		var/mob/living/carbon/human/H = user
+		if(H.put_in_hands(A))
+			to_chat(H, "You take a pacifier out of the package")
+			if(nuksleft == 0)
+				icon_state = addtext(icon_state,"-empty")
+			return A
+	to_chat(user, "You need a free hand to take a pacifier out of the package.")
+	return null
+
+/obj/item/paci_package/attack_self(mob/user)
+	. = ..()
+	if(user.held_items[user.get_inactive_hand_index()] == null)
+		if(nuksleft > 0)
+			nuksleft--
+			takeout(nukinside, user)
+		else
+			to_chat(user, "<span class='warning'>The pack is out of pacifiers!</span>")
+	else
+		to_chat(user, "You need a free hand to take a pacifier out of the package.")
+
+/obj/item/paci_package/nuk
+	icon_state = "nukpack"
+	custom_price = 50
+
+/obj/item/paci_package/nuk/Initialize(mapload, param_color)
+	. = ..()
+	if(!param_color)
+		param_color = pick("blue","black","white","green","purple","yellow","orange","red","gold")
+	icon_state = "nukpack_[param_color]"
