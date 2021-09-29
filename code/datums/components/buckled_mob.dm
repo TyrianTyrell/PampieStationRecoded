@@ -95,13 +95,13 @@
 				if("alien")
 					butt.undie_color = "563C5C"
 				if("skunk")
-					butt.underwear = "Diaper"
+					butt.underwear = "Skunkies"
 				if("bee")
-					butt.underwear = "Diaper"
+					butt.underwear = "Beepers"
 				if("rainbow")
-					butt.underwear = "Diaper"
+					butt.underwear = "DiaPride"
 				if("rainbowse")
-					butt.underwear = "Diaper"
+					butt.underwear = "DiaPride Special Edition"
 		else
 			butt.underwear = underwear
 			butt.undie_color = undie_color

@@ -23,6 +23,10 @@
 /proc/random_underwear(gender)
 	if(!GLOB.underwear_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/underwear/bottom, GLOB.underwear_list, GLOB.underwear_m, GLOB.underwear_f)
+		GLOB.underwear_list = GLOB.underwear_list - subtypesof(/datum/sprite_accessory/underwear/bottom/diaper)
+		GLOB.underwear_m = GLOB.underwear_m - subtypesof(/datum/sprite_accessory/underwear/bottom/diaper)
+		GLOB.underwear_f = GLOB.underwear_f - subtypesof(/datum/sprite_accessory/underwear/bottom/diaper)
+
 	switch(gender)
 		if(MALE)
 			return pick(GLOB.underwear_m)
