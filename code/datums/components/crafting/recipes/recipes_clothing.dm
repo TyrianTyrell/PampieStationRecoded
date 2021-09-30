@@ -48,7 +48,13 @@
 				/obj/item/clothing/mask/breath = 1)
 	category = CAT_CLOTHING
 
-
+/datum/crafting_recipe/clothdiapers
+	name = "Cloth Diaper"
+	result = /obj/item/diaper/cloth
+	time = 30
+	tools = list(TOOL_WIRECUTTER)
+	reqs = list(/obj/item/stack/sheet/cloth = 2)
+	category = CAT_CLOTHING
 
 /datum/crafting_recipe/armwraps
 	name = "Armwraps"

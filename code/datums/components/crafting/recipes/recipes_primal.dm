@@ -109,6 +109,14 @@
 				 /obj/item/stack/sheet/sinew = 4)
 	category = CAT_PRIMAL
 
+/datum/crafting_recipe/bone_diaper
+	name = "Ashwaddlers"
+	result = /obj/item/diaper/ashwalker
+	time = 20
+	reqs = list(/obj/item/stack/sheet/bone = 2,
+				 /obj/item/stack/sheet/sinew = 1)
+	category = CAT_PRIMAL
+
 /datum/crafting_recipe/bone_screwdriver
 	name = "Bone Screwdriver"
 	result = /obj/item/screwdriver/ashwalker

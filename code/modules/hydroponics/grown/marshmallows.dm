@@ -57,7 +57,7 @@
 	species = "marshmerrow"
 	plantname = "Marshmerrow"
 	icon_dead = "marshmerrow-dead"
-	product = /obj/item/reagent_containers/food/snacks/grown/marshmallax
+	product = /obj/item/reagent_containers/food/snacks/grown/marshmerrow
 	yield = 1
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
 	mutatelist = list(/obj/item/seeds/marshmallow)
@@ -70,3 +70,13 @@
 	icon_state = "marshmer"
 	bitesize_mod = 25
 	tastes = list("sweetness" = 1)
+
+/obj/item/seeds/diapers
+	name = "pack of diaper seeds"
+	desc = "They're seeds that grow into diapers. Yes, really"
+	icon_state = "seed-diap"
+	species = "diap"
+	plantname = "Diaper Plant"
+	icon_dead = "diap-dead"
+	product = /obj/item/diaper/leafy
+	yield = 1

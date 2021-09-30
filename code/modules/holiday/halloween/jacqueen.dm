@@ -206,7 +206,7 @@
 /mob/living/simple_animal/jacq/proc/treat(mob/living/carbon/C, gender)
 	visible_message("<b>[src]</b> gives off a glowing smile, <span class='spooky'>\"What ken Ah offer ye? I can magic up an object, a potion or a plushie fer ye.\"</span>")
 	jacqrunes("What ken Ah offer ye? I can magic up an object, a potion or a plushie fer ye.", C)
-	var/choices_reward = list("Object - 3 candies", "Potion - 2 candies", "Jacqueline Tracker - 2 candies", "Plushie - 1 candy", "Can I get to know you instead?", "Become a pumpkinhead dullahan (perma) - 4 candies")
+	var/choices_reward = list("Object - 3 candies", "Potion - 2 candies", "Jacqueline Tracker - 2 candies", "Plushie - 1 candy", "Spooky Diaper - 1 candy", "Can I get to know you instead?", "Become a pumpkinhead dullahan (perma) - 4 candies")
 	var/choice_reward = input(usr, "Trick or Treat?", "Trick or Treat?") in choices_reward
 
 	//rewards
@@ -264,6 +264,18 @@
 
 			new /obj/item/toy/plush/random(C.loc)
 			visible_message("<b>[src]</b> waves her hands, magicking up a plushie from thin air, <span class='spooky'>\"There ye are [gender], enjoy! \"</span>")
+			jacqrunes("There ye are [gender], enjoy!", C)
+			sleep(20)
+			poof()
+			return
+		if("Spooky Diaper - 1 candy")
+			if(!take_candies(C, 1))
+				visible_message("<b>[src]</b> raises an eyebrow, <span class='spooky'>\"It's 1 candy per nappy [gender]! Thems the rules!\"</span>")
+				jacqrunes("It's 1 candy per nappy [gender]! Thems the rules!", C)
+				return
+
+			new /obj/item/diaper/jacko(C.loc)
+			visible_message("<b>[src]</b> waves her hands, magicking up a nappy from thin air, <span class='spooky'>\"There ye are [gender], enjoy! \"</span>")
 			jacqrunes("There ye are [gender], enjoy!", C)
 			sleep(20)
 			poof()
