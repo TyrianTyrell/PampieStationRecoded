@@ -447,7 +447,7 @@
 
 /obj/item/diaper/ashwalker
 	name = "\improper Ashwaddlers"
-	desc = "Primitive looking diapers that are heat resistant."
+	desc = "Unga Bunga. What's a toilet?"
 	icon_state = "Ashwalker"
 
 /obj/item/wetdiap/ashwalker
@@ -457,7 +457,7 @@
 	icon_state = "Ashwalker_messy"
 
 /obj/item/useddiap/ashwalker
-	icon_state = "Ashwalker_full"
+	icon_state = "Ashwalker_messy"
 
 /obj/item/diaper/alien
 	name = "\improper High Tech MAG"
@@ -682,6 +682,195 @@
 
 /obj/item/useddiap/skunk
 	icon_state = "skunk_full"
+
+/obj/item/diaper/ringading
+	name = "\improper Ringadings"
+	desc = "Ringadings for your Dingalings."
+	icon_state = "ringading"
+
+/obj/item/wetdiap/ringading
+	icon_state = "ringading_wet"
+
+/obj/item/poopydiap/ringading
+	icon_state = "ringading_messy"
+
+/obj/item/useddiap/ringading
+	icon_state = "ringading_messy"
+
+/obj/item/diaper/greentext
+	name = "\improper Greentexts"
+	desc = "For some reason people really want these."
+	icon_state = "greentext"
+
+/obj/item/wetdiap/greentext
+	icon_state = "greentext_wet"
+
+/obj/item/poopydiap/greentext
+	icon_state = "greentext_messy"
+
+/obj/item/useddiap/greentext
+	icon_state = "greentext_messy"
+
+/obj/item/diaper/hawaiir
+	name = "\improper Hawaiian Diapers (Red)"
+	desc = "For that summer feeling."
+	icon_state = "hawaiir"
+
+/obj/item/wetdiap/hawaiir
+	icon_state = "hawaiir_wet"
+
+/obj/item/poopydiap/hawaiir
+	icon_state = "hawaiir_messy"
+
+/obj/item/useddiap/hawaiir
+	icon_state = "hawaiir_messy"
+
+/obj/item/diaper/hawaiib
+	name = "\improper Hawaiian Diapers (Blue)"
+	desc = "For that summer feeling."
+	icon_state = "hawaiib"
+
+/obj/item/wetdiap/hawaiib
+	icon_state = "hawaiib_wet"
+
+/obj/item/poopydiap/hawaiib
+	icon_state = "hawaiib_messy"
+
+/obj/item/useddiap/hawaiib
+	icon_state = "hawaiib_messy"
+
+/obj/item/diaper/blackcat
+	name = "\improper Black Cats"
+	desc = "Bad luck? Not with these. Unless they leak."
+	icon_state = "blackcat"
+
+/obj/item/wetdiap/blackcat
+	icon_state = "blackcat_wet"
+
+/obj/item/poopydiap/blackcat
+	icon_state = "blackcat_messy"
+
+/obj/item/useddiap/blackcat
+	icon_state = "blackcat_messy"
+
+/obj/item/diaper/goldendog
+	name = "\improper Golden Retrievers"
+	desc = "Dogs are loyal. Diapers are loyal too. We put dogs on your diapers."
+	icon_state = "goldendog"
+
+/obj/item/wetdiap/goldendog
+	icon_state = "goldendog_wet"
+
+/obj/item/poopydiap/goldendog
+	icon_state = "goldendog_messy"
+
+/obj/item/useddiap/goldendog
+	icon_state = "goldendog_messy"
+
+/obj/item/diaper/pumpkin
+	name = "\improper Bum-Kins"
+	desc = "Pumpkins for your Bum."
+	icon_state = "pumpkin"
+
+/obj/item/wetdiap/pumpkin
+	icon_state = "pumpkin_wet"
+
+/obj/item/poopydiap/pumpkin
+	icon_state = "pumpkin_messy"
+
+/obj/item/useddiap/pumpkin
+	icon_state = "pumpkin_messy"
+
+/obj/item/diaper/jacko
+	name = "\improper Jack-O-Pamps"
+	desc = "Spoopy."
+	icon_state = "jacko"
+
+/obj/item/wetdiap/jacko
+	icon_state = "jacko_wet"
+
+/obj/item/poopydiap/jacko
+	icon_state = "jacko_messy"
+
+/obj/item/useddiap/jacko
+	icon_state = "jacko_messy"
+
+/obj/item/diaper/leafy
+	name = "\improper Leafy Diapers"
+	desc = "Freshly grown and fully biodegradable."
+	icon_state = "leafy"
+
+/obj/item/wetdiap/leafy
+	icon_state = "leafy_wet"
+
+/obj/item/poopydiap/leafy
+	icon_state = "leafy_messy"
+
+/obj/item/useddiap/leafy
+	icon_state = "leafy_messy"
+
+/obj/item/wetdiap/leafy/attack_obj(obj/O, mob/living/user)
+	if(istype(O,/obj/machinery/hydroponics))
+		O.reagents.add_reagent(/datum/reagent/plantnutriment/eznutriment, 10)
+		Del()
+		return
+	. = ..()
+
+/obj/item/poopydiap/leafy/attack_obj(obj/O, mob/living/user)
+	if(istype(O,/obj/machinery/hydroponics))
+		O.reagents.add_reagent(/datum/reagent/plantnutriment/eznutriment, 15)
+		Del()
+		return
+	. = ..()
+
+/obj/item/useddiap/leafy/attack_obj(obj/O, mob/living/user)
+	if(istype(O,/obj/machinery/hydroponics))
+		O.reagents.add_reagent(/datum/reagent/plantnutriment/eznutriment, 20)
+		Del()
+		return
+	. = ..()
+
+/obj/item/diaper/slime
+	name = "\improper Squishies"
+	desc = "These come pre-squished. I guess, if you like that."
+	icon_state = "slime"
+
+/obj/item/wetdiap/slime
+	icon_state = "slime_wet"
+
+/obj/item/poopydiap/slime
+	icon_state = "slime_messy"
+
+/obj/item/useddiap/slime
+	icon_state = "slime_messy"
+
+/obj/item/diaper/scalies
+	name = "\improper Scalies"
+	desc = "Inspired by dragons and favoured by kobolds."
+	icon_state = "scalies"
+
+/obj/item/wetdiap/scalies
+	icon_state = "scalies_wet"
+
+/obj/item/poopydiap/scalies
+	icon_state = "scalies_messy"
+
+/obj/item/useddiap/scalies
+	icon_state = "scalies_messy"
+
+/obj/item/diaper/cloth
+	name = "\improper Cloth diaper"
+	desc = "Held in place with safety pins. Washable but not recommended."
+	icon_state = "cloth"
+
+/obj/item/wetdiap/cloth
+	icon_state = "cloth_wet"
+
+/obj/item/poopydiap/cloth
+	icon_state = "cloth_messy"
+
+/obj/item/useddiap/cloth
+	icon_state = "cloth_messy"
 
 	///DIAPER PACKAGES
 

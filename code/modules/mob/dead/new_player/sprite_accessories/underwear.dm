@@ -216,3 +216,39 @@
 	icon_state = "rainbowdiaperse"
 	has_color = FALSE
 	locked = TRUE
+
+/datum/sprite_accessory/underwear/bottom/diaper/matri
+	name = "Matrix"
+	icon_state = "matrixdiaper"
+	has_color = FALSE
+	locked = TRUE
+
+/datum/sprite_accessory/underwear/bottom/diaper/ringading
+	name = "Ringadings"
+	icon_state = "ringading"
+	has_color = FALSE
+	locked = TRUE
+
+/datum/sprite_accessory/underwear/bottom/diaper/hawaiir
+	name = "Hawaiian Padding (red)"
+	icon_state = "hawaiir"
+	has_color = FALSE
+	locked = TRUE
+
+/datum/sprite_accessory/underwear/bottom/diaper/hawaiib
+	name = "Hawaiian Padding (blue)"
+	icon_state = "hawaiib"
+	has_color = FALSE
+	locked = TRUE
+
+/datum/sprite_accessory/underwear/bottom/diaper/pumpkin
+	name = "Bum-kins"
+	icon_state = "pumpkin"
+	has_color = FALSE
+	locked = TRUE
+
+/datum/sprite_accessory/underwear/bottom/diaper/halloween
+	name = "Jack-O-Pants"
+	icon_state = "jacko"
+	has_color = FALSE
+	locked = TRUE

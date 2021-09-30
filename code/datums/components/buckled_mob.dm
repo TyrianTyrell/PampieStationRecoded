@@ -36,6 +36,8 @@
 					butt.undie_color = undie_color
 				if("classics")
 					butt.undie_color = "6F6"
+				if("13")
+					butt.undie_color = undie_color
 				if("swaddles")
 					butt.undie_color = "39C"
 				if("hefters_m")
@@ -73,7 +75,9 @@
 				if("Miner_thick")
 					butt.undie_color = "777"
 				if("Jeans")
-					butt.undie_color = "004"
+					butt.undie_color = "587890"
+				if("Jeans_thicc")
+					butt.undie_color = "587890"
 				if("circuit")
 					butt.undie_color = "030"
 				if("Pink")
@@ -94,6 +98,18 @@
 					butt.undie_color = "568203"
 				if("alien")
 					butt.undie_color = "563C5C"
+				if("greentext")
+					butt.undie_color = "46DA3E"
+				if("scalies")
+					butt.undie_color = "46DA3E"
+				if("blackcat")
+					butt.undie_color = "FFF"
+				if("goldendog")
+					butt.undie_color = "000"
+				if("leafy")
+					butt.undie_color = "698B57"
+				if("slime")
+					butt.undie_color = "83639D"
 				if("skunk")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/skunk()
 				if("bee")
@@ -102,6 +118,20 @@
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/rainbow()
 				if("rainbowse")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/rainbow_thick()
+				if("matrix")
+					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/matri()
+				if("ringading")
+					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/ringading()
+				if("hawaiir")
+					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/hawaiir()
+				if("hawaiib")
+					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/hawaiib()
+				if("pumpkin")
+					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/pumpkin()
+				if("jacko")
+					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/halloween()
+
+
 		else
 			butt.underwear = underwear
 			butt.undie_color = undie_color
