@@ -54,6 +54,7 @@
 	name = "pack of marshmerrow seeds"
 	desc = "They're seeds that grow marshmerrow pulps."
 	icon_state = "seed-marshmerrow"
+	growthstages = 2
 	species = "marshmerrow"
 	plantname = "Marshmerrow"
 	icon_dead = "marshmerrow-dead"
@@ -73,10 +74,26 @@
 
 /obj/item/seeds/diapers
 	name = "pack of diaper seeds"
-	desc = "They're seeds that grow into diapers. Yes, really"
+	desc = "They're seeds that grow into diapers. Yes, really. Needs some processing before use."
 	icon_state = "seed-diap"
 	species = "diap"
 	plantname = "Diaper Plant"
 	icon_dead = "diap-dead"
-	product = /obj/item/diaper/leafy
+	reagents_add = list(/datum/reagent/medicine/regression = 0.01, /datum/reagent/medicine/laxative = 0.02, /datum/reagent/medicine/diuretic = 0.03, /datum/reagent/medicine/sodiumpolyacrylate = 0.05)
+	genes = list(/datum/plant_gene/trait/stinging)
+	product = /obj/item/reagent_containers/food/snacks/grown/diaper
 	yield = 1
+	growthstages = 2
+
+/obj/item/reagent_containers/food/snacks/grown/diaper
+	seed = /obj/item/seeds/diapers
+	name = "thorny diaper"
+	desc = "Just remove the thorns and it'll work fine. Do NOT ingest."
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "leafy"
+	bitesize_mod = 25
+	tastes = list("rubbery" = 3)
+	trash = /obj/item/diaper/leafy
+	bitesize_mod = 2
+	foodtype = FRUIT
+	wine_power = 1

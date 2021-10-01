@@ -103,3 +103,10 @@
 		ADD_TRAIT(C, TRAIT_NOGUNS, ROUNDSTART_TRAIT)
 		SEND_SIGNAL(C, COMSIG_DIAPERCHANGE, C.ckey)
 	return
+
+/datum/reagent/medicine/sodiumpolyacrylate
+	name = "Sodium Polyacrylate"
+	taste_description = "extreme dryness"
+	pH = 7.5
+	color = "#bccada"
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
