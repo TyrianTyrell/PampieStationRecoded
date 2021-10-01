@@ -641,7 +641,7 @@
 		return
 	if(HAS_TRAIT(H,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(H,TRAIT_INCONTINENT) || HAS_TRAIT(H,TRAIT_POTTYREBEL) || HAS_TRAIT(H,BABYBRAINED_TRAIT) || HAS_TRAIT(H,TRAIT_DIAPERUSE))
 		playsound(H.loc,'sound/effects/Diapertape.wav',50,1)
-		if(do_after_mob(src,H))
+		if(do_after_mob(usr,H))
 			var/obj/item/diaper/circuit/diap = new /obj/item/diaper/circuit
 			H.DiaperChange(diap)
 			H.brand = diap.icon_state
