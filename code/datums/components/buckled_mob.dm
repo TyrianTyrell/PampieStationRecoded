@@ -40,6 +40,8 @@
 					butt.undie_color = undie_color
 				if("swaddles")
 					butt.undie_color = "39C"
+				if("cloth")
+					butt.undie_color = "FFF"
 				if("hefters_m")
 					butt.undie_color = "EEF"
 				if("hefters_f")
