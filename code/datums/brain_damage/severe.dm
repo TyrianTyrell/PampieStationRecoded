@@ -196,7 +196,7 @@
 	for(var/mob/M in oview(owner, 7))
 		if(!isliving(M)) //ghosts ain't people
 			continue
-		if((istype(M, /mob/living/simple_animal/pet)) || M.ckey)
+		if((istype(M, /mob/living/silicon/pai)) || M.ckey)
 			return FALSE
 	return TRUE
 
