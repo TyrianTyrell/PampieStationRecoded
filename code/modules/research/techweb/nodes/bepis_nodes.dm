@@ -89,3 +89,12 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	hidden = TRUE
 	experimental = TRUE
+
+/datum/techweb_node/neural_rewiring
+	id = "neural_rewiring"
+	display_name = "Mental Regression"
+	description = "Study into direct alteration of neural connections."
+	design_ids = list("regresso_ray")
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+	hidden = TRUE
+	experimental = TRUE
