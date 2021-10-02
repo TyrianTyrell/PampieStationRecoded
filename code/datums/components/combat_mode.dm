@@ -88,6 +88,7 @@
 			to_chat(source, self_message)
 		if(playsound)
 			source.playsound_local(source, 'sound/misc/ui_toggle.ogg', 50, FALSE, pressure_affected = FALSE) //Sound from interbay!
+	source.overlays += source.combatoverlay
 	RegisterSignal(source, COMSIG_MOB_CLIENT_MOUSEMOVE, .proc/onMouseMove)
 	RegisterSignal(source, COMSIG_MOVABLE_MOVED, .proc/on_move)
 	if(hud_icon)
@@ -115,6 +116,7 @@
 		if(playsound)
 			source.playsound_local(source, 'sound/misc/ui_toggleoff.ogg', 50, FALSE, pressure_affected = FALSE) //Slightly modified version of the toggleon sound!
 	UnregisterSignal(source, list(COMSIG_MOB_CLIENT_MOUSEMOVE, COMSIG_MOVABLE_MOVED))
+	source.overlays -= source.combatoverlay
 	if(hud_icon)
 		hud_icon.combat_on = FALSE
 		hud_icon.update_icon()

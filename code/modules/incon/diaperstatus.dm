@@ -15,6 +15,7 @@
 /mob/living/carbon/var/regressiontimer = 0
 /mob/living/carbon/var/stinky = FALSE
 /mob/living/carbon/var/statusoverlay = null
+/mob/living/var/combatoverlay = null
 /mob/var/rollbonus = 0
 
 /mob/living/carbon/human/ComponentInitialize()

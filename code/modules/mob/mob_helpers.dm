@@ -270,6 +270,23 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 	if(input in possible_a_intents)
 		a_intent = input
+		if(isliving(src))
+			var/mob/living/L = src
+			var/datum/component/combat_mode/CM = L.GetComponent(/datum/component/combat_mode)
+			if(a_intent == INTENT_HELP)
+				if(CM.mode_flags == COMBAT_MODE_TOGGLED)
+					L.overlays -= L.combatoverlay
+					L.combatoverlay = mutable_appearance('icons/incon/Effects.dmi',"combat_yield",1)
+					L.overlays += L.combatoverlay
+				else
+					L.combatoverlay = mutable_appearance('icons/incon/Effects.dmi',"combat_yield",1)
+			else
+				if(CM.mode_flags == COMBAT_MODE_TOGGLED)
+					L.overlays -= L.combatoverlay
+					L.combatoverlay = mutable_appearance('icons/incon/Effects.dmi',"combat_fight",1)
+					L.overlays += L.combatoverlay
+				else
+					L.combatoverlay = mutable_appearance('icons/incon/Effects.dmi',"combat_fight",1)
 	else
 		var/current_intent = possible_a_intents.Find(a_intent)
 
