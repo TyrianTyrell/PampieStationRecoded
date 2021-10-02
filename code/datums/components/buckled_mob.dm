@@ -132,8 +132,6 @@
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/pumpkin()
 				if("jacko")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/halloween()
-
-
 		else
 			butt.underwear = underwear
 			butt.undie_color = undie_color

@@ -13,6 +13,7 @@
 /mob/living/carbon/var/needpee = 0
 /mob/living/carbon/var/needpoo = 0
 /mob/living/carbon/var/regressiontimer = 0
+/mob/living/carbon/var/stinky = FALSE
 /mob/living/carbon/var/statusoverlay = null
 /mob/var/rollbonus = 0
 
@@ -127,6 +128,10 @@
 				stinkiness = stinkiness + poop
 			else
 				stinkiness = 250 + heftersbonus
+			if(stinkiness > ((250 + heftersbonus) / 2) && stinky == FALSE)
+				statusoverlay = mutable_appearance('icons/incon/Effects.dmi',"generic_mob_stink",STINKLINES_LAYER, color = rgb(45, 73, 19))
+				overlays += statusoverlay
+				stinky = TRUE
 			if(max_messcontinence > 20)
 				max_messcontinence-=10
 		on_purpose = 0
@@ -501,6 +506,8 @@
 	new newpamp(cuckold)
 	wetness = 0
 	stinkiness = 0
+	overlays -= statusoverlay
+	stinky = FALSE
 	brand3 = replacetext("[diap]", "/obj/item/diaper/", "")
 	if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 		SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"peepee")
