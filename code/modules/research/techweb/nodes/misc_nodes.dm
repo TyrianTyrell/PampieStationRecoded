@@ -78,11 +78,3 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	hidden = TRUE
 	experimental = TRUE
-
-/datum/techweb_node/neural_rewiring
-	id = "neural_rewiring"
-	display_name = "Neural Rewiring"
-	description = "Study into direct alteration of neural connections."
-	prereq_ids = list("neural_programming")
-	design_ids = list("regresso_ray")
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
