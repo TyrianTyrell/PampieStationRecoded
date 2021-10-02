@@ -516,6 +516,6 @@
 	id = "regresso_ray"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 5000, /datum/material/glass = 2500, /datum/material/uranium = 500, /datum/material/gold = 200)
-	build_path = /obj/item/gun/energy/regressoray
+	build_path = /obj/item/gun/energy/regressoray/station
 	category = list("Weapons")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_MEDICAL
