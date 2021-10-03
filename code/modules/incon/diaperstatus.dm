@@ -130,7 +130,7 @@
 			else
 				stinkiness = 250 + heftersbonus
 			if(stinkiness > ((250 + heftersbonus) / 2) && stinky == FALSE)
-				statusoverlay = mutable_appearance('icons/incon/Effects.dmi',"generic_mob_stink",STINKLINES_LAYER, color = rgb(45, 73, 19))
+				statusoverlay = mutable_appearance('icons/incon/Effects.dmi',"generic_mob_stink",STINKLINES_LAYER, color = rgb(125, 241, 16))
 				overlays += statusoverlay
 				stinky = TRUE
 			if(max_messcontinence > 20)
