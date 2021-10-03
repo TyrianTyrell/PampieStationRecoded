@@ -15,6 +15,7 @@
 /mob/living/carbon/var/regressiontimer = 0
 /mob/living/carbon/var/stinky = FALSE
 /mob/living/carbon/var/statusoverlay = null
+/mob/living/var/combatoverlay = null
 /mob/var/rollbonus = 0
 
 /mob/living/carbon/human/ComponentInitialize()
@@ -129,7 +130,7 @@
 			else
 				stinkiness = 250 + heftersbonus
 			if(stinkiness > ((250 + heftersbonus) / 2) && stinky == FALSE)
-				statusoverlay = mutable_appearance('icons/incon/Effects.dmi',"generic_mob_stink",STINKLINES_LAYER, color = rgb(45, 73, 19))
+				statusoverlay = mutable_appearance('icons/incon/Effects.dmi',"generic_mob_stink",STINKLINES_LAYER, color = rgb(125, 241, 16))
 				overlays += statusoverlay
 				stinky = TRUE
 			if(max_messcontinence > 20)
@@ -142,13 +143,13 @@
 /mob/living/carbon/proc/PampUpdate()
 	if(stat != DEAD && (HAS_TRAIT(src,TRAIT_INCONTINENT) || HAS_TRAIT(src,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(src,TRAIT_POTTYREBEL) || HAS_TRAIT(src,BABYBRAINED_TRAIT) || HAS_TRAIT(src,TRAIT_DIAPERUSE)) && src.client != null)
 		if(src.client.prefs.accident_types != "Poop Only")
-			pee = pee + ((20 + rand(0, 10))/100)
+			pee = pee + ((20 + rand(0, 10))/100) + (fluids / 3000)
 			if(HAS_TRAIT(src, TRAIT_STINKER))
 				pee = pee + 0.05
 		else
 			pee = 0
 		if(src.client.prefs.accident_types != "Pee Only")
-			poop = poop + ((50 + rand(0,50))/1000)
+			poop = poop + ((50 + rand(0,50))/1000) + (nutrition / 5000)
 			if(HAS_TRAIT(src, TRAIT_STINKER))
 				poop = poop + 0.025
 		else
