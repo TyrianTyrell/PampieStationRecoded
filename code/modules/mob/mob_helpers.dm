@@ -274,14 +274,14 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 			var/mob/living/L = src
 			var/datum/component/combat_mode/CM = L.GetComponent(/datum/component/combat_mode)
 			if(a_intent == INTENT_HELP)
-				if(CM.mode_flags == COMBAT_MODE_TOGGLED)
+				if(CM.mode_flags == (COMBAT_MODE_TOGGLED || COMBAT_MODE_ACTIVE))
 					L.overlays -= L.combatoverlay
 					L.combatoverlay = mutable_appearance('icons/incon/Effects.dmi',"combat_yield",1)
 					L.overlays += L.combatoverlay
 				else
 					L.combatoverlay = mutable_appearance('icons/incon/Effects.dmi',"combat_yield",1)
 			else
-				if(CM.mode_flags == COMBAT_MODE_TOGGLED)
+				if(CM.mode_flags == (COMBAT_MODE_TOGGLED || COMBAT_MODE_ACTIVE))
 					L.overlays -= L.combatoverlay
 					L.combatoverlay = mutable_appearance('icons/incon/Effects.dmi',"combat_fight",1)
 					L.overlays += L.combatoverlay
