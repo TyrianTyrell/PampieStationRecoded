@@ -1,7 +1,7 @@
 /obj/item/disk/surgery/brainwashing
 	name = "Brainwashing Surgery Disk"
 	desc = "The disk provides instructions on how to impress an order on a brain, making it the primary objective of the patient."
-	surgeries = list(/datum/surgery/advanced/brainwashing)
+	surgeries = list(/datum/surgery/advanced/brainwashing, /datum/surgery/advanced/incon)
 /datum/surgery/advanced/brainwashing
 	name = "Brainwashing"
 	desc = "A surgical procedure which directly implants a directive into the patient's brain, making it their absolute priority. It can be cleared using a mindshield implant."

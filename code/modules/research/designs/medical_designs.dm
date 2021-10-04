@@ -881,6 +881,13 @@
 	surgery = /datum/surgery/advanced/pacify
 	research_icon_state = "surgery_head"
 
+/datum/design/surgery/incontinence
+	name = "Untraining"
+	desc = "Need that toilet training removed? We got a method for that."
+	id = "surgery_unpottytrain"
+	surgery = /datum/surgery/advanced/incon
+	research_icon_state = "surgery_head"
+
 /datum/design/surgery/viral_bonding
 	name = "Viral Bonding"
 	desc = "A surgical procedure that forces a symbiotic relationship between a virus and its host. The patient must be dosed with spaceacillin, virus food, and formaldehyde."

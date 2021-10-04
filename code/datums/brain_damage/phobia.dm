@@ -112,7 +112,7 @@
 		to_chat(owner, "<span class='userdanger'>Hearing \"[trigger_word]\" [message]!</span>")
 	else
 		to_chat(owner, "<span class='userdanger'>Something [message]!</span>")
-	var/reaction = rand(1,4)
+	var/reaction = rand(1,5)
 	switch(reaction)
 		if(1)
 			to_chat(owner, "<span class='warning'>You are paralyzed with fear!</span>")
@@ -129,10 +129,19 @@
 			owner.Jitter(5)
 			owner.blind_eyes(10)
 		if(4)
+			to_chat(owner, "<span class='warning'>You lose control of your bladder!</span>")
 			owner.dizziness += 10
 			owner.confused += 10
 			owner.Jitter(10)
 			owner.stuttering += 10
+			owner.Wetting()
+		if(5)
+			to_chat(owner, "<span class='warning'>You're scared shitless!</span>")
+			owner.dizziness += 10
+			owner.confused += 10
+			owner.Jitter(10)
+			owner.stuttering += 10
+			owner.Pooping()
 
 // Defined phobia types for badminry, not included in the RNG trauma pool to avoid diluting.
 
