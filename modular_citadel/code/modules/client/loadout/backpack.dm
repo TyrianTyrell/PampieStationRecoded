@@ -147,6 +147,11 @@
 	path = /obj/item/pen/fountain
 	cost = 2
 
+/datum/gear/backpack/paicard
+	name = "pAI device"
+	path = /obj/item/paicard
+	cost = 2
+
 /datum/gear/backpack/modular_tablet
 	name = "A modular tablet"
 	path = /obj/item/modular_computer/tablet/preset/cheap/
