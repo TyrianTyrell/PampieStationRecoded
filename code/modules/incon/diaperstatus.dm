@@ -492,24 +492,24 @@
 			cuckold = locate(src.loc.x,src.loc.y - 1,src.loc.z)
 		if(8)
 			cuckold = locate(src.loc.x,src.loc.y + 1,src.loc.z)
-	if(brand3 == "syndi")
-		brand3 = "plain"
+	if(brand == "syndi")
+		brand = "plain"
 	if (wetness >= 1)
 		if (stinkiness >= 1)
-			newpamp = text2path(addtext("/obj/item/useddiap/", brand3))
+			newpamp = text2path(addtext("/obj/item/useddiap/", brand))
 		else
-			newpamp = text2path(addtext("/obj/item/wetdiap/", brand3))
+			newpamp = text2path(addtext("/obj/item/wetdiap/", brand))
 	else
 		if (stinkiness >= 1)
-			newpamp = text2path(addtext("/obj/item/poopydiap/", brand3))
+			newpamp = text2path(addtext("/obj/item/poopydiap/", brand))
 		else
-			newpamp = text2path(addtext("/obj/item/diaper/", brand3))
+			newpamp = text2path(addtext("/obj/item/diaper/", brand))
 	new newpamp(cuckold)
 	wetness = 0
 	stinkiness = 0
 	overlays -= statusoverlay
 	stinky = FALSE
-	brand3 = replacetext("[diap]", "/obj/item/diaper/", "")
+	brand = replacetext("[diap.type]", "/obj/item/diaper/", "")
 	if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 		SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"peepee")
 		SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"poopy")
