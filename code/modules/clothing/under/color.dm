@@ -86,6 +86,8 @@
 	desc = "A tasteful grey shirt that reminds you of the good old days."
 	icon_state = "grey_shirt"
 	item_state = "grey_shirt"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/color/jumpskirt/grey
 	name = "grey jumpskirt"
@@ -117,6 +119,8 @@
 	name = "blue shirt"
 	icon_state = "blue_shirt"
 	item_state = "blue_shirt"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/color/green
 	name = "green jumpsuit"
@@ -132,6 +136,8 @@
 	name = "green shirt"
 	icon_state = "green_shirt"
 	item_state = "green_shirt"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/color/orange
 	name = "orange jumpsuit"
@@ -148,6 +154,8 @@
 	name = "orange shirt"
 	icon_state = "orange_shirt"
 	item_state = "orange_shirt"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/color/pink
 	name = "pink jumpsuit"
@@ -164,6 +172,8 @@
 	name = "pink shirt"
 	icon_state = "pink_shirt"
 	item_state = "pink_shirt"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/color/red
 	name = "red jumpsuit"
@@ -174,6 +184,8 @@
 	name = "red shirt"
 	icon_state = "red_shirt"
 	item_state = "red_shirt"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/color/jumpskirt/red
 	name = "red jumpskirt"
@@ -194,6 +206,8 @@
 	name = "white shirt"
 	icon_state = "white_shirt"
 	item_state = "white_shirt"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/color/yellow
 	name = "yellow jumpsuit"
@@ -209,6 +223,8 @@
 	name = "yellow shirt"
 	icon_state = "yellow_shirt"
 	item_state = "yellow_shirt"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/color/darkblue
 	name = "darkblue jumpsuit"
@@ -224,6 +240,8 @@
 	name = "dark blue shirt"
 	icon_state = "darkblue_shirt"
 	item_state = "darkblue_shirt"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/color/teal
 	name = "teal jumpsuit"
@@ -239,6 +257,8 @@
 	name = "teal shirt"
 	icon_state = "teal_shirt"
 	item_state = "teal_shirt"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/color/lightpurple
 	name = "purple jumpsuit"
@@ -249,6 +269,8 @@
 	name = "lightpurple shirt"
 	icon_state = "lightpurple_shirt"
 	item_state = "lightpurple_shirt"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/color/lightpurple/trackless
 	desc = "A magically colored jumpsuit. No sensors are attached!"
@@ -273,6 +295,8 @@
 	name = "darkgreen shirt"
 	icon_state = "darkgreen_shirt"
 	item_state = "darkgreen_shirt"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/color/lightbrown
 	name = "lightbrown jumpsuit"
@@ -288,6 +312,8 @@
 	name = "lightbrown shirt"
 	icon_state = "lightbrown_shirt"
 	item_state = "lightbrown_shirt"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/color/brown
 	name = "brown jumpsuit"
@@ -303,6 +329,8 @@
 	name = "brown shirt"
 	icon_state = "brown_shirt"
 	item_state = "brown_shirt"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/color/maroon
 	name = "maroon jumpsuit"
@@ -318,6 +346,8 @@
 	name = "maroon shirt"
 	icon_state = "maroon_shirt"
 	item_state = "maroon_shirt"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/color/rainbow
 	name = "rainbow jumpsuit"
@@ -338,4 +368,6 @@
 	desc = "A multi-colored shirt!"
 	icon_state = "rainbow_shirt"
 	item_state = "rainbow_shirt"
+	body_parts_covered = CHEST|ARMS
 	can_adjust = FALSE
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
