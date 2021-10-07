@@ -644,7 +644,6 @@
 		if(do_after_mob(usr,H))
 			var/obj/item/diaper/circuit/diap = new /obj/item/diaper/circuit
 			H.DiaperChange(diap)
-			H.brand = diap.icon_state
 			H.brand2 = diap.name
 			H.DiaperAppearance()
 			H.heftersbonus = 0

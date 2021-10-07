@@ -100,8 +100,7 @@
 	else if(HAS_TRAIT(M,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(M,TRAIT_INCONTINENT) || HAS_TRAIT(M,TRAIT_POTTYREBEL) || HAS_TRAIT(M,BABYBRAINED_TRAIT) || HAS_TRAIT(M,TRAIT_DIAPERUSE))
 		playsound(M.loc,'sound/effects/Diapertape.wav',50,1)
 		if(do_after_mob(usr,M))
-			M.DiaperChange(type)
-			M.brand = icon_state
+			M.DiaperChange(src)
 			M.brand2 = name
 			M.DiaperAppearance()
 			if (findtext(M.brand, "hefters") != 0 || findtext(M.brand, "_thick") != 0)
