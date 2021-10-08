@@ -280,9 +280,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			raw_message = trim(speech)
 
 	// Create map text prior to modifying message for goonchat
-	if (client?.prefs.chat_on_map && stat != UNCONSCIOUS && (client.prefs.see_chat_non_mob || ismob(speaker)) && can_hear())
+	if (client?.prefs.chat_on_map && stat != UNCONSCIOUS && (client.prefs.see_chat_non_mob || ismob(speaker)) && (can_hear() || message_language == /datum/language/signlanguage))
 		create_chat_message(speaker, message_language, raw_message, spans, message_mode)
-
 
 	// Recompose message for AI hrefs, language incomprehension.
 	message = compose_message(speaker, message_language, raw_message, radio_freq, spans, message_mode, FALSE, source)
