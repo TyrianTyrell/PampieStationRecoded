@@ -285,7 +285,11 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 	// Recompose message for AI hrefs, language incomprehension.
 	message = compose_message(speaker, message_language, raw_message, radio_freq, spans, message_mode, FALSE, source)
-	show_message(message, MSG_AUDIBLE, deaf_message, deaf_type)
+	if(message_language == /datum/language/signlanguage)
+		deaf_message = "<span class='notice'>Someone just signed, but you don't know what was said!</span>"
+		show_message(message, MSG_VISUAL, deaf_message, deaf_type)
+	else
+		show_message(message, MSG_AUDIBLE, deaf_message, deaf_type)
 	return message
 
 /mob/living/send_speech(message, message_range = 6, obj/source = src, bubble_type = bubble_icon, list/spans, datum/language/message_language=null, message_mode)
