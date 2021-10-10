@@ -311,6 +311,8 @@ SUBSYSTEM_DEF(ticker)
 	SSdbcore.SetRoundStart()
 
 	to_chat(world, "<span class='notice'><B>Welcome to [station_name()], enjoy your stay!</B></span>")
+	if((GLOB.round_id % 1000) == 0)
+		to_chat(world, "<span class='nicegreen'>Congratulations! As this is the [GLOB.round_id]th round, we've lent each of you a gift.</span>")
 	SEND_SOUND(world, sound(get_announcer_sound("welcome")))
 
 	current_state = GAME_STATE_PLAYING

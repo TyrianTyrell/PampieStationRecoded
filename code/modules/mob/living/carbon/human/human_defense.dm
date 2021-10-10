@@ -786,7 +786,7 @@
 				if(HAS_TRAIT(src,TRAIT_EXACTCHECK))
 					var/diappercent1 = round((wetness / (250 + heftersbonus)) * 100)
 					var/diappercent2 = round((stinkiness / (250 + heftersbonus)) * 100)
-					to_send += "<span class='notice'>It is about [diappercent1]% wet and [diappercent2]% messy.</span>\n"
+					to_send += "<span class='notice'>Your [src.brand2] is about [diappercent1]% wet and [diappercent2]% messy.</span>\n"
 				else
 					if(wetness >= 200)
 						to_send += "<span class='notice'>Your [src.brand2] is drenched with pee.</span>\n"
