@@ -249,7 +249,7 @@
 					number = 1
 				for(var/i in 1 to number)
 					H.equip_to_slot_or_del(new path(H), SLOT_IN_BACKPACK, TRUE)
-			if((GLOB.round_id % 1000) == 0)
+			if((text2num(GLOB.round_id) % 1000) == 0)
 				H.equip_to_slot_or_del(new /obj/item/storage/part_replacer/diaper_ray(H), SLOT_IN_BACKPACK, TRUE)
 
 	if(!H.head && toggle_helmet && istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
