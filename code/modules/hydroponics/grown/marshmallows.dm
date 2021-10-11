@@ -70,6 +70,7 @@
 	desc = "The sweet pulp of marshmerrow reeds is a delectable foodstuff, and when eaten fresh or prepared, it has modest healing properties."
 	icon_state = "marshmer"
 	bitesize_mod = 25
+	wine_power = 75
 	tastes = list("sweetness" = 1)
 
 /obj/item/seeds/diapers
@@ -81,11 +82,11 @@
 	icon_dead = "diap-dead"
 	reagents_add = list(/datum/reagent/medicine/regression = 0.01, /datum/reagent/medicine/laxative = 0.02, /datum/reagent/medicine/diuretic = 0.03, /datum/reagent/medicine/sodiumpolyacrylate = 0.05)
 	genes = list(/datum/plant_gene/trait/stinging)
-	product = /obj/item/reagent_containers/food/snacks/grown/diaper
+	product = /obj/item/reagent_containers/food/snacks/grown/shell/diaper
 	yield = 1
 	growthstages = 2
 
-/obj/item/reagent_containers/food/snacks/grown/diaper
+/obj/item/reagent_containers/food/snacks/grown/shell/diaper
 	seed = /obj/item/seeds/diapers
 	name = "thorny diaper"
 	desc = "Just remove the thorns and it'll work fine. Do NOT ingest."
