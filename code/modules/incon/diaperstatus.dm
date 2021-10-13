@@ -475,7 +475,7 @@
 					D.princessbonus = FALSE
 			rollbonus = 0
 	spawn(60)
-	PampUpdate()
+		PampUpdate()
 
 /mob/living/carbon/proc/DiaperAppearance()
 	SEND_SIGNAL(src,COMSIG_DIAPERCHANGE, ckey(src.mind.key))
@@ -585,7 +585,7 @@
 		owner.wetness -= 0.1
 		owner.stinkiness -= 0.1
 	spawn(1)
-	DiaperUpdate(owner)
+		DiaperUpdate(owner)
 
 /atom/movable/screen/diaperstatus/New(mob/living/carbon/owner)
 	DiaperUpdate(owner)

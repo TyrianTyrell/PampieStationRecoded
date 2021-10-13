@@ -48,7 +48,7 @@
 		stink_turf.air_update_turf()
 
 	spawn(20)
-	smelly()
+		smelly()
 
 /obj/item/useddiap
 	w_class = 1
@@ -86,7 +86,7 @@
 		stinky_turf.air_update_turf()
 
 	spawn(20)
-	stinky()
+		stinky()
 
 
 /obj/item/diaper/plain

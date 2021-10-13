@@ -70,6 +70,8 @@
 	var/extra_color_src = MUTCOLORS2						//The color source for the extra overlay.
 	var/extra2 = FALSE
 	var/extra2_color_src = MUTCOLORS3
+	var/tail = FALSE
+	var/tail_src = MUTCOLORS3
 
 	//for snowflake/donor specific sprites
 	var/list/ckeys_allowed
@@ -82,8 +84,10 @@
 
 /datum/sprite_accessory/underwear
 	icon = 'icons/mob/clothing/underwear.dmi'
+	taur_icon = 'icons/mob/clothing/taur_underwear_hooved.dmi'
 	var/has_color = FALSE
 	var/has_digitigrade = FALSE
+	var/has_tauric = FALSE
 	var/covers_groin = FALSE
 	var/covers_chest = FALSE
 

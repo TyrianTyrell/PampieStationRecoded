@@ -191,6 +191,7 @@
 	name = "Diaper"
 	icon_state = "male_diaper"
 	has_color = TRUE
+	has_tauric = TRUE
 	gender = NEUTER
 
 /datum/sprite_accessory/underwear/bottom/diaper/rainbow

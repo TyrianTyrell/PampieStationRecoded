@@ -30,44 +30,47 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 //Human Overlays Indexes/////////
 //LOTS OF CIT CHANGES HERE. BE CAREFUL WHEN UPSTREAM ADDS MORE LAYERS
-#define MUTATIONS_LAYER			37		//mutations. Tk headglows, cold resistance glow, etc
-#define ANTAG_LAYER 			36		//stuff for things like cultism indicators (clock cult glow, cultist red halos, whatever else new that comes up)
-#define GENITALS_BEHIND_LAYER	35		//Some genitalia needs to be behind everything, such as with taurs (Taurs use body_behind_layer
-#define BODY_BEHIND_LAYER		34		//certain mutantrace features (tail when looking south) that must appear behind the body parts
-#define BODYPARTS_LAYER			33		//Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
-#define BOUNCER_BEHIND_LAYER	32
-#define MARKING_LAYER			31		//Matrixed body markings because clashing with snouts?
-#define BODY_ADJ_LAYER			30		//certain mutantrace features (snout, body markings) that must appear above the body parts
-#define GENITALS_FRONT_LAYER	29		//Draws some genitalia above clothes and the TAUR body if need be.
-#define BODY_LAYER				28		//underwear, undershirts, socks, eyes, lips(makeup)
-#define BODY_ADJ_UPPER_LAYER	27
-#define FRONT_MUTATIONS_LAYER	26		//mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
-#define STINKLINES_LAYER		25
-#define DAMAGE_LAYER			24		//damage indicators (cuts and burns)
-#define UNIFORM_LAYER			23
-#define ID_LAYER				22
-#define HANDS_PART_LAYER		21
-#define SHOES_LAYER				20
-#define GLOVES_LAYER			19
-#define EARS_LAYER				18
-#define SUIT_LAYER				17
-#define GENITALS_EXPOSED_LAYER	16
-#define GLASSES_LAYER			15
-#define BELT_LAYER				14		//Possible make this an overlay of somethign required to wear a belt?
-#define SUIT_STORE_LAYER		13
-#define NECK_LAYER				12
-#define BACK_LAYER				11
-#define HAIR_LAYER				10		//TODO: make part of head layer?
-#define HORNS_LAYER				9
-#define FACEMASK_LAYER			8
-#define HEAD_LAYER				7
-#define HANDCUFF_LAYER			6
-#define LEGCUFF_LAYER			5
-#define HANDS_LAYER				4
-#define BOUNCER_FRONT_LAYER		3
-#define BODY_FRONT_LAYER		2
+#define MUTATIONS_LAYER			40		//mutations. Tk headglows, cold resistance glow, etc
+#define ANTAG_LAYER 			39		//stuff for things like cultism indicators (clock cult glow, cultist red halos, whatever else new that comes up)
+#define GENITALS_BEHIND_LAYER	38		//Some genitalia needs to be behind everything, such as with taurs (Taurs use body_behind_layer
+#define BODY_BEHIND_LAYER		37		//certain mutantrace features (tail when looking south) that must appear behind the body parts
+#define BODYPARTS_LAYER			36		//Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
+#define BOUNCER_BEHIND_LAYER	35
+#define MARKING_LAYER			34		//Matrixed body markings because clashing with snouts?
+#define BODY_ADJ_LAYER			33		//certain mutantrace features (snout, body markings) that must appear above the body parts
+#define GENITALS_FRONT_LAYER	32		//Draws some genitalia above clothes and the TAUR body if need be.
+#define BODY_LAYER				31		//underwear, undershirts, socks, eyes, lips(makeup)
+#define BODY_ADJ_UPPER_LAYER	30
+#define TAUR_UNDIE_LAYER_ADJ	29
+#define FRONT_MUTATIONS_LAYER	28		//mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
+#define STINKLINES_LAYER		27
+#define DAMAGE_LAYER			26		//damage indicators (cuts and burns)
+#define UNIFORM_LAYER			25
+#define ID_LAYER				24
+#define HANDS_PART_LAYER		23
+#define SHOES_LAYER				22
+#define GLOVES_LAYER			21
+#define EARS_LAYER				20
+#define SUIT_LAYER				19
+#define GENITALS_EXPOSED_LAYER	18
+#define GLASSES_LAYER			17
+#define BELT_LAYER				16		//Possible make this an overlay of somethign required to wear a belt?
+#define SUIT_STORE_LAYER		15
+#define NECK_LAYER				14
+#define BACK_LAYER				13
+#define HAIR_LAYER				12		//TODO: make part of head layer?
+#define HORNS_LAYER				11
+#define FACEMASK_LAYER			10
+#define HEAD_LAYER				9
+#define HANDCUFF_LAYER			8
+#define LEGCUFF_LAYER			7
+#define HANDS_LAYER				6
+#define BOUNCER_FRONT_LAYER		5
+#define BODY_FRONT_LAYER		4
+#define TAUR_UNDIE_LAYER_FRONT	3
+#define BODY_TAURTAIL_LAYER     2
 #define FIRE_LAYER				1		//If you're on fire
-#define TOTAL_LAYERS			37		//KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
+#define TOTAL_LAYERS			40		//KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
 
 //Human Overlay Index Shortcuts for alternate_worn_layer, layers
 //Because I *KNOW* somebody will think layer+1 means "above"

@@ -125,6 +125,8 @@
 /datum/sprite_accessory/taur/synthliz
 	name = "Virgo - Synthetic Lizard"
 	icon_state = "synthlizard"
+	tail = TRUE
+	tail_src = MUTCOLORS
 	taur_mode = STYLE_PAW_TAURIC
 	recommended_species = list("synthliz")
 	matrixed_sections = MATRIX_RED_GREEN

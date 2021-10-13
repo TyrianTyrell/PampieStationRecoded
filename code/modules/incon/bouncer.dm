@@ -16,22 +16,22 @@
 
 /obj/structure/chair/bouncer/proc/bounceranimation(mob/living/M)
 	spawn(6)
-	if(has_buckled_mobs())
-		bouncey = bouncey + 2
-		if(bouncey >= 4)
-			bouncey = 0
-		var/currenty = basey + bouncey
-		if(bouncey == 0)
-			icon_state = "boun"
-			if(iscarbon(M))
-				var/mob/living/carbon/N = M
-				if(N.stinkiness > 0)
-					to_chat(M,"<span class='warning'>Squish!</span>")
-		else
-			icon_state = "boun2"
-		M.pixel_y = currenty
-		src.pixel_y = currenty
-		bounceranimation(M)
+		if(has_buckled_mobs())
+			bouncey = bouncey + 2
+			if(bouncey >= 4)
+				bouncey = 0
+			var/currenty = basey + bouncey
+			if(bouncey == 0)
+				icon_state = "boun"
+				if(iscarbon(M))
+					var/mob/living/carbon/N = M
+					if(N.stinkiness > 0)
+						to_chat(M,"<span class='warning'>Squish!</span>")
+			else
+				icon_state = "boun2"
+			M.pixel_y = currenty
+			src.pixel_y = currenty
+			bounceranimation(M)
 
 /obj/structure/chair/bouncer/ComponentInitialize()
 	. = ..()
