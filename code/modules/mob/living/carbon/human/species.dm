@@ -803,7 +803,7 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 				var/istauric = FALSE
 				var/hasnoundies = FALSE
 				var/datum/sprite_accessory/taur/taurtype = GLOB.taur_list[H.dna.features["taur"]]
-				if(mutant_bodyparts["taur"] && H.dna.features["taur"] && B.has_tauric)
+				if(mutant_bodyparts["taur"] && H.dna.features["taur"] != "None" && B.has_tauric)
 					if((taurtype.taur_mode == STYLE_PAW_TAURIC) || (taurtype.taur_mode == STYLE_HOOF_TAURIC))
 						istauric = TRUE
 					else
@@ -1076,12 +1076,12 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 						if(fixed_mut_color)
 							tail_overlay.color = "#[fixed_mut_color]"
 						else
-							tail_overlay.color = "#[H.dna.features[tertiary_string]]"
+							tail_overlay.color = "#[H.dna.features[primary_string]]"
 					if(MUTCOLORS2)
 						if(fixed_mut_color2)
 							tail_overlay.color = "#[fixed_mut_color2]"
 						else
-							tail_overlay.color = "#[H.dna.features[tertiary_string]]"
+							tail_overlay.color = "#[H.dna.features[secondary_string]]"
 					if(MUTCOLORS3)
 						if(fixed_mut_color3)
 							tail_overlay.color = "#[fixed_mut_color3]"
