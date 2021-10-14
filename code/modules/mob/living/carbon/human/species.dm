@@ -803,7 +803,7 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 				var/istauric = FALSE
 				var/hasnoundies = FALSE
 				var/datum/sprite_accessory/taur/taurtype = GLOB.taur_list[H.dna.features["taur"]]
-				if(mutant_bodyparts["taur"] && H.dna.features["taur"] && B.has_tauric)
+				if(mutant_bodyparts["taur"] && H.dna.features["taur"] != "None" && B.has_tauric)
 					if((taurtype.taur_mode == STYLE_PAW_TAURIC) || (taurtype.taur_mode == STYLE_HOOF_TAURIC))
 						istauric = TRUE
 					else
