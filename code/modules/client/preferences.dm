@@ -2345,8 +2345,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 								jumpsuit_style = PREF_SKIRT
 							if("Shirt")
 								jumpsuit_style = PREF_SHIRT
-							if("None")
-								jumpsuit_style = PREF_NONE
 
 
 				if("uplink_loc")
