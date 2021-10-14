@@ -1076,12 +1076,12 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 						if(fixed_mut_color)
 							tail_overlay.color = "#[fixed_mut_color]"
 						else
-							tail_overlay.color = "#[H.dna.features[tertiary_string]]"
+							tail_overlay.color = "#[H.dna.features[primary_string]]"
 					if(MUTCOLORS2)
 						if(fixed_mut_color2)
 							tail_overlay.color = "#[fixed_mut_color2]"
 						else
-							tail_overlay.color = "#[H.dna.features[tertiary_string]]"
+							tail_overlay.color = "#[H.dna.features[secondary_string]]"
 					if(MUTCOLORS3)
 						if(fixed_mut_color3)
 							tail_overlay.color = "#[fixed_mut_color3]"
