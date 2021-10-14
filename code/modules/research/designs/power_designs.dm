@@ -67,7 +67,7 @@
 	category = list("Power Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING
 
-/datum/design/inducercombat
+/*/datum/design/inducercombat
 	name = "Combat Ready Inducer"
 	desc = "The improved NT-8475 Electromagnetic Power Inducer can this one has been SCIENCED to allow for combat. It still comes printed with SCIENCED colors!"
 	id = "combatinducer"
@@ -75,7 +75,7 @@
 	materials = list(/datum/material/iron = 13000, /datum/material/glass = 10000,  /datum/material/silver = 1500,  /datum/material/gold = 1250, /datum/material/diamond = 500, /datum/material/titanium = 1200)
 	build_path = /obj/item/inducer/sci/combat/dry
 	category = list("Power Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY*/
 
 /datum/design/board/pacman
 	name = "Machine Design (PACMAN-type Generator Board)"

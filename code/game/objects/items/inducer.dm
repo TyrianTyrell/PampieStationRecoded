@@ -184,7 +184,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/inducer/sci/combat
+/*/obj/item/inducer/sci/combat
 	icon_state = "inducer-combat"
 	item_state = "inducer-combat"
 	w_class = WEIGHT_CLASS_BULKY
@@ -205,7 +205,7 @@
 
 /obj/item/inducer/sci/combat/Initialize()
 	. = ..()
-	update_icon()
+	update_icon()*/
 
 /obj/item/inducer/sci/supply
 	opened = FALSE
