@@ -211,8 +211,8 @@
 		return
 	if(ishuman(H)) // Like medbot's analyzer it can be used in range..
 		var/mob/living/carbon/human/HU = H
-		var/wetpercent = round((HU.wetness / (250 + HU.heftersbonus)) * 100)
-		var/messpercent = round((HU.stinkiness / (250 + HU.heftersbonus)) * 100)
+		var/wetpercent = round((HU.wetness / (200 + HU.heftersbonus)) * 100)
+		var/messpercent = round((HU.stinkiness / (150 + HU.heftersbonus)) * 100)
 
 		set_pin_data(IC_OUTPUT, 1, wetpercent)
 		set_pin_data(IC_OUTPUT, 2, messpercent)

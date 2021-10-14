@@ -784,8 +784,8 @@
 								SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/stinkysad)
 					else
 				if(HAS_TRAIT(src,TRAIT_EXACTCHECK))
-					var/diappercent1 = round((wetness / (250 + heftersbonus)) * 100)
-					var/diappercent2 = round((stinkiness / (250 + heftersbonus)) * 100)
+					var/diappercent1 = round((wetness / (200 + heftersbonus)) * 100)
+					var/diappercent2 = round((stinkiness / (150 + heftersbonus)) * 100)
 					to_send += "<span class='notice'>Your [src.brand2] is about [diappercent1]% wet and [diappercent2]% messy.</span>\n"
 				else
 					if(wetness >= 200)

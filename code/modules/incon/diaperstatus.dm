@@ -64,11 +64,11 @@
 
 			if(pee > max_wetcontinence)
 				pee = max_wetcontinence
-			if(wetness + pee < 250 + heftersbonus)
+			if(wetness + pee < 200 + heftersbonus)
 				wetness = wetness + pee
 				pee = 0
 			else
-				wetness = 250 + heftersbonus
+				wetness = 200 + heftersbonus
 				new /obj/effect/decal/cleanable/waste/peepee(loc)
 			if(max_wetcontinence > 25)
 				max_wetcontinence-=5
@@ -125,11 +125,11 @@
 							src.visible_message("<span class='notice'>You smell something unpleasant coming from [usr]'s direction. [src.p_they()] don't seem to notice, though.</span>","<span class='notice'>You feel an odd pressure in your stomach, before it quickly goes away.</span>")
 			if(poop > max_messcontinence)
 				poop = max_messcontinence
-			if(stinkiness + poop < 250 + heftersbonus)
+			if(stinkiness + poop < 150 + heftersbonus)
 				stinkiness = stinkiness + poop
 			else
-				stinkiness = 250 + heftersbonus
-			if(stinkiness > ((250 + heftersbonus) / 2) && stinky == FALSE)
+				stinkiness = 150 + heftersbonus
+			if(stinkiness > ((150 + heftersbonus) / 2) && stinky == FALSE)
 				statusoverlay = mutable_appearance('icons/incon/Effects.dmi',"generic_mob_stink",STINKLINES_LAYER, color = rgb(125, 241, 16))
 				overlays += statusoverlay
 				stinky = TRUE

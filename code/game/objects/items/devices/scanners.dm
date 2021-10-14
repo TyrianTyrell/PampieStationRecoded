@@ -453,8 +453,8 @@ GENETICS SCANNER
 			msg += "<span class='notice'>Detected cybernetic modifications:</span>\n"
 			msg += "<span class='notice'>[cyberimp_detect]</span>\n"
 	if(HAS_TRAIT(H,TRAIT_INCONTINENT) || HAS_TRAIT(H,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(H,TRAIT_POTTYREBEL) || HAS_TRAIT(H,BABYBRAINED_TRAIT) || HAS_TRAIT(H,TRAIT_DIAPERUSE))
-		var/wet_percent = round((H.wetness / (250 + H.heftersbonus)) * 100)
-		var/mess_percent = round((H.stinkiness / (250 + H.heftersbonus)) * 100)
+		var/wet_percent = round((H.wetness / (200 + H.heftersbonus)) * 100)
+		var/mess_percent = round((H.stinkiness / (150 + H.heftersbonus)) * 100)
 		msg += "<span class='info'>Wetness: [wet_percent]%, Messy: [mess_percent]%</span>\n"
 	msg += "<span class='notice'>*---------*</span>"
 	//diaper state

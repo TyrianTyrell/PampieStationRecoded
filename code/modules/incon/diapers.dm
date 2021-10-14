@@ -104,7 +104,11 @@
 			M.brand2 = name
 			M.DiaperAppearance()
 			if (findtext(M.brand, "hefters") != 0 || findtext(M.brand, "_thick") != 0)
-				M.heftersbonus = 200
+				M.heftersbonus = 100
+			if (findtext(M.brand, "trainer") != 0 || findtext(M.brand, "_trainer") != 0)
+				M.heftersbonus = -80
+			if (findtext(M.brand, "underwear") != 0 || findtext(M.brand, "_underwear") != 0)
+				M.heftersbonus = -140
 			else
 				M.heftersbonus = 0
 			Del()
@@ -870,6 +874,134 @@
 
 /obj/item/useddiap/cloth
 	icon_state = "cloth_messy"
+
+	///TRAINING PANTS & MISC
+
+/obj/item/diaper/underwear
+	name = "\improper Plain Underwear"
+	desc = "You're a big kid now. May hold like, one tiny bladder wetting but will leak very quickly."
+	icon_state = "underwear"
+
+/obj/item/wetdiap/underwear
+	icon_state = "cloth_wet"
+
+/obj/item/poopydiap/underwear
+	icon_state = "cloth_messy"
+
+/obj/item/useddiap/underwear
+	icon_state = "cloth_messy"
+
+/obj/item/diaper/blue_trainer
+	name = "\improper Training Pants (Blue)"
+	desc = "Maybe you're ready. Maybe you are not."
+	icon_state = "trainer_blue"
+
+/obj/item/wetdiap/blue_trainer
+	icon_state = "trainer_blue_wet"
+
+/obj/item/poopydiap/blue_trainer
+	icon_state = "trainer_blue_messy"
+
+/obj/item/useddiap/blue_trainer
+	icon_state = "trainer_blue_messy"
+
+/obj/item/diaper/pink_trainer
+	name = "\improper Training Pants (Pink)"
+	desc = "Maybe you're ready. Maybe you are not."
+	icon_state = "trainer_pink"
+
+/obj/item/wetdiap/pink_trainer
+	icon_state = "trainer_pink_wet"
+
+/obj/item/poopydiap/pink_trainer
+	icon_state = "trainer_pink_messy"
+
+/obj/item/useddiap/pink_trainer
+	icon_state = "trainer_pink_messy"
+
+/obj/item/diaper/green_trainer
+	name = "\improper Training Pants (Green)"
+	desc = "Maybe you're ready. Maybe you are not."
+	icon_state = "trainer_green"
+
+/obj/item/wetdiap/green_trainer
+	icon_state = "trainer_green_wet"
+
+/obj/item/poopydiap/green_trainer
+	icon_state = "trainer_green_messy"
+
+/obj/item/useddiap/green_trainer
+	icon_state = "trainer_green_messy"
+
+/obj/item/diaper/skunk_trainer
+	name = "\improper Training Pants (Skunk)"
+	desc = "Bold of you to assume skunks are ever gonna be ready."
+	icon_state = "trainer_skunk"
+
+/obj/item/wetdiap/skunk_trainer
+	icon_state = "trainer_skunk_wet"
+
+/obj/item/poopydiap/skunk_trainer
+	icon_state = "trainer_skunk_messy"
+
+/obj/item/useddiap/skunk_trainer
+	icon_state = "trainer_skunk_messy"
+
+/obj/item/diaper/space_trainer
+	name = "\improper Training Pants (Space)"
+	desc = "In space nobody can see your accidents. But here we can, the stars fade."
+	icon_state = "trainer_space"
+
+/obj/item/wetdiap/space_trainer
+	icon_state = "trainer_space_wet"
+
+/obj/item/poopydiap/space_trainer
+	icon_state = "trainer_space_messy"
+
+/obj/item/useddiap/space_trainer
+	icon_state = "trainer_space_messy"
+
+/obj/item/diaper/sky_trainer
+	name = "\improper Training Pants (Sky)"
+	desc = "Feat. Rainclouds. Probably also on your potty chart."
+	icon_state = "trainer_sky"
+
+/obj/item/wetdiap/sky_trainer
+	icon_state = "trainer_sky_wet"
+
+/obj/item/poopydiap/sky_trainer
+	icon_state = "trainer_sky_messy"
+
+/obj/item/useddiap/sky_trainer
+	icon_state = "trainer_sky_messy"
+
+/obj/item/diaper/water_trainer
+	name = "\improper Training Pants (Water)"
+	desc = "Feat. Water. Probably also on your potty chart."
+	icon_state = "trainer_water"
+
+/obj/item/wetdiap/water_trainer
+	icon_state = "trainer_water_wet"
+
+/obj/item/poopydiap/water_trainer
+	icon_state = "trainer_water_messy"
+
+/obj/item/useddiap/water_trainer
+	icon_state = "trainer_water_messy"
+
+/obj/item/diaper/gmr_trainer
+	name = "\improper Gamer Pants (Training)"
+	desc = "When gamers don't take breaks they use diapers, you know..."
+	icon_state = "trainer_gmr"
+
+/obj/item/wetdiap/gmr_trainer
+	icon_state = "trainer_gmr_wet"
+
+/obj/item/poopydiap/gmr_trainer
+	icon_state = "trainer_gmr_messy"
+
+/obj/item/useddiap/gmr_trainer
+	icon_state = "trainer_gmr_messy"
 
 	///DIAPER PACKAGES
 

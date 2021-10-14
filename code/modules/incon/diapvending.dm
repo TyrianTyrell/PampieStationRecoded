@@ -36,6 +36,7 @@
 					/obj/item/diaper/punk_thick = 20,
 					/obj/item/diaper/pink_thick = 20,
 					/obj/item/diaper/rainbow_thick = 20,
+				//MISC
 					/obj/item/reagent_containers/glass/sippycup = 5,
 					/obj/item/reagent_containers/glass/babybottle = 5,
 					/obj/item/storage/backpack/diaper_bag = 5,
@@ -45,15 +46,28 @@
 					/obj/item/clothing/head/bonnet/pink = 2,
 					/obj/item/clothing/head/bonnet/blue = 2,
 					/obj/item/clothing/gloves/mittens/pink = 2,
-					/obj/item/clothing/gloves/mittens/blue = 2)
+					/obj/item/clothing/gloves/mittens/blue = 2,
+				//TRAINING PANTS
+					/obj/item/diaper/blue_trainer = 10,
+					/obj/item/diaper/pink_trainer = 10,
+					/obj/item/diaper/green_trainer = 10,
+					/obj/item/diaper/space_trainer = 10,
+					/obj/item/diaper/sky_trainer = 10,
+					/obj/item/diaper/water_trainer = 10,
+					/obj/item/diaper/skunk_trainer = 10,
+					/obj/item/diaper/gmr_trainer = 10,
+					/obj/item/diaper/underwear = 5
+					)
 	contraband = list(/obj/item/diaper/greentext = 2,
-		//Seasonal content
+				//Seasonal content
 					/obj/item/diaper/jacko = 20,
+				//MISC
 					/obj/item/clothing/shoes/booties/poly = 5,
 					/obj/item/clothing/gloves/mittens/poly = 5,
 					/obj/item/clothing/head/bonnet/poly = 5,
 					/obj/item/clothing/mask/polypacifier = 5,
-					/obj/item/clothing/mask/pacivape = 5)
+					/obj/item/clothing/mask/pacivape = 5
+					)
 	armor = list("melee" = 100, "bullet" = 100, "laser" = 100, "energy" = 100, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50)
 	resistance_flags = FIRE_PROOF
 	refill_canister = /obj/item/vending_refill/diaper
@@ -105,6 +119,7 @@
 					/obj/item/diaper/punk_thick = 10,
 					/obj/item/diaper/pink_thick = 10,
 					/obj/item/diaper/rainbow_thick = 10,
+				//MISC
 					/obj/item/reagent_containers/glass/sippycup = 2,
 					/obj/item/reagent_containers/glass/babybottle = 2,
 					/obj/item/storage/backpack/diaper_bag = 5,
@@ -114,10 +129,21 @@
 					/obj/item/clothing/head/bonnet/pink = 2,
 					/obj/item/clothing/head/bonnet/blue = 2,
 					/obj/item/clothing/gloves/mittens/pink = 2,
-					/obj/item/clothing/gloves/mittens/blue = 2)
+					/obj/item/clothing/gloves/mittens/blue = 2,
+				//TRAINING PANTS
+					/obj/item/diaper/blue_trainer = 5,
+					/obj/item/diaper/pink_trainer = 5,
+					/obj/item/diaper/green_trainer = 5,
+					/obj/item/diaper/space_trainer = 5,
+					/obj/item/diaper/sky_trainer = 5,
+					/obj/item/diaper/water_trainer = 5,
+					/obj/item/diaper/skunk_trainer = 5,
+					/obj/item/diaper/gmr_trainer = 5,
+					/obj/item/diaper/underwear = 2)
 	contraband = list(/obj/item/diaper/greentext = 1,
-		//Seasonal content
+				//Seasonal content
 					/obj/item/diaper/jacko = 10,
+				//MISC
 					/obj/item/clothing/shoes/booties/poly = 1,
 					/obj/item/clothing/gloves/mittens/poly = 1,
 					/obj/item/clothing/head/bonnet/poly = 1,
