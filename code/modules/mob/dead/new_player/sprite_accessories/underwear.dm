@@ -253,3 +253,7 @@
 	icon_state = "jacko"
 	has_color = FALSE
 	locked = TRUE
+
+/datum/sprite_accessory/underwear/bottom/diaper/trainer
+	name = "Training Pants"
+	icon_state = "trainingpants"
