@@ -198,7 +198,8 @@
 					/obj/item/clothing/gloves/fingerless = 5,
 					/obj/item/clothing/head/soft = 5,
 					/obj/item/radio/headset/headset_cargo = 3,
-					/obj/item/diaper/supply = 45)
+					/obj/item/diaper/supply = 45,
+					/obj/item/diaper/miner = 45)
 	refill_canister = /obj/item/vending_refill/wardrobe/cargo_wardrobe
 	payment_department = ACCOUNT_CAR
 	cost_multiplier_per_dept = list(ACCOUNT_CAR = 0)

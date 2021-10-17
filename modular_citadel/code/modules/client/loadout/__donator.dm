@@ -7,35 +7,8 @@
 	category = LOADOUT_CATEGORY_DONATOR
 	ckeywhitelist = list("This entry should never appear with this variable set.")
 
-/datum/gear/donator/diaper_bag
-	name = "diaper bag"
+/datum/gear/donator/bs_diaper_bag
+	name = "bluespace diaper bag"
 	slot = SLOT_IN_BACKPACK
-	path = /obj/item/storage/backpack/diaper_bag
-	donator_group_id = PATREON_DONATOR
-
-/datum/gear/donator/plain_diapers
-	name = "Plain diaper pack"
-	slot = SLOT_IN_BACKPACK
-	path = /obj/item/diaper_package/plain
-	donator_group_id = PATREON_DONATOR
-
-/datum/gear/donator/classic_diapers
-	name = "CuddleCom Classic pack"
-	slot = SLOT_IN_BACKPACK
-	path = /obj/item/diaper_package/classic
-	cost = 2
-	donator_group_id = PATREON_DONATOR
-
-/datum/gear/donator/hefters_m
-	name = "Hefters pack (male)"
-	slot = SLOT_IN_BACKPACK
-	path = /obj/item/diaper_package/hefters_m
-	cost = 2
-	donator_group_id = PATREON_DONATOR
-
-/datum/gear/donator/hefters_f
-	name = "Hefters pack (female)"
-	slot = SLOT_IN_BACKPACK
-	path = /obj/item/diaper_package/hefters_f
-	cost = 2
+	path = /obj/item/storage/backpack/diaper_bag/bluespace
 	donator_group_id = PATREON_DONATOR

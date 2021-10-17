@@ -59,6 +59,7 @@
 					/obj/item/diaper/underwear = 5
 					)
 	contraband = list(/obj/item/diaper/greentext = 2,
+					/obj/item/diaper/syndi/rep = 10,
 				//Seasonal content
 					/obj/item/diaper/jacko = 20,
 				//MISC
@@ -141,6 +142,7 @@
 					/obj/item/diaper/gmr_trainer = 5,
 					/obj/item/diaper/underwear = 2)
 	contraband = list(/obj/item/diaper/greentext = 1,
+					/obj/item/diaper/syndi/rep = 5,
 				//Seasonal content
 					/obj/item/diaper/jacko = 10,
 				//MISC
