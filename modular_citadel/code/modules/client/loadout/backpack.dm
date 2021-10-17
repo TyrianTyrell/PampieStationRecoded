@@ -185,12 +185,12 @@
 /datum/gear/backpack/diaperbox/plain
 	name = "A box of plain diapers"
 	path = /obj/item/storage/box/diapers/plain
-	cost = 1
+	cost = 2
 
 /datum/gear/backpack/diaperbox/variety
 	name = "A box of various colourful diapers"
 	path = /obj/item/storage/box/diapers/regular
-	cost = 2
+	cost = 3
 
 /datum/gear/backpack/diaperbox/thick
 	name = "A box of various thick diapers"
