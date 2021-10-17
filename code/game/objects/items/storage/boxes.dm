@@ -1453,7 +1453,7 @@
 /obj/item/storage/box/diapers/plain
 	name = "box of plain diapers"
 
-	var/list/static/plaindiapers = list(/obj/item/wetdiap/plain,
+	var/list/static/plaindiapers = list(/obj/item/diaper/plain,
 		/obj/item/diaper/thirteen)
 
 /obj/item/storage/box/diapers/plain/PopulateContents()
