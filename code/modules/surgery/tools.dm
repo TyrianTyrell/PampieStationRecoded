@@ -387,6 +387,8 @@
 /obj/item/surgical_drapes/advanced
 	name = "smart surgical drapes"
 	desc = "A smart set of drapes with wireless synchronization to the station's research networks, with an integrated display allowing users to execute advanced surgeries without the aid of an operating computer."
+	icon = 'icons/obj/surgery.dmi'
+	icon_state = "adv_surgical_drapes"
 	var/datum/techweb/linked_techweb
 
 /obj/item/surgical_drapes/advanced/Initialize(mapload)
@@ -499,7 +501,7 @@
 
 /obj/item/bonesetter/bone
 	name = "bone bonesetter"
-	desc = "Setting bones with... bones? You're a genius!."
+	desc = "Setting bones with... bones? You're a genius!"
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "bone setter_bone"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
@@ -510,3 +512,17 @@
 	attack_verb = list("corrected", "properly set")
 	tool_behaviour = TOOL_BONESET
 	toolspeed = 1.1
+
+/obj/item/bonesetter/advanced
+	name = "advanced bonesetter"
+	desc = "Advanced bonesetting with tool assistance. Guaranteed to work!"
+	icon = 'icons/obj/surgery.dmi'
+	icon_state = "ebone setter"
+	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
+	flags_1 = CONDUCT_1
+	item_flags = SURGICAL_TOOL
+	w_class = WEIGHT_CLASS_SMALL
+	attack_verb = list("corrected", "properly set")
+	tool_behaviour = TOOL_BONESET
+	toolspeed = 0.7

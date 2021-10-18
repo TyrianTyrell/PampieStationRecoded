@@ -274,3 +274,13 @@
 	build_path = /obj/item/scalpel/advanced
 	category = list("Tool Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/bones_adv
+	name = "Electric Bonesetter"
+	desc = "An advanced bonesetter for using very accurate and calculated movements to set bones."
+	id = "bones_adv"
+	build_type = PROTOLATHE
+	materials = list(/datum/material/iron = 2000, /datum/material/glass = 2000, /datum/material/silver = 5000, /datum/material/gold = 2000)
+	build_path = /obj/item/bonesetter/advanced
+	category = list("Tool Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
