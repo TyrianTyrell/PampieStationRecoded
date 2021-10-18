@@ -39,7 +39,7 @@
 
 		var/datum/gas_mixture/noxious = new
 
-		noxious.set_moles(/datum/gas/diapersmell,0.05)
+		noxious.set_moles(GAS_DIAPERSMELL,0.75)
 
 		noxious.set_temperature(BODYTEMP_NORMAL)
 
@@ -77,7 +77,7 @@
 
 		var/datum/gas_mixture/nox = new
 
-		nox.set_moles(/datum/gas/diapersmell,0.075)
+		nox.set_moles(GAS_DIAPERSMELL,0.1)
 
 		nox.set_temperature(BODYTEMP_NORMAL)
 

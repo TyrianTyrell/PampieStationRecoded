@@ -35,57 +35,57 @@
 				if("plain")
 					butt.undie_color = undie_color
 				if("classics")
-					butt.undie_color = "6F6"
+					butt.undie_color = "66FF66"
 				if("13")
 					butt.undie_color = undie_color
 				if("swaddles")
-					butt.undie_color = "39C"
+					butt.undie_color = "3399CC"
 				if("cloth")
-					butt.undie_color = "FFF"
+					butt.undie_color = "FFFFFF"
 				if("hefters_m")
-					butt.undie_color = "EEF"
+					butt.undie_color = "EEEEFF"
 				if("hefters_f")
-					butt.undie_color = "FDE"
+					butt.undie_color = "FFDDEE"
 				if("Princess")
-					butt.undie_color = "F9F"
+					butt.undie_color = "FF99FF"
 				if("PwrGame")
-					butt.undie_color = "83F"
+					butt.undie_color = "8833FF"
 				if("StarKist")
-					butt.undie_color = "F93"
+					butt.undie_color = "FF9933"
 				if("Space")
-					butt.undie_color = "36C"
+					butt.undie_color = "3366CC"
 				if("Replica")
-					butt.undie_color = "C00"
+					butt.undie_color = "CC0000"
 				if("Service")
-					butt.undie_color = "999"
+					butt.undie_color = "999999"
 				if("Supply")
-					butt.undie_color = "DB2"
+					butt.undie_color = "DDBB22"
 				if("Hydroponics")
-					butt.undie_color = "0F0"
+					butt.undie_color = "00FF00"
 				if("Sec")
-					butt.undie_color = "111"
+					butt.undie_color = "111111"
 				if("Engineering")
-					butt.undie_color = "FE0"
+					butt.undie_color = "FFEE00"
 				if("Atmos")
-					butt.undie_color = "FE0"
+					butt.undie_color = "FFEE00"
 				if("Science")
-					butt.undie_color = "609"
+					butt.undie_color = "660099"
 				if("Med")
-					butt.undie_color = "48A"
+					butt.undie_color = "4488AA"
 				if("Miner")
-					butt.undie_color = "777"
+					butt.undie_color = "777777"
 				if("Miner_thick")
-					butt.undie_color = "777"
+					butt.undie_color = "777777"
 				if("Jeans")
 					butt.undie_color = "587890"
 				if("Jeans_thicc")
 					butt.undie_color = "587890"
 				if("circuit")
-					butt.undie_color = "030"
+					butt.undie_color = "003300"
 				if("Pink")
 					butt.undie_color = "FFC0CB"
 				if("Punk")
-					butt.undie_color = "000"
+					butt.undie_color = "000000"
 				if("fish")
 					butt.undie_color = "ABCDEF"
 				if("SMWind")
@@ -105,9 +105,9 @@
 				if("scalies")
 					butt.undie_color = "46DA3E"
 				if("blackcat")
-					butt.undie_color = "FFF"
+					butt.undie_color = "FFFFFF"
 				if("goldendog")
-					butt.undie_color = "000"
+					butt.undie_color = "000000"
 				if("leafy")
 					butt.undie_color = "698B57"
 				if("slime")
@@ -146,13 +146,13 @@
 					butt.undie_color = "ABCDEF"
 				if("space_trainer")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/trainer()
-					butt.undie_color = "36C"
+					butt.undie_color = "3366CC"
 				if("sky_trainer")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/trainer()
 					butt.undie_color = "587890"
 				if("gmr_trainer")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/trainer()
-					butt.undie_color = "83F"
+					butt.undie_color = "8833FF"
 				if("underwear")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/briefs()
 		else
