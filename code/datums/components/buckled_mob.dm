@@ -34,9 +34,9 @@
 			switch(butt.brand)
 				if("plain")
 					butt.undie_color = undie_color
-				if("classics")
+				if("classic")
 					butt.undie_color = "66FF66"
-				if("13")
+				if("thirteen")
 					butt.undie_color = undie_color
 				if("swaddles")
 					butt.undie_color = "3399CC"
@@ -46,57 +46,61 @@
 					butt.undie_color = "EEEEFF"
 				if("hefters_f")
 					butt.undie_color = "FFDDEE"
-				if("Princess")
+				if("princess")
 					butt.undie_color = "FF99FF"
-				if("PwrGame")
+				if("pwrgame")
 					butt.undie_color = "8833FF"
-				if("StarKist")
+				if("starkist")
 					butt.undie_color = "FF9933"
-				if("Space")
+				if("space")
 					butt.undie_color = "3366CC"
-				if("Replica")
+				if("syndi")
 					butt.undie_color = "CC0000"
-				if("Service")
+				if("service")
 					butt.undie_color = "999999"
-				if("Supply")
+				if("supply")
 					butt.undie_color = "DDBB22"
-				if("Hydroponics")
+				if("hydro")
 					butt.undie_color = "00FF00"
-				if("Sec")
+				if("sec")
 					butt.undie_color = "111111"
-				if("Engineering")
+				if("engi")
 					butt.undie_color = "FFEE00"
-				if("Atmos")
+				if("atmos")
 					butt.undie_color = "FFEE00"
-				if("Science")
+				if("sci")
 					butt.undie_color = "660099"
-				if("Med")
+				if("med")
 					butt.undie_color = "4488AA"
-				if("Miner")
+				if("miner")
 					butt.undie_color = "777777"
-				if("Miner_thick")
+				if("miner_thick")
 					butt.undie_color = "777777"
-				if("Jeans")
+				if("jeans")
 					butt.undie_color = "587890"
-				if("Jeans_thicc")
+				if("jeans_thick")
 					butt.undie_color = "587890"
 				if("circuit")
 					butt.undie_color = "003300"
-				if("Pink")
+				if("pink")
 					butt.undie_color = "FFC0CB"
-				if("Punk")
+				if("pink_thick")
+					butt.undie_color = "FFC0CB"
+				if("punk")
+					butt.undie_color = "000000"
+				if("punk_thick")
 					butt.undie_color = "000000"
 				if("fish")
 					butt.undie_color = "ABCDEF"
 				if("SMWind")
 					butt.undie_color = "0BDA51"
-				if("Cult_Clock")
+				if("ratvar")
 					butt.undie_color = "B8860B"
-				if("Cult_Nar")
+				if("narsie")
 					butt.undie_color = "3D0000"
-				if("Ashwalker")
+				if("ashwalker")
 					butt.undie_color = "DAA520"
-				if("Camo")
+				if("camo")
 					butt.undie_color = "568203"
 				if("alien")
 					butt.undie_color = "563C5C"

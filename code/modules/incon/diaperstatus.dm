@@ -633,7 +633,6 @@
 /atom/movable/screen/diaperstatus/New(mob/living/carbon/owner)
 	DiaperUpdate(owner)
 
-
 /datum/hud/human/New(mob/living/carbon/owner)
 	..()
 	var/atom/movable/screen/diapstats = new /atom/movable/screen/diaperstatus(owner)
