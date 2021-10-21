@@ -357,6 +357,9 @@
 	var/datum/component/acid/acid = O.GetComponent(/datum/component/acid)
 	if(acid)
 		acid.level = 0
+	if(isitem(O))
+		var/obj/item/I = O
+		I.soiled = FALSE
 	O.extinguish()
 
 /obj/machinery/shower/proc/wash_turf()

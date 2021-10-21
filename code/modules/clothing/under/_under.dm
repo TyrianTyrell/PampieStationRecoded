@@ -32,6 +32,8 @@
 		. += mutable_appearance('icons/effects/blood.dmi', "uniformblood", color = blood_DNA_to_color())
 	if(accessory_overlay)
 		. += accessory_overlay
+	if(soiled == TRUE)
+		. += mutable_appearance('icons/incon/poop.dmi', "stains")
 
 /obj/item/clothing/under/attackby(obj/item/I, mob/user, params)
 	if((sensordamage || (has_sensor < HAS_SENSORS && has_sensor != NO_SENSORS)) && istype(I, /obj/item/stack/cable_coil))

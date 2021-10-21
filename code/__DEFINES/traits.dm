@@ -349,6 +349,7 @@
 #define SLIMEPUDDLE_TRAIT "slimepuddle"
 #define CORRUPTED_SYSTEM "corrupted-system"
 #define REGRESSION_TRAIT "regression"
+#define POOPYTRAIT "poopy"
 
 ///The holder of this trait has antennae or whatever that hurt a ton when noogied
 #define TRAIT_ANTENNAE "antennae"

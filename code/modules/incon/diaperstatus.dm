@@ -17,6 +17,9 @@
 /mob/living/carbon/var/statusoverlay = null
 /mob/living/var/combatoverlay = null
 /mob/var/rollbonus = 0
+/obj/item/var/soiled = FALSE
+/mob/living/carbon/human/var/soiledunderwear = FALSE
+/mob/living/carbon/human/var/wearingpoopy = FALSE
 
 /mob/living/carbon/human/ComponentInitialize()
 	. = ..()
@@ -25,7 +28,8 @@
 /mob/living/carbon/proc/Wetting()
 	if (pee > 0 && stat != DEAD && src.client.prefs != "Poop Only")
 		needpee = 0
-		playsound(loc, 'sound/effects/pee-diaper.wav', 50, 1)
+		if(src.client.prefs.accident_sounds == TRUE)
+			playsound(loc, 'sound/effects/pee-diaper.wav', 50, 1)
 		if (istype(src.buckled,/obj/structure/potty) || istype(src.buckled,/obj/structure/toilet))
 			if (istype(src.buckled,/obj/structure/potty))
 				if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
@@ -64,6 +68,11 @@
 
 			if(pee > max_wetcontinence)
 				pee = max_wetcontinence
+			if(ishuman(src))
+				var/mob/living/carbon/human/H = src
+				if(H.hidden_underwear == TRUE || H.underwear == "Nude")
+					pee = 0
+					new /obj/effect/decal/cleanable/waste/peepee(loc)
 			if(wetness + pee < 200 + heftersbonus)
 				wetness = wetness + pee
 				pee = 0
@@ -80,7 +89,8 @@
 /mob/living/carbon/proc/Pooping()
 	if (poop > 0 && stat != DEAD && src.client.prefs != "Pee Only")
 		needpoo = 0
-		playsound(loc, 'sound/effects/uhoh.ogg', 50, 1)
+		if(src.client.prefs.accident_sounds == TRUE)
+			playsound(loc, 'sound/effects/uhoh.ogg', 50, 1)
 		if (istype(src.buckled,/obj/structure/potty) || istype(src.buckled,/obj/structure/toilet))
 			if (istype(src.buckled,/obj/structure/potty))
 				if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
@@ -125,10 +135,27 @@
 							src.visible_message("<span class='notice'>You smell something unpleasant coming from [usr]'s direction. [src.p_they()] don't seem to notice, though.</span>","<span class='notice'>You feel an odd pressure in your stomach, before it quickly goes away.</span>")
 			if(poop > max_messcontinence)
 				poop = max_messcontinence
-			if(stinkiness + poop < 150 + heftersbonus)
-				stinkiness = stinkiness + poop
-			else
-				stinkiness = 150 + heftersbonus
+			if(ishuman(src))
+				var/mob/living/carbon/human/H = src
+				if((H.hidden_underwear == TRUE || H.underwear == "Nude") && !H.dna.features["taur"])
+					if(H.w_uniform != null)
+						H.w_uniform.soiled = TRUE
+						H.update_inv_w_uniform()
+					else
+						if(H.wear_suit != null)
+							H.wear_suit.soiled = TRUE
+							H.update_inv_wear_suit()
+				poop = 0
+				if(stinkiness + poop < 150 + heftersbonus)
+					stinkiness = stinkiness + poop
+					if(H.hidden_underwear == FALSE && H.underwear != "Nude")
+						H.soiledunderwear = TRUE
+						H.update_body()
+				else
+					stinkiness = 150 + heftersbonus
+					if(H.hidden_underwear == FALSE && H.underwear != "Nude")
+						H.soiledunderwear = TRUE
+						H.update_body()
 			if(stinkiness > ((150 + heftersbonus) / 2) && stinky == FALSE)
 				statusoverlay = mutable_appearance('icons/incon/Effects.dmi',"generic_mob_stink",STINKLINES_LAYER, color = rgb(125, 241, 16))
 				overlays += statusoverlay
@@ -480,6 +507,7 @@
 /mob/living/carbon/proc/DiaperAppearance()
 	SEND_SIGNAL(src,COMSIG_DIAPERCHANGE, ckey(src.mind.key))
 
+
 /mob/living/carbon/proc/DiaperChange(obj/item/diaper/diap)
 	var/turf/cuckold = null
 	var/newpamp
@@ -508,6 +536,10 @@
 	wetness = 0
 	stinkiness = 0
 	overlays -= statusoverlay
+	if(ishuman(src))
+		var/mob/living/carbon/human/H = src
+		H.soiledunderwear = FALSE
+		H.update_body()
 	stinky = FALSE
 	brand = replacetext("[diap.type]", "/obj/item/diaper/", "")
 	if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
@@ -584,6 +616,17 @@
 	if(owner.brand == "alien")
 		owner.wetness -= 0.1
 		owner.stinkiness -= 0.1
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		H.wearingpoopy = (H.wear_suit?.soiled == TRUE || H.w_uniform?.soiled == TRUE || (H.soiledunderwear == TRUE && H.hidden_underwear == FALSE))
+		if(HAS_TRAIT_FROM(H,TRAIT_NORUNNING, POOPYTRAIT))
+			if(H.wearingpoopy == FALSE)
+				REMOVE_TRAIT(H,TRAIT_NORUNNING,POOPYTRAIT)
+		else
+			if(H.wearingpoopy == TRUE)
+				ADD_TRAIT(H,TRAIT_NORUNNING,POOPYTRAIT)
+				if(H.m_intent == MOVE_INTENT_RUN)
+					H.toggle_move_intent()
 	spawn(1)
 		DiaperUpdate(owner)
 
