@@ -2621,6 +2621,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					event_tfs = !event_tfs
 				if("dresscodes")
 					dresscodes = !dresscodes
+				if("accident_sounds")
+					accident_sounds = !accident_sounds
 				if("no_tetris_storage")
 					no_tetris_storage = !no_tetris_storage
 				if ("screenshake")

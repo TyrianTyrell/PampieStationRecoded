@@ -145,7 +145,7 @@
 						if(H.wear_suit != null)
 							H.wear_suit.soiled = TRUE
 							H.update_inv_wear_suit()
-				poop = 0
+					poop = 0
 				if(stinkiness + poop < 150 + heftersbonus)
 					stinkiness = stinkiness + poop
 					if(H.hidden_underwear == FALSE && H.underwear != "Nude")
@@ -618,7 +618,7 @@
 		owner.stinkiness -= 0.1
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
-		H.wearingpoopy = (H.wear_suit?.soiled == TRUE || H.w_uniform?.soiled == TRUE || (H.soiledunderwear == TRUE && H.hidden_underwear == FALSE))
+		H.wearingpoopy = (H.wear_suit?.soiled == TRUE || H.w_uniform?.soiled == TRUE || (H.soiledunderwear == TRUE && H.stinkiness == 150 + H.heftersbonus && H.hidden_underwear == FALSE))
 		if(HAS_TRAIT_FROM(H,TRAIT_NORUNNING, POOPYTRAIT))
 			if(H.wearingpoopy == FALSE)
 				REMOVE_TRAIT(H,TRAIT_NORUNNING,POOPYTRAIT)
