@@ -789,7 +789,7 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 					MA.color = "#[H.socks_color]"
 				standing += MA
 
-		if(H.underwear && !H.hidden_underwear)
+		if(H.underwear && !H.hidden_underwear && (H.is_groin_exposed() || H.dna.features["taur"]))
 			if(H.saved_underwear)
 				H.underwear = H.saved_underwear
 				H.saved_underwear = ""
@@ -826,7 +826,7 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 					else
 						MA = mutable_appearance(B.icon, "[B.icon_state][digilegs]", -BODY_LAYER)
 						if(H.soiledunderwear == TRUE)
-							MA.overlays.Add(mutable_appearance('icons/incon/poop.dmi', "stains", -BODY_LAYER))
+							MA.overlays.Add(mutable_appearance('icons/incon/poop.dmi', "stains", -BODY_LAYER, appearance_flags=RESET_COLOR))
 					if(B.has_color)
 						MA.color = "#[H.undie_color]"
 						if(istauric == TRUE)

@@ -453,8 +453,7 @@ SUBSYSTEM_DEF(job)
 
 	if(job)
 		job.dresscodecompliant = M.client.prefs.dresscodes
-		if(!job.dresscodecompliant)// CIT CHANGE - dress code compliance
-			equip_loadout(N, H) // CIT CHANGE - allows players to spawn with loadout items
+		equip_loadout(N, H)
 		var/new_mob = job.equip(H, null, null, joined_late , null, M.client)
 		if(ismob(new_mob))
 			H = new_mob
@@ -486,7 +485,7 @@ SUBSYSTEM_DEF(job)
 		to_chat(M, "<b><span class = 'big'>Your account ID is [wageslave.account_id].</span></b>")
 		H.add_memory("Your account ID is [wageslave.account_id].")
 	if(job && H)
-		if(job.dresscodecompliant)// CIT CHANGE - dress code compliance
+		if(job.dresscodecompliant == FALSE)// CIT CHANGE - dress code compliance
 			equip_loadout(N, H) // CIT CHANGE - allows players to spawn with loadout items
 		job.after_spawn(H, M, joined_late) // note: this happens before the mob has a key! M will always have a client, H might not.
 		equip_loadout(N, H, TRUE)//CIT CHANGE - makes players spawn with in-backpack loadout items properly. A little hacky but it works

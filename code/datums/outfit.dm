@@ -190,7 +190,8 @@
 		H.equip_to_slot_or_del(new glasses(H), SLOT_GLASSES, TRUE)
 	if(id)
 		if(uniform)
-			H.equip_to_slot_or_del(new id(H), SLOT_WEAR_ID, TRUE)
+			var/obj/item/card/id/IDP = new id(H)
+			H.equip_to_slot_or_del(IDP, SLOT_WEAR_ID, TRUE)
 		else
 			var/obj/item/card/id/I = new id(H)
 			var/datum/job/J = SSjob.GetJob(H.job)

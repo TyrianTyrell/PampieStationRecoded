@@ -13153,7 +13153,9 @@
 /obj/machinery/door/airlock{
 	desc = "A small bathroom with a sink, toilet and shower.";
 	id_tag = "Bath1";
-	name = "Bathroom"
+	name = "Bathroom";
+	req_access = list(72);
+	req_access_txt = "72"
 	},
 /obj/machinery/door/firedoor,
 /turf/open/floor/mineral/titanium/blue,
