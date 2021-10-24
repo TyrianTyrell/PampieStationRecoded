@@ -11,6 +11,7 @@
 	var/being_dumped = FALSE //pink levels are rising
 	var/withdrawDelay = 0
 	var/princessbonus = FALSE
+	var/bigshotbonus = FALSE
 
 /datum/bank_account/New(newname, job)
 	if(add_to_accounts)
@@ -62,6 +63,10 @@
 				bank_card_talk("ERROR: Payday aborted, departmental funds insufficient.")
 				return FALSE
 			else
+				if(D.princessbonus == TRUE)
+					D.adjust_money(round(money_to_transfer / 5))
+				if(D.bigshotbonus == TRUE)
+					D.adjust_money(round((35*money_to_transfer)/100))
 				bank_card_talk("Payday processed, account now holds [account_balance] cr.")
 				return TRUE
 	bank_card_talk("ERROR: Payday aborted, unable to contact departmental account.")

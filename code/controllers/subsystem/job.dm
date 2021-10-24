@@ -453,7 +453,8 @@ SUBSYSTEM_DEF(job)
 
 	if(job)
 		job.dresscodecompliant = M.client.prefs.dresscodes
-		equip_loadout(N, H)
+		if(!job.dresscodecompliant)
+			equip_loadout(N, H)
 		var/new_mob = job.equip(H, null, null, joined_late , null, M.client)
 		if(ismob(new_mob))
 			H = new_mob

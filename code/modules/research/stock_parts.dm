@@ -179,12 +179,14 @@ If you create T5+ please take a pass at gene_modder.dm [L40]. Max_values MUST fi
 		T.DiaperAppearance()
 		if (findtext(T.brand, "hefters") != 0 || findtext(T.brand, "_thick") != 0)
 			T.heftersbonus = 100
-		if (findtext(T.brand, "trainer") != 0 || findtext(T.brand, "_trainer") != 0)
-			T.heftersbonus = -80
-		if (findtext(T.brand, "underwear") != 0 || findtext(T.brand, "_underwear") != 0)
-			T.heftersbonus = -140
 		else
-			T.heftersbonus = 0
+			if (findtext(T.brand, "trainer") != 0 || findtext(T.brand, "_trainer") != 0)
+				T.heftersbonus = -80
+			else
+				if (findtext(T.brand, "underwear") != 0 || findtext(T.brand, "_underwear") != 0)
+					T.heftersbonus = -140
+				else
+					T.heftersbonus = 0
 		STR.remove_from_storage(picked)
 		return TRUE
 	return ..()

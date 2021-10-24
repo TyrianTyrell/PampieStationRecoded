@@ -340,7 +340,27 @@
 /obj/item/clothing/glasses/welding/attack_self(mob/user)
 	weldingvisortoggle(user)
 
+/obj/item/clothing/glasses/welding/bigshot
+	name = "Dealmaker glasses"
+	desc = "A special pair of glasses that increases your paycheck size. Because you're a big shot!"
+	vision_correction = 1
 
+/obj/item/clothing/glasses/welding/bigshot/equipped(mob/user, slot)
+	. = ..()
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		var/datum/bank_account/B = H.get_bank_account()
+		if(slot == SLOT_WEAR_MASK)
+			B.bigshotbonus = TRUE
+		else
+			B.bigshotbonus = FALSE
+
+/obj/item/clothing/glasses/welding/bigshot/dropped(mob/user)
+	. = ..()
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		var/datum/bank_account/B = H.get_bank_account()
+		B.bigshotbonus = FALSE
 /obj/item/clothing/glasses/sunglasses/blindfold
 	name = "blindfold"
 	desc = "Covers the eyes, preventing sight."
