@@ -586,6 +586,7 @@
 	icon = 'icons/incon/diapercondition.dmi'
 	icon_state = "hud_plain"
 	screen_loc = ui_diaper
+	var/datum/component/waddle
 
 /atom/movable/screen/diaperstatus/proc/DiaperUpdate(mob/living/carbon/owner)
 	if(HAS_TRAIT(owner,BABYBRAINED_TRAIT))
@@ -621,9 +622,11 @@
 		H.wearingpoopy = (H.wear_suit?.soiled == TRUE || H.w_uniform?.soiled == TRUE || (H.soiledunderwear == TRUE && H.stinkiness == 150 + H.heftersbonus && H.hidden_underwear == FALSE))
 		if(HAS_TRAIT_FROM(H,TRAIT_NORUNNING, POOPYTRAIT))
 			if(H.wearingpoopy == FALSE)
+				QDEL_NULL(waddle)
 				REMOVE_TRAIT(H,TRAIT_NORUNNING,POOPYTRAIT)
 		else
 			if(H.wearingpoopy == TRUE)
+				waddle = H.AddComponent(/datum/component/waddling)
 				ADD_TRAIT(H,TRAIT_NORUNNING,POOPYTRAIT)
 				if(H.m_intent == MOVE_INTENT_RUN)
 					H.toggle_move_intent()
