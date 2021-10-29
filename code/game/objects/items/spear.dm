@@ -237,7 +237,7 @@
 			if(target_limb)
 				M.visible_message("<span class='warning'>[M]\s body looks like an empty juice box!</span>")
 				M.syringedrain()
-				new /obj/item/spear/bloodysyringe(loc)
+				new /obj/item/spear/bloodysyringe(user.loc)
 				qdel(src)
 		else
 			to_chat(user, "<span class='notice'>Expose [M]\s head before trying  to drain them!</span>")
