@@ -231,8 +231,8 @@
 
 	M.visible_message("<span class='warning'>[user] is trying to drain [M]\s blood with \the [src]!</span>")
 
-	var/crush_time = max(0, 400 - (560-M.blood_volume))
-	if(do_mob(user, M, crush_time))
+	var/drain_time = max(0, 400 - (560-M.blood_volume))
+	if(do_mob(user, M, drain_time))
 		if(get_location_accessible(M, target_zone))
 			if(target_limb)
 				M.visible_message("<span class='warning'>[M]\s body looks like an empty juice box!</span>")

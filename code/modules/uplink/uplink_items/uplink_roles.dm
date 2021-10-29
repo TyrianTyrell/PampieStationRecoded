@@ -53,8 +53,8 @@
 	desc = "Pretty much a spear, at this point. Big enough to drain someone dry but very clunky.\
 	You probably won't be able to use the blood for anything, given how much other stuff you may suck out."
 	item = /obj/item/spear/syringe
-	restricted_roles = list("Medical Doctor", "Chemist", "Chief Medical Officer")
-	cost = 6
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer")
+	cost = 8
 
 /datum/uplink_item/role_restricted/clown_bomb
 	name = "Clown Bomb"
