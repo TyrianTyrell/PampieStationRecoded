@@ -192,7 +192,7 @@
 	righthand_file = 'icons/mob/inhands/weapons/polearms_righthand.dmi'
 	name = "comically large syringe"
 	desc = "A ridiculously big syringe. Draining anything with it would be taking forever but you can use it to stab people. Apparently first used by a lizard."
-	force = 12
+	force = 0
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
 	reach = 1
@@ -207,13 +207,16 @@
 
 /obj/item/spear/syringe/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/two_handed, force_unwielded=12, force_wielded=25, icon_wielded="[icon_prefix]1")
+	AddComponent(/datum/component/two_handed, force_unwielded=0, force_wielded=25, icon_wielded="[icon_prefix]1")
 
 /obj/item/spear/syringe/attack(mob/living/carbon/M, mob/living/carbon/user)
 	. = ..()
 	var/target_zone = "head"
 	var/obj/item/bodypart/target_limb = M.get_bodypart(target_zone)
 
+	if(!wielded)
+		to_chat(user, "<span class='warning'>[src] is too heavy to use like this with one hand.")
+		return
 	if(!get_turf(M))
 		return
 	if(!istype(M))
@@ -231,7 +234,7 @@
 
 	M.visible_message("<span class='warning'>[user] is trying to drain [M]\s blood with \the [src]!</span>")
 
-	var/drain_time = max(0, 400 - (560-M.blood_volume))
+	var/drain_time = max(0, 100 - ((1/(530-M.blood_volume))*100))
 	if(do_mob(user, M, drain_time))
 		if(get_location_accessible(M, target_zone))
 			if(target_limb)
@@ -248,13 +251,13 @@
 	righthand_file = 'icons/mob/inhands/weapons/polearms_righthand.dmi'
 	name = "comically large syringe"
 	desc = "A ridiculously big syringe. Draining anything with it would be taking forever but you can use it to stab people. Apparently first used by a lizard."
-	force = 12
+	force = 0
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
-	reach = 1
+	reach = 2
 	throwforce = 20
 	embedding = list("embedded_impact_pain_multiplier" = 3)
-	armour_penetration = 15				//Enhanced armor piercing
+	armour_penetration = 10
 	custom_materials = null
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("stabbed", "poked", "jabbed", "penetrated", "gored")
@@ -263,7 +266,7 @@
 
 /obj/item/spear/bloodysyringe/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/two_handed, force_unwielded=12, force_wielded=25, icon_wielded="[icon_prefix]1")
+	AddComponent(/datum/component/two_handed, force_unwielded=0, force_wielded=25, icon_wielded="[icon_prefix]1")
 
 /obj/item/spear/bloodysyringe/machine_wash(obj/machinery/washing_machine/WM)
 	new /obj/item/spear/syringe(loc)
