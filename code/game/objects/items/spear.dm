@@ -237,6 +237,8 @@
 			if(target_limb)
 				M.visible_message("<span class='warning'>[M]\s body looks like an empty juice box!</span>")
 				M.syringedrain()
+				new /obj/item/spear/bloodysyringe(loc)
+				qdel(src)
 		else
 			to_chat(user, "<span class='notice'>Expose [M]\s head before trying  to drain them!</span>")
 
@@ -262,3 +264,7 @@
 /obj/item/spear/bloodysyringe/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/two_handed, force_unwielded=12, force_wielded=25, icon_wielded="[icon_prefix]1")
+
+/obj/item/spear/bloodysyringe/machine_wash(obj/machinery/washing_machine/WM)
+	new /obj/item/spear/syringe(loc)
+	qdel(src)
