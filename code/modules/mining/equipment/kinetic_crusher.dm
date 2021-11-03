@@ -32,9 +32,9 @@
 	var/brightness_on = 7
 	var/wielded = FALSE // track wielded status on item
 	/// Damage penalty factor to detonation damage to non simple mobs
-	var/human_damage_nerf = 0.25
+	var/human_damage_nerf = 0.2
 	/// Damage penalty factor to backstab bonus damage to non simple mobs
-	var/human_backstab_nerf = 0.25
+	var/human_backstab_nerf = 0.2
 
 /obj/item/kinetic_crusher/cyborg //probably give this a unique sprite later
 	desc = "An integrated version of the standard kinetic crusher with a grinded down axe head to dissuade mis-use against crewmen. Deals damage equal to the standard crusher against creatures, however."
@@ -326,7 +326,7 @@
 /obj/item/crusher_trophy/proc/on_mark_application(mob/living/target, datum/status_effect/crusher_mark/mark, had_mark) //the target, the mark applied, and if the target had a mark before
 /obj/item/crusher_trophy/proc/on_mark_detonation(mob/living/target, mob/living/user) //the target and the user
 
-//goliath
+//goliath PLEASE REPLACE WITH AOE MINING (not damage, only mining)
 /obj/item/crusher_trophy/goliath_tentacle
 	name = "goliath tentacle"
 	desc = "A sliced-off goliath tentacle. Suitable as a trophy for a kinetic crusher."
@@ -429,7 +429,7 @@
 //ash drake
 /obj/item/crusher_trophy/tail_spike
 	desc = "A spike taken from an ash drake's tail. Suitable as a trophy for a kinetic crusher."
-	denied_type = /obj/item/crusher_trophy/tail_spike
+	denied_type = list(/obj/item/crusher_trophy/safety_bypass, /obj/item/crusher_trophy/tail_spike)
 	bonus_value = 5
 
 /obj/item/crusher_trophy/tail_spike/effect_desc()
@@ -454,7 +454,7 @@
 	desc = "A set of blood-drenched claws from a massive demon's hand. Suitable as a trophy for a kinetic crusher."
 	icon_state = "demon_claws"
 	gender = PLURAL
-	denied_type = /obj/item/crusher_trophy/demon_claws
+	denied_type = list(/obj/item/crusher_trophy/safety_bypass, /obj/item/crusher_trophy/demon_claws)
 	bonus_value = 10
 	var/static/list/damage_heal_order = list(BRUTE, BURN, OXY)
 
@@ -487,7 +487,7 @@
 	desc = "The blaster tubes from a colossus's arm. Suitable as a trophy for a kinetic crusher."
 	icon_state = "blaster_tubes"
 	gender = PLURAL
-	denied_type = /obj/item/crusher_trophy/blaster_tubes
+	denied_type = list(/obj/item/crusher_trophy/safety_bypass, /obj/item/crusher_trophy/blaster_tubes)
 	bonus_value = 15
 	var/deadly_shot = FALSE
 
@@ -515,7 +515,7 @@
 	name = "vortex talisman"
 	desc = "A glowing trinket that was originally the Hierophant's beacon. Suitable as a trophy for a kinetic crusher."
 	icon_state = "vortex_talisman"
-	denied_type = /obj/item/crusher_trophy/vortex_talisman
+	denied_type = list(/obj/item/crusher_trophy/safety_bypass, /obj/item/crusher_trophy/vortex_talisman)
 	var/vortex_cd
 
 /obj/item/crusher_trophy/vortex_talisman/effect_desc()
@@ -585,7 +585,7 @@
 	desc = "A set of modifications that allow a kinetic crusher to work on all living organisms, removing their size checks."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "modkit"
-	denied_type = /obj/item/crusher_trophy/safety_bypass
+	denied_type = list(/obj/item/crusher_trophy/safety_bypass, /obj/item/crusher_trophy/blaster_tubes, /obj/item/crusher_trophy/vortex_talisman, /obj/item/crusher_trophy/demon_claws, /obj/item/crusher_trophy/tail_spike)
 
 // stealth
 /obj/item/crusher_trophy/effect_desc()
