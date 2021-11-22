@@ -262,3 +262,73 @@
 	if(target.reagents)
 		target.reagents.add_reagent(/datum/reagent/consumable/frostoil, 30)
 	return TRUE
+
+/obj/effect/proc_holder/changeling/sting/lax
+	name = "Relaxing Sting"
+	desc = "We silently sting a human with a cocktail of laxatives."
+	helptext = "Does not provide a warning to the victim, though they will likely realize they need to go."
+	sting_icon = "sting_extract"
+	chemical_cost = 20
+	dna_cost = 1
+	action_icon = 'icons/mob/actions/actions_changeling.dmi'
+	action_icon_state = "ling_sting_extract"
+	action_background_icon_state = "bg_ling"
+
+/obj/effect/proc_holder/changeling/sting/lax/sting_action(mob/user, mob/target)
+	log_combat(user, target, "stung", "lax sting")
+	if(target.reagents)
+		target.reagents.add_reagent(/datum/reagent/medicine/laxative, 25)
+	return TRUE
+
+/obj/effect/proc_holder/changeling/sting/diuretic
+	name = "Diuretic Sting"
+	desc = "We silently sting a human with a cocktail of diuretics."
+	helptext = "Does not provide a warning to the victim, though they will likely realize they need to go."
+	sting_icon = "sting_extract"
+	chemical_cost = 20
+	dna_cost = 1
+	action_icon = 'icons/mob/actions/actions_changeling.dmi'
+	action_icon_state = "ling_sting_extract"
+	action_background_icon_state = "bg_ling"
+
+/obj/effect/proc_holder/changeling/sting/diuretic/sting_action(mob/user, mob/target)
+	log_combat(user, target, "stung", "diuretic sting")
+	if(target.reagents)
+		target.reagents.add_reagent(/datum/reagent/medicine/diuretic, 25)
+	return TRUE
+
+/obj/effect/proc_holder/changeling/sting/regress
+	name = "Regressive Sting"
+	desc = "We silently sting a human with a cocktail of chemicals to numb the brain."
+	helptext = "Does not provide a warning to the victim, though they will likely not realize anything anyway."
+	sting_icon = "sting_extract"
+	chemical_cost = 25
+	dna_cost = 2
+	loudness = 2
+	action_icon = 'icons/mob/actions/actions_changeling.dmi'
+	action_icon_state = "ling_sting_extract"
+	action_background_icon_state = "bg_ling"
+
+/obj/effect/proc_holder/changeling/sting/regress/sting_action(mob/user, mob/target)
+	log_combat(user, target, "stung", "regressive sting")
+	if(target.reagents)
+		target.reagents.add_reagent(/datum/reagent/medicine/regression, 5)
+	return TRUE
+
+/obj/effect/proc_holder/changeling/sting/cat
+	name = "Feline Sting"
+	desc = "We silently sting a human with a cocktail of chemicals to emphasize feline features."
+	helptext = "Does not provide a warning to the victim, though they will be a cat."
+	sting_icon = "sting_extract"
+	chemical_cost = 20
+	dna_cost = 2
+	loudness = 1
+	action_icon = 'icons/mob/actions/actions_changeling.dmi'
+	action_icon_state = "ling_sting_extract"
+	action_background_icon_state = "bg_ling"
+
+/obj/effect/proc_holder/changeling/sting/cat/sting_action(mob/user, mob/target)
+	log_combat(user, target, "stung", "feline sting")
+	if(target.reagents)
+		target.reagents.add_reagent(/datum/reagent/fermi/secretcatchem, 25)
+	return TRUE
