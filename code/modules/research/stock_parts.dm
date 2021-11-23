@@ -167,7 +167,7 @@ If you create T5+ please take a pass at gene_modder.dm [L40]. Max_values MUST fi
 
 /obj/item/storage/part_replacer/diaper_ray/pre_attack(mob/living/carbon/human/T, mob/living/user, params)
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage/concrete)
-	if(!istype(T) || !(HAS_TRAIT(T, TRAIT_INCONTINENT) || HAS_TRAIT(T,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(T,BABYBRAINED_TRAIT) || HAS_TRAIT(T,TRAIT_DIAPERUSE) || HAS_TRAIT(T,TRAIT_POTTYREBEL)))
+	if(!istype(T) || (src.client.prefs.accident_types == "Opt Out")
 		return ..()
 	if(user.Adjacent(T))
 		if(works_from_distance)
@@ -177,21 +177,21 @@ If you create T5+ please take a pass at gene_modder.dm [L40]. Max_values MUST fi
 		T.DiaperChange(picked)
 		T.brand2 = picked.name
 		T.DiaperAppearance()
-		if (findtext(M.brand, "hefters") != 0 || findtext(M.brand, "_thick") != 0)
-			M.heftersbonus = 100
-		else if (findtext(M.brand, "trainer") != 0 || findtext(M.brand, "_trainer") != 0)
-			M.heftersbonus = -80
-		else if (findtext(M.brand, "underwear") != 0 || findtext(M.brand, "_underwear") != 0)
-			M.heftersbonus = -140
+		if (findtext(T.brand, "hefters") != 0 || findtext(T.brand, "_thick") != 0)
+			T.heftersbonus = 100
+		else if (findtext(T.brand, "trainer") != 0 || findtext(T.brand, "_trainer") != 0)
+			T.heftersbonus = -80
+		else if (findtext(T.brand, "underwear") != 0 || findtext(T.brand, "_underwear") != 0)
+			T.heftersbonus = -140
 		else
-			M.heftersbonus = 0
+			T.heftersbonus = 0
 		STR.remove_from_storage(picked)
 		return TRUE
 	return ..()
 
 /obj/item/storage/part_replacer/diaper_ray/afterattack(mob/living/carbon/human/T, mob/living/user, adjacent, params)
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage/concrete)
-	if(adjacent || !istype(T) || !(HAS_TRAIT(T, TRAIT_INCONTINENT) || HAS_TRAIT(T,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(T,BABYBRAINED_TRAIT) || HAS_TRAIT(T,TRAIT_DIAPERUSE) || HAS_TRAIT(T,TRAIT_POTTYREBEL)))
+	if(adjacent || !istype(T) || (src.client.prefs.accident_types == "Opt Out")
 		return ..()
 	if(works_from_distance)
 		var/obj/item/diaper/picked = pick(STR.contents())
@@ -200,14 +200,14 @@ If you create T5+ please take a pass at gene_modder.dm [L40]. Max_values MUST fi
 		T.DiaperChange(picked)
 		T.brand2 = picked.name
 		T.DiaperAppearance()
-		if (findtext(M.brand, "hefters") != 0 || findtext(M.brand, "_thick") != 0)
-			M.heftersbonus = 100
-		else if (findtext(M.brand, "trainer") != 0 || findtext(M.brand, "_trainer") != 0)
-			M.heftersbonus = -80
-		else if (findtext(M.brand, "underwear") != 0 || findtext(M.brand, "_underwear") != 0)
-			M.heftersbonus = -140
+		if (findtext(T.brand, "hefters") != 0 || findtext(T.brand, "_thick") != 0)
+			T.heftersbonus = 100
+		else if (findtext(T.brand, "trainer") != 0 || findtext(T.brand, "_trainer") != 0)
+			T.heftersbonus = -80
+		else if (findtext(T.brand, "underwear") != 0 || findtext(T.brand, "_underwear") != 0)
+			T.heftersbonus = -140
 		else
-			M.heftersbonus = 0
+			T.heftersbonus = 0
 		STR.remove_from_storage(picked)
 		return TRUE
 	return ..()
