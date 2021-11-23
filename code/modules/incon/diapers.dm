@@ -107,10 +107,10 @@
 				M.heftersbonus = 100
 			else if (findtext(M.brand, "trainer") != 0 || findtext(M.brand, "_trainer") != 0)
 				M.heftersbonus = -80
-				else if (findtext(M.brand, "underwear") != 0 || findtext(M.brand, "_underwear") != 0)
-					M.heftersbonus = -140
-					else
-						M.heftersbonus = 0
+			else if (findtext(M.brand, "underwear") != 0 || findtext(M.brand, "_underwear") != 0)
+				M.heftersbonus = -140
+			else
+				M.heftersbonus = 0
 			Del()
 
 /obj/item/wetdiap/plain
