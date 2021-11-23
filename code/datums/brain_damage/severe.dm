@@ -277,19 +277,17 @@
 
 /datum/brain_trauma/severe/incon
 	name = "Traumatic Incontinence"
-	desc = "Patient appears to be incontinent."
+	desc = "Patient appears to be fully incontinent."
 	scan_desc = "incontinence"
 	gain_text = "<span class='notice'>You forget what a toilet is.</span>"
 	lose_text = "<span class='notice'>You remember what a toilet is.</span>"
 
 /datum/brain_trauma/severe/incon/on_gain()
-	ADD_TRAIT(owner, TRAIT_DIAPERUSE, TRAUMA_TRAIT)
-	ADD_TRAIT(owner, TRAIT_NOCHANGESELF, TRAUMA_TRAIT)
+	ADD_TRAIT(owner, TRAIT_FULLYINCONTINENT, TRAUMA_TRAIT)
 	..()
 
 /datum/brain_trauma/severe/incon/on_lose()
-	REMOVE_TRAIT(owner, TRAIT_DIAPERUSE, TRAUMA_TRAIT)
-	REMOVE_TRAIT(owner, TRAIT_NOCHANGESELF, TRAUMA_TRAIT)
+	REMOVE_TRAIT(owner, TRAIT_FULLYINCONTINENT, TRAUMA_TRAIT)
 	..()
 
 //ported from TG
