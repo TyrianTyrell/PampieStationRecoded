@@ -80,7 +80,7 @@
 				wetness = 200 + heftersbonus
 				new /obj/effect/decal/cleanable/waste/peepee(loc)
 			if(max_wetcontinence > 25)
-				max_wetcontinence-=2
+				max_wetcontinence-=1
 		pee = 0
 		on_purpose = 0
 	else if (stat == DEAD)
@@ -161,7 +161,7 @@
 				overlays += statusoverlay
 				stinky = TRUE
 			if(max_messcontinence > 20)
-				max_messcontinence-=5
+				max_messcontinence-=2
 		on_purpose = 0
 		poop = 0
 	else if (stat == DEAD)
