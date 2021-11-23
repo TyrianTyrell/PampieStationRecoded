@@ -168,7 +168,7 @@
 		to_chat(src,"You can't poop, you're dead!")
 
 /mob/living/carbon/proc/PampUpdate()
-	if(stat != DEAD && (HAS_TRAIT(src,TRAIT_INCONTINENT) || HAS_TRAIT(src,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(src,TRAIT_POTTYREBEL) || HAS_TRAIT(src,BABYBRAINED_TRAIT) || HAS_TRAIT(src,TRAIT_DIAPERUSE)) && src.client != null)
+	if(src.client.prefs.accident_types != "Opt Out")
 		if(src.client.prefs.accident_types != "Poop Only")
 			pee = pee + ((20 + rand(0, 10))/100) + (fluids / 3000)
 			if(HAS_TRAIT(src, TRAIT_STINKER))
@@ -549,7 +549,7 @@
 /mob/living/carbon/verb/Pee()
 	if(usr.client.prefs.accident_types != "Poop Only")
 		set category = "IC"
-	if((HAS_TRAIT(usr,TRAIT_INCONTINENT) || HAS_TRAIT(usr,TRAIT_POTTYREBEL) || HAS_TRAIT(usr,BABYBRAINED_TRAIT) || HAS_TRAIT(usr,TRAIT_DIAPERUSE)) && !HAS_TRAIT(usr,TRAIT_FULLYINCONTINENT) && pee >= max_wetcontinence/2)
+	if(src.client.prefs.accident_types != "Opt Out" && !HAS_TRAIT(usr,TRAIT_FULLYINCONTINENT) && pee >= max_wetcontinence/2)
 		on_purpose = 1
 		Wetting()
 	else
@@ -558,7 +558,7 @@
 /mob/living/carbon/verb/Poop()
 	if(usr.client.prefs.accident_types != "Pee Only")
 		set category = "IC"
-	if((HAS_TRAIT(usr,TRAIT_INCONTINENT) || HAS_TRAIT(usr,TRAIT_POTTYREBEL) || HAS_TRAIT(usr,BABYBRAINED_TRAIT) || HAS_TRAIT(usr,TRAIT_DIAPERUSE)) && !HAS_TRAIT(usr,TRAIT_FULLYINCONTINENT) && poop >= max_messcontinence/2)
+	if(src.client.prefs.accident_types != "Opt Out" && !HAS_TRAIT(usr,TRAIT_FULLYINCONTINENT) && poop >= max_messcontinence/2)
 		on_purpose = 1
 		Pooping()
 	else
