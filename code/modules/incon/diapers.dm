@@ -97,7 +97,7 @@
 /obj/item/diaper/attack(mob/living/carbon/human/M as mob, mob/usr as mob)
 	if(M == usr && HAS_TRAIT(M,TRAIT_NOCHANGESELF))
 		to_chat(usr, "<span class='warning'>You don't know how to change yourself!</span>")
-	else if(src.client.prefs.accident_types != "Opt Out")
+	else if(M.client.prefs.accident_types != "Opt Out")
 		playsound(M.loc,'sound/effects/Diapertape.wav',50,1)
 		if(do_after_mob(usr,M))
 			M.DiaperChange(src)

@@ -167,7 +167,7 @@ If you create T5+ please take a pass at gene_modder.dm [L40]. Max_values MUST fi
 
 /obj/item/storage/part_replacer/diaper_ray/pre_attack(mob/living/carbon/human/T, mob/living/user, params)
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage/concrete)
-	if(!istype(T) || (src.client.prefs.accident_types == "Opt Out"))
+	if(!istype(T) || (T.client.prefs.accident_types == "Opt Out"))
 		return ..()
 	if(user.Adjacent(T))
 		if(works_from_distance)
@@ -191,7 +191,7 @@ If you create T5+ please take a pass at gene_modder.dm [L40]. Max_values MUST fi
 
 /obj/item/storage/part_replacer/diaper_ray/afterattack(mob/living/carbon/human/T, mob/living/user, adjacent, params)
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage/concrete)
-	if(adjacent || !istype(T) || (src.client.prefs.accident_types == "Opt Out"))
+	if(adjacent || !istype(T) || (T.client.prefs.accident_types == "Opt Out"))
 		return ..()
 	if(works_from_distance)
 		var/obj/item/diaper/picked = pick(STR.contents())
