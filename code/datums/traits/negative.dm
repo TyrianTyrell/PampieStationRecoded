@@ -439,29 +439,9 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 	var/mob/living/carbon/human/H = quirk_holder
 	H?.cure_trauma_type(/datum/brain_trauma/severe/monophobia, TRAUMA_RESILIENCE_ABSOLUTE)
 
-/datum/quirk/incontinent
-	name = "Incontinent"
-	desc = "For whatever reason, you have a hard time holding it. Opts you into the diaper usage system, and doubles the rate at which you have accidents."
-	mob_trait = TRAIT_INCONTINENT
-	value = 0
-	medical_record_text = "Patient is incontinent."
-	mood_quirk = TRUE
-
-/datum/quirk/incontinent/add()
-	. = ..()
-	SEND_SIGNAL(quirk_holder, COMSIG_DIAPERCHANGE, ckey(quirk_holder.mind.key))
-	quirk_holder.max_wetcontinence = 50
-	quirk_holder.max_messcontinence = 50
-
-/datum/quirk/incontinent/remove()
-	. = ..()
-	SEND_SIGNAL(quirk_holder, COMSIG_DIAPERCHANGE, ckey(quirk_holder.mind.key))
-	quirk_holder.max_wetcontinence = 100
-	quirk_holder.max_messcontinence = 100
-
 /datum/quirk/fullyincontinent
 	name = "Unaware"
-	desc = "You suffered damage to your sacral nerve system at some point. Opts you into the diaper usage system, and removes any indication that you need to go."
+	desc = "You suffered severe damage to your sacral nerve system at some point."
 	mob_trait = TRAIT_FULLYINCONTINENT
 	value = 0
 	medical_record_text = "Patient has suffered severe sacral nerve damage."
@@ -472,20 +452,6 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 	SEND_SIGNAL(quirk_holder, COMSIG_DIAPERCHANGE, ckey(quirk_holder.mind.key))
 
 /datum/quirk/fullyincontinent/remove()
-	. = ..()
-	SEND_SIGNAL(quirk_holder, COMSIG_DIAPERCHANGE, ckey(quirk_holder.mind.key))
-
-/datum/quirk/diaperuse
-	name = "Diaper Wearer"
-	desc = "For whatever reason, you are kept in diapers- and use them."
-	mob_trait = TRAIT_DIAPERUSE
-	value = 0
-
-/datum/quirk/diaperuse/add()
-	. = ..()
-	SEND_SIGNAL(quirk_holder, COMSIG_DIAPERCHANGE, ckey(quirk_holder.mind.key))
-
-/datum/quirk/diaperuse/remove()
 	. = ..()
 	SEND_SIGNAL(quirk_holder, COMSIG_DIAPERCHANGE, ckey(quirk_holder.mind.key))
 
@@ -564,9 +530,10 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 			wheels.buckle_mob(quirk_holder)
 
 /datum/quirk/stinker
-	name = "Accident Prone"
-	desc = "Your bowels and bladder tend to fill up quicker than usual."
+	name = "Fast Metabolism"
+	desc = "You seem to need to go more often than others."
 	value = 0
 	mob_trait = TRAIT_STINKER
-	gain_text = null
-	lose_text = null
+	gain_text = "<span class='notice'>Your insides rumble ominously.</span>"
+	lose_text = "<span class='notice'>You feel less bloated!</span>"
+	medical_record_text = "Patient exhibits symptoms of an accelerated metabolism for food and drinks."
