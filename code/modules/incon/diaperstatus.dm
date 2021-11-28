@@ -168,339 +168,340 @@
 		to_chat(src,"You can't poop, you're dead!")
 
 /mob/living/carbon/proc/PampUpdate()
-	if(src.client.prefs.accident_types != "Opt Out")
-		if(src.client.prefs.accident_types != "Poop Only")
-			pee = pee + ((20 + rand(0, 10))/100) + (fluids / 3000)
-			if(HAS_TRAIT(src, TRAIT_STINKER))
-				pee = pee + 0.05
-		else
+	if(src.client != null)
+		if(src.client.prefs.accident_types != "Opt Out")
+			if(src.client.prefs.accident_types != "Poop Only")
+				pee = pee + ((20 + rand(0, 10))/100) + (fluids / 3000)
+				if(HAS_TRAIT(src, TRAIT_STINKER))
+					pee = pee + 0.05
+			else
+				pee = 0
+			if(src.client.prefs.accident_types != "Pee Only")
+				poop = poop + ((50 + rand(0,50))/1000) + (nutrition / 5000)
+				if(HAS_TRAIT(src, TRAIT_STINKER))
+					poop = poop + 0.025
+			else
+				poop = 0
+		if(!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+			if (wetness >= 1)
+				if (HAS_TRAIT(src,TRAIT_POTTYREBEL))
+					SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggyhappy)
+				else
+					SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggysad)
+			else
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"peepee")
+			if (stinkiness >= 1)
+				if (HAS_TRAIT(src,TRAIT_POTTYREBEL))
+					SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"poopy",/datum/mood_event/stinkyhappy)
+				else
+					SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"poopy",/datum/mood_event/stinkysad)
+			else
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"poopy")
+		if (fluids > 0)
+			fluids = fluids - 10
+		if (fluids < 0)
+			fluids = 0
+		if (pee >= max_wetcontinence * 0.5 && needpee <= 0 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+			switch(rand(1))
+				if(1)
+					to_chat(src,"You start feeling the need to pee.")
+				else
+					to_chat(src,"You abdomen starts to feel tight and uncomfortable, you think about urinating.")
+			needpee += 1
+		if (pee >= max_wetcontinence * 0.8 && needpee <= 1 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+			switch(rand(2))
+				if(1)
+					to_chat(src,"<span class='warning'>You really need to pee!</span>")
+				if(2)
+					to_chat(src,"<span class='warning'>Your body desperately fidgets and wriggles in an attempt to restrain your bladder a little bit longer...</span>")
+				else
+					to_chat(src,"<span class='warning'>You feel a squirt of pee escape!</span>")
+	
+			needpee += 1
+		if (poop >= max_messcontinence * 0.5 && needpoo <= 0 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+			switch(rand(5))
+				if(1)
+					to_chat(src,"You start feeling the need to poop.")
+				if(2)
+					to_chat(src,"Gas squeaks out, releasing a bit of pressure you didn't know you had.")
+				if(3)
+					to_chat(src,"You feel a soft gurgling from your tummy.")
+				if(4)
+					to_chat(src,"You feel your insides shift a bit")
+				else
+					to_chat(src,"You feel a slight pressure in your backside")
+			needpoo += 1
+		if (poop >= max_messcontinence * 0.8 && needpoo <= 1 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+			switch(rand(4))
+				if(1)
+					to_chat(src,"<span class='warning'>You really need to poop!</span>")
+				if(2)
+					to_chat(src,"<span class='warning'>Your stomach gurgles and groans as a heavy weight descends into your bowels...</span>")
+				if(3)
+					to_chat(src,"<span class='warning'>You feel an immense pressure in your bowels!</span>")
+				else
+					to_chat(src,"<span class='warning'>You let out a fart that is dangerously wet!</span>")
+			needpoo += 1
+		if (pee >= max_wetcontinence && src.client.prefs != "Poop Only")
+			Wetting()
+		else if(pee >= max_wetcontinence)
 			pee = 0
-		if(src.client.prefs.accident_types != "Pee Only")
-			poop = poop + ((50 + rand(0,50))/1000) + (nutrition / 5000)
-			if(HAS_TRAIT(src, TRAIT_STINKER))
-				poop = poop + 0.025
-		else
+		if (poop >= max_messcontinence && src.client.prefs != "Pee Only")
+			Pooping()
+		else if(poop >= max_messcontinence)
 			poop = 0
-	if(!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-		if (wetness >= 1)
-			if (HAS_TRAIT(src,TRAIT_POTTYREBEL))
-				SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggyhappy)
-			else
-				SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggysad)
-		else
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"peepee")
-		if (stinkiness >= 1)
-			if (HAS_TRAIT(src,TRAIT_POTTYREBEL))
-				SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"poopy",/datum/mood_event/stinkyhappy)
-			else
-				SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"poopy",/datum/mood_event/stinkysad)
-		else
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"poopy")
-	if (fluids > 0)
-		fluids = fluids - 10
-	if (fluids < 0)
-		fluids = 0
-	if (pee >= max_wetcontinence * 0.5 && needpee <= 0 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-		switch(rand(1))
-			if(1)
-				to_chat(src,"You start feeling the need to pee.")
-			else
-				to_chat(src,"You abdomen starts to feel tight and uncomfortable, you think about urinating.")
-		needpee += 1
-	if (pee >= max_wetcontinence * 0.8 && needpee <= 1 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-		switch(rand(2))
-			if(1)
-				to_chat(src,"<span class='warning'>You really need to pee!</span>")
-			if(2)
-				to_chat(src,"<span class='warning'>Your body desperately fidgets and wriggles in an attempt to restrain your bladder a little bit longer...</span>")
-			else
-				to_chat(src,"<span class='warning'>You feel a squirt of pee escape!</span>")
-
-		needpee += 1
-	if (poop >= max_messcontinence * 0.5 && needpoo <= 0 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-		switch(rand(5))
-			if(1)
-				to_chat(src,"You start feeling the need to poop.")
-			if(2)
-				to_chat(src,"Gas squeaks out, releasing a bit of pressure you didn't know you had.")
-			if(3)
-				to_chat(src,"You feel a soft gurgling from your tummy.")
-			if(4)
-				to_chat(src,"You feel your insides shift a bit")
-			else
-				to_chat(src,"You feel a slight pressure in your backside")
-		needpoo += 1
-	if (poop >= max_messcontinence * 0.8 && needpoo <= 1 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-		switch(rand(4))
-			if(1)
-				to_chat(src,"<span class='warning'>You really need to poop!</span>")
-			if(2)
-				to_chat(src,"<span class='warning'>Your stomach gurgles and groans as a heavy weight descends into your bowels...</span>")
-			if(3)
-				to_chat(src,"<span class='warning'>You feel an immense pressure in your bowels!</span>")
-			else
-				to_chat(src,"<span class='warning'>You let out a fart that is dangerously wet!</span>")
-		needpoo += 1
-	if (pee >= max_wetcontinence && src.client.prefs != "Poop Only")
-		Wetting()
-	else if(pee >= max_wetcontinence)
-		pee = 0
-	if (poop >= max_messcontinence && src.client.prefs != "Pee Only")
-		Pooping()
-	else if(poop >= max_messcontinence)
-		poop = 0
-	switch(brand)
-		if ("plain")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
+		switch(brand)
+			if ("plain")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("classics")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("swaddles")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"sanshield",/datum/mood_event/sanitydiaper)
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
 					D.princessbonus = FALSE
-			rollbonus = 0
-		if ("classics")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 0
-		if ("swaddles")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"sanshield",/datum/mood_event/sanitydiaper)
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 0
-		if ("hefters_m")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 0
-		if ("hefters_f")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 0
-		if ("Princess")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = TRUE
-			rollbonus = 0
-		if ("PwrGame")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 1
-		if ("StarKist")
-			set_light(3)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 0
-		if ("Space")
-			set_light(0)
-			ADD_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 0
-		if ("Replica")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 0
-			adjustBruteLoss(-0.5)
-		if ("Service")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 0
-		if ("Supply")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 0
-		if ("Hydroponics")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 0
-		if ("Sec")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 0
-		if ("Engineering")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 0
-		if ("Atmos")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 0
-		if ("Science")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 0
-		if ("Med")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 0
-		if ("Cult_Nar")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 0
-		if ("Cult_Clock")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 0
-		if ("Miner")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 0
-		if ("Miner_thick")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 0
-		if ("Ashwalker")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 0
-		if ("alien")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 0
-		if ("Jeans")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-			if (ishuman(src))
-				var/mob/living/carbon/human/H = src
-				var/datum/bank_account/D = H.get_bank_account()
-				if (D)
-					D.princessbonus = FALSE
-			rollbonus = 0
+				rollbonus = 0
+			if ("hefters_m")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("hefters_f")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Princess")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = TRUE
+				rollbonus = 0
+			if ("PwrGame")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 1
+			if ("StarKist")
+				set_light(3)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Space")
+				set_light(0)
+				ADD_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Replica")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+				adjustBruteLoss(-0.5)
+			if ("Service")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Supply")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Hydroponics")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Sec")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Engineering")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Atmos")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Science")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Med")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Cult_Nar")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Cult_Clock")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Miner")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Miner_thick")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Ashwalker")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("alien")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Jeans")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
 	spawn(60)
 		PampUpdate()
 
