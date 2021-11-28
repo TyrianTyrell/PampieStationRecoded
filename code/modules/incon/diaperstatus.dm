@@ -279,7 +279,7 @@
 					var/mob/living/carbon/human/H = src
 					var/datum/bank_account/D = H.get_bank_account()
 					if (D)
-					D.princessbonus = FALSE
+						D.princessbonus = FALSE
 				rollbonus = 0
 			if ("hefters_m")
 				set_light(0)
