@@ -884,14 +884,17 @@
 
 /obj/item/wetdiap/underwear
 	name = "puddlepants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "cloth_wet"
 
 /obj/item/poopydiap/underwear
 	name = "pottypants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "cloth_messy"
 
 /obj/item/useddiap/underwear
 	name = "pottypants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "cloth_messy"
 
 /obj/item/diaper/blue_trainer
@@ -905,10 +908,12 @@
 
 /obj/item/poopydiap/blue_trainer
 	name = "messy training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_blue_messy"
 
 /obj/item/useddiap/blue_trainer
 	name = "full training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_blue_messy"
 
 /obj/item/diaper/pink_trainer
@@ -922,10 +927,12 @@
 
 /obj/item/poopydiap/pink_trainer
 	name = "messy training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_pink_messy"
 
 /obj/item/useddiap/pink_trainer
 	name = "full training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_pink_messy"
 
 /obj/item/diaper/green_trainer
@@ -939,10 +946,12 @@
 
 /obj/item/poopydiap/green_trainer
 	name = "messy training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_green_messy"
 
 /obj/item/useddiap/green_trainer
 	name = "full training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_green_messy"
 
 /obj/item/diaper/skunk_trainer
@@ -956,10 +965,12 @@
 
 /obj/item/poopydiap/skunk_trainer
 	name = "messy training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_skunk_messy"
 
 /obj/item/useddiap/skunk_trainer
 	name = "full training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_skunk_messy"
 
 /obj/item/diaper/space_trainer
@@ -973,10 +984,12 @@
 
 /obj/item/poopydiap/space_trainer
 	name = "messy training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_space_messy"
 
 /obj/item/useddiap/space_trainer
 	name = "full training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_space_messy"
 
 /obj/item/diaper/sky_trainer
@@ -990,10 +1003,12 @@
 
 /obj/item/poopydiap/sky_trainer
 	name = "messy training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_sky_messy"
 
 /obj/item/useddiap/sky_trainer
 	name = "full training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_sky_messy"
 
 /obj/item/diaper/water_trainer
@@ -1007,10 +1022,12 @@
 
 /obj/item/poopydiap/water_trainer
 	name = "messy training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_water_messy"
 
 /obj/item/useddiap/water_trainer
 	name = "full training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_water_messy"
 
 /obj/item/diaper/gmr_trainer
@@ -1024,10 +1041,12 @@
 
 /obj/item/poopydiap/gmr_trainer
 	name = "messy training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_gmr_messy"
 
 /obj/item/useddiap/gmr_trainer
 	name = "full training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_gmr_messy"
 
 	///DIAPER PACKAGES

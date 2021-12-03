@@ -6875,6 +6875,7 @@
 /area/security/brig)
 "alI" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/loot_pile/maint,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -8680,8 +8681,10 @@
 "aoG" = (
 /obj/machinery/door/airlock/medical{
 	id_tag = "Unit_1";
-	name = "Unit 1"
+	name = "Unit 1";
+	req_access_txt = "72"
 	},
+/obj/effect/mapping_helpers/airlock/unres,
 /turf/open/floor/plasteel/dark,
 /area/commons/toilet/restrooms)
 "aoI" = (
@@ -31114,6 +31117,7 @@
 	dir = 9
 	},
 /obj/structure/grille/broken,
+/obj/structure/loot_pile/maint,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -54770,9 +54774,6 @@
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/obj/structure/toilet/secret/prison{
-	pixel_y = 16
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -69665,6 +69666,7 @@
 /obj/structure/sign/warning/vacuum/external{
 	pixel_x = 32
 	},
+/obj/structure/loot_pile/maint,
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
 "cif" = (
@@ -81117,6 +81119,7 @@
 	},
 /area/maintenance/starboard/fore)
 "cFj" = (
+/obj/structure/loot_pile/maint,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -82392,7 +82395,8 @@
 /area/security/prison)
 "cIS" = (
 /obj/machinery/door/airlock/security/glass{
-	name = "Prison Yard"
+	name = "Prison Yard";
+	req_access_txt = "72"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -82462,7 +82466,7 @@
 "cJe" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Long-Term Cell 3";
-	req_access_txt = "2"
+	req_access_txt = "2;72"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -84131,7 +84135,8 @@
 /area/command/bridge)
 "cPa" = (
 /obj/machinery/door/airlock/security/glass{
-	name = "Prison Yard"
+	name = "Prison Yard";
+	req_access_txt = "72"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -84167,7 +84172,7 @@
 "cQP" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Long-Term Cell 2";
-	req_access_txt = "2"
+	req_access_txt = "2;72"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -84486,6 +84491,7 @@
 	pixel_x = 32
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/loot_pile/maint,
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
 "fel" = (
@@ -84665,6 +84671,13 @@
 	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
+"inX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/maintenance/starboard/fore)
 "iBL" = (
 /obj/machinery/camera{
 	c_tag = "Laser Room Starboard";
@@ -85139,6 +85152,11 @@
 "oDF" = (
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
+"oFG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
 "oPf" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -85148,6 +85166,13 @@
 	dir = 8
 	},
 /area/hallway/primary/fore)
+"oPP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/maintenance/starboard)
 "oTy" = (
 /obj/docking_port/stationary{
 	dir = 4;
@@ -85459,6 +85484,13 @@
 "uzR" = (
 /turf/closed/wall/rust,
 /area/commons/storage/primary)
+"uCN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/maintenance/fore)
 "uGi" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/wood,
@@ -85553,6 +85585,13 @@
 "xsi" = (
 /turf/open/floor/grass/fairy/green,
 /area/nursery)
+"xuG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/maintenance/port)
 "xwO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -85596,6 +85635,11 @@
 	icon_state = "wood-broken4"
 	},
 /area/maintenance/port/fore)
+"xVF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating,
+/area/maintenance/starboard)
 "yaV" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -99910,7 +99954,7 @@ bhU
 aEw
 bxq
 cux
-cnL
+xuG
 awD
 agp
 bHg
@@ -110927,7 +110971,7 @@ alc
 cAH
 cDh
 anS
-anJ
+uCN
 adH
 asD
 atN
@@ -119155,7 +119199,7 @@ cEg
 cEp
 aXW
 apo
-cCt
+inX
 cEg
 azz
 aAn
@@ -125314,7 +125358,7 @@ cbk
 aio
 cmW
 abx
-cLg
+oPP
 cMw
 cLK
 cbk
@@ -126138,7 +126182,7 @@ bNT
 bBa
 czd
 bAT
-bAM
+oFG
 bOc
 bKm
 bLE
@@ -126612,7 +126656,7 @@ axo
 cNO
 azC
 cOf
-ctI
+xVF
 awi
 auL
 bbS

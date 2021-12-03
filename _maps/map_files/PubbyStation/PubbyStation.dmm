@@ -2619,8 +2619,10 @@
 /area/security/prison)
 "agC" = (
 /obj/machinery/door/airlock{
-	name = "Unisex Restroom"
+	name = "Unisex Restroom";
+	req_access_txt = "72"
 	},
+/obj/effect/mapping_helpers/airlock/unres,
 /turf/open/floor/plasteel/freezer,
 /area/security/prison)
 "agD" = (
@@ -15972,13 +15974,15 @@
 "aKR" = (
 /obj/machinery/door/airlock{
 	id_tag = "Potty1";
-	name = "Unisex Restrooms"
+	name = "Unisex Restrooms";
+	req_access_txt = "72"
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/unres,
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet/auxiliary)
 "aKS" = (
@@ -16728,6 +16732,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
+/obj/structure/loot_pile/maint,
 /turf/open/floor/plating,
 /area/maintenance/disposal)
 "aML" = (
@@ -52873,6 +52878,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit/departure_lounge)
+"cKc" = (
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating,
+/area/maintenance/department/cargo)
 "cKA" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -54823,6 +54832,12 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
+"gGD" = (
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/maintenance/department/engine)
 "gHZ" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable{
@@ -56193,6 +56208,10 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel/dark,
 /area/engineering/main)
+"jzN" = (
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating,
+/area/maintenance/department/science)
 "jAy" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -57482,6 +57501,10 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
+"mqo" = (
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating,
+/area/maintenance/department/crew_quarters/dorms)
 "mqp" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -58086,8 +58109,14 @@
 	},
 /area/hallway/secondary/exit/departure_lounge)
 "nGB" = (
-/obj/machinery/door/airlock/silver,
+/obj/machinery/door/airlock/silver{
+	name = "Toilet Stall";
+	req_access_txt = "72"
+	},
 /obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/unres{
 	dir = 4
 	},
 /turf/open/floor/plasteel/freezer,
@@ -58191,7 +58220,11 @@
 /area/space/nearstation)
 "nOv" = (
 /obj/machinery/door/airlock{
-	name = "Unit 2"
+	name = "Unit 2";
+	req_access_txt = "72"
+	},
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 4
 	},
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet/restrooms)
@@ -60105,7 +60138,11 @@
 "rxQ" = (
 /obj/machinery/door/airlock/abandoned{
 	id_tag = "PottySci";
-	name = "Science Bathroom"
+	name = "Science Bathroom";
+	req_access_txt = "72"
+	},
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/science)
@@ -62233,6 +62270,12 @@
 	},
 /turf/open/floor/engine,
 /area/engineering/main)
+"whD" = (
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/maintenance/department/security/brig)
 "wif" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 1
@@ -62412,7 +62455,10 @@
 "wBg" = (
 /obj/machinery/door/airlock/maintenance{
 	id_tag = "Potty1";
-	req_access_txt = "12"
+	req_access_txt = "12;72"
+	},
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/bar)
@@ -63128,6 +63174,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/structure/loot_pile/maint,
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
 "yfO" = (
@@ -78923,7 +78970,7 @@ gwn
 aiu
 apz
 aqe
-aoK
+whD
 dcL
 apB
 aiu
@@ -86196,7 +86243,7 @@ vay
 bSq
 bDi
 bSw
-bSw
+gGD
 bva
 bva
 bDi
@@ -101276,7 +101323,7 @@ aiS
 aob
 eaw
 ajv
-ajv
+mqo
 cnX
 aiS
 apv
@@ -106156,7 +106203,7 @@ aaa
 aaa
 aiT
 akn
-ajv
+mqo
 aaF
 aaU
 aaL
@@ -107488,7 +107535,7 @@ aaa
 aEl
 aTx
 aFi
-aFi
+cKc
 aEj
 bhz
 lEn
@@ -107725,7 +107772,7 @@ aGO
 aFi
 aGO
 aFi
-aFi
+cKc
 aEj
 aJs
 aEj
@@ -109571,7 +109618,7 @@ bwm
 nzD
 uoj
 bwm
-lWy
+jzN
 bwm
 dMI
 qvB
