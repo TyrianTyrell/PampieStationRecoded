@@ -216,7 +216,7 @@
 					to_chat(src,"<span class='warning'>Your body desperately fidgets and wriggles in an attempt to restrain your bladder a little bit longer...</span>")
 				else
 					to_chat(src,"<span class='warning'>You feel a squirt of pee escape!</span>")
-	
+
 			needpee += 1
 		if (poop >= max_messcontinence * 0.5 && needpoo <= 0 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 			switch(rand(5))
@@ -502,6 +502,17 @@
 					if (D)
 						D.princessbonus = FALSE
 				rollbonus = 0
+			if ("hyper")	//TESTING HYPER STUFF HERE!!!
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				SEND_SIGNAL(src,COMSIG_DIAPERCHANGE,src.ckey)
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
 	spawn(60)
 		PampUpdate()
 
@@ -548,7 +559,7 @@
 		SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"poopy")
 
 /mob/living/carbon/verb/Pee()
-	if(usr.client.prefs.accident_types != "Poop Only")
+	if(usr.client.prefs.accident_types != "Opt Out" || usr.client.prefs.accident_types != "Poop Only")
 		set category = "IC"
 	if(src.client.prefs.accident_types != "Opt Out" && !HAS_TRAIT(usr,TRAIT_FULLYINCONTINENT) && pee >= max_wetcontinence/2)
 		on_purpose = 1
@@ -557,7 +568,7 @@
 		to_chat(usr, "<span class='warning'>You cannot pee right now.</span>")
 
 /mob/living/carbon/verb/Poop()
-	if(usr.client.prefs.accident_types != "Pee Only")
+	if(usr.client.prefs.accident_types != "Opt Out" || usr.client.prefs.accident_types != "Pee Only")
 		set category = "IC"
 	if(src.client.prefs.accident_types != "Opt Out" && !HAS_TRAIT(usr,TRAIT_FULLYINCONTINENT) && poop >= max_messcontinence/2)
 		on_purpose = 1
@@ -600,7 +611,7 @@
 			REMOVE_TRAIT(owner,TRAIT_NORUNNING,REGRESSION_TRAIT)
 			REMOVE_TRAIT(owner,TRAIT_NOGUNS,REGRESSION_TRAIT)
 			SEND_SIGNAL(owner,COMSIG_DIAPERCHANGE,owner.ckey)
-	if((HAS_TRAIT(owner,TRAIT_POTTYREBEL) || HAS_TRAIT(owner,TRAIT_INCONTINENT) || HAS_TRAIT(owner,BABYBRAINED_TRAIT) || HAS_TRAIT(owner,TRAIT_DIAPERUSE)) && !HAS_TRAIT(owner,TRAIT_FULLYINCONTINENT))
+	if(usr.client.prefs.accident_types != "Opt Out" && !HAS_TRAIT(owner,TRAIT_FULLYINCONTINENT))
 		if (owner.wetness > 0)
 			if (owner.stinkiness > 0)
 				icon_state = "hud_plain_used"

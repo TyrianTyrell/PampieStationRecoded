@@ -1558,6 +1558,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
+/obj/structure/mirror{
+	pixel_y = -28
+	},
 /turf/open/floor/plasteel/freezer,
 /area/mine/living_quarters)
 "yZ" = (
@@ -2053,10 +2056,14 @@
 /area/mine/laborcamp)
 "Ho" = (
 /obj/machinery/door/airlock{
-	name = "Restroom"
+	name = "Restroom";
+	req_access_txt = "72"
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/mine/laborcamp/security)
@@ -2511,7 +2518,7 @@
 /area/mine/laborcamp)
 "Mj" = (
 /obj/structure/sink{
-	dir = 4;
+	dir = 8;
 	pixel_x = -12
 	},
 /obj/structure/mirror{
@@ -3342,12 +3349,16 @@
 "Yy" = (
 /obj/machinery/door/airlock{
 	id_tag = "miningbathroom";
-	name = "Restroom"
+	name = "Restroom";
+	req_access_txt = "72"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/unres{
 	dir = 4
 	},
 /turf/open/floor/plasteel/freezer,

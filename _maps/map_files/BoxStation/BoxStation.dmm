@@ -8007,10 +8007,12 @@
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "apX" = (
-/obj/machinery/light/small{
-	dir = 8
+/obj/structure/bed/changingtable{
+	dir = 1
 	},
-/obj/structure/bed/changingtable,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/mineral/titanium/blue,
 /area/commons/toilet)
 "apY" = (
@@ -8734,6 +8736,7 @@
 "arG" = (
 /obj/effect/decal/cleanable/glass,
 /obj/structure/table_frame,
+/obj/structure/loot_pile/maint,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "arH" = (
@@ -13158,6 +13161,9 @@
 	req_access_txt = "72"
 	},
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 8
+	},
 /turf/open/floor/mineral/titanium/blue,
 /area/commons/toilet)
 "aDR" = (
@@ -21388,7 +21394,11 @@
 "aZv" = (
 /obj/machinery/door/airlock{
 	id_tag = "LockerShitter1";
-	name = "Unit 1"
+	name = "Unit 1";
+	req_access_txt = "72"
+	},
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 8
 	},
 /turf/open/floor/mineral/titanium/blue,
 /area/commons/toilet/locker)
@@ -25161,6 +25171,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
+/obj/structure/loot_pile/maint,
 /turf/open/floor/plating,
 /area/maintenance/port)
 "bjh" = (
@@ -26313,6 +26324,7 @@
 /area/commons/dorms)
 "blV" = (
 /obj/machinery/light/small,
+/obj/structure/loot_pile/maint,
 /turf/open/floor/plating,
 /area/maintenance/disposal)
 "blW" = (
@@ -43921,6 +43933,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/loot_pile/maint,
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
 "cdk" = (
@@ -53067,6 +53080,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/range)
+"dDX" = (
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "dEh" = (
 /obj/machinery/jukebox/disco/indestructible,
 /turf/open/floor/light/colour_cycle/dancefloor_b,
@@ -53195,6 +53212,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
+"dRA" = (
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "dSZ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable{
@@ -54175,6 +54196,13 @@
 	},
 /turf/open/floor/plating,
 /area/service/abandoned_gambling_den)
+"fBT" = (
+/obj/machinery/door/airlock/security{
+	name = "Prisoner Cell";
+	req_access_txt = "72"
+	},
+/turf/open/floor/plasteel/dark,
+/area/security/prison)
 "fCx" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -54192,6 +54220,10 @@
 	},
 /turf/open/floor/grass/fairy/blue,
 /area/nursery)
+"fEL" = (
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating,
+/area/maintenance/aft)
 "fFA" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -54507,7 +54539,7 @@
 "gmi" = (
 /obj/structure/bed/changingtable,
 /obj/machinery/light/small{
-	dir = 4
+	dir = 1
 	},
 /turf/open/floor/plasteel/freezer,
 /area/nursery)
@@ -54928,6 +54960,13 @@
 /obj/effect/turf_decal/tile/blue,
 /turf/open/floor/plasteel,
 /area/commons/fitness)
+"hds" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating,
+/area/maintenance/aft)
 "heh" = (
 /obj/structure/chair/stool,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -54955,6 +54994,10 @@
 /obj/item/reagent_containers/food/snacks/cherrycupcake,
 /turf/open/floor/wood,
 /area/service/bar)
+"hhi" = (
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
 "hho" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating,
@@ -57055,6 +57098,11 @@
 	},
 /turf/closed/wall,
 /area/nursery)
+"kJx" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "kJE" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
@@ -61526,6 +61574,10 @@
 	icon_state = "wood-broken5"
 	},
 /area/maintenance/bar)
+"tmt" = (
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating,
+/area/maintenance/port)
 "tmO" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -62190,6 +62242,10 @@
 /obj/structure/falsewall,
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
+"usz" = (
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
 "usE" = (
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/structure/rack,
@@ -63094,6 +63150,9 @@
 	},
 /turf/open/floor/plasteel,
 /area/commons/locker)
+"vJv" = (
+/turf/open/floor/plasteel/dark,
+/area/security/prison)
 "vLo" = (
 /obj/structure/closet/secure_closet/chemical,
 /obj/machinery/light/small{
@@ -63582,7 +63641,13 @@
 	},
 /area/service/theater)
 "wJu" = (
-/obj/machinery/door/airlock/silver,
+/obj/machinery/door/airlock/silver{
+	name = "Toilet Stall";
+	req_access_txt = "72"
+	},
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 4
+	},
 /turf/open/floor/plasteel/freezer,
 /area/nursery)
 "wJA" = (
@@ -63890,6 +63955,12 @@
 /obj/item/pen,
 /turf/open/floor/plasteel/white,
 /area/science/circuit)
+"xmM" = (
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/maintenance/starboard/aft)
 "xmS" = (
 /obj/structure/chair/comfy/beige{
 	dir = 8
@@ -77830,7 +77901,7 @@ kwY
 qll
 aue
 aue
-ayy
+kJx
 ayy
 aAe
 aBJ
@@ -79903,7 +79974,7 @@ aPz
 aPz
 aPz
 aPz
-aSg
+tmt
 aWj
 aXP
 aZr
@@ -82967,7 +83038,7 @@ avX
 amC
 arK
 amC
-amC
+dDX
 jFB
 ppw
 enJ
@@ -86561,7 +86632,7 @@ anO
 aaa
 aaa
 arP
-aqR
+dRA
 aqR
 arP
 asQ
@@ -89134,7 +89205,7 @@ aqR
 aqR
 arP
 aqR
-aqR
+dRA
 arP
 ajx
 axw
@@ -89359,7 +89430,7 @@ uEI
 aaw
 acd
 aaI
-pOs
+vJv
 acd
 aaI
 pOs
@@ -89618,7 +89689,7 @@ acd
 qmn
 acd
 acd
-qmn
+fBT
 acd
 acd
 abK
@@ -101797,7 +101868,7 @@ bWe
 cdE
 bAw
 bzs
-bAw
+fEL
 caK
 uHc
 ciB
@@ -105398,7 +105469,7 @@ ccN
 bHd
 bzs
 bzs
-bKT
+hds
 bAw
 bAw
 bFr
@@ -106863,7 +106934,7 @@ aaa
 aaa
 aaa
 apC
-anf
+usz
 alP
 alP
 apE
@@ -108415,7 +108486,7 @@ anf
 anf
 apE
 anf
-anf
+usz
 aCE
 aDZ
 aFu
@@ -111573,7 +111644,7 @@ cNW
 cNW
 clt
 cQw
-cOe
+hhi
 cOe
 bNA
 cOT
@@ -113621,7 +113692,7 @@ wvX
 bSl
 cOe
 ceS
-cae
+xmM
 cNW
 ccq
 cdq

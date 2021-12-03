@@ -34,17 +34,11 @@
 
 	// Closed turfs don't have any air in them, so no gas building up
 	if(istype(stinkyturf,/turf/open))
-
 		var/turf/open/stink_turf = stinkyturf
-
 		var/datum/gas_mixture/noxious = new
-
 		noxious.set_moles(GAS_DIAPERSMELL,0.75)
-
 		noxious.set_temperature(BODYTEMP_NORMAL)
-
 		stink_turf.assume_air(noxious)
-
 		stink_turf.air_update_turf()
 
 	spawn(20)
@@ -72,17 +66,11 @@
 
 	// Closed turfs don't have any air in them, so no gas building up
 	if(istype(stinkturf,/turf/open))
-
 		var/turf/open/stinky_turf = stinkturf
-
 		var/datum/gas_mixture/nox = new
-
 		nox.set_moles(GAS_DIAPERSMELL,0.1)
-
 		nox.set_temperature(BODYTEMP_NORMAL)
-
 		stinky_turf.assume_air(nox)
-
 		stinky_turf.air_update_turf()
 
 	spawn(20)
@@ -103,7 +91,9 @@
 			M.DiaperChange(src)
 			M.brand2 = name
 			M.DiaperAppearance()
-			if (findtext(M.brand, "hefters") != 0 || findtext(M.brand, "_thick") != 0)
+			if (findtext(M.brand, "hyper") != 0)
+				M.heftersbonus = 200
+			else if (findtext(M.brand, "hefters") != 0 || findtext(M.brand, "_thick") != 0)
 				M.heftersbonus = 100
 			else if (findtext(M.brand, "trainer") != 0 || findtext(M.brand, "_trainer") != 0)
 				M.heftersbonus = -80
@@ -875,6 +865,22 @@
 /obj/item/useddiap/cloth
 	icon_state = "cloth_messy"
 
+///TESTING HYPER STUFF HERE!!!!!!
+
+/obj/item/diaper/hyper
+	name = "\improper Hyper capacity diaper"
+	desc = "This unassuming diaper can hold a surprisingly massive load."
+	icon_state = "hefters_m"
+
+/obj/item/wetdiap/hyper
+	icon_state = "hefters_m_wet"
+
+/obj/item/poopydiap/hyper
+	icon_state = "hefters_m_messy"
+
+/obj/item/useddiap/hyper
+	icon_state = "hefters_m_full"
+
 	///TRAINING PANTS & MISC
 
 /obj/item/diaper/underwear
@@ -884,14 +890,17 @@
 
 /obj/item/wetdiap/underwear
 	name = "puddlepants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "cloth_wet"
 
 /obj/item/poopydiap/underwear
 	name = "pottypants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "cloth_messy"
 
 /obj/item/useddiap/underwear
 	name = "pottypants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "cloth_messy"
 
 /obj/item/diaper/blue_trainer
@@ -905,10 +914,12 @@
 
 /obj/item/poopydiap/blue_trainer
 	name = "messy training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_blue_messy"
 
 /obj/item/useddiap/blue_trainer
 	name = "full training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_blue_messy"
 
 /obj/item/diaper/pink_trainer
@@ -922,10 +933,12 @@
 
 /obj/item/poopydiap/pink_trainer
 	name = "messy training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_pink_messy"
 
 /obj/item/useddiap/pink_trainer
 	name = "full training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_pink_messy"
 
 /obj/item/diaper/green_trainer
@@ -939,10 +952,12 @@
 
 /obj/item/poopydiap/green_trainer
 	name = "messy training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_green_messy"
 
 /obj/item/useddiap/green_trainer
 	name = "full training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_green_messy"
 
 /obj/item/diaper/skunk_trainer
@@ -956,10 +971,12 @@
 
 /obj/item/poopydiap/skunk_trainer
 	name = "messy training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_skunk_messy"
 
 /obj/item/useddiap/skunk_trainer
 	name = "full training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_skunk_messy"
 
 /obj/item/diaper/space_trainer
@@ -973,10 +990,12 @@
 
 /obj/item/poopydiap/space_trainer
 	name = "messy training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_space_messy"
 
 /obj/item/useddiap/space_trainer
 	name = "full training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_space_messy"
 
 /obj/item/diaper/sky_trainer
@@ -990,10 +1009,12 @@
 
 /obj/item/poopydiap/sky_trainer
 	name = "messy training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_sky_messy"
 
 /obj/item/useddiap/sky_trainer
 	name = "full training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_sky_messy"
 
 /obj/item/diaper/water_trainer
@@ -1007,10 +1028,12 @@
 
 /obj/item/poopydiap/water_trainer
 	name = "messy training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_water_messy"
 
 /obj/item/useddiap/water_trainer
 	name = "full training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_water_messy"
 
 /obj/item/diaper/gmr_trainer
@@ -1024,10 +1047,12 @@
 
 /obj/item/poopydiap/gmr_trainer
 	name = "messy training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_gmr_messy"
 
 /obj/item/useddiap/gmr_trainer
 	name = "full training pants"
+	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "trainer_gmr_messy"
 
 	///DIAPER PACKAGES

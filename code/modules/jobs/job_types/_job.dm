@@ -290,8 +290,7 @@
 	var/obj/item/card/id/C = H.wear_id
 	if(istype(C) && C.bank_support)
 		C.access = J.get_access()
-		if((preference_source.prefs.all_quirks.Find(("Incontinent" || "Unaware" || "Diaper Wearer" || "Potty Rebel")) == 0) && H.dna.features["taur"] == "None")
-			C.access.Add(ACCESS_POTTY)
+		C.access.Add(ACCESS_POTTY)
 		shuffle_inplace(C.access) // Shuffle access list to make NTNet passkeys less predictable
 		C.registered_name = H.real_name
 		C.assignment = J.title

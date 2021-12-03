@@ -254,6 +254,12 @@
 	has_color = FALSE
 	locked = TRUE
 
+/datum/sprite_accessory/underwear/bottom/diaper/hyper
+	name = "Hyper"
+	icon_state = "hyper"
+	has_color = FALSE
+	locked = TRUE
+
 /datum/sprite_accessory/underwear/bottom/diaper/trainer
 	name = "Training Pants"
 	icon_state = "trainingpants"
