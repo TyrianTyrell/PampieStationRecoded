@@ -34,17 +34,11 @@
 
 	// Closed turfs don't have any air in them, so no gas building up
 	if(istype(stinkyturf,/turf/open))
-
 		var/turf/open/stink_turf = stinkyturf
-
 		var/datum/gas_mixture/noxious = new
-
 		noxious.set_moles(GAS_DIAPERSMELL,0.75)
-
 		noxious.set_temperature(BODYTEMP_NORMAL)
-
 		stink_turf.assume_air(noxious)
-
 		stink_turf.air_update_turf()
 
 	spawn(20)
@@ -72,17 +66,11 @@
 
 	// Closed turfs don't have any air in them, so no gas building up
 	if(istype(stinkturf,/turf/open))
-
 		var/turf/open/stinky_turf = stinkturf
-
 		var/datum/gas_mixture/nox = new
-
 		nox.set_moles(GAS_DIAPERSMELL,0.1)
-
 		nox.set_temperature(BODYTEMP_NORMAL)
-
 		stinky_turf.assume_air(nox)
-
 		stinky_turf.air_update_turf()
 
 	spawn(20)
@@ -103,7 +91,9 @@
 			M.DiaperChange(src)
 			M.brand2 = name
 			M.DiaperAppearance()
-			if (findtext(M.brand, "hefters") != 0 || findtext(M.brand, "_thick") != 0)
+			if (findtext(M.brand, "hyper") != 0)
+				M.heftersbonus = 200
+			else if (findtext(M.brand, "hefters") != 0 || findtext(M.brand, "_thick") != 0)
 				M.heftersbonus = 100
 			else if (findtext(M.brand, "trainer") != 0 || findtext(M.brand, "_trainer") != 0)
 				M.heftersbonus = -80
@@ -874,6 +864,22 @@
 
 /obj/item/useddiap/cloth
 	icon_state = "cloth_messy"
+
+///TESTING HYPER STUFF HERE!!!!!!
+
+/obj/item/diaper/hyper
+	name = "\improper Hyper capacity diaper"
+	desc = "This unassuming diaper can hold a surprisingly massive load."
+	icon_state = "hefters_m"
+
+/obj/item/wetdiap/hyper
+	icon_state = "hefters_m_wet"
+
+/obj/item/poopydiap/hyper
+	icon_state = "hefters_m_messy"
+
+/obj/item/useddiap/hyper
+	icon_state = "hefters_m_full"
 
 	///TRAINING PANTS & MISC
 

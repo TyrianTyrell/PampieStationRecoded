@@ -8007,10 +8007,12 @@
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "apX" = (
-/obj/machinery/light/small{
-	dir = 8
+/obj/structure/bed/changingtable{
+	dir = 1
 	},
-/obj/structure/bed/changingtable,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/mineral/titanium/blue,
 /area/commons/toilet)
 "apY" = (
@@ -54537,7 +54539,7 @@
 "gmi" = (
 /obj/structure/bed/changingtable,
 /obj/machinery/light/small{
-	dir = 4
+	dir = 1
 	},
 /turf/open/floor/plasteel/freezer,
 /area/nursery)

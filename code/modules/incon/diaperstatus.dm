@@ -502,6 +502,17 @@
 					if (D)
 						D.princessbonus = FALSE
 				rollbonus = 0
+			if ("hyper")	//TESTING HYPER STUFF HERE!!!
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				SEND_SIGNAL(src,COMSIG_DIAPERCHANGE,src.ckey)
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
 	spawn(60)
 		PampUpdate()
 
