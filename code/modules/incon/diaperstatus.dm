@@ -21,6 +21,9 @@
 /mob/living/carbon/human/var/soiledunderwear = FALSE
 /mob/living/carbon/human/var/wearingpoopy = FALSE
 
+var/database/db = new("code/modules/incon/InconFlavortextDB.db")
+var/database/query/q = new("SELECT selfmessage FROM InconFlavortextDB LIMIT 1")
+
 /mob/living/carbon/human/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/diaperswitch)
@@ -124,7 +127,13 @@
 						else
 							src.visible_message("<span class='notice'>[usr]'s cheeks flush as a foul stench surrounds [src.p_them()].</span>","<span class='notice'>Unable to cope with the pressure, you trust your underwear to protect your outfit as you let your bowels empty.</span>")
 				else
-					switch(rand(3))	//poop accident
+					if(q.Execute(db) && q.NextRow())
+						src.visible_message("Test", q.GetRowData()["selfmessage"])
+					else
+						src.visible_message("Test", q.ErrorMsg())
+						src.visible_message("Test", db.ErrorMsg())
+
+					/*switch(rand(3))	//poop accident
 						if(0)
 							src.visible_message("<span class='notice'>[src] takes a squat and winces as [src.p_their()] seat sags just a little more.</span>","<span class='notice'>That tight feeling in your gut is gone. But your diaper seems a bit saggier- and stinkier.</span>")
 						if(1)
@@ -132,7 +141,7 @@
 						if(2)
 							src.visible_message("<span class='notice'>You see [src] shiver slightly, and their diaper sags a noticable amount.</span>","<span class='notice'>You feel your diaper sag as you release the pressure from your backside</span>")
 						else
-							src.visible_message("<span class='notice'>You smell something unpleasant coming from [usr]'s direction. [src.p_they()] don't seem to notice, though.</span>","<span class='notice'>You feel an odd pressure in your stomach, before it quickly goes away.</span>")
+							src.visible_message("<span class='notice'>You smell something unpleasant coming from [usr]'s direction. [src.p_they()] don't seem to notice, though.</span>","<span class='notice'>You feel an odd pressure in your stomach, before it quickly goes away.</span>") */
 			if(poop > max_messcontinence)
 				poop = max_messcontinence
 			if(ishuman(src))
