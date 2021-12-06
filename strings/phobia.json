@@ -38,7 +38,7 @@
 		"brig",
 		"gulag"
 	],
-	
+
 	"conspiracies": [
 		"central command",
 		"command",
@@ -295,7 +295,7 @@
 		"i'll catch you",
 		"slip"
 	],
-	
+
 	"syndicate": [
 		"syndicate",
 		"changeling",
@@ -314,7 +314,7 @@
 		"enemy corporation",
 		"agent"
 	],
-	
+
 "anime": [
 		"anime",
 		"manga",
@@ -341,5 +341,13 @@
 		"neet",
 		"ora",
 		"~"
+	],
+
+"potty": [
+		"potty",
+		"toilet",
+		"bathroom",
+		"restroom",
+		"watercloset"
 	]
 }
