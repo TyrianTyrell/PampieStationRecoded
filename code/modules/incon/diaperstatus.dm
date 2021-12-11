@@ -22,70 +22,90 @@
 /mob/living/carbon/human/var/wearingpoopy = FALSE
 
 var/database/db = new("code/modules/incon/InconFlavortextDB.db")
-var/database/query/q = new("SELECT selfmessage FROM InconFlavortextDB LIMIT 1")
+var/database/query/testingQuery = new("SELECT selfmessage FROM InconFlavortextDB LIMIT 1")
+//var/database/query/wettingQuery = new("SELECT othersmessage, selfmessage FROM InconFlavortextDB WHERE usingpotty = 1")
 
 /mob/living/carbon/human/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/diaperswitch)
 
 /mob/living/carbon/proc/Wetting()
-	if (pee > 0 && stat != DEAD && src.client.prefs != "Poop Only")
+
+	//
+	// Variables for the SQL Query - Hopefully, these are cleared and reinitialized every time this script(?) is called
+	//
+	// onPotty should be 1 if the player is buckled onto a potty
+	// onToilet should be 1 if the player is bucked onto a toilet
+	//
+	var/onPotty = 0 //reminder : reimplement if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+	var/onToilet = 0
+	//
+	// End of SQL useful variables
+
+	if (pee > 0 && stat != DEAD && src.client.prefs != "Poop Only") //this checks if the player actually needs to pee, is alive, and has pee enabled
 		needpee = 0
 		if(src.client.prefs.accident_sounds == TRUE)
 			playsound(loc, 'sound/effects/pee-diaper.wav', 50, 1)
+
+		//if the player makes it to a potty or toilet, they are rewarded with an increase in their continence
 		if (istype(src.buckled,/obj/structure/potty) || istype(src.buckled,/obj/structure/toilet))
-			if (istype(src.buckled,/obj/structure/potty))
-				if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-					src.visible_message("<spawn class='notice'>[src] pulls [src.p_their()] pants down and pees in the potty like a big kid.</span>","<span class='notice'>You tug your pants down and pee in the potty like a big kid.</span>")
-				if (max_wetcontinence < 100)
-					max_wetcontinence++
-			if (istype(src.buckled,/obj/structure/toilet))
-				if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-					src.visible_message("<span class='notice'>[src] pulls [src.p_their()] pants down, and pees in the toilet.</span>","<span class='notice'>You pull your pants down, and pee in the toilet.</span>")
-				if (max_wetcontinence < 100)
-					max_wetcontinence++
-		/*if (istype(src.buckled,/obj/structure/toilet))
-			if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-				src.visible_message("<span class='notice'>[src] pulls [src.p_their()] pants down, and pees in the toilet.</span>","<span class='notice'>You pull your pants down, and pee in the toilet.</span>")
 			if (max_wetcontinence < 100)
-				max_wetcontinence++*/
-		else
-			if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-				if (on_purpose == 1) //pee on purpose
-					switch(rand(2))
-						if(0)
-							src.visible_message("<span class='notice'>[src] scrunches [src.p_their()] legs and lets the floodgates open.</span>","<span class='notice'>You scrunch your legs and let the floodgates open.</span>")
-						if(1)
-							src.visible_message("<span class='notice'>[src] shifts [src.p_their()] stance and sighs, a soft hiss following.</span>","<span class='notice'>You spread your legs and sigh, releasing the pressure from your bladder into your awaiting diaper. </span>")
-						else
-							src.visible_message("<span class='notice'>[src] legs shift as [src.p_their()] crotch hisses.</span>","<span class='notice'>Spreading your legs softly, the contents of your bladder trickle out into your awaiting diaper.</span>")
+				max_wetcontinence++
 
-				else
-					switch(rand(2))	//pee accident
-						if(0)
-							src.visible_message("<span class='notice'>[src]'s legs buckle as [src.p_they()] [src.p_are()] unable to stop [src.p_their()] bladder from leaking into [src.p_their()] pants!</span>","<span class='notice'>Your legs buckle as you are unable to stop your bladder from leaking into your pants!</span>")
-						if(1)
-							src.visible_message("<span class='notice'>[src] freezes up as [src.p_their()] crotch hisses.</span>","<span class='notice'>You freeze up as the strain overwhelms your bladder, flooding your pants </span>")
-						else
-							src.visible_message("<span class='notice'>[src]'s legs buckle as [src.p_they()] [src.p_are()] unable to keep from wetting [src.p_their()] pants!</span>","<span class='notice'>Your legs buckle as you are unable to keep from wetting your pants!</span>")
+		//if they player is on a potty or toilet, we're flagging the appropriate variable
+		if (istype(src.buckled,/obj/structure/potty))
+			onPotty = 1
+		if (istype(src.buckled,/obj/structure/toilet))
+			onToilet = 1
 
-			if(pee > max_wetcontinence)
-				pee = max_wetcontinence
-			if(ishuman(src))
-				var/mob/living/carbon/human/H = src
-				if(H.hidden_underwear == TRUE || H.underwear == "Nude")
-					pee = 0
-					new /obj/effect/decal/cleanable/waste/peepee(loc)
-			if(wetness + pee < 200 + heftersbonus)
-				wetness = wetness + pee
+		//if the amount of pee inside a player is higher than the max continence, we knock it down to the max continence
+		if(pee > max_wetcontinence)
+			pee = max_wetcontinence
+
+		//this block of code allows people to pee on the floor if they're nude (in the future)
+		if(ishuman(src))
+			var/mob/living/carbon/human/H = src
+			if(H.hidden_underwear == TRUE || H.underwear == "Nude")
 				pee = 0
-			else
-				wetness = 200 + heftersbonus
 				new /obj/effect/decal/cleanable/waste/peepee(loc)
-			if(max_wetcontinence > 25)
-				max_wetcontinence-=1
+
+		//this block updates the wetness of the diaper
+		//
+		//if the "wetness" of the diaper won't be overflowing, even with the pee about to be added, it's added like normal
+		//otherwise, the wetness of the diaper is set to it's max, and a pee puddle is spawned on the floor
+		//
+		//if leaking occurs, the player is penalized with an extra reduction in continence, unlesss they're already under 25% continent
+		if(wetness + pee < 200 + heftersbonus)
+			wetness = wetness + pee
+			pee = 0
+		else
+			wetness = 200 + heftersbonus
+			new /obj/effect/decal/cleanable/waste/peepee(loc)
+		if(max_wetcontinence > 25)
+			max_wetcontinence-=1
+
+		//finally, we want to display the actual pee flavortext
+		//
+		//we start by checkinng if the player is totally incontinent
+
+		if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+			//var/database/query/wettingQuery = new("SELECT * FROM InconFlavortextDB WHERE (usingpotty = ? AND usingtoilet = ? AND onpurpose = ? AND peeaccident = TRUE)",onPotty, onToilet, on_purpose)
+			var/database/query/wettingQuery = new("SELECT * FROM InconFlavortextDB WHERE ((usingpotty = ?) AND (usingtoilet = ?) AND (onpurpose = ?) AND (peeaccident = 1)) ORDER BY RANDOM() LIMIT 1", onPotty, onToilet,on_purpose)
+
+			if(!wettingQuery.Execute(db))
+				to_chat(src,wettingQuery.ErrorMsg())
+				to_chat(src,db.ErrorMsg())
+				to_chat(src,wettingQuery.Columns())
+			else
+				wettingQuery.NextRow()
+				var/wettingQueryResponse = wettingQuery.GetRowData()
+				src.visible_message(wettingQueryResponse["othersmessage"],wettingQueryResponse["selfmessage"])
+
+		//at the end of things, we set the player's pee to zero, and clear the "on_purpose" flag
 		pee = 0
 		on_purpose = 0
+		//and thats the end of the pee action!
+
 	else if (stat == DEAD)
 		to_chat(src,"You can't pee, you're dead!")
 
@@ -127,10 +147,10 @@ var/database/query/q = new("SELECT selfmessage FROM InconFlavortextDB LIMIT 1")
 						else
 							src.visible_message("<span class='notice'>[usr]'s cheeks flush as a foul stench surrounds [src.p_them()].</span>","<span class='notice'>Unable to cope with the pressure, you trust your underwear to protect your outfit as you let your bowels empty.</span>")
 				else
-					if(q.Execute(db) && q.NextRow())
-						src.visible_message("Test", q.GetRowData()["selfmessage"])
+					if(testingQuery.Execute(db) && testingQuery.NextRow())
+						src.visible_message("Test", testingQuery.GetRowData()["selfmessage"])
 					else
-						src.visible_message("Test", q.ErrorMsg())
+						src.visible_message("Test", testingQuery.ErrorMsg())
 						src.visible_message("Test", db.ErrorMsg())
 
 					/*switch(rand(3))	//poop accident
