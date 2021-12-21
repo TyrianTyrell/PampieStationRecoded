@@ -26,7 +26,7 @@
 	. = 1
 
 /datum/reagent/medicine/diuretic/overdose_process(mob/living/carbon/M)
-	if(prob(50))
+	if(prob(20))
 		M.Wetting()
 	..()
 	. = 1

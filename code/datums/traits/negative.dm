@@ -467,7 +467,7 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 /datum/quirk/fecalincontinence/add()
 	. = ..()
 	SEND_SIGNAL(quirk_holder, COMSIG_DIAPERCHANGE, ckey(quirk_holder.mind.key))
-	quirk_holder.max_messcontinence = 50
+	quirk_holder.max_messcontinence = rand(25, 75)
 
 /datum/quirk/fecalincontinence/remove()
 	. = ..()
@@ -486,7 +486,7 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 /datum/quirk/urinaryincontinence/add()
 	. = ..()
 	SEND_SIGNAL(quirk_holder, COMSIG_DIAPERCHANGE, ckey(quirk_holder.mind.key))
-	quirk_holder.max_wetcontinence = 50
+	quirk_holder.max_wetcontinence = rand(25, 75)
 
 /datum/quirk/urinaryincontinence/remove()
 	. = ..()

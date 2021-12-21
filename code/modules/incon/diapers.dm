@@ -853,17 +853,29 @@
 
 /obj/item/diaper/cloth
 	name = "\improper Cloth diaper"
-	desc = "Held in place with safety pins. Washable but not recommended."
+	desc = "Held in place with safety pins. Washable!"
 	icon_state = "cloth"
 
 /obj/item/wetdiap/cloth
 	icon_state = "cloth_wet"
 
+/obj/item/wetdiap/cloth/machine_wash(obj/machinery/washing_machine/WM)
+	new /obj/item/diaper/cloth(loc)
+	qdel(src)
+
 /obj/item/poopydiap/cloth
 	icon_state = "cloth_messy"
 
+/obj/item/poopydiap/cloth/machine_wash(obj/machinery/washing_machine/WM)
+	new /obj/item/diaper/cloth(loc)
+	qdel(src)
+
 /obj/item/useddiap/cloth
 	icon_state = "cloth_messy"
+
+/obj/item/useddiap/cloth/machine_wash(obj/machinery/washing_machine/WM)
+	new /obj/item/diaper/cloth(loc)
+	qdel(src)
 
 ///TESTING HYPER STUFF HERE!!!!!!
 
