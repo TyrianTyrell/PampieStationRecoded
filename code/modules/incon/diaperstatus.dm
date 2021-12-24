@@ -37,7 +37,7 @@ var/database/query/testingQuery = new("SELECT selfmessage FROM InconFlavortextDB
 	// onPotty should be 1 if the player is buckled onto a potty
 	// onToilet should be 1 if the player is bucked onto a toilet
 	//
-	var/onPotty = 0 //reminder : reimplement if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+	var/onPotty = 0
 	var/onToilet = 0
 	//
 	// End of SQL useful variables
@@ -110,89 +110,85 @@ var/database/query/testingQuery = new("SELECT selfmessage FROM InconFlavortextDB
 		to_chat(src,"You can't pee, you're dead!")
 
 /mob/living/carbon/proc/Pooping()
-	if (poop > 0 && stat != DEAD && src.client.prefs != "Pee Only")
+
+	//
+	// Variables for the SQL Query - Hopefully, these are cleared and reinitialized every time this script(?) is called
+	//
+	// onPotty should be 1 if the player is buckled onto a potty
+	// onToilet should be 1 if the player is bucked onto a toilet
+	//
+	var/onPotty = 0 //reminder : reimplement if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+	var/onToilet = 0
+	//
+	// End of SQL useful variables
+
+
+	if (poop > 0 && stat != DEAD && src.client.prefs != "Pee Only") //this checks if the player actually needs to poop, is alive, and has poop enabled
 		needpoo = 0
 		if(src.client.prefs.accident_sounds == TRUE)
 			playsound(loc, 'sound/effects/uhoh.ogg', 50, 1)
-		if (istype(src.buckled,/obj/structure/potty) || istype(src.buckled,/obj/structure/toilet))
-			if (istype(src.buckled,/obj/structure/potty))
-				if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-					src.visible_message("<spawn class='notice'>[src] pulls [src.p_their()] pants down and goes poopy in the potty like a big kid.</span>","<span class='notice'>You tug your pants down and go poopy in the potty like a big kid.</span>")
-				if (max_messcontinence < 100)
-					max_messcontinence++
-			if (istype(src.buckled,/obj/structure/toilet))
-				if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-					src.visible_message("<span class='notice'>[src] pulls [src.p_their()] pants down, and poops in the toilet.</span>","<span class='notice'>You pull your pants down, and poop in the toilet.</span>")
-				if (max_messcontinence < 100)
-					max_messcontinence++
-		/*if (istype(src.buckled,/obj/structure/toilet))
-			if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-				src.visible_message("<span class='notice'>[src] pulls [src.p_their()] pants down, and poops in the toilet.</span>","<span class='notice'>You pull your pants down, and poop in the toilet.</span>")
-			if (max_messcontinence < 100)
-				max_messcontinence++*/
-		else
-			if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-				if (on_purpose == 1)
-					switch(rand(5)) //poop on purpose
-						if(0)
-							src.visible_message("<span class='notice'>An odor pervades the room as [src] dumps [src.p_their()] drawers.</span>","<span class='notice'>An odor pervades the room as you dump your drawers.</span>")
-						if(1)
-							src.visible_message("<span class='notice'>An odor pervades the room as [src] poops [src.p_their()] pants.</span>","<span class='notice'>An odor pervades the room as you poop your pants.</span>")
-						if(2)
-							src.visible_message("<span class='notice'>An odor pervades the room as [src] soils [src.p_their()] undergarmets.</span>","<span class='notice'>An odor pervades the room as you soil your undergarmets.</span>")
-						if(3)
-							src.visible_message("<span class='notice'>[usr] grabs [src.p_their()] midsection and squats, a foul scent quickly surrounding [src.p_them()].</span>","<span class='notice'>You wrap your arms around your tummy and bend your knees, pushing gently as the internal pressure subsides and your bottom grows warm.</span>")
-						if(4)
-							src.visible_message("<span class='notice'>[usr] seems to focus on something, and a foul odor is spreading.</span>","<span class='notice'>Hunching forward slightly, your face scrunches from effort as you slowly force the contents of your bowels into your diaper, expanding it backwards.</span>")
-						else
-							src.visible_message("<span class='notice'>[usr]'s cheeks flush as a foul stench surrounds [src.p_them()].</span>","<span class='notice'>Unable to cope with the pressure, you trust your underwear to protect your outfit as you let your bowels empty.</span>")
-				else
-					if(testingQuery.Execute(db) && testingQuery.NextRow())
-						src.visible_message("Test", testingQuery.GetRowData()["selfmessage"])
-					else
-						src.visible_message("Test", testingQuery.ErrorMsg())
-						src.visible_message("Test", db.ErrorMsg())
 
-					/*switch(rand(3))	//poop accident
-						if(0)
-							src.visible_message("<span class='notice'>[src] takes a squat and winces as [src.p_their()] seat sags just a little more.</span>","<span class='notice'>That tight feeling in your gut is gone. But your diaper seems a bit saggier- and stinkier.</span>")
-						if(1)
-							src.visible_message("<span class='notice'>[usr]'s bottom makes some rude noises, followed by a soft squishing sound.</span>","<span class='notice'>A burst of gas escapes your bottom, followed by another, and then something that definitely isn't gas.</span>")
-						if(2)
-							src.visible_message("<span class='notice'>You see [src] shiver slightly, and their diaper sags a noticable amount.</span>","<span class='notice'>You feel your diaper sag as you release the pressure from your backside</span>")
-						else
-							src.visible_message("<span class='notice'>You smell something unpleasant coming from [usr]'s direction. [src.p_they()] don't seem to notice, though.</span>","<span class='notice'>You feel an odd pressure in your stomach, before it quickly goes away.</span>") */
-			if(poop > max_messcontinence)
-				poop = max_messcontinence
-			if(ishuman(src))
-				var/mob/living/carbon/human/H = src
-				if((H.hidden_underwear == TRUE || H.underwear == "Nude") && !H.dna.features["taur"])
-					if(H.w_uniform != null)
-						H.w_uniform.soiled = TRUE
-						H.update_inv_w_uniform()
-					else
-						if(H.wear_suit != null)
-							H.wear_suit.soiled = TRUE
-							H.update_inv_wear_suit()
-					poop = 0
-				if(stinkiness + poop < 150 + heftersbonus)
-					stinkiness = stinkiness + poop
-					if(H.hidden_underwear == FALSE && H.underwear != "Nude")
-						H.soiledunderwear = TRUE
-						H.update_body()
+		//if they player is on a potty or toilet, we're flagging the appropriate variable
+		if (istype(src.buckled,/obj/structure/potty))
+			onPotty = 1
+		if (istype(src.buckled,/obj/structure/toilet))
+			onToilet = 1
+
+		//if the amount of poop inside a player is higher than the max continence, we knock it down to the max continence
+		if(poop > max_messcontinence)
+			poop = max_messcontinence
+
+
+
+		//if the player makes it to a potty or toilet, they are rewarded with an increase in their continence
+		if (istype(src.buckled,/obj/structure/potty) || istype(src.buckled,/obj/structure/toilet))
+			if (max_messcontinence < 100)
+				max_messcontinence++
+
+		//this removes continence from the player if they use their diaper
+		if(max_messcontinence > 20)
+			max_messcontinence-=2
+
+
+		//this block controls the state of your displayed clothing, and also diaper capacity
+		//which makes some sense, I guess
+		if(ishuman(src))
+			var/mob/living/carbon/human/H = src
+			if((H.hidden_underwear == TRUE || H.underwear == "Nude") && !H.dna.features["taur"])
+				if(H.w_uniform != null)
+					H.w_uniform.soiled = TRUE
+					H.update_inv_w_uniform()
 				else
-					stinkiness = 150 + heftersbonus
-					if(H.hidden_underwear == FALSE && H.underwear != "Nude")
-						H.soiledunderwear = TRUE
-						H.update_body()
-			if(stinkiness > ((150 + heftersbonus) / 2) && stinky == FALSE)
-				statusoverlay = mutable_appearance('icons/incon/Effects.dmi',"generic_mob_stink",STINKLINES_LAYER, color = rgb(125, 241, 16))
-				overlays += statusoverlay
-				stinky = TRUE
-			if(max_messcontinence > 20)
-				max_messcontinence-=2
+					if(H.wear_suit != null)
+						H.wear_suit.soiled = TRUE
+						H.update_inv_wear_suit()
+				poop = 0
+			if(stinkiness + poop < 150 + heftersbonus) //looks like 150 is the hardcoded default diaper capacity
+				stinkiness = stinkiness + poop
+				if(H.hidden_underwear == FALSE && H.underwear != "Nude")
+					H.soiledunderwear = TRUE
+					H.update_body()
+			else
+				stinkiness = 150 + heftersbonus
+				if(H.hidden_underwear == FALSE && H.underwear != "Nude")
+					H.soiledunderwear = TRUE
+					H.update_body()
+
+		//this block gives you stink lines if you don't already have them, and you meet the criteria
+		if(stinkiness > ((150 + heftersbonus) / 2) && stinky == FALSE)
+			statusoverlay = mutable_appearance('icons/incon/Effects.dmi',"generic_mob_stink",STINKLINES_LAYER, color = rgb(125, 241, 16))
+			overlays += statusoverlay
+			stinky = TRUE
+
+		to_chat(src, "Todo: add messages for messing")
+
+
 		on_purpose = 0
 		poop = 0
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 	else if (stat == DEAD)
 		to_chat(src,"You can't poop, you're dead!")
 
@@ -230,47 +226,54 @@ var/database/query/testingQuery = new("SELECT selfmessage FROM InconFlavortextDB
 			fluids = fluids - 10
 		if (fluids < 0)
 			fluids = 0
+
+
 		if (pee >= max_wetcontinence * 0.5 && needpee <= 0 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-			switch(rand(1))
-				if(1)
-					to_chat(src,"You start feeling the need to pee.")
-				else
-					to_chat(src,"You abdomen starts to feel tight and uncomfortable, you think about urinating.")
+			var/database/query/peeFirstWarningQuery = new("SELECT selfmessage FROM InconFlavortextDB WHERE (peefirstwarning = 1) ORDER BY RANDOM()")
+			if(!peeFirstWarningQuery.Execute(db))
+				to_chat(src,peeFirstWarningQuery.ErrorMsg())
+				to_chat(src,db.ErrorMsg())
+				to_chat(src,peeFirstWarningQuery.Columns())
+			else
+				peeFirstWarningQuery.NextRow()
+				var/peeFirstWarningQueryResponse = peeFirstWarningQuery.GetRowData()
+				to_chat(src,peeFirstWarningQueryResponse["selfmessage"])
 			needpee += 1
 		if (pee >= max_wetcontinence * 0.8 && needpee <= 1 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-			switch(rand(2))
-				if(1)
-					to_chat(src,"<span class='warning'>You really need to pee!</span>")
-				if(2)
-					to_chat(src,"<span class='warning'>Your body desperately fidgets and wriggles in an attempt to restrain your bladder a little bit longer...</span>")
-				else
-					to_chat(src,"<span class='warning'>You feel a squirt of pee escape!</span>")
-
+			var/database/query/peeSecondWarningQuery = new("SELECT selfmessage FROM InconFlavortextDB WHERE (peesecondwarning = 1) ORDER BY RANDOM()")
+			if(!peeSecondWarningQuery.Execute(db))
+				to_chat(src,peeSecondWarningQuery.ErrorMsg())
+				to_chat(src,db.ErrorMsg())
+				to_chat(src,peeSecondWarningQuery.Columns())
+			else
+				peeSecondWarningQuery.NextRow()
+				var/peeSecondWarningQueryResponse = peeSecondWarningQuery.GetRowData()
+				to_chat(src,peeSecondWarningQueryResponse["selfmessage"])
 			needpee += 1
+
 		if (poop >= max_messcontinence * 0.5 && needpoo <= 0 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-			switch(rand(5))
-				if(1)
-					to_chat(src,"You start feeling the need to poop.")
-				if(2)
-					to_chat(src,"Gas squeaks out, releasing a bit of pressure you didn't know you had.")
-				if(3)
-					to_chat(src,"You feel a soft gurgling from your tummy.")
-				if(4)
-					to_chat(src,"You feel your insides shift a bit")
-				else
-					to_chat(src,"You feel a slight pressure in your backside")
+			var/database/query/pooFirstWarningQuery = new("SELECT selfmessage FROM InconFlavortextDB WHERE (poofirstwarning = 1) ORDER BY RANDOM()")
+			if(!pooFirstWarningQuery.Execute(db))
+				to_chat(src,pooFirstWarningQuery.ErrorMsg())
+				to_chat(src,db.ErrorMsg())
+				to_chat(src,pooFirstWarningQuery.Columns())
+			else
+				pooFirstWarningQuery.NextRow()
+				var/pooFirstWarningQueryResponse = pooFirstWarningQuery.GetRowData()
+				to_chat(src,pooFirstWarningQueryResponse["selfmessage"])
 			needpoo += 1
 		if (poop >= max_messcontinence * 0.8 && needpoo <= 1 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-			switch(rand(4))
-				if(1)
-					to_chat(src,"<span class='warning'>You really need to poop!</span>")
-				if(2)
-					to_chat(src,"<span class='warning'>Your stomach gurgles and groans as a heavy weight descends into your bowels...</span>")
-				if(3)
-					to_chat(src,"<span class='warning'>You feel an immense pressure in your bowels!</span>")
-				else
-					to_chat(src,"<span class='warning'>You let out a fart that is dangerously wet!</span>")
+			var/database/query/pooSecondWarningQuery = new("SELECT selfmessage FROM InconFlavortextDB WHERE (poosecondwarning = 1) ORDER BY RANDOM()")
+			if(!pooSecondWarningQuery.Execute(db))
+				to_chat(src,pooSecondWarningQuery.ErrorMsg())
+				to_chat(src,db.ErrorMsg())
+				to_chat(src,pooSecondWarningQuery.Columns())
+			else
+				pooSecondWarningQuery.NextRow()
+				var/pooSecondWarningQueryResponse = pooSecondWarningQuery.GetRowData()
+				to_chat(src,pooSecondWarningQueryResponse["selfmessage"])
 			needpoo += 1
+
 		if (pee >= max_wetcontinence && src.client.prefs != "Poop Only")
 			Wetting()
 		else if(pee >= max_wetcontinence)
