@@ -153,8 +153,14 @@
 	var/input_module = input("Please, select a module!", "Robot", null, null) as null|anything in sortList(modulelist)
 	if(!input_module || module.type != /obj/item/robot_module)
 		return
-
-	module.transform_to(modulelist[input_module])
+	var/input_module2 = input("Please select resource usage.", "Robot", null, null) as null|anything in list("Power","Coolant")
+	if (input_module2 == "Power")
+		module.transform_to(modulelist[input_module])
+	if (input_module2 == "Coolant")
+		module.transform_to(modulelist[input_module])
+		incontinent = TRUE
+	else
+		return
 
 
 /mob/living/silicon/robot/proc/updatename(client/C)

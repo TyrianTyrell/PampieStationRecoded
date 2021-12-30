@@ -103,6 +103,24 @@
 				M.heftersbonus = 0
 			Del()
 
+/obj/item/diaper/attack(mob/living/silicon/robot/M as mob, mob/usr as mob)
+	if(M == usr && HAS_TRAIT(M,TRAIT_NOCHANGESELF))
+		to_chat(usr, "<span class='warning'>You don't know how to change yourself!</span>")
+	else if(M.client.prefs.accident_types != "Opt Out" || M.client == null)
+		playsound(M.loc,'sound/effects/Diapertape.wav',50,1)
+		if(do_after_mob(usr,M))
+			M.DiaperChange(src)
+			M.brand2 = name
+			M.DiaperAppearance()
+			if (findtext(M.brand, "hefters") != 0 || findtext(M.brand, "_thick") != 0)
+				M.heftersbonus = 100
+			else if (findtext(M.brand, "trainer") != 0 || findtext(M.brand, "_trainer") != 0)
+				M.heftersbonus = -80
+			else if (findtext(M.brand, "underwear") != 0 || findtext(M.brand, "_underwear") != 0)
+				M.heftersbonus = -140
+			else
+				M.heftersbonus = 0
+			Del()
 /obj/item/wetdiap/plain
 	icon_state = "plain_wet"
 

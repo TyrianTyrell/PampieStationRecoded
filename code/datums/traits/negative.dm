@@ -537,3 +537,10 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 	gain_text = "<span class='notice'>Your insides rumble ominously.</span>"
 	lose_text = "<span class='notice'>You feel less bloated!</span>"
 	medical_record_text = "Patient exhibits symptoms of an accelerated metabolism for food and drinks."
+
+/datum/quirk/bathroombanned
+	name = "Bathroom Banned"
+	desc = "Your waste would clog any toilet."
+	value = 0
+	mob_trait = TRAIT_BATHROOMBANNED
+	medical_record_text = "Patient's stool and urine are incredibly corrosive to plumbing systems."

@@ -20,6 +20,25 @@
 /obj/item/var/soiled = FALSE
 /mob/living/carbon/human/var/soiledunderwear = FALSE
 /mob/living/carbon/human/var/wearingpoopy = FALSE
+/mob/living/silicon/robot/var/onpurpose = 0
+/mob/living/silicon/robot/var/pee = 0
+/mob/living/silicon/robot/var/on_purpose = 0
+/mob/living/silicon/robot/var/wetness = 0
+/mob/living/silicon/robot/var/fluids = 0
+/mob/living/silicon/robot/var/needpee = 0
+/mob/living/silicon/robot/var/brand = "plain"
+/mob/living/silicon/robot/var/brand2 = "diaper"
+/mob/living/silicon/robot/var/brand3 = "plain"
+/mob/living/silicon/robot/var/heftersbonus = 0
+/mob/living/silicon/robot/var/statusoverlay = null
+/mob/living/silicon/robot/var/incontinent = FALSE
+/mob/living/silicon/robot/var/diaperoverlay = null
+/mob/living/silicon/robot/var/datum/sprite_accessory/underwear/underwear = new /datum/sprite_accessory/underwear/bottom/diaper()
+/mob/living/silicon/robot/var/undie_color = "FFFFFF"
+
+/mob/living/silicon/robot/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/diaperswitch)
 
 /mob/living/carbon/human/ComponentInitialize()
 	. = ..()
@@ -27,6 +46,67 @@
 
 /mob/living/carbon/proc/Wetting()
 	if (pee > 0 && stat != DEAD && src.client.prefs != "Poop Only")
+		needpee = 0
+		if(src.client.prefs.accident_sounds == TRUE)
+			playsound(loc, 'sound/effects/pee-diaper.wav', 50, 1)
+		if (istype(src.buckled,/obj/structure/potty) || istype(src.buckled,/obj/structure/toilet))
+			if (istype(src.buckled,/obj/structure/potty))
+				if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+					src.visible_message("<spawn class='notice'>[src] pulls [src.p_their()] pants down and pees in the potty like a big kid.</span>","<span class='notice'>You tug your pants down and pee in the potty like a big kid.</span>")
+				if (max_wetcontinence < 100)
+					max_wetcontinence++
+			if (istype(src.buckled,/obj/structure/toilet))
+				if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+					src.visible_message("<span class='notice'>[src] pulls [src.p_their()] pants down, and pees in the toilet.</span>","<span class='notice'>You pull your pants down, and pee in the toilet.</span>")
+				if (max_wetcontinence < 100)
+					max_wetcontinence++
+		/*if (istype(src.buckled,/obj/structure/toilet))
+			if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+				src.visible_message("<span class='notice'>[src] pulls [src.p_their()] pants down, and pees in the toilet.</span>","<span class='notice'>You pull your pants down, and pee in the toilet.</span>")
+			if (max_wetcontinence < 100)
+				max_wetcontinence++*/
+		else
+			if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+				if (on_purpose == 1) //pee on purpose
+					switch(rand(2))
+						if(0)
+							src.visible_message("<span class='notice'>[src] scrunches [src.p_their()] legs and lets the floodgates open.</span>","<span class='notice'>You scrunch your legs and let the floodgates open.</span>")
+						if(1)
+							src.visible_message("<span class='notice'>[src] shifts [src.p_their()] stance and sighs, a soft hiss following.</span>","<span class='notice'>You spread your legs and sigh, releasing the pressure from your bladder into your awaiting diaper. </span>")
+						else
+							src.visible_message("<span class='notice'>[src] legs shift as [src.p_their()] crotch hisses.</span>","<span class='notice'>Spreading your legs softly, the contents of your bladder trickle out into your awaiting diaper.</span>")
+
+				else
+					switch(rand(2))	//pee accident
+						if(0)
+							src.visible_message("<span class='notice'>[src]'s legs buckle as [src.p_they()] [src.p_are()] unable to stop [src.p_their()] bladder from leaking into [src.p_their()] pants!</span>","<span class='notice'>Your legs buckle as you are unable to stop your bladder from leaking into your pants!</span>")
+						if(1)
+							src.visible_message("<span class='notice'>[src] freezes up as [src.p_their()] crotch hisses.</span>","<span class='notice'>You freeze up as the strain overwhelms your bladder, flooding your pants </span>")
+						else
+							src.visible_message("<span class='notice'>[src]'s legs buckle as [src.p_they()] [src.p_are()] unable to keep from wetting [src.p_their()] pants!</span>","<span class='notice'>Your legs buckle as you are unable to keep from wetting your pants!</span>")
+
+			if(pee > max_wetcontinence)
+				pee = max_wetcontinence
+			if(ishuman(src))
+				var/mob/living/carbon/human/H = src
+				if(H.hidden_underwear == TRUE || H.underwear == "Nude")
+					pee = 0
+					new /obj/effect/decal/cleanable/waste/peepee(loc)
+			if(wetness + pee < 200 + heftersbonus)
+				wetness = wetness + pee
+				pee = 0
+			else
+				wetness = 200 + heftersbonus
+				new /obj/effect/decal/cleanable/waste/peepee(loc)
+			if(max_wetcontinence > 25)
+				max_wetcontinence-=1
+		pee = 0
+		on_purpose = 0
+	else if (stat == DEAD)
+		to_chat(src,"You can't pee, you're dead!")
+
+/mob/living/silicon/robot/proc/Wetting()
+	if (pee > 0 && stat != DEAD && incontinent == TRUE)
 		needpee = 0
 		if(src.client.prefs.accident_sounds == TRUE)
 			playsound(loc, 'sound/effects/pee-diaper.wav', 50, 1)
@@ -516,6 +596,279 @@
 	spawn(60)
 		PampUpdate()
 
+/mob/living/silicon/robot/proc/PampUpdate()
+	if(src.client != null)
+		if(incontinent == TRUE)
+			pee = pee + ((20 + rand(0, 10))/100) + (fluids / 3000)
+			if(HAS_TRAIT(src, TRAIT_STINKER))
+				pee = pee + 0.05
+			else
+				pee = 0
+		if (wetness >= 1)
+			SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggysad)
+		if (fluids > 0)
+			fluids = fluids - 10
+		if (fluids < 0)
+			fluids = 0
+		if (pee >= max_wetcontinence && incontinent == TRUE)
+			Wetting()
+		else if(pee >= max_wetcontinence)
+			pee = 0
+		switch(brand)
+			if ("plain")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("classics")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("swaddles")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"sanshield",/datum/mood_event/sanitydiaper)
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("hefters_m")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("hefters_f")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Princess")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = TRUE
+				rollbonus = 0
+			if ("PwrGame")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 1
+			if ("StarKist")
+				set_light(3)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Space")
+				set_light(0)
+				ADD_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Replica")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+				adjustBruteLoss(-0.5)
+			if ("Service")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Supply")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Hydroponics")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Sec")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Engineering")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Atmos")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Science")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Med")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Cult_Nar")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Cult_Clock")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Miner")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Miner_thick")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Ashwalker")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("alien")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+			if ("Jeans")
+				set_light(0)
+				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
+				SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
+				if (ishuman(src))
+					var/mob/living/carbon/human/H = src
+					var/datum/bank_account/D = H.get_bank_account()
+					if (D)
+						D.princessbonus = FALSE
+				rollbonus = 0
+	spawn(60)
+		PampUpdate()
+
 /mob/living/carbon/proc/DiaperAppearance()
 	SEND_SIGNAL(src,COMSIG_DIAPERCHANGE, ckey(src.mind.key))
 
@@ -558,10 +911,50 @@
 		SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"peepee")
 		SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"poopy")
 
+/mob/living/silicon/robot/proc/DiaperAppearance()
+	SEND_SIGNAL(src,COMSIG_DIAPERCHANGE, ckey(src.mind.key))
+
+/mob/living/silicon/robot/proc/DiaperChange(obj/item/diaper/diap)
+	var/turf/cuckold = null
+	var/newpamp
+	switch(src.dir)
+		if(1)
+			cuckold = locate(src.loc.x + 1,src.loc.y,src.loc.z)
+		if(2)
+			cuckold = locate(src.loc.x - 1,src.loc.y,src.loc.z)
+		if(4)
+			cuckold = locate(src.loc.x,src.loc.y - 1,src.loc.z)
+		if(8)
+			cuckold = locate(src.loc.x,src.loc.y + 1,src.loc.z)
+	if(brand == "syndi")
+		brand = "plain"
+	if (wetness >= 1)
+		newpamp = text2path(addtext("/obj/item/wetdiap/", brand))
+	else
+		newpamp = text2path(addtext("/obj/item/diaper/", brand))
+	new newpamp(cuckold)
+	wetness = 0
+	overlays -= statusoverlay
+	if(ishuman(src))
+		var/mob/living/carbon/human/H = src
+		H.soiledunderwear = FALSE
+		H.update_body()
+	brand = replacetext("[diap.type]", "/obj/item/diaper/", "")
+	if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+		SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"peepee")
+
 /mob/living/carbon/verb/Pee()
 	if(usr.client.prefs.accident_types != "Opt Out" || usr.client.prefs.accident_types != "Poop Only")
 		set category = "IC"
 	if(src.client.prefs.accident_types != "Opt Out" && !HAS_TRAIT(usr,TRAIT_FULLYINCONTINENT) && pee >= max_wetcontinence/2)
+		on_purpose = 1
+		Wetting()
+	else
+		to_chat(usr, "<span class='warning'>You cannot pee right now.</span>")
+
+/mob/living/silicon/robot/verb/Pee()
+	set category = "IC"
+	if(incontinent == TRUE)
 		on_purpose = 1
 		Wetting()
 	else
@@ -580,6 +973,10 @@
 	..()
 	PampUpdate()
 
+/mob/living/silicon/robot/New()
+	..()
+	PampUpdate()
+
 /obj/item/reagent_containers/food/snacks/attack(mob/living/carbon/human/M, mob/living/user, def_zone)
 	..()
 	if(M.client.prefs.accident_types != "Pee Only")
@@ -592,6 +989,14 @@
 	M.fluids = M.fluids + 25
 	if (M.fluids > 300)
 		M.fluids = 300
+
+/obj/item/reagent_containers/food/drinks/attack(mob/living/silicon/robot/R, mob/living/user, def_zone)
+	..()
+	if(R.incontinent == TRUE)
+		R.pee = R.pee + 2
+	R.fluids = R.fluids + 25
+	if (R.fluids > 300)
+		R.fluids = 300
 
 /atom/movable/screen/diaperstatus
 	name = "diaper state"
@@ -645,8 +1050,28 @@
 	spawn(1)
 		DiaperUpdate(owner)
 
-/atom/movable/screen/diaperstatus/New(mob/living/carbon/owner)
-	DiaperUpdate(owner)
+/atom/movable/screen/diaperstatus/proc/DiaperUpdate2(mob/living/silicon/robot/owner)
+	if(owner.max_wetcontinence > 50)
+		owner.max_wetcontinence = 50
+	if(owner.incontinent == TRUE)
+		if (owner.wetness > 0)
+			icon_state = "hud_plain_wet"
+		else
+			icon_state = "hud_plain"
+	else
+		icon_state = null
+	if(owner.brand == "Science")
+		SSresearch.science_tech.add_point_type(TECHWEB_POINT_TYPE_GENERIC, 0.25)
+	if(owner.brand == "alien")
+		owner.wetness -= 0.1
+	spawn(1)
+		DiaperUpdate2(owner)
+
+/atom/movable/screen/diaperstatus/New(mob/living/owner)
+	if(iscarbon(owner))
+		DiaperUpdate(owner)
+	if(iscyborg(owner))
+		DiaperUpdate2(owner)
 
 /datum/hud/human/New(mob/living/carbon/owner)
 	..()
@@ -657,6 +1082,12 @@
 	else
 		owner.max_wetcontinence = 100
 		owner.max_messcontinence = 100
+	diapstats.hud = src
+	infodisplay += diapstats
+
+/datum/hud/robot/New(mob/living/silicon/robot/owner)
+	..()
+	var/atom/movable/screen/diapstats = new /atom/movable/screen/diaperstatus(owner)
 	diapstats.hud = src
 	infodisplay += diapstats
 
