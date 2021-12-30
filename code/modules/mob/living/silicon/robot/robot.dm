@@ -4,6 +4,7 @@
 	icon = 'icons/mob/robots.dmi'
 	icon_state = "robot"
 	bubble_icon = "robot"
+	var/obj/item/stock_parts/cell/oldcell = null
 
 /mob/living/silicon/robot/get_cell()
 	return cell
@@ -159,6 +160,8 @@
 	if (input_module2 == "Coolant")
 		module.transform_to(modulelist[input_module])
 		incontinent = TRUE
+		oldcell = cell
+		cell = new /obj/item/stock_parts/cell/incon()
 	else
 		return
 
@@ -726,6 +729,8 @@
 			var/obj/item/assembly/flash/handheld/F = new /obj/item/assembly/flash/handheld(T)
 			F.burn_out()
 	if (cell) //Sanity check.
+		if(istype(cell,/obj/item/stock_parts/cell/incon))
+			cell = oldcell
 		cell.forceMove(T)
 		cell = null
 	qdel(src)
