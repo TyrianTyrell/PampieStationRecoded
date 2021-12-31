@@ -35,6 +35,8 @@
 /mob/living/silicon/robot/var/diaperoverlay = null
 /mob/living/silicon/robot/var/datum/sprite_accessory/underwear/underwear = new /datum/sprite_accessory/underwear/bottom/diaper()
 /mob/living/silicon/robot/var/undie_color = "FFFFFF"
+/mob/living/silicon/robot/var/overheattimer = 0
+/mob/living/silicon/robot/var/needfluid = 0
 
 /mob/living/silicon/robot/ComponentInitialize()
 	. = ..()
@@ -599,10 +601,22 @@
 /mob/living/silicon/robot/proc/PampUpdate2()
 	if(incontinent == TRUE)
 		pee = pee + ((20 + rand(0, 10))/100) + (fluids / 3000)
-	if (wetness >= 1)
-		SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggysad)
+		if (wetness >= 1)
+			SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/soggysad)
+		if (fluids < 75 && needfluid == 0)
+			needfluid++
+			to_chat(src, "<span class ='warning'>Your chassis is uncomfortably warm.</span>")
+		if (fluids == 0)
+			if(needfluid == 1)
+				needfluid++
+				to_chat(src, "<span class ='warning'>Your chassis is nearing dangerously high heat levels!</span>")
+			overheat()
+		else
+			cell.charge = cell.maxcharge
 	if (fluids > 0)
-		fluids = fluids - 10
+		var/feh = rand()
+		fluids -= feh
+		reagents.remove_any(feh)
 	if (fluids < 0)
 		fluids = 0
 	if (pee >= max_wetcontinence && incontinent == TRUE)
@@ -713,6 +727,13 @@
 	spawn(60)
 		PampUpdate2()
 
+/mob/living/silicon/robot/proc/overheat()
+	overheattimer++
+	if(overheattimer >= 90)
+		cell.charge = 0
+
+
+
 /mob/living/carbon/proc/DiaperAppearance()
 	SEND_SIGNAL(src,COMSIG_DIAPERCHANGE, ckey(src.mind.key))
 
@@ -798,7 +819,7 @@
 
 /mob/living/silicon/robot/verb/Pee()
 	set category = "IC"
-	if(incontinent == TRUE)
+	if(incontinent == TRUE && needpee > 0)
 		on_purpose = 1
 		Wetting()
 	else
@@ -820,6 +841,10 @@
 /mob/living/silicon/robot/Initialize(mapload)
 	..()
 	PampUpdate2()
+	create_reagents(1000)
+	var/geh = rand(100,200)
+	fluids = geh
+	reagents.add_reagent(/datum/reagent/water,geh)
 	add_verb(src,/mob/living/silicon/robot/verb/Pee)
 
 /obj/item/reagent_containers/food/snacks/attack(mob/living/carbon/human/M, mob/living/user, def_zone)
@@ -834,14 +859,6 @@
 	M.fluids = M.fluids + 25
 	if (M.fluids > 300)
 		M.fluids = 300
-
-/obj/item/reagent_containers/food/drinks/attack(mob/living/silicon/robot/R, mob/living/user, def_zone)
-	..()
-	if(R.incontinent == TRUE)
-		R.pee = R.pee + 2
-	R.fluids = R.fluids + 25
-	if (R.fluids > 300)
-		R.fluids = 300
 
 /atom/movable/screen/diaperstatus
 	name = "diaper state"

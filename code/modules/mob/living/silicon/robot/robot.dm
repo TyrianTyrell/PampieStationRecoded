@@ -162,6 +162,7 @@
 		incontinent = TRUE
 		oldcell = cell
 		cell = new /obj/item/stock_parts/cell/incon()
+		module.add_module(new /obj/item/coolant_tube())
 	else
 		return
 
