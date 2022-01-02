@@ -43,16 +43,18 @@ var/database/query/testingQuery = new("SELECT selfmessage FROM InconFlavortextDB
 	// End of SQL useful variables
 
 	if (pee > 0 && stat != DEAD && src.client.prefs != "Poop Only") //this checks if the player actually needs to pee, is alive, and has pee enabled
-		needpee = 0
+		needpee = 0	//if we make it this far, we clear the "needpee" flag - we're now peeing
+
+		//first of all, play the pee sound
 		if(src.client.prefs.accident_sounds == TRUE)
 			playsound(loc, 'sound/effects/pee-diaper.wav', 50, 1)
 
-		//if the player makes it to a potty or toilet, they are rewarded with an increase in their continence
+		//if the player is on a potty or toilet at the time they pee, they're rewarded with some extra continence
 		if (istype(src.buckled,/obj/structure/potty) || istype(src.buckled,/obj/structure/toilet))
 			if (max_wetcontinence < 100)
 				max_wetcontinence++
 
-		//if they player is on a potty or toilet, we're flagging the appropriate variable
+		//if they player is on a potty or toilet, we're flagging the appropriate variable for the SQL command
 		if (istype(src.buckled,/obj/structure/potty))
 			onPotty = 1
 		if (istype(src.buckled,/obj/structure/toilet))
@@ -72,7 +74,7 @@ var/database/query/testingQuery = new("SELECT selfmessage FROM InconFlavortextDB
 		//this block updates the wetness of the diaper
 		//
 		//if the "wetness" of the diaper won't be overflowing, even with the pee about to be added, it's added like normal
-		//otherwise, the wetness of the diaper is set to it's max, and a pee puddle is spawned on the floor
+		//otherwise, the wetness of the diaper is maxed, and a pee puddle is spawned on the floor
 		//
 		//if leaking occurs, the player is penalized with an extra reduction in continence, unlesss they're already under 25% continent
 		if(wetness + pee < 200 + heftersbonus)
@@ -87,19 +89,25 @@ var/database/query/testingQuery = new("SELECT selfmessage FROM InconFlavortextDB
 		//finally, we want to display the actual pee flavortext
 		//
 		//we start by checkinng if the player is totally incontinent
+		//if they are, no message is displayed to anyone
+		//this needs to be fixed evantually, but for now, this is the best we can do
 
 		if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-			//var/database/query/wettingQuery = new("SELECT * FROM InconFlavortextDB WHERE (usingpotty = ? AND usingtoilet = ? AND onpurpose = ? AND peeaccident = TRUE)",onPotty, onToilet, on_purpose)
+
+
+			// SQL Query Construction
+			// todo: provide a basic breakdown of how SQL works
 			var/database/query/wettingQuery = new("SELECT * FROM InconFlavortextDB WHERE ((usingpotty = ?) AND (usingtoilet = ?) AND (onpurpose = ?) AND (peeaccident = 1)) ORDER BY RANDOM() LIMIT 1", onPotty, onToilet,on_purpose)
 
+			//if the query does not execute perfectly (and returns a "false"), we display a few error messages in chat for troubleshooting purposes
 			if(!wettingQuery.Execute(db))
 				to_chat(src,wettingQuery.ErrorMsg())
 				to_chat(src,db.ErrorMsg())
 				to_chat(src,wettingQuery.Columns())
 			else
-				wettingQuery.NextRow()
-				var/wettingQueryResponse = wettingQuery.GetRowData()
-				src.visible_message(wettingQueryResponse["othersmessage"],wettingQueryResponse["selfmessage"])
+				wettingQuery.NextRow() //otherwise, we load one row of the results
+				var/wettingQueryResponse = wettingQuery.GetRowData() //we load that row into a variable
+				src.visible_message(wettingQueryResponse["othersmessage"],wettingQueryResponse["selfmessage"]) //and we extract the two messages from the data
 
 		//at the end of things, we set the player's pee to zero, and clear the "on_purpose" flag
 		pee = 0
@@ -180,7 +188,23 @@ var/database/query/testingQuery = new("SELECT selfmessage FROM InconFlavortextDB
 			overlays += statusoverlay
 			stinky = TRUE
 
-		to_chat(src, "Todo: add messages for messing")
+		//finally, we want to display the actual messing flavortext
+		//
+		//we start by checkinng if the player is totally incontinent
+		//
+		//if they're not, we display the appropriate messages
+
+		if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+			var/database/query/messingQuery = new("SELECT * FROM InconFlavortextDB WHERE ((usingpotty = ?) AND (usingtoilet = ?) AND (onpurpose = ?) AND (poopaccident = 1)) ORDER BY RANDOM() LIMIT 1", onPotty, onToilet,on_purpose)
+
+			if(!messingQuery.Execute(db))
+				to_chat(src,messingQuery.ErrorMsg())
+				to_chat(src,db.ErrorMsg())
+				to_chat(src,messingQuery.Columns())
+			else
+				messingQuery.NextRow()
+				var/messingQueryResponse = messingQuery.GetRowData()
+				src.visible_message(messingQueryResponse["othersmessage"],messingQueryResponse["selfmessage"])
 
 
 		on_purpose = 0
