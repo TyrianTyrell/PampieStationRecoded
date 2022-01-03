@@ -32,15 +32,32 @@ var/database/query/testingQuery = new("SELECT selfmessage FROM InconFlavortextDB
 /mob/living/carbon/proc/Wetting()
 
 	//
-	// Variables for the SQL Query - Hopefully, these are cleared and reinitialized every time this script(?) is called
+	// Variables for the SQL Query
+	//
+	// This block of code just gathers variables for later use in the SQL query.
 	//
 	// onPotty should be 1 if the player is buckled onto a potty
 	// onToilet should be 1 if the player is bucked onto a toilet
+	// isTaur should be 1 if the player is a taur
 	//
-	var/onPotty = 0
+	//
+	var/onPotty = 0 //start by setting these all to false
 	var/onToilet = 0
+	var/isTaur = 0
+
+	if(ishuman(src))	//if the player is a human, we check for the taur DNA feature
+		var/mob/living/carbon/human/H = src
+		isTaur = H.dna.features["taur"]
+
+	if (istype(src.buckled,/obj/structure/potty)) //if the player is buckled onto a potty or toilet, we set the appropriate variable to true
+		onPotty = 1
+	if (istype(src.buckled,/obj/structure/toilet))
+		onToilet = 1
 	//
-	// End of SQL useful variables
+	// End of SQL Variables block
+	//
+
+
 
 	if (pee > 0 && stat != DEAD && src.client.prefs != "Poop Only") //this checks if the player actually needs to pee, is alive, and has pee enabled
 		needpee = 0	//if we make it this far, we clear the "needpee" flag - we're now peeing
@@ -54,11 +71,7 @@ var/database/query/testingQuery = new("SELECT selfmessage FROM InconFlavortextDB
 			if (max_wetcontinence < 100)
 				max_wetcontinence++
 
-		//if they player is on a potty or toilet, we're flagging the appropriate variable for the SQL command
-		if (istype(src.buckled,/obj/structure/potty))
-			onPotty = 1
-		if (istype(src.buckled,/obj/structure/toilet))
-			onToilet = 1
+
 
 		//if the amount of pee inside a player is higher than the max continence, we knock it down to the max continence
 		if(pee > max_wetcontinence)
@@ -70,6 +83,7 @@ var/database/query/testingQuery = new("SELECT selfmessage FROM InconFlavortextDB
 			if(H.hidden_underwear == TRUE || H.underwear == "Nude")
 				pee = 0
 				new /obj/effect/decal/cleanable/waste/peepee(loc)
+
 
 		//this block updates the wetness of the diaper
 		//
@@ -86,17 +100,17 @@ var/database/query/testingQuery = new("SELECT selfmessage FROM InconFlavortextDB
 		if(max_wetcontinence > 25)
 			max_wetcontinence-=1
 
+
 		//finally, we want to display the actual pee flavortext
 		//
 		//we start by checkinng if the player is totally incontinent
 		//if they are, no message is displayed to anyone
-		//this needs to be fixed evantually, but for now, this is the best we can do
-
+		//this should be changed at some point, but for now, this is the best we can do
 		if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
 
 
 			// SQL Query Construction
-			// todo: provide a basic breakdown of how SQL works
+			// todo: provide a basic breakdown of how SQL works and the construction of this statement
 			var/database/query/wettingQuery = new("SELECT * FROM InconFlavortextDB WHERE ((usingpotty = ?) AND (usingtoilet = ?) AND (onpurpose = ?) AND (peeaccident = 1)) ORDER BY RANDOM() LIMIT 1", onPotty, onToilet,on_purpose)
 
 			//if the query does not execute perfectly (and returns a "false"), we display a few error messages in chat for troubleshooting purposes
@@ -119,47 +133,62 @@ var/database/query/testingQuery = new("SELECT selfmessage FROM InconFlavortextDB
 
 /mob/living/carbon/proc/Pooping()
 
+
 	//
-	// Variables for the SQL Query - Hopefully, these are cleared and reinitialized every time this script(?) is called
+	// Variables for the SQL Query
+	//
+	// This block of code just gathers variables for later use in the SQL query.
 	//
 	// onPotty should be 1 if the player is buckled onto a potty
 	// onToilet should be 1 if the player is bucked onto a toilet
+	// isTaur should be 1 if the player is a taur
 	//
-	var/onPotty = 0 //reminder : reimplement if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-	var/onToilet = 0
 	//
-	// End of SQL useful variables
+	var/pottyState = "notoilet" //by default, the player is assumed to not be using any kind of toilet, potty, or similar device
+	var/purposeState = "notonpurpose"
+	var/taurState = "isnottaur" //until proven otherwise, the player is assumed to not be a taur
+	var/tailState = "notail"	//similarly, the player is assumed to be without a tail
 
+	if(ishuman(src))	//if the player is a human, we check for the taur DNA feature
+		var/mob/living/carbon/human/H = src
+		if (H.dna.features["taur"] != "None")
+			taurState = "istaur"
+
+	if (istype(src.buckled,/obj/structure/potty)) //if the player is buckled onto a potty or toilet, we set the appropriate variable to true
+		pottyState = "usingpotty"
+	if (istype(src.buckled,/obj/structure/toilet))
+		pottyState = "usingtoilet"
+
+	if(on_purpose)
+		purposeState = "onpurpose"
+
+	//
+	// End of SQL Variables block
+	//
 
 	if (poop > 0 && stat != DEAD && src.client.prefs != "Pee Only") //this checks if the player actually needs to poop, is alive, and has poop enabled
-		needpoo = 0
+		needpoo = 0 //if we make it this far, we clear the "needpoo" flag
+
+		//first of all, play the poop sound
 		if(src.client.prefs.accident_sounds == TRUE)
 			playsound(loc, 'sound/effects/uhoh.ogg', 50, 1)
-
-		//if they player is on a potty or toilet, we're flagging the appropriate variable
-		if (istype(src.buckled,/obj/structure/potty))
-			onPotty = 1
-		if (istype(src.buckled,/obj/structure/toilet))
-			onToilet = 1
 
 		//if the amount of poop inside a player is higher than the max continence, we knock it down to the max continence
 		if(poop > max_messcontinence)
 			poop = max_messcontinence
 
-
-
 		//if the player makes it to a potty or toilet, they are rewarded with an increase in their continence
 		if (istype(src.buckled,/obj/structure/potty) || istype(src.buckled,/obj/structure/toilet))
 			if (max_messcontinence < 100)
 				max_messcontinence++
-
-		//this removes continence from the player if they use their diaper
-		if(max_messcontinence > 20)
-			max_messcontinence-=2
+		else //this removes continence from the player if they use their diaper, unless it is already below 20%
+			if(max_messcontinence > 20)
+				max_messcontinence-=2
 
 
 		//this block controls the state of your displayed clothing, and also diaper capacity
 		//which makes some sense, I guess
+		//I don't 100% understand this code, so I am commenting it less
 		if(ishuman(src))
 			var/mob/living/carbon/human/H = src
 			if((H.hidden_underwear == TRUE || H.underwear == "Nude") && !H.dna.features["taur"])
@@ -188,30 +217,32 @@ var/database/query/testingQuery = new("SELECT selfmessage FROM InconFlavortextDB
 			overlays += statusoverlay
 			stinky = TRUE
 
-		//finally, we want to display the actual messing flavortext
+		//finally, we want to display the actual pee flavortext
 		//
 		//we start by checkinng if the player is totally incontinent
-		//
-		//if they're not, we display the appropriate messages
-
+		//if they are, no message is displayed to anyone
+		//this should be changed at some point, but for now, this is the best we can do
 		if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-			var/database/query/messingQuery = new("SELECT * FROM InconFlavortextDB WHERE ((usingpotty = ?) AND (usingtoilet = ?) AND (onpurpose = ?) AND (poopaccident = 1)) ORDER BY RANDOM() LIMIT 1", onPotty, onToilet,on_purpose)
-
+			// SQL Query Construction
+			// todo: provide a basic breakdown of how SQL works
+			var/messingQueryText = text("SELECT * FROM InconFlavortextDB WHERE ((poopaccident = 1) AND ([] = 1) AND ([] = 1) AND ([] = 1) AND ([] = 1)) ORDER BY RANDOM() LIMIT 1", pottyState, tailState, taurState, purposeState)
+			//var/database/query/messingQuery = new("SELECT * FROM InconFlavortextDB WHERE ((usingpotty = ?) AND (usingtoilet = ?) AND (onpurpose = ?) AND (poopaccident = 1) AND (? = 1)) ORDER BY RANDOM() LIMIT 1", onPotty, onToilet,on_purpose, taurState)
+			var/database/query/messingQuery = new(messingQueryText)
+			//if the query does not execute perfectly (and returns a "false"), we display a few error messages in chat for troubleshooting purposes
+			to_chat(src,messingQuery)
 			if(!messingQuery.Execute(db))
 				to_chat(src,messingQuery.ErrorMsg())
 				to_chat(src,db.ErrorMsg())
 				to_chat(src,messingQuery.Columns())
 			else
+				//otherwise, we load the first row, and display the data
 				messingQuery.NextRow()
 				var/messingQueryResponse = messingQuery.GetRowData()
 				src.visible_message(messingQueryResponse["othersmessage"],messingQueryResponse["selfmessage"])
 
-
+		//finally, we clear the "on_purpose" flag and set poop to 0
 		on_purpose = 0
 		poop = 0
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 	else if (stat == DEAD)
 		to_chat(src,"You can't poop, you're dead!")
