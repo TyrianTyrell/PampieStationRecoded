@@ -21,41 +21,72 @@
 /mob/living/carbon/human/var/soiledunderwear = FALSE
 /mob/living/carbon/human/var/wearingpoopy = FALSE
 
+//This is the SQLite database where all the flavortext is stored
 var/database/db = new("code/modules/incon/InconFlavortextDB.db")
-var/database/query/testingQuery = new("SELECT selfmessage FROM InconFlavortextDB LIMIT 1")
-//var/database/query/wettingQuery = new("SELECT othersmessage, selfmessage FROM InconFlavortextDB WHERE usingpotty = 1")
+//To view it, use a website like https://sqliteonline.com/ or a program like https://sqlitebrowser.org/dl/
+//Each row has a "selfmessage" column (what the player will see), an "othersmessage" column (what the other players will see if appropriate), a unique ID, and a whole list of boolean columns that act as flags
+//When adding rows to the database, each flag should be set to 0 or 1 depending on if a player with that state/condition/etc should be shown the message
+//e.g. the "onpurpose" flag should be 1 if and only if the message should be displayed when the player tries to poop or pee on purpose
+//So if you want to add more content, just paste the appropriate messages in the "selfmessage" and "othersmessage" columns in the BYOND-friendly formatting that you would otherwise put in the code,
+//go through each of the columns and decide which flags you want to give the message, save the database file, and replace the one in the incon folder
+//And that's it!
+
+
 
 /mob/living/carbon/human/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/diaperswitch)
 
-/mob/living/carbon/proc/Wetting()
 
-	//
-	// Variables for the SQL Query
-	//
-	// This block of code just gathers variables for later use in the SQL query.
-	//
-	// onPotty should be 1 if the player is buckled onto a potty
-	// onToilet should be 1 if the player is bucked onto a toilet
-	// isTaur should be 1 if the player is a taur
-	//
-	//
-	var/onPotty = 0 //start by setting these all to false
-	var/onToilet = 0
-	var/isTaur = 0
+
+/mob/living/carbon/proc/DisplayFlavortextMessage(messageType) //this proc handles all the flavortext messages for accidents and warnings
+															  //the argument is a string that specifies the desired message
+
+	var/pottyState = "notoilet" 	//this variable represents if the player is on a toilet, potty, or similar device
+									//valid options here are: notoilet, usingtoilet, usingpotty
+
+	var/purposeState = "notonpurpose"	//this variable represents if the player is using their diaper/potty on purpose, or if it's been forced
+										//valid options are: onpurpose, notonpurpose
+
+	var/taurState = "isnottaur"	//this represents if the player is a non-taur, or any kind of taur (with no distinguishing between the types currently)
+								//valid options are: istaur, isnottaur
+
+	var/tailState = "notail"	//this represents if the player has any kind of tail, or no tail (with no distinguishing between the types of tails
+								//valid options are: hastail, notail
+								//right now, we can't check if people have tails; I don't understand how the tails work in this game at the moment
 
 	if(ishuman(src))	//if the player is a human, we check for the taur DNA feature
 		var/mob/living/carbon/human/H = src
-		isTaur = H.dna.features["taur"]
+		if (H.dna.features["taur"] != "None")	//if we find that they're some sort of taur, we set their taurState to the appropriate value
+			taurState = "istaur"
 
-	if (istype(src.buckled,/obj/structure/potty)) //if the player is buckled onto a potty or toilet, we set the appropriate variable to true
-		onPotty = 1
+	if (istype(src.buckled,/obj/structure/potty)) //if the player is buckled onto a potty or toilet, we set the potty state to the appropriate value
+		pottyState = "usingpotty"
 	if (istype(src.buckled,/obj/structure/toilet))
-		onToilet = 1
-	//
-	// End of SQL Variables block
-	//
+		pottyState = "usingtoilet"
+
+	if(on_purpose)	//if the player is pooping/peeing/etc on purpose, we set their purposeState to the appropriate value
+		purposeState = "onpurpose"
+
+
+	// for the folowwing query, we're asking the database to randomly pick exactly one row that was "True" in all the requested column
+	// the database is structured so each column functions like a flag, specifying if that message is comparible with a current state: e.g., the "onpotty" colunm is true if and only if that message would make sense to display while a player is sitting on a potty
+	// each set of brackets is replaced by a column name specifying different player states: if they're a taur, if they have a tail, if they're having an accident on purpose or not, and if they're on a toilet or potty
+	// by supplying each of these column names in the query, the query returns a row that is guarenteed to be applicable to the player's current situation
+	var/FlavortextQueryText = text("SELECT * FROM InconFlavortextDB WHERE [] = 1 AND [] = 1 AND [] = 1 AND [] = 1 AND [] = 1 ORDER BY RANDOM() LIMIT 1", pottyState, tailState, taurState, purposeState, messageType)
+	//var/database/query/messingQuery = new("SELECT * FROM InconFlavortextDB WHERE ((usingpotty = ?) AND (usingtoilet = ?) AND (onpurpose = ?) AND (poopaccident = 1) AND (? = 1)) ORDER BY RANDOM() LIMIT 1", onPotty, onToilet,on_purpose, taurState)
+	var/database/query/FlavortextQuery = new(FlavortextQueryText)
+
+	//if the query does not execute perfectly (and returns a "false"), we display a few error messages in chat for troubleshooting purposes
+	if(!FlavortextQuery.Execute(db))
+		to_chat(src, "SQL Query Error: " + FlavortextQuery.ErrorMsg() + " Database Error: " + db.ErrorMsg())
+	else
+		//otherwise, we load the first row, and display the data
+		FlavortextQuery.NextRow()
+		var/FlavortextQueryResponse = FlavortextQuery.GetRowData()
+		src.visible_message(FlavortextQueryResponse["othersmessage"],FlavortextQueryResponse["selfmessage"])
+
+/mob/living/carbon/proc/Wetting()
 
 
 
@@ -70,8 +101,6 @@ var/database/query/testingQuery = new("SELECT selfmessage FROM InconFlavortextDB
 		if (istype(src.buckled,/obj/structure/potty) || istype(src.buckled,/obj/structure/toilet))
 			if (max_wetcontinence < 100)
 				max_wetcontinence++
-
-
 
 		//if the amount of pee inside a player is higher than the max continence, we knock it down to the max continence
 		if(pee > max_wetcontinence)
@@ -91,6 +120,7 @@ var/database/query/testingQuery = new("SELECT selfmessage FROM InconFlavortextDB
 		//otherwise, the wetness of the diaper is maxed, and a pee puddle is spawned on the floor
 		//
 		//if leaking occurs, the player is penalized with an extra reduction in continence, unlesss they're already under 25% continent
+
 		if(wetness + pee < 200 + heftersbonus)
 			wetness = wetness + pee
 			pee = 0
@@ -100,28 +130,14 @@ var/database/query/testingQuery = new("SELECT selfmessage FROM InconFlavortextDB
 		if(max_wetcontinence > 25)
 			max_wetcontinence-=1
 
-
 		//finally, we want to display the actual pee flavortext
 		//
 		//we start by checkinng if the player is totally incontinent
 		//if they are, no message is displayed to anyone
 		//this should be changed at some point, but for now, this is the best we can do
 		if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-
-
-			// SQL Query Construction
-			// todo: provide a basic breakdown of how SQL works and the construction of this statement
-			var/database/query/wettingQuery = new("SELECT * FROM InconFlavortextDB WHERE ((usingpotty = ?) AND (usingtoilet = ?) AND (onpurpose = ?) AND (peeaccident = 1)) ORDER BY RANDOM() LIMIT 1", onPotty, onToilet,on_purpose)
-
-			//if the query does not execute perfectly (and returns a "false"), we display a few error messages in chat for troubleshooting purposes
-			if(!wettingQuery.Execute(db))
-				to_chat(src,wettingQuery.ErrorMsg())
-				to_chat(src,db.ErrorMsg())
-				to_chat(src,wettingQuery.Columns())
-			else
-				wettingQuery.NextRow() //otherwise, we load one row of the results
-				var/wettingQueryResponse = wettingQuery.GetRowData() //we load that row into a variable
-				src.visible_message(wettingQueryResponse["othersmessage"],wettingQueryResponse["selfmessage"]) //and we extract the two messages from the data
+			//if the player is not fully incontinent, we call the proc to display the flavortext, specifying the sort of message we want to see
+			DisplayFlavortextMessage("peeaccident")
 
 		//at the end of things, we set the player's pee to zero, and clear the "on_purpose" flag
 		pee = 0
@@ -132,39 +148,6 @@ var/database/query/testingQuery = new("SELECT selfmessage FROM InconFlavortextDB
 		to_chat(src,"You can't pee, you're dead!")
 
 /mob/living/carbon/proc/Pooping()
-
-
-	//
-	// Variables for the SQL Query
-	//
-	// This block of code just gathers variables for later use in the SQL query.
-	//
-	// onPotty should be 1 if the player is buckled onto a potty
-	// onToilet should be 1 if the player is bucked onto a toilet
-	// isTaur should be 1 if the player is a taur
-	//
-	//
-	var/pottyState = "notoilet" //by default, the player is assumed to not be using any kind of toilet, potty, or similar device
-	var/purposeState = "notonpurpose"
-	var/taurState = "isnottaur" //until proven otherwise, the player is assumed to not be a taur
-	var/tailState = "notail"	//similarly, the player is assumed to be without a tail
-
-	if(ishuman(src))	//if the player is a human, we check for the taur DNA feature
-		var/mob/living/carbon/human/H = src
-		if (H.dna.features["taur"] != "None")
-			taurState = "istaur"
-
-	if (istype(src.buckled,/obj/structure/potty)) //if the player is buckled onto a potty or toilet, we set the appropriate variable to true
-		pottyState = "usingpotty"
-	if (istype(src.buckled,/obj/structure/toilet))
-		pottyState = "usingtoilet"
-
-	if(on_purpose)
-		purposeState = "onpurpose"
-
-	//
-	// End of SQL Variables block
-	//
 
 	if (poop > 0 && stat != DEAD && src.client.prefs != "Pee Only") //this checks if the player actually needs to poop, is alive, and has poop enabled
 		needpoo = 0 //if we make it this far, we clear the "needpoo" flag
@@ -223,22 +206,8 @@ var/database/query/testingQuery = new("SELECT selfmessage FROM InconFlavortextDB
 		//if they are, no message is displayed to anyone
 		//this should be changed at some point, but for now, this is the best we can do
 		if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-			// SQL Query Construction
-			// todo: provide a basic breakdown of how SQL works
-			var/messingQueryText = text("SELECT * FROM InconFlavortextDB WHERE ((poopaccident = 1) AND ([] = 1) AND ([] = 1) AND ([] = 1) AND ([] = 1)) ORDER BY RANDOM() LIMIT 1", pottyState, tailState, taurState, purposeState)
-			//var/database/query/messingQuery = new("SELECT * FROM InconFlavortextDB WHERE ((usingpotty = ?) AND (usingtoilet = ?) AND (onpurpose = ?) AND (poopaccident = 1) AND (? = 1)) ORDER BY RANDOM() LIMIT 1", onPotty, onToilet,on_purpose, taurState)
-			var/database/query/messingQuery = new(messingQueryText)
-			//if the query does not execute perfectly (and returns a "false"), we display a few error messages in chat for troubleshooting purposes
-			to_chat(src,messingQuery)
-			if(!messingQuery.Execute(db))
-				to_chat(src,messingQuery.ErrorMsg())
-				to_chat(src,db.ErrorMsg())
-				to_chat(src,messingQuery.Columns())
-			else
-				//otherwise, we load the first row, and display the data
-				messingQuery.NextRow()
-				var/messingQueryResponse = messingQuery.GetRowData()
-				src.visible_message(messingQueryResponse["othersmessage"],messingQueryResponse["selfmessage"])
+		    //if the player is not fully incontinent, we call the proc to display the flavortext, specifying the sort of message we want to see
+			DisplayFlavortextMessage("poopaccident")
 
 		//finally, we clear the "on_purpose" flag and set poop to 0
 		on_purpose = 0
@@ -284,49 +253,16 @@ var/database/query/testingQuery = new("SELECT selfmessage FROM InconFlavortextDB
 
 
 		if (pee >= max_wetcontinence * 0.5 && needpee <= 0 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-			var/database/query/peeFirstWarningQuery = new("SELECT selfmessage FROM InconFlavortextDB WHERE (peefirstwarning = 1) ORDER BY RANDOM()")
-			if(!peeFirstWarningQuery.Execute(db))
-				to_chat(src,peeFirstWarningQuery.ErrorMsg())
-				to_chat(src,db.ErrorMsg())
-				to_chat(src,peeFirstWarningQuery.Columns())
-			else
-				peeFirstWarningQuery.NextRow()
-				var/peeFirstWarningQueryResponse = peeFirstWarningQuery.GetRowData()
-				to_chat(src,peeFirstWarningQueryResponse["selfmessage"])
+			DisplayFlavortextMessage("peefirstwarning")
 			needpee += 1
 		if (pee >= max_wetcontinence * 0.8 && needpee <= 1 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-			var/database/query/peeSecondWarningQuery = new("SELECT selfmessage FROM InconFlavortextDB WHERE (peesecondwarning = 1) ORDER BY RANDOM()")
-			if(!peeSecondWarningQuery.Execute(db))
-				to_chat(src,peeSecondWarningQuery.ErrorMsg())
-				to_chat(src,db.ErrorMsg())
-				to_chat(src,peeSecondWarningQuery.Columns())
-			else
-				peeSecondWarningQuery.NextRow()
-				var/peeSecondWarningQueryResponse = peeSecondWarningQuery.GetRowData()
-				to_chat(src,peeSecondWarningQueryResponse["selfmessage"])
+			DisplayFlavortextMessage("peesecondwarning")
 			needpee += 1
-
 		if (poop >= max_messcontinence * 0.5 && needpoo <= 0 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-			var/database/query/pooFirstWarningQuery = new("SELECT selfmessage FROM InconFlavortextDB WHERE (poofirstwarning = 1) ORDER BY RANDOM()")
-			if(!pooFirstWarningQuery.Execute(db))
-				to_chat(src,pooFirstWarningQuery.ErrorMsg())
-				to_chat(src,db.ErrorMsg())
-				to_chat(src,pooFirstWarningQuery.Columns())
-			else
-				pooFirstWarningQuery.NextRow()
-				var/pooFirstWarningQueryResponse = pooFirstWarningQuery.GetRowData()
-				to_chat(src,pooFirstWarningQueryResponse["selfmessage"])
+			DisplayFlavortextMessage("poofirstwarning")
 			needpoo += 1
 		if (poop >= max_messcontinence * 0.8 && needpoo <= 1 && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
-			var/database/query/pooSecondWarningQuery = new("SELECT selfmessage FROM InconFlavortextDB WHERE (poosecondwarning = 1) ORDER BY RANDOM()")
-			if(!pooSecondWarningQuery.Execute(db))
-				to_chat(src,pooSecondWarningQuery.ErrorMsg())
-				to_chat(src,db.ErrorMsg())
-				to_chat(src,pooSecondWarningQuery.Columns())
-			else
-				pooSecondWarningQuery.NextRow()
-				var/pooSecondWarningQueryResponse = pooSecondWarningQuery.GetRowData()
-				to_chat(src,pooSecondWarningQueryResponse["selfmessage"])
+			DisplayFlavortextMessage("poosecondwarning")
 			needpoo += 1
 
 		if (pee >= max_wetcontinence && src.client.prefs != "Poop Only")
