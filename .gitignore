@@ -238,3 +238,7 @@ tools/LinuxOneShot/TGS_Logs
 
 # Common build tooling
 !/tools/build
+
+#SQLite Temporary files
+*.db-shm
+*.db-wal
