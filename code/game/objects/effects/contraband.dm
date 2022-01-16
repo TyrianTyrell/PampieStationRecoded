@@ -435,10 +435,15 @@
 	desc = "A poster advertising bounty hunting services. \"I hear you got a problem.\""
 	icon_state = "poster48"
 
-/obj/structure/sign/poster/contraband/pullups_ad
-	name = "Grown Ups"
-	desc = "An advertisement for the original NanoTrasen approved adult pull-up, featuring a familiar dogboy."
+/obj/structure/sign/poster/contraband/no_restroom
+	name = "Toilets Banned"
+	desc = "A poster made to look like an official NanoTrasen sign, suggesting that toilets are not allowed... either for all crew, or just the person reading this."
 	icon_state = "poster49"
+
+/obj/structure/sign/poster/contraband/poop
+	name = "Poop Your Pants"
+	desc = "A high resolution, compromising picture of a handsome catboy in a disturbingly loaded diaper. Bold text on the side encourages the viewer to follow his example."
+	icon_state = "poster50"
 
 /obj/structure/sign/poster/official
 	poster_item_name = "motivational poster"
@@ -671,14 +676,9 @@
 	desc = "An advertisement for NanoTrasen Storm. A premium infantry helmet, It contains a rebreather and full head coverage for use on harsh environments where the air isn't always safe to breathe."
 	icon_state = "poster44_legit"
 
-/obj/structure/sign/poster/official/no_restroom
-	name = "Toilets Banned"
-	desc = "A poster made to look like an official NanoTrasen sign, suggesting that toilets are not allowed... either for all crew, or just the person reading this."
+/obj/structure/sign/poster/official/pullups_ad
+	name = "Grown Ups"
+	desc = "An advertisement for the original NanoTrasen approved adult pull-up, featuring a familiar dogboy."
 	icon_state = "poster45_legit"
-
-/obj/structure/sign/poster/official/poop
-	name = "Poop Your Pants"
-	desc = "A high resolution, compromising picture of a handsome catboy in a disturbingly loaded diaper. Bold text on the side encourages the viewer to follow his example."
-	icon_state = "poster46_legit"
 
 #undef PLACE_SPEED
