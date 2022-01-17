@@ -80,7 +80,7 @@
 			to_chat(owner, span_warning("Being near [obsession] makes you nervous and you begin to stutter..."))
 		owner.stuttering = max(3, owner.stuttering)
 
-/datum/brain_trauma/special/obsessed/on_hug(mob/living/hugger, mob/living/hugged)
+/datum/brain_trauma/special/obsessed/proc/on_hug(mob/living/hugger, mob/living/hugged)
 	SIGNAL_HANDLER
 	if(hugged == obsession)
 		obsession_hug_count++
@@ -125,15 +125,12 @@
 	var/list/special_pool = list() //The special list, for quirk-based
 	var/chosen_victim  //The obsession target
 
-	for(var/mob/player as anything in GLOB.player_list)//prevents crewmembers falling in love with nuke ops they never met, and other annoying hijinks
-		if(!player.client || !player.mind || isnewplayer(player) || player.stat == DEAD || isbrain(player) || player == owner)
-			continue
-		if(!(player.mind.assigned_role.job_flags & JOB_CREW_MEMBER))
-			continue
-		viable_minds += player.mind
-	for(var/datum/mind/possible_target as anything in viable_minds)
+	for(var/mob/Player in GLOB.player_list)//prevents crewmembers falling in love with nuke ops they never met, and other annoying hijinks
+		if(Player.mind && Player.stat != DEAD && !isnewplayer(Player) && !isbrain(Player) && Player.client && Player != owner && SSjob.GetJob(Player.mind.assigned_role))
+			viable_minds += Player.mind
+	for(var/datum/mind/possible_target in viable_minds)
 		if(possible_target != owner && ishuman(possible_target.current))
-			var/job = possible_target.assigned_role.title
+			var/job = possible_target.assigned_role
 			if (trait_obsessions[job] != null && HAS_TRAIT(owner, trait_obsessions[job]))
 				special_pool += possible_target.current
 			possible_targets += possible_target.current
