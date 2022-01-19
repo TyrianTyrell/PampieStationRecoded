@@ -14783,8 +14783,7 @@
 	id = "PrivateStudy";
 	name = "Private Study Lock";
 	pixel_x = -5;
-	pixel_y = 24;
-	req_access_txt = "19;37"
+	pixel_y = 24
 	},
 /obj/machinery/button/door{
 	id = "PrivateStudy1";
@@ -27682,7 +27681,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/item/clothing/under/rank/captain/parade,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/captain)
 "bpl" = (
@@ -50592,7 +50590,7 @@
 /area/hallway/secondary/entry)
 "cyC" = (
 /obj/machinery/door/airlock/maintenance/abandoned{
-	name = "abandoned library";
+	name = "abandoned nursery";
 	req_access_txt = "12"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -54201,6 +54199,9 @@
 	name = "Prisoner Cell";
 	req_access_txt = "72"
 	},
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark,
 /area/security/prison)
 "fCx" = (
@@ -55922,6 +55923,9 @@
 	},
 /obj/machinery/light/small{
 	dir = 4
+	},
+/obj/structure/sign/poster/contraband/poop{
+	pixel_y = 32
 	},
 /turf/open/floor/plasteel/freezer,
 /area/nursery)
@@ -58428,7 +58432,7 @@
 /area/nursery)
 "nlI" = (
 /obj/effect/spawner/lootdrop/keg,
-/obj/structure/sign/poster/official/no_restroom{
+/obj/structure/sign/poster/contraband/no_restroom{
 	pixel_x = -32
 	},
 /turf/open/floor/plating,
@@ -58610,6 +58614,9 @@
 /area/maintenance/port/fore)
 "nDu" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/structure/sign/poster/official/pullups_ad{
+	pixel_y = 32
+	},
 /turf/open/floor/plasteel/freezer,
 /area/nursery)
 "nEj" = (
@@ -59358,9 +59365,7 @@
 	id = "PrivateStudy";
 	name = "Private Study Lock";
 	pixel_x = 25;
-	pixel_y = 25;
-	req_access_txt = "";
-	req_one_access_txt = "19;37"
+	pixel_y = 25
 	},
 /turf/open/floor/wood,
 /area/service/library)
@@ -64367,7 +64372,9 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/bed/changingtable,
+/obj/structure/bed/changingtable{
+	dir = 1
+	},
 /turf/open/floor/mineral/titanium/blue,
 /area/commons/toilet/locker)
 "ycu" = (
@@ -112592,8 +112599,8 @@ flo
 uaY
 atS
 aBR
-ioM
 jSV
+ioM
 ktA
 udl
 xGg
