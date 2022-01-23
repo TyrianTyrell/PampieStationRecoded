@@ -215,13 +215,13 @@ var/database/db = new("code/modules/incon/InconFlavortextDB.db")
 				var/mob/living/carbon/human/H = src
 				if(H.hidden_underwear == TRUE || H.underwear == "Nude")
 					pee = 0
-					new /obj/effect/decal/cleanable/waste/peepee(loc)
+					new /obj/effect/decal/cleanable/waste/peepee(loc, get_static_viruses())
 			if(wetness + pee < 200 + heftersbonus)
 				wetness = wetness + pee
 				pee = 0
 			else
 				wetness = 200 + heftersbonus
-				new /obj/effect/decal/cleanable/waste/peepee(loc)
+				new /obj/effect/decal/cleanable/waste/peepee(loc, get_static_viruses())
 			if(max_wetcontinence > 25)
 				max_wetcontinence-=1
 		pee = 0
