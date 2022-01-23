@@ -382,6 +382,15 @@
 /obj/effect/turf_decal/tile/yellow,
 /turf/open/floor/plasteel,
 /area/shuttle/escape)
+"hm" = (
+/obj/structure/urinal{
+	pixel_y = -32
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plasteel/freezer,
+/area/shuttle/escape)
 "hn" = (
 /turf/open/floor/plasteel,
 /area/shuttle/escape)
@@ -675,6 +684,13 @@
 /obj/structure/closet/crate/wooden/toy,
 /turf/open/floor/plasteel,
 /area/shuttle/escape)
+"oa" = (
+/obj/structure/urinal{
+	pixel_x = -32
+	},
+/obj/machinery/light/small,
+/turf/open/floor/plasteel/freezer,
+/area/shuttle/escape)
 "oj" = (
 /obj/machinery/light{
 	dir = 4
@@ -955,11 +971,8 @@
 /obj/machinery/computer/card{
 	dir = 4
 	},
-/obj/structure/window/reinforced/tinted{
+/obj/structure/window/reinforced{
 	dir = 8
-	},
-/obj/machinery/light/small{
-	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/escape)
@@ -1003,10 +1016,10 @@
 /obj/machinery/computer/communications{
 	dir = 8
 	},
-/obj/structure/window/reinforced/tinted{
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/window/reinforced/tinted,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/escape)
 "xa" = (
@@ -1234,11 +1247,8 @@
 /obj/machinery/computer/emergency_shuttle{
 	dir = 8
 	},
-/obj/structure/window/reinforced/tinted{
+/obj/structure/window/reinforced{
 	dir = 4
-	},
-/obj/machinery/light/small{
-	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/escape)
@@ -1330,10 +1340,10 @@
 /turf/open/floor/grass/fairy/blue,
 /area/shuttle/escape)
 "IK" = (
-/obj/structure/window/reinforced/tinted{
+/obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/window/reinforced/tinted,
+/obj/structure/window/reinforced,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/escape)
 "IO" = (
@@ -1452,6 +1462,22 @@
 	},
 /obj/machinery/door/airlock{
 	name = "Changing Room"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/escape)
+"Mj" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/escape)
@@ -1589,6 +1615,9 @@
 	},
 /obj/structure/window/reinforced/tinted{
 	dir = 4
+	},
+/obj/machinery/light/small{
+	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/escape)
@@ -1755,6 +1784,9 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 8
 	},
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/escape)
 "Zn" = (
@@ -1845,7 +1877,7 @@ Ar
 Gr
 co
 HB
-HB
+oa
 pT
 co
 co
@@ -1935,7 +1967,7 @@ co
 pT
 xa
 Jx
-er
+hm
 co
 nd
 Bt
@@ -2010,7 +2042,7 @@ xa
 xa
 xa
 rZ
-rZ
+Mj
 rZ
 co
 Bq
