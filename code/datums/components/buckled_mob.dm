@@ -30,7 +30,7 @@
 			underwear = butt.baseunderwear
 			undie_color = butt.undie_color
 		if((HAS_TRAIT(butt,TRAIT_INCONTINENT) || HAS_TRAIT(butt,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(butt,TRAIT_POTTYREBEL) || HAS_TRAIT(butt,BABYBRAINED_TRAIT) || HAS_TRAIT(butt,TRAIT_DIAPERUSE)))
-			butt.underwear = "Diaper"
+			butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper()
 			switch(butt.brand)
 				if("plain")
 					butt.undie_color = undie_color
