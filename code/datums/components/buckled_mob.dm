@@ -159,10 +159,11 @@
 					butt.undie_color = "8833FF"
 				if("underwear")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/briefs()
-			if("hyper" && butt.stinkiness < 150)
-				butt.undie_color = "EEEEFF"
-			if("hyper" && butt.stinkiness >= 150)
-				butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/hyper()
+				if("hyper")
+					if(butt.stinkiness < 150)
+						butt.undie_color = "EEEEFF"
+					else
+						butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/hyper()
 		else
 			butt.underwear = underwear
 			butt.undie_color = undie_color
