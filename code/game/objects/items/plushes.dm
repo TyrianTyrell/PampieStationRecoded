@@ -858,6 +858,45 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	item_state = "succubun"
 	attack_verb = list("newspapered", "bapped", "booped")
 
+/obj/item/toy/plush/carby
+	name = "Carbuncle"
+	desc = "Prr."
+	icon_state = "base_carby"
+	item_state = "base_carby"
+	attack_verb = list("gemmed", "prr'd", "trilled")
+	slot_flags = ITEM_SLOT_BELT
+	var/on = FALSE
+	var/brightness_on = 3 //range of light when on
+	var/flashlight_power = 0.75 //strength of the light when on
+	light_color = "#f7afc4"
+
+/obj/item/toy/plush/carby/Initialize(mapload, param_color)
+	. = ..()
+
+	update_brightness()
+	if(!param_color)
+		param_color = pick("emerald","topaz","ruby","sapphire","diamond","obsidian","amethyst","sunstone")
+	icon_state = "[param_color]_carby"
+	item_state = "[param_color]_carby"
+
+/obj/item/toy/plush/carby/proc/update_brightness(mob/user = null)
+	if(on)
+		if(flashlight_power)
+			set_light(l_range = brightness_on, l_power = flashlight_power)
+		else
+			set_light(brightness_on)
+	else
+		set_light(0)
+
+/obj/item/toy/plush/carby/attack_self(mob/user)
+	on = !on
+	update_brightness(user)
+	playsound(src, on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
+
+/obj/item/toy/plush/carby/DoRevenantThrowEffects(atom/target)
+	attack_self()
+
+
 /obj/item/toy/plush/hairball
 	name = "Hairball"
 	desc = "A bundle of undigested fibers and scales. Yuck."
