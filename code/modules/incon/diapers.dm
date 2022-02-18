@@ -933,6 +933,18 @@
 	desc = "Whoever had this on obviously wasn't ready for it."
 	icon_state = "cloth_messy"
 
+/obj/item/wetdiap/underwear/machine_wash(obj/machinery/washing_machine/WM)
+	new /obj/item/diaper/underwear(loc)
+	qdel(src)
+
+/obj/item/poopydiap/underwear/machine_wash(obj/machinery/washing_machine/WM)
+	new /obj/item/diaper/underwear(loc)
+	qdel(src)
+
+/obj/item/useddiap/underwear/machine_wash(obj/machinery/washing_machine/WM)
+	new /obj/item/diaper/underwear(loc)
+	qdel(src)
+
 /obj/item/diaper/blue_trainer
 	name = "\improper Training Pants (Blue)"
 	desc = "Maybe you're ready. Maybe you are not."
