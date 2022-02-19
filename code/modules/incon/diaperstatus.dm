@@ -108,9 +108,6 @@ var/database/db = new("code/modules/incon/InconFlavortextDB.db")
 		src.visible_message(FlavortextQueryResponse["othersmessage"],FlavortextQueryResponse["selfmessage"])
 
 /mob/living/carbon/proc/Wetting()
-
-
-
 	if (pee > 0 && stat != DEAD && src.client.prefs != "Poop Only") //this checks if the player actually needs to pee, is alive, and has pee enabled
 		needpee = 0	//if we make it this far, we clear the "needpee" flag - we're now peeing
 
@@ -118,38 +115,38 @@ var/database/db = new("code/modules/incon/InconFlavortextDB.db")
 		if(src.client.prefs.accident_sounds == TRUE)
 			playsound(loc, 'sound/effects/pee-diaper.wav', 50, 1)
 
-		//if the player is on a potty or toilet at the time they pee, they're rewarded with some extra continence
+		//Next we check if the player is on a potty or toilet at the time they pee and, if so, they're rewarded with some extra continence
 		if (istype(src.buckled,/obj/structure/potty) || istype(src.buckled,/obj/structure/toilet))
 			if (max_wetcontinence < 100)
 				max_wetcontinence++
-
-		//if the amount of pee inside a player is higher than the max continence, we knock it down to the max continence
-		if(pee > max_wetcontinence)
-			pee = max_wetcontinence
-
-		//this block of code allows people to pee on the floor if they're nude (in the future)
-		if(ishuman(src))
-			var/mob/living/carbon/human/H = src
-			if(H.hidden_underwear == TRUE || H.underwear == "Nude")
-				pee = 0
-				new /obj/effect/decal/cleanable/waste/peepee(loc)
-
-
-		//this block updates the wetness of the diaper
-		//
-		//if the "wetness" of the diaper won't be overflowing, even with the pee about to be added, it's added like normal
-		//otherwise, the wetness of the diaper is maxed, and a pee puddle is spawned on the floor
-		//
-		//if leaking occurs, the player is penalized with an extra reduction in continence, unlesss they're already under 25% continent
-
-		if(wetness + pee < 200 + heftersbonus)
-			wetness = wetness + pee
-			pee = 0
 		else
-			wetness = 200 + heftersbonus
-			new /obj/effect/decal/cleanable/waste/peepee(loc)
-		if(max_wetcontinence > 25)
-			max_wetcontinence-=1
+			//if the amount of pee inside a player is higher than the max continence, we knock it down to the max continence
+			if(pee > max_wetcontinence)
+				pee = max_wetcontinence
+
+			//this block of code allows people to pee on the floor if they're nude (in the future)
+			if(ishuman(src))
+				var/mob/living/carbon/human/H = src
+				if(H.hidden_underwear == TRUE || H.underwear == "Nude")
+					pee = 0
+					new /obj/effect/decal/cleanable/waste/peepee(loc)
+
+
+			//this block updates the wetness of the diaper
+			//
+			//if the "wetness" of the diaper won't be overflowing, even with the pee about to be added, it's added like normal
+			//otherwise, the wetness of the diaper is maxed, and a pee puddle is spawned on the floor
+			//
+			//if leaking occurs, the player is penalized with an extra reduction in continence, unlesss they're already under 25% continent
+
+			if(wetness + pee < 200 + heftersbonus)
+				wetness = wetness + pee
+				pee = 0
+			else
+				wetness = 200 + heftersbonus
+				new /obj/effect/decal/cleanable/waste/peepee(loc)
+			if(max_wetcontinence > 25)
+				max_wetcontinence-=1
 
 		//finally, we want to display the actual pee flavortext
 		//
@@ -160,7 +157,7 @@ var/database/db = new("code/modules/incon/InconFlavortextDB.db")
 			//if the player is not fully incontinent, we call the proc to display the flavortext, specifying the sort of message we want to see
 			DisplayFlavortextMessage("peeaccident")
 
-		//at the end of things, we set the player's pee to zero, and clear the "on_purpose" flag
+		//Finally, regardless of if the player is on a toilet or not, we set pee to 0 and remove the on_purpose flag.
 		pee = 0
 		on_purpose = 0
 		//and thats the end of the pee action!
@@ -242,7 +239,7 @@ var/database/db = new("code/modules/incon/InconFlavortextDB.db")
 		if(poop > max_messcontinence)
 			poop = max_messcontinence
 
-		//if the player makes it to a potty or toilet, they are rewarded with an increase in their continence
+		//Next, if the player makes it to a potty or toilet, they are rewarded with an increase in their continence
 		if (istype(src.buckled,/obj/structure/potty) || istype(src.buckled,/obj/structure/toilet))
 			if (max_messcontinence < 100)
 				max_messcontinence++
@@ -251,36 +248,36 @@ var/database/db = new("code/modules/incon/InconFlavortextDB.db")
 				max_messcontinence-=2
 
 
-		//this block controls the state of your displayed clothing, and also diaper capacity
-		//which makes some sense, I guess
-		//I don't 100% understand this code, so I am commenting it less
-		if(ishuman(src))
-			var/mob/living/carbon/human/H = src
-			if((H.hidden_underwear == TRUE || H.underwear == "Nude") && !H.dna.features["taur"])
-				if(H.w_uniform != null)
-					H.w_uniform.soiled = TRUE
-					H.update_inv_w_uniform()
+			//this block controls the state of your displayed clothing, and also diaper capacity
+			//which makes some sense, I guess
+			//I don't 100% understand this code, so I am commenting it less
+			if(ishuman(src))
+				var/mob/living/carbon/human/H = src
+				if((H.hidden_underwear == TRUE || H.underwear == "Nude") && !H.dna.features["taur"])
+					if(H.w_uniform != null)
+						H.w_uniform.soiled = TRUE
+						H.update_inv_w_uniform()
+					else
+						if(H.wear_suit != null)
+							H.wear_suit.soiled = TRUE
+							H.update_inv_wear_suit()
+					poop = 0
+				if(stinkiness + poop < 150 + heftersbonus) //looks like 150 is the hardcoded default diaper capacity
+					stinkiness = stinkiness + poop
+					if(H.hidden_underwear == FALSE && H.underwear != "Nude")
+						H.soiledunderwear = TRUE
+						H.update_body()
 				else
-					if(H.wear_suit != null)
-						H.wear_suit.soiled = TRUE
-						H.update_inv_wear_suit()
-				poop = 0
-			if(stinkiness + poop < 150 + heftersbonus) //looks like 150 is the hardcoded default diaper capacity
-				stinkiness = stinkiness + poop
-				if(H.hidden_underwear == FALSE && H.underwear != "Nude")
-					H.soiledunderwear = TRUE
-					H.update_body()
-			else
-				stinkiness = 150 + heftersbonus
-				if(H.hidden_underwear == FALSE && H.underwear != "Nude")
-					H.soiledunderwear = TRUE
-					H.update_body()
+					stinkiness = 150 + heftersbonus
+					if(H.hidden_underwear == FALSE && H.underwear != "Nude")
+						H.soiledunderwear = TRUE
+						H.update_body()
 
-		//this block gives you stink lines if you don't already have them, and you meet the criteria
-		if(stinkiness > ((150 + heftersbonus) / 2) && stinky == FALSE)
-			statusoverlay = mutable_appearance('icons/incon/Effects.dmi',"generic_mob_stink",STINKLINES_LAYER, color = rgb(125, 241, 16))
-			overlays += statusoverlay
-			stinky = TRUE
+			//this block gives you stink lines if you don't already have them, and you meet the criteria
+			if(stinkiness > ((150 + heftersbonus) / 2) && stinky == FALSE)
+				statusoverlay = mutable_appearance('icons/incon/Effects.dmi',"generic_mob_stink",STINKLINES_LAYER, color = rgb(125, 241, 16))
+				overlays += statusoverlay
+				stinky = TRUE
 
 		//finally, we want to display the actual pee flavortext
 		//

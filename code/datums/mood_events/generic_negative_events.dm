@@ -143,7 +143,12 @@
 	timeout = 3 MINUTES
 
 /datum/mood_event/painful_medicine
-	description = "<span class='warning'>Medicine may be good for me but right now it stings like hell.</span>\n"
+	description = "<span class='warning'>Medicine may be good for me, but right now it stings like hell.</span>\n"
+	mood_change = -5
+	timeout = 1 MINUTES
+
+/datum/mood_event/gross_medicine
+	description = "<span class='warning'>Medicine may be good for me, but it sure doesn't taste like it.</span>\n"
 	mood_change = -5
 	timeout = 1 MINUTES
 
