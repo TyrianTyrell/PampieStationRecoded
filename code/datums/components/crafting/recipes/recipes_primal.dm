@@ -109,6 +109,14 @@
 				 /obj/item/stack/sheet/sinew = 4)
 	category = CAT_PRIMAL
 
+/datum/crafting_recipe/bone_diaper
+	name = "Ashwaddlers"
+	result = /obj/item/diaper/ashwalker
+	time = 20
+	reqs = list(/obj/item/stack/sheet/bone = 2,
+				 /obj/item/stack/sheet/sinew = 1)
+	category = CAT_PRIMAL
+
 /datum/crafting_recipe/bone_screwdriver
 	name = "Bone Screwdriver"
 	result = /obj/item/screwdriver/ashwalker
@@ -239,6 +247,16 @@
 	time = 80
 	reqs = list(/obj/item/stack/sheet/bone = 4,
 				 /obj/item/stack/sheet/sinew = 1)
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/bone_anvil
+	name = "Bone Anvil"
+	result = /obj/structure/anvil/obtainable/bone
+	time = 200
+	reqs = list(/obj/item/stack/sheet/bone = 6,
+				 /obj/item/stack/sheet/sinew = 2,
+				 /obj/item/stack/sheet/animalhide/goliath_hide = 2)
+	tools = list(/obj/item/weldingtool/experimental/ashwalker, /obj/item/wirecutters/ashwalker, /obj/item/crowbar/ashwalker)
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/bone_glaive

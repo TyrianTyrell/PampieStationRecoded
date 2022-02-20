@@ -28,6 +28,8 @@
 				var/obj/item/clothing/accessory/A = U.attached_accessory
 				if(A.above_suit)
 					. += U.accessory_overlay
+		if(soiled == TRUE)
+			. += mutable_appearance('icons/incon/poop.dmi', "stains")
 
 /obj/item/clothing/suit/update_clothes_damaged_state()
 	..()

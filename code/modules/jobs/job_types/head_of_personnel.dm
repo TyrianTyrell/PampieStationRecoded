@@ -36,7 +36,7 @@
 
 	display_order = JOB_DISPLAY_ORDER_HEAD_OF_PERSONNEL
 
-	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/brainproblems, /datum/quirk/prosopagnosia, /datum/quirk/insanity)
+	blacklisted_quirks = list(/datum/quirk/brainproblems, /datum/quirk/prosopagnosia, /datum/quirk/quadriplegic, /datum/quirk/blindness, /datum/quirk/deaf, /datum/quirk/mute, /datum/quirk/insanity, /datum/quirk/paraplegic, /datum/quirk/blooddeficiency)
 	threat = 2
 
 

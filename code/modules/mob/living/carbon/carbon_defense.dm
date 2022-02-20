@@ -351,11 +351,12 @@
 			to_chat(M, "<span class='notice'>They are wearing a [dipetype] diaper!")
 			to_chat(src, "<span class='notice'>[M] pulls your waistband back and pats you down to check your diaper.</span>")
 			if(HAS_TRAIT(M,TRAIT_EXACTCHECK))
-				var/diappercent1 = round((wetness / (250 + heftersbonus)) * 100)
-				var/diappercent2 = round((stinkiness / (250 + heftersbonus)) * 100)
+				var/diappercent1 = round((wetness / (200 + heftersbonus)) * 100)
+				var/diappercent2 = round((stinkiness / (150 + heftersbonus)) * 100)
 				to_chat(M,"<span class='notice'>It is about [diappercent1]% wet and [diappercent2]% messy.</span>")
 
 		else
+			SEND_SIGNAL(M, COMSIG_CARBON_HUG, M, src)
 			M.visible_message("<span class='notice'>[M] hugs [src] to make [p_them()] feel better!</span>", \
 						"<span class='notice'>You hug [src] to make [p_them()] feel better!</span>", target = src,\
 						target_message = "<span class='notice'>[M] hugs you to make you feel better!</span>")

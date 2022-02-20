@@ -394,6 +394,8 @@
 	var/job = assignment ? ckey(GetJobName()) : null
 	if(registered_name == "Captain")
 		job = "captain"
+	if(access.Find(72) != 0)
+		. += mutable_appearance(icon, "potty")
 	if(registered_name && registered_name != "Captain")
 		. += mutable_appearance(icon, "assigned")
 	if(job)

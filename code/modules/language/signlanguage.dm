@@ -4,9 +4,10 @@
   speech_verb = "signs"
   whisper_verb = "gestures"
   key = "9"
+  chooseable_roundstart = TRUE
   flags = TONGUELESS_SPEECH
-  
-  syllables = list(".")
-  
+
+  syllables = list("...")
+
   icon_state = "ssl"
-  default_priority = 90
+  default_priority = 99

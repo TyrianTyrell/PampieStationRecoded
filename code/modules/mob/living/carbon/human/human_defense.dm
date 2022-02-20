@@ -98,6 +98,7 @@
 		affecting = get_bodypart(ran_zone(user.zone_selected))
 	var/target_area = parse_zone(check_zone(user.zone_selected)) //our intended target
 
+
 	SEND_SIGNAL(I, COMSIG_ITEM_ATTACK_ZONE, src, user, affecting)
 
 	SSblackbox.record_feedback("nested tally", "item_used_for_combat", 1, list("[I.force]", "[I.type]"))
@@ -783,9 +784,9 @@
 								SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"peepee",/datum/mood_event/stinkysad)
 					else
 				if(HAS_TRAIT(src,TRAIT_EXACTCHECK))
-					var/diappercent1 = round((wetness / (250 + heftersbonus)) * 100)
-					var/diappercent2 = round((stinkiness / (250 + heftersbonus)) * 100)
-					to_send += "<span class='notice'>It is about [diappercent1]% wet and [diappercent2]% messy.</span>\n"
+					var/diappercent1 = round((wetness / (200 + heftersbonus)) * 100)
+					var/diappercent2 = round((stinkiness / (150 + heftersbonus)) * 100)
+					to_send += "<span class='notice'>Your [src.brand2] is about [diappercent1]% wet and [diappercent2]% messy.</span>\n"
 				else
 					if(wetness >= 200)
 						to_send += "<span class='notice'>Your [src.brand2] is drenched with pee.</span>\n"
@@ -958,3 +959,50 @@
 
 	for(var/obj/item/I in torn_items)
 		I.take_damage(damage_amount, damage_type, damage_flag, 0)
+
+/mob/living/carbon/human/proc/diapermush(mob/living/carbon/human/M)
+	var/chan = rand(1,100)
+	if(src.stinkiness > 0 || src.wetness > 0)
+		if(chan > 66)
+			to_chat(M,"<span class='warning'>Squish!</span>")
+			if(M != src)
+				to_chat(src,"<span class='warning'>Squish!</span>")
+		if(chan <= 66 && chan > 33)
+			to_chat(M,"<span class='warning'>Smursh!</span>")
+			if(M != src)
+				to_chat(src,"<span class='warning'>Smursh!</span>")
+		if(chan <= 33)
+			to_chat(M,"<span class='warning'>Splrsh!</span>")
+			if(M != src)
+				to_chat(src,"<span class='warning'>Splrsh!</span>")
+	else
+		to_chat(M,"<span class='warning'>Crinkle!</span>")
+		if(M != src)
+			to_chat(src,"<span class='warning'>Crinkle!</span>")
+
+/mob/living/carbon/human/proc/pantsing(mob/living/carbon/human/M)
+	var/olduniform = src.w_uniform
+	if(findtext("[src.w_uniform.type]","/shirt"))
+		var/newuniform3 = type2parent(src.w_uniform.type)
+		var/newuniform1 = new newuniform3
+		if(src != M)
+			to_chat(M, "You pull [src]'s pants back up.")
+		to_chat(src, "Your pants have been pulled back up.")
+		src.temporarilyRemoveItemFromInventory(src.w_uniform, TRUE, FALSE)
+		src.equip_to_slot_or_del(newuniform1, SLOT_W_UNIFORM)
+		qdel(olduniform)
+		return
+	for(var/TTT in subtypesof(src.w_uniform))
+		if(findtext("[TTT]","/shirt"))
+			var/obj/item/clothing/under/newuniform2 = new TTT
+			if(src != M)
+				to_chat(M, "You pants [src].")
+			to_chat(src, "You've been pantsed!")
+			src.temporarilyRemoveItemFromInventory(src.w_uniform, TRUE, FALSE)
+			src.equip_to_slot_or_del(newuniform2, SLOT_W_UNIFORM)
+			qdel(olduniform)
+			return
+	if(src != M)
+		to_chat(M, "[src]'s pants are attached to [src.p_their()] shirt!")
+	else
+		to_chat(M, "Your pants are attached to your shirt!")

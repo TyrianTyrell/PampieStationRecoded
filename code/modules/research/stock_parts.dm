@@ -112,8 +112,105 @@ If you create T5+ please take a pass at gene_modder.dm [L40]. Max_values MUST fi
 	desc = "A version of the RPED that allows for replacement of parts and scanning from a distance, along with higher capacity for parts. Definitely not just a BSRPED painted orange."
 	icon_state = "borg_BS_RPED"
 
+/obj/item/storage/part_replacer/pre_attack(obj/machinery/T, mob/living/user, params)
+	if(!istype(T) || !T.component_parts)
+		return ..()
+	if(user.Adjacent(T)) // no TK upgrading.
+		if(works_from_distance)
+			user.Beam(T, icon_state = "rped_upgrade", time = 5)
+		T.exchange_parts(user, src)
+		return TRUE
+	return ..()
+
+/obj/item/storage/part_replacer/afterattack(obj/machinery/T, mob/living/user, adjacent, params)
+	if(adjacent || !istype(T) || !T.component_parts)
+		return ..()
+	if(works_from_distance)
+		user.Beam(T, icon_state = "rped_upgrade", time = 5)
+		T.exchange_parts(user, src)
+		return
+	return ..()
+
 /proc/cmp_rped_sort(obj/item/A, obj/item/B)
 	return B.get_part_rating() - A.get_part_rating()
+
+/obj/item/storage/part_replacer/diaper_ray
+	name = "rapid diaper changing device"
+	desc = "Special mechanical module made to rapidly change diapers."
+	icon_state = "BS_RPED"
+	item_state = "RPED"
+	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
+	w_class = WEIGHT_CLASS_NORMAL
+	works_from_distance = TRUE
+	pshoom_or_beepboopblorpzingshadashwoosh = 'sound/items/pshoom.ogg'
+	alt_sound = 'sound/items/pshoom_2.ogg'
+	component_type = /datum/component/storage/concrete
+	rad_flags = RAD_PROTECT_CONTENTS | RAD_NO_CONTAMINATE	//cutting down on exploits
+
+/obj/item/storage/part_replacer/diaper_ray/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage/concrete)
+	STR.max_w_class = WEIGHT_CLASS_TINY
+	STR.max_combined_w_class = 100
+	STR.max_items = 20
+	STR.can_hold = typecacheof(list(/obj/item/diaper))
+	STR.display_numerical_stacking = TRUE
+	STR.collection_mode = COLLECT_EVERYTHING
+	STR.allow_quick_gather = TRUE
+	STR.allow_quick_empty = TRUE
+	STR.click_gather = TRUE
+
+/obj/item/storage/part_replacer/diaper_ray/PopulateContents()
+	for(var/i in 1 to 10)
+		new /obj/item/diaper/plain(src)
+
+/obj/item/storage/part_replacer/diaper_ray/pre_attack(mob/living/carbon/human/T, mob/living/user, params)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage/concrete)
+	if(!istype(T) || (T.client.prefs.accident_types == "Opt Out"))
+		return ..()
+	if(user.Adjacent(T))
+		if(works_from_distance)
+			user.Beam(T, icon_state = "rped_upgrade", time = 5)
+		play_rped_sound()
+		var/obj/item/diaper/picked = pick(STR.contents())
+		T.DiaperChange(picked)
+		T.brand2 = picked.name
+		T.DiaperAppearance()
+		if (findtext(T.brand, "hefters") != 0 || findtext(T.brand, "_thick") != 0)
+			T.heftersbonus = 100
+		else if (findtext(T.brand, "trainer") != 0 || findtext(T.brand, "_trainer") != 0)
+			T.heftersbonus = -80
+		else if (findtext(T.brand, "underwear") != 0 || findtext(T.brand, "_underwear") != 0)
+			T.heftersbonus = -140
+		else
+			T.heftersbonus = 0
+		STR.remove_from_storage(picked)
+		return TRUE
+	return ..()
+
+/obj/item/storage/part_replacer/diaper_ray/afterattack(mob/living/carbon/human/T, mob/living/user, adjacent, params)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage/concrete)
+	if(adjacent || !istype(T) || (T.client.prefs.accident_types == "Opt Out"))
+		return ..()
+	if(works_from_distance)
+		var/obj/item/diaper/picked = pick(STR.contents())
+		play_rped_sound()
+		user.Beam(T, icon_state = "rped_upgrade", time = 5)
+		T.DiaperChange(picked)
+		T.brand2 = picked.name
+		T.DiaperAppearance()
+		if (findtext(T.brand, "hefters") != 0 || findtext(T.brand, "_thick") != 0)
+			T.heftersbonus = 100
+		else if (findtext(T.brand, "trainer") != 0 || findtext(T.brand, "_trainer") != 0)
+			T.heftersbonus = -80
+		else if (findtext(T.brand, "underwear") != 0 || findtext(T.brand, "_underwear") != 0)
+			T.heftersbonus = -140
+		else
+			T.heftersbonus = 0
+		STR.remove_from_storage(picked)
+		return TRUE
+	return ..()
 
 /obj/item/stock_parts
 	name = "stock part"

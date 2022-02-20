@@ -58,6 +58,9 @@
 /obj/item/ingot/plasma
 	custom_materials = list(/datum/material/plasma=12000)//yeah ok
 
+/obj/item/ingot/bone
+	custom_materials = list(/datum/material/bone=4000)
+
 /obj/item/ingot/gold
 	custom_materials = list(/datum/material/gold=12000)
 

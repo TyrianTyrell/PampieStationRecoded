@@ -620,8 +620,10 @@
 /area/security/execution/education)
 "abY" = (
 /obj/machinery/door/airlock{
-	name = "Unisex Restroom"
+	name = "Unisex Restroom";
+	req_access_txt = "72"
 	},
+/obj/effect/mapping_helpers/airlock/unres,
 /turf/open/floor/plasteel/freezer,
 /area/security/prison)
 "abZ" = (
@@ -7373,6 +7375,7 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "avr" = (
+/obj/structure/loot_pile/maint,
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
 	},
@@ -11325,6 +11328,11 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai_upload)
+"aOc" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/vending/diaper,
+/turf/open/floor/plasteel,
+/area/commons/dorms)
 "aOd" = (
 /obj/machinery/computer/upload/ai,
 /obj/structure/window/reinforced{
@@ -15030,6 +15038,14 @@
 	dir = 4
 	},
 /obj/machinery/space_heater,
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
+"bdf" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/structure/loot_pile/maint,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "bdr" = (
@@ -19922,7 +19938,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/structure/closet/crate/diaperpail,
+/obj/machinery/vending/diaper,
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet/restrooms)
 "bzi" = (
@@ -42046,6 +42062,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 5
 	},
+/obj/structure/loot_pile/maint,
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "cLe" = (
@@ -47127,6 +47144,7 @@
 /obj/structure/sign/poster/contraband/random{
 	pixel_x = 32
 	},
+/obj/structure/loot_pile/maint,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "dhH" = (
@@ -48375,7 +48393,6 @@
 /obj/machinery/airalarm{
 	pixel_y = 24
 	},
-/obj/item/stack/sheet/plastic/twenty,
 /turf/open/floor/carpet/arcade,
 /area/nursery)
 "dvg" = (
@@ -50620,8 +50637,10 @@
 "esv" = (
 /obj/machinery/door/airlock{
 	id_tag = "Toilet1";
-	name = "Unit 1"
+	name = "Unit 1";
+	req_access_txt = "72"
 	},
+/obj/effect/mapping_helpers/airlock/unres,
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet/restrooms)
 "esC" = (
@@ -52224,6 +52243,10 @@
 	},
 /turf/closed/wall/r_wall,
 /area/engineering/atmos)
+"flN" = (
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
 "flY" = (
 /turf/open/pool,
 /area/commons/fitness/pool)
@@ -59853,6 +59876,10 @@
 	},
 /turf/open/floor/plating,
 /area/command/teleporter)
+"jTa" = (
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating,
+/area/maintenance/starboard)
 "jTb" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
@@ -60276,9 +60303,7 @@
 /obj/structure/sign/barsign{
 	pixel_y = 32
 	},
-/obj/machinery/computer/slot_machine{
-	pixel_y = 2
-	},
+/obj/machinery/vending/diaper,
 /turf/open/floor/carpet,
 /area/service/bar)
 "kiW" = (
@@ -64686,10 +64711,10 @@
 /turf/open/space,
 /area/solars/port/fore)
 "mLL" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/chair/comfy/green{
+/obj/structure/chair/sofa/right{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/grass/fairy,
 /area/nursery)
 "mMn" = (
@@ -64735,6 +64760,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/command/nuke_storage)
+"mNE" = (
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/maintenance/port)
 "mNV" = (
 /obj/machinery/airalarm{
 	dir = 4;
@@ -65535,7 +65566,11 @@
 "nry" = (
 /obj/machinery/door/airlock{
 	id_tag = "AuxToilet1";
-	name = "Unit 1"
+	name = "Unit 1";
+	req_access_txt = "72"
+	},
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/commons/toilet/auxiliary)
@@ -66432,7 +66467,7 @@
 	pixel_x = 32
 	},
 /obj/machinery/button/door{
-	id = "Toilet1";
+	id = "Toilet4";
 	name = "Lock Control";
 	normaldoorcontrol = 1;
 	pixel_y = -25;
@@ -71359,7 +71394,11 @@
 "qPs" = (
 /obj/machinery/door/airlock{
 	id_tag = "AuxToilet2";
-	name = "Unit 2"
+	name = "Unit 2";
+	req_access_txt = "72"
+	},
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/commons/toilet/auxiliary)
@@ -72888,6 +72927,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/command/nuke_storage)
+"rKG" = (
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/maintenance/port/fore)
 "rLB" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -78525,7 +78570,11 @@
 "vls" = (
 /obj/machinery/door/airlock{
 	id_tag = "AuxToilet3";
-	name = "Unit 3"
+	name = "Unit 3";
+	req_access_txt = "72"
+	},
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/commons/toilet/auxiliary)
@@ -81759,6 +81808,10 @@
 /obj/effect/turf_decal/tile/blue,
 /turf/open/floor/plasteel/dark,
 /area/engineering/break_room)
+"xec" = (
+/obj/structure/loot_pile/maint,
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "xel" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
@@ -95747,7 +95800,7 @@ aaf
 anS
 anS
 aaf
-anS
+xec
 anS
 aaf
 aDb
@@ -99133,7 +99186,7 @@ yfu
 lZv
 uIN
 kYv
-aoa
+mNE
 bSo
 alK
 bUR
@@ -101911,7 +101964,7 @@ ahp
 aqL
 asi
 atu
-auG
+rKG
 avN
 doJ
 ixL
@@ -103711,7 +103764,7 @@ dod
 dne
 atz
 auM
-avT
+bdf
 awV
 ayn
 ayn
@@ -119141,7 +119194,7 @@ vSE
 maQ
 mbw
 jRk
-maQ
+aOc
 vnL
 pvo
 rkT
@@ -123242,7 +123295,7 @@ fmO
 dnh
 dnR
 aus
-dnS
+flN
 dnh
 aAm
 dnS
@@ -124576,7 +124629,7 @@ atm
 cTw
 bPn
 bQR
-apc
+jTa
 anM
 qxd
 hQA
@@ -127867,7 +127920,7 @@ apn
 aqy
 arT
 apm
-dnS
+flN
 avB
 ocS
 ocS

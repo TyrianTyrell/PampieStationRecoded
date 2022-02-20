@@ -428,6 +428,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["cit_toggles"]		>> cit_toggles
 	S["preferred_chaos"]	>> preferred_chaos
 	S["auto_ooc"]			>> auto_ooc
+	S["event_tfs"]			>> event_tfs
+	S["dresscodes"]			>> dresscodes
 	S["no_tetris_storage"]		>> no_tetris_storage
 
 	//favorite outfits
@@ -485,6 +487,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	autostand			= sanitize_integer(autostand, 0, 1, initial(autostand))
 	cit_toggles			= sanitize_integer(cit_toggles, 0, 16777215, initial(cit_toggles))
 	auto_ooc			= sanitize_integer(auto_ooc, 0, 1, initial(auto_ooc))
+	event_tfs			= sanitize_integer(event_tfs, 0, 1, initial(event_tfs))
+	dresscodes			= sanitize_integer(dresscodes, 0, 1, initial(dresscodes))
 	no_tetris_storage		= sanitize_integer(no_tetris_storage, 0, 1, initial(no_tetris_storage))
 	key_bindings 			= sanitize_islist(key_bindings, list())
 	modless_key_bindings 	= sanitize_islist(modless_key_bindings, list())
@@ -601,6 +605,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["cit_toggles"], cit_toggles)
 	WRITE_FILE(S["preferred_chaos"], preferred_chaos)
 	WRITE_FILE(S["auto_ooc"], auto_ooc)
+	WRITE_FILE(S["event_tfs"], event_tfs)
+	WRITE_FILE(S["dresscodes"], dresscodes)
 	WRITE_FILE(S["no_tetris_storage"], no_tetris_storage)
 
 	if(length(unlockable_loadout_data))
@@ -624,7 +630,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	var/savefile/S = new /savefile(path)
 	if(!S)
 		return FALSE
-	features = list("mcolor" = "FFFFFF", "mcolor2" = "FFFFFF", "mcolor3" = "FFFFFF", "tail_lizard" = "Smooth", "tail_human" = "None", "snout" = "Round", "horns" = "None", "horns_color" = "85615a", "ears" = "None", "wings" = "None", "wings_color" = "FFF", "frills" = "None", "deco_wings" = "None", "spines" = "None", "legs" = "Plantigrade", "insect_wings" = "Plain", "insect_fluff" = "None", "insect_markings" = "None", "arachnid_legs" = "Plain", "arachnid_spinneret" = "Plain", "arachnid_mandibles" = "Plain", "mam_body_markings" = "Plain", "mam_ears" = "None", "mam_snouts" = "None", "mam_tail" = "None", "mam_tail_animated" = "None", "xenodorsal" = "Standard", "xenohead" = "Standard", "xenotail" = "Xenomorph Tail", "taur" = "None", "genitals_use_skintone" = FALSE, "has_cock" = FALSE, "cock_shape" = DEF_COCK_SHAPE, "cock_length" = COCK_SIZE_DEF, "cock_diameter_ratio" = COCK_DIAMETER_RATIO_DEF, "cock_color" = "ffffff", "cock_taur" = FALSE, "has_balls" = FALSE, "balls_color" = "ffffff", "balls_shape" = DEF_BALLS_SHAPE, "balls_size" = BALLS_SIZE_DEF, "balls_cum_rate" = CUM_RATE, "balls_cum_mult" = CUM_RATE_MULT, "balls_efficiency" = CUM_EFFICIENCY, "has_breasts" = FALSE, "breasts_color" = "ffffff", "breasts_size" = BREASTS_SIZE_DEF, "breasts_shape" = DEF_BREASTS_SHAPE, "breasts_producing" = FALSE, "breasts_fluid" = "Milk", "has_vag" = FALSE, "vag_shape" = DEF_VAGINA_SHAPE, "vag_color" = "ffffff", "has_womb" = FALSE, "balls_visibility"	= GEN_VISIBLE_NO_UNDIES, "breasts_visibility"= GEN_VISIBLE_NO_UNDIES, "cock_visibility"	= GEN_VISIBLE_NO_UNDIES, "vag_visibility"	= GEN_VISIBLE_NO_UNDIES, "ipc_screen" = "Sunburst", "ipc_antenna" = "None", "flavor_text" = "", "silicon_flavor_text" = "", "ooc_notes" = "", "meat_type" = "Mammalian", "body_model" = MALE, "body_size" = RESIZE_DEFAULT_SIZE, "color_scheme" = OLD_CHARACTER_COLORING)
+	features = list("mcolor" = "FFFFFF", "mcolor2" = "FFFFFF", "mcolor3" = "FFFFFF", "tail_lizard" = "Smooth", "tail_human" = "None", "snout" = "Round", "horns" = "None", "horns_color" = "85615a", "ears" = "None", "wings" = "None", "wings_color" = "FFF", "frills" = "None", "deco_wings" = "None", "spines" = "None", "legs" = "Plantigrade", "insect_wings" = "Plain", "insect_fluff" = "None", "insect_markings" = "None", "arachnid_legs" = "Plain", "arachnid_spinneret" = "Plain", "arachnid_mandibles" = "Plain", "mam_body_markings" = "Plain", "mam_ears" = "None", "mam_snouts" = "None", "mam_tail" = "None", "mam_tail_animated" = "None", "xenodorsal" = "Standard", "xenohead" = "Standard", "xenotail" = "Xenomorph Tail", "taur" = "None", "genitals_use_skintone" = FALSE, "has_cock" = FALSE, "cock_shape" = DEF_COCK_SHAPE, "cock_length" = COCK_SIZE_DEF, "cock_diameter_ratio" = COCK_DIAMETER_RATIO_DEF, "cock_color" = "ffffff", "cock_taur" = FALSE, "has_balls" = FALSE, "balls_color" = "ffffff", "balls_shape" = DEF_BALLS_SHAPE, "balls_size" = BALLS_SIZE_DEF, "balls_cum_rate" = CUM_RATE, "balls_cum_mult" = CUM_RATE_MULT, "balls_efficiency" = CUM_EFFICIENCY, "has_breasts" = FALSE, "breasts_color" = "ffffff", "breasts_size" = BREASTS_SIZE_DEF, "breasts_shape" = DEF_BREASTS_SHAPE, "breasts_producing" = FALSE, "has_vag" = FALSE, "vag_shape" = DEF_VAGINA_SHAPE, "vag_color" = "ffffff", "has_womb" = FALSE, "has_butt" = FALSE, "butt_color" = "ffffff", "butt_size" = BUTT_SIZE_DEF, "balls_visibility" = GEN_VISIBLE_NO_UNDIES, "breasts_visibility"= GEN_VISIBLE_NO_UNDIES, "cock_visibility" = GEN_VISIBLE_NO_UNDIES, "vag_visibility" = GEN_VISIBLE_NO_UNDIES, "butt_visibility" = GEN_VISIBLE_NO_UNDIES, "ipc_screen" = "Sunburst", "ipc_antenna" = "None", "flavor_text" = "", "silicon_flavor_text" = "", "ooc_notes" = "", "meat_type" = "Mammalian", "body_model" = MALE, "body_size" = RESIZE_DEFAULT_SIZE, "color_scheme" = OLD_CHARACTER_COLORING)
 
 	S.cd = "/"
 	if(!slot)
@@ -804,6 +810,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//womb features
 	S["feature_has_womb"]				>> features["has_womb"]
 
+	//butt features
+	S["feature_has_butt"]				>> features["has_butt"]
+	S["feature_butt_color"]				>> features["butt_color"]
+	S["feature_butt_size"]				>> features["butt_size"]
+	S["feature_butt_visibility"]		>> features["butt_visibility"]
+
 	//flavor text
 	//Let's make our players NOT cry desperately as we wipe their savefiles of their special snowflake texts:
 	if((S["flavor_text"] != "") && (S["flavor_text"] != null) && S["flavor_text"]) //If old text isn't null and isn't "" but still exists.
@@ -923,6 +935,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	var/static/max_D
 	if(!max_D)
 		max_D = CONFIG_GET(number/penis_max_inches_prefs)
+	var/static/min_B
+	if(!min_B)
+		min_B = CONFIG_GET(number/butt_min_size_prefs)
+	var/static/max_B
+	if(!max_B)
+		max_B = CONFIG_GET(number/butt_max_size_prefs)
 	var/static/safe_visibilities
 	if(!safe_visibilities)
 		var/list/L = CONFIG_GET(keyed_list/safe_visibility_toggles)
@@ -930,6 +948,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	features["breasts_size"]		= sanitize_inlist(features["breasts_size"], B_sizes, BREASTS_SIZE_DEF)
 	features["cock_length"]			= sanitize_integer(features["cock_length"], min_D, max_D, COCK_SIZE_DEF)
+	features["butt_size"] = sanitize_integer(features["butt_size"], min_B, max_B, BUTT_SIZE_DEF)
 	features["breasts_shape"]		= sanitize_inlist(features["breasts_shape"], GLOB.breasts_shapes_list, DEF_BREASTS_SHAPE)
 	features["cock_shape"]			= sanitize_inlist(features["cock_shape"], GLOB.cock_shapes_list, DEF_COCK_SHAPE)
 	features["balls_shape"]			= sanitize_inlist(features["balls_shape"], GLOB.balls_shapes_list, DEF_BALLS_SHAPE)
@@ -942,6 +961,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	features["cock_visibility"]		= sanitize_inlist(features["cock_visibility"], safe_visibilities, GEN_VISIBLE_NO_UNDIES)
 	features["balls_visibility"]	= sanitize_inlist(features["balls_visibility"], safe_visibilities, GEN_VISIBLE_NO_UNDIES)
 	features["vag_visibility"]		= sanitize_inlist(features["vag_visibility"], safe_visibilities, GEN_VISIBLE_NO_UNDIES)
+	features["butt_visibility"] = sanitize_inlist(features["butt_visibility"], safe_visibilities, GEN_VISIBLE_NO_UNDIES)
 
 	custom_speech_verb				= sanitize_inlist(custom_speech_verb, GLOB.speech_verbs, "default")
 	custom_tongue					= sanitize_inlist(custom_tongue, GLOB.roundstart_tongues, "default")
@@ -1104,6 +1124,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_vag_visibility"], features["vag_visibility"])
 
 	WRITE_FILE(S["feature_has_womb"], features["has_womb"])
+
+	WRITE_FILE(S["feature_has_butt"], features["has_butt"])
+	WRITE_FILE(S["feature_butt_color"], features["butt_color"])
+	WRITE_FILE(S["feature_butt_size"], features["butt_size"])
+	WRITE_FILE(S["feature_butt_visibility"], features["butt_visibility"])
 
 	WRITE_FILE(S["feature_ooc_notes"], features["ooc_notes"])
 

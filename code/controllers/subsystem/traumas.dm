@@ -15,7 +15,7 @@ SUBSYSTEM_DEF(traumas)
 	phobia_types = list("spiders", "space", "security", "clowns", "greytide", "lizards",
 						"skeletons", "snakes", "robots", "doctors", "authority", "the supernatural",
 						"aliens", "strangers", "birds", "falling", "anime", "mimes", "cats", "syndicate",
-						"eye"
+						"eye", "the potty"
 						)
 
 	phobia_words = list("spiders"   = strings(PHOBIA_FILE, "spiders"),
@@ -39,7 +39,8 @@ SUBSYSTEM_DEF(traumas)
 						"mimes" = strings(PHOBIA_FILE, "mimes"),
 						"cats" = strings(PHOBIA_FILE, "cats"),
 						"syndicate"= strings(PHOBIA_FILE, "syndicate"),
-						"eye" = strings(PHOBIA_FILE, "eye")
+						"eye" = strings(PHOBIA_FILE, "eye"),
+						"the potty" = strings(PHOBIA_FILE, "potty")
 						)
 
 	phobia_mobs = list("spiders"  = typecacheof(list(/mob/living/simple_animal/hostile/poison/giant_spider)),
@@ -178,7 +179,9 @@ SUBSYSTEM_DEF(traumas)
 						/obj/structure/sign/poster/contraband/syndicate_pistol, /obj/structure/sign/poster/contraband/syndicate_recruitment, /obj/item/bedsheet/syndie, /obj/item/borg/upgrade/syndicate, /obj/item/tank/jetpack/oxygen/harness, /obj/item/firing_pin/implant/pindicate, /obj/item/reagent_containers/glass/bottle/traitor, /obj/item/storage/belt/military,
 						/obj/item/shockpaddles/syndicate, /obj/item/clothing/mask/cigarette/syndicate, /obj/item/toy/plush/nukeplushie)),
 
-					"eye" = typecacheof(list(/obj/item/organ/eyes, /obj/item/reagent_containers/syringe))
+					"eye" = typecacheof(list(/obj/item/organ/eyes, /obj/item/reagent_containers/syringe)),
+
+					"the potty" = typecacheof(list(/obj/structure/potty, /obj/structure/toilet))
 						)
 
 	phobia_turfs = list("space" = typecacheof(list(/turf/open/space, /turf/open/floor/holofloor/space, /turf/open/floor/fakespace)),

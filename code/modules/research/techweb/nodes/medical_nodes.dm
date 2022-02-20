@@ -136,7 +136,7 @@
 	display_name = "Advanced Surgery Tools"
 	description = "Refined and improved redesigns for the run-of-the-mill medical utensils."
 	prereq_ids = list("adv_biotech", "adv_surgery")
-	design_ids = list("drapes", "retractor_adv", "surgicaldrill_adv", "scalpel_adv", "bonesetter", "surgical_tape")
+	design_ids = list("retractor_adv", "surgicaldrill_adv", "scalpel_adv", "surgical_tape", "bones_adv")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
 /datum/techweb_node/exp_surgery
@@ -152,5 +152,5 @@
 	display_name = "Alien Surgery"
 	description = "Abductors did nothing wrong."
 	prereq_ids = list("exp_surgery", "alientech")
-	design_ids = list("surgery_brainwashing","surgery_zombie", "surgery_ext_dissection", "surgery_heal_combo_upgrade_femto")
+	design_ids = list("surgery_brainwashing","surgery_unpottytrain","surgery_zombie", "surgery_ext_dissection", "surgery_heal_combo_upgrade_femto")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)

@@ -15,6 +15,7 @@ GENETICS SCANNER
 #define SCANMODE_HEALTH		0
 #define SCANMODE_CHEMICAL 	1
 #define SCANMODE_WOUND	 	2
+#define SCANMODE_DIAPER		3
 #define SCANNER_CONDENSED 	0
 #define SCANNER_VERBOSE 	1
 
@@ -104,6 +105,8 @@ GENETICS SCANNER
 			to_chat(user, "<span class='notice'>You switch the health analyzer to scan chemical contents.</span>")
 		if(SCANMODE_WOUND)
 			to_chat(user, "<span class='notice'>You switch the health analyzer to report extra info on wounds.</span>")
+		if(SCANMODE_DIAPER)
+			to_chat(user, "<span class='notice'>You switch the health analyzer to report extra info on the diaper condition.</span>")
 
 /obj/item/healthanalyzer/attack(mob/living/M, mob/living/carbon/human/user)
 	flick("[icon_state]-scan", src)	//makes it so that it plays the scan animation upon scanning, including clumsy scanning
@@ -449,9 +452,16 @@ GENETICS SCANNER
 		if(cyberimp_detect)
 			msg += "<span class='notice'>Detected cybernetic modifications:</span>\n"
 			msg += "<span class='notice'>[cyberimp_detect]</span>\n"
+	if(HAS_TRAIT(H,TRAIT_INCONTINENT) || HAS_TRAIT(H,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(H,TRAIT_POTTYREBEL) || HAS_TRAIT(H,BABYBRAINED_TRAIT) || HAS_TRAIT(H,TRAIT_DIAPERUSE))
+		var/wet_percent = round((H.wetness / (200 + H.heftersbonus)) * 100)
+		var/mess_percent = round((H.stinkiness / (150 + H.heftersbonus)) * 100)
+		msg += "<span class='info'>Wetness: [wet_percent]%, Messy: [mess_percent]%</span>\n"
 	msg += "<span class='notice'>*---------*</span>"
+	//diaper state
+
 	to_chat(user, msg)
 	SEND_SIGNAL(M, COMSIG_NANITE_SCAN, user, FALSE)
+
 
 /proc/chemscan(mob/living/user, mob/living/M)
 	if(istype(M))
@@ -983,5 +993,6 @@ GENETICS SCANNER
 #undef SCANMODE_HEALTH
 #undef SCANMODE_CHEMICAL
 #undef SCANMODE_WOUND
+#undef SCANMODE_DIAPER
 #undef SCANNER_CONDENSED
 #undef SCANNER_VERBOSE

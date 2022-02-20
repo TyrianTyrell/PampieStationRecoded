@@ -83,13 +83,18 @@
 		return
 	if(HAS_TRAIT(owner, TRAIT_FEARLESS))
 		return
+	var/matches = FALSE
+	var/mainsource
 	for(var/word in trigger_words)
-		var/regex/reg = regex("(\\b|\\A)[REGEX_QUOTE(word)]'?s*(\\b|\\Z)", "i")
+		var/regex/reg = regex("(\\b|\\A)[REGEX_QUOTE(word)]'?s*(\\b|\\Z)", "ig")
 
 		if(findtext(hearing_args[HEARING_RAW_MESSAGE], reg))
-			addtimer(CALLBACK(src, .proc/freak_out, null, word), 10) //to react AFTER the chat message
-			hearing_args[HEARING_RAW_MESSAGE] = reg.Replace(hearing_args[HEARING_RAW_MESSAGE], "<span class='phobia'>$1</span>")
-			break
+			hearing_args[HEARING_RAW_MESSAGE] = reg.Replace(hearing_args[HEARING_RAW_MESSAGE], "<span class='phobia'>$0</span>")
+			matches = TRUE
+			mainsource = word
+
+	if(matches)
+		addtimer(CALLBACK(src, .proc/freak_out, null, mainsource), 10) //to react AFTER the chat message
 
 /datum/brain_trauma/mild/phobia/handle_speech(datum/source, list/speech_args)
 	if(HAS_TRAIT(owner, TRAIT_FEARLESS))
@@ -112,7 +117,7 @@
 		to_chat(owner, "<span class='userdanger'>Hearing \"[trigger_word]\" [message]!</span>")
 	else
 		to_chat(owner, "<span class='userdanger'>Something [message]!</span>")
-	var/reaction = rand(1,4)
+	var/reaction = rand(1,5)
 	switch(reaction)
 		if(1)
 			to_chat(owner, "<span class='warning'>You are paralyzed with fear!</span>")
@@ -129,10 +134,19 @@
 			owner.Jitter(5)
 			owner.blind_eyes(10)
 		if(4)
+			to_chat(owner, "<span class='warning'>You lose control of your bladder!</span>")
 			owner.dizziness += 10
 			owner.confused += 10
 			owner.Jitter(10)
 			owner.stuttering += 10
+			owner.Wetting()
+		if(5)
+			to_chat(owner, "<span class='warning'>You're scared shitless!</span>")
+			owner.dizziness += 10
+			owner.confused += 10
+			owner.Jitter(10)
+			owner.stuttering += 10
+			owner.Pooping()
 
 // Defined phobia types for badminry, not included in the RNG trauma pool to avoid diluting.
 
@@ -206,4 +220,8 @@
 
 /datum/brain_trauma/mild/phobia/conspiracies
 	phobia_type = "conspiracies"
+	random_gain = FALSE
+
+/datum/brain_trauma/mild/phobia/potty
+	phobia_type = "the potty"
 	random_gain = FALSE

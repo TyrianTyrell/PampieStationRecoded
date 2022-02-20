@@ -162,6 +162,65 @@
 	push_data()
 	activate_pin(2)
 
+/obj/item/integrated_circuit/input/diap_scanner
+	name = "integrated diaper analyser"
+	desc = "A very small version of the common diaper analyser, stripped of most features. This allows the machine to know if someone needs a change or not."
+	icon_state = "diapscan"
+	complexity = 2
+	inputs = list("target" = IC_PINTYPE_REF)
+	outputs = list(
+		"Needs a change" = IC_PINTYPE_STRING,
+		)
+	activators = list("scan" = IC_PINTYPE_PULSE_IN, "on scanned" = IC_PINTYPE_PULSE_OUT)
+	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
+	power_draw_per_use = 20
+
+/obj/item/integrated_circuit/input/diap_scanner/do_work()
+	var/mob/living/H = get_pin_data_as_type(IC_INPUT, 1, /mob/living)
+	if(!istype(H)) //Invalid input
+		return
+	if(H.Adjacent(get_turf(src)) && ishuman(H)) // Like normal analysers, it can't be used at range.
+		var/mob/living/carbon/human/HU = H
+		var/change="[HU] is clean."
+		if(HU.wetness > 0 || HU.stinkiness > 0)
+			change="[HU] needs a change."
+
+		set_pin_data(IC_OUTPUT, 1, change)
+
+	push_data()
+	activate_pin(2)
+
+/obj/item/integrated_circuit/input/adv_diap_scanner
+	name = "integrated adv. diaper analyser"
+	desc = "A very small version of the common diaper analyser. This allows the machine to know exactly how used someone's diaper is."
+	icon_state = "diapscan_adv"
+	complexity = 4
+	inputs = list("target" = IC_PINTYPE_REF)
+	outputs = list(
+		"Wet %"		= IC_PINTYPE_NUMBER,
+		"Messy %"	= IC_PINTYPE_NUMBER,
+		"Usage"		= IC_PINTYPE_STRING
+	)
+	activators = list("scan" = IC_PINTYPE_PULSE_IN, "on scanned" = IC_PINTYPE_PULSE_OUT)
+	spawn_flags = IC_SPAWN_RESEARCH
+	power_draw_per_use = 40
+
+/obj/item/integrated_circuit/input/adv_diap_scanner/do_work()
+	var/mob/living/H = get_pin_data_as_type(IC_INPUT, 1, /mob/living)
+	if(!istype(H)) //Invalid input
+		return
+	if(ishuman(H)) // Like medbot's analyzer it can be used in range..
+		var/mob/living/carbon/human/HU = H
+		var/wetpercent = round((HU.wetness / (200 + HU.heftersbonus)) * 100)
+		var/messpercent = round((HU.stinkiness / (150 + HU.heftersbonus)) * 100)
+
+		set_pin_data(IC_OUTPUT, 1, wetpercent)
+		set_pin_data(IC_OUTPUT, 2, messpercent)
+		set_pin_data(IC_OUTPUT, 3, "[HU] is [wetpercent]% wet, and [messpercent]% messy.")
+
+	push_data()
+	activate_pin(2)
+
 /obj/item/integrated_circuit/input/slime_scanner
 	name = "slime_scanner"
 	desc = "A very small version of the xenobio analyser. This allows the machine to know every needed properties of slime. Output mutation list is non-associative."

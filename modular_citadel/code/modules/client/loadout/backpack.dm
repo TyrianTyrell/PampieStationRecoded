@@ -147,6 +147,11 @@
 	path = /obj/item/pen/fountain
 	cost = 2
 
+/datum/gear/backpack/paicard
+	name = "pAI device"
+	path = /obj/item/paicard
+	cost = 2
+
 /datum/gear/backpack/modular_tablet
 	name = "A modular tablet"
 	path = /obj/item/modular_computer/tablet/preset/cheap/
@@ -176,26 +181,33 @@
 	name = "A renameable necklace"
 	path = /obj/item/clothing/accessory/necklace
 
-/datum/gear/backpack/princessdiaper
-	name = "SnuggleSpace Princess"
-	path = /obj/item/diaper/princess
+///Diaperboxes and such
+/datum/gear/backpack/diaperbox/plain
+	name = "A box of plain diapers"
+	path = /obj/item/storage/box/diapers/plain
+	cost = 2
 
-/datum/gear/backpack/pwrgamedpr
-	name = "PwrGame Gamerpants"
-	path = /obj/item/diaper/pwrgame
+/datum/gear/backpack/diaperbox/variety
+	name = "A box of various colourful diapers"
+	path = /obj/item/storage/box/diapers/regular
+	cost = 3
 
-/datum/gear/backpack/starkistdpr
-	name = "StarKist Nightlights"
-	path = /obj/item/diaper/starkist
+/datum/gear/backpack/diaperbox/thick
+	name = "A box of various thick diapers"
+	path = /obj/item/storage/box/diapers/thick
+	cost = 4
 
-/datum/gear/backpack/syndiaper
-	name = "SyndiSmeller Chameleons"
-	path = /obj/item/diaper/syndi/rep
+/datum/gear/backpack/diaperbox/pullup
+	name = "A box of various colourful training pants"
+	path = /obj/item/storage/box/diapers/training
+	cost = 3
 
-/datum/gear/backpack/punkdpr
-	name = "Lacquer Pacquer"
-	path = /obj/item/diaper/punk
+/datum/gear/backpack/diaperbox/underwear
+	name = "A box of spare plain underwear"
+	path = /obj/item/storage/box/diapers/underwear
+	cost = 2
 
-/datum/gear/backpack/jeansdpr
-	name = "Jiaper"
-	path = /obj/item/diaper/jeans
+/datum/gear/backpack/diaper_bag
+	name = "diaper bag"
+	path = /obj/item/storage/backpack/diaper_bag
+	cost = 2

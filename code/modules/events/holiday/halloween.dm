@@ -12,6 +12,7 @@
 		var/obj/item/storage/backpack/b = locate() in H.contents
 		if(b)
 			new /obj/item/storage/spooky(b)
+			new /obj/item/diaper/pumpkin(b)
 
 	for(var/mob/living/simple_animal/pet/dog/corgi/Ian/Ian in GLOB.mob_living_list)
 		Ian.place_on_head(new /obj/item/bedsheet(Ian))

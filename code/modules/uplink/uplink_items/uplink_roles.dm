@@ -48,6 +48,15 @@
 	restricted_roles = list("Medical Doctor", "Roboticist")
 	cost = 5
 
+/datum/uplink_item/device_tools/bigsyringe
+	name = "Comically large syringe"
+	desc = "Pretty much a spear, at this point. Big enough to drain someone dry but very clunky.\
+	You probably won't be able to use the blood for anything, given how much other stuff you may suck out.\
+	For some reason the instructions say it needs to be cleaned in the washing machine after use."
+	item = /obj/item/spear/syringe
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer")
+	cost = 8
+
 /datum/uplink_item/role_restricted/clown_bomb
 	name = "Clown Bomb"
 	desc = "The Clown bomb is a hilarious device capable of massive pranks. It has an adjustable timer, \
@@ -173,6 +182,14 @@
 	item = /obj/item/borg/upgrade/modkit/indoors
 	cost = 5 //you need two for full damage, so total of 10 for maximum damage
 	limited_stock = 2 //you can't use more than two!
+	restricted_roles = list("Shaft Miner")
+
+/datum/uplink_item/role_restricted/crusher_override
+	name = "Kinetic Crusher Override Mod"
+	desc = "A modification kit that allows a kinetic crusher to work on all living things, regardless of size."
+	item = /obj/item/crusher_trophy/safety_bypass
+	cost = 6	// honestly if you're using this you're probably powergaming megafauna anyways so slightly more than pressuremod
+	limited_stock = 1	// let's not have someone pass this out to their buddies for free
 	restricted_roles = list("Shaft Miner")
 
 /datum/uplink_item/role_restricted/kitchen_gun

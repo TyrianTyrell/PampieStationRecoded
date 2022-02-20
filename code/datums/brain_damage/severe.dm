@@ -196,7 +196,7 @@
 	for(var/mob/M in oview(owner, 7))
 		if(!isliving(M)) //ghosts ain't people
 			continue
-		if((istype(M, /mob/living/simple_animal/pet)) || M.ckey)
+		if((istype(M, /mob/living/silicon/pai)) || M.ckey)
 			return FALSE
 	return TRUE
 
@@ -273,6 +273,21 @@
 
 /datum/brain_trauma/severe/pacifism/on_lose()
 	REMOVE_TRAIT(owner, TRAIT_PACIFISM, TRAUMA_TRAIT)
+	..()
+
+/datum/brain_trauma/severe/incon
+	name = "Traumatic Incontinence"
+	desc = "Patient appears to be fully incontinent."
+	scan_desc = "incontinence"
+	gain_text = "<span class='notice'>You forget what a toilet is.</span>"
+	lose_text = "<span class='notice'>You remember what a toilet is.</span>"
+
+/datum/brain_trauma/severe/incon/on_gain()
+	ADD_TRAIT(owner, TRAIT_FULLYINCONTINENT, TRAUMA_TRAIT)
+	..()
+
+/datum/brain_trauma/severe/incon/on_lose()
+	REMOVE_TRAIT(owner, TRAIT_FULLYINCONTINENT, TRAUMA_TRAIT)
 	..()
 
 //ported from TG

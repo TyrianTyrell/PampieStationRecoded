@@ -13,9 +13,14 @@
 					/obj/item/reagent_containers/food/drinks/soda_cans/pwr_game = 10,
 					/obj/item/reagent_containers/food/drinks/soda_cans/lemon_lime = 10,
 					/obj/item/reagent_containers/food/drinks/soda_cans/sol_dry = 10,
-					/obj/item/reagent_containers/glass/beaker/waterbottle = 10)
+					/obj/item/reagent_containers/glass/beaker/waterbottle = 10,
+					/obj/item/reagent_containers/food/drinks/soda_cans/pspspsi = 10,
+					/obj/item/reagent_containers/food/drinks/soda_cans/drpupper = 10,
+					/obj/item/reagent_containers/food/drinks/soda_cans/pinkcan = 10)
 	contraband = list(/obj/item/reagent_containers/food/drinks/soda_cans/thirteenloko = 6,
 					/obj/item/reagent_containers/food/drinks/soda_cans/shamblers = 6,
+					/obj/item/reagent_containers/food/drinks/soda_cans/sunnyp = 6,
+					/obj/item/reagent_containers/food/drinks/soda_cans/mtndo = 6,
 					/obj/item/reagent_containers/glass/beaker/waterbottle/wataur = 2)
 	premium = list(/obj/item/reagent_containers/food/drinks/drinkingglass/filled/nuka_cola = 1,
 					/obj/item/reagent_containers/food/drinks/soda_cans/air = 1,

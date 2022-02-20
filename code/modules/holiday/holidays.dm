@@ -302,6 +302,12 @@
 				return 1
 	return 0
 
+/datum/holiday/skunktemberweek
+	name = "Skunktember Week"
+	begin_day = 14
+	begin_month = SEPTEMBER
+	end_day = 21
+
 /datum/holiday/programmers/getStationPrefix()
 	return pick("span>","DEBUG: ","null","/list","EVENT PREFIX NOT FOUND") //Portability
 

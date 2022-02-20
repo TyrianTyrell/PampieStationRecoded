@@ -25,8 +25,10 @@
 	dimension_x = 64
 	color_src = MATRIXED
 	recommended_species = list("human", "lizard", "insect", "mammal", "xeno", "jelly", "slimeperson", "podweak")
-	relevant_layers = list(BODY_ADJ_UPPER_LAYER, BODY_FRONT_LAYER)
+	relevant_layers = list(BODY_ADJ_UPPER_LAYER, BODY_FRONT_LAYER, BODY_TAURTAIL_LAYER)
+	var/tail_icon
 	var/taur_mode = NONE //Must be a single specific tauric suit variation bitflag. Don't do FLAG_1|FLAG_2
+	var/xoffs
 	var/alt_taur_mode = NONE //Same as above.
 	var/hide_legs = USE_QUADRUPED_CLIP_MASK
 	mutant_part_string = "taur"
@@ -56,10 +58,14 @@
 	taur_mode = STYLE_PAW_TAURIC
 	color_src = MUTCOLORS
 	extra = TRUE
+	tail = TRUE
+	tail_src = MUTCOLORS
 
 /datum/sprite_accessory/taur/cow
 	name = "Cow"
 	icon_state = "cow"
+	tail = TRUE
+	tail_src = MUTCOLORS
 	taur_mode = STYLE_HOOF_TAURIC
 	alt_taur_mode = STYLE_PAW_TAURIC
 	color_src = MUTCOLORS
@@ -68,6 +74,7 @@
 	name = "Cow (Spotted)"
 	icon_state = "cow_spotted"
 	color_src = MATRIXED
+	tail_src = MATRIXED
 	matrixed_sections = MATRIX_ALL
 
 /datum/sprite_accessory/taur/deer
@@ -77,6 +84,8 @@
 	alt_taur_mode = STYLE_PAW_TAURIC
 	color_src = MUTCOLORS
 	extra = TRUE
+	tail = TRUE
+	tail_src = MUTCOLORS
 
 /datum/sprite_accessory/taur/drake
 	name = "Drake"
@@ -84,11 +93,14 @@
 	taur_mode = STYLE_PAW_TAURIC
 	color_src = MUTCOLORS
 	extra = TRUE
+	tail = TRUE
+	tail_src = MUTCOLORS
 
 /datum/sprite_accessory/taur/drake/old
 	name = "Drake (Old)"
 	icon_state = "drake_old"
 	color_src = MATRIXED
+	tail_src = MATRIXED
 	extra = FALSE
 	matrixed_sections = MATRIX_RED_GREEN
 
@@ -104,6 +116,8 @@
 	taur_mode = STYLE_PAW_TAURIC
 	color_src = MUTCOLORS
 	extra = TRUE
+	tail = TRUE
+	tail_src = MUTCOLORS
 
 /datum/sprite_accessory/taur/feline
 	name = "Feline"
@@ -111,10 +125,14 @@
 	taur_mode = STYLE_PAW_TAURIC
 	color_src = MUTCOLORS
 	extra = TRUE
+	tail = TRUE
+	tail_src = MUTCOLORS
 
 /datum/sprite_accessory/taur/horse
 	name = "Horse"
 	icon_state = "horse"
+	tail = TRUE
+	tail_src = MUTCOLORS
 	taur_mode = STYLE_HOOF_TAURIC
 	alt_taur_mode = STYLE_PAW_TAURIC
 	matrixed_sections = MATRIX_ALL
@@ -129,14 +147,20 @@
 /datum/sprite_accessory/taur/otie
 	name = "Otie"
 	icon_state = "otie"
+	xoffs = 5
+	tail = TRUE
+	tail_src = MUTCOLORS
 	taur_mode = STYLE_PAW_TAURIC
 	matrixed_sections = MATRIX_ALL
 
 /datum/sprite_accessory/taur/pede
 	name = "Scolipede"
 	icon_state = "pede"
+	xoffs = 7
 	taur_mode = STYLE_PAW_TAURIC
 	color_src = MUTCOLORS
+	tail = TRUE
+	tail_src = MUTCOLORS
 	extra = TRUE
 	extra2 = TRUE
 

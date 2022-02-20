@@ -1445,3 +1445,91 @@
 	for(var/i in 1 to 7)
 		var/plush_path = pick(approved_by_corporate)
 		new plush_path(src)
+
+/obj/item/storage/box/diapers
+	name = "box of diapers"
+	icon_state = "diaperbox"
+
+/obj/item/storage/box/diapers/plain
+	name = "box of plain diapers"
+
+	var/list/static/plaindiapers = list(/obj/item/diaper/plain,
+		/obj/item/diaper/thirteen)
+
+/obj/item/storage/box/diapers/plain/PopulateContents()
+	for(var/i in 1 to 7)
+		var/plain_path = pick(plaindiapers)
+		new plain_path(src)
+
+
+/obj/item/storage/box/diapers/thick
+	name = "box of thick diapers"
+
+	var/list/static/thickdiapers = list(/obj/item/diaper/hefters_m,
+		/obj/item/diaper/hefters_f,
+		/obj/item/diaper/jeans_thick,
+		/obj/item/diaper/punk_thick,
+		/obj/item/diaper/pink_thick,
+		/obj/item/diaper/rainbow_thick)
+
+/obj/item/storage/box/diapers/thick/PopulateContents()
+	for(var/i in 1 to 4)
+		var/thick_path = pick(thickdiapers)
+		new thick_path(src)
+
+/obj/item/storage/box/diapers/regular
+	name = "diaper variety box"
+
+	var/list/static/regulardiapers = list(/obj/item/diaper/plain,
+					/obj/item/diaper/thirteen,
+					/obj/item/diaper/classic,
+					/obj/item/diaper/swaddles,
+					/obj/item/diaper/princess,
+					/obj/item/diaper/pwrgame,
+					/obj/item/diaper/starkist,
+					/obj/item/diaper/space,
+					/obj/item/diaper/jeans,
+					/obj/item/diaper/punk,
+					/obj/item/diaper/pink,
+					/obj/item/diaper/camo,
+					/obj/item/diaper/bee,
+					/obj/item/diaper/fish,
+					/obj/item/diaper/skunk,
+					/obj/item/diaper/ringading,
+					/obj/item/diaper/hawaiir,
+					/obj/item/diaper/hawaiib,
+					/obj/item/diaper/blackcat,
+					/obj/item/diaper/goldendog,
+					/obj/item/diaper/slime,
+					/obj/item/diaper/scalies,
+					/obj/item/diaper/matri,
+					/obj/item/diaper/rainbow)
+
+/obj/item/storage/box/diapers/regular/PopulateContents()
+	for(var/i in 1 to 5)
+		var/diaper_path = pick(regulardiapers)
+		new diaper_path(src)
+
+/obj/item/storage/box/diapers/training
+	name = "box of training pants"
+
+	var/list/static/trainingpants = list(/obj/item/diaper/blue_trainer,
+					/obj/item/diaper/pink_trainer,
+					/obj/item/diaper/green_trainer,
+					/obj/item/diaper/space_trainer,
+					/obj/item/diaper/sky_trainer,
+					/obj/item/diaper/water_trainer,
+					/obj/item/diaper/skunk_trainer,
+					/obj/item/diaper/gmr_trainer)
+
+/obj/item/storage/box/diapers/training/PopulateContents()
+	for(var/i in 1 to 6)
+		var/trainer_path = pick(trainingpants)
+		new trainer_path(src)
+
+/obj/item/storage/box/diapers/underwear
+	name = "box of plain underwear"
+
+/obj/item/storage/box/diapers/underwear/PopulateContents()
+	for(var/i in 1 to 3)
+		new /obj/item/diaper/underwear(src)

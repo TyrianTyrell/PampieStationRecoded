@@ -402,13 +402,12 @@
 	var/obj/item/kinetic_crusher/hammer_synced
 
 /datum/status_effect/crusher_mark/on_creation(mob/living/new_owner, obj/item/kinetic_crusher/new_hammer_synced)
-	. = ..()
-	if(.)
-		hammer_synced = new_hammer_synced
+	hammer_synced = new_hammer_synced
+	return ..()
 
 /datum/status_effect/crusher_mark/on_apply()
 	. = ..()
-	if(owner.mob_size >= MOB_SIZE_LARGE)
+	if(hammer_synced? hammer_synced.can_mark(owner) : (owner.mob_size >= MOB_SIZE_LARGE))
 		marked_underlay = mutable_appearance('icons/effects/effects.dmi', "shield2")
 		marked_underlay.pixel_x = -owner.pixel_x
 		marked_underlay.pixel_y = -owner.pixel_y
@@ -1129,3 +1128,16 @@
 	else if(fake_msg)
 		to_chat(owner, fake_msg)
 	msg_stage++
+
+/datum/status_effect/cgau_conc
+	id = "cgau_conc"
+	examine_text = "<span class='warning'>SUBJECTPRONOUN rocks from side to side, confused.</span>"
+	duration = 5 SECONDS
+
+/datum/status_effect/cgau_conc/on_creation(mob/living/new_owner, ...)
+	. = ..()
+	new_owner.add_movespeed_modifier(/datum/movespeed_modifier/gauntlet_concussion)
+
+/datum/status_effect/cgau_conc/on_remove()
+	owner.remove_movespeed_modifier(/datum/movespeed_modifier/gauntlet_concussion)
+	. = ..()

@@ -1,5 +1,5 @@
 /atom/movable/screen/voretoggle
-	name = "toggle vore mode"
+	name = "toggle kink mode"
 	icon = 'modular_citadel/icons/ui/screen_midnight.dmi'
 	icon_state = "nom_off"
 

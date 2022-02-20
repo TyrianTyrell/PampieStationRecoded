@@ -300,6 +300,7 @@
 /obj/item/organ/brain/slime
 	name = "slime nucleus"
 	desc = "A slimey membranous mass from a slimeperson."
+	icon = 'icons/obj/surgery.dmi'
 	icon_state = "brain-s"
 
 

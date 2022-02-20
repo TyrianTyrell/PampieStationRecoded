@@ -55,7 +55,7 @@
 	display_name = "Nanite Replication Protocols"
 	description = "Advanced behaviours that allow nanites to exploit certain circumstances to replicate faster."
 	prereq_ids = list("nanite_smart")
-	design_ids = list("kickstart_nanites","factory_nanites","tinker_nanites","offline_nanites","synergy_nanites")
+	design_ids = list("kickstart_nanites","factory_nanites","offline_nanites","synergy_nanites","pyramid_nanites","hive_nanites","zip_nanites","free_range_nanites","unsafe_storage_nanites")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	hidden = TRUE
 	experimental = TRUE
@@ -86,6 +86,15 @@
 	display_name = "Advanced Sticky Technology"
 	description = "Taking a good joke too far? Nonsense!"
 	design_ids = list("super_sticky_tape", "pointy_tape")
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+	hidden = TRUE
+	experimental = TRUE
+
+/datum/techweb_node/neural_rewiring
+	id = "neural_rewiring"
+	display_name = "Mental Regression"
+	description = "Study into direct alteration of neural connections."
+	design_ids = list("regresso_ray")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	hidden = TRUE
 	experimental = TRUE

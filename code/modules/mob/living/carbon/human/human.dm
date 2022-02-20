@@ -31,6 +31,7 @@
 		enable_intentional_sprint_mode()
 
 	RegisterSignal(src, COMSIG_COMPONENT_CLEAN_ACT, /atom.proc/clean_blood)
+	combatoverlay = mutable_appearance('icons/incon/Effects.dmi',"combat_yield",1)
 	GLOB.human_list += src
 
 /mob/living/carbon/human/proc/setup_human_dna()

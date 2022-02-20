@@ -789,17 +789,60 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 					MA.color = "#[H.socks_color]"
 				standing += MA
 
-		if(H.underwear && !H.hidden_underwear)
+		if(H.underwear && (!H.hidden_underwear || H.dna.features["taur"]))
 			if(H.saved_underwear)
 				H.underwear = H.saved_underwear
 				H.saved_underwear = ""
-			var/datum/sprite_accessory/underwear/bottom/B = GLOB.underwear_list[H.underwear]
+			var/datum/sprite_accessory/underwear/bottom/B
+			if(GLOB.underwear_list.Find(H.underwear))
+				B = GLOB.underwear_list[H.underwear]
+			else
+				B = H.underwear
 			if(B)
 				var/digilegs = ((DIGITIGRADE in species_traits) && B.has_digitigrade) ? "_d" : ""
-				var/mutable_appearance/MA = mutable_appearance(B.icon, "[B.icon_state][digilegs]", -BODY_LAYER)
-				if(B.has_color)
-					MA.color = "#[H.undie_color]"
-				standing += MA
+				var/istauric = FALSE
+				var/hasnoundies = FALSE
+				var/datum/sprite_accessory/taur/taurtype = GLOB.taur_list[H.dna.features["taur"]]
+				if(mutant_bodyparts["taur"] && H.dna.features["taur"] != "None" && B.has_tauric)
+					if((taurtype.taur_mode == STYLE_PAW_TAURIC) || (taurtype.taur_mode == STYLE_HOOF_TAURIC))
+						istauric = TRUE
+					else
+						hasnoundies = TRUE
+				if(hasnoundies == FALSE)
+					var/mutable_appearance/MA
+					var/mutable_appearance/MAL
+					var/mutable_appearance/MAR
+					var/mutable_appearance/MA2
+					if(istauric == TRUE)
+						MA = mutable_appearance(B.taur_icon, "[B.icon_state]_ADJUP", -TAUR_UNDIE_LAYER_ADJ)
+						MAL = mutable_appearance(B.taur_icon, "[B.icon_state]_ADJUP_L", -TAUR_UNDIE_LAYER_ADJ)
+						MAR = mutable_appearance(B.taur_icon, "[B.icon_state]_ADJUP_R", -TAUR_UNDIE_LAYER_ADJ)
+						MA2 = mutable_appearance(B.taur_icon, "[B.icon_state]_FRONT", -TAUR_UNDIE_LAYER_FRONT)
+						if(H.soiledunderwear == TRUE)
+							MA.overlays.Add(mutable_appearance('icons/incon/taurstains.dmi', "taurstains_ADJUP", -TAUR_UNDIE_LAYER_ADJ, appearance_flags=RESET_COLOR))
+							MAL.overlays.Add(mutable_appearance('icons/incon/taurstains.dmi', "taurstains_ADJUP_L", -TAUR_UNDIE_LAYER_ADJ, appearance_flags=RESET_COLOR))
+							MAR.overlays.Add(mutable_appearance('icons/incon/taurstains.dmi', "taurstains_ADJUP_R", -TAUR_UNDIE_LAYER_ADJ, appearance_flags=RESET_COLOR))
+							MA2.overlays.Add(mutable_appearance('icons/incon/taurstains.dmi', "taurstains_FRONT", -TAUR_UNDIE_LAYER_FRONT, appearance_flags=RESET_COLOR))
+					else
+						MA = mutable_appearance(B.icon, "[B.icon_state][digilegs]", -BODY_LAYER)
+						if(H.soiledunderwear == TRUE)
+							MA.overlays.Add(mutable_appearance('icons/incon/poop.dmi', "stains", -BODY_LAYER, appearance_flags=RESET_COLOR))
+					if(B.has_color)
+						MA.color = "#[H.undie_color]"
+						if(istauric == TRUE)
+							MAL.color = "#[H.undie_color]"
+							MAR.color = "#[H.undie_color]"
+							MA2.color = "#[H.undie_color]"
+					if(istauric == TRUE)
+						MA.pixel_x -= 16
+						MAL.pixel_x -= 16 - taurtype.xoffs
+						MAR.pixel_x -= 16 + taurtype.xoffs
+						MA2.pixel_x -= 16
+					standing += MA
+					if(istauric == TRUE)
+						standing += MAL
+						standing += MAR
+						standing += MA2
 
 		if(H.undershirt && !H.hidden_undershirt)
 			if(H.saved_undershirt)
@@ -829,6 +872,7 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 	H.remove_overlay(BODY_BEHIND_LAYER)
 	H.remove_overlay(BODY_ADJ_LAYER)
 	H.remove_overlay(BODY_ADJ_UPPER_LAYER)
+	H.remove_overlay(BODY_TAURTAIL_LAYER)
 	H.remove_overlay(BODY_FRONT_LAYER)
 	H.remove_overlay(HORNS_LAYER)
 
@@ -905,6 +949,7 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 		"[BODY_BEHIND_LAYER]" = "BEHIND",
 		"[BODY_ADJ_LAYER]" = "ADJ",
 		"[BODY_ADJ_UPPER_LAYER]" = "ADJUP",
+		"[BODY_TAURTAIL_LAYER]" = "TAURTAIL",
 		"[BODY_FRONT_LAYER]" = "FRONT",
 		"[HORNS_LAYER]" = "HORNS",
 		)
@@ -1023,6 +1068,66 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 				accessory_overlay.pixel_y += H.dna.species.offset_features[OFFSET_MUTPARTS][2]
 
 			standing += accessory_overlay
+
+			if(S.tail) //apply the extra overlay, if there is one
+				var/mutable_appearance/tail_overlay = mutable_appearance(S.icon, layer = -BODY_TAURTAIL_LAYER)
+				if(S.gender_specific)
+					tail_overlay.icon_state = "[g]_[bodypart]_[S.icon_state]_TAURTAIL"
+				else
+					tail_overlay.icon_state = "m_[bodypart]_[S.icon_state]_TAURTAIL"
+				if(S.center)
+					tail_overlay = center_image(tail_overlay, S.dimension_x, S.dimension_y)
+
+				switch(S.tail_src) //change the color of the extra overlay
+					if(MUTCOLORS)
+						if(fixed_mut_color)
+							tail_overlay.color = "#[fixed_mut_color]"
+						else
+							tail_overlay.color = "#[H.dna.features[primary_string]]"
+					if(MUTCOLORS2)
+						if(fixed_mut_color2)
+							tail_overlay.color = "#[fixed_mut_color2]"
+						else
+							tail_overlay.color = "#[H.dna.features[secondary_string]]"
+					if(MUTCOLORS3)
+						if(fixed_mut_color3)
+							tail_overlay.color = "#[fixed_mut_color3]"
+						else
+							tail_overlay.color = "#[H.dna.features[tertiary_string]]"
+					if(HAIR)
+						if(hair_color == "mutcolor3")
+							tail_overlay.color = "#[H.dna.features["mcolor"]]"
+						else
+							tail_overlay.color = "#[H.hair_color]"
+					if(HORNCOLOR)
+						tail_overlay.color = "#[H.dna.features["horns_color"]]"
+					if(WINGCOLOR)
+						tail_overlay.color = "#[H.dna.features["wings_color"]]"
+
+					if(MATRIXED)
+						var/list/tail_colorlist = list()
+						if(S.matrixed_sections == MATRIX_RED || S.matrixed_sections == MATRIX_RED_GREEN || S.matrixed_sections == MATRIX_RED_BLUE || S.matrixed_sections == MATRIX_ALL)
+							tail_colorlist += husk ? ReadRGB("#a3a3a3") : ReadRGB("[H.dna.features[primary_string]]00")
+						else
+							tail_colorlist += husk ? ReadRGB("#a3a3a3") : ReadRGB("00000000")
+						if(S.matrixed_sections == MATRIX_GREEN || S.matrixed_sections == MATRIX_RED_GREEN || S.matrixed_sections == MATRIX_GREEN_BLUE || S.matrixed_sections == MATRIX_ALL)
+							tail_colorlist += husk ? ReadRGB("#a3a3a3") : ReadRGB("[H.dna.features[secondary_string]]00")
+						else
+							tail_colorlist += husk ? ReadRGB("#a3a3a3") : ReadRGB("00000000")
+						if(S.matrixed_sections == MATRIX_BLUE || S.matrixed_sections == MATRIX_RED_BLUE || S.matrixed_sections == MATRIX_GREEN_BLUE || S.matrixed_sections == MATRIX_ALL)
+							tail_colorlist += husk ? ReadRGB("#a3a3a3") : ReadRGB("[H.dna.features[tertiary_string]]00")
+						else
+							tail_colorlist += husk ? ReadRGB("#a3a3a3") : ReadRGB("00000000")
+						tail_colorlist += husk ? list(0, 0, 0) : list(0, 0, 0, hair_alpha)
+						for(var/index in 1 to tail_colorlist.len)
+							tail_colorlist[index] /= 255
+						tail_overlay.color = list(tail_colorlist)
+
+				if(OFFSET_MUTPARTS in H.dna.species.offset_features)
+					tail_overlay.pixel_x += H.dna.species.offset_features[OFFSET_MUTPARTS][1]
+					tail_overlay.pixel_y += H.dna.species.offset_features[OFFSET_MUTPARTS][2]
+
+				standing += tail_overlay
 
 			if(S.extra) //apply the extra overlay, if there is one
 				var/mutable_appearance/extra_accessory_overlay = mutable_appearance(S.icon, layer = -layernum)
@@ -1537,10 +1642,16 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 			to_chat(user, "<span class='notice'>You do not breathe, so you cannot perform CPR.</span>")
 
 /datum/species/proc/grab(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
+	if(user.voremode == TRUE && user.zone_selected == BODY_ZONE_PRECISE_GROIN)
+		if((HAS_TRAIT(target,TRAIT_POTTYREBEL) || HAS_TRAIT(target,TRAIT_INCONTINENT) || HAS_TRAIT(target,BABYBRAINED_TRAIT) || HAS_TRAIT(target,TRAIT_DIAPERUSE) || HAS_TRAIT(target,TRAIT_FULLYINCONTINENT)))
+			target.diapermush(user)
+			return 1
+
 	if(target.check_martial_melee_block())
 		target.visible_message("<span class='warning'>[target] blocks [user]'s grab attempt!</span>", target = user, \
 			target_message = "<span class='warning'>[target] blocks your grab attempt!</span>")
 		return 0
+
 	if(attacker_style && attacker_style.grab_act(user,target))
 		return 1
 	else
@@ -1670,6 +1781,10 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 	var/same_dir = (target.dir & user.dir)
 	var/aim_for_groin  = user.zone_selected == "groin"
 	var/target_aiming_for_groin = target.zone_selected == "groin"
+
+	if(user.voremode == TRUE && user.zone_selected == BODY_ZONE_PRECISE_GROIN)
+		target.pantsing(user)
+		return 1
 
 	if(target.check_martial_melee_block()) //END EDIT
 		target.visible_message("<span class='warning'>[target] blocks [user]'s disarm attempt!</span>", target = user, \

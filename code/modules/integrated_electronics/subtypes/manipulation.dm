@@ -622,5 +622,34 @@
 
 	activate_pin(3)
 
+/obj/item/integrated_circuit/manipulation/change
+	name = "diaper changer"
+	desc = "A circuit that can automatically synthesize and provide diapers from inside."
+	icon_state = "autodiaper"
+	extended_desc = "Pick a person and pulse to change."
+	cooldown_per_use = 10
+	complexity = 32
+	power_draw_per_use = 500
+	w_class = WEIGHT_CLASS_BULKY
+	inputs = list("target object" = IC_PINTYPE_REF)
+	activators = list("change" = IC_PINTYPE_PULSE_IN,"on change" = IC_PINTYPE_PULSE_OUT)
+	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
+
+/obj/item/integrated_circuit/manipulation/change/do_work()
+	var/mob/living/carbon/human/H = get_pin_data_as_type(IC_INPUT, 1, /mob/living/carbon/human)
+	if(!ishuman(H))
+		return
+	if(HAS_TRAIT(H,TRAIT_FULLYINCONTINENT) || HAS_TRAIT(H,TRAIT_INCONTINENT) || HAS_TRAIT(H,TRAIT_POTTYREBEL) || HAS_TRAIT(H,BABYBRAINED_TRAIT) || HAS_TRAIT(H,TRAIT_DIAPERUSE))
+		playsound(H.loc,'sound/effects/Diapertape.wav',50,1)
+		if(do_after_mob(usr,H))
+			var/obj/item/diaper/circuit/diap = new /obj/item/diaper/circuit
+			H.DiaperChange(diap)
+			H.brand2 = diap.name
+			H.DiaperAppearance()
+			H.heftersbonus = 0
+	activate_pin(2)
+
+
+
 
 

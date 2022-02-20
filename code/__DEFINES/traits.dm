@@ -231,10 +231,12 @@
 #define TRAIT_WETINCONTINENT "urinary_incontinent"
 #define TRAIT_MESSINCONTINENT "fecal_incontinent"
 #define TRAIT_FULLYINCONTINENT "unaware"
+#define TRAIT_STINKER "accident_prone"
 #define TRAIT_POTTYREBEL "potty_rebel"
 #define TRAIT_DIAPERUSE "diaper_use"
 #define TRAIT_EXACTCHECK "exact_check"
 #define TRAIT_NOCHANGESELF "no_change_self"
+#define TRAIT_BATHROOMBANNED "bathroom_banned"
 
 // mobility flag traits
 // IN THE FUTURE, IT WOULD BE NICE TO DO SOMETHING SIMILAR TO https://github.com/tgstation/tgstation/pull/48923/files (ofcourse not nearly the same because I have my.. thoughts on it)
@@ -348,6 +350,7 @@
 #define SLIMEPUDDLE_TRAIT "slimepuddle"
 #define CORRUPTED_SYSTEM "corrupted-system"
 #define REGRESSION_TRAIT "regression"
+#define POOPYTRAIT "poopy"
 
 ///The holder of this trait has antennae or whatever that hurt a ton when noogied
 #define TRAIT_ANTENNAE "antennae"

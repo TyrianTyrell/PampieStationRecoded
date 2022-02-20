@@ -191,4 +191,75 @@
 	name = "Diaper"
 	icon_state = "male_diaper"
 	has_color = TRUE
+	has_tauric = TRUE
 	gender = NEUTER
+
+/datum/sprite_accessory/underwear/bottom/diaper/rainbow
+	name = "DiaPride"
+	icon_state = "rainbowdiaper"
+	has_color = FALSE
+	locked = TRUE
+
+/datum/sprite_accessory/underwear/bottom/diaper/skunk
+	name = "Skunkies"
+	icon_state = "skunkdiaper"
+	has_color = FALSE
+	locked = TRUE
+
+/datum/sprite_accessory/underwear/bottom/diaper/bee
+	name = "Beepers"
+	icon_state = "beediaper"
+	has_color = FALSE
+	locked = TRUE
+
+/datum/sprite_accessory/underwear/bottom/diaper/rainbow_thick
+	name = "DiaPride Special Edition"
+	icon_state = "rainbowdiaperse"
+	has_color = FALSE
+	locked = TRUE
+
+/datum/sprite_accessory/underwear/bottom/diaper/matri
+	name = "Matrix"
+	icon_state = "matrixdiaper"
+	has_color = FALSE
+	locked = TRUE
+
+/datum/sprite_accessory/underwear/bottom/diaper/ringading
+	name = "Ringadings"
+	icon_state = "ringading"
+	has_color = FALSE
+	locked = TRUE
+
+/datum/sprite_accessory/underwear/bottom/diaper/hawaiir
+	name = "Hawaiian Padding (red)"
+	icon_state = "hawaiir"
+	has_color = FALSE
+	locked = TRUE
+
+/datum/sprite_accessory/underwear/bottom/diaper/hawaiib
+	name = "Hawaiian Padding (blue)"
+	icon_state = "hawaiib"
+	has_color = FALSE
+	locked = TRUE
+
+/datum/sprite_accessory/underwear/bottom/diaper/pumpkin
+	name = "Bum-kins"
+	icon_state = "pumpkin"
+	has_color = FALSE
+	locked = TRUE
+
+/datum/sprite_accessory/underwear/bottom/diaper/halloween
+	name = "Jack-O-Pants"
+	icon_state = "jacko"
+	has_color = FALSE
+	locked = TRUE
+
+/datum/sprite_accessory/underwear/bottom/diaper/hyper
+	name = "Hyper"
+	icon_state = "hyper"
+	has_color = FALSE
+	locked = TRUE
+
+/datum/sprite_accessory/underwear/bottom/diaper/trainer
+	name = "Training Pants"
+	icon_state = "trainingpants"

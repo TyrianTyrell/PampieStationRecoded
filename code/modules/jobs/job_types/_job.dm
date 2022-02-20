@@ -66,7 +66,7 @@
 	var/display_order = JOB_DISPLAY_ORDER_DEFAULT
 
 	//If a job complies with dresscodes, loadout items will not be equipped instead of the job's outfit, instead placing the items into the player's backpack.
-	var/dresscodecompliant = TRUE
+	var/dresscodecompliant = FALSE
 	// How much threat this job is worth in dynamic. Is subtracted if the player's not an antag, added if they are.
 	var/threat = 0
 
@@ -242,8 +242,6 @@
 
 /datum/outfit/job/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE, client/preference_source)
 	var/preference_backpack = preference_source?.prefs.backbag
-	if(preference_source.prefs.jumpsuit_style == PREF_NONE)
-		pda_slot = SLOT_IN_BACKPACK
 	if(preference_backpack)
 		switch(preference_backpack)
 			if(DBACKPACK)
@@ -271,8 +269,6 @@
 		holder = "[uniform]/shirt"
 		if(!text2path(holder))
 			holder = "[uniform]"
-	else if(preference_source && preference_source.prefs.jumpsuit_style == PREF_NONE)
-		holder = null
 	else
 		holder = "[uniform]"
 	uniform = text2path(holder)
@@ -294,6 +290,8 @@
 	var/obj/item/card/id/C = H.wear_id
 	if(istype(C) && C.bank_support)
 		C.access = J.get_access()
+		if((preference_source.prefs.all_quirks.Find("Bathroom Banned") == 0))
+			C.access.Add(ACCESS_POTTY)
 		shuffle_inplace(C.access) // Shuffle access list to make NTNet passkeys less predictable
 		C.registered_name = H.real_name
 		C.assignment = J.title

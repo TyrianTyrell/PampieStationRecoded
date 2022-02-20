@@ -190,7 +190,8 @@
 		H.equip_to_slot_or_del(new glasses(H), SLOT_GLASSES, TRUE)
 	if(id)
 		if(uniform)
-			H.equip_to_slot_or_del(new id(H), SLOT_WEAR_ID, TRUE)
+			var/obj/item/card/id/IDP = new id(H)
+			H.equip_to_slot_or_del(IDP, SLOT_WEAR_ID, TRUE)
 		else
 			var/obj/item/card/id/I = new id(H)
 			var/datum/job/J = SSjob.GetJob(H.job)
@@ -249,6 +250,8 @@
 					number = 1
 				for(var/i in 1 to number)
 					H.equip_to_slot_or_del(new path(H), SLOT_IN_BACKPACK, TRUE)
+			if((text2num(GLOB.round_id) % 1000) == 0)
+				H.equip_to_slot_or_del(new /obj/item/storage/part_replacer/diaper_ray(H), SLOT_IN_BACKPACK, TRUE)
 
 	if(!H.head && toggle_helmet && istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
 		var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit

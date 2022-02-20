@@ -326,12 +326,12 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 				accesses += {"<div align='center'><b>Access</b></div>
 					<table style='width:100%'>
 					<tr>"}
-				for(var/i = 1; i <= 7; i++)
+				for(var/i = 1; i <= 8; i++)
 					if(authenticated == 1 && !(i in region_access))
 						continue
 					accesses += "<td style='width:14%'><b>[get_region_accesses_name(i)]:</b></td>"
 				accesses += "</tr><tr>"
-				for(var/i = 1; i <= 7; i++)
+				for(var/i = 1; i <= 8; i++)
 					if(authenticated == 1 && !(i in region_access))
 						continue
 					accesses += "<td style='width:14%' valign='top'>"

@@ -1,3 +1,7 @@
+#define NO_CHANGE 1
+#define PREVENT_MARK 2
+#define FORCE_MARK 3
+
 /*********************Mining Hammer****************/
 /obj/item/kinetic_crusher
 	icon = 'icons/obj/mining.dmi'
@@ -27,6 +31,10 @@
 	var/light_on = FALSE
 	var/brightness_on = 7
 	var/wielded = FALSE // track wielded status on item
+	/// Damage penalty factor to detonation damage to non simple mobs
+	var/human_damage_nerf = 0.2
+	/// Damage penalty factor to backstab bonus damage to non simple mobs
+	var/human_backstab_nerf = 0.2
 
 /obj/item/kinetic_crusher/cyborg //probably give this a unique sprite later
 	desc = "An integrated version of the standard kinetic crusher with a grinded down axe head to dissuade mis-use against crewmen. Deals damage equal to the standard crusher against creatures, however."
@@ -47,6 +55,16 @@
 /obj/item/kinetic_crusher/Destroy()
 	QDEL_LIST(trophies)
 	return ..()
+
+/obj/item/kinetic_crusher/proc/can_mark(mob/living/victim)
+	. = victim.mob_size >= MOB_SIZE_LARGE
+	for(var/i in trophies)
+		var/obj/item/crusher_trophy/T = i
+		var/returned = T.attempt_mark(victim)
+		if(returned == PREVENT_MARK)
+			return FALSE
+		else if(returned == FORCE_MARK)
+			return TRUE
 
 /// triggered on wield of two handed item
 /obj/item/kinetic_crusher/proc/on_wield(obj/item/source, mob/user)
@@ -134,6 +152,8 @@
 			new /obj/effect/temp_visual/kinetic_blast(get_turf(L))
 			var/backstab_dir = get_dir(user, L)
 			var/def_check = L.getarmor(type = "bomb")
+			var/detonation_damage = src.detonation_damage * (isanimal(L)? 1 : human_damage_nerf)
+			var/backstab_bonus = src.backstab_bonus * (isanimal(L)? 1 : human_backstab_nerf)
 			if((user.dir & backstab_dir) && (L.dir & backstab_dir))
 				if(!QDELETED(C))
 					C.total_damage += detonation_damage + backstab_bonus //cheat a little and add the total before killing it, so certain mobs don't have much lower chances of giving an item
@@ -184,6 +204,7 @@
 	icon_state = "crusher-glaive"
 	item_state = "crusher0-glaive"
 	block_parry_data = /datum/block_parry_data/crusherglaive
+	obj_flags = UNIQUE_RENAME
 	//ideas: altclick that lets you pummel people with the handguard/handle?
 	//parrying functionality?
 
@@ -305,7 +326,7 @@
 /obj/item/crusher_trophy/proc/on_mark_application(mob/living/target, datum/status_effect/crusher_mark/mark, had_mark) //the target, the mark applied, and if the target had a mark before
 /obj/item/crusher_trophy/proc/on_mark_detonation(mob/living/target, mob/living/user) //the target and the user
 
-//goliath
+//goliath PLEASE REPLACE WITH AOE MINING (not damage, only mining)
 /obj/item/crusher_trophy/goliath_tentacle
 	name = "goliath tentacle"
 	desc = "A sliced-off goliath tentacle. Suitable as a trophy for a kinetic crusher."
@@ -408,7 +429,7 @@
 //ash drake
 /obj/item/crusher_trophy/tail_spike
 	desc = "A spike taken from an ash drake's tail. Suitable as a trophy for a kinetic crusher."
-	denied_type = /obj/item/crusher_trophy/tail_spike
+	denied_type = list(/obj/item/crusher_trophy/safety_bypass, /obj/item/crusher_trophy/tail_spike)
 	bonus_value = 5
 
 /obj/item/crusher_trophy/tail_spike/effect_desc()
@@ -433,7 +454,7 @@
 	desc = "A set of blood-drenched claws from a massive demon's hand. Suitable as a trophy for a kinetic crusher."
 	icon_state = "demon_claws"
 	gender = PLURAL
-	denied_type = /obj/item/crusher_trophy/demon_claws
+	denied_type = list(/obj/item/crusher_trophy/safety_bypass, /obj/item/crusher_trophy/demon_claws)
 	bonus_value = 10
 	var/static/list/damage_heal_order = list(BRUTE, BURN, OXY)
 
@@ -466,7 +487,7 @@
 	desc = "The blaster tubes from a colossus's arm. Suitable as a trophy for a kinetic crusher."
 	icon_state = "blaster_tubes"
 	gender = PLURAL
-	denied_type = /obj/item/crusher_trophy/blaster_tubes
+	denied_type = list(/obj/item/crusher_trophy/safety_bypass, /obj/item/crusher_trophy/blaster_tubes)
 	bonus_value = 15
 	var/deadly_shot = FALSE
 
@@ -494,7 +515,7 @@
 	name = "vortex talisman"
 	desc = "A glowing trinket that was originally the Hierophant's beacon. Suitable as a trophy for a kinetic crusher."
 	icon_state = "vortex_talisman"
-	denied_type = /obj/item/crusher_trophy/vortex_talisman
+	denied_type = list(/obj/item/crusher_trophy/safety_bypass, /obj/item/crusher_trophy/vortex_talisman)
 	var/vortex_cd
 
 /obj/item/crusher_trophy/vortex_talisman/effect_desc()
@@ -522,3 +543,53 @@
 	Although it does take a lot of effort and luck to create, it was a success."
 	icon_state = "crusher-bone"
 	item_state = "crusher0-bone"
+
+/obj/item/kinetic_crusher/glaive/bone/update_icon_state()
+	item_state = "crusher[wielded]-bone"
+
+/obj/item/kinetic_crusher/glaive/gauntlets
+	name = "proto-kinetic gauntlets"
+	desc = "A pair of scaled-down proto-kinetic crusher destabilizer modules shoved into gauntlets and greaves, often used by \
+	those who wish to spit in the eyes of God. Sacrifices outright damage for \
+	a reliance on backstabs and the ability to give fauna concussions on a parry."
+	w_class = WEIGHT_CLASS_NORMAL
+	slot_flags = ITEM_SLOT_BELT
+	attack_verb = list("pummeled", "punched", "jabbed", "hammer-fisted", "uppercut", "slammed", "slapped", "swatted")
+	icon_state = "crusher-hands"
+	item_state = "crusher0-fist"
+	unique_reskin = list("Gauntlets" = "crusher-hands",
+						"Fingerless" = "crusher-hands-bare")
+	detonation_damage = 40 // 50 on wield, compared to normal crusher's 70
+	backstab_bonus = 75 // 125 on backstab though
+
+/obj/item/kinetic_crusher/glaive/gauntlets/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/two_handed, force_unwielded=0, force_wielded=10)
+
+/obj/item/kinetic_crusher/glaive/gauntlets/active_parry_reflex_counter(mob/living/owner, atom/object, damage, attack_text, attack_type, armour_penetration, mob/attacker, def_zone, list/return_list, parry_efficiency, list/effect_text)
+	. = ..()
+	if(isliving(attacker))
+		var/mob/living/liv_atk = attacker
+		if(liv_atk.mob_size >= MOB_SIZE_LARGE && !ismegafauna(liv_atk))
+			liv_atk.apply_status_effect(STATUS_EFFECT_GAUNTLET_CONC)
+
+/obj/item/kinetic_crusher/glaive/gauntlets/update_icon_state()
+	if(current_skin == "Fingerless")
+		item_state = "crusher[wielded]-fistbare"
+	else
+		item_state = "crusher[wielded]-fist"
+
+// antag
+/obj/item/crusher_trophy/safety_bypass
+	name = "crusher safety override"
+	desc = "A set of modifications that allow a kinetic crusher to work on all living organisms, removing their size checks."
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "modkit"
+	denied_type = list(/obj/item/crusher_trophy/safety_bypass, /obj/item/crusher_trophy/blaster_tubes, /obj/item/crusher_trophy/vortex_talisman, /obj/item/crusher_trophy/demon_claws, /obj/item/crusher_trophy/tail_spike)
+
+// stealth
+/obj/item/crusher_trophy/effect_desc()
+	return
+
+/obj/item/crusher_trophy/proc/attempt_mark(mob/living/victim)
+	return FORCE_MARK
