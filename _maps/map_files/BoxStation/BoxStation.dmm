@@ -51719,10 +51719,6 @@
 /obj/item/reagent_containers/food/drinks/britcup,
 /turf/open/floor/plasteel,
 /area/commons/dorms)
-"cHy" = (
-/obj/structure/chair/stool/bronze,
-/turf/closed/wall,
-/area/service/kitchen)
 "cHD" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -52336,7 +52332,7 @@
 	pixel_y = 25
 	},
 /turf/open/floor/plating,
-/area/service/abandoned_gambling_den)
+/area/maintenance/nursery)
 "cSA" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -53794,7 +53790,7 @@
 	name = "Security Shutters"
 	},
 /turf/open/floor/clockwork,
-/area/service/abandoned_gambling_den)
+/area/maintenance/nursery)
 "eZa" = (
 /obj/effect/landmark/start/paramedic,
 /turf/open/floor/plasteel/white,
@@ -54193,7 +54189,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/service/abandoned_gambling_den)
+/area/maintenance/nursery)
 "fBT" = (
 /obj/machinery/door/airlock/security{
 	name = "Prisoner Cell";
@@ -55274,7 +55270,7 @@
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on,
 /turf/open/floor/plating,
-/area/service/abandoned_gambling_den)
+/area/maintenance/nursery)
 "hSl" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -55952,7 +55948,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plating,
-/area/service/abandoned_gambling_den)
+/area/maintenance/nursery)
 "jbf" = (
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -56817,7 +56813,7 @@
 	icon_state = "1-2"
 	},
 /turf/open/floor/plating,
-/area/service/abandoned_gambling_den)
+/area/maintenance/nursery)
 "ksk" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on,
 /turf/open/floor/plasteel,
@@ -57632,7 +57628,7 @@
 	icon_state = "2-4"
 	},
 /turf/open/floor/plating,
-/area/service/abandoned_gambling_den)
+/area/maintenance/nursery)
 "lJC" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
@@ -58365,7 +58361,7 @@
 /area/security/brig)
 "ndq" = (
 /turf/open/floor/plating,
-/area/service/abandoned_gambling_den)
+/area/maintenance/nursery)
 "nez" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -58525,7 +58521,7 @@
 /area/security/brig)
 "nsA" = (
 /turf/closed/wall,
-/area/service/abandoned_gambling_den)
+/area/maintenance/nursery)
 "ntt" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -59253,7 +59249,7 @@
 	pixel_y = -25
 	},
 /turf/open/floor/plating,
-/area/service/abandoned_gambling_den)
+/area/maintenance/nursery)
 "oMT" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
@@ -59502,7 +59498,7 @@
 	icon_state = "1-2"
 	},
 /turf/open/floor/plating,
-/area/service/abandoned_gambling_den)
+/area/maintenance/nursery)
 "ppw" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 9
@@ -59939,7 +59935,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
-/area/service/abandoned_gambling_den)
+/area/maintenance/nursery)
 "qeA" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -60204,7 +60200,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/clockwork,
-/area/service/abandoned_gambling_den)
+/area/maintenance/nursery)
 "qIw" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -60352,7 +60348,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/service/abandoned_gambling_den)
+/area/maintenance/nursery)
 "qWV" = (
 /obj/machinery/pool/filter{
 	pixel_y = 24
@@ -60785,7 +60781,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/service/abandoned_gambling_den)
+/area/maintenance/nursery)
 "rIB" = (
 /obj/machinery/camera{
 	c_tag = "Nursery Main Room"
@@ -60859,7 +60855,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
-/area/service/abandoned_gambling_den)
+/area/maintenance/nursery)
 "rQJ" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -61137,7 +61133,7 @@
 	icon_state = "1-8"
 	},
 /turf/open/floor/plating,
-/area/service/abandoned_gambling_den)
+/area/maintenance/nursery)
 "srH" = (
 /turf/open/floor/plasteel/showroomfloor,
 /area/nursery)
@@ -63672,7 +63668,7 @@
 	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
-/area/service/abandoned_gambling_den)
+/area/maintenance/nursery)
 "wLK" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 9
@@ -102079,7 +102075,7 @@ aKR
 aMB
 aJC
 aOP
-cHy
+aJI
 aRA
 aVz
 aVz
