@@ -54576,13 +54576,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/command/gateway)
-"gpX" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/disposalpipe/junction{
-	dir = 1
-	},
-/turf/open/floor/plasteel,
-/area/nursery)
 "grc" = (
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/maintenance{
@@ -56189,14 +56182,11 @@
 /turf/open/floor/plasteel,
 /area/ai_monitored/security/armory)
 "jzI" = (
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
 /obj/machinery/camera{
 	c_tag = "Nursery Restroom";
 	dir = 4
 	},
+/obj/structure/closet/crate/diaperpail,
 /turf/open/floor/plasteel/freezer,
 /area/nursery)
 "jzM" = (
@@ -57606,8 +57596,8 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/disposalpipe/junction{
-	dir = 1
+/obj/structure/disposalpipe/junction/flip{
+	dir = 2
 	},
 /turf/open/floor/plasteel,
 /area/nursery)
@@ -63246,9 +63236,7 @@
 /area/security/processing)
 "vZx" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/disposalpipe/junction/flip{
-	dir = 1
-	},
+/obj/structure/disposalpipe/junction,
 /turf/open/floor/plasteel,
 /area/nursery)
 "vZA" = (
@@ -113877,7 +113865,7 @@ xsW
 vPy
 uvj
 hoL
-gpX
+hoL
 hoL
 lFh
 yay
@@ -114134,7 +114122,7 @@ ply
 kJb
 ktA
 ktA
-hnC
+ktA
 ktA
 hnC
 wHd

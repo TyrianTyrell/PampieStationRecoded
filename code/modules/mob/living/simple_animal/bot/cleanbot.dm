@@ -338,7 +338,8 @@
 		/obj/effect/decal/cleanable/chem_pile,
 		/obj/effect/decal/cleanable/shreds,
 		/obj/effect/decal/cleanable/glitter,
-		/obj/effect/decal/remains
+		/obj/effect/decal/remains,
+		/obj/effect/decal/cleanable/waste/peepee
 		)
 
 	if(blood)
