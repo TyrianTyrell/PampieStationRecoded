@@ -858,6 +858,50 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	item_state = "succubun"
 	attack_verb = list("newspapered", "bapped", "booped")
 
+
+/obj/item/toy/plush/pika
+	name = "Oddly specific electric mouse plushie"
+	desc = "A plush toy of a famous electric mouse."
+	icon_state = "pika"
+	item_state = "pika"
+	attack_verb = list("sparked", "zapped", "shocked", "bolted")
+
+/obj/item/toy/plush/vapo
+	name = "Oddly specific fishdog plushie"
+	desc = "A plush of a well known fishdog. Hey guys, did you know in terms of..."
+	icon_state = "vapo"
+	item_state = "vapo"
+	attack_verb = list("splashed", "squirted", "splooshed")
+
+/obj/item/toy/plush/latia
+	name = "Oddly specific red dragon plushie"
+	desc = "An oddly specific red dragon plush, rarely seen without its blue twin."
+	icon_state = "latia"
+	item_state = "latia"
+	attack_verb = list("bapped", "booped")
+
+/obj/item/toy/plush/latio
+	name = "Oddly specific blue dragon plushie"
+	desc = "An oddly specific blue dragon plush, rarely seen without its red twin."
+	icon_state = "latio"
+	item_state = "latio"
+	attack_verb = list("bapped", "booped")
+
+/obj/item/toy/plush/vee
+	name = "Oddly specific vulpine plushie"
+	desc = "A plush of a famous fox who is said to be extremely versatile."
+	icon_state = "vee"
+	item_state = "vee"
+	attack_verb = list("bapped", "booped")
+
+/obj/item/toy/plush/punny
+	name = "Oddly specific bunny plushie"
+	desc = "A plush of a well known (for all the wrong reasons) bunny."
+	icon_state = "punny"
+	item_state = "punny"
+	attack_verb = list("kicked", "punched")
+
+
 /obj/item/toy/plush/carby
 	name = "Carbuncle"
 	desc = "Prr."
