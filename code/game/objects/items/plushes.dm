@@ -901,6 +901,12 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	item_state = "punny"
 	attack_verb = list("kicked", "punched")
 
+/obj/item/toy/plush/raha
+	name = "All-Rounder catboy plush"
+	desc = "T'is good to be awake."
+	icon_state = "raha"
+	item_state = "raha"
+	attack_verb = list("broke", "bapped", "summoned")
 
 /obj/item/toy/plush/carby
 	name = "Carbuncle"
