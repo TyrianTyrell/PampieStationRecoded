@@ -1464,6 +1464,7 @@
 /area/solars/port/fore)
 "adz" = (
 /obj/structure/closet/wardrobe/pjs,
+/obj/item/toy/plush/raha,
 /turf/open/floor/carpet/arcade,
 /area/nursery)
 "adA" = (
