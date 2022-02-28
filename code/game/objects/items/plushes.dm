@@ -487,6 +487,12 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	attack_verb = list("bitten", "eaten", "fin slapped")
 	squeak_override = list('sound/weapons/bite.ogg'=1)
 
+/obj/item/toy/plush/carpplushie/Initialize(mapload)
+	. = ..()
+	if(prob(5))
+		icon_state = "scarpplush"
+		item_state = "scarpplush"
+
 /obj/item/toy/plush/bubbleplush
 	name = "bubblegum plushie"
 	desc = "The friendly red demon that gives good miners gifts."
@@ -661,7 +667,12 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	icon_state = "moff"
 	item_state = "moff"
 	squeak_override = list('modular_citadel/sound/voice/mothsqueak.ogg' = 1)
-	can_random_spawn = FALSE
+
+/obj/item/toy/plush/mothplushie/Initialize(mapload)
+	. = ..()
+	if(prob(5))
+		icon_state = "smoff"
+		item_state = "smoff"
 
 /obj/item/toy/plush/lampplushie
 	name = "lamp plushie"
@@ -907,6 +918,12 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	icon_state = "raha"
 	item_state = "raha"
 	attack_verb = list("broke", "bapped", "summoned")
+
+/obj/item/toy/plush/raha/Initialize(mapload)
+	. = ..()
+	if(prob(5))
+		icon_state = "sraha"
+		item_state = "sraha"
 
 /obj/item/toy/plush/carby
 	name = "Carbuncle"
