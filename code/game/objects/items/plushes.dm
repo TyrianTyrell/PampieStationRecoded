@@ -921,7 +921,7 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 
 /obj/item/toy/plush/raha/Initialize(mapload)
 	. = ..()
-	if(prob(5))
+	if(prob(10))
 		icon_state = "sraha"
 		item_state = "sraha"
 
