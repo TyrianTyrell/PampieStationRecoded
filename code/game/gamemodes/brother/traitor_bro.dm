@@ -7,7 +7,7 @@
 	config_tag = "traitorbro"
 	required_players = 25
 	chaos = 5
-	restricted_jobs = list("AI", "Cyborg", "Prisoner", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel")
+	restricted_jobs = list("AI", "Cyborg", "Prisoner", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Prisoner", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	protected_jobs = list("Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 
 	announce_span = "danger"

@@ -25,7 +25,7 @@
 	antag_flag = ROLE_BLOODSUCKER
 	false_report_weight = 1
 	chaos = 4
-	restricted_jobs = list("AI","Cyborg", "Chaplain", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel")
+	restricted_jobs = list("AI","Cyborg", "Chaplain", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel",)
 	protected_jobs = list("Prisoner", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_players = 20
 	required_enemies = 2
