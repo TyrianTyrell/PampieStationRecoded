@@ -1,7 +1,7 @@
 /datum/round_event_control/cat_surgeon
     name = "Cat Surgeon"
     typepath = /datum/round_event/cat_surgeon
-    max_occurrences = 0
+    max_occurrences = 0 //this was undone cause of reverting PRs oops.
 
 
 /datum/round_event/cat_surgeon/announce(fake)
