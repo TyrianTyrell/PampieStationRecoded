@@ -78,7 +78,7 @@ Difficulty: Medium
 	smallsprite.Grant(src)
 	. = ..()
 	internal = new/obj/item/gps/internal/dragon(src)
-		if(prob(34))
+	if(prob(34))
 		icon_state = "ddragon"
 		icon_living = "ddragon"
 		name = "incontinent ash drake"
