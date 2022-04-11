@@ -276,7 +276,7 @@
 	icon_state = "polyjump"
 	item_state = "rainbow"
 	can_adjust = FALSE
-	mutantrace_variation = NONE
+	mutantrace_variation = STYLE_DIGITIGRADE
 
 /obj/item/clothing/under/misc/polyjumpsuit/ComponentInitialize()
 	. = ..()
