@@ -91,7 +91,7 @@
 			M.DiaperChange(src)
 			M.brand2 = name
 			M.DiaperAppearance()
-			if (findtext(M.brand, "hyper") != 0)
+			if (findtext(M.brand, "hyper") != 0 || findtext(M.brand, "_hyper") != 0)
 				M.heftersbonus = 200
 			else if (findtext(M.brand, "hefters") != 0 || findtext(M.brand, "_thick") != 0)
 				M.heftersbonus = 100
@@ -894,6 +894,24 @@
 /obj/item/useddiap/cloth/machine_wash(obj/machinery/washing_machine/WM)
 	new /obj/item/diaper/cloth(loc)
 	qdel(src)
+
+
+   ///NOT REAL HYPER HYPER DIAPER
+
+/obj/item/diaper/silisuit_hyper
+	name = "\improper SiliSkin Sanitary Suit"
+	desc = "A stretchy second-skin suit made of soft silicone. Collects waste internally."
+	icon_state = "silisuit"
+
+/obj/item/wetdiap/silisuit_hyper
+	icon_state = "silisuit_filling"
+
+/obj/item/poopydiap/silisuit_hyper
+	icon_state = "silisuit_filling"
+
+/obj/item/useddiap/silisuit_hyper
+	icon_state = "silisuit_full"
+
 
 ///TESTING HYPER STUFF HERE!!!!!!
 
