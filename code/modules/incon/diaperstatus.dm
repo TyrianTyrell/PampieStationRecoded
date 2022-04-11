@@ -615,16 +615,6 @@ var/database/db = new("code/modules/incon/InconFlavortextDB.db")
 					if (D)
 						D.princessbonus = FALSE
 				rollbonus = 0
-			if ("silisuit_hyper")
-				set_light(0)
-				REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-				SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"sanshield",/datum/mood_event/sanitydiaper)
-				if (ishuman(src))
-					var/mob/living/carbon/human/H = src
-					var/datum/bank_account/D = H.get_bank_account()
-					if (D)
-						D.princessbonus = FALSE
-				rollbonus = 0
 	spawn(60)
 		PampUpdate()
 
@@ -754,10 +744,6 @@ var/database/db = new("code/modules/incon/InconFlavortextDB.db")
 			set_light(0)
 			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
 			SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"sanshield")
-		if ("silisuit_hyper")
-			set_light(0)
-			REMOVE_TRAIT(src,TRAIT_NOBREATH,INNATE_TRAIT)
-			SEND_SIGNAL(src,COMSIG_ADD_MOOD_EVENT,"sanshield",/datum/mood_event/sanitydiaper)
 	spawn(60)
 		PampUpdate2()
 
