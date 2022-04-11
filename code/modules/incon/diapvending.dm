@@ -36,6 +36,8 @@
 					/obj/item/diaper/punk_thick = 20,
 					/obj/item/diaper/pink_thick = 20,
 					/obj/item/diaper/rainbow_thick = 20,
+				//Diapersuits
+					/obj/item/diaper/silisuit_hyper = 5,
 				//MISC
 					/obj/item/reagent_containers/glass/sippycup = 5,
 					/obj/item/reagent_containers/glass/babybottle = 5,
@@ -120,6 +122,8 @@
 					/obj/item/diaper/punk_thick = 10,
 					/obj/item/diaper/pink_thick = 10,
 					/obj/item/diaper/rainbow_thick = 10,
+				//Diapersuits
+					/obj/item/diaper/silisuit_hyper = 2,
 				//MISC
 					/obj/item/reagent_containers/glass/sippycup = 2,
 					/obj/item/reagent_containers/glass/babybottle = 2,
