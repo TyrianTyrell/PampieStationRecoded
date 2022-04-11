@@ -157,8 +157,6 @@
 				if("gmr_trainer")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/trainer()
 					butt.undie_color = "8833FF"
-				if("silisuit")
-					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/silisuit()
 				if("underwear")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/briefs()
 				if("hyper")
@@ -300,8 +298,6 @@
 				if("gmr_trainer")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/trainer()
 					butt.undie_color = "8833FF"
-				if("silisuit")
-					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/silisuit()
 				if("underwear")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/briefs()
 		butt.update_body()
