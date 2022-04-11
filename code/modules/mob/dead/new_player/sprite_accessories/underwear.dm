@@ -260,6 +260,13 @@
 	has_color = FALSE
 	locked = TRUE
 
+/datum/sprite_accessory/underwear/bottom/diaper/silisuit
+	name = "Silicone Second Skin Sanitary Suit"
+	icon_state = "silisuit"
+	has_digitigrade = TRUE
+	has_color = FALSE
+	covers_chest = TRUE
+
 /datum/sprite_accessory/underwear/bottom/diaper/trainer
 	name = "Training Pants"
 	icon_state = "trainingpants"
