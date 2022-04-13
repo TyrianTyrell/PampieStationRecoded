@@ -2304,6 +2304,7 @@
 #include "code\modules\hydroponics\grown\tomato.dm"
 #include "code\modules\hydroponics\grown\towercap.dm"
 #include "code\modules\incon\bouncer.dm"
+#include "code\modules\incon\diaperexport.dm"
 #include "code\modules\incon\diapers.dm"
 #include "code\modules\incon\diaperstatus.dm"
 #include "code\modules\incon\diapvending.dm"

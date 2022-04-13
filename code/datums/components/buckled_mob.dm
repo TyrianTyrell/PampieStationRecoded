@@ -122,9 +122,9 @@
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/bee()
 				if("rainbow")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/rainbow()
-				if("rainbowse")
+				if("rainbow_thick")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/rainbow_thick()
-				if("matrix")
+				if("matri")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/matri()
 				if("ringading")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/ringading()
@@ -263,9 +263,9 @@
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/bee()
 				if("rainbow")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/rainbow()
-				if("rainbowse")
+				if("rainbow_thick")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/rainbow_thick()
-				if("matrix")
+				if("matri")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/matri()
 				if("ringading")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/ringading()
@@ -279,13 +279,16 @@
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/halloween()
 				if("blue_trainer")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/trainer()
+					butt.undie_color = "33CCFF"
 				if("pink_trainer")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/trainer()
 					butt.undie_color = "FFC0CB"
 				if("green_trainer")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/trainer()
+					butt.undie_color = "99FF66"
 				if("skunk_trainer")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/trainer()
+					butt.undie_color = "141414"
 				if("water_trainer")
 					butt.underwear = new /datum/sprite_accessory/underwear/bottom/diaper/trainer()
 					butt.undie_color = "ABCDEF"
