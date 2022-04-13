@@ -548,6 +548,11 @@
 	list_reagents = list(/datum/reagent/consumable/mtndo = 30)
 	foodtype = SUGAR
 
+/obj/item/reagent_containers/food/drinks/soda_cans/inwat
+	name = "Instant Water"
+	desc = "Just add water!"
+	icon_state = "instantwater"
+
 
 /obj/item/reagent_containers/food/drinks/soda_cans/tonic
 	name = "T-Borg's tonic water"
