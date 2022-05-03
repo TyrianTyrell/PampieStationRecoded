@@ -52945,6 +52945,9 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/structure/chair/highchairwood{
+	dir = 4
+	},
 /turf/open/floor/plasteel/cafeteria,
 /area/nursery)
 "dqu" = (
@@ -53768,8 +53771,9 @@
 /turf/open/floor/plasteel,
 /area/security/prison)
 "eXk" = (
-/obj/structure/chair/stool,
-/turf/open/floor/plasteel/cafeteria,
+/obj/structure/bed/crib,
+/obj/item/bedsheet/random,
+/turf/open/floor/carpet/arcade,
 /area/nursery)
 "eXz" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
@@ -54520,7 +54524,7 @@
 /area/security/prison)
 "gji" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/chair/stool,
+/obj/structure/table,
 /turf/open/floor/plasteel/cafeteria,
 /area/nursery)
 "gjl" = (
@@ -54959,7 +54963,6 @@
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "heh" = (
-/obj/structure/chair/stool,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel/cafeteria,
 /area/nursery)
@@ -55100,6 +55103,12 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
+"huK" = (
+/obj/structure/chair/highchairwood{
+	dir = 4
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/nursery)
 "hxn" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/green/visible,
@@ -55215,7 +55224,7 @@
 /turf/open/floor/plating,
 /area/maintenance/port)
 "hPc" = (
-/obj/structure/table,
+/obj/structure/chair/stool,
 /turf/open/floor/plasteel/cafeteria,
 /area/nursery)
 "hPs" = (
@@ -60314,6 +60323,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
+/obj/structure/chair/highchairwood{
+	dir = 4
+	},
 /turf/open/floor/plasteel/cafeteria,
 /area/nursery)
 "qTG" = (
@@ -61391,6 +61403,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/chair/stool,
 /turf/open/floor/plasteel/cafeteria,
 /area/nursery)
 "sRd" = (
@@ -113093,9 +113106,9 @@ dPv
 ktA
 mKb
 rHM
-uaY
+eXk
 hUt
-uaY
+eXk
 adz
 ktA
 frG
@@ -114388,7 +114401,7 @@ gMn
 sUl
 iTd
 dqh
-evS
+huK
 qTa
 ktA
 aaa
@@ -114643,9 +114656,9 @@ rdB
 iBD
 gMn
 iDY
-eXk
-eXk
-eXk
+evS
+evS
+evS
 eTP
 ktA
 aaa
@@ -114900,7 +114913,7 @@ mbF
 mTS
 gMn
 iDY
-hPc
+evS
 hPc
 hPc
 eTP
@@ -115158,7 +115171,7 @@ dtX
 njI
 wRN
 heh
-heh
+gji
 gji
 hJL
 ktA
@@ -115416,7 +115429,7 @@ gMn
 vbC
 wQV
 sQq
-evS
+hPc
 evS
 ktA
 aaa
