@@ -1439,7 +1439,7 @@
 	dir = 1
 	},
 /turf/open/floor/carpet/arcade,
-/area/nursery)
+/area/nursery/naproom)
 "adw" = (
 /obj/structure/cable,
 /obj/structure/lattice/catwalk,
@@ -1466,7 +1466,7 @@
 /obj/structure/closet/wardrobe/pjs,
 /obj/item/toy/plush/raha,
 /turf/open/floor/carpet/arcade,
-/area/nursery)
+/area/nursery/naproom)
 "adA" = (
 /obj/structure/cable,
 /obj/machinery/power/solar{
@@ -9568,8 +9568,15 @@
 /turf/open/floor/plasteel,
 /area/maintenance/port/fore)
 "atS" = (
+/obj/machinery/power/apc{
+	areastring = "/area/nursery/naproom";
+	dir = 8;
+	name = "Naproom APC";
+	pixel_x = -24
+	},
+/obj/structure/cable,
 /turf/open/floor/carpet/arcade,
-/area/nursery)
+/area/nursery/naproom)
 "atU" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 1
@@ -12415,7 +12422,7 @@
 "aBR" = (
 /obj/machinery/door/airlock,
 /turf/open/floor/material,
-/area/nursery)
+/area/nursery/naproom)
 "aBU" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 1
@@ -47189,7 +47196,7 @@
 	pixel_y = 32
 	},
 /turf/open/floor/material,
-/area/nursery)
+/area/nursery/naproom)
 "clZ" = (
 /turf/open/floor/engine/air,
 /area/engineering/atmos)
@@ -52887,7 +52894,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/carpet/arcade,
-/area/nursery)
+/area/nursery/naproom)
 "dlp" = (
 /obj/structure/table/reinforced,
 /obj/machinery/light,
@@ -52928,7 +52935,7 @@
 	},
 /obj/structure/bookcase/random/fiction,
 /turf/open/floor/carpet/arcade,
-/area/nursery)
+/area/nursery/naproom)
 "doG" = (
 /obj/machinery/newscaster{
 	pixel_y = 32
@@ -53774,7 +53781,7 @@
 /obj/structure/bed/crib,
 /obj/item/bedsheet/random,
 /turf/open/floor/carpet/arcade,
-/area/nursery)
+/area/nursery/naproom)
 "eXz" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
@@ -53914,7 +53921,7 @@
 "flo" = (
 /obj/machinery/holopad,
 /turf/open/floor/carpet/arcade,
-/area/nursery)
+/area/nursery/naproom)
 "flP" = (
 /obj/machinery/hydroponics/soil{
 	pixel_y = 8
@@ -54002,7 +54009,7 @@
 "frG" = (
 /obj/machinery/vending/autodrobe,
 /turf/open/floor/material,
-/area/nursery)
+/area/nursery/naproom)
 "fsa" = (
 /obj/machinery/button/door{
 	id = "armory3";
@@ -54315,7 +54322,7 @@
 "fNS" = (
 /obj/machinery/vending/clothing,
 /turf/open/floor/material,
-/area/nursery)
+/area/nursery/naproom)
 "fOI" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -55310,7 +55317,7 @@
 	dir = 4
 	},
 /turf/open/floor/carpet/arcade,
-/area/nursery)
+/area/nursery/naproom)
 "hUJ" = (
 /obj/structure/reagent_dispensers/beerkeg,
 /obj/machinery/light/floor,
@@ -55522,7 +55529,7 @@
 "ioM" = (
 /obj/machinery/recharge_station,
 /turf/open/floor/material,
-/area/nursery)
+/area/nursery/naproom)
 "iql" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -56275,7 +56282,7 @@
 	name = "Nap Room"
 	},
 /turf/open/floor/material,
-/area/nursery)
+/area/nursery/naproom)
 "jDZ" = (
 /obj/machinery/atmospherics/pipe/simple/orange/hidden,
 /turf/closed/wall,
@@ -56895,12 +56902,9 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
 /obj/structure/chair/comfy/brown,
 /turf/open/floor/carpet/arcade,
-/area/nursery)
+/area/nursery/naproom)
 "kwY" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 6
@@ -57694,11 +57698,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/port)
-"lQy" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable,
-/turf/open/floor/carpet/arcade,
-/area/nursery)
 "lQF" = (
 /obj/item/toy/plush/random,
 /turf/open/floor/grass/fairy/yellow,
@@ -58202,7 +58201,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/carpet/arcade,
-/area/nursery)
+/area/nursery/naproom)
 "mKX" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -58552,7 +58551,7 @@
 "nwo" = (
 /obj/machinery/light,
 /turf/open/floor/carpet/arcade,
-/area/nursery)
+/area/nursery/naproom)
 "nwA" = (
 /obj/machinery/camera{
 	c_tag = "Construction Area";
@@ -58600,8 +58599,11 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
 /turf/open/floor/carpet/arcade,
-/area/nursery)
+/area/nursery/naproom)
 "nBI" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -58893,6 +58895,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/closed/wall/r_wall,
 /area/engineering/engine_smes)
+"ogi" = (
+/turf/open/floor/material,
+/area/nursery/naproom)
 "ohq" = (
 /obj/machinery/airalarm{
 	dir = 4;
@@ -59039,6 +59044,9 @@
 /obj/structure/musician/piano,
 /turf/open/floor/wood,
 /area/service/theater)
+"otM" = (
+/turf/closed/wall,
+/area/nursery/naproom)
 "oua" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -59180,7 +59188,7 @@
 "oDe" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/carpet/arcade,
-/area/nursery)
+/area/nursery/naproom)
 "oDm" = (
 /obj/machinery/gulag_teleporter,
 /turf/open/floor/plasteel,
@@ -60777,8 +60785,12 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/machinery/light_switch{
+	pixel_x = 24;
+	pixel_y = 6
+	},
 /turf/open/floor/carpet/arcade,
-/area/nursery)
+/area/nursery/naproom)
 "rIA" = (
 /obj/machinery/light{
 	dir = 8
@@ -61511,6 +61523,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall,
 /area/command/heads_quarters/cmo)
+"tgi" = (
+/turf/open/floor/carpet/arcade,
+/area/nursery/naproom)
 "tgH" = (
 /obj/structure/filingcabinet/employment,
 /turf/open/floor/wood,
@@ -62028,7 +62043,7 @@
 /obj/structure/bed,
 /obj/item/bedsheet/random,
 /turf/open/floor/carpet/arcade,
-/area/nursery)
+/area/nursery/naproom)
 "ubj" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -62927,7 +62942,7 @@
 	dir = 5
 	},
 /turf/open/floor/carpet/arcade,
-/area/nursery)
+/area/nursery/naproom)
 "vxz" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -63275,6 +63290,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/commons/fitness/pool)
+"wbf" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/closed/wall,
+/area/nursery/naproom)
 "wbE" = (
 /obj/effect/turf_decal/tile/blue{
 	alpha = 255
@@ -112075,11 +112096,11 @@ bsg
 bsg
 bsg
 bAN
-ktA
+otM
 nAu
 atS
 uaY
-atS
+tgi
 uaY
 asB
 atH
@@ -112332,11 +112353,11 @@ mHE
 jiM
 nlz
 bBu
-ktA
+otM
 doj
-atS
-atS
-atS
+tgi
+tgi
+tgi
 nwo
 asB
 asB
@@ -112589,15 +112610,15 @@ srH
 srH
 srH
 dPv
-ktA
+otM
 dlk
-atS
+tgi
 uaY
 flo
 uaY
-atS
+tgi
 aBR
-jSV
+ogi
 ioM
 ktA
 udl
@@ -112846,16 +112867,16 @@ mHE
 jiM
 mHE
 wvR
-ktA
+otM
 kvY
-lQy
+oDe
 oDe
 vxm
-atS
+tgi
 adv
-ktA
+otM
 clY
-jSV
+ogi
 ktA
 iIT
 xQF
@@ -113103,14 +113124,14 @@ srH
 srH
 srH
 dPv
-ktA
+otM
 mKb
 rHM
 eXk
 hUt
 eXk
 adz
-ktA
+otM
 frG
 fNS
 ktA
@@ -113360,16 +113381,16 @@ mHE
 jiM
 mHE
 kvB
-ktA
+otM
 jDw
-ktA
-ktA
-kJb
-ktA
-ktA
-ktA
-ktA
-ktA
+otM
+otM
+wbf
+otM
+otM
+otM
+otM
+otM
 ktA
 hnC
 obr
