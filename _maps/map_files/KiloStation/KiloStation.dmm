@@ -1348,14 +1348,11 @@
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/port)
 "acE" = (
-/obj/structure/table,
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral,
-/obj/item/storage/box/bodybags{
-	pixel_y = 5
-	},
-/obj/item/shovel,
+/obj/structure/table,
+/obj/item/camera,
 /turf/open/floor/plasteel/dark,
 /area/maintenance/fore)
 "acF" = (
@@ -6292,15 +6289,17 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
 "akU" = (
-/obj/structure/closet/crate/coffin,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/machinery/light_switch{
-	pixel_y = -24
-	},
+/obj/structure/closet/cabinet,
+/obj/item/clothing/glasses/sunglasses/blindfold,
+/obj/item/clothing/mask/muzzle,
+/obj/item/clothing/suit/straight_jacket,
+/obj/item/reagent_containers/food/snacks/grown/marshmallax,
+/obj/item/diaper/plain,
 /turf/open/floor/plasteel/dark,
 /area/maintenance/fore)
 "akV" = (
@@ -6370,7 +6369,6 @@
 	},
 /area/maintenance/fore)
 "akZ" = (
-/obj/structure/closet/crate/coffin,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -6378,6 +6376,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
+/obj/machinery/photocopier,
 /turf/open/floor/plasteel/dark,
 /area/maintenance/fore)
 "ala" = (
@@ -23415,13 +23414,25 @@
 /turf/open/floor/plasteel/dark,
 /area/medical/storage)
 "aNs" = (
-/obj/structure/closet/cardboard,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/old,
+/obj/structure/table,
+/obj/item/taperecorder{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/tape{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/tape{
+	pixel_x = 6;
+	pixel_y = -2
+	},
 /turf/open/floor/plasteel/dark,
 /area/maintenance/fore)
 "aNu" = (
@@ -68382,7 +68393,6 @@
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/hos)
 "cgY" = (
-/obj/structure/closet/crate/coffin,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -75542,6 +75552,7 @@
 	pixel_y = 3
 	},
 /obj/item/rack_parts,
+/obj/item/wallframe/camera,
 /turf/open/floor/plating,
 /area/nursery)
 "ctv" = (
@@ -76274,9 +76285,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/structure/transit_tube/horizontal{
-	dir = 1
-	},
+/obj/structure/transit_tube/crossing,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -78136,9 +78145,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/transit_tube/horizontal{
-	dir = 1
-	},
+/obj/structure/transit_tube/crossing,
 /turf/open/floor/plating{
 	initial_gas_mix = "o2=0.01;n2=0.01";
 	luminosity = 2
@@ -78603,7 +78610,6 @@
 /turf/open/floor/wood,
 /area/maintenance/port/fore)
 "czG" = (
-/obj/structure/closet/crate/coffin,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral{
@@ -78768,7 +78774,6 @@
 /turf/closed/wall/rust,
 /area/maintenance/port)
 "cAi" = (
-/obj/structure/closet/crate/coffin,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -78785,7 +78790,6 @@
 /turf/open/floor/wood,
 /area/maintenance/fore)
 "cAk" = (
-/obj/structure/closet/crate/coffin,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -78797,6 +78801,16 @@
 /obj/structure/noticeboard{
 	dir = 8;
 	pixel_x = 32
+	},
+/obj/structure/table,
+/obj/item/toner/large,
+/obj/item/toner/large{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/obj/item/toner/large{
+	pixel_x = 4;
+	pixel_y = 6
 	},
 /turf/open/floor/plasteel/dark,
 /area/maintenance/fore)
@@ -83867,6 +83881,12 @@
 /obj/structure/closet/firecloset,
 /turf/open/floor/plasteel,
 /area/service/chapel/dock)
+"cVD" = (
+/obj/machinery/light/small,
+/turf/open/floor/plating/asteroid/airless{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
+/area/maintenance/nursery)
 "cWu" = (
 /obj/structure/grille,
 /obj/item/shard,
@@ -84009,6 +84029,7 @@
 /obj/item/toy/talking/AI,
 /obj/item/toy/talking/owl,
 /obj/item/toy/talking/griffin,
+/obj/item/storage/dice,
 /turf/open/floor/grass/fairy/blue,
 /area/nursery/playroom)
 "dwk" = (
@@ -84820,6 +84841,10 @@
 "fHA" = (
 /turf/open/floor/plating,
 /area/space/nearstation)
+"fHC" = (
+/obj/item/diaper/hyper,
+/turf/open/floor/plating,
+/area/nursery)
 "fIp" = (
 /obj/structure/chair/brass,
 /turf/open/floor/bronze,
@@ -84940,6 +84965,7 @@
 	name = "2maintenance loot spawner"
 	},
 /obj/item/wetdiap/skunk_trainer,
+/obj/item/shovel,
 /turf/open/floor/plating/asteroid/airless{
 	initial_gas_mix = "o2=14;n2=23;TEMP=300"
 	},
@@ -85156,6 +85182,9 @@
 	dir = 8
 	},
 /obj/item/circuitboard/computer/operating,
+/obj/item/stack/sheet/glass{
+	amount = 10
+	},
 /turf/open/floor/plasteel/dark,
 /area/maintenance/department/chapel/monastery)
 "gPA" = (
@@ -85232,6 +85261,7 @@
 	},
 /obj/item/stack/sheet/mineral/wood/twenty,
 /obj/item/stack/sheet/metal/twenty,
+/obj/item/stack/sheet/glass/fifty,
 /turf/open/floor/plasteel,
 /area/nursery)
 "heZ" = (
@@ -88416,8 +88446,14 @@
 /area/service/chapel/dock)
 "rte" = (
 /obj/structure/table/wood,
-/obj/item/storage/dice,
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/item/paper_bin{
+	pixel_x = -6
+	},
+/obj/item/paper_bin/construction{
+	pixel_x = 7
+	},
+/obj/item/storage/crayons,
 /turf/open/floor/grass/fairy/blue,
 /area/nursery/playroom)
 "ruL" = (
@@ -88566,6 +88602,9 @@
 "sez" = (
 /obj/structure/flora/grass/jungle/b,
 /obj/structure/flora/ausbushes/sparsegrass,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/plating/asteroid/airless{
 	initial_gas_mix = "o2=14;n2=23;TEMP=300"
 	},
@@ -88609,6 +88648,7 @@
 /area/space/nearstation)
 "siN" = (
 /obj/machinery/vending/boozeomat/pubby_maint{
+	density = 0;
 	pixel_y = -32
 	},
 /turf/open/floor/wood,
@@ -89156,6 +89196,14 @@
 	icon_state = "panelscorched"
 	},
 /area/maintenance/starboard)
+"tOe" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plating/asteroid/airless{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
+/area/maintenance/nursery)
 "tTL" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
@@ -104764,7 +104812,7 @@ siN
 bpZ
 tWM
 bVv
-bVv
+cVD
 ucm
 viX
 frJ
@@ -106046,11 +106094,11 @@ uCt
 lFC
 uNG
 ffC
+tOe
 bVv
 bVv
 bVv
-bVv
-bVv
+cVD
 ffC
 sMt
 lbG
@@ -106292,7 +106340,7 @@ bpZ
 bpZ
 bpZ
 bpZ
-bpZ
+bUt
 rMv
 bUt
 qEt
@@ -106547,9 +106595,9 @@ aeu
 aeu
 aeu
 aeu
-aeu
-aeu
 bpZ
+fHC
+bUt
 nso
 bUt
 nrc
@@ -106806,7 +106854,7 @@ aeu
 aeu
 bpZ
 bpZ
-bpZ
+bUt
 bUt
 bUt
 bUt
@@ -107342,7 +107390,7 @@ aeu
 bAh
 aeu
 aeu
-aeu
+aeU
 aeU
 aeU
 aaa
@@ -114061,7 +114109,7 @@ adH
 czG
 cAk
 akZ
-cAU
+adQ
 cAN
 adQ
 otm
