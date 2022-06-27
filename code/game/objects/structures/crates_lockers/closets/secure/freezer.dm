@@ -113,3 +113,24 @@
 /obj/structure/closet/secure_closet/freezer/cream_pie/PopulateContents()
 	..()
 	new /obj/item/reagent_containers/food/snacks/pie/cream(src)
+
+/obj/structure/closet/secure_closet/freezer/nursery
+	name = "Nursery Fridge"
+	desc = "Contains treats to encourage healthy growth for every good boy and girl."
+	req_access = null
+	locked = FALSE
+
+/obj/structure/closet/secure_closet/freezer/nursery/PopulateContents()
+	. = ..()
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_containers/food/condiment/milk(src)
+	for(var/i = 0, i < 5, i++)
+		new /obj/item/reagent_containers/glass/babybottle/milk(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_containers/glass/sippycup/orange(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_containers/glass/sippycup/apple(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_containers/glass/sippycup/grape(src)
+	new /obj/item/reagent_containers/food/condiment/peanutbutter(src)
+	new /obj/item/reagent_containers/food/condiment/cherryjelly(src)

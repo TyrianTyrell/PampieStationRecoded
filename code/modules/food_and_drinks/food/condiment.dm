@@ -26,7 +26,8 @@
 	 /datum/reagent/consumable/sugar = list("emptycondiment", "sugar bottle", "Tasty spacey sugar!"),
 	 /datum/reagent/consumable/mayonnaise = list("mayonnaise", "mayonnaise jar", "An oily condiment made from egg yolks."),
 	 /datum/reagent/consumable/bbqsauce = list("bbqsauce", "BBQ sauce", "Hand wipes not included."),
-	 /datum/reagent/consumable/peanut_butter = list("peanutbutter", "peanut butter jar", "A deliciously and sticky spread made from peanuts."))
+	 /datum/reagent/consumable/peanut_butter = list("peanutbutter", "peanut butter jar", "A delicious and sticky spread made from peanuts."),
+	 /datum/reagent/consumable/cherryjelly = list("cherryjelly", "cherry jelly", "A sticky spread that mixes well with peanut butter."))
 	var/originalname = "condiment" //Can't use initial(name) for this. This stores the name set by condimasters.
 
 /obj/item/reagent_containers/food/condiment/suicide_act(mob/living/carbon/user)
@@ -227,7 +228,19 @@
 	list_reagents = list(/datum/reagent/consumable/mayonnaise = 50)
 	possible_states = list()
 
+/obj/item/reagent_containers/food/condiment/peanutbutter
+	name = "peanut butter"
+	desc = "A delicious and sticky spread made from peanuts."
+	icon_state = "peanut_butter"
+	list_reagents = list(/datum/reagent/consumable/peanut_butter = 50)
+	possible_states = list()
 
+/obj/item/reagent_containers/food/condiment/cherryjelly
+	name = "cherry jelly"
+	desc = "A sticky spread that mixes well with peanut butter."
+	icon_state = "cherry_jelly"
+	list_reagents = list(/datum/reagent/consumable/cherryjelly = 50)
+	possible_states = list()
 
 //Food packs. To easily apply deadly toxi... delicious sauces to your food!
 

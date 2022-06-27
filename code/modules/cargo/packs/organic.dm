@@ -260,6 +260,21 @@
 					/obj/item/reagent_containers/food/snacks/grown/pumpkin)
 	crate_name = "veggie crate"
 
+/datum/supply_pack/organic/sandwichfillings
+	name = "Sandwich Fillings Crate"
+	desc = "A variety of goods to prepare some mouth-watering sandwiches."
+	cost = 1500
+	contains = list(/obj/item/reagent_containers/food/condiment/peanutbutter,
+					/obj/item/reagent_containers/food/condiment/cherryjelly,
+					/obj/item/reagent_containers/food/condiment/mayonnaise,
+					/obj/item/reagent_containers/food/snacks/grown/tomato,
+					/obj/item/reagent_containers/food/snacks/grown/tomato,
+					/obj/item/reagent_containers/food/snacks/grown/cabbage,
+					/obj/item/reagent_containers/food/snacks/grown/cabbage,
+					/obj/item/reagent_containers/food/snacks/grown/onion,
+					/obj/item/reagent_containers/food/snacks/grown/onion)
+	crate_name = "sandwich crate"
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Hydroponics /////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////

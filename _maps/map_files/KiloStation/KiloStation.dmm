@@ -84353,11 +84353,7 @@
 	dir = 8
 	},
 /obj/structure/closet/crate/diaperpail,
-/obj/item/useddiap/skunk_trainer{
-	pixel_x = -5;
-	pixel_y = -3
-	},
-/obj/item/useddiap/space,
+/obj/effect/spawner/lootdrop/diaperused,
 /turf/open/floor/carpet/arcade,
 /area/nursery/naproom)
 "eqU" = (
@@ -88708,7 +88704,7 @@
 /turf/open/floor/plasteel/dark,
 /area/maintenance/department/chapel/monastery)
 "srE" = (
-/obj/structure/closet/secure_closet/freezer/meat/open,
+/obj/structure/closet/secure_closet/freezer/nursery,
 /turf/open/floor/plasteel,
 /area/nursery)
 "srH" = (
@@ -90182,6 +90178,7 @@
 /obj/item/bedsheet/random{
 	dir = 1
 	},
+/obj/effect/spawner/lootdrop/diaper,
 /turf/open/floor/carpet/arcade,
 /area/nursery/naproom)
 "wYk" = (
