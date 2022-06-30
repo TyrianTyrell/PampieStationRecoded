@@ -25,7 +25,7 @@
 		break
 
 /datum/round_event/spontaneous_disability/proc/traumatize(mob/living/carbon/human/H)
-	var/trauma_type = pickweight(list(
+	var/trauma = pickweight(list(
 		/datum/brain_trauma/severe/deaf = 20,
 		/datum/brain_trauma/severe/blindness = 20,
 		/datum/brain_trauma/severe/mute = 25,
@@ -34,4 +34,4 @@
 		/datum/brain_trauma/severe/paralysis/quadriplegic = 5
 	))
 
-	H.gain_trauma_type(trauma_type, TRAUMA_RESILIENCE_ABSOLUTE)
+	H.gain_trauma(trauma, TRAUMA_RESILIENCE_ABSOLUTE)
