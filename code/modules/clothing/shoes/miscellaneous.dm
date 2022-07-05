@@ -577,3 +577,59 @@
 /obj/item/clothing/shoes/booties/poly/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/polychromic, poly_colors, 2)
+
+
+	////////////////
+	//LOCKING BAB//
+	//////////////
+
+
+/obj/item/key/bootie
+	name = "Bootie Key"
+	desc = "A key for the childproof lock on Booties"
+
+/obj/item/clothing/shoes/booties/locked
+	name = "Locking Booties"
+	desc = "Soft Shoes, very soft. They have a built in childproof lock and prevent the wearer from being able to stand up."
+	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/booties
+	var/treat_path = /obj/item/key/bootie
+	var/lock = FALSE
+
+/obj/item/clothing/shoes/booties/locked/attackby(obj/item/K, mob/user, params)
+	if(istype(K, /obj/item/key/bootie))
+		if(lock != FALSE)
+			to_chat(user, "<span class='warning'>With a click the booties unlocks!</span>")
+			lock = FALSE
+		else
+			to_chat(user, "<span class='warning'>With a click the booties locks!</span>")
+			lock = TRUE
+	return
+
+/obj/item/clothing/shoes/booties/locked/Initialize()
+	. = ..()
+	if(treat_path)
+		new treat_path(src)
+
+
+/obj/item/clothing/shoes/booties/locked/on_attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)
+	if(loc == user && user.get_item_by_slot(SLOT_SHOES) && lock != FALSE)
+		to_chat(user, "<span class='warning'>The booties are locked! You'll need unlock the booties before you can take them off!</span>")
+		return
+	..()
+
+//VVVVV THIS CODE HERE CAN GO GET EATEN BY ASH DRAKE! WHY MUST YOU FIGHT ME SO! VVVVVV
+//obj/item/clothing/gloves/booties/locked/proc/use_buffs(mob/user, buff)
+//	if(buff)
+//		if(ishuman(user))
+//			var/mob/living/carbon/human/H = user
+//			ADD_TRAIT(H, TRAIT_PARALYSIS_L_LEG, TRAIT_PARALYSIS_R_LEG)
+//	else
+//		REMOVE_TRAIT(user, TRAIT_PARALYSIS_L_LEG, TRAIT_PARALYSIS_R_LEG)
+
+/obj/item/clothing/shoes/booties/locked/pink
+	icon_state = "booties_pink"
+	item_state = "booties_pink"
+
+/obj/item/clothing/shoes/booties/locked/blue
+	icon_state = "booties_blue"
+	item_state = "booties_blue"

@@ -35,6 +35,28 @@
 	/obj/item/reagent_containers/food/snacks/sugarcookie,
 	/obj/item/key/collar))
 
+/datum/component/storage/concrete/pockets/small/mittens
+	max_items = 1
+
+/datum/component/storage/concrete/pockets/small/mittens/Initialize()
+	. = ..()
+	can_hold = typecacheof(list(
+		/obj/item/reagent_containers/food/snacks/cookie,
+		/obj/item/reagent_containers/food/snacks/sugarcookie,
+		/obj/item/key/mitten
+	))
+
+/datum/component/storage/concrete/pockets/small/booties
+	max_items = 1
+
+/datum/component/storage/concrete/pockets/small/booties/Initialize()
+	. =..()
+	can_hold = typecacheof(list(
+		/obj/item/reagent_containers/food/snacks/cookie,
+		/obj/item/reagent_containers/food/snacks/sugarcookie,
+		/obj/item/key/bootie
+	))
+
 /datum/component/storage/concrete/pockets/tiny
 	max_items = 1
 	max_w_class = WEIGHT_CLASS_TINY
