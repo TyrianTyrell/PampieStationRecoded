@@ -584,19 +584,19 @@
 	//////////////
 
 
-/obj/item/key/bootie
-	name = "Bootie Key"
-	desc = "A key for the childproof lock on Booties"
+/obj/item/key/baby
+	name = "Baby Key"
+	desc = "A key for the childproof lock for Booties and Mittens."
 
 /obj/item/clothing/shoes/booties/locked
 	name = "Locking Booties"
 	desc = "Soft Shoes, very soft. They have a built in childproof lock and prevent the wearer from being able to stand up."
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/booties
-	var/treat_path = /obj/item/key/bootie
+	var/treat_path = /obj/item/key/baby
 	var/lock = FALSE
 
 /obj/item/clothing/shoes/booties/locked/attackby(obj/item/K, mob/user, params)
-	if(istype(K, /obj/item/key/bootie))
+	if(istype(K, /obj/item/key/baby))
 		if(lock != FALSE)
 			to_chat(user, "<span class='warning'>With a click the booties unlocks!</span>")
 			lock = FALSE
