@@ -157,7 +157,7 @@
 					/obj/item/clothing/head/bonnet/poly = 1,
 					/obj/item/clothing/mask/polypacifier = 1,
 					/obj/item/clothing/mask/pacivape = 1,
-					/obj/item/clothing/gloves/mittens/locked/blue = 5,
+					/obj/item/clothing/gloves/mittens/locked/pink = 5,
 					/obj/item/clothing/gloves/mittens/locked/blue = 5,
 					/obj/item/clothing/shoes/booties/locked/pink = 5,
 					/obj/item/clothing/shoes/booties/locked/blue = 5,
