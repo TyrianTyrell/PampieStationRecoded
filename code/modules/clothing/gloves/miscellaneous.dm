@@ -410,19 +410,15 @@
 	//LOCKING BAB//
 	//////////////
 
-/obj/item/key/mitten
-	name = "Mitten Key"
-	desc = "A key for the childproof lock on mittens."
-
 /obj/item/clothing/gloves/mittens/locked
 	name = "Locking Mittens"
 	desc = "These are for babies and make handling just about anything impossible. Comes with a built in childproof lock!"
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/mittens
-	var/treat_path = /obj/item/key/mitten
+	var/treat_path = /obj/item/key/baby
 	var/lock = FALSE
 
 /obj/item/clothing/gloves/mittens/locked/attackby(obj/item/K, mob/user, params)
-	if(istype(K, /obj/item/key/mitten))
+	if(istype(K, /obj/item/key/baby))
 		if(lock != FALSE)
 			to_chat(user, "<span class='warning'>With a click the mittens unlocks!</span>")
 			lock = FALSE
