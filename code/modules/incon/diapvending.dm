@@ -158,7 +158,7 @@
 					/obj/item/clothing/gloves/mittens/locked/pink = 5,
 					/obj/item/clothing/gloves/mittens/locked/blue = 5,
 					/obj/item/clothing/shoes/booties/locked/pink = 5,
-					/obj/item/clothing/shoes/booties/locked/blue = 5\
+					/obj/item/clothing/shoes/booties/locked/blue = 5
 					)
 	armor = list("melee" = 100, "bullet" = 100, "laser" = 100, "energy" = 100, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50)
 	resistance_flags = FIRE_PROOF
