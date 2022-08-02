@@ -102,6 +102,7 @@
 "yY" = (/obj/structure/bed,/obj/item/bedsheet/black,/turf/open/floor/wood,/area/awaymission/daycare)
 "zh" = (/obj/structure/bed{dir = 1},/obj/item/bedsheet/blue{dir = 1},/obj/item/toy/plush/dan,/turf/open/floor/wood,/area/awaymission/daycare)
 "zI" = (/obj/machinery/light/small{dir = 8},/turf/open/floor/wood,/area/awaymission/daycare)
+"zK" = (/obj/structure/closet,/obj/item/clothing/shoes/booties/locked/pink,/obj/item/clothing/shoes/booties/locked/pink,/obj/item/clothing/shoes/booties/locked/blue,/obj/item/clothing/shoes/booties/locked/blue,/obj/item/clothing/gloves/mittens/locked/pink,/obj/item/clothing/gloves/mittens/locked/pink,/obj/item/clothing/gloves/mittens/locked/blue,/obj/item/clothing/gloves/mittens/locked/blue,/obj/item/clothing/neck/petcollar/locked,/obj/item/clothing/neck/petcollar/locked,/obj/item/clothing/neck/petcollar/locked,/obj/item/clothing/neck/petcollar/locked,/turf/open/floor/wood,/area/awaymission/daycare)
 "Ac" = (/obj/machinery/light{dir = 4},/turf/open/floor/wood,/area/awaymission/daycare)
 "Ad" = (/obj/machinery/atmospherics/components/binary/pump{dir = 1; name = "pump to holding cell"},/turf/open/floor/wood,/area/awaymission/daycare)
 "Ao" = (/obj/effect/spawner/structure/window/reinforced,/obj/structure/barricade/wooden,/turf/open/floor/wood,/area/awaymission/daycare)
@@ -141,7 +142,7 @@
 "HY" = (/obj/machinery/door/airlock/wood,/turf/open/floor/wood,/area/awaymission/daycare)
 "Iq" = (/obj/structure/table/wood,/obj/item/flashlight/lamp/green{pixel_x = 9; pixel_y = -2},/turf/open/floor/carpet,/area/awaymission/daycare)
 "Ir" = (/obj/structure/bed,/obj/item/bedsheet/red,/obj/item/toy/plush/mothplushie,/turf/open/floor/wood,/area/awaymission/daycare)
-"Iw" = (/obj/structure/closet/secure_closet/freezer/meat,/turf/open/floor/plasteel/cafeteria,/area/awaymission/daycare)
+"Iw" = (/obj/structure/closet/secure_closet/freezer/nursery,/turf/open/floor/plasteel/cafeteria,/area/awaymission/daycare)
 "IT" = (/turf/open/floor/grass/fairy/red,/area/awaymission/daycare)
 "JI" = (/obj/structure/table/wood,/obj/item/flashlight/lamp/green{pixel_x = -5; pixel_y = 8},/turf/open/floor/wood,/area/awaymission/daycare)
 "JO" = (/turf/open/floor/wood{icon_state = "wood-broken2"},/area/awaymission/daycare)
@@ -183,7 +184,7 @@
 "RZ" = (/obj/machinery/button{name = "cafeteria shutters"; pixel_x = 28; pixel_y = 28; tag = "daycareKitchen"},/turf/open/floor/plasteel/cafeteria,/area/awaymission/daycare)
 "Sh" = (/obj/structure/table/wood,/obj/item/paper/pamphlet/daycareCover,/turf/open/floor/wood,/area/awaymission/daycare)
 "Sl" = (/obj/effect/spawner/structure/window/reinforced,/obj/machinery/door/poddoor/preopen{name = "privacy shutters"; tag = "luxuryPrivacy"},/turf/open/floor/wood,/area/awaymission/daycare)
-"Sn" = (/obj/structure/closet/crate/trashcart,/turf/open/floor/plating/dirt/daycare,/area/awaymission/daycare)
+"Sn" = (/obj/structure/closet/crate/trashcart,/obj/item/diaper/underwear{pixel_x = 4},/obj/item/diaper/underwear{pixel_y = -3; pixel_x = -4},/obj/item/diaper/underwear,/obj/item/useddiap/underwear{pixel_x = 5; pixel_y = 5},/obj/item/wetdiap/underwear{pixel_y = -9; pixel_x = -7},/obj/item/poopydiap/underwear{pixel_x = -8; pixel_y = 6},/turf/open/floor/plating/dirt/daycare,/area/awaymission/daycare)
 "SQ" = (/obj/structure/fence/cut/medium{dir = 4},/turf/open/floor/grass,/area/awaymission/daycare)
 "Tp" = (/obj/structure/fence/cut/large{dir = 4},/turf/open/floor/grass,/area/awaymission/daycare)
 "Ts" = (/obj/effect/decal/cleanable/blood/drip,/turf/open/floor/wood,/area/awaymission/daycare)
@@ -243,7 +244,7 @@ xLGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkZXZXZXZXZXZXZXZXZXZXZXZXQnZXZXZX
 xLGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkZXZXZXZXZXZXZXZXQnZXZXZXZXZXZXZXZXZXEYZXZXZXZXZXZXZXZXYNHFiejYYNaYYNYNYNYNYNYNYNYNpsYNYNYNYNYNYNYNYNYNoeYmYmwcYNZXZXZXZXEYZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXQnZXZXZXZXZXZXZXZXZXZXGkGkGkGkGkGkGkGkGkGkGkGkxL
 xLGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXEYZXZXZXZXYNYNYNYNYNYNYNYNYNYmYmYmYmYmYmYmYmYmYmYmYmYmYmYmYmYNYmYNKLcOYmdsYNZXZXZXZXEYZXZXZXZXZXZXZXQnZXZXZXZXZXZXZXZXZXZXZXZXZXZXQnZXZXZXZXZXZXZXZXQnZXZXZXZXZXGkGkGkGkGkGkGkGkGkGkGkGkxL
 xLGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXEYZXZXZXZXYNMCGoNCnOYNYmYmYmYmpzYmYmYmYmYmPEYmYmYmYmYmVGYmYmYNYNYNoyYmYmiEYNZXZXZXZXEYZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXQnZXZXZXZXZXZXZXZXZXZXZXZXCvZXZXZXZXZXZXZXZXGkGkGkGkGkGkGkGkGkGkGkGkxL
-xLGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXEYZXZXZXZXAoYmYmsgYmYmYmTsYmYmYmYmYmYNDsYNYNYNDsYNvtYNYNYNxqYNRcYNYNYNYNYNYNZXZXZXZXEYZXZXZXQnZXZXZXZXZXZXZXZXCvZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXGkGkGkGkGkGkGkGkGkGkGkxL
+xLGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXEYZXZXZXZXAoYmYmsgYmYmYmTsYmYmYmYmzKYNDsYNYNYNDsYNvtYNYNYNxqYNRcYNYNYNYNYNYNZXZXZXZXEYZXZXZXQnZXZXZXZXZXZXZXZXCvZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXGkGkGkGkGkGkGkGkGkGkGkxL
 xLGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXEYZXZXZXZXAoYmuiuiYmYNYNByYNYNqiYNYNYNOiXGKmybOiXRRZBiHUYNYmVDODYNZXZXZXZXZXZXZXZXZXEYZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXGkGkGkGkGkGkGkGkGkGkGkxL
 xLGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkZXZXZXZXZXZXZXZXZXZXQnZXZXZXZXEYZXZXZXZXYNYmuiuiYmShYmYmYNMZQUBPNXYNOiXGOiybOiXROiOiOiYNYmVDMEYNZXZXZXZXZXZXZXZXZXEYZXZXZXZXZXQnZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXQnZXZXZXZXZXZXZXZXZXZXZXGkGkGkGkGkGkGkGkGkGkxL
 xLGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkGkZXZXZXZXZXCvZXZXZXZXZXZXZXZXZXEYZXZXZXMKdRYmuiuiYmnOXxAcYNppmxYNYNYNOiOiOiOiOiXROigPdXYNYmFIFIYNZXZXZXZXZXZXZXZXZXEYZXZXQnZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXZXCvZXZXZXZXZXZXZXZXZXCvZXZXZXZXZXZXGkGkGkGkGkGkGkGkGkGkxL
