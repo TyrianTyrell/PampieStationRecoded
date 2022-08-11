@@ -43,7 +43,7 @@
 	can_hold = typecacheof(list(
 		/obj/item/reagent_containers/food/snacks/cookie,
 		/obj/item/reagent_containers/food/snacks/sugarcookie,
-		/obj/item/key/mitten
+		/obj/item/key/baby
 	))
 
 /datum/component/storage/concrete/pockets/small/booties
@@ -54,7 +54,7 @@
 	can_hold = typecacheof(list(
 		/obj/item/reagent_containers/food/snacks/cookie,
 		/obj/item/reagent_containers/food/snacks/sugarcookie,
-		/obj/item/key/bootie
+		/obj/item/key/baby
 	))
 
 /datum/component/storage/concrete/pockets/tiny
