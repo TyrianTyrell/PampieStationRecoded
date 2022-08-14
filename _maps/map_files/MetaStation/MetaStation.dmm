@@ -1763,7 +1763,7 @@
 	name = "3maintenance loot spawner"
 	},
 /obj/effect/spawner/lootdrop/armory_contraband{
-	loot = list(/obj/item/gun/ballistic/automatic/pistol = 5, /obj/item/gun/ballistic/shotgun/automatic/combat = 5, /obj/item/gun/ballistic/revolver/mateba, /obj/item/gun/ballistic/automatic/pistol/deagle, /obj/item/storage/box/syndie_kit/throwing_weapons = 3)
+	loot = list(/obj/item/gun/ballistic/automatic/pistol=5,/obj/item/gun/ballistic/shotgun/automatic/combat=5,/obj/item/gun/ballistic/revolver/mateba,/obj/item/gun/ballistic/automatic/pistol/deagle,/obj/item/storage/box/syndie_kit/throwing_weapons=3)
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -57147,7 +57147,7 @@
 "iqV" = (
 /obj/structure/table/wood/poker,
 /obj/effect/spawner/lootdrop{
-	loot = list(/obj/item/gun/ballistic/revolver/russian = 5, /obj/item/storage/box/syndie_kit/throwing_weapons, /obj/item/toy/cards/deck/syndicate = 2);
+	loot = list(/obj/item/gun/ballistic/revolver/russian=5,/obj/item/storage/box/syndie_kit/throwing_weapons,/obj/item/toy/cards/deck/syndicate=2);
 	name = "gambling valuables spawner"
 	},
 /turf/open/floor/wood,
@@ -65659,7 +65659,7 @@
 /turf/open/floor/grass/fairy/yellow,
 /area/nursery)
 "nsy" = (
-/obj/machinery/status_display{
+/obj/machinery/status_display/ai{
 	pixel_x = -32
 	},
 /turf/open/floor/grass/fairy,
@@ -77678,6 +77678,9 @@
 /obj/item/stamp/hop{
 	pixel_x = -4;
 	pixel_y = 4
+	},
+/obj/machinery/status_display/ai{
+	pixel_x = 32
 	},
 /turf/open/floor/wood,
 /area/command/heads_quarters/hop)

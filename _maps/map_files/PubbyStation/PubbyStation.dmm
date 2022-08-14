@@ -16877,7 +16877,7 @@
 /area/service/cafeteria/lunchroom)
 "aNb" = (
 /obj/machinery/vending/sustenance{
-	contraband = list(/obj/item/kitchen/knife = 6, /obj/item/reagent_containers/food/drinks/coffee = 12);
+	contraband = list(/obj/item/kitchen/knife=6,/obj/item/reagent_containers/food/drinks/coffee=12);
 	desc = "A vending machine which vends food.";
 	product_ads = "Sufficiently healthy."
 	},
@@ -27176,6 +27176,9 @@
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
+	},
+/obj/machinery/status_display/ai{
+	pixel_x = -32
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/robotics/lab)
@@ -39832,7 +39835,7 @@
 	input_tag = "mix_in";
 	name = "Gas Mix Tank Control";
 	output_tag = "mix_in";
-	sensors = list("mix_sensor" = "Tank")
+	sensors = list("mix_sensor"="Tank")
 	},
 /obj/effect/turf_decal/tile/yellow,
 /obj/effect/turf_decal/tile/yellow{
@@ -41361,7 +41364,7 @@
 	input_tag = "n2o_in";
 	name = "Nitrous Oxide Supply Control";
 	output_tag = "n2o_out";
-	sensors = list("n2o_sensor" = "Tank")
+	sensors = list("n2o_sensor"="Tank")
 	},
 /obj/effect/turf_decal/tile/yellow,
 /obj/effect/turf_decal/tile/yellow{
@@ -42745,7 +42748,7 @@
 	input_tag = "tox_in";
 	name = "Plasma Supply Control";
 	output_tag = "tox_out";
-	sensors = list("tox_sensor" = "Tank")
+	sensors = list("tox_sensor"="Tank")
 	},
 /obj/effect/turf_decal/tile/yellow,
 /obj/effect/turf_decal/tile/yellow{
@@ -47805,11 +47808,10 @@
 /turf/closed/wall,
 /area/service/chapel/main/monastery)
 "chL" = (
-/obj/machinery/status_display,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
+/obj/machinery/status_display/ai{
+	pixel_y = 32
 	},
-/turf/closed/wall/mineral/iron,
+/turf/open/floor/grass/fairy,
 /area/nursery)
 "chM" = (
 /obj/machinery/door/airlock{
@@ -53361,10 +53363,10 @@
 	},
 /area/maintenance/department/engine)
 "dCm" = (
-/obj/structure/reagent_dispensers/keg/milk,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
+/obj/structure/closet/secure_closet/freezer/nursery,
 /turf/open/floor/plasteel,
 /area/nursery)
 "dDb" = (
@@ -60316,6 +60318,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/structure/reagent_dispensers/keg/milk,
 /turf/open/floor/plasteel,
 /area/nursery)
 "rYC" = (
@@ -60404,12 +60407,12 @@
 /turf/closed/wall/r_wall,
 /area/space/nearstation)
 "sib" = (
-/obj/machinery/status_display,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/cyan/hidden,
+/obj/machinery/status_display/ai{
+	pixel_y = -32
 	},
-/turf/closed/wall/mineral/iron,
-/area/nursery)
+/turf/open/floor/plasteel/dark,
+/area/security/prison)
 "sij" = (
 /obj/structure/closet,
 /obj/item/reagent_containers/food/snacks/meat/slab/monkey,
@@ -61140,6 +61143,9 @@
 /obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
+	},
+/obj/machinery/status_display/ai{
+	pixel_y = 32
 	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/nursery)
@@ -82407,7 +82413,7 @@ cfI
 jSa
 cgL
 chq
-chL
+oQk
 cip
 eNc
 pZJ
@@ -82664,8 +82670,8 @@ cfJ
 jSa
 cgM
 chr
+oQk
 chL
-lxI
 qWo
 hpv
 kSt
@@ -83833,7 +83839,7 @@ aeV
 afq
 afF
 agb
-agb
+sib
 agA
 agA
 agA
@@ -83952,7 +83958,7 @@ fJo
 vco
 fJo
 vco
-sib
+ciF
 tFr
 iXx
 qMl
