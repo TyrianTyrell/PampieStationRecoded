@@ -2811,11 +2811,9 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/smes{
-	charge = 1.5e+006;
-	input_level = 30000;
-	inputting = 0;
-	output_level = 7000
+/obj/machinery/power/smes/magical{
+	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. It seems to be powered just fine without our intervention.";
+	name = "nanotrasen power storage unit"
 	},
 /turf/open/floor/plating,
 /area/awaymission/jungleresort)
