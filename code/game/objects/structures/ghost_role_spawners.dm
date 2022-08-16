@@ -11,6 +11,7 @@
 	density = TRUE
 	roundstart = FALSE
 	death = FALSE
+	can_use_pref_char = TRUE
 	mob_species = /datum/species/pod
 	short_desc = "You are a sentient ecosystem, an example of the mastery over life that your creators possessed."
 	flavour_text = "Your masters, benevolent as they were, created uncounted seed vaults and spread them across \
@@ -50,6 +51,7 @@
 	anchored = FALSE
 	move_resist = MOVE_FORCE_NORMAL
 	density = FALSE
+	can_use_pref_char = TRUE
 	short_desc = "You are an ash walker. Your tribe worships the Necropolis."
 	flavour_text = "The wastes are sacred ground, its monsters a blessed bounty. You would never willingly leave your homeland behind. \
 	You have seen lights in the distance... they foreshadow the arrival of outsiders to your domain. \
@@ -119,6 +121,7 @@
 	icon_state = "sleeper"
 	roundstart = FALSE
 	death = FALSE
+	can_use_pref_char = TRUE
 	mob_species = /datum/species/shadow
 	short_desc = "You are cursed."
 	flavour_text = "Years ago, you sacrificed the lives of your trusted friends and the humanity of yourself to reach the Wish Granter. Though you \
@@ -242,6 +245,7 @@
 	roundstart = FALSE
 	death = FALSE
 	random = TRUE
+	can_use_pref_char = TRUE
 	mob_species = /datum/species/human
 	short_desc = "You've been stranded in this godless prison of a planet for longer than you can remember."
 	flavour_text = "Each day you barely scrape by, and between the terrible conditions of your makeshift shelter, \
@@ -317,6 +321,7 @@
 	outfit = /datum/outfit/lavalandprisoner
 	roundstart = FALSE
 	death = FALSE
+	can_use_pref_char = TRUE
 	short_desc = "You're a prisoner, sentenced to hard work in one of Nanotrasen's labor camps, but it seems as \
 	though fate has other plans for you."
 	flavour_text = "Good. It seems as though your ship crashed. You remember that you were convicted of "
@@ -357,6 +362,7 @@
 	death = FALSE
 	roundstart = FALSE
 	random = TRUE
+	can_use_pref_char = TRUE
 	outfit = /datum/outfit/hotelstaff
 	short_desc = "You are a staff member of a top-of-the-line space hotel!"
 	flavour_text = "You are a staff member of a top-of-the-line space hotel! Cater to guests and make sure the manager doesn't fire you."
@@ -410,6 +416,7 @@
 	death = FALSE
 	roundstart = FALSE
 	random = TRUE
+	can_use_pref_char = TRUE
 	id_job = "SuperFriend"
 	id_access = "assistant"
 	var/obj/effect/proc_holder/spell/targeted/summon_friend/spell
@@ -458,6 +465,7 @@
 	name = "Syndicate Operative"
 	roundstart = FALSE
 	death = FALSE
+	can_use_pref_char = TRUE
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	outfit = /datum/outfit/syndicate_empty
@@ -535,6 +543,7 @@
 	roundstart = FALSE
 	death = FALSE
 	random = TRUE
+	can_use_pref_char = TRUE
 	mob_species = /datum/species/human
 	short_desc = "You are a security officer working for Nanotrasen, stationed onboard a state of the art research station."
 	flavour_text = "You vaguely recall rushing into a cryogenics pod due to an oncoming radiation storm. \
@@ -563,6 +572,7 @@
 	roundstart = FALSE
 	death = FALSE
 	random = TRUE
+	can_use_pref_char = TRUE
 	mob_species = /datum/species/human
 	short_desc = "You are an engineer working for Nanotrasen, stationed onboard a state of the art research station."
 	flavour_text = "You vaguely recall rushing into a cryogenics pod due to an oncoming radiation storm. The last thing \
@@ -589,6 +599,7 @@
 	roundstart = FALSE
 	death = FALSE
 	random = TRUE
+	can_use_pref_char = TRUE
 	mob_species = /datum/species/human
 	short_desc = "You are a scientist working for Nanotrasen, stationed onboard a state of the art research station."
 	flavour_text = "You vaguely recall rushing into a cryogenics pod due to an oncoming radiation storm. \
@@ -620,6 +631,7 @@
 	death = FALSE
 	anchored = TRUE
 	density = FALSE
+	can_use_pref_char = TRUE
 	show_flavour = FALSE //Flavour only exists for spawners menu
 	short_desc = "You are a space pirate."
 	flavour_text = "The station refused to pay for your protection, protect the ship, siphon the credits from the station and raid it for even more loot."
