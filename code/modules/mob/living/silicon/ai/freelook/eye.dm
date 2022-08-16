@@ -93,6 +93,8 @@
 			ai.light_cameras()
 		if(ai.master_multicam)
 			ai.master_multicam.refresh_view()
+		if(ai.controlled_display)
+			ai.stop_controlling_display()
 
 //it uses setLoc not forceMove, talks to the sillycone and not the camera mob
 /mob/camera/aiEye/zMove(dir, feedback = FALSE)
@@ -168,6 +170,8 @@
 
 	if(!user.tracking)
 		user.cameraFollow = null
+	if(user.controlled_display)
+		user.stop_controlling_display()
 
 // Return to the Core.
 /mob/living/silicon/ai/proc/view_core()

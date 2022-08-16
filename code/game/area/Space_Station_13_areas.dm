@@ -1685,6 +1685,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Nursery"
 	icon_state = "nursery"
 
+/area/nursery/naproom
+	name = "Naproom"
+	icon_state = "naproom"
+
+/area/nursery/playroom
+	name = "Playroom"
+	icon_state = "playroom"
+
 // Telecommunications Satellite
 
 /area/tcommsat

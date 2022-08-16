@@ -64,3 +64,39 @@
 	description = "Nanotrasen has secured a contract in a reenactment of a famous movie, but we only have lethal energy based swords. Send us some convincing replicas so we save on medical costs."
 	reward = 1200
 	required_count = 3
+
+/datum/bounty/item/silly/diapers
+	name = "Diapers"
+	description = "Nanotrasen has identified an opportunity to cut into the BYPY company's revenue by selling incontinence products to citizens of a distant rimworld colony. You will be compensated for helping supply this endeavor."
+	reward = 2000
+	required_count = 10
+	wanted_types = list(/obj/item/diaper)
+	exclude_types = list(/obj/item/diaper/underwear)
+
+/datum/bounty/item/silly/diuretics
+	name = "Laxatives"
+	description = "Nanotrasen's located a Syndicate listening post in your sector, and Central Command has decided to pull a funny prank on any agents operating it. We already have the smoke machine, we just need your station to supply the diuretics!"
+	reward = 700 //Buying and selling 2 kegs will be a LOSS.
+	required_count = 500
+	wanted_types = list(/datum/reagent/medicine/diuretic)
+
+/datum/bounty/item/silly/laxative
+	name = "Laxatives"
+	description = "Nanotrasen's located a Syndicate listening post in your sector, and Central Command has decided to pull a funny prank on any agents operating it. We already have the smoke machine, we just need your station to supply the laxative!"
+	reward = 1500 //Buying and selling 2 kegs will be a LOSS.
+	required_count = 500
+	wanted_types = list(/datum/reagent/medicine/laxative)
+
+/datum/bounty/item/silly/castoroil
+	name = "Castor Oil"
+	description = "An anonymous, high-ranking Nanotrasen official has requested a large supply of castor oil to conduct some... unorthodox punishments on unspecified individuals. No questions will be accepted, just take our Credits."
+	reward = 2000
+	required_count = 500
+	wanted_types = list(/datum/reagent/medicine/castoroil)
+
+/datum/bounty/item/silly/maturity
+	name = "Maturity Serum"
+	description = "Following an incident on one of our other testing facilities, Central Command is requesting an emergency supply of so-called Maturity Serum to treat affected personnel. You will be generously compensated for your service."
+	reward = 5000
+	required_count = 500
+	wanted_types = list(/datum/reagent/medicine/maturity)

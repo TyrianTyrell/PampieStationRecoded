@@ -2,14 +2,14 @@
 	name = "Mass Hallucination"
 	typepath = /datum/round_event/mass_hallucination
 	weight = 10
-	max_occurrences = 2
+	max_occurrences = 5
 	min_players = 1
 	var/forced_hallucination
 
 /datum/round_event_control/mass_hallucination/admin_setup()
 	if(!check_rights(R_FUN))
 		return
-	
+
 	forced_hallucination = input(usr, "Choose the hallucination to apply","Send Hallucination") as null|anything in subtypesof(/datum/hallucination)
 
 /datum/round_event/mass_hallucination

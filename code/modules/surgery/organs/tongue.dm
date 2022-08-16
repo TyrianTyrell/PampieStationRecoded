@@ -216,6 +216,11 @@
 	maxHealth = 35 //Sensitive tongue!
 	initial_accents = list(/datum/accent/fluffy)
 
+/obj/item/organ/tongue/babby
+	name = "impeded tongue"
+	desc = "Looks like it's not shaped right?"
+	initial_accents = list(/datum/accent/babby)
+
 /obj/item/organ/tongue/cybernetic
 	name = "cybernetic tongue"
 	desc = "A state of the art robotic tongue that can detect the pH of anything drank."

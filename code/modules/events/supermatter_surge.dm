@@ -2,7 +2,7 @@
 	name = "Supermatter Surge"
 	typepath = /datum/round_event/supermatter_surge
 	weight = 20
-	max_occurrences = 4
+	max_occurrences = 5
 	earliest_start = 10 MINUTES
 
 /datum/round_event_control/supermatter_surge/canSpawnEvent()
@@ -36,4 +36,18 @@
 		priority_announce("Supermatter surge detected. Estimated severity is [severity]", "Anomaly Alert")
 
 /datum/round_event/supermatter_surge/start()
-	GLOB.main_supermatter_engine.matter_power += power
+	var/obj/machinery/power/supermatter_crystal/supermatter = GLOB.main_supermatter_engine
+	var/power_proportion = supermatter.powerloss_inhibitor * 0.75 // what % of the power goes into matter power, at most 50%
+	// we reduce the proportion that goes into actual matter power based on powerloss inhibitor
+	// primarily so the supermatter doesn't tesla the instant these happen
+	supermatter.matter_power += power * power_proportion
+	var/datum/gas_mixture/methane_puff = new
+	var/selected_gas = pick(4;GAS_CO2, 10;GAS_METHANE, 4;GAS_H2O, 1;GAS_BZ, 1;GAS_METHYL_BROMIDE)
+	methane_puff.set_moles(selected_gas, 500)
+	methane_puff.set_temperature(500)
+	var/energy_ratio = (power * 500 * (1-power_proportion)) / methane_puff.thermal_energy()
+	if(energy_ratio < 1) // energy output we want is lower than current energy, reduce the amount of gas we puff out
+		methane_puff.set_moles(GAS_METHANE, energy_ratio * 500)
+	else // energy output we want is higher than current energy, increase its actual heat
+		methane_puff.set_temperature(energy_ratio * 500)
+	supermatter.assume_air(methane_puff)

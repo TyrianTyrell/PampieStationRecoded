@@ -228,6 +228,10 @@
 	container_flags = TEMP_WEAK|APTFT_ALTCLICK|APTFT_VERB
 	cached_icon = "beakerlarge"
 
+////////////////////////////////////////////////////////////
+// BEGIN BAB STUFF
+////////////////////////////////////////////////////////////
+
 /obj/item/reagent_containers/glass/babybottle
 	name = "baby bottle"
 	desc = "A small plastic bottle with a nipple. Not quite airtight, it still spills."
@@ -283,6 +287,10 @@
 				filling.icon_state = "[cached_icon]90"
 		. += filling
 
+/obj/item/reagent_containers/glass/babybottle/milk
+	name = "milk bottle"
+	desc = "Provides plenty of calcium for growing bones!"
+	list_reagents = list(/datum/reagent/consumable/milk = 60)
 
 /obj/item/reagent_containers/glass/sippycup
 	name = "sippy cup"
@@ -300,6 +308,25 @@
 		param_color = pick("blue","green","orange","yellow","purple","rainbow")
 	icon_state = "[param_color]_sippy"
 	item_state = "[param_color]_sippy"
+
+/obj/item/reagent_containers/glass/sippycup/orange
+	name = "orange juice"
+	desc = "A good source of vitamin C!"
+	list_reagents = list(/datum/reagent/consumable/orangejuice = 30)
+
+/obj/item/reagent_containers/glass/sippycup/apple
+	name = "apple juice"
+	desc = "A naturally sweet juice."
+	list_reagents = list(/datum/reagent/consumable/applejuice = 30)
+
+/obj/item/reagent_containers/glass/sippycup/grape
+	name = "grape juice"
+	desc = "A naturally sweet juice."
+	list_reagents = list(/datum/reagent/consumable/grapejuice = 30)
+
+////////////////////////////////////////////////////////////
+// END BAB STUFF
+////////////////////////////////////////////////////////////
 
 /obj/item/reagent_containers/glass/beaker/meta
 	name = "metamaterial beaker"

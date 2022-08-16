@@ -716,3 +716,54 @@
 		/obj/item/ammo_casing/shotgun = 8,
 		/obj/item/ammo_casing/shotgun/incendiary = 10,
 		)
+
+/obj/effect/spawner/lootdrop/diaper
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "randomdiaper"
+	name = "random diaper"
+	lootcount = 3
+	loot = list(/obj/item/diaper/plain = 8, /obj/item/diaper/classic = 8, /obj/item/diaper/hefters_m = 8,
+				/obj/item/diaper/hefters_f = 8, /obj/item/diaper/pwrgame = 8, /obj/item/diaper/space = 8,
+				/obj/item/diaper/jeans = 8, /obj/item/diaper/punk = 8, /obj/item/diaper/thirteen = 8,
+				/obj/item/diaper/rainbow = 8, /obj/item/diaper/skunk = 8, /obj/item/diaper/blackcat = 8,
+				/obj/item/diaper/goldendog = 8, /obj/item/diaper/cloth = 8, /obj/item/diaper/swaddles = 3,
+				/obj/item/diaper/syndi/rep = 3, /obj/item/diaper/jeans_thick = 3, /obj/item/diaper/punk_thick = 3,
+				/obj/item/diaper/rainbow_thick = 3, /obj/item/diaper/leafy = 1, /obj/item/diaper/hyper = 1
+				)
+	fan_out_items = TRUE
+
+/obj/effect/spawner/lootdrop/diaperused
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "randomdiaperused"
+	name = "random used diaper"
+	lootcount = 3
+	loot = list(/obj/item/wetdiap/classic = 8, /obj/item/useddiap/classic = 8, /obj/item/useddiap/hefters_m = 8,
+				/obj/item/useddiap/pwrgame = 8, /obj/item/useddiap/hydro = 8, /obj/item/poopydiap/sci = 8,
+				/obj/item/useddiap/med = 8, /obj/item/useddiap/jeans = 8, /obj/item/poopydiap/punk_thick = 8,
+				/obj/item/useddiap/thirteen = 8, /obj/item/useddiap/rainbow = 8, /obj/item/wetdiap/fish = 8,
+				/obj/item/useddiap/skunk = 8, /obj/item/useddiap/blackcat = 8, /obj/item/poopydiap/blue_trainer = 3,
+				/obj/item/poopydiap/green_trainer = 3, /obj/item/useddiap/gmr_trainer = 3, /obj/item/wetdiap/water_trainer = 3,
+				/obj/item/useddiap/skunk_trainer = 3, /obj/item/poopydiap/underwear = 1, /obj/item/useddiap/underwear = 1
+				)
+	fan_out_items = TRUE
+
+/obj/effect/spawner/lootdrop/trainer
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "randomtrainer"
+	name = "random pull-up"
+	lootcount = 3
+	loot = list(/obj/item/diaper/blue_trainer = 8, /obj/item/diaper/pink_trainer = 8, /obj/item/diaper/green_trainer = 8,
+				/obj/item/diaper/skunk_trainer = 8, /obj/item/diaper/space_trainer = 8, /obj/item/diaper/sky_trainer = 8,
+				/obj/item/diaper/water_trainer = 8, /obj/item/diaper/gmr_trainer = 8
+				)
+	fan_out_items = TRUE
+
+/* For the future...
+/obj/effect/spawner/lootdrop/underwear
+	icon = 'icons/incon/diaper.dmi'
+	icon_state = "randomunderwear"
+	name = "random undies"
+	lootcount = 3
+	loot = list(/obj/item/diaper/underwear = 8)
+	fan_out_items = TRUE
+*/

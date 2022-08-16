@@ -405,3 +405,44 @@
 /obj/item/clothing/gloves/mittens/poly/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/polychromic, poly_colors, 1)
+
+	////////////////
+	//LOCKING BAB//
+	//////////////
+
+/obj/item/clothing/gloves/mittens/locked
+	name = "Locking Mittens"
+	desc = "These are for babies and make handling just about anything impossible. Comes with a built in childproof lock!"
+	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/mittens
+	var/treat_path = /obj/item/key/baby
+	var/lock = FALSE
+
+/obj/item/clothing/gloves/mittens/locked/attackby(obj/item/K, mob/user, params)
+	if(istype(K, /obj/item/key/baby))
+		if(lock != FALSE)
+			to_chat(user, "<span class='warning'>With a click the mittens unlocks!</span>")
+			lock = FALSE
+		else
+			to_chat(user, "<span class='warning'>With a click the mittens locks!</span>")
+			lock = TRUE
+	return
+
+/obj/item/clothing/gloves/mittens/locked/Initialize()
+	. = ..()
+	if(treat_path)
+		new treat_path(src)
+
+
+/obj/item/clothing/gloves/mittens/locked/on_attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)
+	if(loc == user && user.get_item_by_slot(SLOT_GLOVES) && lock != FALSE)
+		to_chat(user, "<span class='warning'>The mittens are locked! You'll need unlock the mittens before you can take them off!</span>")
+		return
+	..()
+
+/obj/item/clothing/gloves/mittens/locked/pink
+	icon_state = "mittens_pink"
+	item_state = "mittens_pink"
+
+/obj/item/clothing/gloves/mittens/locked/blue
+	icon_state = "mittens_blue"
+	item_state = "mittens_blue"
