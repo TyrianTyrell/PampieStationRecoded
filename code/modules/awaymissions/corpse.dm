@@ -52,6 +52,8 @@
 	var/ghost_role = alert(latejoinercalling ? "Latejoin as [mob_name]? (This is a ghost role, and as such, it's very likely to be off-station.)" : "Become [mob_name]? (Warning, You can no longer be cloned!)",,"Yes","No")
 	if(ghost_role == "No" || !loc)
 		return
+	if(!extra_prompts(user))
+		return
 	if(QDELETED(src) || QDELETED(user))
 		return
 	if(latejoinercalling)
@@ -60,7 +62,10 @@
 			NP.close_spawn_windows()
 			NP.stop_sound_channel(CHANNEL_LOBBYMUSIC)
 	log_game("[key_name(user)] became [mob_name]")
-	create(ckey = user.ckey)
+	create(user, user.ckey, null)
+	return TRUE
+
+/obj/effect/mob_spawn/proc/extra_prompts(mob/user)
 	return TRUE
 
 /obj/effect/mob_spawn/Initialize(mapload)
@@ -89,7 +94,7 @@
 /obj/effect/mob_spawn/proc/equip(mob/M)
 	return
 
-/obj/effect/mob_spawn/proc/create(ckey, name)
+/obj/effect/mob_spawn/proc/create(mob/user, ckey, name)
 	var/mob/living/M = new mob_type(get_turf(src)) //living mobs only
 	if(!random)
 		M.real_name = mob_name ? mob_name : M.name
@@ -138,6 +143,47 @@
 	if(!permanent && !uses)
 		qdel(src)
 
+/obj/effect/mob_spawn/human/create(mob/user, ckey, name)
+	var/mob/living/carbon/human/H = new mob_type(get_turf(src))
+	if(is_pref_char && user?.client)
+		user.client.prefs.copy_to(H)
+		H.dna.update_dna_identity()
+		if(alias)
+			H.name = alias
+			H.real_name = alias
+		H.dna.species.before_equip_job(null, H)
+		H.regenerate_icons()
+
+	equip(H)
+
+	if(ckey)
+		H.ckey = ckey
+		if(show_flavour)
+			var/output_message = "<span class='big bold'>[short_desc]</span>"
+			if(flavour_text != "")
+				output_message += "\n<span class='bold'>[flavour_text]</span>"
+			if(important_info != "")
+				output_message += "\n<span class='userdanger'>[important_info]</span>"
+			to_chat(H, output_message)
+		var/datum/mind/MH = H.mind
+		var/datum/antagonist/A
+		if(antagonist_type)
+			A = MH.add_antag_datum(antagonist_type)
+		if(objectives)
+			if(!A)
+				A = MH.add_antag_datum(/datum/antagonist/custom)
+			for(var/objective in objectives)
+				var/datum/objective/O = new/datum/objective(objective)
+				O.owner = MH
+				A.objectives += O
+		if(assignedrole)
+			H.mind.assigned_role = assignedrole
+		special(H, name)
+		MH.name = H.real_name
+	else
+		. = ..()
+
+
 // Base version - place these on maps/templates.
 /obj/effect/mob_spawn/human
 	mob_type = /mob/living/carbon/human
@@ -177,6 +223,11 @@
 	var/hair_style
 	var/facial_hair_style
 	var/skin_tone
+	var/can_use_pref_char = TRUE
+	var/alias = null
+	var/any_station_species = FALSE
+	var/is_pref_char
+	var/last_ckey
 
 /obj/effect/mob_spawn/human/Initialize()
 	if(ispath(outfit))
@@ -184,6 +235,40 @@
 	if(!outfit)
 		outfit = new /datum/outfit
 	return ..()
+
+/obj/effect/mob_spawn/human/extra_prompts(mob/user)
+	last_ckey = user.ckey
+	is_pref_char = null
+	if(can_use_pref_char)
+		var/init_string = "Spawn as a random character, or the one in your preferences?"
+		var/action = alert(user, init_string, "","Random","Preferences")
+		if(action && action == "Preferences")
+			var/warn_string = "WARNING: This will use character [user.client.prefs.real_name]. Please make sure they have an in-character reason to be there. Proceed?"
+			var/action2 = alert(user, warn_string, "", "Yes", "No")
+			if(action2 && action2 == "Yes")
+				is_pref_char = TRUE
+			else
+				return FALSE
+
+	if(alias)
+		var/action = alert(user, "Use an alias? This changes your name.", "", "Yes", "No")
+		if(action && action == "Yes")
+			var/msg = reject_bad_name(input(user, "Set your alias.", "Alias") as text|null)
+			if(!msg)
+				return FALSE
+			alias = msg
+
+	if(is_pref_char)
+		if(!any_station_species && user.client.prefs.pref_species != mob_species && mob_species != null)
+			alert(user, "This role can only be done by a [mob_species]. Please change characters.")
+			return FALSE
+
+	if(QDELETED(src) || QDELETED(user))
+		return FALSE
+
+	if(last_ckey != user.ckey)
+		return FALSE
+	return TRUE
 
 /obj/effect/mob_spawn/human/equip(mob/living/carbon/human/H)
 	if(mob_species)
@@ -346,6 +431,7 @@
 	death = FALSE
 	roundstart = FALSE
 	random = TRUE
+	can_use_pref_char = TRUE
 	name = "sleeper"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
@@ -402,6 +488,7 @@
 	death = FALSE
 	roundstart = FALSE
 	random = TRUE
+	can_use_pref_char = TRUE
 	job_description = "Off-station Bartender"
 	name = "bartender sleeper"
 	icon = 'icons/obj/machines/sleeper.dmi'
@@ -427,6 +514,7 @@
 	death = FALSE
 	roundstart = FALSE
 	random = TRUE
+	can_use_pref_char = TRUE
 	job_description = "Beach Biodome Bum"
 	mob_name = "Beach Bum"
 	name = "beach bum sleeper"
@@ -517,6 +605,7 @@
 /obj/effect/mob_spawn/human/commander/alive
 	death = FALSE
 	roundstart = FALSE
+	can_use_pref_char = TRUE
 	job_description = "Nanotrasen Commander"
 	mob_name = "Nanotrasen Commander"
 	name = "sleeper"
@@ -527,6 +616,7 @@
 /obj/effect/mob_spawn/human/nanotrasensoldier/alive
 	death = FALSE
 	roundstart = FALSE
+	can_use_pref_char = TRUE
 	mob_name = "Private Security Officer"
 	job_description = "Nanotrasen Security"
 	name = "sleeper"
@@ -547,6 +637,7 @@
 /obj/effect/mob_spawn/human/skeleton/alive
 	death = FALSE
 	roundstart = FALSE
+	can_use_pref_char = TRUE
 	job_description = "Skeleton"
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "remains"
@@ -563,6 +654,7 @@
 /obj/effect/mob_spawn/human/zombie/alive
 	death = FALSE
 	roundstart = FALSE
+	can_use_pref_char = TRUE
 	job_description = "Zombie"
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "remains"
@@ -589,6 +681,7 @@
 	mob_name = "Bar patron"
 	random = TRUE
 	permanent = TRUE
+	can_use_pref_char = TRUE
 	uses = -1
 	outfit = /datum/outfit/spacebartender
 	assignedrole = "Space Bar Patron"
@@ -620,6 +713,7 @@
 	job_description = "Cydonian Knight"
 	death = FALSE
 	random = TRUE
+	can_use_pref_char = TRUE
 	outfit = /datum/outfit/lavaknight
 	mob_species = /datum/species/human
 	flavour_text = "<font size=3><b>Y</b></font><b>ou are a knight who conveniently has some form of retrograde amnesia. \
