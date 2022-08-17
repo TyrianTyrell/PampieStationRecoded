@@ -150,8 +150,8 @@
 		qdel(src)
 
 /obj/effect/mob_spawn/human/create(mob/user, ckey, name)
-	var/mob/living/carbon/human/H = new mob_type(get_turf(src))
 	if(is_pref_char && user?.client)
+		var/mob/living/carbon/human/H = new mob_type(get_turf(src))
 		user.client.prefs.copy_to(H)
 		H.dna.update_dna_identity()
 		if(alias)
