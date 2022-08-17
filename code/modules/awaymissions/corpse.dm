@@ -91,6 +91,11 @@
 /obj/effect/mob_spawn/proc/special(mob/M)
 	return
 
+/obj/effect/mob_spawn/human/special(mob/new_spawn)
+	if(is_pref_char)
+		SSquirks.AssignQuirks(new_spawn, new_spawn.client, TRUE, TRUE, null, FALSE, new_spawn)
+	return
+
 /obj/effect/mob_spawn/proc/equip(mob/M)
 	return
 
@@ -138,6 +143,7 @@
 			M.mind.assigned_role = assignedrole
 		special(M, name)
 		MM.name = M.real_name
+		MM.current.client.init_verbs()
 	if(uses > 0)
 		uses--
 	if(!permanent && !uses)
@@ -154,32 +160,34 @@
 		H.dna.species.before_equip_job(null, H)
 		H.regenerate_icons()
 
-	equip(H)
+		equip(H)
 
-	if(ckey)
-		H.ckey = ckey
-		if(show_flavour)
-			var/output_message = "<span class='big bold'>[short_desc]</span>"
-			if(flavour_text != "")
-				output_message += "\n<span class='bold'>[flavour_text]</span>"
-			if(important_info != "")
-				output_message += "\n<span class='userdanger'>[important_info]</span>"
-			to_chat(H, output_message)
-		var/datum/mind/MH = H.mind
-		var/datum/antagonist/A
-		if(antagonist_type)
-			A = MH.add_antag_datum(antagonist_type)
-		if(objectives)
-			if(!A)
-				A = MH.add_antag_datum(/datum/antagonist/custom)
-			for(var/objective in objectives)
-				var/datum/objective/O = new/datum/objective(objective)
-				O.owner = MH
-				A.objectives += O
-		if(assignedrole)
-			H.mind.assigned_role = assignedrole
-		special(H, name)
-		MH.name = H.real_name
+		if(ckey)
+			H.ckey = ckey
+			if(show_flavour)
+				var/output_message = "<span class='big bold'>[short_desc]</span>"
+				if(flavour_text != "")
+					output_message += "\n<span class='bold'>[flavour_text]</span>"
+				if(important_info != "")
+					output_message += "\n<span class='userdanger'>[important_info]</span>"
+				to_chat(H, output_message)
+			var/datum/mind/MH = H.mind
+			var/datum/antagonist/A
+			if(antagonist_type)
+				A = MH.add_antag_datum(antagonist_type)
+			if(objectives)
+				if(!A)
+					A = MH.add_antag_datum(/datum/antagonist/custom)
+				for(var/objective in objectives)
+					var/datum/objective/O = new/datum/objective(objective)
+					O.owner = MH
+					A.objectives += O
+			if(assignedrole)
+				H.mind.assigned_role = assignedrole
+			special(H, name)
+			MH.name = H.real_name
+			MH.current.client.init_verbs()
+			H.DiaperAppearance()
 	else
 		. = ..()
 
@@ -259,8 +267,9 @@
 			alias = msg
 
 	if(is_pref_char)
-		if(!any_station_species && user.client.prefs.pref_species != mob_species && mob_species != null)
-			alert(user, "This role can only be done by a [mob_species]. Please change characters.")
+		if(!any_station_species && user.client.prefs.pref_species.type != mob_species && mob_species != null)
+			var/datum/species/name_species = mob_species
+			alert(user, "This role can only be done by a [name_species.name]. You are a [user.client.prefs.pref_species]. Please change characters.")
 			return FALSE
 
 	if(QDELETED(src) || QDELETED(user))

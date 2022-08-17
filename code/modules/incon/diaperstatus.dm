@@ -829,33 +829,40 @@ var/database/db = new("code/modules/incon/InconFlavortextDB.db")
 		SEND_SIGNAL(src,COMSIG_CLEAR_MOOD_EVENT,"peepee")
 
 /mob/living/carbon/verb/Pee()
-	if(usr.client.prefs.accident_types != "Opt Out" || usr.client.prefs.accident_types != "Poop Only")
+	if(src.client.prefs.accident_types != "Opt Out" && src.client.prefs.accident_types != "Poop Only")
 		set category = "IC"
-	if(src.client.prefs.accident_types != "Opt Out" && !HAS_TRAIT(usr,TRAIT_FULLYINCONTINENT) && pee >= max_wetcontinence/2)
+		set name = "Pee"
+		set desc = "Pee"
+	if(src.client.prefs.accident_types != "Opt Out" && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT) && pee >= max_wetcontinence/2)
 		on_purpose = 1
 		Wetting()
 	else
-		to_chat(usr, "<span class='warning'>You cannot pee right now.</span>")
+		to_chat(src, "<span class='warning'>You cannot pee right now.</span>")
 
 /mob/living/silicon/robot/verb/Pee()
-	set category = "IC"
+	if(src.client.prefs.accident_types != "Opt Out" && src.client.prefs.accident_types != "Poop Only")
+		set category = "IC"
+		set name = "Pee"
+		set desc = "Pee"
 	if(incontinent == TRUE && needpee > 0)
 		on_purpose = 1
 		Wetting()
 	else
-		to_chat(usr, "<span class='warning'>You cannot pee right now.</span>")
+		to_chat(src, "<span class='warning'>You cannot pee right now.</span>")
 
 /mob/living/carbon/verb/Poop()
-	if(usr.client.prefs.accident_types != "Opt Out" || usr.client.prefs.accident_types != "Pee Only")
+	if(src.client.prefs.accident_types != "Opt Out" && src.client.prefs.accident_types != "Pee Only")
 		set category = "IC"
-	if(src.client.prefs.accident_types != "Opt Out" && !HAS_TRAIT(usr,TRAIT_FULLYINCONTINENT) && poop >= max_messcontinence/2)
+		set name = "Poop"
+		set desc = "Poop"
+	if(src.client.prefs.accident_types != "Opt Out" && !HAS_TRAIT(src,TRAIT_FULLYINCONTINENT) && poop >= max_messcontinence/2)
 		on_purpose = 1
 		Pooping()
 	else
-		to_chat(usr, "<span class='warning'>You cannot poop right now.</span>")
+		to_chat(src, "<span class='warning'>You cannot poop right now.</span>")
 
-/mob/living/carbon/New()
-	..()
+/mob/living/carbon/Initialize()
+	. = ..()
 	PampUpdate()
 
 /mob/living/silicon/robot/Initialize(mapload)
@@ -865,7 +872,6 @@ var/database/db = new("code/modules/incon/InconFlavortextDB.db")
 	var/geh = rand(100,200)
 	fluids = geh
 	reagents.add_reagent(/datum/reagent/water,geh)
-	add_verb(src,/mob/living/silicon/robot/verb/Pee)
 
 /obj/item/reagent_containers/food/snacks/attack(mob/living/carbon/human/M, mob/living/user, def_zone)
 	..()
@@ -898,7 +904,7 @@ var/database/db = new("code/modules/incon/InconFlavortextDB.db")
 			REMOVE_TRAIT(owner,TRAIT_NORUNNING,REGRESSION_TRAIT)
 			REMOVE_TRAIT(owner,TRAIT_NOGUNS,REGRESSION_TRAIT)
 			SEND_SIGNAL(owner,COMSIG_DIAPERCHANGE,owner.ckey)
-	if(usr.client.prefs.accident_types != "Opt Out" && !HAS_TRAIT(owner,TRAIT_FULLYINCONTINENT))
+	if(owner.client.prefs.accident_types != "Opt Out" && !HAS_TRAIT(owner,TRAIT_FULLYINCONTINENT))
 		if (owner.wetness > 0)
 			if (owner.stinkiness > 0)
 				icon_state = "hud_plain_used"
