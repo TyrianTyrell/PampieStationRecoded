@@ -762,7 +762,7 @@
 
 			if(roundstart_quirks.len)
 				to_send += "<span class='notice'>You have these quirks: [get_trait_string()].</span>\n"
-			if(HAS_TRAIT(src,TRAIT_POTTYREBEL) || HAS_TRAIT(src,TRAIT_INCONTINENT) || HAS_TRAIT(src,BABYBRAINED_TRAIT) || HAS_TRAIT(src,TRAIT_DIAPERUSE) || HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
+			if(HAS_TRAIT(src,TRAIT_POTTYREBEL) || HAS_TRAIT(src,TRAIT_INCONTINENT) || HAS_TRAIT(src,BABYBRAINED_TRAIT) || HAS_TRAIT(src,TRAIT_DIAPERUSE) || HAS_TRAIT(src,TRAIT_FULLYINCONTINENT) || src.client.prefs.accident_types != "Opt Out")
 				if(wetness > 0)
 					if(stinkiness > 0)
 						if(HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
