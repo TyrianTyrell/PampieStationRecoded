@@ -267,9 +267,9 @@
 			alias = msg
 
 	if(is_pref_char)
-		if(!any_station_species && user.client.prefs.pref_species.type != mob_species && mob_species != null)
+		if(!any_station_species && user.client.prefs.pref_species.type != mob_species && is_type_in_list(user.client.prefs.pref_species.type, subtypesof(mob_species)) && mob_species != null)
 			var/datum/species/name_species = mob_species
-			alert(user, "This role can only be done by a [name_species.name]. You are a [user.client.prefs.pref_species]. Please change characters.")
+			alert(user, "This role can only be done by a [nipple]. You are a [user.client.prefs.pref_species]. Please change characters.")
 			return FALSE
 
 	if(QDELETED(src) || QDELETED(user))

@@ -378,29 +378,36 @@
 //Defines some vars that makes limbs appears, TO-DO: define every single species.
 
 /datum/species/human
+	name = "Human"
 	limbs_id = SPECIES_HUMAN
 	icon_limbs = 'icons/mob/human_parts_greyscale.dmi'
 
 /datum/species/lizard
+	name = "Lizardfolk"
 	limbs_id = SPECIES_LIZARD
 	icon_limbs = 'icons/mob/human_parts_greyscale.dmi'
 
 /datum/species/mammal
+	name = "Mammalfolk"
 	limbs_id = SPECIES_MAMMAL
 	icon_limbs = 'icons/mob/human_parts_greyscale.dmi'
 
 /datum/species/insect
+	name = "Bugfolk"
 	limbs_id = SPECIES_INSECT
 	icon_limbs = 'icons/mob/human_parts_greyscale.dmi'
 
 /datum/species/fly
+	name = "Flyperson"
 	limbs_id = SPECIES_FLY
 	icon_limbs = 'icons/mob/human_parts.dmi'
 
 /datum/species/plasmaman
+	name = "Plasmaman"
 	limbs_id = SPECIES_PLASMAMAN
 	icon_limbs = 'icons/mob/human_parts.dmi'
 
 /datum/species/xeno
+	name = "Xenomorph Hybrid"
 	limbs_id = SPECIES_XENOHYBRID
 	icon_limbs = 'icons/mob/human_parts_greyscale.dmi'
