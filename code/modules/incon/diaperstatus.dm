@@ -105,6 +105,17 @@ var/database/db = new("code/modules/incon/InconFlavortextDB.db")
 		//otherwise, we load the first row, and display the data
 		FlavortextQuery.NextRow()
 		var/FlavortextQueryResponse = FlavortextQuery.GetRowData()
+		replacetext(FlavortextQueryResponse["othersmessage"],"\[src]",src.name) //Since SQL doesn't know what to do with src.p_they(), I've made this solution.
+		replacetext(FlavortextQueryResponse["othersmessage"],"\[src.p_they()]",src.p_they())
+		replacetext(FlavortextQueryResponse["othersmessage"],"\[src.p_their()]",src.p_their())
+		replacetext(FlavortextQueryResponse["othersmessage"],"\[src.p_are()]",src.p_are())
+		replacetext(FlavortextQueryResponse["othersmessage"],"\[src.p_they()]",src.p_they())
+		replacetext(FlavortextQueryResponse["othersmessage"],"\[src.p_theyre()]",src.p_theyre())
+		replacetext(FlavortextQueryResponse["othersmessage"],"\[src.p_theyve()]",src.p_theyve())
+		replacetext(FlavortextQueryResponse["othersmessage"],"\[src.p_do()]",src.p_do())
+		replacetext(FlavortextQueryResponse["othersmessage"],"\[src.p_es()]",src.p_es())
+		replacetext(FlavortextQueryResponse["othersmessage"],"\[src.p_have()]",src.p_have())
+		replacetext(FlavortextQueryResponse["othersmessage"],"\[src.p_were()]",src.p_were())
 		src.visible_message(FlavortextQueryResponse["othersmessage"],FlavortextQueryResponse["selfmessage"])
 
 /mob/living/carbon/proc/Wetting()
