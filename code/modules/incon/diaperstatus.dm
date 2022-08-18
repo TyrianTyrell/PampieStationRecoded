@@ -115,7 +115,7 @@ var/database/db = new("code/modules/incon/InconFlavortextDB.db")
 		replacetext(FlavortextQueryResponse["othersmessage"],@"[src.p_do()]",src.p_do())
 		replacetext(FlavortextQueryResponse["othersmessage"],@"[src.p_es()]",src.p_es())
 		replacetext(FlavortextQueryResponse["othersmessage"],@"[src.p_have()]",src.p_have())
-		replacetext(FlavortextQueryResponse["othersmessage"],@"[src.p_were()]"),src.p_were())
+		replacetext(FlavortextQueryResponse["othersmessage"],@"[src.p_were()]",src.p_were())
 		src.visible_message(FlavortextQueryResponse["othersmessage"],FlavortextQueryResponse["selfmessage"])
 
 /mob/living/carbon/proc/Wetting()
