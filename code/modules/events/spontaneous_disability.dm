@@ -1,7 +1,7 @@
 /datum/round_event_control/disability
 	name = "Spontaneous Disability"
 	typepath = /datum/round_event/spontaneous_disability
-	weight = 8
+	weight = 6
 	min_players = 3
 	max_occurrences = 1
 
@@ -26,10 +26,10 @@
 
 /datum/round_event/spontaneous_disability/proc/traumatize(mob/living/carbon/human/H)
 	var/trauma = pickweight(list(
-		/datum/brain_trauma/severe/deaf = 5,
-		/datum/brain_trauma/severe/blindness = 5,
+		/datum/brain_trauma/severe/deaf = 3,
+		/datum/brain_trauma/severe/blindness = 2,
 		/datum/brain_trauma/severe/mute = 10,
-		/datum/brain_trauma/severe/paralysis/paraplegic = 10
+		/datum/brain_trauma/severe/paralysis/paraplegic = 5
 	))
 
-	H.gain_trauma(trauma, TRAUMA_RESILIENCE_ABSOLUTE)
+	H.gain_trauma(trauma, TRAUMA_RESILIENCE_LOBOTOMY)
