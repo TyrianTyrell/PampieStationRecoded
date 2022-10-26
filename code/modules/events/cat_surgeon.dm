@@ -1,7 +1,7 @@
 /datum/round_event_control/cat_surgeon
-    name = "Cat Surgeon"
-    typepath = /datum/round_event/cat_surgeon
-    weight = 4
+	name = "Cat Surgeon"
+	typepath = /datum/round_event/cat_surgeon
+	weight = 4
 	min_players = 2
 	max_occurrences = 1
 
