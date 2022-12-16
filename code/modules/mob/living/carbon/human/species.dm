@@ -217,7 +217,7 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 
 /datum/species/New()
 
-	if(!limbs_id)	//if we havent set a limbs id to use, just use our own id
+	if(!limbs_id)	//if we haven't set a limbs id to use, just use our own id
 		mutant_bodyparts["limbs_id"] = id //done this way to be non-intrusive to the existing system
 	else
 		mutant_bodyparts["limbs_id"] = limbs_id
