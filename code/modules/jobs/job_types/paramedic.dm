@@ -16,6 +16,7 @@
 	minimal_access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_CLONING, ACCESS_MINERAL_STOREROOM, ACCESS_MAINT_TUNNELS)
 	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_MED
+	bounty_types = CIV_JOB_MED
 
 	display_order = JOB_DISPLAY_ORDER_PARAMEDIC
 
@@ -41,7 +42,7 @@
 	r_pocket = /obj/item/pinpointer/crew
 	l_pocket = /obj/item/pda/medical
 	backpack_contents = list(/obj/item/roller=1)
-	pda_slot = SLOT_L_STORE
+	pda_slot = ITEM_SLOT_LPOCKET
 
 	backpack = /obj/item/storage/backpack/medic
 	satchel = /obj/item/storage/backpack/satchel/med

@@ -49,6 +49,19 @@
 	body_parts_covered = CHEST|ARMS
 	can_adjust = FALSE
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+/obj/item/clothing/under/rank/civilian/polychromic_clown
+	name = "polychromic clown suit"
+	desc = "<i>'HONK!'</i>"
+	icon_state = "clown"
+	item_state = "clown"
+	fitted = FEMALE_UNIFORM_TOP
+	can_adjust = FALSE
+	mutantrace_variation = STYLE_DIGITIGRADE //The clown suit must look funny, no taur alpha masks where possible.
+	var/list/poly_colors = list("#FF0000", "#FF99FF", "#FFFF00", "#FFFFFF")
+
+/obj/item/clothing/under/rank/civilian/polychromic_clown/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, poly_colors, 4)
 
 /obj/item/clothing/under/rank/civilian/clown/blue
 	name = "blue clown suit"
@@ -122,6 +135,6 @@
 	can_adjust = FALSE
 	mutantrace_variation = STYLE_DIGITIGRADE|USE_TAUR_CLIP_MASK
 
-/obj/item/clothing/under/rank/civilian/clown/Initialize()
+/obj/item/clothing/under/rank/civilian/clown/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/squeak, list('sound/items/bikehorn.ogg'=1), 50)

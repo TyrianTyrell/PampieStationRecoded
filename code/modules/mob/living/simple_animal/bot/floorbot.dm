@@ -43,7 +43,7 @@
 	#define REPLACE_TILE		6
 	#define TILE_EMAG		7
 
-/mob/living/simple_animal/bot/floorbot/Initialize()
+/mob/living/simple_animal/bot/floorbot/Initialize(mapload)
 	. = ..()
 	update_icon()
 	var/datum/job/engineer/J = new/datum/job/engineer
@@ -94,7 +94,7 @@
 			to_chat(user, "<span class='warning'>You need at least one floor tile to put into [src]!</span>")
 
 	else if(istype(W, /obj/item/storage/toolbox/artistic))
-		if(bot_core.allowed(user) && open && !CHECK_BITFIELD(upgrades,UPGRADE_FLOOR_ARTBOX))
+		if(bot_core.allowed(user) && open && !(upgrades & UPGRADE_FLOOR_ARTBOX))
 			to_chat(user, "<span class='notice'>You upgrade \the [src] case to hold more!</span>")
 			upgrades |= UPGRADE_FLOOR_ARTBOX
 			maxtiles += 100 //Double the storage!
@@ -109,7 +109,7 @@
 			to_chat(user, "<span class='notice'>The [src] already has a upgraded case!</span>")
 
 	else if(istype(W, /obj/item/storage/toolbox/syndicate))
-		if(bot_core.allowed(user) && open && !CHECK_BITFIELD(upgrades,UPGRADE_FLOOR_SYNDIBOX))
+		if(bot_core.allowed(user) && open && !(upgrades & UPGRADE_FLOOR_SYNDIBOX))
 			to_chat(user, "<span class='notice'>You upgrade \the [src] case to hold more!</span>")
 			upgrades |= UPGRADE_FLOOR_SYNDIBOX
 			maxtiles += 200 //Double bse storage
@@ -263,9 +263,9 @@
 		if(path.len == 0)
 			if(!isturf(target))
 				var/turf/TL = get_turf(target)
-				path = get_path_to(src, TL, /turf/proc/Distance_cardinal, 0, 30, id=access_card,simulated_only = 0)
+				path = get_path_to(src, TL, 30, id=access_card,simulated_only = 0)
 			else
-				path = get_path_to(src, target, /turf/proc/Distance_cardinal, 0, 30, id=access_card,simulated_only = 0)
+				path = get_path_to(src, target, 30, id=access_card,simulated_only = 0)
 
 			if(!bot_move(target))
 				add_to_ignore(target)

@@ -59,6 +59,10 @@
 	id = "engine_miasmic"
 	suffix = "Box/Engine/engine_miasmic.dmm"
 	name = "Box Miasmic"
+/datum/map_template/ruin/station/box/engine/rbmk
+	id = "engine_rbmk"
+	suffix = "Box/Engine/engine_rbmk.dmm"
+	name = "Box RBMK"
 
 // Lavaland
 	// Mining Base

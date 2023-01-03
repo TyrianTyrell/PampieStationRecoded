@@ -1,7 +1,7 @@
 /datum/gear/uniform
 	category = LOADOUT_CATEGORY_UNIFORM
 	subcategory = LOADOUT_SUBCATEGORY_UNIFORM_GENERAL
-	slot = SLOT_W_UNIFORM
+	slot = ITEM_SLOT_ICLOTHING
 
 /datum/gear/uniform/suit
 	name = "Black suit"
@@ -52,7 +52,7 @@
 	name = "Polychromic maid costume"
 	path = /obj/item/clothing/under/rank/civilian/janitor/maid/polychromic
 	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
-	loadout_initial_colors = list("#FFFFFF", "#000000")
+	loadout_initial_colors = list("#333333", "#FFFFFF")
 
 /datum/gear/uniform/mailmanuniform
 	name = "Mailman's jumpsuit"
@@ -172,10 +172,17 @@
 
 /datum/gear/uniform/pants/polypants
 	name = "Polychromic Pants"
-	path = /obj/item/clothing/under/pants/polypants/polychromic
+	path = /obj/item/clothing/under/pants/polypants
 	cost = 2
 	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
 	loadout_initial_colors = list("#75634F", "#3D3D3D", "#575757")
+
+/datum/gear/uniform/pants/workout
+	name = "Polychromatic Workout Shorts"
+	path = /obj/item/clothing/under/shorts/polychromic/polyworkout
+	cost = 2
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
+	loadout_initial_colors = list("#323232", "#FFFFFF")
 
 /datum/gear/uniform/pants/track
 	name = "Track Pants"
@@ -636,27 +643,27 @@
 /*Commenting out Until next Christmas or made automatic
 /datum/gear/uniform/christmasmaler
 	name = "Red Masculine Christmas Suit"
-	category = SLOT_W_UNIFORM
+	category = ITEM_SLOT_ICLOTHING
 	path = /obj/item/clothing/under/costume/christmas
 
 /datum/gear/uniform/christmasmaleg
 	name = "Green Masculine Christmas Suit"
-	category = SLOT_W_UNIFORM
+	category = ITEM_SLOT_ICLOTHING
 	path = /obj/item/clothing/under/costume/christmas/green
 
 /datum/gear/uniform/christmasfemaler
 	name = "Red Feminine Christmas Suit"
-	category = SLOT_W_UNIFORM
+	category = ITEM_SLOT_ICLOTHING
 	path = /obj/item/clothing/under/costume/christmas/croptop
 
 /datum/gear/uniform/christmasfemaleg
 	name = "Green Feminine Christmas Suit"
-	category = SLOT_W_UNIFORM
+	category = ITEM_SLOT_ICLOTHING
 	path = /obj/item/clothing/under/costume/christmas/croptop/green
 
 /datum/gear/uniform/pinkstripper
 	name = "Pink stripper outfit"
-	category = SLOT_W_UNIFORM
+	category = ITEM_SLOT_ICLOTHING
 	path = /obj/item/clothing/under/misc/stripper
 	cost = 3
 */
@@ -743,3 +750,8 @@
 /datum/gear/uniform/iswm
 	name = "ISWM replica jumpsuit"
 	path = /obj/item/clothing/under/costume/iswm
+/datum/gear/uniform/clown_polychromic
+	name = "polychromic clown suit"
+	path = /obj/item/clothing/under/rank/civilian/polychromic_clown
+	subcategory = LOADOUT_SUBCATEGORY_UNIFORM_JOBS
+	restricted_roles = list("Clown")

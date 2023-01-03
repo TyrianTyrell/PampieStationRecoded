@@ -5,8 +5,9 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder
 	fire_sound = "sound/weapons/revolvershot.ogg"
 	casing_ejector = FALSE
+	recoil = 0.5
 
-/obj/item/gun/ballistic/revolver/Initialize()
+/obj/item/gun/ballistic/revolver/Initialize(mapload)
 	. = ..()
 	if(!istype(magazine, /obj/item/ammo_box/magazine/internal/cylinder))
 		verbs += /obj/item/gun/ballistic/revolver/verb/spin
@@ -109,7 +110,7 @@
 						)
 	var/list/safe_calibers
 
-/obj/item/gun/ballistic/revolver/detective/Initialize()
+/obj/item/gun/ballistic/revolver/detective/Initialize(mapload)
 	. = ..()
 	safe_calibers = magazine.caliber
 
@@ -166,6 +167,7 @@
 	icon_state = "goldrevolver"
 	fire_sound = 'sound/weapons/resonator_blast.ogg'
 	recoil = 8
+	dir_recoil_amp = 5 // 40 directional recoil is already really funny
 	pin = /obj/item/firing_pin
 
 /obj/item/gun/ballistic/revolver/nagant
@@ -191,7 +193,7 @@
 	. = ..()
 	spun = TRUE
 
-/obj/item/gun/ballistic/revolver/russian/Initialize()
+/obj/item/gun/ballistic/revolver/russian/Initialize(mapload)
 	. = ..()
 	do_spin()
 	spun = TRUE
@@ -285,6 +287,7 @@
 	item_state = "shotgun"
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_MEDIUM
+	recoil = 1
 	force = 10
 	flags_1 = CONDUCT_1
 	slot_flags = ITEM_SLOT_BACK

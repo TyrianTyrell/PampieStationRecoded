@@ -82,6 +82,8 @@
 	///What character we spawned in as- either at roundstart or latejoin, so we know for persistent scars if we ended as the same person or not
 	var/mob/original_character
 
+	/// A lazy list of statuses to add next to this mind in the traitor panel
+	var/list/special_statuses
 
 /datum/mind/New(var/key)
 	skill_holder = new(src)
@@ -150,7 +152,7 @@
 	if(isliving(new_character)) //New humans and such are by default enabled arousal. Let's always use the new mind's prefs.
 		var/mob/living/L = new_character
 		if(L.client?.prefs && L.client.prefs.auto_ooc && L.client.prefs.chat_toggles & CHAT_OOC)
-			DISABLE_BITFIELD(L.client.prefs.chat_toggles,CHAT_OOC)
+			L.client.prefs.chat_toggles &= ~(CHAT_OOC)
 
 	hide_ckey = current.client?.prefs?.hide_ckey
 
@@ -194,13 +196,12 @@
 	A.on_gain()
 	return A
 
-
 //ambition start
 /datum/mind/proc/do_add_antag_datum(instanced_datum)
 	. = LAZYLEN(antag_datums)
 	LAZYADD(antag_datums, instanced_datum)
 	if(!.)
-		current.verbs += /mob/proc/edit_objectives_and_ambitions
+		add_verb(current, /mob/proc/edit_objectives_and_ambitions)
 //ambition end
 
 /datum/mind/proc/remove_antag_datum(datum_type)
@@ -211,6 +212,14 @@
 		A.on_removal()
 		return TRUE
 
+//ambition start
+/datum/mind/proc/do_remove_antag_datum(instanced_datum)
+	. = LAZYLEN(antag_datums)
+	LAZYREMOVE(antag_datums, instanced_datum)
+	if(. && !LAZYLEN(antag_datums))
+		ambitions = null
+		remove_verb(current, /mob/proc/edit_objectives_and_ambitions)
+//ambition end
 
 /datum/mind/proc/remove_all_antag_datums() //For the Lazy amongst us.
 	for(var/a in antag_datums)
@@ -229,7 +238,6 @@
 /datum/mind/proc/has_antag_datum(datum_type, check_subtypes = TRUE)
 	if(!datum_type)
 		return
-	. = FALSE
 	for(var/a in antag_datums)
 		var/datum/antagonist/A = a
 		if(check_subtypes && istype(A, datum_type))
@@ -296,11 +304,17 @@
 	remove_rev()
 	SSticker.mode.update_cult_icons_removed(src)
 
-/datum/mind/proc/equip_traitor(datum/traitor_class/traitor_class, silent = FALSE, datum/antagonist/uplink_owner)
+/**
+ * ## give_uplink
+ *
+ * A mind proc for giving anyone an uplink.
+ * arguments:
+ * * silent: if this should send a message to the mind getting the uplink. traitors do not use this silence, but the silence var on their antag datum.
+ * * antag_datum: the antag datum of the uplink owner, for storing it in antag memory. optional!
+ */
+/datum/mind/proc/equip_traitor(silent = FALSE, datum/antagonist/antag_datum)
 	if(!current)
 		return
-	if(!traitor_class)
-		traitor_class = GLOB.traitor_classes[TRAITOR_HUMAN]
 	var/mob/living/carbon/human/traitor_mob = current
 	if (!istype(traitor_mob))
 		return
@@ -314,16 +328,9 @@
 		P = locate() in PDA
 	if (!P) // If we couldn't find a pen in the PDA, or we didn't even have a PDA, do it the old way
 		P = locate() in all_contents
-		if(!P) // I do not have a pen.
-			var/obj/item/pen/inowhaveapen
-			if(istype(traitor_mob.back,/obj/item/storage)) //ok buddy you better have a backpack!
-				inowhaveapen = new /obj/item/pen(traitor_mob.back)
-			else
-				inowhaveapen = new /obj/item/pen(traitor_mob.loc)
-				traitor_mob.put_in_hands(inowhaveapen) // I hope you don't have arms and your traitor pen gets stolen for all this trouble you've caused.
-			P = inowhaveapen
 
 	var/obj/item/uplink_loc
+	var/implant = FALSE
 
 	if(traitor_mob.client && traitor_mob.client.prefs)
 		switch(traitor_mob.client.prefs.uplink_spawn_loc)
@@ -341,33 +348,38 @@
 					uplink_loc = P
 			if(UPLINK_PEN)
 				uplink_loc = P
-				if(!uplink_loc)
-					uplink_loc = PDA
-				if(!uplink_loc)
-					uplink_loc = R
+			if(UPLINK_IMPLANT)
+				implant = TRUE
 
-	if (!uplink_loc)
-		if(!silent)
-			to_chat(traitor_mob, "Unfortunately, [traitor_class.employer] wasn't able to get you an Uplink.")
-		. = 0
-	else
-		. = uplink_loc
-		var/datum/component/uplink/U = uplink_loc.AddComponent(/datum/component/uplink, traitor_mob.key,traitor_class)
-		if(!U)
-			CRASH("Uplink creation failed.")
-		U.setup_unlock_code()
-		if(!silent)
-			if(uplink_loc == R)
-				to_chat(traitor_mob, "[traitor_class.employer] has cunningly disguised a Syndicate Uplink as your [R.name]. Simply dial the frequency [format_frequency(U.unlock_code)] to unlock its hidden features.")
-			else if(uplink_loc == PDA)
-				to_chat(traitor_mob, "[traitor_class.employer] has cunningly disguised a Syndicate Uplink as your [PDA.name]. Simply enter the code \"[U.unlock_code]\" into the ringtone select to unlock its hidden features.")
-			else if(uplink_loc == P)
-				to_chat(traitor_mob, "[traitor_class.employer] has cunningly disguised a Syndicate Uplink as your [P.name]. Simply twist the top of the pen [U.unlock_code] from its starting position to unlock its hidden features.")
+	if(!uplink_loc) // We've looked everywhere, let's just implant you
+		implant = TRUE
 
-		if(uplink_owner)
-			uplink_owner.antag_memory += U.unlock_note + "<br>"
-		else
-			traitor_mob.mind.store_memory(U.unlock_note)
+	if(implant)
+		var/obj/item/implant/uplink/starting/new_implant = new(traitor_mob)
+		new_implant.implant(traitor_mob, null, silent = TRUE)
+		if(!silent)
+			to_chat(traitor_mob, span_boldnotice("Your Syndicate Uplink has been cunningly implanted in you, for a small TC fee. Simply trigger the uplink to access it."))
+		return new_implant
+
+	. = uplink_loc
+	var/unlock_text
+	var/datum/component/uplink/new_uplink = uplink_loc.AddComponent(/datum/component/uplink, traitor_mob.key)
+	if(!new_uplink)
+		CRASH("Uplink creation failed.")
+	new_uplink.setup_unlock_code()
+	if(uplink_loc == R)
+		unlock_text = "Your Uplink is cunningly disguised as your [R.name]. Simply dial the frequency [format_frequency(new_uplink.unlock_code)] to unlock its hidden features."
+	else if(uplink_loc == PDA)
+		unlock_text = "Your Uplink is cunningly disguised as your [PDA.name]. Simply enter the code \"[new_uplink.unlock_code]\" into the ringtone select to unlock its hidden features."
+	else if(uplink_loc == P)
+		unlock_text = "Your Uplink is cunningly disguised as your [P.name]. Simply twist the top of the pen [english_list(new_uplink.unlock_code)] from its starting position to unlock its hidden features."
+	new_uplink.unlock_text = unlock_text
+	if(!silent)
+		to_chat(traitor_mob, span_boldnotice(unlock_text))
+	if(!antag_datum)
+		traitor_mob.mind.store_memory(new_uplink.unlock_note)
+		return
+	antag_datum.antag_memory += new_uplink.unlock_note + "<br>"
 
 //Link a new mobs mind to the creator of said mob. They will join any team they are currently on, and will only switch teams when their creator does.
 
@@ -1333,6 +1345,322 @@ GLOBAL_LIST(objective_choices)
 		do_edit_objectives_ambitions()
 		return
 //ambition end
+
+	else if(href_list["req_obj_ping_cd_clear"])
+		if(!TIMER_COOLDOWN_CHECK(src, COOLDOWN_OBJ_ADMIN_PING))
+			to_chat(usr, "<span class='warning'>Mind is not under a cooldown.</span>")
+			do_edit_objectives_ambitions()
+			return
+		if(alert(usr, "Are you sure you want reset this cooldown, letting the user ping the admins again?", "Clear ping cooldown", "Yes", "No") != "Yes")
+			do_edit_objectives_ambitions()
+			return
+		if(!check_rights(R_ADMIN))
+			return
+		if(!TIMER_COOLDOWN_CHECK(src, COOLDOWN_OBJ_ADMIN_PING))
+			do_edit_objectives_ambitions()
+			return
+		S_TIMER_COOLDOWN_RESET(src, COOLDOWN_OBJ_ADMIN_PING)
+		do_edit_objectives_ambitions()
+		return
+
+	else if(href_list["refresh_antag_panel"])
+		traitor_panel()
+		return
+
+	else if (href_list["req_obj_edit"])
+		var/datum/antagonist/antag_datum = locate(href_list["req_obj_edit"]) in antag_datums
+		if(QDELETED(antag_datum))
+			do_edit_objectives_ambitions()
+			to_chat(usr, "<span class='warning'>No antag found.</span>")
+			return
+		if(antag_datum.owner != src)
+			do_edit_objectives_ambitions()
+			to_chat(usr, "<span class='warning'>Invalid antag reference.</span>")
+			return
+		var/uid = href_list["req_obj_id"]
+		var/list/requested_obj_change = LAZYACCESS(antag_datum.requested_objective_changes, uid)
+		if(!requested_obj_change)
+			do_edit_objectives_ambitions()
+			to_chat(usr, "<span class='warning'>Invalid requested objective reference.</span>")
+			return
+		if(requested_obj_change["request"] != REQUEST_NEW_OBJECTIVE)
+			do_edit_objectives_ambitions()
+			to_chat(usr, "<span class='warning'>This is not an editable request. How did you even got here?</span>")
+			return
+		switch(alert(usr, "Do you want to edit the requested objective type or text?", "Edit requested objective", "Type", "Text", "Cancel"))
+			if("Type")
+				if(!check_rights(R_ADMIN))
+					return
+				if(QDELETED(antag_datum))
+					to_chat(usr, "<span class='warning'>No antag found.</span>")
+					do_edit_objectives_ambitions()
+					return
+				if(!LAZYACCESS(antag_datum.requested_objective_changes, uid))
+					to_chat(usr, "<span class='warning'>Invalid requested objective change reference.</span>")
+					do_edit_objectives_ambitions()
+					return
+				var/datum/objective/type_cast = requested_obj_change["target"]
+				var/selected_type = input("Select new requested objective type:", "Requested Objective type", initial(type_cast.name)) as null|anything in GLOB.objective_choices
+				selected_type = GLOB.objective_choices[selected_type]
+				if(!selected_type)
+					return
+				if(!check_rights(R_ADMIN))
+					return
+				if(QDELETED(antag_datum))
+					to_chat(usr, "<span class='warning'>No antag found.</span>")
+					do_edit_objectives_ambitions()
+					return
+				if(!LAZYACCESS(antag_datum.requested_objective_changes, uid))
+					to_chat(usr, "<span class='warning'>Invalid requested objective change reference.</span>")
+					do_edit_objectives_ambitions()
+					return
+				log_admin("[key_name(usr)] has edited the requested objective type for [current], of UID [uid], from [requested_obj_change["target"]] to [selected_type]")
+				message_admins("[key_name_admin(usr)] has edited the requested objective type for [current], of UID [uid], from [requested_obj_change["target"]] to [selected_type]")
+				requested_obj_change["target"] = selected_type
+			if("Text")
+				if(!check_rights(R_ADMIN))
+					return
+				if(QDELETED(antag_datum))
+					to_chat(usr, "<span class='warning'>No antag found.</span>")
+					do_edit_objectives_ambitions()
+					return
+				if(!LAZYACCESS(antag_datum.requested_objective_changes, uid))
+					to_chat(usr, "<span class='warning'>Invalid requested objective change reference.</span>")
+					do_edit_objectives_ambitions()
+					return
+				var/new_text = stripped_multiline_input(usr, "Input new requested objective text", "Requested Objective Text", requested_obj_change["text"], MAX_MESSAGE_LEN)
+				if (isnull(new_text))
+					return
+				if(!check_rights(R_ADMIN))
+					return
+				if(QDELETED(antag_datum))
+					to_chat(usr, "<span class='warning'>No antag found.</span>")
+					do_edit_objectives_ambitions()
+					return
+				if(!LAZYACCESS(antag_datum.requested_objective_changes, uid))
+					to_chat(usr, "<span class='warning'>Invalid requested objective change reference.</span>")
+					do_edit_objectives_ambitions()
+					return
+				log_admin("[key_name(usr)] has edited the requested objective text for [current], of UID [uid], from [requested_obj_change["text"]] to [new_text]")
+				message_admins("[key_name_admin(usr)] has edited the requested objective text for [current], of UID [uid], from [requested_obj_change["text"]] to [new_text]")
+				requested_obj_change["text"] = new_text
+		do_edit_objectives_ambitions()
+		return
+
+	else if (href_list["req_obj_accept"])
+		var/datum/antagonist/antag_datum = locate(href_list["req_obj_accept"]) in antag_datums
+		if(QDELETED(antag_datum))
+			do_edit_objectives_ambitions()
+			to_chat(usr, "<span class='warning'>No antag found.</span>")
+			return
+		if(antag_datum.owner != src)
+			do_edit_objectives_ambitions()
+			to_chat(usr, "<span class='warning'>Invalid antag reference.</span>")
+			return
+		var/uid = href_list["req_obj_id"]
+		var/list/requested_obj_change = LAZYACCESS(antag_datum.requested_objective_changes, uid)
+		if(!requested_obj_change)
+			do_edit_objectives_ambitions()
+			to_chat(usr, "<span class='warning'>Invalid requested objective reference.</span>")
+			return
+
+		var/datum/objective/request_target
+		var/request_type = requested_obj_change["request"]
+		switch(request_type)
+			if(REQUEST_NEW_OBJECTIVE)
+				request_target = requested_obj_change["target"]
+				if(!ispath(request_target, /datum/objective))
+					to_chat(usr, "<span class='warning'>Invalid requested objective target path.</span>")
+					return
+			if(REQUEST_DEL_OBJECTIVE, REQUEST_WIN_OBJECTIVE, REQUEST_LOSE_OBJECTIVE)
+				request_target = locate(requested_obj_change["target"]) in antag_datum.objectives
+				if(QDELETED(request_target))
+					to_chat(usr, "<span class='warning'>Invalid requested objective target reference.</span>")
+					return
+			else
+				to_chat(usr, "<span class='warning'>Invalid request type.</span>")
+				return
+		if(alert(usr, "Are you sure you want to approve this objective change?", "Approve objective change", "Yes", "No") != "Yes")
+			return
+		if(!check_rights(R_ADMIN))
+			return
+		if(QDELETED(antag_datum))
+			to_chat(usr, "<span class='warning'>No antag found.</span>")
+			do_edit_objectives_ambitions()
+			return
+		if(!LAZYACCESS(antag_datum.requested_objective_changes, uid))
+			to_chat(usr, "<span class='warning'>Invalid requested objective change reference.</span>")
+			do_edit_objectives_ambitions()
+			return
+		switch(request_type) //Last checks
+			if(REQUEST_NEW_OBJECTIVE)
+				if(!ispath(request_target, /datum/objective))
+					stack_trace("Invalid target on objective change request: [request_target]")
+					do_edit_objectives_ambitions()
+					return
+			if(REQUEST_DEL_OBJECTIVE, REQUEST_WIN_OBJECTIVE, REQUEST_LOSE_OBJECTIVE)
+				if(QDELETED(request_target))
+					to_chat(usr, "<span class='warning'>Invalid requested objective target reference.</span>")
+					return
+			else
+				to_chat(usr, "<span class='warning'>Invalid request type.</span>")
+				return
+		antag_datum.remove_objective_change(uid)
+		switch(request_type) //All is clear, let get things done.
+			if(REQUEST_NEW_OBJECTIVE)
+				request_target = new request_target()
+				request_target.owner = src
+				if(istype(request_target, /datum/objective/custom))
+					request_target.explanation_text = requested_obj_change["text"]
+				else
+					request_target.admin_edit(usr)
+				antag_datum.objectives += request_target
+				message_admins("[key_name_admin(usr)] approved a requested objective from [current]: [request_target.explanation_text]")
+				log_admin("[key_name(usr)] approved a requested objective from [current]: [request_target.explanation_text]")
+			if(REQUEST_DEL_OBJECTIVE)
+				message_admins("[key_name_admin(usr)] approved the request to delete an objective from [current]: [request_target.explanation_text]")
+				log_admin("[key_name(usr)] approved the request to delete an objective from [current]: [request_target.explanation_text]")
+				qdel(request_target)
+			if(REQUEST_WIN_OBJECTIVE)
+				message_admins("[key_name_admin(usr)] approved the victory request for an objective from [current]: [request_target.explanation_text]")
+				log_admin("[key_name(usr)] approved the victory request for an objective from [current]: [request_target.explanation_text]")
+				request_target.completed = TRUE
+			if(REQUEST_LOSE_OBJECTIVE)
+				message_admins("[key_name_admin(usr)] approved the defeat request for an objective from [current]: [request_target.explanation_text]")
+				log_admin("[key_name(usr)] approved the defeat request for an objective from [current]: [request_target.explanation_text]")
+				request_target.completed = FALSE
+		to_chat(current, "<span class='boldnotice'>Your objective change request has been approved.</span>")
+		do_edit_objectives_ambitions()
+		return
+
+	else if (href_list["req_obj_deny"])
+		var/datum/antagonist/antag_datum = locate(href_list["req_obj_deny"]) in antag_datums
+		if(QDELETED(antag_datum))
+			do_edit_objectives_ambitions()
+			to_chat(usr, "<span class='warning'>No antag found.</span>")
+			return
+		if(antag_datum.owner != src)
+			do_edit_objectives_ambitions()
+			to_chat(usr, "<span class='warning'>Invalid antag reference.</span>")
+			return
+		var/uid = href_list["req_obj_id"]
+		var/list/requested_obj_change = LAZYACCESS(antag_datum.requested_objective_changes, uid)
+		if(!requested_obj_change)
+			do_edit_objectives_ambitions()
+			to_chat(usr, "<span class='warning'>Invalid requested objective change reference.</span>")
+			return
+		var/justification = stripped_multiline_input(usr, "Justify why you are denying this objective request change.", "Deny", memory, MAX_MESSAGE_LEN)
+		if(isnull(justification))
+			return
+		if(!check_rights(R_ADMIN))
+			return
+		if(QDELETED(antag_datum))
+			to_chat(usr, "<span class='warning'>No antag found.</span>")
+			do_edit_objectives_ambitions()
+			return
+		if(!LAZYACCESS(antag_datum.requested_objective_changes, uid))
+			to_chat(usr, "<span class='warning'>Invalid requested objective change reference.</span>")
+			do_edit_objectives_ambitions()
+			return
+		var/datum/objective/type_cast = requested_obj_change["target"]
+		var/objective_name = initial(type_cast.name)
+		message_admins("[key_name_admin(usr)] denied a requested [objective_name] objective from [current]: [requested_obj_change["text"]]")
+		log_admin("[key_name(usr)] denied a requested [objective_name] objective from [current]: [requested_obj_change["text"]]")
+		to_chat(current, "<span class='boldwarning'>Your objective request has been denied for the following reason: [justification]</span>")
+		antag_datum.remove_objective_change(uid)
+		do_edit_objectives_ambitions()
+		return
+
+	else if (href_list["obj_panel_complete_toggle"])
+		var/datum/antagonist/antag_datum = locate(href_list["target_antag"]) in antag_datums
+		if(QDELETED(antag_datum))
+			do_edit_objectives_ambitions()
+			to_chat(usr, "<span class='warning'>No antag found.</span>")
+			return
+		if(antag_datum.owner != src)
+			do_edit_objectives_ambitions()
+			to_chat(usr, "<span class='warning'>Invalid antag reference.</span>")
+			return
+		var/datum/objective/objective_to_toggle = locate(href_list["obj_panel_complete_toggle"]) in antag_datum.objectives
+		if(QDELETED(objective_to_toggle))
+			to_chat(usr, "<span class='warning'>No objective found. Perhaps it was already deleted?</span>")
+			do_edit_objectives_ambitions()
+			return
+		if(objective_to_toggle.owner != src)
+			do_edit_objectives_ambitions()
+			to_chat(usr, "<span class='warning'>Invalid objective reference.</span>")
+			return
+		objective_to_toggle.completed = !objective_to_toggle.completed
+		message_admins("[key_name_admin(usr)] toggled the win state for [current]'s objective: [objective_to_toggle.explanation_text]")
+		log_admin("[key_name(usr)] toggled the win state for [current]'s objective: [objective_to_toggle.explanation_text]")
+		if(alert(usr, "Would you like to alert the player of the change?", "Deny objective", "Yes", "No") == "Yes")
+			to_chat(current, "[objective_to_toggle.completed ? "<span class='boldnotice'>" : "<span class='boldwarning'>"]Your objective status has changed!</span>")
+		do_edit_objectives_ambitions()
+		return
+
+	else if (href_list["obj_panel_delete"])
+		var/datum/antagonist/antag_datum = locate(href_list["target_antag"]) in antag_datums
+		if(QDELETED(antag_datum))
+			do_edit_objectives_ambitions()
+			to_chat(usr, "<span class='warning'>No antag found.</span>")
+			return
+		if(antag_datum.owner != src)
+			do_edit_objectives_ambitions()
+			to_chat(usr, "<span class='warning'>Invalid antag reference.</span>")
+			return
+		var/datum/objective/objective_to_delete = locate(href_list["obj_panel_delete"]) in antag_datum.objectives
+		if(QDELETED(objective_to_delete))
+			to_chat(usr, "<span class='warning'>No objective found. Perhaps it was already deleted?</span>")
+			do_edit_objectives_ambitions()
+			return
+		if(objective_to_delete.owner != src)
+			do_edit_objectives_ambitions()
+			to_chat(usr, "<span class='warning'>Invalid objective reference.</span>")
+			return
+		if(alert(usr, "Are you sure you want to delete this objective?", "Delete objective", "Yes", "No") != "Yes")
+			return
+		if(!check_rights(R_ADMIN))
+			return
+		if(QDELETED(objective_to_delete))
+			return
+		message_admins("[key_name_admin(usr)] removed an objective from [current]: [objective_to_delete.explanation_text]")
+		log_admin("[key_name(usr)] removed an objective from [current]: [objective_to_delete.explanation_text]")
+		qdel(objective_to_delete)
+		do_edit_objectives_ambitions()
+		return
+
+	else if (href_list["obj_panel_edit"])
+		var/datum/antagonist/antag_datum = locate(href_list["target_antag"]) in antag_datums
+		if(QDELETED(antag_datum))
+			do_edit_objectives_ambitions()
+			to_chat(usr, "<span class='warning'>No antag found.</span>")
+			return
+		if(antag_datum.owner != src)
+			do_edit_objectives_ambitions()
+			to_chat(usr, "<span class='warning'>Invalid antag reference.</span>")
+			return
+		var/datum/objective/objective_to_edit = locate(href_list["obj_panel_edit"]) in antag_datum.objectives
+		if(QDELETED(objective_to_edit))
+			to_chat(usr, "<span class='warning'>No objective found. Perhaps it was already deleted?</span>")
+			do_edit_objectives_ambitions()
+			return
+		if(objective_to_edit.owner != src)
+			do_edit_objectives_ambitions()
+			to_chat(usr, "<span class='warning'>Invalid objective reference.</span>")
+			return
+		var/explanation_before = objective_to_edit.explanation_text
+		objective_to_edit.admin_edit(usr)
+		if(QDELETED(objective_to_edit))
+			return
+		message_admins("[key_name_admin(usr)] edited an objective from [current]:\
+		Before: [explanation_before]\
+		After: [objective_to_edit.explanation_text]")
+		log_admin("[key_name(usr)] edited an objective from [current]:\
+		Before: [explanation_before]\
+		After: [objective_to_edit.explanation_text]")
+		do_edit_objectives_ambitions()
+		return
+//ambition end
 	if(href_list["add_antag"])
 		add_antag_wrapper(text2path(href_list["add_antag"]),usr)
 	if(href_list["remove_antag"])
@@ -1392,7 +1720,7 @@ GLOBAL_LIST(objective_choices)
 						else
 							target_antag = target
 
-		//ambition start
+//ambition start
 		if(!GLOB.objective_choices)
 			populate_objective_choices()
 
@@ -1401,8 +1729,7 @@ GLOBAL_LIST(objective_choices)
 
 		var/selected_type = input("Select objective type:", "Objective type", def_value) as null|anything in GLOB.objective_choices
 		selected_type = GLOB.objective_choices[selected_type]
-		//ambition end
-
+//ambition end
 		if (!selected_type)
 			return
 

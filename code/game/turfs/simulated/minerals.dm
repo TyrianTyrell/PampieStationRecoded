@@ -27,7 +27,7 @@
 	// If true you can mine the mineral turf with your hands
 	var/weak_turf = FALSE
 
-/turf/closed/mineral/Initialize()
+/turf/closed/mineral/Initialize(mapload)
 	if (!canSmoothWith)
 		canSmoothWith = list(/turf/closed/mineral, /turf/closed/indestructible)
 	. = ..()
@@ -171,7 +171,7 @@
 /turf/closed/mineral/acid_melt()
 	ScrapeAway()
 
-/turf/closed/mineral/ex_act(severity, target)
+/turf/closed/mineral/ex_act(severity, target, origin)
 	..()
 	switch(severity)
 		if(3)
@@ -191,7 +191,7 @@
 		//Currently, Adamantine won't spawn as it has no uses. -Durandan
 	var/mineralChance = 13
 
-/turf/closed/mineral/random/Initialize()
+/turf/closed/mineral/random/Initialize(mapload)
 
 	mineralSpawnChanceList = typelist("mineralSpawnChanceList", mineralSpawnChanceList)
 
@@ -512,7 +512,7 @@
 	var/activated_name = null
 	var/mutable_appearance/activated_overlay
 
-/turf/closed/mineral/gibtonite/Initialize()
+/turf/closed/mineral/gibtonite/Initialize(mapload)
 	det_time = rand(8,10) //So you don't know exactly when the hot potato will explode
 	. = ..()
 
@@ -661,7 +661,7 @@
 /turf/closed/mineral/strong/acid_melt()
 	return
 
-/turf/closed/mineral/strong/ex_act(severity, target)
+/turf/closed/mineral/strong/ex_act(severity, target, origin)
 	return
 
 #undef MINING_MESSAGE_COOLDOWN

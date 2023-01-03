@@ -3,7 +3,7 @@
 	flag = CMO_JF
 	department_head = list("Captain")
 	department_flag = MEDSCI
-//	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
+	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	head_announce = list(RADIO_CHANNEL_MEDICAL)
 	faction = "Station"
 	total_positions = 1
@@ -28,6 +28,7 @@
 			ACCESS_KEYCARD_AUTH, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS)
 	paycheck = PAYCHECK_COMMAND
 	paycheck_department = ACCOUNT_MED
+	bounty_types = CIV_JOB_MED
 
 	display_order = JOB_DISPLAY_ORDER_CHIEF_MEDICAL_OFFICER
 	blacklisted_quirks = list(/datum/quirk/brainproblems, /datum/quirk/quadriplegic, /datum/quirk/blindness, /datum/quirk/deaf, /datum/quirk/mute, /datum/quirk/insanity, /datum/quirk/paraplegic, /datum/quirk/blooddeficiency)

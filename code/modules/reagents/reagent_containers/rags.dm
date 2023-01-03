@@ -134,27 +134,27 @@
 	var/folded_icon = "towel"
 	var/list/possible_colors
 
-/obj/item/reagent_containers/rag/towel/Initialize()
+/obj/item/reagent_containers/rag/towel/Initialize(mapload)
 	. = ..()
 	if(possible_colors)
 		add_atom_colour(pick(possible_colors), FIXED_COLOUR_PRIORITY)
 
 /obj/item/reagent_containers/rag/towel/attack(mob/living/M, mob/living/user)
 	if(user.a_intent == INTENT_HARM)
-		DISABLE_BITFIELD(item_flags, NOBLUDGEON)
+		item_flags &= ~(NOBLUDGEON)
 		. = TRUE
 	..()
 	if(.)
-		ENABLE_BITFIELD(item_flags, NOBLUDGEON)
+		item_flags |= NOBLUDGEON
 
 /obj/item/reagent_containers/rag/towel/equipped(mob/living/user, slot)
 	. = ..()
 	switch(slot)
-		if(SLOT_BELT)
+		if(ITEM_SLOT_BELT)
 			body_parts_covered = GROIN|LEGS
-		if(SLOT_WEAR_SUIT)
+		if(ITEM_SLOT_OCLOTHING)
 			body_parts_covered = CHEST|GROIN|LEGS
-		if(SLOT_HEAD)
+		if(ITEM_SLOT_HEAD)
 			body_parts_covered = HEAD
 			flags_inv = HIDEHAIR
 
@@ -192,4 +192,4 @@
 	extinguish_efficiency = 5
 	action_speed = 15
 	damp_threshold = 0.8
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 20, "bio" = 20, "rad" = 20, "fire" = 50, "acid" = 50) //items don't provide armor to wearers unlike clothing yet.
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 20, BIO = 20, RAD = 20, FIRE = 50, ACID = 50) //items don't provide armor to wearers unlike clothing yet.

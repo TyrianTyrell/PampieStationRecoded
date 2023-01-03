@@ -2,9 +2,9 @@
 	name = "Alien Infestation"
 	typepath = /datum/round_event/ghost_role/alien_infestation
 	weight = 5
-	gamemode_blacklist = list("dynamic")
 	min_players = 25
 	max_occurrences = 1
+	dynamic_should_hijack = TRUE
 
 /datum/round_event/ghost_role/alien_infestation
 	announceWhen	= 400
@@ -32,7 +32,7 @@
 
 /datum/round_event/ghost_role/alien_infestation/announce(fake)
 	if(successSpawn || fake)
-		priority_announce("Unidentified lifesigns detected coming aboard [station_name()]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert", "aliens")
+		priority_announce("Unidentified lifesigns detected coming aboard [station_name()]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert", "aliens", has_important_message = TRUE)
 
 
 /datum/round_event/ghost_role/alien_infestation/spawn_role()

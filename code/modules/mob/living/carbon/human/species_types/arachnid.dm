@@ -7,7 +7,7 @@
 	species_traits = list(LIPS, NOEYES, NO_UNDERWEAR, HAS_FLESH, HAS_BONE)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
 	mutant_bodyparts = list("arachnid_legs" = "Plain", "arachnid_spinneret" = "Plain", "arachnid_mandibles" = "Plain")
-	attack_verb = "slash"
+	attack_verb = "claw"
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	meat = /obj/item/reagent_containers/food/snacks/meat/slab/spider
@@ -21,6 +21,7 @@
 	var/web_cooldown = 200
 	var/web_ready = TRUE
 	var/spinner_rate = 25
+	wings_icons = SPECIES_WINGS_MOTH //Arachnids' phylum is arthropods, which include butterflies. Might as well hit them with moth wings.
 
 /datum/species/arachnid/random_name(gender,unique,lastname)
 	if(unique)

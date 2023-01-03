@@ -8,7 +8,7 @@
 	var/engine_sound_length = 20 //Set this to the length of the engine sound
 	var/escape_time = 200 //Time it takes to break out of the car
 
-/obj/vehicle/sealed/car/Initialize()
+/obj/vehicle/sealed/car/Initialize(mapload)
 	. = ..()
 	LoadComponent(/datum/component/riding)
 
@@ -16,7 +16,7 @@
 	. = ..()
 	initialize_controller_action_type(/datum/action/vehicle/sealed/remove_key, VEHICLE_CONTROL_DRIVE)
 	if(car_traits & CAN_KIDNAP)
-		initialize_controller_action_type(/datum/action/vehicle/sealed/DumpKidnappedMobs, VEHICLE_CONTROL_DRIVE)
+		initialize_controller_action_type(/datum/action/vehicle/sealed/dump_kidnapped_mobs, VEHICLE_CONTROL_DRIVE)
 
 /obj/vehicle/sealed/car/driver_move(mob/user, direction)
 	if(key_type && !is_key(inserted_key))

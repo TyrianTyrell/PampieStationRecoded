@@ -322,6 +322,7 @@
 		return PROCESS_KILL
 
 	if(friendc) //Makes all status displays except supply shuttle timer display the eye -- Urist
+		current_mode = SD_PICTURE
 		set_picture("ai_friend")
 		return PROCESS_KILL
 
@@ -479,7 +480,30 @@
 
 // MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/ai, 32)
 
-/obj/machinery/status_display/ai/Initialize()
+	/// A mapping between AI_EMOTION_* string constants, which also double as user readable descriptions, and the name of the iconfile.
+	var/static/list/emotion_map = list(
+		AI_EMOTION_BLANK = "ai_off",
+		AI_EMOTION_VERY_HAPPY = "ai_veryhappy",
+		AI_EMOTION_HAPPY = "ai_happy",
+		AI_EMOTION_NEUTRAL = "ai_neutral",
+		AI_EMOTION_UNSURE = "ai_unsure",
+		AI_EMOTION_CONFUSED = "ai_confused",
+		AI_EMOTION_SAD = "ai_sad",
+		AI_EMOTION_BSOD = "ai_bsod",
+		AI_EMOTION_PROBLEMS = "ai_trollface",
+		AI_EMOTION_AWESOME = "ai_awesome",
+		AI_EMOTION_DORFY = "ai_urist",
+		AI_EMOTION_THINKING = "ai_thinking",
+		AI_EMOTION_FACEPALM = "ai_facepalm",
+		AI_EMOTION_FRIEND_COMPUTER = "ai_friend",
+		AI_EMOTION_BLUE_GLOW = "ai_sal",
+		AI_EMOTION_RED_GLOW = "ai_hal",
+	)
+
+
+// MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/ai, 32)
+
+/obj/machinery/status_display/ai/Initialize(mapload)
 	. = ..()
 	GLOB.ai_status_displays.Add(src)
 

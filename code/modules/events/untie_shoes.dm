@@ -1,8 +1,8 @@
 /datum/round_event_control/untied_shoes
 	name = "Untied Shoes"
 	typepath = /datum/round_event/untied_shoes
-	weight = 100
-	max_occurrences = 20
+	weight = 50
+	max_occurrences = 10
 	alert_observers = FALSE
 
 /datum/round_event/untied_shoes
@@ -19,9 +19,11 @@
 			continue
 		if(!C.shoes || !C.shoes.can_be_tied || C.shoes.tied != SHOES_TIED || C.shoes.lace_time > budget)
 			continue
+		if(!is_station_level(C.z) && prob(50))
+			continue
 		if(prob(5))
 			C.shoes.adjust_laces(SHOES_KNOTTED)
-			budget -= C.shoes.lace_time //Doubling up on the budget removal on purpose
+			budget -= C.shoes.lace_time // doubling up on the budget removal on purpose
 		else
 			C.shoes.adjust_laces(SHOES_UNTIED)
 		budget -= C.shoes.lace_time

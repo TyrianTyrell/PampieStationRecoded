@@ -153,63 +153,31 @@
 
 	//Start with uniform,suit,backpack for additional slots
 	if(uniform)
-		H.equip_to_slot_or_del(new uniform(H), SLOT_W_UNIFORM, TRUE)
+		H.equip_to_slot_or_del(new uniform(H), ITEM_SLOT_ICLOTHING, TRUE)
 	if(suit)
-		H.equip_to_slot_or_del(new suit(H), SLOT_WEAR_SUIT, TRUE)
+		H.equip_to_slot_or_del(new suit(H), ITEM_SLOT_OCLOTHING, TRUE)
 	if(back)
-		H.equip_to_slot_or_del(new back(H), SLOT_BACK, TRUE)
+		H.equip_to_slot_or_del(new back(H), ITEM_SLOT_BACK, TRUE)
 	if(belt)
-		if(uniform)
-			H.equip_to_slot_or_del(new belt(H), SLOT_BELT, TRUE)
-		else
-			var/obj/item/I = new belt(H)
-			var/datum/job/J = SSjob.GetJob(H.job)
-			if(istype(I, /obj/item/pda))
-				var/obj/item/pda/P = I
-				P.owner = H.real_name
-				P.ownjob = J.title
-				P.update_label()
-				if(preference_source && !P.equipped) //PDA's screen color, font style and look depend on client preferences.
-					P.update_style(preference_source)
-				H.equip_to_slot_or_del(P, SLOT_IN_BACKPACK, TRUE)
-			else
-				H.equip_to_slot_or_del(I, SLOT_IN_BACKPACK, TRUE)
+		H.equip_to_slot_or_del(new belt(H), ITEM_SLOT_BELT, TRUE)
 	if(gloves)
-		H.equip_to_slot_or_del(new gloves(H), SLOT_GLOVES, TRUE)
+		H.equip_to_slot_or_del(new gloves(H), ITEM_SLOT_GLOVES, TRUE)
 	if(shoes)
-		H.equip_to_slot_or_del(new shoes(H), SLOT_SHOES, TRUE)
+		H.equip_to_slot_or_del(new shoes(H), ITEM_SLOT_FEET, TRUE)
 	if(head)
-		H.equip_to_slot_or_del(new head(H), SLOT_HEAD, TRUE)
+		H.equip_to_slot_or_del(new head(H), ITEM_SLOT_HEAD, TRUE)
 	if(mask)
-		H.equip_to_slot_or_del(new mask(H), SLOT_WEAR_MASK, TRUE)
+		H.equip_to_slot_or_del(new mask(H), ITEM_SLOT_MASK, TRUE)
 	if(neck)
-		H.equip_to_slot_or_del(new neck(H), SLOT_NECK, TRUE)
+		H.equip_to_slot_or_del(new neck(H), ITEM_SLOT_NECK, TRUE)
 	if(ears)
-		H.equip_to_slot_or_del(new ears(H), SLOT_EARS, TRUE)
+		H.equip_to_slot_or_del(new ears(H), ITEM_SLOT_EARS, TRUE)
 	if(glasses)
-		H.equip_to_slot_or_del(new glasses(H), SLOT_GLASSES, TRUE)
+		H.equip_to_slot_or_del(new glasses(H), ITEM_SLOT_EYES, TRUE)
 	if(id)
-		if(uniform)
-			var/obj/item/card/id/IDP = new id(H)
-			H.equip_to_slot_or_del(IDP, SLOT_WEAR_ID, TRUE)
-		else
-			var/obj/item/card/id/I = new id(H)
-			var/datum/job/J = SSjob.GetJob(H.job)
-			I.access = J.get_access()
-			shuffle_inplace(I.access) // Shuffle access list to make NTNet passkeys less predictable
-			I.registered_name = H.real_name
-			I.assignment = J.title
-			I.update_label()
-			for(var/A in SSeconomy.bank_accounts)
-				var/datum/bank_account/B = A
-				if(B.account_id == H.account_id)
-					I.registered_account = B
-					B.bank_cards += I
-					break
-			H.sec_hud_set_ID()
-			H.equip_to_slot_or_del(I, SLOT_IN_BACKPACK, TRUE)
+		H.equip_to_slot_or_del(new id(H), ITEM_SLOT_ID, TRUE)
 	if(suit_store)
-		H.equip_to_slot_or_del(new suit_store(H), SLOT_S_STORE, TRUE)
+		H.equip_to_slot_or_del(new suit_store(H), ITEM_SLOT_SUITSTORE, TRUE)
 	if(undershirt)
 		H.undershirt = initial(undershirt.name)
 
@@ -227,15 +195,9 @@
 
 	if(!visualsOnly) // Items in pockets or backpack don't show up on mob's icon.
 		if(l_pocket)
-			if(uniform)
-				H.equip_to_slot_or_del(new l_pocket(H), SLOT_L_STORE, TRUE)
-			else
-				H.equip_to_slot_or_del(new l_pocket(H), SLOT_IN_BACKPACK, TRUE)
+			H.equip_to_slot_or_del(new l_pocket(H), ITEM_SLOT_LPOCKET, TRUE)
 		if(r_pocket)
-			if(uniform)
-				H.equip_to_slot_or_del(new r_pocket(H), SLOT_R_STORE, TRUE)
-			else
-				H.equip_to_slot_or_del(new r_pocket(H), SLOT_IN_BACKPACK, TRUE)
+			H.equip_to_slot_or_del(new r_pocket(H), ITEM_SLOT_RPOCKET, TRUE)
 
 		if(box)
 			if(!backpack_contents)

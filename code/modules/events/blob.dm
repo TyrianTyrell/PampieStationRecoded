@@ -6,8 +6,7 @@
 
 	earliest_start = 40 MINUTES
 	min_players = 35
-
-	gamemode_blacklist = list("blob","dynamic") //Just in case a blob survives that long
+	dynamic_should_hijack = TRUE
 
 /datum/round_event/ghost_role/blob
 	announceWhen	= -1
@@ -16,7 +15,7 @@
 
 /datum/round_event/ghost_role/blob/announce(fake)
 	if(prob(75))
-		priority_announce("Confirmed outbreak of level 5 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", "outbreak5")
+		priority_announce("Confirmed outbreak of level 5 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", "outbreak5", has_important_message = TRUE)
 	else
 		print_command_report("Confirmed outbreak of level 5 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "level 5 biohazard")
 

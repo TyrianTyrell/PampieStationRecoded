@@ -17,6 +17,7 @@
 	minimal_access = list(ACCESS_BAR, ACCESS_MINERAL_STOREROOM)
 	paycheck = PAYCHECK_EASY
 	paycheck_department = ACCOUNT_SRV
+	bounty_types = CIV_JOB_DRINK
 	display_order = JOB_DISPLAY_ORDER_BARTENDER
 	threat = 0.5
 
@@ -31,7 +32,6 @@
 	suit = /obj/item/clothing/suit/armor/vest
 	backpack_contents = list(/obj/item/storage/box/beanbag=1,/obj/item/book/granter/action/drink_fling=1)
 	shoes = /obj/item/clothing/shoes/laceup
-
 
 /datum/job/bartender/after_spawn(mob/living/H, mob/M, latejoin = FALSE)
 	. = ..()

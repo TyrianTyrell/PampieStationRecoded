@@ -103,7 +103,10 @@
 
 	var/static/list/airlock_overlays = list()
 
-/obj/machinery/door/airlock/Initialize()
+	/// sigh
+	var/unelectrify_timerid
+
+/obj/machinery/door/airlock/Initialize(mapload)
 	. = ..()
 	wires = new wiretypepath(src) //CIT CHANGE - makes it possible for airlocks to have different wire datums
 	if(frequency)
@@ -791,21 +794,6 @@
 		return WIRE_INTERACTION_FAIL
 	return ..()
 
-/obj/machinery/door/airlock/proc/electrified_loop()
-	while (secondsElectrified > NOT_ELECTRIFIED)
-		sleep(10)
-		if(QDELETED(src))
-			return
-
-		secondsElectrified--
-		updateDialog()
-	// This is to protect against changing to permanent, mid loop.
-	if(secondsElectrified == NOT_ELECTRIFIED)
-		set_electrified(NOT_ELECTRIFIED)
-	else
-		set_electrified(ELECTRIFIED_PERMANENT)
-	updateDialog()
-
 /obj/machinery/door/airlock/Topic(href, href_list, var/nowindow = 0)
 	// If you add an if(..()) check you must first remove the var/nowindow parameter.
 	// Otherwise it will runtime with this kind of error: null.Topic()
@@ -1290,8 +1278,8 @@
 			assemblytype = /obj/structure/door_assembly/door_assembly_extmai
 	update_icon()
 
-/obj/machinery/door/airlock/CanAStarPass(obj/item/card/id/ID)
-//Airlock is passable if it is open (!density), bot has access, and is not bolted shut or powered off)
+/obj/machinery/door/airlock/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
+	//Airlock is passable if it is open (!density), bot has access, and is not bolted shut or powered off)
 	return !density || (check_access(ID) && !locked && hasPower())
 
 /obj/machinery/door/airlock/emag_act(mob/user)
@@ -1365,11 +1353,19 @@
 		wires.cut_all()
 		update_icon()
 
+/obj/machinery/door/airlock/proc/remove_electrify()
+	secondsElectrified = NOT_ELECTRIFIED
+	unelectrify_timerid = null
+	diag_hud_set_electrified()
+
 /obj/machinery/door/airlock/proc/set_electrified(seconds, mob/user)
 	secondsElectrified = seconds
+	if(unelectrify_timerid)
+		deltimer(unelectrify_timerid)
+		unelectrify_timerid = null
+	if(secondsElectrified != ELECTRIFIED_PERMANENT)
+		unelectrify_timerid = addtimer(CALLBACK(src, .proc/remove_electrify), secondsElectrified SECONDS, TIMER_STOPPABLE)
 	diag_hud_set_electrified()
-	if(secondsElectrified > NOT_ELECTRIFIED)
-		INVOKE_ASYNC(src, .proc/electrified_loop)
 
 	if(user)
 		var/message

@@ -9,6 +9,7 @@
 	impure_chem 			= /datum/reagent/impure/fermiTox // What chemical is metabolised with an inpure reaction
 	inverse_chem_val 		= 0.25		// If the impurity is below 0.5, replace ALL of the chem with inverse_chemupon metabolising
 	inverse_chem			= /datum/reagent/impure/fermiTox
+	chemical_flags = REAGENT_ALL_PROCESS	//Lets just default to robots being able to process these funky chems.
 
 
 //This should process fermichems to find out how pure they are and what effect to do.
@@ -36,7 +37,7 @@
 	taste_description = "like jerky, whiskey and an off aftertaste of a crypt"
 	metabolization_rate = 0.2
 	overdose_threshold = 25
-	chemical_flags = REAGENT_DONOTSPLIT
+	chemical_flags = REAGENT_DONOTSPLIT | REAGENT_ALL_PROCESS
 	pH = 4
 	can_synth = TRUE
 
@@ -47,7 +48,7 @@
 		var/obj/item/W = M.head
 		M.dropItemToGround(W, TRUE)
 	var/hat = new /obj/item/clothing/head/hattip()
-	M.equip_to_slot(hat, SLOT_HEAD, 1, 1)
+	M.equip_to_slot(hat, ITEM_SLOT_HEAD, 1, 1)
 
 
 /datum/reagent/fermi/hatmium/on_mob_life(mob/living/carbon/human/M)
@@ -84,7 +85,7 @@
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	inverse_chem_val 		= 0
 	var/obj/item/organ/tongue/nT
-	chemical_flags = REAGENT_DONOTSPLIT
+	chemical_flags = REAGENT_DONOTSPLIT | REAGENT_ALL_PROCESS
 	pH = 5
 	var/obj/item/organ/tongue/T
 	can_synth = TRUE
@@ -241,7 +242,7 @@
 	description = "Causes items upon the patient to sometimes short out, as well as causing a shock in the patient, if the residual charge between the crystals builds up to sufficient quantities"
 	taste_description = "shocking pain"
 	metabolization_rate = 0.5
-	chemical_flags = REAGENT_INVISIBLE
+	chemical_flags = REAGENT_INVISIBLE | REAGENT_ALL_PROCESS
 
 //Increases shock events.
 /datum/reagent/fermi/nanite_b_goneTox/on_mob_life(mob/living/carbon/C)//Damages the taker if their purity is low. Extended use of impure chemicals will make the original die. (thus can't be spammed unless you've very good)
@@ -304,7 +305,7 @@
 /datum/reagent/fermi/fermiTest
 	name = "Fermis Test Reagent"
 	description = "You should be really careful with this...! Also, how did you get this?"
-	chemical_flags = REAGENT_FORCEONNEW
+	chemical_flags = REAGENT_FORCEONNEW | REAGENT_ALL_PROCESS
 	can_synth = FALSE
 
 /datum/reagent/fermi/fermiTest/on_new(datum/reagents/holder)
@@ -340,7 +341,7 @@
 	color = "#fbc314"
 	taste_description = "burning"
 	pH = 0
-	chemical_flags = REAGENT_FORCEONNEW
+	chemical_flags = REAGENT_FORCEONNEW | REAGENT_ALL_PROCESS
 	can_synth = TRUE
 	var/strength = 1.5
 
@@ -380,7 +381,7 @@
 	color = "#3853a4"
 	taste_description = "burning"
 	pH = 14
-	chemical_flags = REAGENT_FORCEONNEW
+	chemical_flags = REAGENT_FORCEONNEW | REAGENT_ALL_PROCESS
 	can_synth = TRUE
 	var/strength = 1.5
 

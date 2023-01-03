@@ -113,7 +113,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = SHARP_EDGED
 
-/obj/item/hatchet/Initialize()
+/obj/item/hatchet/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/butchering, 70, 100)
 
@@ -123,7 +123,7 @@
 	return (BRUTELOSS)
 
 /obj/item/hatchet/bone
-	name = "Bone Hatchet"
+	name = "bone hatchet"
 	desc = "A very sharp bone blade tied to a bone handle with sinew. It has a long history of chopping things, but now it is used for chopping wood."
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "hatchet_bone"
@@ -151,7 +151,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	var/swiping = FALSE
 
-/obj/item/scythe/Initialize()
+/obj/item/scythe/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/butchering, 90, 105)
 
@@ -199,7 +199,7 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(1,2,5,10,15,25,50)
 
-/obj/item/reagent_containers/glass/bottle/nutrient/Initialize()
+/obj/item/reagent_containers/glass/bottle/nutrient/Initialize(mapload)
 	. = ..()
 	pixel_x = rand(-5, 5)
 	pixel_y = rand(-5, 5)

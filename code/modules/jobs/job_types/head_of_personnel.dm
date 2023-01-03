@@ -1,7 +1,7 @@
 /datum/job/hop
 	title = "Head of Personnel"
 	flag = HOP
-//	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
+	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	department_head = list("Captain")
 	department_flag = CIVILIAN
 	head_announce = list(RADIO_CHANNEL_SERVICE)
@@ -33,6 +33,7 @@
 						ACCESS_HOP, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_GATEWAY, ACCESS_MINERAL_STOREROOM)
 	paycheck = PAYCHECK_COMMAND
 	paycheck_department = ACCOUNT_SRV
+	bounty_types = CIV_JOB_RANDOM
 
 	display_order = JOB_DISPLAY_ORDER_HEAD_OF_PERSONNEL
 

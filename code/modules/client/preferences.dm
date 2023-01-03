@@ -60,6 +60,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 										//autocorrected this round, not that you'd need to check that.
 
 	var/UI_style = null
+	var/outline_enabled = TRUE
+	var/outline_color = COLOR_THEME_MIDNIGHT
+	var/screentip_pref = TRUE
+	var/screentip_color = "#ffd391"
 	var/buttons_locked = FALSE
 	var/hotkeys = FALSE
 
@@ -81,6 +85,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/tgui_lock = TRUE
 	var/windowflashing = TRUE
 	var/toggles = TOGGLES_DEFAULT
+	/// A separate variable for deadmin toggles, only deals with those.
+	var/deadmin = NONE
 	var/db_flags
 	var/chat_toggles = TOGGLES_DEFAULT_CHAT
 	var/ghost_form = "ghost"
@@ -117,6 +123,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/hair_color = "000000"				//Hair color
 	var/facial_hair_style = "Shaved"	//Face hair type
 	var/facial_hair_color = "000000"		//Facial hair color
+	var/grad_style						//Hair gradient style
+	var/grad_color = "FFFFFF"			//Hair gradient color
 	var/skin_tone = "caucasian1"		//Skin color
 	var/use_custom_skin_tone = FALSE
 	var/left_eye_color = "000000"		//Eye color
@@ -127,12 +135,18 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/features = list("mcolor" = "FFFFFF", "mcolor2" = "FFFFFF", "mcolor3" = "FFFFFF", "tail_lizard" = "Smooth", "tail_human" = "None", "snout" = "Round", "horns" = "None", "horns_color" = "85615a", "ears" = "None", "wings" = "None", "wings_color" = "FFF", "frills" = "None", "deco_wings" = "None", "spines" = "None", "legs" = "Plantigrade", "insect_wings" = "Plain", "insect_fluff" = "None", "insect_markings" = "None", "arachnid_legs" = "Plain", "arachnid_spinneret" = "Plain", "arachnid_mandibles" = "Plain", "mam_body_markings" = list(), "mam_ears" = "None", "mam_snouts" = "None", "mam_tail" = "None", "mam_tail_animated" = "None", "xenodorsal" = "Standard", "xenohead" = "Standard", "xenotail" = "Xenomorph Tail", "taur" = "None", "genitals_use_skintone" = FALSE, "has_cock" = FALSE, "cock_shape" = DEF_COCK_SHAPE, "cock_length" = COCK_SIZE_DEF, "cock_diameter_ratio" = COCK_DIAMETER_RATIO_DEF, "cock_color" = "ffffff", "cock_taur" = FALSE, "has_balls" = FALSE, "balls_color" = "ffffff", "balls_shape" = DEF_BALLS_SHAPE, "balls_size" = BALLS_SIZE_DEF, "balls_cum_rate" = CUM_RATE, "balls_cum_mult" = CUM_RATE_MULT, "balls_efficiency" = CUM_EFFICIENCY, "has_breasts" = FALSE, "breasts_color" = "ffffff", "breasts_size" = BREASTS_SIZE_DEF, "breasts_shape" = DEF_BREASTS_SHAPE, "breasts_producing" = FALSE, "has_vag" = FALSE, "vag_shape" = DEF_VAGINA_SHAPE, "vag_color" = "ffffff", "has_womb" = FALSE, "has_butt" = FALSE, "butt_color" = "ffffff", "butt_size" = BUTT_SIZE_DEF, "balls_visibility" = GEN_VISIBLE_NO_UNDIES, "breasts_visibility"= GEN_VISIBLE_NO_UNDIES, "cock_visibility" = GEN_VISIBLE_NO_UNDIES, "vag_visibility" = GEN_VISIBLE_NO_UNDIES, "butt_visibility" = GEN_VISIBLE_NO_UNDIES, "ipc_screen" = "Sunburst", "ipc_antenna" = "None", "flavor_text" = "", "silicon_flavor_text" = "", "ooc_notes" = "", "meat_type" = "Mammalian", "body_model" = MALE, "body_size" = RESIZE_DEFAULT_SIZE, "color_scheme" = OLD_CHARACTER_COLORING)
 	var/accident_types = "Opt Out"
 	var/accident_sounds = TRUE
-
 	var/custom_speech_verb = "default" //if your say_mod is to be something other than your races
 	var/custom_tongue = "default" //if your tongue is to be something other than your races
 	var/additional_language = "None" //additional language your character has
 	var/modified_limbs = list() //prosthetic/amputated limbs
 	var/chosen_limb_id //body sprite selected to load for the users limbs, null means default, is sanitized when loaded
+
+	// Vocal bark prefs
+	var/bark_id = "mutedc3"
+	var/bark_speed = 4
+	var/bark_pitch = 1
+	var/bark_variance = 0.2
+	COOLDOWN_DECLARE(bark_previewing)
 
 	/// Security record note section
 	var/security_records
@@ -146,6 +160,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	//Quirk list
 	var/list/all_quirks = list()
+
+	//Quirk category currently selected
+	var/quirk_category = QUIRK_POSITIVE // defaults to positive, the first tab!
 
 	//Job preferences 2.0 - indexed by job title , no key or value implies never
 	var/list/job_preferences = list()
@@ -162,13 +179,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/clientfps = 0
 
-	var/parallax
+	var/parallax = PARALLAX_INSANE
 
 	var/ambientocclusion = TRUE
 	///Should we automatically fit the viewport?
 	var/auto_fit_viewport = FALSE
 	///Should we be in the widescreen mode set by the config?
 	var/widescreenpref = TRUE
+	///Strip menu style
+	var/long_strip_menu = FALSE
 	///What size should pixels be displayed as? 0 is strech to fit
 	var/pixel_size = 0
 	///What scaling method should we use?
@@ -215,6 +234,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/screenshake = 100
 	var/damagescreenshake = 2
+	var/recoil_screenshake = 100
 	var/arousable = TRUE
 	var/autostand = TRUE
 	var/auto_ooc = FALSE
@@ -395,7 +415,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
 			dat += "<h2>Flavor Text</h2>"
 			dat += "<a href='?_src_=prefs;preference=flavor_text;task=input'><b>Set Examine Text</b></a><br>"
-			if(length(features["flavor_text"]) <= 40)
+			if(length(features["flavor_text"]) <= MAX_FLAVOR_PREVIEW_LEN)
 				if(!length(features["flavor_text"]))
 					dat += "\[...\]"
 				else
@@ -404,7 +424,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "[TextPreview(features["flavor_text"])]...<BR>"
 			dat += "<h2>Silicon Flavor Text</h2>"
 			dat += "<a href='?_src_=prefs;preference=silicon_flavor_text;task=input'><b>Set Silicon Examine Text</b></a><br>"
-			if(length(features["silicon_flavor_text"]) <= 40)
+			if(length(features["silicon_flavor_text"]) <= MAX_FLAVOR_PREVIEW_LEN)
 				if(!length(features["silicon_flavor_text"]))
 					dat += "\[...\]"
 				else
@@ -414,7 +434,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<h2>OOC notes</h2>"
 			dat += "<a href='?_src_=prefs;preference=ooc_notes;task=input'><b>Set OOC notes</b></a><br>"
 			var/ooc_notes_len = length(features["ooc_notes"])
-			if(ooc_notes_len <= 40)
+			if(ooc_notes_len <= MAX_FLAVOR_PREVIEW_LEN)
 				if(!ooc_notes_len)
 					dat += "\[...\]"
 				else
@@ -506,6 +526,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<a style='display:block;width:100px' href='?_src_=prefs;preference=facial_hair_style;task=input'>[facial_hair_style]</a>"
 				dat += "<a href='?_src_=prefs;preference=previous_facehair_style;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_facehair_style;task=input'>&gt;</a><BR>"
 				dat += "<span style='border: 1px solid #161616; background-color: #[facial_hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=facial;task=input'>Change</a><BR>"
+
+				dat += "<h3>Hair Gradient</h3>"
+
+				dat += "<a style='display:block;width:100px' href='?_src_=prefs;preference=grad_style;task=input'>[grad_style]</a>"
+				dat += "<a href='?_src_=prefs;preference=previous_grad_style;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_grad_style;task=input'>&gt;</a><BR>"
+				dat += "<span style='border: 1px solid #161616; background-color: #[grad_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=grad_color;task=input'>Change</a><BR>"
 
 				dat += "</td>"
 			//Mutant stuff
@@ -757,6 +783,19 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>Butt Size:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=butt_size;task=input'>[features["butt_size"]]</a>"
 					dat += "<b>Butt Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=butt_visibility;task=input'>[features["butt_visibility"]]</a>"
 				dat += "</td>"
+				dat += APPEARANCE_CATEGORY_COLUMN
+				dat += "<h3>Butt</h3>"
+				dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=has_butt'>[features["has_butt"] == TRUE ? "Yes" : "No"]</a>"
+				if(features["has_butt"])
+					if(pref_species.use_skintones && features["genitals_use_skintone"] == TRUE)
+						dat += "<b>Color:</b></a><BR>"
+						dat += "<span style='border: 1px solid #161616; background-color: [SKINTONE2HEX(skin_tone)];'>&nbsp;&nbsp;&nbsp;</span>(Skin tone overriding)<br>"
+					else
+						dat += "<b>Color:</b></a><BR>"
+						dat += "<span style='border: 1px solid #161616; background-color: #[features["butt_color"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=butt_color;task=input'>Change</a><br>"
+					dat += "<b>Butt Size:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=butt_size;task=input'>[features["butt_size"]]</a>"
+					dat += "<b>Butt Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=butt_visibility;task=input'>[features["butt_visibility"]]</a>"
+				dat += "</td>"
 			dat += "</td>"
 			dat += "</tr></table>"
 
@@ -782,11 +821,21 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
 			dat += "<h2>Speech preferences</h2>"
 			dat += "<b>Custom Speech Verb:</b><BR>"
-			dat += "</b><a style='display:block;width:100px' href='?_src_=prefs;preference=speech_verb;task=input'>[custom_speech_verb]</a><BR>"
+			dat += "<a style='display:block;width:100px' href='?_src_=prefs;preference=speech_verb;task=input'>[custom_speech_verb]</a><BR>"
 			dat += "<b>Custom Tongue:</b><BR>"
-			dat += "</b><a style='display:block;width:100px' href='?_src_=prefs;preference=tongue;task=input'>[custom_tongue]</a><BR>"
+			dat += "<a style='display:block;width:100px' href='?_src_=prefs;preference=tongue;task=input'>[custom_tongue]</a><BR>"
 			dat += "<b>Additional Language</b><BR>"
-			dat += "</b><a style='display:block;width:100px' href='?_src_=prefs;preference=language;task=input'>[additional_language]</a><BR>"
+			dat += "<a style='display:block;width:100px' href='?_src_=prefs;preference=language;task=input'>[additional_language]</a><BR>"
+			dat += "</td>"
+			dat += "<td width='340px' height='300px' valign='top'>"
+			dat += "<h2>Vocal Bark preferences</h2>"
+			var/datum/bark/B = GLOB.bark_list[bark_id]
+			dat += "<b>Vocal Bark Sound:</b><BR>"
+			dat += "<a style='display:block;width:200px' href='?_src_=prefs;preference=barksound;task=input'>[B ? initial(B.name) : "INVALID"]</a><BR>"
+			dat += "<b>Vocal Bark Speed:</b> <a href='?_src_=prefs;preference=barkspeed;task=input'>[bark_speed]</a><BR>"
+			dat += "<b>Vocal Bark Pitch:</b> <a href='?_src_=prefs;preference=barkpitch;task=input'>[bark_pitch]</a><BR>"
+			dat += "<b>Vocal Bark Variance:</b> <a href='?_src_=prefs;preference=barkvary;task=input'>[bark_variance]</a><BR>"
+			dat += "<BR><a href='?_src_=prefs;preference=barkpreview'>Preview Bark</a><BR>"
 			dat += "</td>"
 			dat += "</tr></table>"
 
@@ -794,6 +843,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
 			dat += "<h2>General Settings</h2>"
 			dat += "<b>UI Style:</b> <a href='?_src_=prefs;task=input;preference=ui'>[UI_style]</a><br>"
+			dat += "<b>Outline:</b> <a href='?_src_=prefs;preference=outline_enabled'>[outline_enabled ? "Enabled" : "Disabled"]</a><br>"
+			dat += "<b>Outline Color:</b> [outline_color ? "<span style='border:1px solid #161616; background-color: [outline_color];'>" : "Theme-based (null)"]&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=outline_color'>Change</a><BR>"
+			dat += "<b>Screentip:</b> <a href='?_src_=prefs;preference=screentip_pref'>[screentip_pref ? "Enabled" : "Disabled"]</a><br>"
+			dat += "<b>Screentip Color:</b> <span style='border:1px solid #161616; background-color: [screentip_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=screentip_color'>Change</a><BR>"
 			dat += "<b>tgui Monitors:</b> <a href='?_src_=prefs;preference=tgui_lock'>[(tgui_lock) ? "Primary" : "All"]</a><br>"
 			dat += "<b>tgui Style:</b> <a href='?_src_=prefs;preference=tgui_fancy'>[(tgui_fancy) ? "Fancy" : "No Frills"]</a><br>"
 			dat += "<b>Show Runechat Chat Bubbles:</b> <a href='?_src_=prefs;preference=chat_on_map'>[chat_on_map ? "Enabled" : "Disabled"]</a><br>"
@@ -832,11 +885,41 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<b>Announce Login:</b> <a href='?_src_=prefs;preference=announce_login'>[(toggles & ANNOUNCE_LOGIN)?"Enabled":"Disabled"]</a><br>"
 				dat += "<br>"
 				dat += "<b>Combo HUD Lighting:</b> <a href = '?_src_=prefs;preference=combohud_lighting'>[(toggles & COMBOHUD_LIGHTING)?"Full-bright":"No Change"]</a><br>"
+				dat += "<br>"
+
+				//deadmin
+				dat += "<h2>Deadmin While Playing</h2>"
+				if(CONFIG_GET(flag/auto_deadmin_players))
+					dat += "<b>Always Deadmin:</b> FORCED</a><br>"
+				else
+					dat += "<b>Always Deadmin:</b> <a href = '?_src_=prefs;preference=toggle_deadmin_always'>[(deadmin & DEADMIN_ALWAYS)?"Enabled":"Disabled"]</a><br>"
+					if(!(deadmin & DEADMIN_ALWAYS))
+						dat += "<br>"
+						if(!CONFIG_GET(flag/auto_deadmin_antagonists))
+							dat += "<b>As Antag:</b> <a href = '?_src_=prefs;preference=toggle_deadmin_antag'>[(deadmin & DEADMIN_ANTAGONIST)?"Deadmin":"Keep Admin"]</a><br>"
+						else
+							dat += "<b>As Antag:</b> FORCED<br>"
+
+						if(!CONFIG_GET(flag/auto_deadmin_heads))
+							dat += "<b>As Command:</b> <a href = '?_src_=prefs;preference=toggle_deadmin_head'>[(deadmin & DEADMIN_POSITION_HEAD)?"Deadmin":"Keep Admin"]</a><br>"
+						else
+							dat += "<b>As Command:</b> FORCED<br>"
+
+						if(!CONFIG_GET(flag/auto_deadmin_security))
+							dat += "<b>As Security:</b> <a href = '?_src_=prefs;preference=toggle_deadmin_security'>[(deadmin & DEADMIN_POSITION_SECURITY)?"Deadmin":"Keep Admin"]</a><br>"
+						else
+							dat += "<b>As Security:</b> FORCED<br>"
+
+						if(!CONFIG_GET(flag/auto_deadmin_silicons))
+							dat += "<b>As Silicon:</b> <a href = '?_src_=prefs;preference=toggle_deadmin_silicon'>[(deadmin & DEADMIN_POSITION_SILICON)?"Deadmin":"Keep Admin"]</a><br>"
+						else
+							dat += "<b>As Silicon:</b> FORCED<br>"
 				dat += "</td>"
 
 			dat +="<td width='300px' height='300px' valign='top'>"
 			dat += "<h2>Citadel Preferences</h2>" //Because fuck me if preferences can't be fucking modularized and expected to update in a reasonable timeframe.
 			dat += "<b>Widescreen:</b> <a href='?_src_=prefs;preference=widescreenpref'>[widescreenpref ? "Enabled ([CONFIG_GET(string/default_view)])" : "Disabled (15x15)"]</a><br>"
+			dat += "<b>Long strip menu:</b> <a href='?_src_=prefs;preference=long_strip_menu'>[long_strip_menu ? "Enabled" : "Disabled"]</a><br>"
 			dat += "<b>Auto stand:</b> <a href='?_src_=prefs;preference=autostand'>[autostand ? "Enabled" : "Disabled"]</a><br>"
 			dat += "<b>Auto OOC:</b> <a href='?_src_=prefs;preference=auto_ooc'>[auto_ooc ? "Enabled" : "Disabled"]</a><br>"
 			dat += "<b>Event TFS:</b> <a href='?_src_=prefs;preference=event_tfs'>[event_tfs ? "Enabled" : "Disabled"]</a><br>"
@@ -846,6 +929,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Screen Shake:</b> <a href='?_src_=prefs;preference=screenshake'>[(screenshake==100) ? "Full" : ((screenshake==0) ? "None" : "[screenshake]")]</a><br>"
 			if (user && user.client && !user.client.prefs.screenshake==0)
 				dat += "<b>Damage Screen Shake:</b> <a href='?_src_=prefs;preference=damagescreenshake'>[(damagescreenshake==1) ? "On" : ((damagescreenshake==0) ? "Off" : "Only when down")]</a><br>"
+			dat += "<b>Recoil Screen Push:</b> <a href='?_src_=prefs;preference=recoil_screenshake'>[(recoil_screenshake==100) ? "Full" : ((recoil_screenshake==0) ? "None" : "[screenshake]")]</a><br>"
 			var/p_chaos
 			if (!preferred_chaos)
 				p_chaos = "No preference"
@@ -942,11 +1026,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<font color=red><b>You are banned from antagonist roles.</b></font>"
 				src.be_special = list()
 
+			dat += "<b>DISABLE ALL ANTAGONISM</b> <a href='?_src_=prefs;preference=disable_antag'>[(toggles & NO_ANTAG) ? "YES" : "NO"]</a><br>"
 
 			for (var/i in GLOB.special_roles)
-				if(i == ROLE_NO_ANTAGONISM)
-					dat += "<b>DISABLE ALL ANTAGONISM</b> <a href='?_src_=prefs;preference=be_special;be_special_type=[i]'>[(i in be_special) ? "YES" : "NO"]</a><br>"
-					continue
 				if(jobban_isbanned(user, i))
 					dat += "<b>Be [capitalize(i)]:</b> <a href='?_src_=prefs;jobbancheck=[i]'>BANNED</a><br>"
 				else
@@ -959,7 +1041,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(days_remaining)
 						dat += "<b>Be [capitalize(i)]:</b> <font color=red> \[IN [days_remaining] DAYS]</font><br>"
 					else
-						dat += "<b>Be [capitalize(i)]:</b> <a href='?_src_=prefs;preference=be_special;be_special_type=[i]'>[(i in be_special) ? "Enabled" : "Disabled"]</a><br>"
+						var/enabled_text = ""
+						if(i in be_special)
+							if(be_special[i] >= 1)
+								enabled_text = "Enabled"
+							else
+								enabled_text = "Low"
+						else
+							enabled_text = "Disabled"
+						dat += "<b>Be [capitalize(i)]:</b> <a href='?_src_=prefs;preference=be_special;be_special_type=[i]'>[enabled_text]</a><br>"
 			dat += "<b>Midround Antagonist:</b> <a href='?_src_=prefs;preference=allow_midround_antag'>[(toggles & MIDROUND_ANTAG) ? "Enabled" : "Disabled"]</a><br>"
 
 			dat += "<br>"
@@ -1424,9 +1514,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		dat += "<hr>"
 		dat += "<center><b>Current quirks:</b> [all_quirks.len ? all_quirks.Join(", ") : "None"]</center>"
 		dat += "<center>[GetPositiveQuirkCount()] / [MAX_QUIRKS] max positive quirks<br>\
-		<b>Quirk balance remaining:</b> [GetQuirkBalance()]</center><br>"
+		<b>Quirk balance remaining:</b> [GetQuirkBalance()]<br>"
+		dat += " <a href='?_src_=prefs;quirk_category=[QUIRK_POSITIVE]' [quirk_category == QUIRK_POSITIVE ? "class='linkOn'" : ""]>[QUIRK_POSITIVE]</a> "
+		dat += " <a href='?_src_=prefs;quirk_category=[QUIRK_NEUTRAL]' [quirk_category == QUIRK_NEUTRAL ? "class='linkOn'" : ""]>[QUIRK_NEUTRAL]</a> "
+		dat += " <a href='?_src_=prefs;quirk_category=[QUIRK_NEGATIVE]' [quirk_category == QUIRK_NEGATIVE ? "class='linkOn'" : ""]>[QUIRK_NEGATIVE]</a> "
+		dat += "</center><br>"
 		for(var/V in SSquirks.quirks)
 			var/datum/quirk/T = SSquirks.quirks[V]
+			var/value = initial(T.value)
+			if((value > 0 && quirk_category != QUIRK_POSITIVE) || (value < 0 && quirk_category != QUIRK_NEGATIVE) || (value == 0 && quirk_category != QUIRK_NEUTRAL))
+				continue
+
 			var/quirk_name = initial(T.name)
 			var/has_quirk
 			var/quirk_cost = initial(T.value) * -1
@@ -1448,7 +1546,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				quirk_cost = "+[quirk_cost]"
 			var/font_color = "#AAAAFF"
 			if(initial(T.value) != 0)
-				font_color = initial(T.value) > 0 ? "#AAFFAA" : "#FFAAAA"
+				font_color = value > 0 ? "#AAFFAA" : "#FFAAAA"
 			if(quirk_conflict)
 				dat += "<font color='[font_color]'>[quirk_name]</font> - [initial(T.desc)] \
 				<font color='red'><b>LOCKED: [lock_reason]</b></font><br>"
@@ -1578,6 +1676,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				SetQuirks(user)
 		return TRUE
 
+	else if(href_list["quirk_category"])
+		var/temp_quirk_category = href_list["quirk_category"]
+		if(temp_quirk_category == QUIRK_POSITIVE || temp_quirk_category == QUIRK_NEUTRAL || temp_quirk_category == QUIRK_NEGATIVE)
+			quirk_category = temp_quirk_category
+			SetQuirks(user)
+
 	switch(href_list["task"])
 		if("random")
 			switch(href_list["preference"])
@@ -1657,16 +1761,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("name")
 					var/new_name = input(user, "Choose your character's name:", "Character Preference")  as text|null
 					if(new_name)
-						new_name = reject_bad_name(new_name)
+						new_name = reject_bad_name(new_name, allow_numbers = TRUE)
 						if(new_name)
 							real_name = new_name
 						else
 							to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
 
 				if("age")
-					var/new_age = input(user, "Choose your character's age:\n([AGE_MIN]-[AGE_MAX])", "Character Preference") as num|null
+					var/new_age = input(user, "Choose your character's age:\n([AGE_MIN]-[AGE_MAX_INPUT])", "Character Preference") as num|null
 					if(new_age)
-						age = max(min( round(text2num(new_age)), AGE_MAX),AGE_MIN)
+						age = max(min( round(text2num(new_age)), AGE_MAX_INPUT),AGE_MIN)
 
 				if("security_records")
 					var/rec = stripped_multiline_input(usr, "Set your security record note section. This should be IC!", "Security Records", html_decode(security_records), MAX_FLAVOR_LEN, TRUE)
@@ -1731,6 +1835,23 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("previous_facehair_style")
 					facial_hair_style = previous_list_item(facial_hair_style, GLOB.facial_hair_styles_list)
+
+				if("grad_color")
+					var/new_grad_color = input(user, "Choose your character's gradient colour:", "Character Preference","#"+grad_color) as color|null
+					if(new_grad_color)
+						grad_color = sanitize_hexcolor(new_grad_color, 6)
+
+				if("grad_style")
+					var/new_grad_style
+					new_grad_style = input(user, "Choose your character's hair gradient style:", "Character Preference") as null|anything in GLOB.hair_gradients_list
+					if(new_grad_style)
+						grad_style = new_grad_style
+
+				if("next_grad_style")
+					grad_style = next_list_item(grad_style, GLOB.hair_gradients_list)
+
+				if("previous_grad_style")
+					grad_style = previous_list_item(grad_style, GLOB.hair_gradients_list)
 
 				if("cycle_bg")
 					bgstate = next_list_item(bgstate, bgstate_options)
@@ -2132,6 +2253,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							var/datum/sprite_accessory/S = instance
 							if(!show_mismatched_markings && S.recommended_species && !S.recommended_species.Find(pref_species.id))
 								continue
+							if(S.ignore)
+								continue
 							if((!S.ckeys_allowed) || (S.ckeys_allowed.Find(user.client.ckey)))
 								snowflake_taur_list[S.name] = path
 					var/new_taur
@@ -2367,12 +2490,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("ooccolor")
 					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference",ooccolor) as color|null
 					if(new_ooccolor)
-						ooccolor = new_ooccolor
+						ooccolor = sanitize_ooccolor(new_ooccolor)
 
 				if("aooccolor")
 					var/new_aooccolor = input(user, "Choose your Antag OOC colour:", "Game Preference",ooccolor) as color|null
 					if(new_aooccolor)
-						aooccolor = new_aooccolor
+						aooccolor = sanitize_ooccolor(new_aooccolor)
 
 				if("bag")
 					var/new_backbag = input(user, "Choose your character's style of bag:", "Character Preference")  as null|anything in GLOB.backbaglist
@@ -2492,6 +2615,43 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/selected_language = input(user, "Choose your desired additional language", "Character Preference") as null|anything in GLOB.roundstart_languages
 					if(selected_language)
 						additional_language = selected_language
+
+				if("barksound")
+					var/list/woof_woof = list()
+					for(var/path in GLOB.bark_list)
+						var/datum/bark/B = GLOB.bark_list[path]
+						if(initial(B.ignore))
+							continue
+						if(initial(B.ckeys_allowed))
+							var/list/allowed = initial(B.ckeys_allowed)
+							if(!allowed.Find(user.client.ckey))
+								continue
+						woof_woof[initial(B.name)] = initial(B.id)
+					var/new_bork = input(user, "Choose your desired vocal bark", "Character Preference") as null|anything in woof_woof
+					if(new_bork)
+						bark_id = woof_woof[new_bork]
+						var/datum/bark/B = GLOB.bark_list[bark_id] //Now we need sanitization to take into account bark-specific min/max values
+						bark_speed = round(clamp(bark_speed, initial(B.minspeed), initial(B.maxspeed)), 1)
+						bark_pitch = clamp(bark_pitch, initial(B.minpitch), initial(B.maxpitch))
+						bark_variance = clamp(bark_variance, initial(B.minvariance), initial(B.maxvariance))
+
+				if("barkspeed")
+					var/datum/bark/B = GLOB.bark_list[bark_id]
+					var/borkset = input(user, "Choose your desired bark speed (Higher is slower, lower is faster). Min: [initial(B.minspeed)]. Max: [initial(B.maxspeed)]", "Character Preference") as null|num
+					if(borkset)
+						bark_speed = round(clamp(borkset, initial(B.minspeed), initial(B.maxspeed)), 1)
+
+				if("barkpitch")
+					var/datum/bark/B = GLOB.bark_list[bark_id]
+					var/borkset = input(user, "Choose your desired baseline bark pitch. Min: [initial(B.minpitch)]. Max: [initial(B.maxpitch)]", "Character Preference") as null|num
+					if(borkset)
+						bark_pitch = clamp(borkset, initial(B.minpitch), initial(B.maxpitch))
+
+				if("barkvary")
+					var/datum/bark/B = GLOB.bark_list[bark_id]
+					var/borkset = input(user, "Choose your desired baseline bark pitch. Min: [initial(B.minvariance)]. Max: [initial(B.maxvariance)]", "Character Preference") as null|num
+					if(borkset)
+						bark_variance = clamp(borkset, initial(B.minvariance), initial(B.maxvariance))
 
 				if("bodysprite")
 					var/selected_body_sprite = input(user, "Choose your desired body sprite", "Character Preference") as null|anything in pref_species.allowed_limb_ids
@@ -2632,6 +2792,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("widescreenpref")
 					widescreenpref = !widescreenpref
 					user.client.view_size.setDefault(getScreenSize(widescreenpref))
+				if("long_strip_menu")
+					long_strip_menu = !long_strip_menu
 
 				if("pixel_size")
 					switch(pixel_size)
@@ -2670,7 +2832,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("no_tetris_storage")
 					no_tetris_storage = !no_tetris_storage
 				if ("screenshake")
-					var/desiredshake = input(user, "Set the amount of screenshake you want. \n(0 = disabled, 100 = full, 200 = maximum.)", "Character Preference", screenshake)  as null|num
+					var/desiredshake = input(user, "Set the amount of screenshake you want. \n(0 = disabled, 100 = full, no maximum (at your own risk).)", "Character Preference", screenshake)  as null|num
 					if (!isnull(desiredshake))
 						screenshake = desiredshake
 				if("damagescreenshake")
@@ -2683,6 +2845,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							damagescreenshake = 0
 						else
 							damagescreenshake = 1
+				if ("recoil_screenshake")
+					var/desiredshake = input(user, "Set the amount of recoil screenshake/push you want. \n(0 = disabled, 100 = full, no maximum (at your own risk).)", "Character Preference", screenshake)  as null|num
+					if (!isnull(desiredshake))
+						recoil_screenshake = desiredshake
 				if("nameless")
 					nameless = !nameless
 				//END CITADEL EDIT
@@ -2782,6 +2948,18 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					buttons_locked = !buttons_locked
 				if("tgui_fancy")
 					tgui_fancy = !tgui_fancy
+				if("outline_enabled")
+					outline_enabled = !outline_enabled
+				if("outline_color")
+					var/pickedOutlineColor = input(user, "Choose your outline color.", "General Preference", outline_color) as color|null
+					if(pickedOutlineColor != pickedOutlineColor)
+						outline_color = pickedOutlineColor // nullable
+				if("screentip_pref")
+					screentip_pref = !screentip_pref
+				if("screentip_color")
+					var/pickedScreentipColor = input(user, "Choose your screentip color.", "General Preference", screentip_color) as color|null
+					if(pickedScreentipColor)
+						screentip_color = pickedScreentipColor
 				if("tgui_lock")
 					tgui_lock = !tgui_lock
 				if("winflash")
@@ -2793,12 +2971,32 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("combohud_lighting")
 					toggles ^= COMBOHUD_LIGHTING
 
+				// Deadmin preferences
+				if("toggle_deadmin_always")
+					deadmin ^= DEADMIN_ALWAYS
+				if("toggle_deadmin_antag")
+					deadmin ^= DEADMIN_ANTAGONIST
+				if("toggle_deadmin_head")
+					deadmin ^= DEADMIN_POSITION_HEAD
+				if("toggle_deadmin_security")
+					deadmin ^= DEADMIN_POSITION_SECURITY
+				if("toggle_deadmin_silicon")
+					deadmin ^= DEADMIN_POSITION_SILICON
+				//
+
+				if("disable_antag")
+					toggles ^= NO_ANTAG
+
 				if("be_special")
 					var/be_special_type = href_list["be_special_type"]
 					if(be_special_type in be_special)
-						be_special -= be_special_type
+						if(be_special[be_special_type] >= 1)
+							be_special -= be_special_type
+						else
+							be_special[be_special_type] = 1
 					else
 						be_special += be_special_type
+						be_special[be_special_type] = 0
 
 				if("name")
 					be_random_name = !be_random_name
@@ -2852,14 +3050,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					toggles ^= MIDROUND_ANTAG
 
 				if("parallaxup")
-					parallax = WRAP(parallax + 1, PARALLAX_INSANE, PARALLAX_DISABLE + 1)
-					if (parent && parent.mob && parent.mob.hud_used)
-						parent.mob.hud_used.update_parallax_pref(parent.mob)
+					parallax = WRAP(parallax + 1, PARALLAX_DISABLE, PARALLAX_INSANE + 1)
+					parent?.parallax_holder?.Reset()
 
 				if("parallaxdown")
-					parallax = WRAP(parallax - 1, PARALLAX_INSANE, PARALLAX_DISABLE + 1)
-					if (parent && parent.mob && parent.mob.hud_used)
-						parent.mob.hud_used.update_parallax_pref(parent.mob)
+					parallax = WRAP(parallax - 1, PARALLAX_DISABLE, PARALLAX_INSANE + 1)
+					parent?.parallax_holder?.Reset()
 
 				// Citadel edit - Prefs don't work outside of this. :c
 
@@ -2935,6 +3131,23 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("hud_toggle_flash")
 					hud_toggle_flash = !hud_toggle_flash
+
+				if("barkpreview")
+					if(SSticker.current_state == GAME_STATE_STARTUP) //Timers don't tick at all during game startup, so let's just give an error message
+						to_chat(user, "<span class='warning'>Bark previews can't play during initialization!</span>")
+						return
+					if(!COOLDOWN_FINISHED(src, bark_previewing))
+						return
+					if(!parent || !parent.mob)
+						return
+					COOLDOWN_START(src, bark_previewing, (5 SECONDS))
+					var/atom/movable/barkbox = new(get_turf(parent.mob))
+					barkbox.set_bark(bark_id)
+					var/total_delay
+					for(var/i in 1 to (round((32 / bark_speed)) + 1))
+						addtimer(CALLBACK(barkbox, /atom/movable/proc/bark, list(parent.mob), 7, 70, BARK_DO_VARY(bark_pitch, bark_variance)), total_delay)
+						total_delay += rand(DS2TICKS(bark_speed/4), DS2TICKS(bark_speed/4) + DS2TICKS(bark_speed/4)) TICKS
+					QDEL_IN(barkbox, total_delay)
 
 				if("save")
 					save_preferences()
@@ -3087,6 +3300,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.dna.skin_tone_override = use_custom_skin_tone ? skin_tone : null
 	character.hair_style = hair_style
 	character.facial_hair_style = facial_hair_style
+	character.grad_style = grad_style
+	character.grad_color = grad_color
 	character.underwear = underwear
 	character.saved_underwear = underwear
 	character.undershirt = undershirt
@@ -3106,6 +3321,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		save_character()
 
 	character.dna.features = features.Copy()
+
 	character.set_species(chosen_species, icon_update = FALSE, pref_load = TRUE)
 	character.dna.species.eye_type = eye_type
 	if(chosen_limb_id && (chosen_limb_id in character.dna.species.allowed_limb_ids))
@@ -3150,8 +3366,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(additional_language && additional_language != "None")
 		var/language_entry = GLOB.roundstart_languages[additional_language]
 		if(language_entry)
+			character.additional_language = language_entry
 			character.grant_language(language_entry, TRUE, TRUE)
 			character.grant_related_dialects(language_entry)
+
+	character.set_bark(bark_id)
+	character.vocal_speed = bark_speed
+	character.vocal_pitch = bark_pitch
+	character.vocal_pitch_range = bark_variance
 
 	//limb stuff, only done when initially spawning in
 	if(initial_spawn)
@@ -3264,10 +3486,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		var/occupied_slots = L[initial(G.category)] ? L[initial(G.category)] + 1 : 1
 		LAZYSET(L, initial(G.category), occupied_slots)
 	switch(slot)
-		if(SLOT_IN_BACKPACK)
+		if(ITEM_SLOT_BACKPACK)
 			if(L[LOADOUT_CATEGORY_BACKPACK] < BACKPACK_SLOT_AMT)
 				return TRUE
-		if(SLOT_HANDS)
+		if(ITEM_SLOT_HANDS)
 			if(L[LOADOUT_CATEGORY_HANDS] < HANDS_SLOT_AMT)
 				return TRUE
 		else

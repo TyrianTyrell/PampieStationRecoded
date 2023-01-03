@@ -20,6 +20,7 @@
 
 /datum/round_event/supermatter_surge/announce()
 	var/severity = ""
+	var/important = FALSE
 	switch(power)
 		if(-INFINITY to 100000)
 			var/low_threat_perc = 100-round(100*((power-200)/(100000-200)))
@@ -27,13 +28,15 @@
 				if(prob(low_threat_perc))
 					severity = "low; the supermatter should return to normal operation shortly."
 				else
-					severity = "medium; the supermatter should return to normal operation, but check NT CIMS to ensure this."
+					severity = "medium; the supermatter should return to normal operation, but regardless, check if the emitters may need to be turned off temporarily."
 			else
-				severity = "high; if the supermatter's cooling is not fortified, coolant may need to be added."
+				severity = "high; the emitters likely need to be turned off, and if the supermatter's cooling loop is not fortified, pre-cooled gas may need to be added."
+				important = TRUE
 		if(100000 to INFINITY)
-			severity = "extreme; emergency action is likely to be required even if coolant loop is fine."
+			severity = "extreme; emergency action is likely to be required even if coolant loop is fine. Turn off the emitters and make sure the loop is properly cooling gases."
+			important = TRUE
 	if(power > 20000 || prob(round(power/200)))
-		priority_announce("Supermatter surge detected. Estimated severity is [severity]", "Anomaly Alert")
+		priority_announce("Supermatter surge detected. Estimated severity is [severity]", "Anomaly Alert", has_important_message = important)
 
 /datum/round_event/supermatter_surge/start()
 	var/obj/machinery/power/supermatter_crystal/supermatter = GLOB.main_supermatter_engine

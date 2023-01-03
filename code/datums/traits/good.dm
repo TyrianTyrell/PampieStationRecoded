@@ -72,6 +72,7 @@
 	mob_trait = TRAIT_JOLLY
 	mood_quirk = TRUE
 	medical_record_text = "Patient demonstrates constant euthymia irregular for environment. It's a bit much, to be honest."
+	processing_quirk = TRUE
 
 /datum/quirk/jolly/on_process()
 	if(prob(0.05))
@@ -108,10 +109,10 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	var/obj/item/choice_beacon/music/B = new(get_turf(H))
 	H.put_in_hands(B)
-	H.equip_to_slot_if_possible(B, SLOT_IN_BACKPACK)
+	H.equip_to_slot_if_possible(B, ITEM_SLOT_BACKPACK)
 	var/obj/item/musicaltuner/musicaltuner = new(get_turf(H))
 	H.put_in_hands(musicaltuner)
-	H.equip_to_slot_if_possible(musicaltuner, SLOT_IN_BACKPACK)
+	H.equip_to_slot_if_possible(musicaltuner, ITEM_SLOT_BACKPACK)
 	H.regenerate_icons()
 
 /datum/quirk/photographer
@@ -127,7 +128,7 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	var/obj/item/camera/camera = new(get_turf(H))
 	H.put_in_hands(camera)
-	H.equip_to_slot(camera, SLOT_NECK)
+	H.equip_to_slot(camera, ITEM_SLOT_NECK)
 	H.regenerate_icons()
 
 /datum/quirk/selfaware
@@ -166,7 +167,7 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	var/obj/item/toy/crayon/spraycan/spraycan = new(get_turf(H))
 	H.put_in_hands(spraycan)
-	H.equip_to_slot(spraycan, SLOT_IN_BACKPACK)
+	H.equip_to_slot(spraycan, ITEM_SLOT_BACKPACK)
 	H.regenerate_icons()
 
 /datum/quirk/voracious
@@ -186,10 +187,13 @@
 	lose_text = "<span class='danger'>High-tech gizmos are a scam...</span>"
 
 /datum/quirk/trandening/on_spawn()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/obj/item/autosurgeon/gloweyes/gloweyes = new(get_turf(H))
-	H.equip_to_slot(gloweyes, SLOT_IN_BACKPACK)
-	H.regenerate_icons()
+	// Get targets
+	var/obj/item/organ/eyes/old_eyes = quirk_holder.getorganslot(ORGAN_SLOT_EYES)
+	var/obj/item/organ/eyes/robotic/glow/new_eyes = new
+	
+	// Replace eyes
+	qdel(old_eyes)
+	new_eyes.Insert(quirk_holder)
 
 /datum/quirk/breathingtube
 	name = "Breathing Tube"
