@@ -54,20 +54,6 @@
 		if(wearer.wear_suit == src)
 			wearer.update_inv_wear_suit()
 
-/obj/item/clothing/suit/hooded/explorer/standard/proc/upgrade_icon(datum/source, amount, maxamount)
-	SIGNAL_HANDLER
-
-	if(amount)
-		name = "reinforced [initial(name)]"
-		suit_type = "normal_goliath"
-		if(amount == maxamount)
-			suit_type = "normal_goliath_full"
-	icon_state = "explorer-[suit_type]"
-	if(ishuman(loc))
-		var/mob/living/carbon/human/wearer = loc
-		if(wearer.wear_suit == src)
-			wearer.update_inv_wear_suit()
-
 /obj/item/clothing/head/hooded/explorer/standard/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/armor_plate)

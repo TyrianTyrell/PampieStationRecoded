@@ -190,7 +190,7 @@
 	// Get targets
 	var/obj/item/organ/eyes/old_eyes = quirk_holder.getorganslot(ORGAN_SLOT_EYES)
 	var/obj/item/organ/eyes/robotic/glow/new_eyes = new
-	
+
 	// Replace eyes
 	qdel(old_eyes)
 	new_eyes.Insert(quirk_holder)
@@ -205,7 +205,7 @@
 /datum/quirk/breathingtube/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/obj/item/autosurgeon/breathingtube/breathingtube = new(get_turf(H))
-	H.equip_to_slot(breathingtube, SLOT_IN_BACKPACK)
+	H.equip_to_slot(breathingtube, ITEM_SLOT_BACKPACK)
 	H.regenerate_icons()
 
 

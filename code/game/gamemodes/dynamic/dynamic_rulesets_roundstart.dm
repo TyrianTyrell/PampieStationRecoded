@@ -562,7 +562,6 @@
 
 /datum/dynamic_ruleset/roundstart/clockcult
 	name = "Clockcult"
-	config_tag = "clockwork_cult"
 	antag_flag = ROLE_SERVANT_OF_RATVAR
 	antag_datum = /datum/antagonist/clockcult
 	restricted_roles = list("AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Prisoner")
@@ -570,10 +569,7 @@
 	weight = 3
 	cost = 35
 	requirements = list(101,101,101,80,70,60,50,50,50,50)
-	high_population_requirement = 50
-	flags = HIGHLANDER_RULESET
 	antag_cap = list(2,3,3,4,4,4,4,4,4,4)
-	property_weights = list("trust" = 2, "chaos" = 2, "extended" = -2, "conversion" = 1, "valid" = 2)
 	var/ark_time
 
 /datum/dynamic_ruleset/roundstart/clockcult/pre_execute()
@@ -591,7 +587,6 @@
 	if(number_players > 30)
 		number_players -= 30
 		starter_servants += min(round(number_players / 10), 5)
-	mode.antags_rolled += starter_servants
 	GLOB.clockwork_vitality += 50 * starter_servants
 	for (var/i in 1 to starter_servants)
 		var/mob/servant = pick_n_take(candidates)
@@ -635,7 +630,7 @@
 	L.equipOutfit(/datum/outfit/servant_of_ratvar)
 	var/obj/item/clockwork/slab/S = new
 	var/slot = "At your feet"
-	var/list/slots = list("In your left pocket" = SLOT_L_STORE, "In your right pocket" = SLOT_R_STORE, "In your backpack" = SLOT_IN_BACKPACK, "On your belt" = SLOT_BELT)
+	var/list/slots = list("In your left pocket" = ITEM_SLOT_LPOCKET, "In your right pocket" = ITEM_SLOT_RPOCKET, "In your backpack" = ITEM_SLOT_BACKPACK, "On your belt" = ITEM_SLOT_BELT)
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		slot = H.equip_in_one_of_slots(S, slots)
@@ -793,20 +788,16 @@
 
 /datum/dynamic_ruleset/roundstart/bloodsucker
 	name = "Bloodsuckers"
-	config_tag = "bloodsucker"
 	antag_flag = ROLE_BLOODSUCKER
 	antag_datum = ANTAG_DATUM_BLOODSUCKER
 	minimum_required_age = 0
 	protected_roles = list("Prisoner", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	restricted_roles = list("Cyborg", "AI", "Chaplain", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel")
 	required_candidates = 1
-	flags = MINOR_RULESET
 	weight = 2
 	cost = 15
 	scaling_cost = 10
-	property_weights = list("story_potential" = 1, "extended" = 1, "trust" = -2, "valid" = 1)
 	requirements = list(70,65,60,55,50,50,50,50,50,50)
-	high_population_requirement = 50
 	antag_cap = list(1,1,1,1,1,2,2,2,2,2)
 
 /datum/dynamic_ruleset/roundstart/bloodsucker/pre_execute()

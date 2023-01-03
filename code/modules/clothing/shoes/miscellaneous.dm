@@ -562,7 +562,7 @@
 
 /obj/item/clothing/shoes/booties/equipped(mob/user, slot)
 	. = ..()
-	if(slot == SLOT_SHOES)
+	if(slot == ITEM_SLOT_FEET)
 		ADD_TRAIT(user, TRAIT_SILENT_STEP, SHOES_TRAIT)
 
 /obj/item/clothing/shoes/booties/dropped(mob/user)
@@ -623,7 +623,7 @@
 
 
 /obj/item/clothing/shoes/booties/locked/on_attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)
-	if(loc == user && user.get_item_by_slot(SLOT_SHOES) && lock != FALSE)
+	if(loc == user && user.get_item_by_slot(ITEM_SLOT_FEET) && lock != FALSE)
 		to_chat(user, "<span class='warning'>The booties are locked! You'll need unlock the booties before you can take them off!</span>")
 		return
 	..()

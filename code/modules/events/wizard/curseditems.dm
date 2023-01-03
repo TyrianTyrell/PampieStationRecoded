@@ -32,12 +32,12 @@
 			loadout[ITEM_SLOT_GLOVES] = /obj/item/clothing/gloves/boxing
 			ruins_spaceworthiness = 1
 		if("voicemodulators")
-			loadout[SLOT_WEAR_MASK] = /obj/item/clothing/mask/chameleon
+			loadout[ITEM_SLOT_MASK] = /obj/item/clothing/mask/chameleon
 		if("baby")
-			loadout[SLOT_WEAR_MASK] = /obj/item/clothing/mask/polypacifier
-			loadout[SLOT_GLOVES] = /obj/item/clothing/gloves/mittens/poly
-			loadout[SLOT_HEAD] = /obj/item/clothing/head/bonnet/poly
-			loadout[SLOT_SHOES] = /obj/item/clothing/shoes/booties/poly
+			loadout[ITEM_SLOT_MASK] = /obj/item/clothing/mask/polypacifier
+			loadout[ITEM_SLOT_HANDS] = /obj/item/clothing/gloves/mittens/poly
+			loadout[ITEM_SLOT_HEAD] = /obj/item/clothing/head/bonnet/poly
+			loadout[ITEM_SLOT_FEET] = /obj/item/clothing/shoes/booties/poly
 			ruins_spaceworthiness = 1
 		if("catgirls2015")
 			loadout[ITEM_SLOT_HEAD] = /obj/item/clothing/head/kitty

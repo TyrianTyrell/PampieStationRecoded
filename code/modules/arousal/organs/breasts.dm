@@ -127,7 +127,7 @@
 		if("Milk")
 			fluid_id = /datum/reagent/consumable/milk
 		if("Strawberry Milk")
-			fluid_id = /datum/reagent/consumable/pinkmilk
+			fluid_id = /datum/reagent/consumable/milk/pinkmilk
 		if("Soy Milk")
 			fluid_id = /datum/reagent/consumable/soymilk
 		if("Chocolate Milk")

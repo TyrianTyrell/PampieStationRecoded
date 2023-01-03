@@ -21,13 +21,6 @@
 		if(blood_DNA)
 			var/file2use = (style_flags & STYLE_ALL_TAURIC) ? 'modular_citadel/icons/mob/64x32_effects.dmi' : 'icons/effects/blood.dmi'
 			. += mutable_appearance(file2use, "[blood_overlay_type]blood", color = blood_DNA_to_color(), blend_mode = blood_DNA_to_blend())
-		var/mob/living/carbon/human/M = loc
-		if(ishuman(M) && M.w_uniform)
-			var/obj/item/clothing/under/U = M.w_uniform
-			if(istype(U) && U.attached_accessory)
-				var/obj/item/clothing/accessory/A = U.attached_accessory
-				if(A.above_suit)
-					. += U.accessory_overlay
 		if(soiled == TRUE)
 			. += mutable_appearance('icons/incon/poop.dmi', "stains")
 

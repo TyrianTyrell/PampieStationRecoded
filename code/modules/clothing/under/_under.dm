@@ -30,8 +30,6 @@
 		. += mutable_appearance('icons/effects/item_damage.dmi', "damageduniform")
 	if(blood_DNA)
 		. += mutable_appearance('icons/effects/blood.dmi', "uniformblood", color = blood_DNA_to_color())
-	if(accessory_overlay)
-		. += accessory_overlay
 	if(soiled == TRUE)
 		. += mutable_appearance('icons/incon/poop.dmi', "stains")
 

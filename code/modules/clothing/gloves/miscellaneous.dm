@@ -370,7 +370,7 @@
 
 /obj/item/clothing/gloves/mittens/equipped(mob/user, slot)
 	. = ..()
-	if(slot == SLOT_GLOVES)
+	if(slot == ITEM_SLOT_GLOVES)
 		wornonce = TRUE
 		use_buffs(user, TRUE)
 
@@ -438,7 +438,7 @@
 
 
 /obj/item/clothing/gloves/mittens/locked/on_attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)
-	if(loc == user && user.get_item_by_slot(SLOT_GLOVES) && lock != FALSE)
+	if(loc == user && user.get_item_by_slot(ITEM_SLOT_GLOVES) && lock != FALSE)
 		to_chat(user, "<span class='warning'>The mittens are locked! You'll need unlock the mittens before you can take them off!</span>")
 		return
 	..()

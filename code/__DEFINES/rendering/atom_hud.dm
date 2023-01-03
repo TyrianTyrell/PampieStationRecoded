@@ -65,9 +65,5 @@
 #define ANTAG_HUD_OBSESSED		27
 #define ANTAG_HUD_SPACECOP		28
 #define ANTAG_HUD_GANGSTER		29
-// Notification action types
-#define NOTIFY_JUMP "jump"
-#define NOTIFY_ATTACK "attack"
-#define NOTIFY_ORBIT "orbit"
 
 #define ADD_HUD_TO_COOLDOWN 20 //cooldown for being shown the images for any particular data hud

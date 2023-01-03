@@ -13975,7 +13975,6 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/computer/arcade/minesweeper,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
 "Gu" = (

@@ -371,7 +371,7 @@
 		return
 	var/informed = FALSE
 	if(isrobotic(src))
-		apply_status_effect(/datum/status_effect/no_combat_mode/robotic_emp, severity / 20)
+		apply_status_effect(/datum/status_effect/robotic_emp, severity / 20)
 	severity *= 0.5
 	var/do_not_stun = FALSE
 	if(HAS_TRAIT(src, TRAIT_ROBOTIC_ORGANISM))
@@ -952,7 +952,7 @@
 			to_chat(M, "You pull [src]'s pants back up.")
 		to_chat(src, "Your pants have been pulled back up.")
 		src.temporarilyRemoveItemFromInventory(src.w_uniform, TRUE, FALSE)
-		src.equip_to_slot_or_del(newuniform1, SLOT_W_UNIFORM)
+		src.equip_to_slot_or_del(newuniform1, ITEM_SLOT_OCLOTHING)
 		qdel(olduniform)
 		return
 	for(var/TTT in subtypesof(src.w_uniform))
@@ -962,7 +962,7 @@
 				to_chat(M, "You pants [src].")
 			to_chat(src, "You've been pantsed!")
 			src.temporarilyRemoveItemFromInventory(src.w_uniform, TRUE, FALSE)
-			src.equip_to_slot_or_del(newuniform2, SLOT_W_UNIFORM)
+			src.equip_to_slot_or_del(newuniform2, ITEM_SLOT_OCLOTHING)
 			qdel(olduniform)
 			return
 	if(src != M)

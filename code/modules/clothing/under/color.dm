@@ -44,7 +44,7 @@
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
-		H.equip_to_slot_or_del(new CO(H), SLOT_W_UNIFORM) //or else you end up with naked assistants running around everywhere...
+		H.equip_to_slot_or_del(new CO(H), ITEM_SLOT_OCLOTHING) //or else you end up with naked assistants running around everywhere...
 	else
 		new CO(loc)
 	return INITIALIZE_HINT_QDEL

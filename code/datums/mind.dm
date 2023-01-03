@@ -226,15 +226,6 @@
 		var/datum/antagonist/A = a
 		A.on_removal()
 
-//ambition start
-/datum/mind/proc/do_remove_antag_datum(instanced_datum)
-	. = LAZYLEN(antag_datums)
-	LAZYREMOVE(antag_datums, instanced_datum)
-	if(. && !LAZYLEN(antag_datums))
-		ambitions = null
-		current.verbs -= /mob/proc/edit_objectives_and_ambitions
-//ambition end
-
 /datum/mind/proc/has_antag_datum(datum_type, check_subtypes = TRUE)
 	if(!datum_type)
 		return

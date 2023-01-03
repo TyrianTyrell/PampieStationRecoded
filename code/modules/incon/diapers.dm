@@ -10,7 +10,6 @@
 	desc = "Thoroughly soaked."
 	icon = 'icons/incon/diaper.dmi'
 	hitsound = 'sound/effects/splap.ogg'
-	throwhitsound = 'sound/effects/splap.ogg'
 
 /obj/item/poopydiap
 	w_class = 1
@@ -18,7 +17,6 @@
 	desc = "Can be smelled from across the room."
 	icon = 'icons/incon/diaper.dmi'
 	hitsound = 'sound/effects/splap.ogg'
-	throwhitsound = 'sound/effects/splap.ogg'
 
 /obj/item/poopydiap/Initialize()
 	. = ..()
@@ -50,7 +48,6 @@
 	desc = "Whoever had this on obviously needed it."
 	icon = 'icons/incon/diaper.dmi'
 	hitsound = 'sound/effects/splap.ogg'
-	throwhitsound = 'sound/effects/splap.ogg'
 
 /obj/item/useddiap/Initialize()
 	. = ..()
@@ -1190,7 +1187,7 @@
 	item_state = "duffel"
 	custom_price = 80
 	color = "#FFFFFF"
-	slot_flags = ITEM_SLOT_BELT || ITEM_SLOT_POCKET
+	slot_flags = ITEM_SLOT_BELT || ITEM_SLOT_POCKETS
 	w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = FIRE_PROOF
 	rad_flags = RAD_PROTECT_CONTENTS | RAD_NO_CONTAMINATE
@@ -1225,7 +1222,7 @@
 	item_state = "duffel"
 	custom_price = 500
 	color = "#FFFFFF"
-	slot_flags = ITEM_SLOT_BELT || ITEM_SLOT_POCKET
+	slot_flags = ITEM_SLOT_BELT || ITEM_SLOT_POCKETS
 	w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = FIRE_PROOF
 	rad_flags = RAD_PROTECT_CONTENTS | RAD_NO_CONTAMINATE

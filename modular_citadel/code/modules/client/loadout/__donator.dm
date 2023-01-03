@@ -9,9 +9,9 @@
 
 /datum/gear/donator/bs_diaper_bag
 	name = "bluespace diaper bag"
-	slot = SLOT_IN_BACKPACK
+	slot = ITEM_SLOT_BACKPACK
 	path = /obj/item/storage/backpack/diaper_bag/bluespace
-	donator_group_id = PATREON_DONATOR
+	donator_group_id = DONATOR_GROUP_TIER_1
 
 /datum/gear/donator/pet
 	name = "Pet Beacon"

@@ -13,6 +13,12 @@
 	var/volume = 70
 	var/list/songs = list()
 	var/datum/track/selection = null
+	var/queuecost = PRICE_CHEAP //Set to -1 to make this jukebox require access for queueing
+	var/datum/track/playing = null
+	var/datum/track/selectedtrack = null
+	var/list/queuedplaylist = list()
+	var/queuecooldown //This var exists solely to prevent accidental repeats of John Mulaney's 'What's New Pussycat?' incident. Intentional, however......
+
 
 /obj/machinery/jukebox/disco
 	name = "radiant dance machine mark IV"

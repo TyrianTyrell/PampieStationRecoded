@@ -211,9 +211,9 @@
 				if(!isnum(number))//Default to 1
 					number = 1
 				for(var/i in 1 to number)
-					H.equip_to_slot_or_del(new path(H), SLOT_IN_BACKPACK, TRUE)
+					H.equip_to_slot_or_del(new path(H), ITEM_SLOT_BACKPACK, TRUE)
 			if((text2num(GLOB.round_id) % 1000) == 0)
-				H.equip_to_slot_or_del(new /obj/item/storage/part_replacer/diaper_ray(H), SLOT_IN_BACKPACK, TRUE)
+				H.equip_to_slot_or_del(new /obj/item/storage/part_replacer/diaper_ray(H), ITEM_SLOT_BACKPACK, TRUE)
 
 	if(!H.head && toggle_helmet && istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
 		var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit

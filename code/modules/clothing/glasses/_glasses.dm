@@ -350,7 +350,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/datum/bank_account/B = H.get_bank_account()
-		if(slot == SLOT_WEAR_MASK)
+		if(slot == ITEM_SLOT_MASK)
 			B.bigshotbonus = TRUE
 		else
 			B.bigshotbonus = FALSE
