@@ -34,8 +34,6 @@
 
 //For holopads only. Usable by AI.
 /mob/living/silicon/ai/proc/holopad_talk(message, language)
-
-
 	message = trim(message)
 
 	if (!message)

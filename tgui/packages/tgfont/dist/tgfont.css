@@ -1,7 +1,7 @@
 @font-face {
     font-family: "tgfont";
-    src: url("./tgfont.woff2?3b7364a6e7ed995b13d868bf1194f1e2") format("woff2"),
-url("./tgfont.eot?3b7364a6e7ed995b13d868bf1194f1e2#iefix") format("embedded-opentype");
+    src: url("./tgfont.woff2?3f13c30bcb24bf1eb07f81a5654c9501") format("woff2"),
+url("./tgfont.eot?3f13c30bcb24bf1eb07f81a5654c9501#iefix") format("embedded-opentype");
 }
 
 i[class^="tg-"]:before, i[class*=" tg-"]:before {
@@ -21,9 +21,21 @@ i[class^="tg-"]:before, i[class*=" tg-"]:before {
 .tg-air-tank:before {
     content: "\f102";
 }
-.tg-nanotrasen-logo:before {
+.tg-image-minus:before {
     content: "\f103";
 }
-.tg-syndicate-logo:before {
+.tg-image-plus:before {
     content: "\f104";
+}
+.tg-nanotrasen-logo:before {
+    content: "\f105";
+}
+.tg-sound-minus:before {
+    content: "\f106";
+}
+.tg-sound-plus:before {
+    content: "\f107";
+}
+.tg-syndicate-logo:before {
+    content: "\f108";
 }

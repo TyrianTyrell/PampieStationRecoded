@@ -4,7 +4,7 @@
 	department_head = list("Captain")
 	department_flag = CIVILIAN
 	head_announce = list(RADIO_CHANNEL_SUPPLY)
-//	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
+	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -27,6 +27,7 @@
 					ACCESS_SEC_DOORS, ACCESS_HEADS)
 	paycheck = PAYCHECK_HARD //They can already buy stuff using cargo budget, don't give em a command-level paycheck.
 	paycheck_department = ACCOUNT_CAR
+	bounty_types = CIV_JOB_RANDOM
 
 	display_order = JOB_DISPLAY_ORDER_QUARTERMASTER
 	blacklisted_quirks = list(/datum/quirk/brainproblems, /datum/quirk/quadriplegic, /datum/quirk/blindness, /datum/quirk/deaf, /datum/quirk/mute, /datum/quirk/insanity, /datum/quirk/paraplegic, /datum/quirk/blooddeficiency)

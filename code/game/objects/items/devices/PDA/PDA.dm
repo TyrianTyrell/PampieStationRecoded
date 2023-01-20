@@ -29,7 +29,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	item_flags = NOBLUDGEON
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_ID | ITEM_SLOT_BELT
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 100)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 	//Main variables
@@ -115,7 +115,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(LAZYLEN(GLOB.pda_reskins))
 		. += "<span class='notice'>Ctrl-shift-click it to reskin it.</span>"
 
-/obj/item/pda/Initialize()
+/obj/item/pda/Initialize(mapload)
 	. = ..()
 	if(fon)
 		set_light(f_lum, f_pow, f_col)
@@ -369,6 +369,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 						dat += "<li><a href='byond://?src=[REF(src)];choice=Toggle Door'>[PDAIMG(rdoor)]Toggle Remote Door</a></li>"
 					if (cartridge.access & CART_DRONEPHONE)
 						dat += "<li><a href='byond://?src=[REF(src)];choice=Drone Phone'>[PDAIMG(dronephone)]Drone Phone</a></li>"
+					if (cartridge.access & CART_BARTENDER)
+						dat += "<li><a href='byond://?src=[REF(src)];choice=Drink Recipe Browser'>[PDAIMG(bucket)]Drink Recipe Browser</a></li>"
+					if (cartridge.access & CART_CHEMISTRY)
+						dat += "<li><a href='byond://?src=[REF(src)];choice=Chemistry Recipe Browser'>[PDAIMG(bucket)]Chemistry Recipe Browser</a></li>"
 				dat += "<li><a href='byond://?src=[REF(src)];choice=3'>[PDAIMG(atmos)]Atmospheric Scan</a></li>"
 				dat += "<li><a href='byond://?src=[REF(src)];choice=Light'>[PDAIMG(flashlight)][fon ? "Disable" : "Enable"] Flashlight</a></li>"
 				if (pai)
@@ -704,6 +708,16 @@ GLOBAL_LIST_EMPTY(PDAs)
 						var/turf/T = get_turf(loc)
 						if(T)
 							pai.forceMove(T)
+
+//DRINK RECIPE BROWSER=============================
+			if("Drink Recipe Browser")
+				if(cartridge && cartridge.access & CART_BARTENDER)
+					recipe_search(U, GLOB.drink_reactions_list)
+
+//CHEMISTRY RECIPE BROWSER
+			if("Chemistry Recipe Browser")
+				if(cartridge && cartridge.access & CART_CHEMISTRY)
+					recipe_search(U, GLOB.normalized_chemical_reactions_list)
 
 //LINK FUNCTIONS===================================
 
@@ -1217,6 +1231,51 @@ GLOBAL_LIST_EMPTY(PDAs)
 		if(!P.owner || P.toff || P.hidden)
 			continue
 		. += P
+
+//borg pda stuff
+/mob/living/silicon/robot/proc/cmd_send_pdamesg(mob/user)
+	var/list/plist = list()
+	var/list/namecounts = list()
+
+	if(aiPDA.toff)
+		to_chat(user, "Turn on your receiver in order to send messages.")
+		return
+
+	for (var/obj/item/pda/P in get_viewable_pdas())
+		if (P == src)
+			continue
+		else if (P == aiPDA)
+			continue
+
+		plist[avoid_assoc_duplicate_keys(P.owner, namecounts)] = P
+
+	var/c = input(user, "Please select a PDA") as null|anything in sortList(plist)
+
+	if (!c)
+		return
+
+	var/selected = plist[c]
+
+	if(aicamera.stored.len)
+		var/add_photo = input(user,"Do you want to attach a photo?","Photo","No") as null|anything in list("Yes","No")
+		if(add_photo=="Yes")
+			var/datum/picture/Pic = aicamera.selectpicture(user)
+			aiPDA.picture = Pic
+
+	if(incapacitated())
+		return
+
+	aiPDA.create_message(src, selected)
+
+
+/mob/living/silicon/robot/proc/cmd_show_message_log(mob/user)
+	if(incapacitated())
+		return
+	if(!isnull(aiPDA))
+		var/HTML = "<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>AI PDA Message Log</title></head><body>[aiPDA.tnote]</body></html>"
+		user << browse(HTML, "window=log;size=400x444;border=1;can_resize=1;can_close=1;can_minimize=0")
+	else
+		to_chat(user, "You do not have a PDA. You should make an issue report about this.")
 
 #undef PDA_SCANNER_NONE
 #undef PDA_SCANNER_MEDICAL

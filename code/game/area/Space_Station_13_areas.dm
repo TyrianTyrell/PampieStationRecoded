@@ -126,7 +126,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	ambientsounds = RUINS
 	area_flags = UNIQUE_AREA | NO_ALERTS
 
-/area/asteroid/artifactroom/Initialize()
+/area/asteroid/artifactroom/Initialize(mapload)
 	. = ..()
 	set_dynamic_lighting()
 
@@ -212,6 +212,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	area_flags = BLOBS_ALLOWED | UNIQUE_AREA | CULT_PERMITTED
 	// airlock_wires = /datum/wires/airlock/maint
 	sound_environment = SOUND_AREA_TUNNEL_ENCLOSED
+	minimap_color = "#454545"
 
 //Maintenance - Departmental
 
@@ -299,6 +300,28 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/maintenance/nursery
 	name = "Nursery Maintenance"
 	icon_state = "maint_nursery"
+
+//Maintenance - Prison
+
+/area/maintenance/prison
+	name = "Prison Maintenance"
+	icon_state = "prison_maintenance"
+
+/area/maintenance/prison/fore
+	name = "Prison Fore Maintenance"
+	icon_state = "prison_maintenance"
+
+/area/maintenance/prison/starboard
+	name = "Prison Starboard Maintenance"
+	icon_state = "prison_maintenance"
+
+/area/maintenance/prison/aft
+	name = "Prison Aft Maintenance"
+	icon_state = "prison_maintenance"
+
+/area/maintenance/prison/port
+	name = "Prison Port Maintenance"
+	icon_state = "prison_maintenance"
 
 //Maintenance - Generic
 
@@ -417,6 +440,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/hallway
 	nightshift_public_area = NIGHTSHIFT_AREA_PUBLIC
 	sound_environment = SOUND_AREA_STANDARD_STATION
+	minimap_color = "#aaaaaa"
 
 /area/hallway/primary
 	name = "Primary Hallway"
@@ -472,6 +496,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/hallway/secondary/exit
 	name = "Escape Shuttle Hallway"
 	icon_state = "escape"
+	minimap_color = "#baa0a0"
 
 /area/hallway/secondary/exit/departure_lounge
 	name = "Departure Lounge"
@@ -480,6 +505,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/hallway/secondary/entry
 	name = "Arrival Shuttle Hallway"
 	icon_state = "entry"
+	minimap_color = "#a0a0ba"
 
 /area/hallway/secondary/service
 	name = "Service Hallway"
@@ -856,9 +882,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	nightshift_public_area = NIGHTSHIFT_AREA_RECREATION
 	sound_environment = SOUND_AREA_WOODFLOOR
 
-// /area/service/bar/Initialize(mapload)
-// 	. = ..()
-// 	GLOB.bar_areas += src
+/area/service/bar/Initialize(mapload)
+	. = ..()
+	GLOB.bar_areas += src
 
 /area/service/bar/atrium
 	name = "Atrium"
@@ -1397,13 +1423,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Prison Wing"
 	icon_state = "sec_prison"
 
-/area/security/prison/toilet //radproof
-	name = "Prison Toilet"
-	icon_state = "sec_prison_safe"
-
-/area/security/prison/safe //radproof
+/area/security/prison/cells
 	name = "Prison Wing Cells"
-	icon_state = "sec_prison_safe"
+	icon_state = "prison_cells"
 
 /area/security/prison/upper
 	name = "Upper Prison Wing"

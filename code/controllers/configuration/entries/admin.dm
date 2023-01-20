@@ -39,7 +39,9 @@
 
 /datum/config_entry/flag/announce_admin_login
 
-/datum/config_entry/string/centcom_ban_db	// URL for the CentCom Galactic Ban DB API
+/datum/config_entry/string/centcom_ban_db // URL for the CentCom Galactic Ban DB API
+
+/datum/config_entry/string/centcom_source_whitelist
 
 /datum/config_entry/flag/autoadmin  // if autoadmin is enabled
 	protection = CONFIG_ENTRY_LOCKED
@@ -62,3 +64,18 @@
 /datum/config_entry/flag/automute_on	//enables automuting/spam prevention
 
 /datum/config_entry/flag/debug_admin_hrefs
+
+/datum/config_entry/flag/auto_deadmin_players
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/auto_deadmin_antagonists
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/auto_deadmin_heads
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/auto_deadmin_silicons
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/auto_deadmin_security
+	protection = CONFIG_ENTRY_LOCKED

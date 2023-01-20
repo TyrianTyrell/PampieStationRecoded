@@ -18,7 +18,7 @@
 	var/ai_detector_visible = TRUE
 	var/ai_detector_color = COLOR_RED
 
-/mob/camera/aiEye/Initialize()
+/mob/camera/aiEye/Initialize(mapload)
 	. = ..()
 	GLOB.aiEyes += src
 	update_ai_detect_hud()
@@ -84,7 +84,6 @@
 		if(ai.client && !ai.multicam_on)
 			ai.client.eye = src
 		update_ai_detect_hud()
-		update_parallax_contents()
 		//Holopad
 		if(istype(ai.current, /obj/machinery/holopad))
 			var/obj/machinery/holopad/H = ai.current
@@ -170,6 +169,9 @@
 
 	if(!user.tracking)
 		user.cameraFollow = null
+	if(user.controlled_display)
+		user.stop_controlling_display()
+
 	if(user.controlled_display)
 		user.stop_controlling_display()
 

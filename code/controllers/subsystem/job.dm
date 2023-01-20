@@ -30,11 +30,13 @@ SUBSYSTEM_DEF(job)
 	var/datum/job/new_overflow = GetJob(new_overflow_role)
 	var/cap = CONFIG_GET(number/overflow_cap)
 
+	new_overflow.allow_bureaucratic_error = FALSE
 	new_overflow.spawn_positions = cap
 	new_overflow.total_positions = cap
 
 	if(new_overflow_role != overflow_role)
 		var/datum/job/old_overflow = GetJob(overflow_role)
+		old_overflow.allow_bureaucratic_error = initial(old_overflow.allow_bureaucratic_error)
 		old_overflow.spawn_positions = initial(old_overflow.spawn_positions)
 		old_overflow.total_positions = initial(old_overflow.total_positions)
 		overflow_role = new_overflow_role
@@ -365,9 +367,14 @@ SUBSYSTEM_DEF(job)
 	JobDebug("DO, Handling unrejectable unassigned")
 	//Mop up people who can't leave.
 	for(var/mob/dead/new_player/player in unassigned) //Players that wanted to back out but couldn't because they're antags (can you feel the edge case?)
-		if(!GiveRandomJob(player))
-			if(!AssignRole(player, SSjob.overflow_role)) //If everything is already filled, make them an assistant
-				return FALSE //Living on the edge, the forced antagonist couldn't be assigned to overflow role (bans, client age) - just reroll
+		if(player.client.prefs.joblessrole == BERANDOMJOB) //Gives the player a random role if their preferences are set to it
+			if(!GiveRandomJob(player))
+				if(!AssignRole(player, SSjob.overflow_role)) //If everything is already filled, make them the overflow role
+					return FALSE //Living on the edge, the forced antagonist couldn't be assigned to overflow role (bans, client age) - just reroll
+		else //If the player prefers to return to lobby or be an assistant, give them assistant
+			if(!AssignRole(player, SSjob.overflow_role))
+				if(!GiveRandomJob(player)) //The forced antagonist couldn't be assigned to overflow role (bans, client age) - give a random role
+					return FALSE //Somehow the forced antagonist couldn't be assigned to the overflow role or the a random role - reroll
 
 	return validate_required_jobs(required_jobs)
 
@@ -427,20 +434,7 @@ SUBSYSTEM_DEF(job)
 
 	//If we joined at roundstart we should be positioned at our workstation
 	if(!joined_late)
-		var/obj/S = null
-		for(var/obj/effect/landmark/start/sloc in GLOB.start_landmarks_list)
-			if(!sloc.job_spawnpoint)
-				continue
-			if(sloc.name != rank)
-				S = sloc //so we can revert to spawning them on top of eachother if something goes wrong
-				continue
-			if(locate(/mob/living) in sloc.loc)
-				continue
-			S = sloc
-			sloc.used = TRUE
-			break
-		if(length(GLOB.jobspawn_overrides[rank]))
-			S = pick(GLOB.jobspawn_overrides[rank])
+		var/atom/S = job.get_roundstart_spawn_point(H)
 		if(S)
 			S.JoinPlayerHere(H, FALSE)
 		if(!S) //if there isn't a spawnpoint send them to latejoin, if there's no latejoin go yell at your mapper
@@ -465,11 +459,11 @@ SUBSYSTEM_DEF(job)
 
 		SSpersistence.antag_rep_change[M.client.ckey] += job.GetAntagRep()
 
-/*		if(M.client.holder)
-			if(CONFIG_GET(flag/auto_deadmin_players) || (M.client.prefs?.toggles & DEADMIN_ALWAYS))
+		if(M.client.holder)
+			if(CONFIG_GET(flag/auto_deadmin_players) || (M.client.prefs?.deadmin & DEADMIN_ALWAYS))
 				M.client.holder.auto_deadmin()
 			else
-				handle_auto_deadmin_roles(M.client, rank) */
+				handle_auto_deadmin_roles(M.client, rank)
 
 	to_chat(M, "<b>You are the [rank].</b>")
 	if(job)
@@ -488,7 +482,7 @@ SUBSYSTEM_DEF(job)
 	if(job && H)
 		if(job.dresscodecompliant == TRUE)// CIT CHANGE - dress code compliance
 			equip_loadout(N, H) // CIT CHANGE - allows players to spawn with loadout items
-		job.after_spawn(H, M, joined_late) // note: this happens before the mob has a key! M will always have a client, H might not.
+		job.after_spawn(H, M.client, joined_late) // note: this happens before the mob has a key! M will always have a client, H might not.
 		equip_loadout(N, H, TRUE)//CIT CHANGE - makes players spawn with in-backpack loadout items properly. A little hacky but it works
 
 	var/list/tcg_cards
@@ -499,7 +493,7 @@ SUBSYSTEM_DEF(job)
 			tcg_cards = N.client.prefs.tcg_cards
 	if(tcg_cards)
 		var/obj/item/tcgcard_binder/binder = new(get_turf(H))
-		H.equip_to_slot_if_possible(binder, SLOT_IN_BACKPACK, disable_warning = TRUE, bypass_equip_delay_self = TRUE)
+		H.equip_to_slot_if_possible(binder, ITEM_SLOT_BACKPACK, disable_warning = TRUE, bypass_equip_delay_self = TRUE)
 		for(var/card_type in N.client.prefs.tcg_cards)
 			if(card_type)
 				if(islist(H.client.prefs.tcg_cards[card_type]))
@@ -516,19 +510,19 @@ SUBSYSTEM_DEF(job)
 			binder.decks = N.client.prefs.tcg_decks
 
 	return H
-/*
+
 /datum/controller/subsystem/job/proc/handle_auto_deadmin_roles(client/C, rank)
 	if(!C?.holder)
 		return TRUE
 	var/datum/job/job = GetJob(rank)
 	if(!job)
 		return
-	if((job.auto_deadmin_role_flags & DEADMIN_POSITION_HEAD) && (CONFIG_GET(flag/auto_deadmin_heads) || (C.prefs?.toggles & DEADMIN_POSITION_HEAD)))
+	if((job.auto_deadmin_role_flags & DEADMIN_POSITION_HEAD) && (CONFIG_GET(flag/auto_deadmin_heads) || (C.prefs?.deadmin & DEADMIN_POSITION_HEAD)))
 		return C.holder.auto_deadmin()
-	else if((job.auto_deadmin_role_flags & DEADMIN_POSITION_SECURITY) && (CONFIG_GET(flag/auto_deadmin_security) || (C.prefs?.toggles & DEADMIN_POSITION_SECURITY)))
+	else if((job.auto_deadmin_role_flags & DEADMIN_POSITION_SECURITY) && (CONFIG_GET(flag/auto_deadmin_security) || (C.prefs?.deadmin & DEADMIN_POSITION_SECURITY)))
 		return C.holder.auto_deadmin()
-	else if((job.auto_deadmin_role_flags & DEADMIN_POSITION_SILICON) && (CONFIG_GET(flag/auto_deadmin_silicons) || (C.prefs?.toggles & DEADMIN_POSITION_SILICON))) //in the event there's ever psuedo-silicon roles added, ie synths.
-		return C.holder.auto_deadmin()*/
+	else if((job.auto_deadmin_role_flags & DEADMIN_POSITION_SILICON) && (CONFIG_GET(flag/auto_deadmin_silicons) || (C.prefs?.deadmin & DEADMIN_POSITION_SILICON))) //in the event there's ever psuedo-silicon roles added, ie synths.
+		return C.holder.auto_deadmin()
 
 /datum/controller/subsystem/job/proc/setup_officer_positions()
 	var/datum/job/J = SSjob.GetJob("Security Officer")
@@ -709,9 +703,9 @@ SUBSYSTEM_DEF(job)
 				permitted = FALSE
 			if(G.donoritem && !G.donator_ckey_check(the_mob.client.ckey))
 				permitted = FALSE
-			if(!equipbackpackstuff && G.slot == SLOT_IN_BACKPACK)//snowflake check since plopping stuff in the backpack doesnt work for pre-job equip loadout stuffs
+			if(!equipbackpackstuff && G.slot == ITEM_SLOT_BACKPACK)//snowflake check since plopping stuff in the backpack doesnt work for pre-job equip loadout stuffs
 				permitted = FALSE
-			if(equipbackpackstuff && G.slot != SLOT_IN_BACKPACK)//ditto
+			if(equipbackpackstuff && G.slot != ITEM_SLOT_BACKPACK)//ditto
 				permitted = FALSE
 			if(!permitted)
 				continue
@@ -720,7 +714,7 @@ SUBSYSTEM_DEF(job)
 				if(length(i[LOADOUT_COLOR])) //handle loadout colors
 				 	//handle polychromic items
 					if((G.loadout_flags & LOADOUT_CAN_COLOR_POLYCHROMIC) && length(G.loadout_initial_colors))
-						var/datum/element/polychromic/polychromic = I.comp_lookup["item_worn_overlays"] //stupid way to do it but GetElement does not work for this
+						var/datum/element/polychromic/polychromic = LAZYACCESS(I.comp_lookup, "item_worn_overlays") //stupid way to do it but GetElement does not work for this
 						if(polychromic && istype(polychromic))
 							var/list/polychromic_entry = polychromic.colors_by_atom[I]
 							if(polychromic_entry)
@@ -748,7 +742,7 @@ SUBSYSTEM_DEF(job)
 							I.forceMove(get_turf(C))
 						else
 							qdel(I)
-				else if(!M.equip_to_slot_if_possible(I, SLOT_IN_BACKPACK, disable_warning = TRUE, bypass_equip_delay_self = TRUE)) // Otherwise, try to put it in the backpack
+				else if(!M.equip_to_slot_if_possible(I, ITEM_SLOT_BACKPACK, disable_warning = TRUE, bypass_equip_delay_self = TRUE)) // Otherwise, try to put it in the backpack
 					if(can_drop)
 						I.forceMove(get_turf(M)) // If everything fails, just put it on the floor under the mob.
 					else
@@ -761,6 +755,35 @@ SUBSYSTEM_DEF(job)
 	if(!job)
 		return FALSE
 	job.current_positions = max(0, job.current_positions - 1)
+
+/datum/controller/subsystem/job/proc/get_last_resort_spawn_points()
+	//bad mojo
+	var/area/shuttle/arrival/arrivals_area = GLOB.areas_by_type[/area/shuttle/arrival]
+	if(arrivals_area)
+		//first check if we can find a chair
+		var/obj/structure/chair/shuttle_chair = locate() in arrivals_area
+		if(shuttle_chair)
+			return shuttle_chair
+
+		//last hurrah
+		var/list/turf/available_turfs = list()
+		for(var/turf/arrivals_turf in arrivals_area)
+			if(!is_blocked_turf(arrivals_turf, TRUE))
+				available_turfs += arrivals_turf
+		if(length(available_turfs))
+			return pick(available_turfs)
+
+	//pick an open spot on arrivals and dump em
+	var/list/arrivals_turfs = shuffle(get_area_turfs(/area/shuttle/arrival))
+	if(length(arrivals_turfs))
+		for(var/turf/arrivals_turf in arrivals_turfs)
+			if(!is_blocked_turf(arrivals_turf, TRUE))
+				return arrivals_turf
+		//last chance, pick ANY spot on arrivals and dump em
+		return pick(arrivals_turfs)
+
+	stack_trace("Unable to find last resort spawn point.")
+	return GET_ERROR_ROOM
 
 ///////////////////////////////////
 //Keeps track of all living heads//

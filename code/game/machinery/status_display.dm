@@ -322,6 +322,7 @@
 		return PROCESS_KILL
 
 	if(friendc) //Makes all status displays except supply shuttle timer display the eye -- Urist
+		current_mode = SD_PICTURE
 		set_picture("ai_friend")
 		return PROCESS_KILL
 
@@ -479,7 +480,7 @@
 
 // MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/ai, 32)
 
-/obj/machinery/status_display/ai/Initialize()
+/obj/machinery/status_display/ai/Initialize(mapload)
 	. = ..()
 	GLOB.ai_status_displays.Add(src)
 

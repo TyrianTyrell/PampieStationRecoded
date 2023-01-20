@@ -19,6 +19,7 @@
 	path_image_color = "#993299"
 	weather_immunities = list("lava","ash")
 
+	var/base_icon = "cleanbot"
 	var/clean_time = 50 //How long do we take to clean?
 	var/upgrades = 0
 
@@ -102,7 +103,7 @@
 		if(ascended && user.stat == CONSCIOUS && user.client)
 			user.client.give_award(/datum/award/achievement/misc/cleanboss, user)
 
-/mob/living/simple_animal/bot/cleanbot/Initialize()
+/mob/living/simple_animal/bot/cleanbot/Initialize(mapload)
 	. = ..()
 
 	chosen_name = name
@@ -126,13 +127,21 @@
 
 /mob/living/simple_animal/bot/cleanbot/turn_on()
 	..()
-	icon_state = "cleanbot[on]"
 	bot_core.updateUsrDialog()
+	update_icon()
 
 /mob/living/simple_animal/bot/cleanbot/turn_off()
 	..()
-	icon_state = "cleanbot[on]"
 	bot_core.updateUsrDialog()
+	update_icon()
+
+/mob/living/simple_animal/bot/cleanbot/update_icon_state()
+	. = ..()
+	switch(mode)
+		if(BOT_CLEANING)
+			icon_state = "[base_icon]-c"
+		else
+			icon_state = "[base_icon][on]"
 
 /mob/living/simple_animal/bot/cleanbot/bot_reset()
 	..()
@@ -182,7 +191,7 @@
 			deputize(W, user)
 
 	else if(istype(W, /obj/item/mop/advanced))
-		if(bot_core.allowed(user) && open && !CHECK_BITFIELD(upgrades,UPGRADE_CLEANER_ADVANCED_MOP))
+		if(bot_core.allowed(user) && open && !(upgrades & UPGRADE_CLEANER_ADVANCED_MOP))
 			to_chat(user, "<span class='notice'>You replace \the [src] old mop with a new better one!</span>")
 			upgrades |= UPGRADE_CLEANER_ADVANCED_MOP
 			clean_time = 20 //2.5 the speed!
@@ -198,7 +207,7 @@
 			to_chat(user, "<span class='notice'>The [src] already has this mop!</span>")
 
 	else if(istype(W, /obj/item/broom))
-		if(bot_core.allowed(user) && open && !CHECK_BITFIELD(upgrades,UPGRADE_CLEANER_BROOM))
+		if(bot_core.allowed(user) && open && !(upgrades & UPGRADE_CLEANER_BROOM))
 			to_chat(user, "<span class='notice'>You add to \the [src] a broom speeding it up!</span>")
 			upgrades |= UPGRADE_CLEANER_BROOM
 			base_speed = 1 //2x faster!
@@ -302,7 +311,7 @@
 
 		if(!path || path.len == 0) //No path, need a new one
 			//Try to produce a path to the target, and ignore airlocks to which it has access.
-			path = get_path_to(src, target.loc, /turf/proc/Distance_cardinal, 0, 30, id=access_card)
+			path = get_path_to(src, target, 30, id=access_card)
 			if(!bot_move(target))
 				add_to_ignore(target)
 				target = null
@@ -382,6 +391,12 @@
 				target = null
 			mode = BOT_IDLE
 			icon_state = "cleanbot[on]"
+	else if(istype(A, /turf)) //for player-controlled cleanbots so they can clean unclickable messes like dirt
+		var/turf/T = A
+		for(var/atom/S in T.contents)
+			if(istype(S, /obj/effect/decal/cleanable)) //clean the first mess found
+				UnarmedAttack(S)
+				return
 	else if(istype(A, /obj/item) || istype(A, /obj/effect/decal/remains))
 		visible_message("<span class='danger'>[src] sprays hydrofluoric acid at [A]!</span>")
 		playsound(src, 'sound/effects/spray2.ogg', 50, TRUE, -6)
@@ -453,7 +468,6 @@
 		data["custom_controls"]["clean_graffiti"] = drawn
 		data["custom_controls"]["pest_control"] = pests
 	return data
-
 // Actions received from TGUI
 /mob/living/simple_animal/bot/cleanbot/ui_act(action, params)
 	. = ..()

@@ -44,7 +44,7 @@
 							"Imported"
 							)
 
-/obj/machinery/autolathe/Initialize()
+/obj/machinery/autolathe/Initialize(mapload)
 	. = ..()
 	wires = new /datum/wires/autolathe(src)
 	stored_research = new /datum/techweb/specialized/autounlocking/autolathe
@@ -62,8 +62,14 @@
 	if(!is_operational())
 		return
 
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Autolathe", capitalize(src.name))
+		ui.open()
+
 	if(shocked && !(stat & NOPOWER))
-		shock(user,50)
+		if(shock(user,50))
+			ui.close() //close the window if they got zapped successfully as to prevent them from getting zapped infinitely.
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -298,6 +304,16 @@
 		wires.interact(user)
 		return STOP_ATTACK_PROC_CHAIN
 
+/obj/machinery/autolathe/wirecutter_act(mob/living/user, obj/item/I)
+	. = ..()
+	if(busy)
+		balloon_alert(user, "it's busy!")
+		return STOP_ATTACK_PROC_CHAIN
+
+	if(panel_open)
+		wires.interact(user)
+		return STOP_ATTACK_PROC_CHAIN
+
 /obj/machinery/autolathe/proc/AfterMaterialInsert(obj/item/item_inserted, id_inserted, amount_inserted)
 	if(istype(item_inserted, /obj/item/stack/ore/bluespace_crystal))
 		use_power(MINERAL_MATERIAL_AMOUNT / 10)
@@ -429,7 +445,7 @@
 	desc = "It produces items using metal and glass. This model was reprogrammed without some of the more hazardous designs."
 	circuit = /obj/item/circuitboard/machine/autolathe/secure
 
-/obj/machinery/autolathe/secure/Initialize()
+/obj/machinery/autolathe/secure/Initialize(mapload)
 	. = ..()
 	// let's not leave the parent datum floating, right?
 	if(stored_research)
@@ -452,14 +468,14 @@
 					"Misc",
 					"Imported"
 					)
-/obj/machinery/autolathe/toy/Initialize()
+/obj/machinery/autolathe/toy/Initialize(mapload)
 	. = ..()
 	// let's not leave the parent datum floating, right?
 	if(stored_research)
 		QDEL_NULL(stored_research)
 	stored_research = new /datum/techweb/specialized/autounlocking/autolathe/toy
 
-/obj/machinery/autolathe/toy/hacked/Initialize()
+/obj/machinery/autolathe/toy/hacked/Initialize(mapload)
 	. = ..()
 	adjust_hacked(TRUE)
 

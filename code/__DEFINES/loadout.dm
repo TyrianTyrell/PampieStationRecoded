@@ -7,6 +7,7 @@
 //backpack
 #define LOADOUT_CATEGORY_BACKPACK 				"In backpack"
 #define LOADOUT_SUBCATEGORY_BACKPACK_GENERAL 	"General" //basically anything that there's not enough of to have its own subcategory
+#define LOADOUT_SUBCATEGORY_BACKPACK_ACCESSORIES "Accessories" //maybe one day someone will make loadouts have accessory compatibility
 #define LOADOUT_SUBCATEGORY_BACKPACK_TOYS 		"Toys"
 //neck
 #define LOADOUT_CATEGORY_NECK "Neck"
@@ -91,3 +92,8 @@
 #define LOADOUT_TAB				4
 #define CONTENT_PREFERENCES_TAB	5
 #define KEYBINDINGS_TAB			6
+
+//quirks
+#define QUIRK_POSITIVE	"Positive"
+#define QUIRK_NEGATIVE	"Negative"
+#define QUIRK_NEUTRAL	"Neutral"

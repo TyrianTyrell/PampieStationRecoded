@@ -34,7 +34,7 @@
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
 	var/detail_color = COLOR_ASSEMBLY_ORANGE
 
-/obj/item/card/data/Initialize()
+/obj/item/card/data/Initialize(mapload)
 	.=..()
 	update_icon()
 
@@ -184,7 +184,7 @@
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
 	slot_flags = ITEM_SLOT_ID
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 100)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	var/id_type_name = "identification card"
 	var/mining_points = 0 //For redeeming at mining equipment vendors
@@ -372,6 +372,11 @@
 				. += "The [D.account_holder] reports a balance of [D.account_balance] cr."
 		. += "<span class='info'>Alt-Click the ID to pull money from the linked account in the form of holochips.</span>"
 		. += "<span class='info'>You can insert credits into the linked account by pressing holochips, cash, or coins against the ID.</span>"
+		if(registered_account.civilian_bounty)
+			. += "<span class='info'><b>There is an active civilian bounty.</b>"
+			. += "<span class='info'><i>[registered_account.bounty_text()]</i></span>"
+			. += "<span class='info'>Quantity: [registered_account.bounty_num()]</span>"
+			. += "<span class='info'>Reward: [registered_account.bounty_value()]</span>"
 		if(registered_account.account_holder == user.real_name)
 			. += "<span class='boldnotice'>If you lose this ID card, you can reclaim your account by Alt-Clicking a blank ID card while holding it and entering your account ID number.</span>"
 	else
@@ -450,7 +455,7 @@
 	var/anyone = FALSE //Can anyone forge the ID or just syndicate?
 	var/forged = FALSE //have we set a custom name and job assignment, or will we use what we're given when we chameleon change?
 
-/obj/item/card/id/syndicate/Initialize()
+/obj/item/card/id/syndicate/Initialize(mapload)
 	. = ..()
 	var/datum/action/item_action/chameleon/change/chameleon_action = new(src)
 	chameleon_action.chameleon_type = /obj/item/card/id
@@ -568,7 +573,7 @@
 	registered_name = "Captain"
 	assignment = "Captain"
 
-/obj/item/card/id/captains_spare/Initialize()
+/obj/item/card/id/captains_spare/Initialize(mapload)
 	var/datum/job/captain/J = new/datum/job/captain
 	access = J.get_access()
 	. = ..()
@@ -580,7 +585,7 @@
 	registered_name = "Central Command"
 	assignment = "General"
 
-/obj/item/card/id/centcom/Initialize()
+/obj/item/card/id/centcom/Initialize(mapload)
 	access = get_all_centcom_access()
 	. = ..()
 
@@ -591,7 +596,7 @@
 	registered_name = "Emergency Response Team Commander"
 	assignment = "Emergency Response Team Commander"
 
-/obj/item/card/id/ert/Initialize()
+/obj/item/card/id/ert/Initialize(mapload)
 	access = get_all_accesses()+get_ert_access("commander")-ACCESS_CHANGE_IDS
 	. = ..()
 
@@ -600,7 +605,7 @@
 	registered_name = "Security Response Officer"
 	assignment = "Security Response Officer"
 
-/obj/item/card/id/ert/Security/Initialize()
+/obj/item/card/id/ert/Security/Initialize(mapload)
 	access = get_all_accesses()+get_ert_access("sec")-ACCESS_CHANGE_IDS
 	. = ..()
 
@@ -609,7 +614,7 @@
 	registered_name = "Engineer Response Officer"
 	assignment = "Engineer Response Officer"
 
-/obj/item/card/id/ert/Engineer/Initialize()
+/obj/item/card/id/ert/Engineer/Initialize(mapload)
 	access = get_all_accesses()+get_ert_access("eng")-ACCESS_CHANGE_IDS
 	. = ..()
 
@@ -618,7 +623,7 @@
 	registered_name = "Medical Response Officer"
 	assignment = "Medical Response Officer"
 
-/obj/item/card/id/ert/Medical/Initialize()
+/obj/item/card/id/ert/Medical/Initialize(mapload)
 	access = get_all_accesses()+get_ert_access("med")-ACCESS_CHANGE_IDS
 	. = ..()
 
@@ -627,7 +632,7 @@
 	registered_name = "Religious Response Officer"
 	assignment = "Religious Response Officer"
 
-/obj/item/card/id/ert/chaplain/Initialize()
+/obj/item/card/id/ert/chaplain/Initialize(mapload)
 	access = get_all_accesses()+get_ert_access("sec")-ACCESS_CHANGE_IDS
 	. = ..()
 
@@ -765,7 +770,7 @@
 	var/department_ID = ACCOUNT_CIV
 	var/department_name = ACCOUNT_CIV_NAME
 
-/obj/item/card/id/departmental_budget/Initialize()
+/obj/item/card/id/departmental_budget/Initialize(mapload)
 	. = ..()
 	var/datum/bank_account/B = SSeconomy.get_dep_account(department_ID)
 	if(B)
@@ -821,7 +826,7 @@
 	var/id_color = "#00FF00" //defaults to green
 	var/mutable_appearance/id_overlay
 
-/obj/item/card/id/knight/Initialize()
+/obj/item/card/id/knight/Initialize(mapload)
 	. = ..()
 	id_overlay = mutable_appearance(icon, "knight_overlay")
 	update_icon()
@@ -872,7 +877,7 @@
 	icon_state = "ert_janitor"
 	assignment = "Jannie"
 
-/obj/item/card/id/debug/Initialize()
+/obj/item/card/id/debug/Initialize(mapload)
 	access = get_all_accesses()+get_all_centcom_access()+get_all_syndicate_access()
 	registered_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
 	. = ..()

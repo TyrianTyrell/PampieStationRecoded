@@ -65,6 +65,8 @@
 /// Blocks sprint
 #define STATUS_EFFECT_STAGGERED /datum/status_effect/staggered
 
+#define STATUS_EFFECT_TASED_WEAK_NODMG /datum/status_effect/electrode/no_damage     // no damage
+
 #define STATUS_EFFECT_TASED_WEAK /datum/status_effect/electrode				//not as crippling, just slows down
 
 #define STATUS_EFFECT_TASED /datum/status_effect/electrode/no_combat_mode //the affected has been tased, preventing fine muscle control
@@ -136,6 +138,10 @@
 
 #define STATUS_EFFECT_INLOVE /datum/status_effect/in_love //Displays you as being in love with someone else, and makes hearts appear around them.
 
+#define STATUS_EFFECT_OFFERING /datum/status_effect/offering // you are offering up an item to people
+
+#define STATUS_EFFECT_HANDSHAKE /datum/status_effect/offering/secret_handshake // you are attempting to perform a secret Family handshake
+
 /////////////
 //  SLIME  //
 /////////////
@@ -148,4 +154,9 @@
 // GROUPED //
 /////////////
 
+#define STASIS_MACHINE_EFFECT "stasis_machine"
+
 #define STASIS_ASCENSION_EFFECT "heretic_ascension"
+
+/// If the incapacitated status effect will ignore a mob in stasis (stasis beds)
+#define IGNORE_STASIS (1<<1)

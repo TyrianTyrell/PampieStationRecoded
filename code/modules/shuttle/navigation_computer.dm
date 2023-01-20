@@ -22,7 +22,7 @@
 	var/turf/designating_target_loc
 	var/jammed = FALSE
 
-/obj/machinery/computer/camera_advanced/shuttle_docker/Initialize()
+/obj/machinery/computer/camera_advanced/shuttle_docker/Initialize(mapload)
 	. = ..()
 	GLOB.navigation_computers += src
 	whitelist_turfs = typecacheof(whitelist_turfs)
@@ -356,7 +356,7 @@
 			playsound(console, 'sound/machines/terminal_prompt_confirm.ogg', 25, 0)
 			remote_eye.setLoc(T)
 			to_chat(target, "<span class='notice'>Jumped to [selected]</span>")
-			C.overlay_fullscreen("flash", /atom/movable/screen/fullscreen/flash/static)
+			C.overlay_fullscreen("flash", /atom/movable/screen/fullscreen/tiled/flash/static)
 			C.clear_fullscreen("flash", 3)
 	else
 		playsound(console, 'sound/machines/terminal_prompt_deny.ogg', 25, 0)

@@ -201,6 +201,9 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 	return b["totaldam"] - a["totaldam"]
 
 /datum/crewmonitor/ui_act(action,params)
+	. = ..()
+	if(.)
+		return
 	var/mob/living/silicon/ai/AI = usr
 	if(!istype(AI))
 		return
