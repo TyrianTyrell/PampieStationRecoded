@@ -92,7 +92,7 @@
 
 /obj/item/organ/ears/cat
 	name = "cat ears"
-	icon = 'icons/obj/clothing/hats.dmi'
+	icon = 'icons/obj/clothing/head.dmi'
 	icon_state = "kitty"
 	damage_multiplier = 2
 

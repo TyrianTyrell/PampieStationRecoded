@@ -135,8 +135,8 @@
 	light_color = LIGHT_COLOR_LAVA
 	break_message = "<span class='warning'>The force breaks apart into shards with a howling scream!</span>"
 
-	var/static/image/radial_flagellant = image(icon = 'icons/obj/clothing/suits.dmi', icon_state = "cultrobes")
-	var/static/image/radial_shielded = image(icon = 'icons/obj/clothing/suits.dmi', icon_state = "cult_armor")
+	var/static/image/radial_flagellant = image(icon = 'icons/obj/clothing/suit.dmi', icon_state = "cultrobes")
+	var/static/image/radial_shielded = image(icon = 'icons/obj/clothing/suit.dmi', icon_state = "cult_armor")
 	var/static/image/radial_mirror = image(icon = 'icons/obj/items_and_weapons.dmi', icon_state = "mirror_shield")
 
 /obj/structure/destructible/cult/forge/ui_interact(mob/user)

@@ -11,7 +11,7 @@
 
 /obj/item/clothing/head/cloakhood
 	name = "cloak hood"
-	icon = 'icons/obj/clothing/hats.dmi'
+	icon = 'icons/obj/clothing/head.dmi'
 	icon_state = "golhood"
 	desc = "A hood for a cloak."
 	body_parts_covered = HEAD
