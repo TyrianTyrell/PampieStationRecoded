@@ -13181,7 +13181,6 @@
 /turf/open/floor/mineral/titanium/blue,
 /area/commons/toilet)
 "aDR" = (
-/obj/machinery/computer/arcade/minesweeper,
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/carpet/arcade,
 /area/service/bar)
@@ -18113,9 +18112,9 @@
 /turf/open/floor/wood,
 /area/service/bar)
 "aRx" = (
-/obj/machinery/computer/arcade/minesweeper,
-/turf/open/floor/wood,
-/area/service/bar)
+/obj/machinery/piratepad/civilian,
+/turf/open/floor/plasteel,
+/area/cargo/office)
 "aRy" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -5;
@@ -29517,9 +29516,6 @@
 /turf/open/floor/plasteel/white,
 /area/science)
 "btB" = (
-/obj/machinery/computer/bounty{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
@@ -30434,9 +30430,6 @@
 	department = "Cargo Bay";
 	departmentType = 2;
 	pixel_x = -30
-	},
-/obj/machinery/computer/bounty{
-	dir = 4
 	},
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -43289,7 +43282,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/mob/living/simple_animal/parrot/Poly,
+/mob/living/simple_animal/parrot/Polly,
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/ce)
 "cbr" = (
@@ -55493,9 +55486,6 @@
 /turf/open/floor/plasteel,
 /area/commons/locker)
 "ijJ" = (
-/obj/machinery/computer/arcade/minesweeper{
-	dir = 4
-	},
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -58897,9 +58887,11 @@
 /turf/open/floor/plasteel,
 /area/commons/dorms)
 "nZL" = (
-/obj/machinery/computer/arcade/minesweeper,
-/turf/open/floor/wood,
-/area/command/heads_quarters/captain)
+/obj/machinery/computer/piratepad_control/civilian{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/cargo/office)
 "oax" = (
 /obj/structure/table/wood/fancy,
 /obj/machinery/light,
@@ -61603,15 +61595,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
-"sWR" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/machinery/computer/bounty{
-	dir = 8
-	},
-/turf/open/floor/plasteel,
-/area/cargo/office)
 "sXy" = (
 /obj/machinery/door/airlock/external{
 	name = "Security External Airlock";
@@ -87346,7 +87329,7 @@ bnG
 bnz
 bpA
 bbR
-sWR
+bkM
 jlm
 bud
 eyM
@@ -87861,7 +87844,7 @@ boR
 bqs
 bbR
 bkM
-bbR
+aRx
 bwd
 bxB
 bvL
@@ -88118,7 +88101,7 @@ boT
 bbR
 bbR
 buI
-bbR
+nZL
 bwd
 bxD
 byL
@@ -96841,7 +96824,7 @@ aVv
 aXg
 aYF
 aZV
-nZL
+bbw
 bcn
 tgH
 ben
@@ -98634,7 +98617,7 @@ aKR
 fxe
 aPY
 kAO
-aRx
+aKR
 aKR
 iTU
 pqe
