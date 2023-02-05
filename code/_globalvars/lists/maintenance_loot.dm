@@ -112,8 +112,8 @@ GLOBAL_LIST_INIT(maintenance_loot, list(
 	/obj/item/storage/box/marshmallow = 2,
 	/obj/item/clothing/gloves/tackler/offbrand = 1,
 	/obj/item/stack/sticky_tape = 1,
-	/obj/item/poopydiap/underwear = 1,
-	/obj/item/useddiap = 1
+	/obj/item/wetdiap = 1,
+	/obj/item/diaper = 1
 	))
 
 GLOBAL_LIST_INIT(ratking_trash, list(//Garbage: used by the regal rat mob when spawning garbage.
