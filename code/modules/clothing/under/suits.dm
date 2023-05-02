@@ -122,7 +122,7 @@
 /obj/item/clothing/under/suit/henchmen
 	name = "henchmen jumpsuit"
 	desc = "A very gaudy jumpsuit for a proper Henchman. Guild regulations, you understand."
-	icon = 'icons/obj/clothing/uniforms.dmi'
+	icon = 'icons/obj/clothing/uniform.dmi'
 	mob_overlay_icon = 'icons/mob/clothing/uniform.dmi'
 	icon_state = "henchmen"
 	item_state = "henchmen"

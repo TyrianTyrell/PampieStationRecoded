@@ -10,20 +10,20 @@
 	suffix = "Box/Engine/engine_sm.dmm"
 	name = "Box SM"
 
-/datum/map_template/ruin/station/box/engine/onebythree
+/*/datum/map_template/ruin/station/box/engine/onebythree
 	id = "engine_sm_1x3"
 	suffix = "Box/Engine/engine_sm_1x3.dmm"
-	name = "Box SM 1x3"
+	name = "Box SM 1x3"*/
 
 /datum/map_template/ruin/station/box/engine/fivebyfive
 	id = "engine_sm_5x5"
 	suffix = "Box/Engine/engine_sm_5x5.dmm"
 	name = "Box SM 5x5"
 
-/datum/map_template/ruin/station/box/engine/threesm
+/*/datum/map_template/ruin/station/box/engine/threesm
 	id = "engine_sm_3x"
 	suffix = "Box/Engine/engine_sm_3x.dmm"
-	name = "Box SM 3x"
+	name = "Box SM 3x"*/
 
 /datum/map_template/ruin/station/box/engine/singulo
 	id = "engine_singulo"
@@ -40,20 +40,20 @@
 	suffix = "Box/Engine/engine_teg.dmm"
 	name = "Box TEG"
 
-/datum/map_template/ruin/station/box/engine/empty
+/*/datum/map_template/ruin/station/box/engine/empty
 	id = "engine_empty"
 	suffix = "Box/Engine/empty.dmm"
-	name = "Box Empty"
+	name = "Box Empty"*/
 
 /datum/map_template/ruin/station/box/engine/am
 	id = "engine_am"
 	suffix = "Box/Engine/engine_am.dmm"
 	name = "Box Antimatter"
 
-/datum/map_template/ruin/station/box/engine/budget
+/*/datum/map_template/ruin/station/box/engine/budget
 	id = "engine_budget"
 	suffix = "Box/Engine/budget.dmm"
-	name = "Box P.A.C.M.A.N"
+	name = "Box P.A.C.M.A.N"*/
 
 /datum/map_template/ruin/station/box/engine/miasmic
 	id = "engine_miasmic"

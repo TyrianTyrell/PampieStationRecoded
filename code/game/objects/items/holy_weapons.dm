@@ -640,7 +640,7 @@
 	icon_state = "fedora"
 	item_state = "fedora"
 	slot_flags = ITEM_SLOT_HEAD
-	icon = 'icons/obj/clothing/hats.dmi'
+	icon = 'icons/obj/clothing/head.dmi'
 	force = 0
 	throw_speed = 4
 	throw_range = 7

@@ -237,8 +237,8 @@
 	qdel(voucher)
 
 /obj/machinery/mineral/equipment_vendor/proc/RedeemSVoucher(obj/item/suit_voucher/voucher, mob/redeemer)
-	var/items = list(	"Exo-suit" = image(icon = 'icons/obj/clothing/suits.dmi', icon_state = "exo"),
-						"SEVA suit" = image(icon = 'icons/obj/clothing/suits.dmi', icon_state = "seva"))
+	var/items = list(	"Exo-suit" = image(icon = 'icons/obj/clothing/suit.dmi', icon_state = "exo"),
+						"SEVA suit" = image(icon = 'icons/obj/clothing/suit.dmi', icon_state = "seva"))
 
 	var/selection = show_radial_menu(redeemer, src, items, require_near = TRUE, tooltips = TRUE)
 	if(!selection || !Adjacent(redeemer) || QDELETED(voucher) || voucher.loc != redeemer)

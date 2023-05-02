@@ -217,7 +217,7 @@
 /obj/item/clothing/head/wig/update_icon_state()
 	var/datum/sprite_accessory/S = GLOB.hair_styles_list[hair_style]
 	if(!S)
-		icon = 'icons/obj/clothing/hats.dmi'
+		icon = 'icons/obj/clothing/head.dmi'
 		icon_state = "pwig"
 	else
 		icon = S.icon

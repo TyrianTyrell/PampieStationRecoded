@@ -1,5 +1,5 @@
 /obj/item/clothing/suit
-	icon = 'icons/obj/clothing/suits.dmi'
+	icon = 'icons/obj/clothing/suit.dmi'
 	name = "suit"
 	block_priority = BLOCK_PRIORITY_WEAR_SUIT
 	var/fire_resist = T0C+100

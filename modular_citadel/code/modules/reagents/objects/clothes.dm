@@ -3,7 +3,7 @@
 
 /obj/item/clothing/head/hattip	//I wonder if anyone else has played cryptworlds
 	name = "Synthetic hat"
-	icon = 'icons/obj/clothing/hats.dmi'
+	icon = 'icons/obj/clothing/head.dmi'
 	icon_state = "cowboy"
 	desc = "A synthesized hat. You feel compelled to keep it on all times."
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)

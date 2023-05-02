@@ -287,7 +287,7 @@
 /obj/effect/wisp/pumpkin
 	name = "Friendly pumpkin"
 	desc = "Happy to spook your way."
-	icon = 'icons/obj/clothing/hats.dmi'
+	icon = 'icons/obj/clothing/head.dmi'
 	icon_state = "hardhat1_pumpkin_j"
 	light_range = 5
 	light_color = "#EE9933"
