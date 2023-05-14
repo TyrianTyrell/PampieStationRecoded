@@ -9839,9 +9839,6 @@
 /area/maintenance/department/electrical)
 "auL" = (
 /obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
 	icon_state = "1-4"
 	},
 /turf/open/floor/plasteel,
@@ -10201,8 +10198,8 @@
 /turf/open/floor/plating,
 /area/maintenance/department/electrical)
 "avN" = (
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/machinery/door/airlock/engineering/abandoned{
+	name = "Electrical Maintenance"
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/electrical)
@@ -10701,9 +10698,6 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -10772,9 +10766,6 @@
 	},
 /area/hallway/secondary/entry)
 "axa" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 8
 	},
@@ -11926,7 +11917,7 @@
 /turf/open/floor/plasteel,
 /area/service/hydroponics/garden)
 "aAy" = (
-/obj/machinery/power/smes,
+/obj/machinery/power/smes/magical,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -11953,7 +11944,7 @@
 /turf/closed/wall,
 /area/maintenance/department/electrical)
 "aAB" = (
-/obj/machinery/power/smes,
+/obj/machinery/power/smes/magical,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
@@ -111706,7 +111697,7 @@ srG
 asB
 atG
 auL
-avN
+auI
 axa
 auI
 azw
@@ -112480,7 +112471,7 @@ asB
 asB
 asB
 asB
-asB
+avN
 asB
 asB
 aHk
