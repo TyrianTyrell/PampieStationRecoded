@@ -6,4 +6,5 @@
 
 TyrianTyrell = Host
 WanderingFox95 = Game Master
+Feeshbutt = Game Master
 GreenTea98 = Game Admin
