@@ -37,7 +37,7 @@ global procs
 		Turns each element of spans into a span class.
 
 	message_spans_end(length)
-		Returns lenght times "</span>"
+		Returns length times "</span>"
 
 	attach_spans(input, spans)
 		Attaches span classes around input.
