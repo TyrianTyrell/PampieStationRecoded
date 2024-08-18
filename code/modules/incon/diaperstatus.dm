@@ -90,10 +90,10 @@ var/database/db = new("code/modules/incon/InconFlavortextDB.db")
 		purposeState = "onpurpose"
 
 
-	// for the folowwing query, we're asking the database to randomly pick exactly one row that was "True" in all the requested column
-	// the database is structured so each column functions like a flag, specifying if that message is comparible with a current state: e.g., the "onpotty" colunm is true if and only if that message would make sense to display while a player is sitting on a potty
+	// for the following query, we're asking the database to randomly pick exactly one row that was "True" in all the requested column
+	// the database is structured so each column functions like a flag, specifying if that message is comparable with a current state: e.g., the "onpotty" column is true if and only if that message would make sense to display while a player is sitting on a potty
 	// each set of brackets is replaced by a column name specifying different player states: if they're a taur, if they have a tail, if they're having an accident on purpose or not, and if they're on a toilet or potty
-	// by supplying each of these column names in the query, the query returns a row that is guarenteed to be applicable to the player's current situation
+	// by supplying each of these column names in the query, the query returns a row that is guaranteed to be applicable to the player's current situation
 	var/FlavortextQueryText = text("SELECT * FROM InconFlavortextDB WHERE [] = 1 AND [] = 1 AND [] = 1 AND [] = 1 AND [] = 1 ORDER BY RANDOM() LIMIT 1", pottyState, tailState, taurState, purposeState, messageType)
 	//var/database/query/messingQuery = new("SELECT * FROM InconFlavortextDB WHERE ((usingpotty = ?) AND (usingtoilet = ?) AND (onpurpose = ?) AND (poopaccident = 1) AND (? = 1)) ORDER BY RANDOM() LIMIT 1", onPotty, onToilet,on_purpose, taurState)
 	var/database/query/FlavortextQuery = new(FlavortextQueryText)
@@ -293,7 +293,7 @@ var/database/db = new("code/modules/incon/InconFlavortextDB.db")
 
 		//finally, we want to display the actual pee flavortext
 		//
-		//we start by checkinng if the player is totally incontinent
+		//we start by checking if the player is totally incontinent
 		//if they are, no message is displayed to anyone
 		//this should be changed at some point, but for now, this is the best we can do
 		if (!HAS_TRAIT(src,TRAIT_FULLYINCONTINENT))
